@@ -42,6 +42,8 @@
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@babel/core": "^7.8.4",
+    "@storybook/addon-a11y": "^5.3.12",
+    "@storybook/addon-knobs": "^5.3.12",
     "@storybook/angular": "5.3.10",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
