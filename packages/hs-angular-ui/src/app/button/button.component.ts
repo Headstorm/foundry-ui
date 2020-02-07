@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input()
-  text;
+  text: string;
 
   @Input()
-  type;
+  type: string;
 }

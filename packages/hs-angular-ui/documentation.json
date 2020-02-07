@@ -314,7 +314,7 @@
                 "name": "button",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Welcome.stories.ts",
+                "file": "src/stories/Button.stories.ts",
                 "type": "",
                 "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: text('text', 'Click me!'),\n    type: select('Button Type', ['primary', 'default', 'destructive'], 'primary')\n  },\n})"
             },
@@ -369,12 +369,12 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "src/stories/Welcome.stories.ts": [
+            "src/stories/Button.stories.ts": [
                 {
                     "name": "button",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Welcome.stories.ts",
+                    "file": "src/stories/Button.stories.ts",
                     "type": "",
                     "defaultValue": "() => ({\n  component: ButtonComponent,\n  props: {\n    text: text('text', 'Click me!'),\n    type: select('Button Type', ['primary', 'default', 'destructive'], 'primary')\n  },\n})"
                 }
@@ -542,7 +542,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Welcome.stories.ts",
+                "filePath": "src/stories/Button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

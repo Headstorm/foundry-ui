@@ -45,7 +45,6 @@
     "@babel/core": "^7.8.4",
     "@compodoc/compodoc": "^1.1.11",
     "@storybook/addon-a11y": "^5.3.12",
-    "@storybook/addon-actions": "^5.3.12",
     "@storybook/addon-docs": "^5.3.12",
     "@storybook/addon-knobs": "^5.3.12",
     "@storybook/angular": "5.3.10",
