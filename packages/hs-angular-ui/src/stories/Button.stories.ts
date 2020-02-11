@@ -10,6 +10,7 @@ export default {
 export const button = () => ({
   component: ButtonComponent,
   props: {
+    onClick: () => alert('touché!'),
     text: text('text', 'Click me!'),
     type: select('Button Type', ['primary', 'default', 'destructive'], 'primary')
   },

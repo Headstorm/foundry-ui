@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 
 export class ButtonComponent {
+  @Output()
+  onClick: CallableFunction;
+
   @Input()
   text: string;
 
