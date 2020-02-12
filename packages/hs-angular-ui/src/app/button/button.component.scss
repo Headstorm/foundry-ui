@@ -1,41 +1,41 @@
 $tangerine: #e75b27;
 $charcoal100: #252c35;
 $charcoal25: #d3d6d7;
-$red: #dd0000;
+$red: #d00;
 
-.buttonContainer {
-    display: inline-block;
+.button-container {
+  display: inline-block;
 
-    font-family: Gotham;
-    font-size: 1em;
-    line-height: 0;
+  font-family: Gotham;
+  font-size: 1em;
+  line-height: 0;
 
-    padding: 1.25em 1em;
-    border-radius: .25em;
+  padding: 1.25em 1em;
+  border-radius: 0.25em;
 
-    outline: 0 none;
-    border: 0 none;
+  outline: 0 none;
+  border: 0 none;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    &.primary {
-        color: white;
-        background-color: $tangerine;
-        &:hover { background-color: darken( $tangerine, 5% ) }
-        &:active { background-color: darken( $tangerine, 10% ) }
-    }
+  &.primary {
+    color: #fff;
+    background-color: $tangerine;
+    &:hover { background-color: darken($tangerine, 5%); }
+    &:active { background-color: darken($tangerine, 10%); }
+  }
 
-    &.default {
-        color: $charcoal100;
-        background-color: $charcoal25;
-        &:hover { background-color: darken( $charcoal25, 5% ) }
-        &:active { background-color: darken( $charcoal25, 10% ) }
-    }
+  &.default {
+    color: $charcoal100;
+    background-color: $charcoal25;
+    &:hover { background-color: darken($charcoal25, 5%); }
+    &:active { background-color: darken($charcoal25, 10%); }
+  }
 
-    &.destructive {
-        color: white;
-        background-color: $red;
-        &:hover { background-color: darken( $red, 5% ) }
-        &:active { background-color: darken( $red, 10% ) }
-    }
+  &.destructive {
+    color: #fff;
+    background-color: $red;
+    &:hover { background-color: darken($red, 5%); }
+    &:active { background-color: darken($red, 10%); }
+  }
 }
