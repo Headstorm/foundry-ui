@@ -17,7 +17,8 @@
     "start": "start-storybook",
     "build": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "pre-deploy": "ng lint && ng test && ng build --prod"
   },
   "private": false,
   "dependencies": {
