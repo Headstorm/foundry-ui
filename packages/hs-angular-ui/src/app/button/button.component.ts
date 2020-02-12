@@ -2,7 +2,14 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  templateUrl: './button.component.html',
+  template: `
+    <button
+      class="button-container {{type}}"
+      (click)="onClick()"
+    >
+      <span>{{text}}</span>
+    </button>
+  `,
   styleUrls: ['./button.component.scss']
 })
 
