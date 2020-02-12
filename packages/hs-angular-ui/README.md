@@ -5,8 +5,8 @@
 Pick a ticket from the `Priority to do` swim-lane of the [project board](https://github.com/Headstorm/hs-angular-ui/projects/1). Clone the repository and create a branch for your ticket, with the ticket number prefixing the name of the ticket (i.e. `4-publish-package-to-npm`). When making commits, be sure to prefix your commit messages with the ticket number, like so: `#4 Updating package.json to make the package public`. Once you've made a commit it should automatically be moved to the `In progress` swim-lane, and then moved to `Needs review` once a PR is made.
 
 ## Running the development server locally
-
-Run `yarn start` to start the storybook server. The app will automatically reload if you change any of the source files.
+Run `yarn install` to install the dependencies, then you can run `yarn start` to start the storybook server.
+The app will automatically reload if you change any of the source files.
 
 ## Creating new components
 
