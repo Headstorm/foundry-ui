@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'hs-ui-button',
+  selector: 'app-button',
   template: `
     <button
       class="button-container {{type}}"

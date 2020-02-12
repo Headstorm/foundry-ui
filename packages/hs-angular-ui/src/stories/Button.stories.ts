@@ -1,4 +1,4 @@
-import { ButtonComponent } from '../app/button/button.component';
+import { ButtonComponent } from '../components/button/button.component';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 import { withDesign } from 'storybook-addon-designs';
@@ -12,7 +12,7 @@ export default {
     }
   },
   title: 'Button'
-}
+};
 
 export const button = () => ({
   component: ButtonComponent,
