@@ -10,7 +10,7 @@ The app will automatically reload if you change any of the source files.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via Jest.
+Run `yarn test` to execute the unit tests via Jest.
 
 # Theming components
 
