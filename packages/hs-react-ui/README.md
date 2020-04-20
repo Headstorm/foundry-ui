@@ -39,16 +39,6 @@ Pick a ticket from the `Priority to do` swim-lane of the [project board](https:/
 
 ## Creating new components
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ### Enabling Theming
 
 Theming is enabled through props of each component. When building a new component, or adding a styled-component to an existing component, ensure that there is a matching prop to accept an override, and that styled-component is a named export from the component. See the [Card component](https://github.com/Headstorm/hs-ui/tree/master/packages/hs-react-ui/src/components/Card) as an example.
-
-## Building the package for publishing
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
