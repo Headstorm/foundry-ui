@@ -1,7 +1,6 @@
 {
-  "name": "hs-react-ui",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@headstorm/hs-react-ui",
+  "version": "0.0.1",
   "dependencies": {
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-backgrounds": "^5.3.18",
