@@ -6,12 +6,12 @@
   "homepage": "http://headstorm.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Headstorm/hs-angular-ui.git"
+    "url": "https://github.com/Headstorm/hs-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/Headstorm/hs-angular-ui/issues"
+    "url": "https://github.com/Headstorm/hs-ui/issues"
   },
-  "license": "MIT",
+  "license": "Apache 2.0",
   "scripts": {
     "ng": "ng",
     "start": "start-storybook",
@@ -71,5 +71,6 @@
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "gitHead": "c8664d3bd54d8acab20310af298c906230c22bbe"
 }
