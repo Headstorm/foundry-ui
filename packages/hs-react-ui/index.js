@@ -1,9 +1,9 @@
-export { default as Button } from 'src/components/Button';
-export { default as Card } from 'src/components/Card';
-//# sourceMappingURL=index.js.map
+'use strict';
 
-var Button = _interopDefault(require('src/components/Button'));
-var Card = _interopDefault(require('src/components/Card'));
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var Button = require('src/components/Button');
+var Card = require('src/components/Card');
 
 
 

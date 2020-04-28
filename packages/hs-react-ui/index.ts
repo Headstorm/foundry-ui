@@ -1,4 +1,3 @@
-import Button from 'src/components/Button';
-import Card from 'src/components/Card';
-
+import * as Button from 'src/components/Button';
+import * as Card from 'src/components/Card';
 export { Button, Card };
