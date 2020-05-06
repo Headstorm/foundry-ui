@@ -33,13 +33,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
-    "rollup": "^2.7.2",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.2",
-    "rollup-plugin-postcss": "^3.1.1",
-    "rollup-plugin-url": "^3.0.1",
+    "src": "^1.1.2",
     "storybook": "^5.3.18",
     "styled-components": "^5.1.0",
     "ts-loader": "^6.2.2",
@@ -48,7 +42,8 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "build": "rollup -c",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "start": "start-storybook -p 9009 -s public",
@@ -80,7 +75,8 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
-    "@types/styled-components": "^5.1.0"
+    "@types/styled-components": "^5.1.0",
+    "parcel-bundler": "^1.12.4"
   },
   "gitHead": "c8664d3bd54d8acab20310af298c906230c22bbe"
 }
