@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
+import colors from '../../constants/colors';
+import timings from '../../constants/timings';
 
 export const CardContainer = styled.div`
   ${({ elevation = 0 }) => `
