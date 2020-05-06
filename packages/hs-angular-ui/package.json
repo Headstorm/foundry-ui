@@ -4,8 +4,6 @@
   "description": "Robust UI library written in Angular. It's DRY, with CSS in JS; stirred, not shaken.",
   "author": "Headstorm LLC",
   "homepage": "http://headstorm.com",
-  "module": "index.js",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Headstorm/hs-ui.git"
