@@ -22,7 +22,7 @@ module.exports = {
       },
     },
     '@storybook/addon-actions',
-    'storybook-addon-designs',
+    'storybook-addon-designs/register',
     '@storybook/addon-knobs',
     '@storybook/addon-a11y',
     '@storybook/addon-backgrounds',
