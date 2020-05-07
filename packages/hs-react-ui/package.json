@@ -73,7 +73,8 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "@types/styled-components": "^5.1.0",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "storybook-addon-designs": "^5.2.1"
   },
   "gitHead": "c8664d3bd54d8acab20310af298c906230c22bbe"
 }
