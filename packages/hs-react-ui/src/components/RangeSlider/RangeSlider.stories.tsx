@@ -22,7 +22,7 @@ const Basic = () => (
     <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <RangeSlider
       disabled={boolean('disabled', false)}
-      showDomainLabels={boolean('showDomainLabels', false)}
+      showDomainLabels={boolean('showDomainLabels', true)}
       showSelectedRange={boolean('showSelectedRange', true)}
       min={0}
       max={5}

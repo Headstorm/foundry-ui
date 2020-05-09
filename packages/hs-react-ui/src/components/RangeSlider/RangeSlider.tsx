@@ -11,8 +11,10 @@ export const Container = styled.div`
     height: 1rem;
     width: 100%;
     
+    transition: top .1s, margin-top .1s, filter .1s;
+
     ${disabled ? `
-      filter: grayscale(1) contrast(.8);
+      filter: grayscale(1) contrast(.5) brightness(1.2);
       pointer-events: none;
     ` : ''}
 
@@ -154,7 +156,7 @@ export default ({
 
       {values.map(({ value, label, color }) => (
         <StyledDragHandle value={value} min={min} max={max} color={color}>
-          <StyledHandleLabel value={value} label={label}></StyledHandleLabel>
+          <StyledHandleLabel value={value}>{label}</StyledHandleLabel>
         </StyledDragHandle>
       ))}
 
