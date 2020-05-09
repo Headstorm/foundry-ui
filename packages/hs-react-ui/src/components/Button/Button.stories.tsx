@@ -7,7 +7,11 @@ import { ButtonTypes } from 'enums/ButtonTypes';
 
 export default {
   title: 'Button',
-  component: Button
+  component: Button,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
+  }
 };
 
 export const Basic = () => (
