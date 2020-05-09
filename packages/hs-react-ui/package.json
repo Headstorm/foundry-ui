@@ -42,9 +42,9 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html",
     "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
+    "predeploy": "cd example && yarn install && yarn run build && yarn run build-storybook",
     "start": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "build-storybook -c .storybook -o ../../docs",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
