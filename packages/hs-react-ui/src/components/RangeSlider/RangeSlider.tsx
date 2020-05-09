@@ -4,26 +4,41 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../constants/colors';
 import { clamp } from '../../utils/math';
 
+type containerPorps = {showDomainLabels?: boolean, disabled: boolean};
 export const Container = styled.div`
-  position: relative;
-  height: 3rem;
-  width: 100%;
+  ${({ showDomainLabels, disabled }: containerPorps) => `
+    position: relative;
+    height: 1rem;
+    width: 100%;
+    
+    ${disabled ? `
+      filter: grayscale(1) contrast(.8);
+      pointer-events: none;
+    ` : ''}
+
+    ${showDomainLabels ? `
+        top: -.25rem;
+        margin-top: .5rem;
+      ` : ''};
+  `}
 `;
 
-type handleProps = {velocity?: number, value: number, min: number, max: number};
+type handleProps = { beingDragged?: boolean, velocity?: number, value: number, min: number, max: number };
 export const DragHandle = styled.div`
-  ${({ velocity = 0, value, min, max }: handleProps) => `
+  ${({ beingDragged = false, velocity = 0, value, min, max }: handleProps) => `
     position: absolute;
     top: 50%;
     left: ${((value - min) / (max - min)) * 100}%;
     transform: translate(-50%, -50%);
 
-    width: 3rem;
-    height: 3rem;
+    width: 1rem;
+    height: 1rem;
 
     background-color: ${colors.primary};
-    border: 2px solid ${colors.background};
+    border: .125rem solid ${colors.background};
     border-radius: 50%;
+
+    cursor: grab;
   `}
 `;
 
@@ -37,31 +52,54 @@ export const HandleLabel = styled.div`
   `}
 `;
 
-export const Slider = styled.div`
-  ${({ elevation = 0 }) => `
-    
+export const SlideRail = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 100%;
+  height: .5rem;
+
+  overflow: hidden;
+
+  border-radius: .25rem;
+  background-color: ${colors.grayXlight};
+`;
+
+type selectedRangeProps = { min: number, max: number, values: object[], selectedRange: number[] };
+export const SelectedRangeRail = styled.div`
+  ${({ min, max, values, selectedRange }: selectedRangeProps) => `
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
+    right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
+
+    background-color: ${colors.primary};
   `}
 `;
 
-export const SelectedRange = styled.div`
-  ${({ elevation = 0 }) => `
-    
-  `}
-`;
-
-
-export const MinMaxLabel = styled.div`
-  ${({ elevation = 0 }) => `
-    
+type domainLabelProps = { position: "left" | "right" };
+export const DomainLabel = styled.div`
+  ${({ position }: domainLabelProps) => `
+    position: absolute;
+    bottom: 100%;
+    ${position}: 0rem;
+    color: ${colors.grayMedium};
+    font-size: .5rem;
   `}
 `;
 
 export type RangeSliderProps  = {
-  StyledContainer: String & StyledComponentBase<any, {}>,
-  StyledDragHandle: String & StyledComponentBase<any, {}>,
-  StyledHandleLabel: String & StyledComponentBase<any, {}>,
-  StyledSlider: String & StyledComponentBase<any, {}>,
-  StyledSelectedRange?: String & StyledComponentBase<any, {}>,
+  StyledContainer?: String & StyledComponentBase<any, {}>,
+  StyledDragHandle?: String & StyledComponentBase<any, {}>,
+  StyledHandleLabel?: String & StyledComponentBase<any, {}>,
+  StyledSlideRail?: String & StyledComponentBase<any, {}>,
+  StyledSelectedRangeRail?: String & StyledComponentBase<any, {}>,
+  StyledDomainLabel?: String & StyledComponentBase<any, {}>,
+
+  showDomainLabels?: boolean,
+  showSelectedRange?: boolean,
 
   onHandleDrag?: Function,
   disabled?: boolean
@@ -71,31 +109,55 @@ export type RangeSliderProps  = {
   markers?: { value: number, label?: String | number | Node, color?: String }[],
 };
 
-const RangeSlider = ({
+export default ({
   StyledContainer = Container,
   StyledDragHandle = DragHandle,
   StyledHandleLabel = HandleLabel,
-  StyledSlider = Slider,
-  StyledSelectedRange = SelectedRange,
+  StyledSlideRail = SlideRail,
+  StyledSelectedRangeRail = SelectedRangeRail,
+  StyledDomainLabel = DomainLabel,
 
-  showDomainLabels,
-  showSelectedRange,
+  showDomainLabels = true,
+  showSelectedRange = true,
 
   onHandleDrag = () => {},
   disabled = false,
-  min = 0,
-  max = 10,
+  min,
+  max,
   values,
-}: RangeSliderProps) => (
-  <StyledContainer>
-    <StyledSlider />
-    {showSelectedRange && <StyledSelectedRange min={min} max={max} values={values} />}
-    {values.map(({ value, label, color }) => (
-      <StyledDragHandle value={value} color={color}>
-        <StyledHandleLabel value={value} label={label}></StyledHandleLabel>
-      </StyledDragHandle>
-    ))}
-  </StyledContainer>
-);
+}: RangeSliderProps) => {
+  const selectedRange = [
+    Math.min(...values.map(val => val.value)),
+    Math.max(...values.map(val => val.value)),
+  ];
 
-export default Card;
+  return (
+    <StyledContainer disabled={disabled} showDomainLabels={showDomainLabels}>
+
+      <StyledSlideRail>
+        {showSelectedRange &&
+          <StyledSelectedRangeRail
+            min={min}
+            max={max}
+            values={values}
+            selectedRange={selectedRange}
+          />
+        }
+      </StyledSlideRail>
+
+      {showDomainLabels &&
+        <>
+          <StyledDomainLabel position="left">{min}</StyledDomainLabel>
+          <StyledDomainLabel position="right">{max}</StyledDomainLabel>
+        </>
+      }
+
+      {values.map(({ value, label, color }) => (
+        <StyledDragHandle value={value} min={min} max={max} color={color}>
+          <StyledHandleLabel value={value} label={label}></StyledHandleLabel>
+        </StyledDragHandle>
+      ))}
+
+    </StyledContainer>
+  )
+};

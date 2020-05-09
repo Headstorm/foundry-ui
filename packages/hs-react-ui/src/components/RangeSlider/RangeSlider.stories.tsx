@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { text, number } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
+import RangeSlider from './RangeSlider';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
-import RangeSlider, { Header, Footer } from './RangeSlider';
+const Row = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 1rem 5rem;
+`;
 
 export default {
   title: 'RangeSlider',
@@ -13,68 +17,27 @@ export default {
 
 /* Default */
 
-export const Basic = () => (
-  <RangeSlider
-    header={text('header', 'RangeSlider title')}
-    footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-    elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
-  >
-    {text('children', 'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.')}
-  </RangeSlider>
+const Basic = () => (
+  <Row>
+    <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <RangeSlider
+      disabled={boolean('disabled', false)}
+      showDomainLabels={boolean('showDomainLabels', false)}
+      showSelectedRange={boolean('showSelectedRange', true)}
+      min={0}
+      max={5}
+      values={[
+        { value: 1, label: text('1st handle label', 'first') },
+        { value: 3, label: text('2nd handle label', 'second') },
+        { value: 4, label: text('3rd handle label', 'third') }
+      ]}
+    />
+  </ Row>
 );
 
-/* Themed */
-
-const themeColors = {
-  ...colors,
-  background: 'beige',
-  primary: 'purple'
+Basic.design = {
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2'
 };
 
-const themeTimings = {
-  ...timings,
-  xSlow: '2s',
-}
-
-const ThemedContainer = styled.div`
-  ${({ elevation = 0 }) => `
-    border-radius: 1rem;
-    width: fit-content;
-    background-color: ${themeColors.background};
-
-    transition: transform ${themeTimings.xSlow};
-    transform: scale(${elevation * .05 + 1});
-
-    font-family: Roboto, sans-serif;
-    font-size: 1rem;
-    border: 1px solid ${themeColors.primary};
-  `}
-`;
-
-const ThemedHeader = styled(Header)`
-  font-family: Parchment, serif;
-  line-height: 0;
-  font-size: 4rem;
-  padding-top: 2.5rem;
-  padding-left: .75rem;
-  padding-bottom: 1rem;
-  text-transform: unset;
-  color: ${themeColors.primary};
-`;
-
-const ThemedFooter = styled(Footer)`
-  border-top: 1px solid ${themeColors.primary};
-`;
-
-export const ThemedRangeSlider = () => (
-  <RangeSlider
-    StyledContainer={ThemedContainer}
-    StyledHeader={ThemedHeader}
-    StyledFooter={ThemedFooter}
-    header={text('header', 'RangeSlider title')}
-    footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-    elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
-  >
-    {text('children', 'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.')}
-  </RangeSlider>
-);
+export { Basic };
