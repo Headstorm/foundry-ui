@@ -1,0 +1,80 @@
+import React from 'react';
+import styled from 'styled-components';
+import { text, number } from '@storybook/addon-knobs';
+
+import colors from 'src/constants/colors';
+import timings from 'src/constants/timings';
+import RangeSlider, { Header, Footer } from './RangeSlider';
+
+export default {
+  title: 'RangeSlider',
+  component: RangeSlider
+};
+
+/* Default */
+
+export const Basic = () => (
+  <RangeSlider
+    header={text('header', 'RangeSlider title')}
+    footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
+    elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
+  >
+    {text('children', 'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.')}
+  </RangeSlider>
+);
+
+/* Themed */
+
+const themeColors = {
+  ...colors,
+  background: 'beige',
+  primary: 'purple'
+};
+
+const themeTimings = {
+  ...timings,
+  xSlow: '2s',
+}
+
+const ThemedContainer = styled.div`
+  ${({ elevation = 0 }) => `
+    border-radius: 1rem;
+    width: fit-content;
+    background-color: ${themeColors.background};
+
+    transition: transform ${themeTimings.xSlow};
+    transform: scale(${elevation * .05 + 1});
+
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
+    border: 1px solid ${themeColors.primary};
+  `}
+`;
+
+const ThemedHeader = styled(Header)`
+  font-family: Parchment, serif;
+  line-height: 0;
+  font-size: 4rem;
+  padding-top: 2.5rem;
+  padding-left: .75rem;
+  padding-bottom: 1rem;
+  text-transform: unset;
+  color: ${themeColors.primary};
+`;
+
+const ThemedFooter = styled(Footer)`
+  border-top: 1px solid ${themeColors.primary};
+`;
+
+export const ThemedRangeSlider = () => (
+  <RangeSlider
+    StyledContainer={ThemedContainer}
+    StyledHeader={ThemedHeader}
+    StyledFooter={ThemedFooter}
+    header={text('header', 'RangeSlider title')}
+    footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
+    elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
+  >
+    {text('children', 'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.')}
+  </RangeSlider>
+);
