@@ -132,11 +132,11 @@ const ColorPicker = () => {
   }, [storyHue]);
 
   useEffect(() => {
-    setHue(storySat);
+    setSat(storySat);
   }, [storySat]);
 
   useEffect(() => {
-    setHue(storyLight);
+    setLight(storyLight);
   }, [storyLight]);
 
   return (
