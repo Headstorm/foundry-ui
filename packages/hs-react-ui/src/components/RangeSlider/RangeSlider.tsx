@@ -32,9 +32,23 @@ export const Container = styled.div`
   `}
 `;
 
-type handleProps = { beingDragged?: boolean, velocity?: number, value: number, min: number, max: number };
+type handleProps = {
+  beingDragged?: boolean,
+  velocity?: number,
+  value: number,
+  min: number,
+  max: number,
+  color: String
+};
 export const DragHandle = styled.div`
-  ${({ beingDragged = false, velocity = 0, value, min, max }: handleProps) => `
+  ${({
+    beingDragged = false,
+    velocity = 0,
+    value,
+    min,
+    max,
+    color = colors.primary
+  }: handleProps) => `
     position: absolute;
     top: 50%;
     left: ${((value - min) / (max - min)) * 100}%;
@@ -43,7 +57,8 @@ export const DragHandle = styled.div`
     width: 1rem;
     height: 1rem;
 
-    background-color: ${colors.primary};
+    background-color: ${color};
+    color: ${color};
     border: .125rem solid ${colors.background};
     border-radius: 50%;
 
@@ -60,7 +75,6 @@ export const HandleLabel = styled.div`
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
 
       font-weight: bold;
-      color: ${colors.primary};
       white-space: nowrap;
 
       pointer-events: none;

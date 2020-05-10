@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { number, boolean } from '@storybook/addon-knobs';
 import RangeSlider from './RangeSlider';
 import { useEffect } from '@storybook/addons';
+import { darken } from 'polished';
 
 const Row = styled.div`
   display: flex;
@@ -45,7 +46,7 @@ const Basic = () => {
         min={0}
         max={5}
         values={[
-          {value: val, label: skillLabels[Math.round(val)]}
+          {value: val, label: skillLabels[Math.round(val)], color: darken(0.2, '#61DAFB')}
         ]}
       />
     </ Row>
