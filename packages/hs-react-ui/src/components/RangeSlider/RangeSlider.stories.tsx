@@ -86,7 +86,7 @@ const allSats = Array.from({length: 100}, (v, i) => i).map(num => `hsl(0,${num}%
 const allLights = Array.from({length: 100}, (v, i) => i).map(num => `hsl(0,0%,${num}%)`);
 
 const ColorPreview = styled.div`
-  height: 4rem;
+  height: 9rem;
 `;
 
 const HueRail = styled(SlideRail)`
