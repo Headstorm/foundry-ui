@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
+
+import { useSpring, a } from 'react-spring';
+import { useDrag } from 'react-use-gesture';
+import useMeasure from 'react-use-measure';
+import polyfill from '@juggle/resize-observer';
 
 import colors from '../../constants/colors';
 import { clamp } from '../../utils/math';
 
-type valueProp = number |
-  {
-    value: number,
-    label?: String | number | Node,
-    color?: String
-  };
+type valueProp = {
+  value: number,
+  label?: String | number | Node,
+  color?: String
+};
 
-type containerPorps = {showDomainLabels?: boolean, disabled: boolean};
+type containerPorps = { showDomainLabels?: boolean, hasHandleLabels?: boolean, disabled: boolean };
 export const Container = styled.div`
-  ${({ showDomainLabels, disabled }: containerPorps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled }: containerPorps) => `
     position: relative;
     height: 1rem;
     width: 100%;
 
-    transition: top .1s, margin-top .1s, filter .1s;
+    user-select: none;
+
+    transition: filter .1s;
 
     ${disabled ? `
       filter: grayscale(1) contrast(.5) brightness(1.2);
@@ -29,30 +35,27 @@ export const Container = styled.div`
         top: -.25rem;
         margin-top: .5rem;
       ` : ''};
+
+      ${hasHandleLabels ? `
+        top: -.5rem;
+        margin-top: 1rem;
+      ` : ''};
   `}
 `;
 
 type handleProps = {
   beingDragged?: boolean,
   velocity?: number,
-  value: number,
-  min: number,
-  max: number,
   color: String
 };
-export const DragHandle = styled.div`
+export const DragHandle = styled(a.div)`
   ${({
     beingDragged = false,
-    velocity = 0,
-    value,
-    min,
-    max,
     color = colors.primary
   }: handleProps) => `
     position: absolute;
-    top: 50%;
-    left: ${((value - min) / (max - min)) * 100}%;
-    transform: translate(-50%, -50%);
+    bottom: -.125rem;
+    left: -.5rem;
 
     width: 1rem;
     height: 1rem;
@@ -119,7 +122,7 @@ export const DomainLabel = styled.div`
   `}
 `;
 
-export type RangeSliderProps  = {
+export type RangeSliderProps = {
   StyledContainer?: String & StyledComponentBase<any, {}>,
   StyledDragHandle?: String & StyledComponentBase<any, {}>,
   StyledHandleLabel?: String & StyledComponentBase<any, {}>,
@@ -130,12 +133,12 @@ export type RangeSliderProps  = {
   showDomainLabels?: boolean,
   showSelectedRange?: boolean,
 
-  onHandleDrag?: Function,
+  onDrag?: Function,
   disabled?: boolean
   min: number,
   max: number,
-  values?: valueProp[],
-  markers?: valueProp[],
+  values?: number[] | valueProp[],
+  markers?: number[] | valueProp[],
 };
 
 export default ({
@@ -149,27 +152,59 @@ export default ({
   showDomainLabels = true,
   showSelectedRange = true,
 
-  onHandleDrag = () => {},
+  onDrag = (newVal: number) => {console.log(newVal)},
   disabled = false,
   min,
   max,
   values,
 }: RangeSliderProps) => {
-  const processedValues = values.map(val =>
-    typeof val === 'number' ?
-      { value: val, label: null } :
-      val
-  );
-  
+  let hasHandleLabels = false;
+  const processedValues = values.map((val: number | valueProp) => {
+    if (typeof val === 'number') {
+      return { value: val, label: null };
+    } else {
+      if (val.hasOwnProperty('label')) {
+        hasHandleLabels = true;
+      }
+      return val;
+    }
+  });
   const selectedRange = [
-    Math.min(...processedValues.map(val => val.value)),
-    Math.max(...processedValues.map(val => val.value)),
+    Math.min(...processedValues.map((val: valueProp) => val.value)),
+    Math.max(...processedValues.map((val: valueProp) => val.value)),
   ];
 
-  return (
-    <StyledContainer disabled={disabled} showDomainLabels={showDomainLabels}>
+  const domain = max - min;
 
-      <StyledSlideRail>
+  // get the bounding box of the slider
+  const [ref, sliderBounds] = useMeasure({ polyfill });
+  const pixelPositions = processedValues.map((val: valueProp) => (val.value / domain) * sliderBounds.width);
+  // get the x offset and an animation setter function
+  const [{ x, y }, set] = useSpring(() => ({ x: pixelPositions[0], y: 0, config: {friction: 13, tension: 100} }), [values]);
+  const bind = useDrag(({ down, movement: [deltaX, deltaY] }) => {
+    const delta = (deltaX / sliderBounds.width) * domain;
+    const newValue = clamp(delta, min, max);
+    onDrag(newValue);
+
+    set({ x: down ? deltaX : pixelPositions[0], y: down ? deltaY : 0, immediate: down, config: {friction: 13, tension: 100}});
+  },
+  {
+    axis: 'x',
+    initial: [pixelPositions[0], 0],
+    bounds: { left: 0, right: sliderBounds.width + 4, top: -8, bottom: (sliderBounds.height / 2) + 8 },
+    rubberband: .1
+  });
+
+  return (
+    <StyledContainer
+      disabled={disabled}
+      hasHandleLabels={hasHandleLabels}
+      showDomainLabels={showDomainLabels}
+    >
+
+      <StyledSlideRail
+        ref={ref}
+      >
         {showSelectedRange &&
           <StyledSelectedRangeRail
             min={min}
@@ -187,8 +222,13 @@ export default ({
         </>
       }
 
-      {processedValues.map(({ value, label, color }) => (
-        <StyledDragHandle value={value} min={min} max={max} color={color}>
+      {processedValues.map(({ value, label, color }: valueProp, i: number) => (
+        <StyledDragHandle
+          {...bind()}
+          style={{ x, y }}
+          color={color}
+          key={`handle${i}`}
+        >
           <StyledHandleLabel value={value}>{label}</StyledHandleLabel>
         </StyledDragHandle>
       ))}
