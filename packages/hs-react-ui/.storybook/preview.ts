@@ -6,9 +6,9 @@ import colors from '../src/constants/colors';
 
 addParameters({
   backgrounds: [
-    { name: 'grayDark', value: colors.grayDark, default: true },
+    { name: 'grayDark', value: colors.grayDark},
     { name: 'grayLight', value: colors.grayLight },
-    { name: 'background', value: colors.background },
+    { name: 'background', value: colors.background, default: true  },
   ],
 });
 

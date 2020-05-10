@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { text, boolean } from '@storybook/addon-knobs';
+import { number, boolean } from '@storybook/addon-knobs';
 import RangeSlider from './RangeSlider';
+import { useEffect } from '@storybook/addons';
 
 const Row = styled.div`
   display: flex;
+  font-family: Gotham, Roboto, sans-serif;
   flex-flow: row nowrap;
   align-items: center;
   padding: 1rem 5rem;
@@ -17,23 +19,38 @@ export default {
 
 /* Default */
 
-const Basic = () => (
-  <Row>
-    <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <RangeSlider
-      disabled={boolean('disabled', false)}
-      showDomainLabels={boolean('showDomainLabels', true)}
-      showSelectedRange={boolean('showSelectedRange', true)}
-      min={0}
-      max={5}
-      values={[
-        { value: 1, label: text('1st handle label', 'first') },
-        { value: 3, label: text('2nd handle label', 'second') },
-        { value: 4, label: text('3rd handle label', 'third') }
-      ]}
-    />
-  </ Row>
-);
+const skillLabels = ['WhatJS?', 'I\'ve used it...', 'I\'m proficient', 'I\'m very good with it', 'I dream in React', 'I am React'];
+
+const Basic = () => {
+  const storyValue = number('values', 0, {
+    range: true,
+    min: 0,
+    max: 5,
+    step: 1,
+  });
+
+  const [val, setVal] = useState(storyValue);
+
+  useEffect(() => {
+    setVal(storyValue);
+  }, [storyValue]);
+
+  return (
+    <Row>
+      <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <RangeSlider
+        disabled={boolean('disabled', false)}
+        showDomainLabels={boolean('showDomainLabels', false)}
+        showSelectedRange={boolean('showSelectedRange', true)}
+        min={0}
+        max={5}
+        values={[
+          {value: val, label: skillLabels[Math.round(val)]}
+        ]}
+      />
+    </ Row>
+  );
+};
 
 Basic.design = {
   type: 'figma',

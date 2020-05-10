@@ -4,13 +4,20 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../constants/colors';
 import { clamp } from '../../utils/math';
 
+type valueProp = number |
+  {
+    value: number,
+    label?: String | number | Node,
+    color?: String
+  };
+
 type containerPorps = {showDomainLabels?: boolean, disabled: boolean};
 export const Container = styled.div`
   ${({ showDomainLabels, disabled }: containerPorps) => `
     position: relative;
     height: 1rem;
     width: 100%;
-    
+
     transition: top .1s, margin-top .1s, filter .1s;
 
     ${disabled ? `
@@ -51,6 +58,12 @@ export const HandleLabel = styled.div`
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
+
+      font-weight: bold;
+      color: ${colors.primary};
+      white-space: nowrap;
+
+      pointer-events: none;
   `}
 `;
 
@@ -107,8 +120,8 @@ export type RangeSliderProps  = {
   disabled?: boolean
   min: number,
   max: number,
-  values?: { value: number, label?: String | number | Node, color?: String }[],
-  markers?: { value: number, label?: String | number | Node, color?: String }[],
+  values?: valueProp[],
+  markers?: valueProp[],
 };
 
 export default ({
@@ -128,9 +141,15 @@ export default ({
   max,
   values,
 }: RangeSliderProps) => {
+  const processedValues = values.map(val =>
+    typeof val === 'number' ?
+      { value: val, label: null } :
+      val
+  );
+  
   const selectedRange = [
-    Math.min(...values.map(val => val.value)),
-    Math.max(...values.map(val => val.value)),
+    Math.min(...processedValues.map(val => val.value)),
+    Math.max(...processedValues.map(val => val.value)),
   ];
 
   return (
@@ -141,7 +160,7 @@ export default ({
           <StyledSelectedRangeRail
             min={min}
             max={max}
-            values={values}
+            values={processedValues}
             selectedRange={selectedRange}
           />
         }
@@ -154,7 +173,7 @@ export default ({
         </>
       }
 
-      {values.map(({ value, label, color }) => (
+      {processedValues.map(({ value, label, color }) => (
         <StyledDragHandle value={value} min={min} max={max} color={color}>
           <StyledHandleLabel value={value}>{label}</StyledHandleLabel>
         </StyledDragHandle>
