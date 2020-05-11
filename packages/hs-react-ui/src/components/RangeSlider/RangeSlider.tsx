@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import React, { useRef } from 'react';
+import styled from 'styled-components';
+import debounce from 'lodash/debounce';
 
 import { useSpring, a } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
@@ -9,15 +10,18 @@ import polyfill from '@juggle/resize-observer';
 import colors from '../../constants/colors';
 import { clamp } from '../../utils/math';
 
-type valueProp = {
-  value: number,
-  label?: String | number | Node,
-  color?: String
-};
+import {
+  valueProp,
+  containerProps,
+  handleProps,
+  handleLabelProps,
+  RangeSliderProps,
+  selectedRangeProps,
+  domainLabelProps
+} from './types';
 
-type containerPorps = { showDomainLabels?: boolean, hasHandleLabels?: boolean, disabled: boolean };
 export const Container = styled.div`
-  ${({ showDomainLabels, hasHandleLabels, disabled }: containerPorps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled }: containerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
@@ -32,22 +36,17 @@ export const Container = styled.div`
     ` : ''}
 
     ${showDomainLabels ? `
-        top: -.25rem;
-        margin-top: .5rem;
+        top: -.5rem;
+        margin-top: 1rem;
       ` : ''};
 
       ${hasHandleLabels ? `
-        top: -.5rem;
-        margin-top: 1rem;
+        top: -.75rem;
+        margin-top: 1.5rem;
       ` : ''};
   `}
 `;
 
-type handleProps = {
-  beingDragged?: boolean,
-  velocity?: number,
-  color: String
-};
 export const DragHandle = styled(a.div)`
   ${({
     beingDragged = false,
@@ -69,7 +68,6 @@ export const DragHandle = styled(a.div)`
   `}
 `;
 
-type handleLabelProps = {velocity?: number};
 export const HandleLabel = styled.div`
   ${({ velocity = 0 }: handleLabelProps) => `
       position: absolute;
@@ -98,7 +96,6 @@ export const SlideRail = styled.div`
   background-color: ${colors.grayXlight};
 `;
 
-type selectedRangeProps = { min: number, max: number, values: object[], selectedRange: number[] };
 export const SelectedRangeRail = styled.div`
   ${({ min, max, values, selectedRange }: selectedRangeProps) => `
     position: absolute;
@@ -111,7 +108,6 @@ export const SelectedRangeRail = styled.div`
   `}
 `;
 
-type domainLabelProps = { position: "left" | "right" };
 export const DomainLabel = styled.div`
   ${({ position }: domainLabelProps) => `
     position: absolute;
@@ -121,25 +117,6 @@ export const DomainLabel = styled.div`
     font-size: .5rem;
   `}
 `;
-
-export type RangeSliderProps = {
-  StyledContainer?: String & StyledComponentBase<any, {}>,
-  StyledDragHandle?: String & StyledComponentBase<any, {}>,
-  StyledHandleLabel?: String & StyledComponentBase<any, {}>,
-  StyledSlideRail?: String & StyledComponentBase<any, {}>,
-  StyledSelectedRangeRail?: String & StyledComponentBase<any, {}>,
-  StyledDomainLabel?: String & StyledComponentBase<any, {}>,
-
-  showDomainLabels?: boolean,
-  showSelectedRange?: boolean,
-
-  onDrag?: Function,
-  disabled?: boolean
-  min: number,
-  max: number,
-  values?: number[] | valueProp[],
-  markers?: number[] | valueProp[],
-};
 
 export default ({
   StyledContainer = Container,
@@ -152,6 +129,8 @@ export default ({
   showDomainLabels = true,
   showSelectedRange = true,
 
+  debounceInterval = 8,
+  axisLock = 'x',
   onDrag = (newVal: number) => {console.log(newVal)},
   disabled = false,
   min,
@@ -159,6 +138,7 @@ export default ({
   values,
 }: RangeSliderProps) => {
   let hasHandleLabels = false;
+   // @ts-ignore This expression is not callable.
   const processedValues = values.map((val: number | valueProp) => {
     if (typeof val === 'number') {
       return { value: val, label: null };
@@ -176,20 +156,25 @@ export default ({
 
   const domain = max - min;
 
+  const valueBuffer = useRef(0);
+  const debouncedDrag = debounce(() => onDrag(valueBuffer.current), debounceInterval);
+
   // get the bounding box of the slider
+  // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill });
   const pixelPositions = processedValues.map((val: valueProp) => (val.value / domain) * sliderBounds.width);
   // get the x offset and an animation setter function
   const [{ x, y }, set] = useSpring(() => ({ x: pixelPositions[0], y: 0, config: {friction: 13, tension: 100} }), [values]);
   const bind = useDrag(({ down, movement: [deltaX, deltaY] }) => {
     const delta = (deltaX / sliderBounds.width) * domain;
-    const newValue = clamp(delta, min, max);
-    onDrag(newValue);
+    valueBuffer.current = clamp(delta, min, max);
+
+    debouncedDrag();
 
     set({ x: down ? deltaX : pixelPositions[0], y: down ? deltaY : 0, immediate: down, config: {friction: 13, tension: 100}});
   },
   {
-    axis: 'x',
+    axis: axisLock,
     initial: [pixelPositions[0], 0],
     bounds: { left: 0, right: sliderBounds.width + 4, top: -8, bottom: (sliderBounds.height / 2) + 8 },
     rubberband: .1

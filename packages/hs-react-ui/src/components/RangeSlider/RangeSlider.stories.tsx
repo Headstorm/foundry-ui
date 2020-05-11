@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { number, boolean } from '@storybook/addon-knobs';
+import { select, number, boolean } from '@storybook/addon-knobs';
 import RangeSlider, { SlideRail } from './RangeSlider';
 import colors from '../../constants/colors';
 
@@ -9,7 +9,10 @@ const Row = styled.div`
   font-family: Gotham, Roboto, sans-serif;
   flex-flow: row nowrap;
   align-items: center;
-  padding: 1rem 5rem 1rem;
+  padding: .5rem;
+  max-width: 20rem;
+  width: 90%;
+  margin: 0 auto;
 `;
 
 export default {
@@ -19,15 +22,75 @@ export default {
 
 /* Default */
 
+const Default = () => {
+  const [val, setVal] = useState(0);
+
+  const storyValue = number('values', val, {
+    range: true,
+    min: 0,
+    max: 5,
+    step: 1,
+  });
+
+  useEffect(() => {
+    setVal(storyValue);
+  }, [storyValue]);
+
+  return (
+    <Row>
+      <RangeSlider
+        disabled={boolean('disabled', false)}
+        showDomainLabels={boolean('showDomainLabels', false)}
+        showSelectedRange={boolean('showSelectedRange', true)}
+        min={number('min', 0, {
+          range: true,
+          min: -10,
+          max: 10,
+          step: 1,
+        })}
+        max={number('max', 5, {
+          range: true,
+          min: -10,
+          max: 10,
+          step: 1,
+        })}
+        debounceInterval={number('debounceInterval', 8, {
+          range: true,
+          min: 0,
+          max: 100,
+          step: 1,
+        })}
+        onDrag={(val: number) => setVal(Math.round(val))}
+        axisLock={select('axisLock', ['x', 'y', null], 'x')}
+        values={[
+          {
+            value: val,
+            label: val
+          }
+        ]}
+      />
+    </ Row>
+  );
+};
+
+Default.design = {
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2'
+};
+
+
+/* Rating */
+
 const skillLabels = ['WhatJS?', 'I\'ve used it...', 'We\'re aight', 'I love it', 'I dream in React', 'I am React'];
 const skillColors = ['red', 'orangered', 'orange', 'goldenrod', 'yellowgreen', 'forestgreen'];
 
 const StyledSlideRail = styled(SlideRail)`
   filter: grayscale(0.5) brightness(1.3);
+  border: .5px solid ${colors.grayMedium};
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;
 
-const Basic = () => {
+const Rating = () => {
   const [val, setVal] = useState(0);
 
   const storyValue = number('values', val, {
@@ -61,7 +124,14 @@ const Basic = () => {
           max: 10,
           step: 1,
         })}
-        onDrag={val => setVal(Math.round(val))}
+        debounceInterval={number('debounceInterval', 8, {
+          range: true,
+          min: 0,
+          max: 100,
+          step: 1,
+        })}
+        onDrag={(val: number) => setVal(Math.round(val))}
+        axisLock={select('axisLock', ['x', 'y', null], 'x')}
         values={[
           {
             value: val,
@@ -74,7 +144,7 @@ const Basic = () => {
   );
 };
 
-Basic.design = {
+Rating.design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2'
 };
@@ -199,4 +269,4 @@ const ColorPicker = () => {
   );
 };
 
-export { Basic, ColorPicker };
+export { Default, Rating, ColorPicker };

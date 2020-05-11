@@ -1,6 +1,7 @@
 import { withKnobs } from '@storybook/addon-knobs';
 import { withDesign } from 'storybook-addon-designs';
 import { addDecorator, addParameters } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 
 import colors from '../src/constants/colors';
 
@@ -14,3 +15,4 @@ addParameters({
 
 addDecorator(withKnobs);
 addDecorator(withDesign);
+addDecorator(withInfo);
