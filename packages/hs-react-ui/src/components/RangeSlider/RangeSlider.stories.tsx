@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import RangeSlider, { SlideRail } from './RangeSlider';
+import { SlideRailProps } from './types';
 import colors from '../../constants/colors';
 
 const Row = styled.div`
@@ -86,7 +87,9 @@ const skillColors = ['red', 'orangered', 'orange', 'goldenrod', 'yellowgreen', '
 
 const StyledSlideRail = styled(SlideRail)`
   filter: grayscale(0.5) brightness(1.3);
-  border: .5px solid ${colors.grayMedium};
+  border: .5px solid ${colors.grayLight};
+  height: .5rem;
+  border-radius: .25rem;
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;
 
@@ -151,24 +154,8 @@ Rating.design = {
 
 /* Color Picker */
 
-const allHues = Array.from({length: 256}, (v, i) => i).map(num => `hsl(${num},100%,50%)`);
-const allSats = Array.from({length: 100}, (v, i) => i).map(num => `hsl(0,${num}%,50%)`);
-const allLights = Array.from({length: 100}, (v, i) => i).map(num => `hsl(0,0%,${num}%)`);
-
 const ColorPreview = styled.div`
   height: 9rem;
-`;
-
-const HueRail = styled(SlideRail)`
-  background-image: linear-gradient(to right, ${allHues.join(', ')});
-`;
-
-const SatRail = styled(SlideRail)`
-  background-image: linear-gradient(to right, ${allSats.join(', ')});
-`;
-
-const LightRail = styled(SlideRail)`
-  background-image: linear-gradient(to right, ${allLights.join(', ')});
 `;
 
 const ColorPicker = () => {
@@ -209,13 +196,19 @@ const ColorPicker = () => {
     setLight(storyLight);
   }, [storyLight]);
 
+  const allHues   = Array.from({length: 256}, (_, i) => i).map(num => `hsl(${num}, ${sat}%, ${light}%)`);
+  const allSats   = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
+  const allLights = [`hsl(${hue}, ${sat}%, 0%)`, `hsl(${hue}, ${sat}%, 100%)`];
+
   return (
     <>
       <ColorPreview style={{backgroundColor: `hsl(${hue},${sat}%,${light}%)`}} />
       <Row>
         <span>Hue:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
-          StyledSlideRail={HueRail}
+          StyledSlideRail={(props: SlideRailProps) => <SlideRail {...props} style={{
+            backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`
+          }} />}
           disabled={boolean('disabled', false)}
           showDomainLabels={boolean('showDomainLabels', false)}
           showSelectedRange={boolean('showSelectedRange', true)}
@@ -234,7 +227,9 @@ const ColorPicker = () => {
       <Row>
         <span>Saturation:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
-          StyledSlideRail={SatRail}
+          StyledSlideRail={(props: SlideRailProps) => <SlideRail {...props} style={{
+            backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`
+          }} />}
           min={0}
           max={99}
           onDrag={(val: number) => setSat(Math.round(val))}
@@ -251,7 +246,9 @@ const ColorPicker = () => {
       <Row>
       <span>Lightness:&nbsp;&nbsp;&nbsp;</span>
       <RangeSlider
-        StyledSlideRail={LightRail}
+        StyledSlideRail={(props: SlideRailProps) => <SlideRail {...props} style={{
+          backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`
+        }} />}
         min={0}
         max={99}
         onDrag={(val: number) => setLight(Math.round(val))}

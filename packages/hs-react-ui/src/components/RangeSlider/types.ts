@@ -6,7 +6,7 @@ export type valueProp = {
   color?: String
 };
 
-export type containerProps = { showDomainLabels?: boolean, hasHandleLabels?: boolean, disabled: boolean };
+export type containerProps = { showDomainLabels?: boolean, hasHandleLabels?: boolean, disabled: boolean, beingDragged: boolean };
 
 export type handleProps = {
   beingDragged?: boolean,

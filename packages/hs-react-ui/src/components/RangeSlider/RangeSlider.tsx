@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -21,12 +21,14 @@ import {
 } from './types';
 
 export const Container = styled.div`
-  ${({ showDomainLabels, hasHandleLabels, disabled }: containerProps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: containerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
 
     user-select: none;
+
+    ${beingDragged ? 'cursor: grabbing;' : ''}
 
     transition: filter .1s;
 
@@ -64,7 +66,7 @@ export const DragHandle = styled(a.div)`
     border: .125rem solid ${colors.background};
     border-radius: 50%;
 
-    cursor: grab;
+    cursor: ${beingDragged ? 'grabbing' : 'grab'};
   `}
 `;
 
@@ -88,11 +90,11 @@ export const SlideRail = styled.div`
   transform: translateY(-50%);
 
   width: 100%;
-  height: .5rem;
+  height: .25rem;
 
   overflow: hidden;
 
-  border-radius: .25rem;
+  border-radius: .125rem;
   background-color: ${colors.grayXlight};
 `;
 
@@ -159,6 +161,8 @@ export default ({
   const valueBuffer = useRef(0);
   const debouncedDrag = debounce(() => onDrag(valueBuffer.current), debounceInterval);
 
+  // keep track of which handle is being dragged (if any)
+  const [draggedHandle, setDraggedHandle] = useState(null);
   // get the bounding box of the slider
   // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill });
@@ -169,6 +173,7 @@ export default ({
     const delta = (deltaX / sliderBounds.width) * domain;
     valueBuffer.current = clamp(delta, min, max);
 
+    setDraggedHandle(down ? 0 : null);
     debouncedDrag();
 
     set({ x: down ? deltaX : pixelPositions[0], y: down ? deltaY : 0, immediate: down, config: {friction: 13, tension: 100}});
@@ -210,6 +215,8 @@ export default ({
       {processedValues.map(({ value, label, color }: valueProp, i: number) => (
         <StyledDragHandle
           {...bind()}
+          draggable={false}
+          beingDragged={i === draggedHandle}
           style={{ x, y }}
           color={color}
           key={`handle${i}`}
