@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import styled from 'styled-components';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import RangeSlider, { SlideRail } from './RangeSlider';
-import { SlideRailProps } from './types';
 import colors from '../../constants/colors';
 
 const Row = styled.div`
@@ -206,9 +205,9 @@ const ColorPicker = () => {
       <Row>
         <span>Hue:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
-          StyledSlideRail={(props: SlideRailProps) => <SlideRail {...props} style={{
+          StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
             backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`
-          }} />}
+          }} />)}
           disabled={boolean('disabled', false)}
           showDomainLabels={boolean('showDomainLabels', false)}
           showSelectedRange={boolean('showSelectedRange', true)}
@@ -227,9 +226,9 @@ const ColorPicker = () => {
       <Row>
         <span>Saturation:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
-          StyledSlideRail={(props: SlideRailProps) => <SlideRail {...props} style={{
+          StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
             backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`
-          }} />}
+          }} />)}
           min={0}
           max={99}
           onDrag={(val: number) => setSat(Math.round(val))}
@@ -246,9 +245,9 @@ const ColorPicker = () => {
       <Row>
       <span>Lightness:&nbsp;&nbsp;&nbsp;</span>
       <RangeSlider
-        StyledSlideRail={(props: SlideRailProps) => <SlideRail {...props} style={{
+        StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
           backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`
-        }} />}
+        }} />)}
         min={0}
         max={99}
         onDrag={(val: number) => setLight(Math.round(val))}
