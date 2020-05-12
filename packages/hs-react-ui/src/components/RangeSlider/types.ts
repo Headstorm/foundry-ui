@@ -15,7 +15,7 @@ export type handleProps = {
 
 export type handleLabelProps = {velocity?: number};
 
-export type selectedRangeProps = { min: number, max: number, values: object[], selectedRange: number[] };
+export type selectedRangeProps = { min: number, max: number, selectedRange: number[] };
 
 export type domainLabelProps = { position: "left" | "right" };
 

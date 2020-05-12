@@ -99,7 +99,7 @@ export const SlideRail = styled.div`
 `;
 
 export const SelectedRangeRail = styled.div`
-  ${({ min, max, values, selectedRange }: selectedRangeProps) => `
+  ${({ min, max, selectedRange }: selectedRangeProps) => `
     position: absolute;
     top: 0%;
     height: 100%;
