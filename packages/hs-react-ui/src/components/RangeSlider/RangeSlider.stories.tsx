@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import RangeSlider, { SlideRail } from './RangeSlider';
 import colors from '../../constants/colors';
+import { readableColor, toColorString } from 'polished';
 
 const Row = styled.div`
   display: flex;
@@ -155,6 +156,15 @@ Rating.design = {
 
 const ColorPreview = styled.div`
   height: 9rem;
+  transition: color .5s;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: Gotham, Roboto, sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;
 `;
 
 const ColorPicker = () => {
@@ -201,9 +211,19 @@ const ColorPicker = () => {
 
   return (
     <>
-      <ColorPreview style={{backgroundColor: `hsl(${hue},${sat}%,${light}%)`}} />
+      <ColorPreview
+        style={{
+          backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
+          color: readableColor(`hsl(${hue},${sat}%,${light}%)`)
+        }}>
+        {toColorString({
+          hue: hue,
+          saturation: sat/100,
+          lightness: light/100
+        })}
+      </ColorPreview>
       <Row>
-        <span>Hue:&nbsp;&nbsp;&nbsp;</span>
+        <span>H:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
           StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
             backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`
@@ -212,7 +232,7 @@ const ColorPicker = () => {
           showDomainLabels={boolean('showDomainLabels', false)}
           showSelectedRange={boolean('showSelectedRange', true)}
           min={0}
-          max={255}
+          max={360}
           onDrag={(val: number) => setHue(Math.round(val))}
           values={[
             {
@@ -224,13 +244,13 @@ const ColorPicker = () => {
         />
       </ Row>
       <Row>
-        <span>Saturation:&nbsp;&nbsp;&nbsp;</span>
+        <span>S:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
           StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
             backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`
           }} />)}
           min={0}
-          max={99}
+          max={100}
           onDrag={(val: number) => setSat(Math.round(val))}
           showDomainLabels={false}
           values={[
@@ -243,13 +263,13 @@ const ColorPicker = () => {
         />
       </ Row>
       <Row>
-      <span>Lightness:&nbsp;&nbsp;&nbsp;</span>
+      <span>L:&nbsp;&nbsp;&nbsp;</span>
       <RangeSlider
         StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
           backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`
         }} />)}
         min={0}
-        max={99}
+        max={100}
         onDrag={(val: number) => setLight(Math.round(val))}
         showDomainLabels={false}
         values={[
