@@ -37,7 +37,7 @@ const themeTimings = {
 }
 
 const ThemedContainer = styled.div`
-  ${({ elevation = 0 }) => `
+  ${({ elevation = 0 }: { elevation: number }) => `
     border-radius: 1rem;
     width: fit-content;
     background-color: ${themeColors.background};

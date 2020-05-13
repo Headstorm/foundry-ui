@@ -42,8 +42,6 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
     "dev": "parcel index.html",
     "build": "parcel build index.html",
     "prepare": "yarn run build",

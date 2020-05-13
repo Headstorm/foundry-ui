@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 
 import Button from './Button';
-import { ButtonTypes } from 'enums/ButtonTypes';
+import { ButtonTypes } from '../../enums/ButtonTypes';
 
 export default {
   title: 'Button',
