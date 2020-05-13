@@ -5,6 +5,6 @@
     "lerna": "^3.20.2"
   },
   "scripts": {
-    "hello-world": "echo 'Hello from hs-ui'"
+    "hello-world": "cd packages/hs-react-ui && npm run hello-world"
   }
 }
