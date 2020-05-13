@@ -27,6 +27,7 @@ jobs:
             - run: npm run build
             - run: npm run build-storybook
 workflows:
-    build-and-test:
+    PR-Merge:
       jobs:
-        - build-and-test
+        - setup-and-test
+        - build
