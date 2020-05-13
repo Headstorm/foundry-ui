@@ -11,7 +11,6 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm run build-react
-            - run: npm run test-react
 workflows:
     PR-Merge:
       jobs:
