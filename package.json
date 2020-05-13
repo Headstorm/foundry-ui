@@ -5,6 +5,7 @@
     "lerna": "^3.20.2"
   },
   "scripts": {
-    "hello-world": "cd packages/hs-react-ui && npm run hello-world"
+    "test-react": "cd packages/hs-react-ui && npm install && npm test",
+    "build-react": "cd packages/hs-react-ui && npm install && npm run build && npm run build-storybook"
   }
 }
