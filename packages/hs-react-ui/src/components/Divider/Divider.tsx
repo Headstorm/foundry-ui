@@ -15,8 +15,8 @@ export const DefaultDivider = styled.hr`
 export const DefaultDividerContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export interface DividerProps {
