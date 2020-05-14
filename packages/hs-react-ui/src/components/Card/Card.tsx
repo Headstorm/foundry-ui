@@ -5,7 +5,7 @@ import colors from '../../constants/colors';
 import timings from '../../constants/timings';
 
 export const CardContainer = styled.div`
-  ${({ elevation = 0 }: { elevation: number }) => `
+  ${({ elevation }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
     width: fit-content;
@@ -16,7 +16,7 @@ export const CardContainer = styled.div`
     border-radius: 0.25rem;
     margin: .25rem;
 
-    border: 1px solid ${!elevation ? colors.grayXlight: 'transparent'};
+    ${!elevation ? `border: 1px solid ${colors.grayXlight};`: ''};
 
     transition: box-shadow ${timings.slow};
     box-shadow: 0rem ${elevation * .25}rem ${elevation * .75}rem ${elevation * -.25}rem rgba(0,0,0,${.6 - elevation * .1});
@@ -26,9 +26,15 @@ export const CardContainer = styled.div`
 
 export const Header = styled.div`
   padding: 1.5rem 1.5rem 0rem;
+  border-radius: 0.25rem .25rem 0rem 0rem;
   font-weight: bold;
   text-transform: uppercase;
   color: ${colors.grayDark};
+`;
+
+export const NoPaddingHeader = styled(Header)`
+  padding: 0rem;
+  overflow: hidden;
 `;
 
 export const Body = styled.div`
@@ -73,7 +79,7 @@ const Card = ({
   children,
   footer,
 
-  elevation = 0
+  elevation = 1
 }: CardProps) => (
   <StyledContainer elevation={elevation}>
     {header && <StyledHeader>{header}</StyledHeader>}
