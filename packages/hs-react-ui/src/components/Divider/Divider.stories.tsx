@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { select } from '@storybook/addon-knobs';
+import { number } from '@storybook/addon-knobs';
 
 import Divider from './Divider';
-import { DividerTypes } from '../../enums/DividerTypes';
 
 export default {
   title: 'Divider',
@@ -13,5 +12,7 @@ export default {
 /* Default */
 
 export const Default = () => (
-  <Divider />
+  <Divider 
+    width={number('width', 90, { range: true, min: 10, max: 100, step: 1 })}
+  />
 );
