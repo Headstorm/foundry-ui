@@ -62,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/core": "^4.9.14",
     "@mdi/js": "^5.2.45",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",

@@ -7,7 +7,7 @@ import Button from '.';
 import { ButtonContainer } from './ButtonContainers';
 
 test('matches snapshot', async () => {
-    const wrapper = render(<Button StyledContainer={DefaultButtonContainer}
-      onClick={} />);
+    const wrapper = render(<Button StyledContainer={ButtonContainer}
+      onClick={() => {}} />);
     expect(wrapper).toMatchSnapshot()
 });

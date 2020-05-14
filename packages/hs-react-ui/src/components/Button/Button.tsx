@@ -7,20 +7,23 @@ const Text = styled.span``;
 export interface ButtonProps {
   StyledContainer?: StyledComponent<"button", any, {}>,
   icon?: any,
+  isLoading?: any,
   children?: string | Node,
-  onClick(): void
+  onClick(): Function | void
 };
 
-// put buttonType elsewhere
 const Button = ({
   StyledContainer = ButtonContainer,
   icon,
+  isLoading,
   children,
   onClick
-}: ButtonProps) => (
-    <StyledContainer onClick={onClick}>
-      <Text>{children} {icon}</Text>
-    </StyledContainer>
+}: ButtonProps) => isLoading ? (<StyledContainer>
+  <Text>{isLoading.children} {isLoading.icon}</Text>
+</StyledContainer>) : (
+  <StyledContainer onClick={onClick}>
+    <Text>{children} {icon}</Text>
+  </StyledContainer>
 );
 
 export default Button;

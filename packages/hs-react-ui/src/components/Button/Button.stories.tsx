@@ -5,7 +5,7 @@ import { select, text, boolean } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
 import { mdiLeadPencil } from '@mdi/js';
 import { ButtonContainers } from './ButtonContainers';
-
+import { CircularProgress } from '@material-ui/core';
 import Button from './Button';
 import { ButtonTypes } from '../../enums/ButtonTypes';
 
@@ -38,6 +38,7 @@ const ThemedContainer = styled.button`
   font-family: Helvetica;
   font-size: 2em;
   line-height: .3em;
+  width: 10em;
 
   padding: .75em .75em;
   border-radius: 2em;
@@ -47,12 +48,17 @@ const ThemedContainer = styled.button`
   cursor: pointer;
 
   background-color: rgb(51, 29, 138);
+  color: white;
 
   &:hover { background-color: rgb(51, 29, 138, .7); }
   &:active { background-color: rgb(51, 29, 138, .3); }
 `;
 
 export const ThemedButton = () => {
+  const isLoading = {
+    icon: <CircularProgress size={25} />,
+    children: 'Loading'
+  };
   const icon = (<Icon path={mdiLeadPencil}
     size={1}
     horizontal
@@ -61,6 +67,7 @@ export const ThemedButton = () => {
   return (
     <Button
       StyledContainer={ThemedContainer}
+      isLoading={boolean('Show loading?', false) ? isLoading : null}
       icon={boolean('Show icon?', true) ? icon : null}
       onClick={action('button-click')}
     >
