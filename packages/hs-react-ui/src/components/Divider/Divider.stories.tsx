@@ -10,10 +10,8 @@ export default {
   component: Divider
 };
 
-export const Basic = () => (
-  <Divider dividerType={select('Divider Type', DividerTypes, DividerTypes.primary)}></Divider>
-);
+/* Default */
 
-Basic.story = {
-  name: 'Basic'
-};
+export const Default = () => (
+  <Divider />
+);

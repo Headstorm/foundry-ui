@@ -1,33 +1,32 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 
 import { DividerTypes } from '../../enums/DividerTypes';
 import colors from '../../constants/colors';
 
-const DefaultDivider = styled.hr`
-  display: block;
-  margin: .25rem;
+export const DefaultDivider = styled.hr`
   border: 1px, solid, ${colors.grayDark};
+  width: 90%;
 `;
 
-const PrimaryDivider = styled(DefaultDivider)`
-  border: 1px, solid, ${colors.primary};
+export const DefaultDividerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
 `;
-
-const Dividers = {
-  [DividerTypes.default]: DefaultDivider,
-  [DividerTypes.primary]: PrimaryDivider,
-}
 
 export interface DividerProps {
-  dividerType: DividerTypes
+  StyledDivider?: StyledComponentBase<any, {}>,
+  StyledDividerContainer?: StyledComponentBase<any, {}>,
 }
 
-const Divider = ({dividerType}: DividerProps) => {
-  const RenderedDivider = Dividers[dividerType];
-  return (
-    <RenderedDivider />
-  ) 
-};
+const Divider = ({
+  StyledDivider = DefaultDivider,
+  StyledDividerContainer = DefaultDividerContainer
+  }: DividerProps) => (
+    <StyledDividerContainer>
+      <StyledDivider />
+    </StyledDividerContainer>
+  );
 
 export default Divider;
