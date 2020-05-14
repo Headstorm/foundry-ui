@@ -1,9 +1,11 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import styled from 'styled-components';
 import { select, number, boolean } from '@storybook/addon-knobs';
-import RangeSlider, { SlideRail } from './RangeSlider';
-import colors from '../../constants/colors';
 import { readableColor, toColorString } from 'polished';
+
+import colors from '../../constants/colors';
+import RangeSlider, { SlideRail } from './RangeSlider';
+import Card, { NoPaddingHeader } from '../Card/Card';
 
 const Row = styled.div`
   display: flex;
@@ -11,7 +13,7 @@ const Row = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   padding: .5rem;
-  max-width: 20rem;
+  min-width: 20rem;
   width: 90%;
   margin: 0 auto;
 `;
@@ -43,6 +45,8 @@ const Default = () => {
         disabled={boolean('disabled', false)}
         showDomainLabels={boolean('showDomainLabels', false)}
         showSelectedRange={boolean('showSelectedRange', true)}
+        motionBlur={boolean('motionBlur', false)}
+        springOnRelease={boolean('springOnRelease', true)}
         min={number('min', 0, {
           range: true,
           min: -10,
@@ -114,7 +118,9 @@ const Rating = () => {
         StyledSlideRail={StyledSlideRail}
         disabled={boolean('disabled', false)}
         showDomainLabels={boolean('showDomainLabels', false)}
-        showSelectedRange={boolean('showSelectedRange', true)}
+        showSelectedRange={boolean('showSelectedRange', false)}
+        motionBlur={boolean('motionBlur', false)}
+        springOnRelease={boolean('springOnRelease', true)}
         min={number('min', 0, {
           range: true,
           min: -10,
@@ -155,7 +161,8 @@ Rating.design = {
 /* Color Picker */
 
 const ColorPreview = styled.div`
-  height: 9rem;
+  height: 12rem;
+  width: 34rem;
   transition: color .5s;
   font-size: 5rem;
   display: flex;
@@ -164,7 +171,6 @@ const ColorPreview = styled.div`
   text-transform: uppercase;
   font-family: Gotham, Roboto, sans-serif;
   font-weight: bold;
-  margin-bottom: 1rem;
 `;
 
 const ColorPicker = () => {
@@ -205,13 +211,15 @@ const ColorPicker = () => {
     setLight(storyLight);
   }, [storyLight]);
 
-  const allHues   = Array.from({length: 256}, (_, i) => i).map(num => `hsl(${num}, ${sat}%, ${light}%)`);
+  const allHues   = Array.from({length: 360}, (_, i) => i).map(num => `hsl(${num}, ${sat}%, ${light}%)`);
   const allSats   = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
-  const allLights = [`hsl(${hue}, ${sat}%, 0%)`, `hsl(${hue}, ${sat}%, 100%)`];
+  const allLights = [`hsl(${hue}, ${sat}%, 10%)`, `hsl(${hue}, ${sat}%, 90%)`];
 
   return (
-    <>
-      <ColorPreview
+    <Card
+      elevation={2}
+      StyledHeader={NoPaddingHeader}
+      header={(<ColorPreview
         style={{
           backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
           color: readableColor(`hsl(${hue},${sat}%,${light}%)`)
@@ -221,7 +229,8 @@ const ColorPicker = () => {
           saturation: sat/100,
           lightness: light/100
         })}
-      </ColorPreview>
+      </ColorPreview>)}
+    >
       <Row>
         <span>H:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
@@ -230,7 +239,8 @@ const ColorPicker = () => {
           }} />)}
           disabled={boolean('disabled', false)}
           showDomainLabels={boolean('showDomainLabels', false)}
-          showSelectedRange={boolean('showSelectedRange', true)}
+          showSelectedRange={false}
+          motionBlur
           min={0}
           max={360}
           onDrag={(val: number) => setHue(Math.round(val))}
@@ -253,6 +263,7 @@ const ColorPicker = () => {
           max={100}
           onDrag={(val: number) => setSat(Math.round(val))}
           showDomainLabels={false}
+          showSelectedRange={false}
           values={[
             {
               value: sat,
@@ -272,6 +283,7 @@ const ColorPicker = () => {
         max={100}
         onDrag={(val: number) => setLight(Math.round(val))}
         showDomainLabels={false}
+        showSelectedRange={false}
         values={[
           {
             value: light,
@@ -281,7 +293,7 @@ const ColorPicker = () => {
         ]}
       />
     </ Row>
-  </>
+  </Card>
   );
 };
 

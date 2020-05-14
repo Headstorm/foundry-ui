@@ -66,6 +66,8 @@ export const DragHandle = styled(a.div)`
     border: .125rem solid ${colors.background};
     border-radius: 50%;
 
+    filter: url(#blur);
+
     cursor: ${beingDragged ? 'grabbing' : 'grab'};
   `}
 `;
@@ -77,6 +79,8 @@ export const HandleLabel = styled.div`
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
 
+      background-color: ${colors.background};
+      border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
 
@@ -106,6 +110,8 @@ export const SelectedRangeRail = styled.div`
     left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
     right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
 
+    transition: left .3s, right .3s;
+
     background-color: ${colors.primary};
   `}
 `;
@@ -131,6 +137,9 @@ export default ({
   showDomainLabels = true,
   showSelectedRange = true,
 
+  motionBlur = false,
+  springOnRelease = true,
+
   debounceInterval = 8,
   axisLock = 'x',
   onDrag = (newVal: number) => {console.log(newVal)},
@@ -152,14 +161,19 @@ export default ({
     }
   });
   const selectedRange = [
-    Math.min(...processedValues.map((val: valueProp) => val.value)),
+    Math.min(
+      ...processedValues.map((val: valueProp) => val.value),
+      showSelectedRange && values.length === 1 ? min : Infinity
+    ),
     Math.max(...processedValues.map((val: valueProp) => val.value)),
   ];
 
   const domain = max - min;
 
+  // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);
   const debouncedDrag = debounce(() => onDrag(valueBuffer.current), debounceInterval);
+  const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
   const [draggedHandle, setDraggedHandle] = useState(null);
@@ -168,19 +182,30 @@ export default ({
   const [ref, sliderBounds] = useMeasure({ polyfill });
   const pixelPositions = processedValues.map((val: valueProp) => (val.value / domain) * sliderBounds.width);
   // get the x offset and an animation setter function
-  const [{ x, y }, set] = useSpring(() => ({ x: pixelPositions[0], y: 0, config: {friction: 13, tension: 100} }), [values]);
-  const bind = useDrag(({ down, movement: [deltaX, deltaY] }) => {
+  const [{ x = pixelPositions[0], y }, set] = useSpring(() => ({ x: pixelPositions[0], y: 0, config: {friction: 13, tension: 100} }), [values]);
+  const bind = useDrag(({ active, down, movement: [deltaX, deltaY], vxvy: [vx, vy] }) => {
     const delta = (deltaX / sliderBounds.width) * domain;
     valueBuffer.current = clamp(delta, min, max);
+    if (motionBlur) {
+      requestAnimationFrame(() => {
+        const blurSize = Math.round(Math.abs(vx * 10));
+        blurRef.current.setAttribute('stdDeviation',`${down && active ? blurSize : 0}, 0`);
+      });
+    }
 
     setDraggedHandle(down ? 0 : null);
     debouncedDrag();
+    set({
+      x: down ? deltaX : pixelPositions[0],
+      y: down ? deltaY : 0,
 
-    set({ x: down ? deltaX : pixelPositions[0], y: down ? deltaY : 0, immediate: down, config: {friction: 13, tension: 100}});
+      immediate: springOnRelease ? down : true,
+      config: {friction: 13, tension: 100}});
   },
   {
     axis: axisLock,
     initial: [pixelPositions[0], 0],
+    threshold: 1,
     bounds: { left: 0, right: sliderBounds.width + 4, top: -8, bottom: (sliderBounds.height / 2) + 8 },
     rubberband: .1
   });
@@ -225,6 +250,15 @@ export default ({
         </StyledDragHandle>
       ))}
 
+      {motionBlur &&
+        <svg viewBox="-200 -100 200 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="blur">
+              <feGaussianBlur ref={blurRef} in="SourceGraphic" stdDeviation="0,0" />
+            </filter>
+          </defs>
+        </svg>
+      }
     </StyledContainer>
   )
 };

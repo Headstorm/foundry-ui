@@ -30,6 +30,8 @@ export type RangeSliderProps = {
   showDomainLabels?: boolean,
   showSelectedRange?: boolean,
 
+  motionBlur?: boolean,
+  springOnRelease?: boolean,
   debounceInterval?: number,
   axisLock?: 'x' | 'y',
   onDrag?: Function,
