@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import styled from 'styled-components';
+import { action } from '@storybook/addon-actions';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import { readableColor, toColorString } from 'polished';
 
@@ -65,7 +66,10 @@ const Default = () => {
           max: 100,
           step: 1,
         })}
-        onDrag={(val: number) => setVal(Math.round(val))}
+        onDrag={(val: number) => {
+          setVal(Math.round(val));
+          action('onDrag')(val);
+        }}
         axisLock={select('axisLock', ['x', 'y', null], 'x')}
         values={[
           {
@@ -139,7 +143,10 @@ const Rating = () => {
           max: 100,
           step: 1,
         })}
-        onDrag={(val: number) => setVal(Math.round(val))}
+        onDrag={(val: number) => {
+          setVal(Math.round(val));
+          action('onDrag')(val);
+        }}
         axisLock={select('axisLock', ['x', 'y', null], 'x')}
         values={[
           {
@@ -243,7 +250,10 @@ const ColorPicker = () => {
           motionBlur
           min={0}
           max={360}
-          onDrag={(val: number) => setHue(Math.round(val))}
+          onDrag={(val: number) => {
+            setHue(Math.round(val));
+            action('onDrag hue')(val);
+          }}
           values={[
             {
               value: hue,
@@ -261,7 +271,10 @@ const ColorPicker = () => {
           }} />)}
           min={0}
           max={100}
-          onDrag={(val: number) => setSat(Math.round(val))}
+          onDrag={(val: number) => {
+            setSat(Math.round(val));
+            action('onDrag saturation')(val);
+          }}
           showDomainLabels={false}
           showSelectedRange={false}
           values={[
@@ -281,7 +294,10 @@ const ColorPicker = () => {
         }} />)}
         min={0}
         max={100}
-        onDrag={(val: number) => setLight(Math.round(val))}
+        onDrag={(val: number) => {
+          setLight(Math.round(val));
+          action('onDrag light')(val);
+        }}
         showDomainLabels={false}
         showSelectedRange={false}
         values={[
