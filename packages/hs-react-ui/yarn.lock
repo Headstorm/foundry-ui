@@ -1438,10 +1438,18 @@
 "@mdi/js@^5.2.45":
   version "5.2.45"
   resolved "https://registry.yarnpkg.com/@mdi/js/-/js-5.2.45.tgz#79534928b0e89568cfadc5a456ed3cab8210c232"
+<<<<<<< HEAD
+=======
+  integrity sha512-YQupWiJMIxcSNDnv7M4EWqRzCbkBKQ4UHLqg55tEAsjYYzRxNKOqCXVrKFyp0DiTH0CQhl52TZnhTxq8H/T3Ow==
+>>>>>>> HSUI-21 Implement Text component
 
 "@mdi/react@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@mdi/react/-/react-1.4.0.tgz#7f6bad1bd8801226d0e5bad91659b215ce68a93f"
+<<<<<<< HEAD
+=======
+  integrity sha512-OUH9RhfDJPhybQL3owwrSDIXz2yVKXg5lYeOZjyRCiT9wqywNK0FeYyDByOwNIZnnIQoQYmuSrMv+pOX0Uqkmw==
+>>>>>>> HSUI-21 Implement Text component
 
 "@mdx-js/loader@^1.5.1":
   version "1.5.8"
