@@ -1,4 +1,4 @@
-import React, {ComponentType} from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { ButtonContainer } from './ButtonContainers';
 
@@ -12,7 +12,7 @@ export interface ButtonProps {
   onClick(): Function | void
 };
 
-const Button = ({
+const Button: FunctionComponent<ButtonProps> = ({
   StyledContainer = ButtonContainer,
   icon,
   isLoading,
