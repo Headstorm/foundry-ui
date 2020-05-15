@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { number } from '@storybook/addon-knobs';
+import { text, number } from '@storybook/addon-knobs';
 import colors from '../../constants/colors';
 
 import Divider from './Divider';
@@ -14,27 +14,27 @@ export default {
 
 export const Default = () => (
   <Divider 
-    width={number('width', 90, { range: true, min: 1, max: 100, step: 1 })}
-    height={number('height', 1)}
+  width={text('width', '90%')}
+  height={text('height', '1px')}
   />
 );
 
 /* Themed */
 
 const ThemedDivider = styled.hr`
-  ${({ height, width }: { height: number, width: number }) => `
+  ${({ height, width }: { height: string, width: string }) => `
   box-shadow: 10px, 10px, ${colors.primary};
   border: none;
   background: radial-gradient(${colors.primary}, transparent);
-  height: ${height}px;
-    width: ${width}%;
+  height: ${height};
+    width: ${width};
   `}
 `;
 
 export const Themed = () => (
   <Divider 
     StyledDivider={ThemedDivider}
-    width={number('width', 90, { range: true, min: 1, max: 100, step: 1 })}
-    height={number('height', 1)}
+    width={text('width', '90%')}
+    height={text('height', '2px')}
   />
 );

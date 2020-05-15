@@ -4,10 +4,10 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../constants/colors';
 
 export const DefaultDivider = styled.hr`
-  ${({ width = 90, height = 1}: {width: number, height: number}) => `
+  ${({ width = '90%', height = '1px'}: {width: string, height: string}) => `
     border: none;
-    height: ${height}px;
-    width: ${width}%;
+    height: ${height};
+    width: ${width};
     background-color: ${colors.grayLight};
   `}
 `;
@@ -22,15 +22,15 @@ export const DefaultDividerContainer = styled.div`
 export interface DividerProps {
   StyledDivider?: StyledComponentBase<any, {}>,
   StyledDividerContainer?: StyledComponentBase<any, {}>,
-  width?: number,
-  height?: number,
+  width?: string,
+  height?: string,
 }
 
 const Divider = ({
   StyledDivider = DefaultDivider,
   StyledDividerContainer = DefaultDividerContainer,
-  width = 90,
-  height = 1,
+  width = '90%',
+  height = '1px',
   }: DividerProps) => (
     <StyledDividerContainer>
       <StyledDivider width={width} height={height}/>
