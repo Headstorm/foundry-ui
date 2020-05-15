@@ -5,8 +5,3 @@ export enum CheckboxTypes {
     default = 'default',
     neutral = 'neutral'
 }
-
-  
-// export enum RadioTypes {
-//     default = 'default'
-// }

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 
 
 import { CheckboxTypes } from '../../enums/CheckboxTypes';
@@ -8,7 +8,7 @@ import colors from '../../constants/colors';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
-const Input = styled.input.attrs({ type: 'checkbox' })`
+export const Input = styled.input.attrs({ type: 'checkbox' })`
   // Hide checkbox visually but remain accessible to screen readers.
   // Source: https://polished.js.org/docs/#hidevisually
   border: 0;
@@ -23,7 +23,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   width: 1px;
 `
 
-const Label = styled.label`
+export const Label = styled.label`
     display: flex;
     align-items: center;
 
@@ -32,10 +32,9 @@ const Label = styled.label`
     }
 `;
 
-const Box = styled.div`
-    border: 1px solid  ${colors.blueCharcoalXLight};
+export const Box = styled.div`
+    border: 1px solid  ${colors.grayLight};
     border-radius: 2px;
-    // background-color: ${colors.background};
     width: 0.75rem;
     height: 0.75rem;
     display: flex;
@@ -45,12 +44,12 @@ const Box = styled.div`
     margin-right: 0.5rem;
 `;
 
-const CheckboxContainer =styled.div`
+export const CheckboxContainer =styled.div`
     display: inline-block;
     vertical-align: middle;
 `;
 
-const StyledIcon = styled(Icon)`
+export const StyledIcon = styled(Icon)`
         overflow: visible;
 `;
 
@@ -68,72 +67,70 @@ const CrossIcon = styled(StyledIcon)`
 `;
 
 const DefaultIcon = styled(StyledIcon)`
-    color: ${colors.blueCharcoalLight};
+    color: ${colors.grayMedium};
     height: 0.7rem;
     width: 0.7rem;
 `;
 
 const NeutralIcon = styled(StyledIcon)`
-    color: ${colors.blueCharcoalLight};
+    color: ${colors.grayMedium};
     height: 0.65rem;
     width: 0.65rem;
     path {
-        stroke: ${colors.blueCharcoalLight};
+        stroke: ${colors.grayMedium};
         stroke-width: 2px;
     }
 `;
 
 export interface CheckboxProps {
+    StyledLabel?: String & StyledComponentBase<any, {}>,
+    StyledCheckboxContainer?: String & StyledComponentBase<any, {}>,
+    StyledBox?: String & StyledComponentBase<any, {}>,
+    StyledInput?: String & StyledComponentBase<any, {}>,
+
     checkboxType: CheckboxTypes,
     children: string | Node,
     checked: boolean,
 }
 
-const iconPathFromType = (type: CheckboxTypes) => {
-    switch (type) {
-        case CheckboxTypes.check:
-            return mdiCheck;
-        case CheckboxTypes.cross:
-            return mdiClose;
-        case CheckboxTypes.neutral:
-            return mdiMinus;
-        default:
-            return mdiCheckboxBlank;
-    }
+const iconPaths = {
+    [CheckboxTypes.check]: mdiCheck,
+    [CheckboxTypes.cross]: mdiClose,
+    [CheckboxTypes.neutral]: mdiMinus,
+    [CheckboxTypes.default]: mdiCheckboxBlank,
+    [CheckboxTypes.fill]: mdiCheckboxBlank,
 }
 
-const iconComponentFromType = (type: CheckboxTypes) => {
-    switch (type) {
-        case CheckboxTypes.check:
-            return CheckIcon;
-        case CheckboxTypes.cross:
-            return CrossIcon;
-        case CheckboxTypes.neutral:
-            return NeutralIcon;    
-        default:
-            return DefaultIcon;
-    }
+export const iconComponents = {
+    [CheckboxTypes.check]: CheckIcon,
+    [CheckboxTypes.cross]: CrossIcon,
+    [CheckboxTypes.neutral]: NeutralIcon,
+    [CheckboxTypes.default]: DefaultIcon,
+    [CheckboxTypes.fill]: DefaultIcon,
 }
 
 const Checkbox = ({
-    checkboxType,
-    checked,
+    StyledLabel = Label,
+    StyledCheckboxContainer = CheckboxContainer,
+    StyledBox = Box,
+    StyledInput = Input,  
+
+    checkboxType = CheckboxTypes.default,
+    checked = false,
     children,
 }: CheckboxProps) => {
-    const iconPath = iconPathFromType(checkboxType)
-    const IconComponent = iconComponentFromType(checkboxType)
-    return(
-        <div>
-            <Label>
-                <CheckboxContainer>
-                    <Box>
-                        {checked ? <IconComponent path={iconPath}></IconComponent> : null}
-                    </Box>
-                    <Input checked={checked}></Input>
-                </CheckboxContainer>
-                {children}
-            </Label>
-        </div>
+    const iconPath = iconPaths[checkboxType];
+    const IconComponent = iconComponents[checkboxType];
+    return(   
+        <StyledLabel>
+            <StyledCheckboxContainer>
+                <StyledBox>
+                    {checked ? <IconComponent path={iconPath}></IconComponent> : null}
+                </StyledBox>
+                <StyledInput checked={checked}></StyledInput>
+            </StyledCheckboxContainer>
+            {children}
+        </StyledLabel> 
     );
 };
 
