@@ -6,7 +6,7 @@ import Button from './Button';
 import { ButtonTypes } from '../../enums/ButtonTypes';
 
 export default {
-  title: '',
+  title: 'Button',
   component: Button,
   design: {
     type: 'figma',

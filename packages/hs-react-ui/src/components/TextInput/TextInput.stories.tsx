@@ -1,7 +1,5 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
-
-
 import TextInput from './TextInput';
 import { TextInputTypes } from '../../enums/TextInputTypes';
 
@@ -15,12 +13,31 @@ export default {
 };
 
 export const Basic = () => (
-  <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.default)}
-  >
-    test
+  <div>
+    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.default)}
+    >
+      test
   </TextInput>
+    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.clearable)}
+    >
+      test
+  </TextInput>
+    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.placeHolder)}
+    >
+      test
+  </TextInput>
+    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.error)}
+    >
+      test
+  </TextInput>
+    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.icon)}
+    >
+      test
+  </TextInput>
+    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.multiLine)}
+    >
+      test
+  </TextInput>
+  </div>
 );
 
-Basic.story = {
-  name: 'Basic'
-};
