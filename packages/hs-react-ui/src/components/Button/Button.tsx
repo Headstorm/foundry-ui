@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import { ButtonTypes } from '../../enums/ButtonTypes';
+import fonts from '../../constants/fonts';
 import colors from '../../constants/colors';
 
 const ButtonContainer = styled.button`
   display: inline-block;
+  ${fonts.body}
 
-  font-family: Gotham;
   font-size: 1em;
   line-height: 0;
 

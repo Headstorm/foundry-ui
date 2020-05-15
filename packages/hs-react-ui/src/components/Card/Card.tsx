@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
+import fonts from '../../constants/fonts';
 import colors from '../../constants/colors';
 import timings from '../../constants/timings';
 
@@ -9,8 +10,8 @@ export const CardContainer = styled.div`
     display: inline-flex;
     flex-flow: column nowrap;
     width: fit-content;
+    ${fonts.body}
 
-    font-family: Gotham;
     font-size: 1rem;
 
     border-radius: 0.25rem;

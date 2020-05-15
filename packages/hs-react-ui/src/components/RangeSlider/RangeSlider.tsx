@@ -7,6 +7,7 @@ import { useDrag } from 'react-use-gesture';
 import useMeasure from 'react-use-measure';
 import polyfill from '@juggle/resize-observer';
 
+import fonts from '../../constants/fonts';
 import colors from '../../constants/colors';
 import { clamp } from '../../utils/math';
 
@@ -25,6 +26,8 @@ export const Container = styled.div`
     position: relative;
     height: 1rem;
     width: 100%;
+
+    ${fonts.body}
 
     user-select: none;
 

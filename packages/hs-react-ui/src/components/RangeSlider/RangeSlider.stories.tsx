@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import { readableColor, toColorString } from 'polished';
+import fonts from '../../constants/fonts';
 
 import colors from '../../constants/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
 import Card, { NoPaddingHeader } from '../Card/Card';
 
 const Row = styled.div`
+  ${fonts.body}
   display: flex;
-  font-family: Gotham, Roboto, sans-serif;
   flex-flow: row nowrap;
   align-items: center;
   padding: .5rem;
@@ -168,6 +169,8 @@ Rating.design = {
 /* Color Picker */
 
 const ColorPreview = styled.div`
+  ${fonts.body}
+
   height: 12rem;
   width: 34rem;
   transition: color .5s;
@@ -176,8 +179,7 @@ const ColorPreview = styled.div`
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  font-family: Gotham, Roboto, sans-serif;
-  font-weight: bold;
+  font-weight: 900;
 `;
 
 const ColorPicker = () => {
@@ -247,7 +249,6 @@ const ColorPicker = () => {
           disabled={boolean('disabled', false)}
           showDomainLabels={boolean('showDomainLabels', false)}
           showSelectedRange={false}
-          motionBlur
           min={0}
           max={360}
           onDrag={(val: number) => {
