@@ -14,6 +14,8 @@ height: 2em;
 font-family: Gothic;
 font-size: 1em;
 placeholder="PlaceHolder"
+padding-right: 1em;
+padding-right: 1rem;
 `;
 
 const ClearableInputContainer = styled(TextInputContainer)`
@@ -25,6 +27,7 @@ const ClearableInputContainer = styled(TextInputContainer)`
 const PlaceholderInputContainer = styled(TextInputContainer)`
     placeHolder="PlaceHolder"
     maxlength=4
+    background-color: ${colors.primary}
 `
 
 const ErrorInputContainer = styled(TextInputContainer)`
@@ -58,6 +61,10 @@ export type TextInputProps = {
 
 const TextInput = ({
   textInputType,
+  placeHolder,
+  multiLine, 
+  clearable, 
+
 }: TextInputProps) => {
   const Container = TextInputContainers[textInputType]
 
