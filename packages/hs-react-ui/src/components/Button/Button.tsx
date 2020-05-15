@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 
@@ -58,13 +58,13 @@ export type ButtonProps = {
   buttonType: ButtonTypes,
   children: string | Node,
   onClick(): void
-};
+}
 
-const Button = ({
+const Button: FunctionComponent<ButtonProps> = ({
   buttonType,
   children,
   onClick
-}: ButtonProps) => {
+}) => {
   const Container = ButtonContainers[buttonType];
 
   return (
