@@ -1,32 +1,28 @@
 import React from 'react';
 import styled, { css, keyframes, StyledComponentBase } from 'styled-components';
 
-import colors from '../../constants/colors';
-
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 
 /* Default Styled Text Container */
 export const TextContainer = styled.span`
-  ${({ size, color }: { size: number, color: String }) => `
+  ${({ size, color }: { size: string, color: string }) => `
     display: inline-block;
     font-family: Gotham;
-    font-size: ${size}rem;
+    font-size: ${size};
     color: ${color};
-    margin: .25rem;
-    background-color: ${colors.background};
   `}
 `;
 
 export interface TextProps {
-  children?: String | Node,
-  color?: String,
-  iconPrefix?: String | JSX.Element,
-  iconSuffix?: String | JSX.Element,
+  children?: string | Node,
+  color?: string,
+  iconPrefix?: string | JSX.Element,
+  iconSuffix?: string | JSX.Element,
   isLoading?: Boolean,
   isProcessing?: Boolean,
-  size?: number
-  StyledContainer?: String & StyledComponentBase<any, {}>,
+  size?: string
+  StyledContainer?: string & StyledComponentBase<any, {}>,
 }
 
 /* Keyframes for the loading bar gradient */
@@ -43,14 +39,14 @@ const animation = css`
 /* Styled div that represents the scroll bar
    Note: The border-radius 9999px is used to create a pill shape */
 const Progress = styled.div`
-  ${({ size }: { size: number }) => css`
+  ${({ size }: { size: string }) => css`
     background: linear-gradient(
       45deg,
       #E1E4E6 0%,
       #C8D1D9 100%) repeat;
     background-size; 50% 100%;
-    width: ${126 * size}px;
-    height: ${size}rem;
+    width: calc(${size} * 10);
+    height: ${size};
     border-radius: 9999px;
     animation: ${animation}
   `}
@@ -74,14 +70,14 @@ const Text = ({
   iconSuffix,
   isLoading,
   isProcessing,
-  size = 1,
+  size = '1rem',
   StyledContainer = TextContainer,
 }: TextProps) => (
   <StyledContainer size={size} color={color} >
     {isLoading && <Progress size={size} />}
     {!isLoading && !isProcessing && iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ?
-      <LeftIconContainer><Icon path={iconPrefix} size={size + 'rem'} /></LeftIconContainer> : <LeftIconContainer>{iconPrefix}</LeftIconContainer>)}
+      <LeftIconContainer><Icon path={iconPrefix} size={size} /></LeftIconContainer> : <LeftIconContainer>{iconPrefix}</LeftIconContainer>)}
     {!isLoading && isProcessing && <LeftIconContainer><Icon path={mdiLoading} size={size + 'rem'} spin={1} /></LeftIconContainer>}
     {!isLoading && children}
 

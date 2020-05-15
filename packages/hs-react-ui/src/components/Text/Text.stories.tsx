@@ -27,13 +27,12 @@ const themeTimings = {
 const icon = <Icon path={Icons.mdiComment} size='1rem' />;
 
 const ThemedContainer = styled.div`
-  ${({ size, color }: { size: number, color: String }) => `
+  ${({ size, color }: { size: number | String, color: String }) => `
     width: fit-content;
     background-color: ${themeColors.background};
-
     transition: transform ${themeTimings.xSlow};
     font-family: Roboto, sans-serif;
-    font-size: ${size}rem;
+    font-size: ${size};
     color: ${color};
     border: 1px solid ${themeColors.primary};
   `}
@@ -43,8 +42,8 @@ const ThemedContainer = styled.div`
 
 export const Default = () => (
   <Text
-    size={number('size', 1, { range: true, min: 0, max: 10, step: .5})}
-    color={color('color', colors.grayDark)}
+    size={text('size', '1rem')}
+    color={color('color', colors.grayXlight)}
     iconPrefix={select('iconPrefix', options, options.mdiComment)}
     iconSuffix={select('iconSuffix', options, options.mdiComment)}
     isProcessing={boolean('isProcessing', false)}
@@ -59,7 +58,7 @@ export const Default = () => (
 export const ThemedTextWithStaticIcons= () => (
   <Text
     StyledContainer={ThemedContainer}
-    size={number('size', 1, { range: true, min: 0, max: 10, step: .5})}
+    size={text('size', '1rem')}
     color={color('color', colors.grayDark)}
     iconPrefix={icon}
     iconSuffix={icon}
@@ -80,7 +79,7 @@ const options = {
 export const ThemedText = () => (
   <Text
     StyledContainer={ThemedContainer}
-    size={number('size', 1, { range: true, min: 0, max: 10, step: .5})}
+    size={text('size', '1rem')}
     color={color('color', colors.grayDark)}
     iconPrefix={select('iconPrefix', options, options.none)}
     iconSuffix={select('iconSuffix', options, options.none)}
