@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../constants/colors';
 import timings from '../../constants/timings';
 
 export const CardContainer = styled.div`
-  ${({ elevation = 0 }) => `
+  ${({ elevation = 0 }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
     width: fit-content;
@@ -56,12 +56,12 @@ export interface CardProps {
   StyledBody?: String & StyledComponentBase<any, {}>,
   StyledFooter?: String & StyledComponentBase<any, {}>,
 
-  children?: String | Node,
-  header?: String | Node,
-  footer?: String | Node,
+  header?: ReactNode,
+  children?: ReactNode,
+  footer?: ReactNode,
 
   elevation?: Number
-};
+}
 
 const Card = ({
   StyledContainer = CardContainer,

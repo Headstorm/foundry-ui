@@ -3,5 +3,9 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.20.2"
+  },
+  "scripts": {
+    "test-react": "cd packages/hs-react-ui && npm install && npm test",
+    "build-react": "cd packages/hs-react-ui && npm install && npm run build && npm run build-storybook"
   }
 }
