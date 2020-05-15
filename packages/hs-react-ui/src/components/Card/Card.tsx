@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../constants/colors';
@@ -62,12 +62,12 @@ export interface CardProps {
   StyledBody?: String & StyledComponentBase<any, {}>,
   StyledFooter?: String & StyledComponentBase<any, {}>,
 
-  children?: String | Node,
-  header?: String | Node,
-  footer?: String | Node,
+  header?: ReactNode,
+  children?: ReactNode,
+  footer?: ReactNode,
 
   elevation?: Number
-};
+}
 
 const Card = ({
   StyledContainer = CardContainer,
