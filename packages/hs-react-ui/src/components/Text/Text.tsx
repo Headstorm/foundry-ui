@@ -78,12 +78,12 @@ const Text = ({
     {!isLoading && !isProcessing && iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ?
       <LeftIconContainer><Icon path={iconPrefix} size={size} /></LeftIconContainer> : <LeftIconContainer>{iconPrefix}</LeftIconContainer>)}
-    {!isLoading && isProcessing && <LeftIconContainer><Icon path={mdiLoading} size={size + 'rem'} spin={1} /></LeftIconContainer>}
+    {!isLoading && isProcessing && <LeftIconContainer><Icon path={mdiLoading} size={size} spin={1} /></LeftIconContainer>}
     {!isLoading && children}
 
     {!isLoading && iconSuffix &&
       (typeof iconSuffix === 'string' ?
-      <RightIconContainer><Icon path={iconSuffix} size={size + 'rem'}/></RightIconContainer> : <RightIconContainer>{iconSuffix}</RightIconContainer>)}
+      <RightIconContainer><Icon path={iconSuffix} size={size}/></RightIconContainer> : <RightIconContainer>{iconSuffix}</RightIconContainer>)}
   </StyledContainer>
 );
 
