@@ -14,8 +14,6 @@ export const Default = () => (
     <Checkbox
         checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
         checked={boolean("Checked", false)}
-        onChange={action('button-click')}
-        value={text('Value', 'The value of the input element')}
     >
         {text('Children', 'The label for the checkbox')}
     </Checkbox>

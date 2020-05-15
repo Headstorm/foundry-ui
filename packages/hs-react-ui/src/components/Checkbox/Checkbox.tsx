@@ -8,24 +8,46 @@ import colors from '../../constants/colors';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
-const Input = styled.input`
-    opacity: 0;
-    position: absolute:
-    
-`;
+const Input = styled.input.attrs({ type: 'checkbox' })`
+  // Hide checkbox visually but remain accessible to screen readers.
+  // Source: https://polished.js.org/docs/#hidevisually
+  border: 0;
+  clip: rect(0 0 0 0);
+  clippath: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`
 
-const Label = styled.label``;
+const Label = styled.label`
+    display: flex;
+    align-items: center;
+
+    ${Input}:focus + & {
+        box-shadow: 0 0 0 3px ${colors.grayXlight};
+    }
+`;
 
 const Box = styled.div`
     border: 1px solid  ${colors.blueCharcoalXLight};
     border-radius: 2px;
-    background-color: ${colors.background};
+    // background-color: ${colors.background};
     width: 0.75rem;
     height: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: visible;
+    margin-right: 0.5rem;
+`;
+
+const CheckboxContainer =styled.div`
+    display: inline-block;
+    vertical-align: middle;
 `;
 
 const StyledIcon = styled(Icon)`
@@ -37,10 +59,6 @@ const CheckIcon = styled(StyledIcon)`
     height: 2rem;
     width: 1.4rem;
     margin: 0 0 0.1rem 0.35rem;
-    path {
-        stroke: ${colors.background};
-        stroke-width: 0.025rem;
-    }
 `;
 
 const CrossIcon = styled(StyledIcon)`
@@ -69,8 +87,6 @@ export interface CheckboxProps {
     checkboxType: CheckboxTypes,
     children: string | Node,
     checked: boolean,
-    value: string,
-    onChange(): void
 }
 
 const iconPathFromType = (type: CheckboxTypes) => {
@@ -103,18 +119,18 @@ const Checkbox = ({
     checkboxType,
     checked,
     children,
-    value,
-    onChange, // do we need an on
 }: CheckboxProps) => {
     const iconPath = iconPathFromType(checkboxType)
     const IconComponent = iconComponentFromType(checkboxType)
     return(
         <div>
             <Label>
-                <Box>
-                    {checked ? <IconComponent path={iconPath}></IconComponent> : null}
-                </Box>
-                <Input type='checkbox' value={value} onChange={onChange} checked={checked}></Input>
+                <CheckboxContainer>
+                    <Box>
+                        {checked ? <IconComponent path={iconPath}></IconComponent> : null}
+                    </Box>
+                    <Input checked={checked}></Input>
+                </CheckboxContainer>
                 {children}
             </Label>
         </div>
