@@ -4,3 +4,5 @@ node_modules
 packages/hs-react-ui/.cache/
 
 packages/hs-react-ui/dist/
+
+.vscode/
