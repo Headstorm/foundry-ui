@@ -27,7 +27,7 @@ const themeTimings = {
 const icon = <Icon path={Icons.mdiComment} size='1rem' />;
 
 const ThemedContainer = styled.div`
-  ${({ size, color }) => `
+  ${({ size, color }: { size: number, color: String }) => `
     width: fit-content;
     background-color: ${themeColors.background};
 

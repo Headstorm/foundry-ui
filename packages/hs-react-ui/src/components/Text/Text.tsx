@@ -8,7 +8,7 @@ import { mdiLoading } from '@mdi/js';
 
 /* Default Styled Text Container */
 export const TextContainer = styled.span`
-  ${({ size, color }) => `
+  ${({ size, color }: { size: number, color: String }) => `
     display: inline-block;
     font-family: Gotham;
     font-size: ${size}rem;
@@ -25,7 +25,7 @@ export interface TextProps {
   iconSuffix?: String | JSX.Element,
   isLoading?: Boolean,
   isProcessing?: Boolean,
-  size?: Number
+  size?: number
   StyledContainer?: String & StyledComponentBase<any, {}>,
 }
 
@@ -43,7 +43,7 @@ const animation = css`
 /* Styled div that represents the scroll bar
    Note: The border-radius 9999px is used to create a pill shape */
 const Progress = styled.div`
-  ${({size }) => css`
+  ${({ size }: { size: number }) => css`
     background: linear-gradient(
       45deg,
       #E1E4E6 0%,
@@ -78,7 +78,7 @@ const Text = ({
   StyledContainer = TextContainer,
 }: TextProps) => (
   <StyledContainer size={size} color={color} >
-    {isLoading && <Progress size={size} color={color} />}
+    {isLoading && <Progress size={size} />}
     {!isLoading && !isProcessing && iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ?
       <LeftIconContainer><Icon path={iconPrefix} size={size + 'rem'} /></LeftIconContainer> : <LeftIconContainer>{iconPrefix}</LeftIconContainer>)}
