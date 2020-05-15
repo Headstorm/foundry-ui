@@ -54,7 +54,7 @@ const ButtonContainers = {
 
 const Text = styled.span``;
 
-export interface ButtonProps {
+export type ButtonProps = {
   buttonType: ButtonTypes,
   children: string | Node,
   onClick(): void

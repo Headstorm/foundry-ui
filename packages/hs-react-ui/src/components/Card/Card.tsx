@@ -5,7 +5,7 @@ import colors from '../../constants/colors';
 import timings from '../../constants/timings';
 
 export const CardContainer = styled.div`
-  ${({ elevation = 0 }) => `
+  ${({ elevation = 0 }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
     width: fit-content;
