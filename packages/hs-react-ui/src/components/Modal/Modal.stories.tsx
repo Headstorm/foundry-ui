@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {number, text} from '@storybook/addon-knobs';
 import Button from '../Button';
 import {ButtonTypes} from '../../enums/ButtonTypes';
+import {action} from '@storybook/addon-actions';
 
 export default {
   title: 'Modal',
@@ -43,13 +44,16 @@ export const Test = () => {
       >Toggle modal</Button>}
       {isOpen && <Modal
         header={text('header', 'Title')}
-        body={text('body', 'We got a nice body on this one. Lorem ipsum is mayonnaise an instrument?')}
+        body={text('body', 'Wait! You need to see this important information!')}
         footer={<ModalFooter />}
 
         backgroundDarkness={number('backgroundDarkness', 10, { range: true, min: 0, max: 100, step: 1 })}
         backgroundBlur={`${number('backgroundBlur', 1, { range: true, min: 0, max: 5, step: 0.1})}rem`}
 
-        onClose={() => setIsOpen(false)}
+        onClose={() => {
+          setIsOpen(false);
+          action('click')();
+        }}
       />}
     </Background>
   );
