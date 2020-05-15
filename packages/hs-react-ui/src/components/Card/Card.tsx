@@ -57,12 +57,13 @@ export interface CardProps {
   StyledFooter?: String & StyledComponentBase<any, {}>,
 
   header?: ReactNode,
+  children?: ReactNode,
   footer?: ReactNode,
 
   elevation?: Number
 }
 
-const Card: FunctionComponent<CardProps> = ({
+const Card = ({
   StyledContainer = CardContainer,
   StyledHeader = Header,
   StyledBody = Body,
@@ -73,7 +74,7 @@ const Card: FunctionComponent<CardProps> = ({
   footer,
 
   elevation = 0
-}) => (
+}: CardProps) => (
   <StyledContainer elevation={elevation}>
     {header && <StyledHeader>{header}</StyledHeader>}
     {children && <StyledBody>{children}</StyledBody>}

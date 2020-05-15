@@ -63,7 +63,7 @@ const ModalCloseButton = styled.span`
   cursor: pointer;
 `
 
-const Modal: FunctionComponent<ModalProps> = ({
+const Modal = ({
   StyledContainer = ModalContainer,
   StyledOverlay = ModalOverlay,
   StyledHeader = ModalHeader,
@@ -79,7 +79,7 @@ const Modal: FunctionComponent<ModalProps> = ({
 
   backgroundBlur,
   backgroundDarkness
-}) => {
+}: ModalProps) => {
   const cardHeader = <>
     <span>{header}</span>
     <StyledCloseButton onClick={onClose}>&times;</StyledCloseButton>
