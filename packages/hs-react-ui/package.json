@@ -68,6 +68,7 @@
     ]
   },
   "devDependencies": {
+    "@mdi/js": "^5.2.45",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
