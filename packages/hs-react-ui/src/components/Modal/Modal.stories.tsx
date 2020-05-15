@@ -3,7 +3,7 @@ import Modal from './Modal';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
 import Button from '../Button';
-import { ButtonTypes } from '../../enums/ButtonTypes';
+import { ButtonContainer } from '../Button';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -39,7 +39,7 @@ export const Basic = () => {
   return (
     <Background>
       {!isOpen && <Button
-        buttonType={ButtonTypes.default}
+        StyledContainer={ButtonContainer}
         onClick={() => setIsOpen(true)}
       >Toggle modal</Button>}
       {isOpen && <Modal
