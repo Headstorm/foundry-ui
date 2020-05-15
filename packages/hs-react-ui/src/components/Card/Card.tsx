@@ -1,4 +1,4 @@
-import React, {FunctionComponent, ReactNode} from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../constants/colors';

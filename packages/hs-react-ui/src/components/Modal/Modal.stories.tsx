@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Modal from './Modal';
 import styled from 'styled-components';
-import {number, text} from '@storybook/addon-knobs';
+import { number, text } from '@storybook/addon-knobs';
 import Button from '../Button';
-import {ButtonTypes} from '../../enums/ButtonTypes';
-import {action} from '@storybook/addon-actions';
+import { ButtonTypes } from '../../enums/ButtonTypes';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Modal',
@@ -27,7 +27,7 @@ const ModalActionText = styled.span`
   color: #5A27E7;
 `
 
-export const Test = () => {
+export const Basic = () => {
   const [isOpen, setIsOpen] = useState(false);
   const ModalFooter = () => (
     <>

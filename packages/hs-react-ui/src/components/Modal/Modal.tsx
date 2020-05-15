@@ -1,7 +1,7 @@
 import React, {FunctionComponent, ReactNode} from 'react';
 import Card from '../Card';
 import styled, {StyledComponentBase} from 'styled-components';
-import {Footer, Header} from '../Card/Card';
+import { Footer, Header } from '../Card/Card';
 
 export interface ModalProps {
   // TODO: Make String & StyledComponentBase<> its own type, also see about not using `any`
