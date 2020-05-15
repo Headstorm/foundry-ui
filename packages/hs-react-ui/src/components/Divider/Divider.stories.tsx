@@ -22,7 +22,7 @@ export const Default = () => (
 /* Themed */
 
 const ThemedDivider = styled.hr`
-${({ width = 90, height = 1}) => `
+  ${({ height, width }: { height: number, width: number }) => `
   box-shadow: 10px, 10px, ${colors.primary};
   border: none;
   background: radial-gradient(${colors.primary}, transparent);

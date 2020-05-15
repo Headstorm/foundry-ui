@@ -4,7 +4,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../constants/colors';
 
 export const DefaultDivider = styled.hr`
-  ${({ width = 90, height = 1}) => `
+  ${({ width = 90, height = 1}: {width: number, height: number}) => `
     border: none;
     height: ${height}px;
     width: ${width}%;
