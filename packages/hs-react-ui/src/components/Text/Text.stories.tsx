@@ -43,7 +43,7 @@ const ThemedContainer = styled.div`
 export const Default = () => (
   <Text
     size={text('size', '1rem')}
-    color={color('color', colors.grayXlight)}
+    color={color('color', Colors.grayXlight)}
     iconPrefix={select('iconPrefix', options, options.mdiComment)}
     iconSuffix={select('iconSuffix', options, options.mdiComment)}
     isProcessing={boolean('isProcessing', false)}
@@ -59,7 +59,7 @@ export const ThemedTextWithStaticIcons= () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color('color', Colors.grayDark)}
     iconPrefix={icon}
     iconSuffix={icon}
     isProcessing={boolean('isProcessing', false)}
@@ -80,7 +80,7 @@ export const ThemedText = () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color('color', Colors.grayDark)}
     iconPrefix={select('iconPrefix', options, options.none)}
     iconSuffix={select('iconSuffix', options, options.none)}
     isProcessing={boolean('isProcessing', false)}

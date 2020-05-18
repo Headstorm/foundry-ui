@@ -23,9 +23,9 @@ export const Default = () => (
 
 const ThemedDivider = styled.hr`
   ${({ height, width }: { height: string, width: string }) => `
-  box-shadow: 10px, 10px, ${colors.primary};
+  box-shadow: 10px, 10px, ${Colors.primary};
   border: none;
-  background: radial-gradient(${colors.primary}, transparent);
+  background: radial-gradient(${Colors.primary}, transparent);
   height: ${height};
     width: ${width};
   `}

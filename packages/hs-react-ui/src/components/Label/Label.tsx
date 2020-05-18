@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Colors from '../../enums/Colors';
 
 export const StyledLabel = styled.label`
-  ${({ color = colors.grayDark }: { color: colors | string }) => `
+  ${({ color = Colors.grayDark }: { color: colors | string }) => `
     display: block;
     color: ${color};
     text-transform: uppercase;

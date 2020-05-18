@@ -8,7 +8,7 @@ export const DefaultDivider = styled.hr`
     border: none;
     height: ${height};
     width: ${width};
-    background-color: ${colors.grayLight};
+    background-color: ${Colors.grayLight};
   `}
 `;
 

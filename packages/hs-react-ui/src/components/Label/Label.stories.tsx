@@ -14,7 +14,7 @@ export default {
 export const Basic = () => (
   <Label
     labelText="This is a label"
-    color={colors.destructive}
+    color={Colors.destructive}
   />
 );
 

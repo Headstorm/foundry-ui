@@ -18,29 +18,29 @@ export const ButtonContainer = styled.button`
 
   cursor: pointer;
 
-  background-color: ${colors.grayXlight};
-  color: ${colors.grayDark};
+  background-color: ${Colors.grayXlight};
+  color: ${Colors.grayDark};
 `;
 
 export const PrimaryButtonContainer = styled(ButtonContainer)`
-  color: ${colors.background};
-  background-color: ${colors.primary};
-  &:hover { background-color: ${darken(.05, colors.primary)}; }
-  &:active { background-color: ${darken(.1, colors.primary)}; }
+  color: ${Colors.background};
+  background-color: ${Colors.primary};
+  &:hover { background-color: ${darken(.05, Colors.primary)}; }
+  &:active { background-color: ${darken(.1, Colors.primary)}; }
 `;
 
 export const SecondaryButtonContainer = styled(ButtonContainer)`
-  color: ${colors.background};
-  background-color: ${colors.grayMedium};
-  &:hover { background-color: ${darken(.05, colors.grayMedium)}; }
-  &:active { background-color: ${darken(.1, colors.grayMedium)}; }
+  color: ${Colors.background};
+  background-color: ${Colors.grayMedium};
+  &:hover { background-color: ${darken(.05, Colors.grayMedium)}; }
+  &:active { background-color: ${darken(.1, Colors.grayMedium)}; }
 `;
 
 export const DestructiveButtonContainer = styled(ButtonContainer)`
-  color: ${colors.background};
-  background-color: ${colors.destructive};
-  &:hover { background-color: ${darken(.05, colors.destructive)}; }
-  &:active { background-color: ${darken(.1, colors.destructive)}; }
+  color: ${Colors.background};
+  background-color: ${Colors.destructive};
+  &:hover { background-color: ${darken(.05, Colors.destructive)}; }
+  &:active { background-color: ${darken(.1, Colors.destructive)}; }
 `;
 
 export const ButtonContainers = {
