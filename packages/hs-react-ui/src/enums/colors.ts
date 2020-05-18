@@ -1,4 +1,4 @@
-export enum colors {
+enum Colors {
   background = '#fff',
   primary = '#e75b27',
 
@@ -10,3 +10,5 @@ export enum colors {
   success = '#698F00',
   destructive = '#d00'
 };
+
+export default Colors;

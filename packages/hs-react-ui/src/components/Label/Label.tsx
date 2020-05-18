@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-import { colors } from '../../enums/colors';
+import Colors from '../../enums/Colors';
 
 export const StyledLabel = styled.label`
   ${({ color = colors.grayDark }: { color: colors | string }) => `

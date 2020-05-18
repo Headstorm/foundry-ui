@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonTypes } from '../../enums/ButtonTypes';
-import { colors } from '../../enums/colors';
+import Colors from '../../enums/Colors';
 import { darken } from 'polished';
 
 export const ButtonContainer = styled.button`

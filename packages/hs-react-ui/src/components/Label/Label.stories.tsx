@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors } from 'src/enums/colors';
+import Colors from 'src/enums/Colors';
 import Label from './Label';
 
 export default {
