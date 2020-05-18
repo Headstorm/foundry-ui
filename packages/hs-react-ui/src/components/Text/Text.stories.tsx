@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { color, text, number, boolean, select } from '@storybook/addon-knobs';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
+import { ColorTypes } from 'src/enums/ColorTypes';
+import { TimingTypes } from 'src/enums/TimingsTypes';
 import Text from './Text';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
@@ -14,13 +14,13 @@ export default {
 };
 
 const themeColors = {
-  ...colors,
+  ...ColorTypes,
   background: 'beige',
   primary: 'purple'
 };
 
 const themeTimings = {
-  ...timings,
+  ...TimingTypes,
   xSlow: '2s',
 }
 
@@ -43,7 +43,7 @@ const ThemedContainer = styled.div`
 export const Default = () => (
   <Text
     size={text('size', '1rem')}
-    color={color('color', colors.grayXlight)}
+    color={color('color', ColorTypes.grayXlight)}
     iconPrefix={select('iconPrefix', options, options.mdiComment)}
     iconSuffix={select('iconSuffix', options, options.mdiComment)}
     isProcessing={boolean('isProcessing', false)}
@@ -59,7 +59,7 @@ export const ThemedTextWithStaticIcons= () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color('color', ColorTypes.grayDark)}
     iconPrefix={icon}
     iconSuffix={icon}
     isProcessing={boolean('isProcessing', false)}
@@ -80,7 +80,7 @@ export const ThemedText = () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color('color', ColorTypes.grayDark)}
     iconPrefix={select('iconPrefix', options, options.none)}
     iconSuffix={select('iconSuffix', options, options.none)}
     isProcessing={boolean('isProcessing', false)}

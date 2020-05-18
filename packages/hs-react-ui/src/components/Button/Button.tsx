@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import { ButtonTypes } from '../../enums/ButtonTypes';
-import colors from '../../constants/colors';
+import { ColorTypes }  from '../../enums/ColorTypes';
 
 const ButtonContainer = styled.button`
   display: inline-block;
@@ -20,29 +20,29 @@ const ButtonContainer = styled.button`
 
   cursor: pointer;
 
-  background-color: ${colors.grayXlight};
-  color: ${colors.grayDark};
+  background-color: ${ColorTypes.grayXlight};
+  color: ${ColorTypes.grayDark};
 `;
 
 const PrimaryButtonContainer = styled(ButtonContainer)`
-  color: ${colors.background};
-  background-color: ${colors.primary};
-  &:hover { background-color: ${darken(.05, colors.primary)}; }
-  &:active { background-color: ${darken(.1, colors.primary)}; }
+  color: ${ColorTypes.background};
+  background-color: ${ColorTypes.primary};
+  &:hover { background-color: ${darken(.05, ColorTypes.primary)}; }
+  &:active { background-color: ${darken(.1, ColorTypes.primary)}; }
 `;
 
 const SecondaryButtonContainer = styled(ButtonContainer)`
-  color: ${colors.background};
-  background-color: ${colors.grayMedium};
-  &:hover { background-color: ${darken(.05, colors.grayMedium)}; }
-  &:active { background-color: ${darken(.1, colors.grayMedium)}; }
+  color: ${ColorTypes.background};
+  background-color: ${ColorTypes.grayMedium};
+  &:hover { background-color: ${darken(.05, ColorTypes.grayMedium)}; }
+  &:active { background-color: ${darken(.1, ColorTypes.grayMedium)}; }
 `;
 
 const DestructiveButtonContainer = styled(ButtonContainer)`
-  color: ${colors.background};
-  background-color: ${colors.destructive};
-  &:hover { background-color: ${darken(.05, colors.destructive)}; }
-  &:active { background-color: ${darken(.1, colors.destructive)}; }
+  color: ${ColorTypes.background};
+  background-color: ${ColorTypes.destructive};
+  &:hover { background-color: ${darken(.05, ColorTypes.destructive)}; }
+  &:active { background-color: ${darken(.1, ColorTypes.destructive)}; }
 `;
 
 const ButtonContainers = {

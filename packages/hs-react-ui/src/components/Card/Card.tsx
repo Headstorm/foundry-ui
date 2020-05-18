@@ -1,8 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import colors from '../../constants/colors';
-import timings from '../../constants/timings';
+import { ColorTypes }  from '../../enums/ColorTypes';
+import { TimingTypes }  from '../../enums/TimingsTypes';
 
 export const CardContainer = styled.div`
   ${({ elevation = 0 }: { elevation: number }) => `
@@ -16,11 +16,11 @@ export const CardContainer = styled.div`
     border-radius: 0.25rem;
     margin: .25rem;
 
-    border: 1px solid ${!elevation ? colors.grayXlight: 'transparent'};
+    border: 1px solid ${!elevation ? ColorTypes.grayXlight: 'transparent'};
 
-    transition: box-shadow ${timings.slow};
+    transition: box-shadow ${TimingTypes.slow};
     box-shadow: 0rem ${elevation * .25}rem ${elevation * .75}rem ${elevation * -.25}rem rgba(0,0,0,${.6 - elevation * .1});
-    background-color: ${colors.background};
+    background-color: ${ColorTypes.background};
   `}
 `;
 
@@ -28,12 +28,12 @@ export const Header = styled.div`
   padding: 1.5rem 1.5rem 0rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: ${colors.grayDark};
+  color: ${ColorTypes.grayDark};
 `;
 
 export const Body = styled.div`
   padding: 1.5rem 1.5rem;
-  color: ${colors.grayMedium};
+  color: ${ColorTypes.grayMedium};
 `;
 
 export const Footer = styled.div`
@@ -44,9 +44,9 @@ export const Footer = styled.div`
   justify-content: flex-end;
   text-align: right;
 
-  color: ${colors.grayLight};
+  color: ${ColorTypes.grayLight};
 
-  border-top: 1px solid ${colors.grayXlight};
+  border-top: 1px solid ${ColorTypes.grayXlight};
   border-radius: 0rem 0rem .25rem .25rem;
 `;
 

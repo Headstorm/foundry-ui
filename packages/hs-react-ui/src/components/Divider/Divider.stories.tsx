@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
-import colors from '../../constants/colors';
+import { ColorTypes } from '../../enums/ColorTypes';
 
 import Divider from './Divider';
 
@@ -23,9 +23,9 @@ export const Default = () => (
 
 const ThemedDivider = styled.hr`
   ${({ height, width }: { height: string, width: string }) => `
-  box-shadow: 10px, 10px, ${colors.primary};
+  box-shadow: 10px, 10px, ${ColorTypes.primary};
   border: none;
-  background: radial-gradient(${colors.primary}, transparent);
+  background: radial-gradient(${ColorTypes.primary}, transparent);
   height: ${height};
     width: ${width};
   `}

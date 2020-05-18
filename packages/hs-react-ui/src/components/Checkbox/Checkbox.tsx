@@ -3,7 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 
 import { CheckboxTypes } from '../../enums/CheckboxTypes';
-import colors from '../../constants/colors';
+import { ColorTypes }  from '../../enums/ColorTypes';
 
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
@@ -28,12 +28,12 @@ export const Label = styled.label`
     align-items: center;
 
     ${Input}:focus + & {
-        box-shadow: 0 0 0 3px ${colors.grayXlight};
+        box-shadow: 0 0 0 3px ${ColorTypes.grayXlight};
     }
 `;
 
 export const Box = styled.div`
-    border: 1px solid  ${colors.grayLight};
+    border: 1px solid  ${ColorTypes.grayLight};
     border-radius: 2px;
     width: 0.75rem;
     height: 0.75rem;
@@ -54,30 +54,30 @@ export const StyledIcon = styled(Icon)`
 `;
 
 const CheckIcon = styled(StyledIcon)`
-    color: ${colors.success};
+    color: ${ColorTypes.success};
     height: 2rem;
     width: 1.4rem;
     margin: 0 0 0.1rem 0.35rem;
 `;
 
 const CrossIcon = styled(StyledIcon)`
-    color: ${colors.destructive};
+    color: ${ColorTypes.destructive};
     height: 1rem;
     width: 1rem;
 `;
 
 const DefaultIcon = styled(StyledIcon)`
-    color: ${colors.grayMedium};
+    color: ${ColorTypes.grayMedium};
     height: 0.7rem;
     width: 0.7rem;
 `;
 
 const NeutralIcon = styled(StyledIcon)`
-    color: ${colors.grayMedium};
+    color: ${ColorTypes.grayMedium};
     height: 0.65rem;
     width: 0.65rem;
     path {
-        stroke: ${colors.grayMedium};
+        stroke: ${ColorTypes.grayMedium};
         stroke-width: 2px;
     }
 `;
