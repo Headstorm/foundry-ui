@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
-import colors from 'src/enums/colors';
-import timings from 'src/enums/TimingsTypes';
+import { colors } from 'src/enums/colors';
+import { TimingTypes } from 'src/enums/TimingsTypes';
 import Card, { Header, Footer } from './Card';
 
 export default {
@@ -32,7 +32,7 @@ const themeColors = {
 };
 
 const themeTimings = {
-  ...timings,
+  ...TimingTypes ,
   xSlow: '2s',
 }
 
