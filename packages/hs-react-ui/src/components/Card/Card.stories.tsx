@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
-import colors from 'src/enums/ColorTypes';
+import colors from 'src/enums/colors';
 import timings from 'src/enums/TimingsTypes';
 import Card, { Header, Footer } from './Card';
 

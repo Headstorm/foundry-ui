@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonTypes } from '../../enums/ButtonTypes';
-import { ColorTypes } from '../../enums/ColorTypes';
+import { colors } from '../../enums/colors';
 import { darken } from 'polished';
 
 export const ButtonContainer = styled.button`
@@ -18,29 +18,29 @@ export const ButtonContainer = styled.button`
 
   cursor: pointer;
 
-  background-color: ${ColorTypes.grayXlight};
-  color: ${ColorTypes.grayDark};
+  background-color: ${colors.grayXlight};
+  color: ${colors.grayDark};
 `;
 
 export const PrimaryButtonContainer = styled(ButtonContainer)`
-  color: ${ColorTypes.background};
-  background-color: ${ColorTypes.primary};
-  &:hover { background-color: ${darken(.05, ColorTypes.primary)}; }
-  &:active { background-color: ${darken(.1, ColorTypes.primary)}; }
+  color: ${colors.background};
+  background-color: ${colors.primary};
+  &:hover { background-color: ${darken(.05, colors.primary)}; }
+  &:active { background-color: ${darken(.1, colors.primary)}; }
 `;
 
 export const SecondaryButtonContainer = styled(ButtonContainer)`
-  color: ${ColorTypes.background};
-  background-color: ${ColorTypes.grayMedium};
-  &:hover { background-color: ${darken(.05, ColorTypes.grayMedium)}; }
-  &:active { background-color: ${darken(.1, ColorTypes.grayMedium)}; }
+  color: ${colors.background};
+  background-color: ${colors.grayMedium};
+  &:hover { background-color: ${darken(.05, colors.grayMedium)}; }
+  &:active { background-color: ${darken(.1, colors.grayMedium)}; }
 `;
 
 export const DestructiveButtonContainer = styled(ButtonContainer)`
-  color: ${ColorTypes.background};
-  background-color: ${ColorTypes.destructive};
-  &:hover { background-color: ${darken(.05, ColorTypes.destructive)}; }
-  &:active { background-color: ${darken(.1, ColorTypes.destructive)}; }
+  color: ${colors.background};
+  background-color: ${colors.destructive};
+  &:hover { background-color: ${darken(.05, colors.destructive)}; }
+  &:active { background-color: ${darken(.1, colors.destructive)}; }
 `;
 
 export const ButtonContainers = {

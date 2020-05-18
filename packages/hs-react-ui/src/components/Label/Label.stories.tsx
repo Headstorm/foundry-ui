@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorTypes } from 'src/enums/ColorTypes';
+import { colors } from 'src/enums/colors';
 import Label from './Label';
 
 export default {
@@ -14,7 +14,7 @@ export default {
 export const Basic = () => (
   <Label
     labelText="This is a label"
-    color={ColorTypes.destructive}
+    color={colors.destructive}
   />
 );
 

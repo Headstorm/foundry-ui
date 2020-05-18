@@ -1,4 +1,4 @@
-export enum ColorTypes {
+export enum colors {
   background = '#fff',
   primary = '#e75b27',
 

@@ -2,13 +2,13 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { withDesign } from 'storybook-addon-designs';
 import { addDecorator, addParameters } from '@storybook/react';
 
-import { ColorTypes } from '../src/enums/ColorTypes';
+import { colors } from '../src/enums/colors';
 
 addParameters({
   backgrounds: [
-    { name: 'grayDark', value: ColorTypes.grayDark, default: true },
-    { name: 'grayLight', value: ColorTypes.grayLight },
-    { name: 'background', value: ColorTypes.background },
+    { name: 'grayDark', value: colors.grayDark, default: true },
+    { name: 'grayLight', value: colors.grayLight },
+    { name: 'background', value: colors.background },
   ],
 });
 
