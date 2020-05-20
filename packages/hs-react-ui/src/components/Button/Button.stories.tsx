@@ -13,8 +13,8 @@ export default {
   component: Button,
   design: {
     type: 'figma',
-    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
-  }
+    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+  },
 };
 
 export const Basic = () => (
@@ -27,7 +27,7 @@ export const Basic = () => (
 );
 
 Basic.story = {
-  name: 'Basic'
+  name: 'Basic',
 };
 
 const ThemedContainer = styled(ButtonContainer)`
@@ -52,7 +52,7 @@ export const ThemedButton = () => {
     horizontal
     vertical
     rotate={90}/>,
-    children: 'Loading'
+    children: 'Loading',
   };
   const icon = (<Icon path={mdiLeadPencil}
     size={1}

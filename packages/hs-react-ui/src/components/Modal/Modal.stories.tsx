@@ -3,12 +3,12 @@ import Modal from './Modal';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
 import Button from '../Button';
-import { ButtonContainer } from '../Button';
+import { ButtonContainer } from '../Button/ButtonContainers';
 import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Modal',
-  component: Modal
+  component: Modal,
 };
 
 const Background = styled.div`
@@ -23,7 +23,7 @@ const ModalActionText = styled.span`
   cursor: pointer;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  
+
   color: #5A27E7;
 `
 

@@ -16,7 +16,7 @@ export const CardContainer = styled.div`
     border-radius: 0.25rem;
     margin: .25rem;
 
-    border: 1px solid ${!elevation ? colors.grayXlight: 'transparent'};
+    border: 1px solid ${!elevation ? colors.grayXlight : 'transparent'};
 
     transition: box-shadow ${timings.slow};
     box-shadow: 0rem ${elevation * .25}rem ${elevation * .75}rem ${elevation * -.25}rem rgba(0,0,0,${.6 - elevation * .1});
@@ -51,16 +51,16 @@ export const Footer = styled.div`
 `;
 
 export interface CardProps {
-  StyledContainer?: String & StyledComponentBase<any, {}>,
-  StyledHeader?: String & StyledComponentBase<any, {}>,
-  StyledBody?: String & StyledComponentBase<any, {}>,
-  StyledFooter?: String & StyledComponentBase<any, {}>,
+  StyledContainer?: string & StyledComponentBase<any, {}>,
+  StyledHeader?: string & StyledComponentBase<any, {}>,
+  StyledBody?: string & StyledComponentBase<any, {}>,
+  StyledFooter?: string & StyledComponentBase<any, {}>,
 
   header?: ReactNode,
   children?: ReactNode,
   footer?: ReactNode,
 
-  elevation?: Number
+  elevation?: number
 }
 
 const Card = ({
@@ -68,12 +68,10 @@ const Card = ({
   StyledHeader = Header,
   StyledBody = Body,
   StyledFooter = Footer,
-
   header,
   children,
   footer,
-
-  elevation = 0
+  elevation = 0,
 }: CardProps) => (
   <StyledContainer elevation={elevation}>
     {header && <StyledHeader>{header}</StyledHeader>}

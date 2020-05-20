@@ -7,13 +7,13 @@ import Divider from './Divider';
 
 export default {
   title: 'Divider',
-  component: Divider
+  component: Divider,
 };
 
 /* Default */
 
 export const Default = () => (
-  <Divider 
+  <Divider
   width={text('width', '90%')}
   height={text('height', '1px')}
   />
@@ -32,7 +32,7 @@ const ThemedDivider = styled.hr`
 `;
 
 export const Themed = () => (
-  <Divider 
+  <Divider
     StyledDivider={ThemedDivider}
     width={text('width', '90%')}
     height={text('height', '2px')}

@@ -1,20 +1,43 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "declaration": true,
     "incremental": false,
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "jsx": "react",
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "node",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "es5",
-    "types": ["jest", "node"],
-    "lib": ["es2017", "dom"]
+    "types": [
+      "jest",
+      "node"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false
   },
-  "include": ["src/**/*", ".storybook/**/*"],
-  "exclude": ["node_modules", "build", "scripts"]
+  "include": [
+    "src/**/*",
+    "index.ts",
+    "src/**/*.stories.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts"
+  ]
 }

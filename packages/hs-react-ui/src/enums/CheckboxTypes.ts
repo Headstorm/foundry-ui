@@ -3,5 +3,5 @@ export enum CheckboxTypes {
     cross = 'cross',
     check = 'check',
     default = 'default',
-    neutral = 'neutral'
+    neutral = 'neutral',
 }
