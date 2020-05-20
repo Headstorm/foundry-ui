@@ -1,7 +1,11 @@
-import React from 'react';
-import { select } from '@storybook/addon-knobs';
+import React, { useState, SyntheticEvent } from 'react';
+import { text, select} from '@storybook/addon-knobs';
 import TextInput from './TextInput';
 import { TextInputTypes } from '../../enums/TextInputTypes';
+import { mdiComment } from '@mdi/js';
+import { action } from '@storybook/addon-actions';
+import Icon from '@mdi/react';
+import * as IconPaths from '@mdi/js';
 
 export default {
   title: 'TextInput',
@@ -12,32 +16,36 @@ export default {
   }
 };
 
-export const Basic = () => (
-  <div>
-    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.default)}
-    >
-      test
-  </TextInput>
-    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.clearable)}
-    >
-      test
-  </TextInput>
-    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.placeHolder)}
-    >
-      test
-  </TextInput>
-    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.error)}
-    >
-      test
-  </TextInput>
-    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.icon)}
-    >
-      test
-  </TextInput>
-    <TextInput textInputType={select('Input Type', TextInputTypes, TextInputTypes.multiLine)}
-    >
-      test
-  </TextInput>
-  </div>
-);
+export const Basic = () => {
+
+  const [inputValue, setInputValue] = useState('');
+
+  const options = {
+    none: '',
+    ...IconPaths
+  };
+
+  const getIconPath = (path: string) => path ? <Icon size={'16px'} path={path} /> : null
+  
+  const isMultiLine = (inputValue: string) => (inputValue.length > 15) ? true : false;
+
+  const isError = (inputValue: string) => (inputValue.length < 5 && inputValue.length > 0) ? 'Short Message Error' : null;
+
+  return (
+
+    <TextInput 
+    onChange={(event: SyntheticEvent) => {
+      setInputValue(event.target.value)
+      action('onChange')(event.target.value)}}
+    value={inputValue}
+    placeholder={text('placeholder', 'Place Holder')} 
+    onClear={(event: SyntheticEvent) => {
+      setInputValue('')
+      action('onClear')()}}
+    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+    multiline={isMultiLine(inputValue)}
+    errorMessage={isError(inputValue)}
+    />
+  )
+};
 
