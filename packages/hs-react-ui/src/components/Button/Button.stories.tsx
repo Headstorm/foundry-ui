@@ -1,34 +1,58 @@
 import React from 'react';
 import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
-import { select, text, boolean } from '@storybook/addon-knobs';
+import { select, text, boolean, withKnobs } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
 import { mdiLeadPencil, mdiLoading } from '@mdi/js';
 import { ButtonContainers, ButtonContainer } from './ButtonContainers';
 import Button from './Button';
 import { ButtonTypes } from '../../enums/ButtonTypes';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { withA11y } from '@storybook/addon-a11y';
+import { withDesign } from 'storybook-addon-designs';
 
-export default {
-  title: 'Button',
-  component: Button,
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
-  }
-};
+// addDecorator(withA11y);
+addDecorator(withDesign);
 
-export const Basic = () => (
-  <Button
-    StyledContainer={ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]}
-    onClick={action('button-click')}
-  >
-    {text('children', 'Default text')}
-  </Button>
-);
+// export default {
+//   title: 'Button',
+//   component: Button,
+//   design: {
+//     type: 'figma',
+//     url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
+//   }
+// };
 
-Basic.story = {
-  name: 'Basic'
-};
+// export default {
+//   decorators: [withA11y, withDesign, withKnobs],
+//   parameters: {
+//     design: {
+//       type: 'figma',
+//       url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
+//     }
+//   },
+//   title: 'Button'
+// };
+
+// export const Basic = () => (
+//   <Button
+//     StyledContainer={ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]}
+//     onClick={action('button-click')}
+//   >
+//     {text('children', 'Default text')}
+//   </Button>
+// );
+// const onClick = action('button-click')
+// const StyledContainer = ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]
+// export const Basic = () => ([
+//   Button,
+//   StyledContainer,
+//   onClick,
+// ]);
+
+// Basic.story = {
+//   name: 'Basic'
+// };
 
 const ThemedContainer = styled(ButtonContainer)`
   font-family: Helvetica;
@@ -45,28 +69,63 @@ const ThemedContainer = styled(ButtonContainer)`
   &:active { background-color: rgb(51, 29, 138, .3); }
 `;
 
-export const ThemedButton = () => {
-  const isLoading = {
-    icon: <Icon path={mdiLoading}
-    size={1}
-    horizontal
-    vertical
-    rotate={90}/>,
-    children: 'Loading'
-  };
-  const icon = (<Icon path={mdiLeadPencil}
-    size={1}
-    horizontal
-    vertical
-    rotate={90}/>)
-  return (
+// export const ThemedButton = () => {
+//   const isLoading = {
+//     icon: <Icon path={mdiLoading}
+//     size={1}
+//     horizontal
+//     vertical
+//     rotate={90}/>,
+//     children: 'Loading'
+//   };
+//   const icon = (<Icon path={mdiLeadPencil}
+//     size={1}
+//     horizontal
+//     vertical
+//     rotate={90}/>)
+//   return (
+//     <Button
+//       StyledContainer={ThemedContainer}
+//       isLoading={boolean('isLoading?', false) ? isLoading : null}
+//       icon={boolean('Icon?', true) ? icon : null}
+//       onClick={action('button-click')}
+//     >
+//       {text('children', 'Edit')}
+//     </Button>
+//   );
+// }
+
+storiesOf('Button', module)
+  .add('Basic Button', () => (
     <Button
-      StyledContainer={ThemedContainer}
-      isLoading={boolean('isLoading?', false) ? isLoading : null}
-      icon={boolean('Icon?', true) ? icon : null}
-      onClick={action('button-click')}
-    >
-      {text('children', 'Edit')}
-    </Button>
-  );
-}
+    StyledContainer={ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]}
+    onClick={action('button-click')}
+  >
+    {text('children', 'Default text')}
+  </Button>
+  ))
+  .add('Themed Button', () => {
+    const isLoading = {
+      icon: <Icon path={mdiLoading}
+      size={1}
+      horizontal
+      vertical
+      rotate={90}/>,
+      children: 'Loading'
+    };
+    const icon = (<Icon path={mdiLeadPencil}
+      size={1}
+      horizontal
+      vertical
+      rotate={90}/>)
+    return (
+      <Button
+        StyledContainer={ThemedContainer}
+        isLoading={boolean('isLoading?', false) ? isLoading : null}
+        icon={boolean('Icon?', true) ? icon : null}
+        onClick={action('button-click')}
+      >
+        {text('children', 'Edit')}
+      </Button>
+    );
+  })

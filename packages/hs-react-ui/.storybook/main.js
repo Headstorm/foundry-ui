@@ -11,6 +11,7 @@ module.exports = {
           tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
           shouldExtractLiteralValuesFromEnum: true,
           propFilter: prop => {
+            console.log('storybook', prop)
             // Currently not working, prop.parent is always null.
             if (prop.parent) {
               return !prop.parent.fileName.includes('node_modules/@types/react/');
@@ -24,7 +25,7 @@ module.exports = {
     '@storybook/addon-actions',
     'storybook-addon-designs/register',
     '@storybook/addon-knobs',
-    '@storybook/addon-a11y',
+    '@storybook/addon-a11y/register',
     '@storybook/addon-backgrounds',
     '@storybook/addon-links',
     '@storybook/addon-storysource',

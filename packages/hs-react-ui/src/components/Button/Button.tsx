@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import { ButtonContainer } from './ButtonContainers';
+import { withA11y } from '@storybook/addon-a11y';
 
 const Text = styled.span``;
 
