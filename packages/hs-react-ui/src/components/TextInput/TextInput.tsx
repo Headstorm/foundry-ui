@@ -69,10 +69,6 @@ export type TextInputProps = {
 // };
 
 
-const getTextArea = (rows, cols) => {
-  
-}
-
 const TextInput = ({
   placeholder = 'test props',
   iconPrefix,
