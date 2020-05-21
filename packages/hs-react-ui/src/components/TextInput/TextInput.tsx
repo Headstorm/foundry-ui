@@ -38,6 +38,7 @@ transform: translateY(-50%);
 `;
 
 const ErrorContainer = styled.div`
+  top: 100px;
   postition: abosolute;
   color: red;
 `;
@@ -47,9 +48,7 @@ const DivContainer = styled.div`
  position: relative;
 `;
 
-const getTextArea = () => {
 
-}
 
 export type TextInputProps = {
   textInputType?: TextInputTypes,
@@ -62,11 +61,17 @@ export type TextInputProps = {
   cols?: any,
   rows?: any,
   errorMessage?: string,
+  style?: any;
 }
 
 // const TextInputContainers = {
 //   [TextInputTypes.icon]: IconInputContainer
 // };
+
+
+const getTextArea = (rows, cols) => {
+  
+}
 
 const TextInput = ({
   placeholder = 'test props',
@@ -75,7 +80,9 @@ const TextInput = ({
   onChange,
   value,
   multiline,
-  errorMessage
+  errorMessage,
+  style, 
+
 }: TextInputProps) => {
   const TextInput = TextInputContainer
   return (
