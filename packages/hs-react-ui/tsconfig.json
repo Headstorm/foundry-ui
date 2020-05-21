@@ -39,6 +39,8 @@
     "node_modules",
     "build",
     "dist",
-    "scripts"
+    "scripts",
+    "src/serviceWorker.ts",
+    "src/setupTests.ts",
   ]
 }
