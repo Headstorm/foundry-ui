@@ -11,89 +11,13 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 
-// addDecorator(withA11y);
+addDecorator(withA11y);
 addDecorator(withDesign);
 
-// export default {
-//   title: 'Button',
-//   component: Button,
-//   design: {
-//     type: 'figma',
-//     url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
-//   }
-// };
-
-// export default {
-//   decorators: [withA11y, withDesign, withKnobs],
-//   parameters: {
-//     design: {
-//       type: 'figma',
-//       url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
-//     }
-//   },
-//   title: 'Button'
-// };
-
-// export const Basic = () => (
-//   <Button
-//     StyledContainer={ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]}
-//     onClick={action('button-click')}
-//   >
-//     {text('children', 'Default text')}
-//   </Button>
-// );
-// const onClick = action('button-click')
-// const StyledContainer = ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]
-// export const Basic = () => ([
-//   Button,
-//   StyledContainer,
-//   onClick,
-// ]);
-
-// Basic.story = {
-//   name: 'Basic'
-// };
-
-const ThemedContainer = styled(ButtonContainer)`
-  font-family: Helvetica;
-  font-size: 2em;
-  vertical-align: middle;
-  text-align: center;
-  line-height: .5em;
-  background-color: rgb(51, 29, 138);
-  color: white;
-  width: 10em;
-  height: 2em;
-  border-radius: 2em;
-  &:hover { background-color: rgb(51, 29, 138, .7); }
-  &:active { background-color: rgb(51, 29, 138, .3); }
-`;
-
-// export const ThemedButton = () => {
-//   const isLoading = {
-//     icon: <Icon path={mdiLoading}
-//     size={1}
-//     horizontal
-//     vertical
-//     rotate={90}/>,
-//     children: 'Loading'
-//   };
-//   const icon = (<Icon path={mdiLeadPencil}
-//     size={1}
-//     horizontal
-//     vertical
-//     rotate={90}/>)
-//   return (
-//     <Button
-//       StyledContainer={ThemedContainer}
-//       isLoading={boolean('isLoading?', false) ? isLoading : null}
-//       icon={boolean('Icon?', true) ? icon : null}
-//       onClick={action('button-click')}
-//     >
-//       {text('children', 'Edit')}
-//     </Button>
-//   );
-// }
+const design = {
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
+}; 
 
 storiesOf('Button', module)
   .add('Basic Button', () => (
@@ -103,7 +27,7 @@ storiesOf('Button', module)
   >
     {text('children', 'Default text')}
   </Button>
-  ))
+  ), { design })
   .add('Themed Button', () => {
     const isLoading = {
       icon: <Icon path={mdiLoading}
@@ -117,7 +41,23 @@ storiesOf('Button', module)
       size={1}
       horizontal
       vertical
-      rotate={90}/>)
+      rotate={90}/>);
+
+      const ThemedContainer = styled(ButtonContainer)`
+      font-family: Helvetica;
+      font-size: 2em;
+      vertical-align: middle;
+      text-align: center;
+      line-height: .5em;
+      background-color: rgb(51, 29, 138);
+      color: white;
+      width: 10em;
+      height: 2em;
+      border-radius: 2em;
+      &:hover { background-color: rgb(51, 29, 138, .7); }
+      &:active { background-color: rgb(51, 29, 138, .3); }
+    `;
+
     return (
       <Button
         StyledContainer={ThemedContainer}
@@ -128,4 +68,4 @@ storiesOf('Button', module)
         {text('children', 'Edit')}
       </Button>
     );
-  })
+  }, { design })

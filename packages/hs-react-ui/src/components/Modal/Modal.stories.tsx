@@ -5,30 +5,36 @@ import { number, text } from '@storybook/addon-knobs';
 import Button from '../Button';
 import { ButtonContainer } from '../Button';
 import { action } from '@storybook/addon-actions';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { withA11y } from '@storybook/addon-a11y';
+import { withDesign } from 'storybook-addon-designs';
 
-export default {
-  title: 'Modal',
-  component: Modal
-};
+addDecorator(withA11y);
+addDecorator(withDesign);
 
-const Background = styled.div`
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Chicago_cityscape_%285253757001%29.jpg);
-  background-size: cover;
+const design = {
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14'
+}
 
-  height: 100vh;
-  width: 100vw;
-`
+storiesOf('Modal', module)
+  .add('Default', () => {
+    const Background = styled.div`
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Chicago_cityscape_%285253757001%29.jpg);
+    background-size: cover;
 
-const ModalActionText = styled.span`
-  cursor: pointer;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  
-  color: #5A27E7;
-`
+    height: 100vh;
+    width: 100vw;
+  `
 
-export const Basic = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const ModalActionText = styled.span`
+    cursor: pointer;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    
+    color: #5A27E7;
+  `
+    const [isOpen, setIsOpen] = useState(false);
   const ModalFooter = () => (
     <>
       <ModalActionText onClick={() => setIsOpen(false)}>Cancel</ModalActionText>
@@ -57,4 +63,4 @@ export const Basic = () => {
       />}
     </Background>
   );
-};
+  }, { design })
