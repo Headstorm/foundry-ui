@@ -4,6 +4,7 @@
     "declaration": true,
     "incremental": false,
     "noImplicitAny": true,
+    "noUnusedLocals": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "jsx": "react",

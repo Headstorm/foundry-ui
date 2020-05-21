@@ -1,4 +1,4 @@
-import React, {FunctionComponent, ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import Card from '../Card';
 import styled, {StyledComponentBase} from 'styled-components';
 import { Footer, Header } from '../Card/Card';
