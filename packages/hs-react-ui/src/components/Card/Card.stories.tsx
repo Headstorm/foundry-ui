@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
 import Colors from 'src/enums/colors';
-import TimingTypes from 'src/enums/TimingsTypes';
+import TimingTypes from 'src/enums/timings';
 import Card, { Header, Footer } from './Card';
 
 export default {

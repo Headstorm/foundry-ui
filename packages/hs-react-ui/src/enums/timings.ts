@@ -1,4 +1,4 @@
-enum TimingTypes {
+enum timings {
   xFast = '.1s',
   fast = '.2s',
   normal = '.3s',
@@ -6,4 +6,4 @@ enum TimingTypes {
   xSlow = '1s',
 };
 
-export default TimingTypes;
+export default timings;

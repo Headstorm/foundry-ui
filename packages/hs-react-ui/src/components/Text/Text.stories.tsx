@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { color, text, number, boolean, select } from '@storybook/addon-knobs';
 
 import Colors from 'src/enums/colors';
-import TimingTypes from 'src/enums/TimingsTypes';
+import TimingTypes from 'src/enums/timings';
 import Text from './Text';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
