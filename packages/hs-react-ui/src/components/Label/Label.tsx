@@ -13,19 +13,13 @@ export const StyledLabel = styled.label`
   `}
 `;
 
-
 export interface LabelProps {
-  labelText: string,
-  color ?: Colors | string
-};
+  labelText: string;
+  color?: Colors | string;
+}
 
-const Label: FunctionComponent<LabelProps> = ({
-  labelText,
-  color,
-}) => (
-  <StyledLabel color={color}>
-    {labelText}
-  </StyledLabel>
+const Label: FunctionComponent<LabelProps> = ({ labelText, color }) => (
+  <StyledLabel color={color}>{labelText}</StyledLabel>
 );
 
 export default Label;

@@ -1,11 +1,10 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
-
-import { CheckboxTypes } from '../../enums/CheckboxTypes';
-import colors  from '../../enums/colors';
-
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
+
+import { CheckboxTypes } from '../../enums/CheckboxTypes';
+import colors from '../../enums/colors';
 
 export const Input = styled.input.attrs({ type: 'checkbox' })`
   // Hide checkbox visually but remain accessible to screen readers.

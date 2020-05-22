@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import colors  from '../../enums/colors';
-import timings  from '../../enums/timings';
+import colors from '../../enums/colors';
+import timings from '../../enums/timings';
 
 export const CardContainer = styled.div`
   ${({ elevation = 0 }: { elevation: number }) => `

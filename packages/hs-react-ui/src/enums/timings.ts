@@ -4,6 +4,6 @@ enum timings {
   normal = '.3s',
   slow = '.5s',
   xSlow = '1s',
-};
+}
 
 export default timings;

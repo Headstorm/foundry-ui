@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
 import colors from 'src/enums/colors';
-import  timings from 'src/enums/timings';
+import timings from 'src/enums/timings';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../enums/colors';
 import { text } from '@storybook/addon-knobs';
 
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
+import colors from '../../enums/colors';
 import Divider from './Divider';
 
 addDecorator(withA11y);

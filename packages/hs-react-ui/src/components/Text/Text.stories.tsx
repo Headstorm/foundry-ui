@@ -4,9 +4,9 @@ import { color as color2, text, boolean, select } from '@storybook/addon-knobs';
 
 import colors from 'src/enums/colors';
 import timings from 'src/enums/timings';
-import Text from './Text';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
+import Text from './Text';
 
 export default {
   title: 'Text',
