@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import Colors  from '../../enums/Colors';
+import Colors  from '../../enums/colors';
 
 export const DefaultDivider = styled.hr`
   ${({ width = '90%', height = '1px'}: {width: string, height: string}) => `

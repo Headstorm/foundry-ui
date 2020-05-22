@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
-import Colors from '../../enums/Colors';
+import Colors from '../../enums/colors';
 
 import Divider from './Divider';
 

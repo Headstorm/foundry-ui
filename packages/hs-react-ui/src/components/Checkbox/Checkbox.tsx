@@ -3,7 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 
 import { CheckboxTypes } from '../../enums/CheckboxTypes';
-import Colors  from '../../enums/Colors';
+import Colors  from '../../enums/colors';
 
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';

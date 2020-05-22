@@ -2,7 +2,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { withDesign } from 'storybook-addon-designs';
 import { addDecorator, addParameters } from '@storybook/react';
 
-import Colors from '../src/enums/Colors';
+import Colors from '../src/enums/colors';
 
 addParameters({
   backgrounds: [

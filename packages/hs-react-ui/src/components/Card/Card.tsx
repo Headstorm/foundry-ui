@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import Colors  from '../../enums/Colors';
+import Colors  from '../../enums/colors';
 import TimingTypes  from '../../enums/TimingsTypes';
 
 export const CardContainer = styled.div`
