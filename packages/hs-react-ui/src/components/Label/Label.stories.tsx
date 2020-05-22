@@ -18,6 +18,6 @@ const design = {
 storiesOf('Label', module)
   .add(
     'Basic Label',
-    () => <Label labelText={text('labelText', 'This is the label text')} color={select('Color', colors, colors.grayDark )}/>,
+    () => <Label labelText={text('labelText', 'This is the label text')} color={select('Color', colors, colors.grayDark)} />,
     { design },
   );
