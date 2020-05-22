@@ -11,16 +11,19 @@ addDecorator(withA11y);
 addDecorator(withDesign);
 
 const design = {
-    type: 'figma',
-    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A87',
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A87',
 };
 
-storiesOf('Checkbox', module)
-    .add('Default', () => (
-        <Checkbox
-          checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
-          checked={boolean('Checked', false)}
-        >
-        {text('Children', 'The label for the checkbox')}
-        </Checkbox>
-    ), { design });
+storiesOf('Checkbox', module).add(
+  'Default',
+  () => (
+    <Checkbox
+      checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
+      checked={boolean('Checked', false)}
+    >
+      {text('Children', 'The label for the checkbox')}
+    </Checkbox>
+  ),
+  { design },
+);

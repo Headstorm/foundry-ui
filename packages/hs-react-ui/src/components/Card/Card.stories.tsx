@@ -22,18 +22,22 @@ const design = {
 };
 
 storiesOf('Card', module)
-  .add('Default', () => (
-    <Card
-      header={text('header', 'Card title')}
-      footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-      elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
-    >
-    {text(
-      'children',
-      'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
-    )}
-    </Card>
-  ), { design })
+  .add(
+    'Default',
+    () => (
+      <Card
+        header={text('header', 'Card title')}
+        footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
+        elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
+      >
+        {text(
+          'children',
+          'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
+        )}
+      </Card>
+    ),
+    { design },
+  )
   .add('Themed', () => {
     const themeColors = {
       ...colors,
@@ -66,7 +70,7 @@ storiesOf('Card', module)
       line-height: 0;
       font-size: 4rem;
       padding-top: 2.5rem;
-      padding-left: .75rem;
+      padding-left: 0.75rem;
       padding-bottom: 1rem;
       text-transform: unset;
       color: ${themeColors.primary};
@@ -85,7 +89,10 @@ storiesOf('Card', module)
         footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
         elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
       >
-      {text('children', 'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.')}
+        {text(
+          'children',
+          'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
+        )}
       </Card>
     );
   });
