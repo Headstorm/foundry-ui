@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-
 import { CheckboxTypes } from '../../enums/CheckboxTypes';
 import colors from '../../constants/colors';
 
@@ -21,7 +20,7 @@ export const Input = styled.input.attrs({ type: 'checkbox' })`
   position: absolute;
   white-space: nowrap;
   width: 1px;
-`
+`;
 
 export const Label = styled.label`
     display: flex;
@@ -44,7 +43,7 @@ export const Box = styled.div`
     margin-right: 0.5rem;
 `;
 
-export const CheckboxContainer =styled.div`
+export const CheckboxContainer = styled.div`
     display: inline-block;
     vertical-align: middle;
 `;
@@ -83,10 +82,10 @@ const NeutralIcon = styled(StyledIcon)`
 `;
 
 export interface CheckboxProps {
-    StyledLabel?: String & StyledComponentBase<any, {}>,
-    StyledCheckboxContainer?: String & StyledComponentBase<any, {}>,
-    StyledBox?: String & StyledComponentBase<any, {}>,
-    StyledInput?: String & StyledComponentBase<any, {}>,
+    StyledLabel?: string & StyledComponentBase<any, {}>,
+    StyledCheckboxContainer?: string & StyledComponentBase<any, {}>,
+    StyledBox?: string & StyledComponentBase<any, {}>,
+    StyledInput?: string & StyledComponentBase<any, {}>,
 
     checkboxType: CheckboxTypes,
     children: string | Node,
@@ -99,7 +98,7 @@ const iconPaths = {
     [CheckboxTypes.neutral]: mdiMinus,
     [CheckboxTypes.default]: mdiCheckboxBlank,
     [CheckboxTypes.fill]: mdiCheckboxBlank,
-}
+};
 
 export const iconComponents = {
     [CheckboxTypes.check]: CheckIcon,
@@ -107,13 +106,13 @@ export const iconComponents = {
     [CheckboxTypes.neutral]: NeutralIcon,
     [CheckboxTypes.default]: DefaultIcon,
     [CheckboxTypes.fill]: DefaultIcon,
-}
+};
 
 const Checkbox = ({
     StyledLabel = Label,
     StyledCheckboxContainer = CheckboxContainer,
     StyledBox = Box,
-    StyledInput = Input,  
+    StyledInput = Input,
 
     checkboxType = CheckboxTypes.default,
     checked = false,
@@ -121,7 +120,7 @@ const Checkbox = ({
 }: CheckboxProps) => {
     const iconPath = iconPaths[checkboxType];
     const IconComponent = iconComponents[checkboxType];
-    return(   
+    return(
         <StyledLabel>
             <StyledCheckboxContainer>
                 <StyledBox>
@@ -130,7 +129,7 @@ const Checkbox = ({
                 <StyledInput checked={checked}></StyledInput>
             </StyledCheckboxContainer>
             {children}
-        </StyledLabel> 
+        </StyledLabel>
     );
 };
 

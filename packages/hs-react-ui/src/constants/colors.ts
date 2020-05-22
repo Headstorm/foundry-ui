@@ -8,5 +8,5 @@ export default {
   grayXlight: '#d3d6d7',
 
   success: '#698F00',
-  destructive: '#d00'
+  destructive: '#d00',
 };

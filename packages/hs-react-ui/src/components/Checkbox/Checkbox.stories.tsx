@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withDesign } from 'storybook-addon-designs';

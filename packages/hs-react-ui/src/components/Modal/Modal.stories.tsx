@@ -3,7 +3,7 @@ import Modal from './Modal';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
 import Button from '../Button';
-import { ButtonContainer } from '../Button';
+import { ButtonContainer } from '../Button/ButtonContainers';
 import { action } from '@storybook/addon-actions';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';

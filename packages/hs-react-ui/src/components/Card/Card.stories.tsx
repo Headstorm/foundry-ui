@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
+import colors from '../../../src/constants/colors';
+import timings from '../../../src/constants/timings';
 import Card, { Header, Footer } from './Card';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
@@ -13,7 +13,7 @@ addDecorator(withA11y);
 addDecorator(withDesign);
 export default {
   title: 'Card',
-  component: Card
+  component: Card,
 };
 
 const design = {
