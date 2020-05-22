@@ -1,28 +1,28 @@
 import React, { ReactNode } from 'react';
+import styled, { StyledComponentBase } from 'styled-components';
 import Card from '../Card';
-import styled, {StyledComponentBase} from 'styled-components';
 import { Footer, Header } from '../Card/Card';
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
-  StyledContainer?: string & StyledComponentBase<any, {}>,
-  StyledOverlay?: string & StyledComponentBase<any, {}>,
-  StyledHeader?: string & StyledComponentBase<any, {}>,
-  StyledFooter?: string & StyledComponentBase<any, {}>,
-  StyledCloseButton?: string & StyledComponentBase<any, {}>
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledOverlay?: string & StyledComponentBase<any, {}>;
+  StyledHeader?: string & StyledComponentBase<any, {}>;
+  StyledFooter?: string & StyledComponentBase<any, {}>;
+  StyledCloseButton?: string & StyledComponentBase<any, {}>;
 
-  header?: ReactNode
-  body?: ReactNode
-  footer?: ReactNode
+  header?: ReactNode;
+  body?: ReactNode;
+  footer?: ReactNode;
 
-  onClickOutside?: () => void
-  onClose?: () => void
+  onClickOutside?: () => void;
+  onClose?: () => void;
 
-  backgroundBlur?: string,
-  backgroundDarkness?: number
+  backgroundBlur?: string;
+  backgroundDarkness?: number;
 }
 
-const ModalOverlay = styled.div<{ backgroundBlur: string, backgroundDarkness: number }>`
+const ModalOverlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur = '0', backgroundDarkness = 0 }) => `
     height: 100%;
     width: 100%;
@@ -69,18 +69,20 @@ const Modal = ({
   StyledHeader = ModalHeader,
   StyledFooter = ModalFooter,
   StyledCloseButton = ModalCloseButton,
-  onClickOutside = () => {},
-  onClose = () => {},
+  onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   header,
   body,
   footer,
   backgroundBlur,
   backgroundDarkness,
 }: ModalProps) => {
-  const cardHeader = <>
-    <span>{header}</span>
-    <StyledCloseButton onClick={onClose}>&times;</StyledCloseButton>
-  </>;
+  const cardHeader = (
+    <>
+      <span>{header}</span>
+      <StyledCloseButton onClick={onClose}>&times;</StyledCloseButton>
+    </>
+  );
   return (
     <>
       <StyledContainer>

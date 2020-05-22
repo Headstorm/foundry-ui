@@ -13,16 +13,13 @@ export default {
 /* Default */
 
 export const Default = () => (
-  <Divider
-  width={text('width', '90%')}
-  height={text('height', '1px')}
-  />
+  <Divider width={text('width', '90%')} height={text('height', '1px')} />
 );
 
 /* Themed */
 
 const ThemedDivider = styled.hr`
-  ${({ height, width }: { height: string, width: string }) => `
+  ${({ height, width }: { height: string; width: string }) => `
   box-shadow: 10px, 10px, ${colors.primary};
   border: none;
   background: radial-gradient(${colors.primary}, transparent);

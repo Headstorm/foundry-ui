@@ -5,15 +5,15 @@ import Checkbox from './Checkbox';
 import { CheckboxTypes } from '../../enums/CheckboxTypes';
 
 export default {
-    title: 'Checkbox',
-    component: Checkbox,
+  title: 'Checkbox',
+  component: Checkbox,
 };
 
 export const Default = () => (
-    <Checkbox
-        checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
-        checked={boolean("Checked", false)}
-    >
-        {text('Children', 'The label for the checkbox')}
-    </Checkbox>
+  <Checkbox
+    checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
+    checked={boolean('Checked', false)}
+  >
+    {text('Children', 'The label for the checkbox')}
+  </Checkbox>
 );

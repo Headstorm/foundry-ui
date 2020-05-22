@@ -35,30 +35,26 @@ const ThemedContainer = styled(ButtonContainer)`
   font-size: 2em;
   vertical-align: middle;
   text-align: center;
-  line-height: .5em;
+  line-height: 0.5em;
   background-color: rgb(51, 29, 138);
   color: white;
   width: 10em;
   height: 2em;
   border-radius: 2em;
-  &:hover { background-color: rgb(51, 29, 138, .7); }
-  &:active { background-color: rgb(51, 29, 138, .3); }
+  &:hover {
+    background-color: rgb(51, 29, 138, 0.7);
+  }
+  &:active {
+    background-color: rgb(51, 29, 138, 0.3);
+  }
 `;
 
 export const ThemedButton = () => {
   const isLoading = {
-    icon: <Icon path={mdiLoading}
-    size={1}
-    horizontal
-    vertical
-    rotate={90}/>,
+    icon: <Icon path={mdiLoading} size={1} horizontal vertical rotate={90} />,
     children: 'Loading',
   };
-  const icon = (<Icon path={mdiLeadPencil}
-    size={1}
-    horizontal
-    vertical
-    rotate={90}/>)
+  const icon = <Icon path={mdiLeadPencil} size={1} horizontal vertical rotate={90} />;
   return (
     <Button
       StyledContainer={ThemedContainer}
@@ -69,4 +65,4 @@ export const ThemedButton = () => {
       {text('children', 'Edit')}
     </Button>
   );
-}
+};
