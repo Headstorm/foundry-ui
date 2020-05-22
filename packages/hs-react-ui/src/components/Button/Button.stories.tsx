@@ -4,44 +4,50 @@ import { action } from '@storybook/addon-actions';
 import { select, text, boolean, withKnobs } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
 import { mdiLeadPencil, mdiLoading } from '@mdi/js';
-import { ButtonContainers, ButtonContainer } from './ButtonContainers';
-import Button from './Button';
-import { ButtonTypes } from '../../enums/ButtonTypes';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
+import { ButtonContainers, ButtonContainer } from './ButtonContainers';
+import Button from './Button';
+import { ButtonTypes } from '../../enums/ButtonTypes';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
 
 const design = {
   type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2'
-}; 
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+};
 
 storiesOf('Button', module)
   .add('Basic Button', () => (
     <Button
-    StyledContainer={ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]}
-    onClick={action('button-click')}
-  >
+      StyledContainer={ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]}
+      onClick={action('button-click')}
+    >
     {text('children', 'Default text')}
-  </Button>
+    </Button>
   ), { design })
   .add('Themed Button', () => {
     const isLoading = {
-      icon: <Icon path={mdiLoading}
-      size={1}
-      horizontal
-      vertical
-      rotate={90}/>,
-      children: 'Loading'
+      icon: <Icon
+        path={mdiLoading}
+        size={1}
+        horizontal
+        vertical
+        rotate={90}
+      />,
+      children: 'Loading',
     };
-    const icon = (<Icon path={mdiLeadPencil}
-      size={1}
-      horizontal
-      vertical
-      rotate={90}/>);
+    const icon = (
+<Icon
+  path={mdiLeadPencil}
+  size={1}
+  horizontal
+  vertical
+  rotate={90}
+/>
+);
 
       const ThemedContainer = styled(ButtonContainer)`
       font-family: Helvetica;
@@ -68,4 +74,4 @@ storiesOf('Button', module)
         {text('children', 'Edit')}
       </Button>
     );
-  }, { design })
+  }, { design });

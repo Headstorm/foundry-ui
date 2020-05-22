@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import Modal from './Modal';
-import Button from '../Button';
-import { ButtonContainer } from '../Button/ButtonContainers';
-import { action } from '@storybook/addon-actions';
+import { action, action } from '@storybook/addon-actions';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
+import Modal from './Modal';
+import Button from '../Button';
+import { ButtonContainer } from '../Button/ButtonContainers';
+
 
 addDecorator(withA11y);
 addDecorator(withDesign);
 
 const design = {
   type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14'
-}
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14',
+};
 
 storiesOf('Modal', module)
   .add('Default', () => {
@@ -26,7 +26,7 @@ storiesOf('Modal', module)
 
     height: 100vh;
     width: 100vw;
-  `
+  `;
 
   const ModalActionText = styled.span`
     cursor: pointer;
@@ -34,7 +34,7 @@ storiesOf('Modal', module)
     margin-right: 0.5rem;
     
     color: #5A27E7;
-  `
+  `;
     const [isOpen, setIsOpen] = useState(false);
   const ModalFooter = () => (
     <>
@@ -75,4 +75,4 @@ storiesOf('Modal', module)
       )}
     </Background>
   );
-  }, { design })
+  }, { design });
