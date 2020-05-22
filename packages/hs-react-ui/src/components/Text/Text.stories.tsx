@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { color as color2, text, boolean, select } from '@storybook/addon-knobs';
 
-import colors from 'src/enums/colors';
-import timings from 'src/enums/timings';
+import colors from '../../enums/colors';
+import timings from '../../enums/timings';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
 import Text from './Text';
