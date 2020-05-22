@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ButtonTypes } from '../../enums/ButtonTypes';
-import Colors from '../../enums/colors';
 import { darken } from 'polished';
+import { ButtonTypes } from '../../enums/ButtonTypes';
+import colors from '../../enums/colors';
 
 export const ButtonContainer = styled.button`
   display: inline-block;
@@ -18,34 +18,46 @@ export const ButtonContainer = styled.button`
 
   cursor: pointer;
 
-  background-color: ${Colors.grayXlight};
-  color: ${Colors.grayDark};
+  background-color: ${colors.grayXlight};
+  color: ${colors.grayDark};
 `;
 
 export const PrimaryButtonContainer = styled(ButtonContainer)`
-  color: ${Colors.background};
-  background-color: ${Colors.primary};
-  &:hover { background-color: ${darken(.05, Colors.primary)}; }
-  &:active { background-color: ${darken(.1, Colors.primary)}; }
+  color: ${colors.background};
+  background-color: ${colors.primary};
+  &:hover {
+    background-color: ${darken(0.05, colors.primary)};
+  }
+  &:active {
+    background-color: ${darken(0.1, colors.primary)};
+  }
 `;
 
 export const SecondaryButtonContainer = styled(ButtonContainer)`
-  color: ${Colors.background};
-  background-color: ${Colors.grayMedium};
-  &:hover { background-color: ${darken(.05, Colors.grayMedium)}; }
-  &:active { background-color: ${darken(.1, Colors.grayMedium)}; }
+  color: ${colors.background};
+  background-color: ${colors.grayMedium};
+  &:hover {
+    background-color: ${darken(0.05, colors.grayMedium)};
+  }
+  &:active {
+    background-color: ${darken(0.1, colors.grayMedium)};
+  }
 `;
 
 export const DestructiveButtonContainer = styled(ButtonContainer)`
-  color: ${Colors.background};
-  background-color: ${Colors.destructive};
-  &:hover { background-color: ${darken(.05, Colors.destructive)}; }
-  &:active { background-color: ${darken(.1, Colors.destructive)}; }
+  color: ${colors.background};
+  background-color: ${colors.destructive};
+  &:hover {
+    background-color: ${darken(0.05, colors.destructive)};
+  }
+  &:active {
+    background-color: ${darken(0.1, colors.destructive)};
+  }
 `;
 
 export const ButtonContainers = {
-    [ButtonTypes.default]: ButtonContainer,
-    [ButtonTypes.primary]: PrimaryButtonContainer,
-    [ButtonTypes.secondary]: SecondaryButtonContainer,
-    [ButtonTypes.destructive]: DestructiveButtonContainer,
-  };
+  [ButtonTypes.default]: ButtonContainer,
+  [ButtonTypes.primary]: PrimaryButtonContainer,
+  [ButtonTypes.secondary]: SecondaryButtonContainer,
+  [ButtonTypes.destructive]: DestructiveButtonContainer,
+};

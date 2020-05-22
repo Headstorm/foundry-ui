@@ -12,6 +12,6 @@ jobs:
           steps:
             - run: npm run build-react
 workflows:
-    PR-Merge:
-      jobs:
-        - setup-and-test
+  PR-Merge:
+    jobs:
+      - setup-and-test

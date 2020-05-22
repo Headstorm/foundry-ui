@@ -1,8 +1,8 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import Colors  from '../../enums/colors';
-import TimingTypes  from '../../enums/timings';
+import colors  from '../../enums/colors';
+import timings  from '../../enums/timings';
 
 export const CardContainer = styled.div`
   ${({ elevation = 0 }: { elevation: number }) => `
@@ -16,11 +16,12 @@ export const CardContainer = styled.div`
     border-radius: 0.25rem;
     margin: .25rem;
 
-    border: 1px solid ${!elevation ? Colors.grayXlight: 'transparent'};
+    border: 1px solid ${!elevation ? colors.grayXlight : 'transparent'};
 
-    transition: box-shadow ${TimingTypes.slow};
-    box-shadow: 0rem ${elevation * .25}rem ${elevation * .75}rem ${elevation * -.25}rem rgba(0,0,0,${.6 - elevation * .1});
-    background-color: ${Colors.background};
+    transition: box-shadow ${timings.slow};
+    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
+    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
+    background-color: ${colors.background};
   `}
 `;
 
@@ -28,12 +29,12 @@ export const Header = styled.div`
   padding: 1.5rem 1.5rem 0rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: ${Colors.grayDark};
+  color: ${colors.grayDark};
 `;
 
 export const Body = styled.div`
   padding: 1.5rem 1.5rem;
-  color: ${Colors.grayMedium};
+  color: ${colors.grayMedium};
 `;
 
 export const Footer = styled.div`
@@ -44,23 +45,23 @@ export const Footer = styled.div`
   justify-content: flex-end;
   text-align: right;
 
-  color: ${Colors.grayLight};
+  color: ${colors.grayLight};
 
-  border-top: 1px solid ${Colors.grayXlight};
-  border-radius: 0rem 0rem .25rem .25rem;
+  border-top: 1px solid ${colors.grayXlight};
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 `;
 
 export interface CardProps {
-  StyledContainer?: String & StyledComponentBase<any, {}>,
-  StyledHeader?: String & StyledComponentBase<any, {}>,
-  StyledBody?: String & StyledComponentBase<any, {}>,
-  StyledFooter?: String & StyledComponentBase<any, {}>,
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledHeader?: string & StyledComponentBase<any, {}>;
+  StyledBody?: string & StyledComponentBase<any, {}>;
+  StyledFooter?: string & StyledComponentBase<any, {}>;
 
-  header?: ReactNode,
-  children?: ReactNode,
-  footer?: ReactNode,
+  header?: ReactNode;
+  children?: ReactNode;
+  footer?: ReactNode;
 
-  elevation?: Number
+  elevation?: number;
 }
 
 const Card = ({
@@ -68,12 +69,10 @@ const Card = ({
   StyledHeader = Header,
   StyledBody = Body,
   StyledFooter = Footer,
-
   header,
   children,
   footer,
-
-  elevation = 0
+  elevation = 0,
 }: CardProps) => (
   <StyledContainer elevation={elevation}>
     {header && <StyledHeader>{header}</StyledHeader>}
