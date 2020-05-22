@@ -10,7 +10,6 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm run lint-ci
             - run: npm run build-react
 workflows:
   PR-Merge:
