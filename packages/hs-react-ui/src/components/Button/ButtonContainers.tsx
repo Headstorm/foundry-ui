@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { ButtonTypes } from '../../enums/ButtonTypes';
-import colors from '../../constants/colors';
+import colors from '../../enums/colors';
 
 export const ButtonContainer = styled.button`
   display: inline-block;
