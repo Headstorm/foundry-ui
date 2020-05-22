@@ -4,7 +4,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../constants/colors';
 
 export const DefaultDivider = styled.hr`
-  ${({ width = '90%', height = '1px'}: {width: string, height: string}) => `
+  ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `
     border: none;
     height: ${height};
     width: ${width};
@@ -20,10 +20,10 @@ export const DefaultDividerContainer = styled.div`
 `;
 
 export interface DividerProps {
-  StyledDivider?: StyledComponentBase<any, {}>,
-  StyledDividerContainer?: StyledComponentBase<any, {}>,
-  width?: string,
-  height?: string,
+  StyledDivider?: StyledComponentBase<any, {}>;
+  StyledDividerContainer?: StyledComponentBase<any, {}>;
+  width?: string;
+  height?: string;
 }
 
 const Divider = ({
@@ -31,10 +31,10 @@ const Divider = ({
   StyledDividerContainer = DefaultDividerContainer,
   width = '90%',
   height = '1px',
-  }: DividerProps) => (
-    <StyledDividerContainer>
-      <StyledDivider width={width} height={height}/>
-    </StyledDividerContainer>
-  );
+}: DividerProps) => (
+  <StyledDividerContainer>
+    <StyledDivider width={width} height={height} />
+  </StyledDividerContainer>
+);
 
 export default Divider;

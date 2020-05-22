@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Modal from './Modal';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import Modal from './Modal';
 import Button from '../Button';
 import { ButtonContainer } from '../Button/ButtonContainers';
 import { action } from '@storybook/addon-actions';
@@ -44,23 +45,34 @@ storiesOf('Modal', module)
 
   return (
     <Background>
-      {!isOpen && <Button
-        StyledContainer={ButtonContainer}
-        onClick={() => setIsOpen(true)}
-      >Toggle modal</Button>}
-      {isOpen && <Modal
-        header={text('header', 'Title')}
-        body={text('body', 'Wait! You need to see this important information!')}
-        footer={<ModalFooter />}
-
-        backgroundDarkness={number('backgroundDarkness', 10, { range: true, min: 0, max: 100, step: 1 })}
-        backgroundBlur={`${number('backgroundBlur', 1, { range: true, min: 0, max: 5, step: 0.1})}rem`}
-
-        onClose={() => {
-          setIsOpen(false);
-          action('click')();
-        }}
-      />}
+      {!isOpen && (
+        <Button StyledContainer={ButtonContainer} onClick={() => setIsOpen(true)}>
+          Toggle modal
+        </Button>
+      )}
+      {isOpen && (
+        <Modal
+          header={text('header', 'Title')}
+          body={text('body', 'Wait! You need to see this important information!')}
+          footer={<ModalFooter />}
+          backgroundDarkness={number('backgroundDarkness', 10, {
+            range: true,
+            min: 0,
+            max: 100,
+            step: 1,
+          })}
+          backgroundBlur={`${number('backgroundBlur', 1, {
+            range: true,
+            min: 0,
+            max: 5,
+            step: 0.1,
+          })}rem`}
+          onClose={() => {
+            setIsOpen(false);
+            action('click')();
+          }}
+        />
+      )}
     </Background>
   );
   }, { design })

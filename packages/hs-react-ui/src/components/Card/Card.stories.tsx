@@ -28,7 +28,10 @@ storiesOf('Card', module)
     footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
     elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
   >
-    {text('children', 'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.')}
+    {text(
+      'children',
+      'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
+    )}
   </Card>
   ), { design })
   .add('Themed', () => {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 import { ButtonTypes } from '../../enums/ButtonTypes';
 import colors from '../../constants/colors';
-import { darken } from 'polished';
 
 export const ButtonContainer = styled.button`
   display: inline-block;
@@ -25,27 +25,39 @@ export const ButtonContainer = styled.button`
 export const PrimaryButtonContainer = styled(ButtonContainer)`
   color: ${colors.background};
   background-color: ${colors.primary};
-  &:hover { background-color: ${darken(.05, colors.primary)}; }
-  &:active { background-color: ${darken(.1, colors.primary)}; }
+  &:hover {
+    background-color: ${darken(0.05, colors.primary)};
+  }
+  &:active {
+    background-color: ${darken(0.1, colors.primary)};
+  }
 `;
 
 export const SecondaryButtonContainer = styled(ButtonContainer)`
   color: ${colors.background};
   background-color: ${colors.grayMedium};
-  &:hover { background-color: ${darken(.05, colors.grayMedium)}; }
-  &:active { background-color: ${darken(.1, colors.grayMedium)}; }
+  &:hover {
+    background-color: ${darken(0.05, colors.grayMedium)};
+  }
+  &:active {
+    background-color: ${darken(0.1, colors.grayMedium)};
+  }
 `;
 
 export const DestructiveButtonContainer = styled(ButtonContainer)`
   color: ${colors.background};
   background-color: ${colors.destructive};
-  &:hover { background-color: ${darken(.05, colors.destructive)}; }
-  &:active { background-color: ${darken(.1, colors.destructive)}; }
+  &:hover {
+    background-color: ${darken(0.05, colors.destructive)};
+  }
+  &:active {
+    background-color: ${darken(0.1, colors.destructive)};
+  }
 `;
 
 export const ButtonContainers = {
-    [ButtonTypes.default]: ButtonContainer,
-    [ButtonTypes.primary]: PrimaryButtonContainer,
-    [ButtonTypes.secondary]: SecondaryButtonContainer,
-    [ButtonTypes.destructive]: DestructiveButtonContainer,
-  };
+  [ButtonTypes.default]: ButtonContainer,
+  [ButtonTypes.primary]: PrimaryButtonContainer,
+  [ButtonTypes.secondary]: SecondaryButtonContainer,
+  [ButtonTypes.destructive]: DestructiveButtonContainer,
+};

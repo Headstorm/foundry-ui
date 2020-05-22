@@ -19,7 +19,8 @@ export const CardContainer = styled.div`
     border: 1px solid ${!elevation ? colors.grayXlight : 'transparent'};
 
     transition: box-shadow ${timings.slow};
-    box-shadow: 0rem ${elevation * .25}rem ${elevation * .75}rem ${elevation * -.25}rem rgba(0,0,0,${.6 - elevation * .1});
+    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
+    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
     background-color: ${colors.background};
   `}
 `;
@@ -47,20 +48,20 @@ export const Footer = styled.div`
   color: ${colors.grayLight};
 
   border-top: 1px solid ${colors.grayXlight};
-  border-radius: 0rem 0rem .25rem .25rem;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 `;
 
 export interface CardProps {
-  StyledContainer?: string & StyledComponentBase<any, {}>,
-  StyledHeader?: string & StyledComponentBase<any, {}>,
-  StyledBody?: string & StyledComponentBase<any, {}>,
-  StyledFooter?: string & StyledComponentBase<any, {}>,
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledHeader?: string & StyledComponentBase<any, {}>;
+  StyledBody?: string & StyledComponentBase<any, {}>;
+  StyledFooter?: string & StyledComponentBase<any, {}>;
 
-  header?: ReactNode,
-  children?: ReactNode,
-  footer?: ReactNode,
+  header?: ReactNode;
+  children?: ReactNode;
+  footer?: ReactNode;
 
-  elevation?: number
+  elevation?: number;
 }
 
 const Card = ({
