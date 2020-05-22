@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks'],
   rules: {
+    'import/no-extraneous-dependencies': 1,
     '@typescript-eslint/ban-types': 1, // StyledComponentBase<any, {}> failed every time
     'react/jsx-filename-extension': 0, // didn't like jsx in tsx lol
     'import/no-unresolved': 1,

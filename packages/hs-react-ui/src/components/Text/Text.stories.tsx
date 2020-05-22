@@ -48,7 +48,7 @@ const ThemedContainer = styled.div`
 export const Default = () => (
   <Text
     size={text('size', '1rem')}
-    color={color2('color', colors.grayXlight)}
+    color={color2('color', colors.grayDark)}
     iconPrefix={select('iconPrefix', options, options.mdiComment)}
     iconSuffix={select('iconSuffix', options, options.mdiComment)}
     isProcessing={boolean('isProcessing', false)}

@@ -1,6 +1,6 @@
 {
   "name": "@headstorm/hs-react-ui",
-  "version": "0.0.11",
+  "version": "0.0.9",
   "description": "Robust UI library written in React. It's DRY, with CSS in JS; stirred, not shaken.",
   "author": "Headstorm LLC",
   "homepage": "http://headstorm.com",
@@ -94,7 +94,7 @@
     "start": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -c .storybook -o ../../docs",
     "lint": "eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --fix",
-    "lint-ci": "npm run prettier:check && eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --quiet",
+    "lint-ci": "npm run prettier:write && eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --quiet",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
     "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
