@@ -15,13 +15,13 @@ const colors = {
 export default create({
   base: 'dark',
 
-  colorPrimary: colors.primary,
-  colorSecondary: colors.grayLight,
+  colorPrimary: Colors.primary,
+  colorSecondary: Colors.grayLight,
 
   // UI
-  appBg: colors.grayDark,
-  appContentBg: colors.grayMedium,
-  appBorderColor: colors.grayMedium,
+  appBg: Colors.grayDark,
+  appContentBg: Colors.grayMedium,
+  appBorderColor: Colors.grayMedium,
   appBorderRadius: 4,
 
   // Typography
@@ -29,18 +29,18 @@ export default create({
   fontCode: 'monospace',
 
   // Text colors
-  textColor: colors.background,
-  textInverseColor: colors.primary,
+  textColor: Colors.background,
+  textInverseColor: Colors.primary,
 
   // Toolbar default and active colors
-  barTextColor: colors.grayLight,
-  barSelectedColor: colors.background,
-  barBg: colors.grayDark,
+  barTextColor: Colors.grayLight,
+  barSelectedColor: Colors.background,
+  barBg: Colors.grayDark,
 
   // Form colors
-  inputBg: colors.grayXlight,
-  inputBorder: colors.grayXlight,
-  inputTextColor: colors.grayDark,
+  inputBg: Colors.grayXlight,
+  inputBorder: Colors.grayXlight,
+  inputTextColor: Colors.grayDark,
   inputBorderRadius: 4,
 
   brandTitle: 'Headstorm UI',
