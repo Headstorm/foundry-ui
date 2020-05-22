@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import Colors from '../../enums/colors';
+import colors from '../../enums/colors';
 
 export const StyledLabel = styled.label`
-  ${({ color = Colors.grayDark }: { color: Colors | string }) => `
+  ${({ color = colors.grayDark }: { color: colors | string }) => `
     display: block;
     color: ${color};
     text-transform: uppercase;
@@ -15,10 +15,10 @@ export const StyledLabel = styled.label`
 
 export interface LabelProps {
   labelText: string;
-  color?: Colors | string;
+  color?: colors | string;
 }
 
-const Label: FunctionComponent<LabelProps> = ({ labelText, color }) => (
+const Label = ({ labelText, color = colors.grayDark }: LabelProps) => (
   <StyledLabel color={color}>{labelText}</StyledLabel>
 );
 
