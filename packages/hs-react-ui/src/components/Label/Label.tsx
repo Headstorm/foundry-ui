@@ -8,8 +8,8 @@ export const StyledLabel = styled.label`
     display: block;
     color: ${color};
     text-transform: uppercase;
-    margin-bottom: .25rem;
-    font-size: .75rem;
+    margin-bottom: .25em;
+    font-size: .75em;
   `}
 `;
 
