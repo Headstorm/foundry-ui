@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';
@@ -24,6 +24,7 @@ export const Input = styled.input.attrs({ type: 'checkbox' })`
 export const Label = styled.label`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   ${Input}:focus + & {
     box-shadow: 0 0 0 3px ${colors.grayXlight};
@@ -86,9 +87,10 @@ export interface CheckboxProps {
   StyledBox?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
 
-  checkboxType: CheckboxTypes;
-  children: string | Node;
-  checked: boolean;
+  checkboxType?: CheckboxTypes;
+  children?: string | Node;
+  checked?: boolean;
+  onClick: (event: SyntheticEvent) => void;
 }
 
 const iconPaths = {
@@ -116,6 +118,8 @@ const Checkbox = ({
   checkboxType = CheckboxTypes.default,
   checked = false,
   children,
+
+  onClick,
 }: CheckboxProps) => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = iconComponents[checkboxType];
@@ -123,7 +127,7 @@ const Checkbox = ({
     <StyledLabel>
       <StyledCheckboxContainer>
         <StyledBox>{checked ? <IconComponent path={iconPath} /> : null}</StyledBox>
-        <StyledInput checked={checked} />
+        <StyledInput onClick={onClick} checked={checked} />
       </StyledCheckboxContainer>
       {children}
     </StyledLabel>
