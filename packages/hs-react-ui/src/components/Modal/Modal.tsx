@@ -1,15 +1,15 @@
-import React, {FunctionComponent, ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import Card from '../Card';
 import styled, {StyledComponentBase} from 'styled-components';
 import { Footer, Header } from '../Card/Card';
 
 export interface ModalProps {
-  // TODO: Make String & StyledComponentBase<> its own type, also see about not using `any`
-  StyledContainer?: String & StyledComponentBase<any, {}>,
-  StyledOverlay?: String & StyledComponentBase<any, {}>,
-  StyledHeader?: String & StyledComponentBase<any, {}>,
-  StyledFooter?: String & StyledComponentBase<any, {}>,
-  StyledCloseButton?: String & StyledComponentBase<any, {}>
+  // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
+  StyledContainer?: string & StyledComponentBase<any, {}>,
+  StyledOverlay?: string & StyledComponentBase<any, {}>,
+  StyledHeader?: string & StyledComponentBase<any, {}>,
+  StyledFooter?: string & StyledComponentBase<any, {}>,
+  StyledCloseButton?: string & StyledComponentBase<any, {}>
 
   header?: ReactNode
   body?: ReactNode
@@ -26,42 +26,42 @@ const ModalOverlay = styled.div<{ backgroundBlur: string, backgroundDarkness: nu
   ${({ backgroundBlur = '0', backgroundDarkness = 0 }) => `
     height: 100%;
     width: 100%;
-    
+
     position: fixed;
     top: 0;
     left: 0;
-    
+
     z-index: 1000;
-    
-    backdrop-filter: blur(${backgroundBlur}) opacity(${1-backgroundDarkness/100});
+
+    backdrop-filter: blur(${backgroundBlur}) opacity(${1 - backgroundDarkness / 100});
   `}
-`
+`;
 
 const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+
   z-index: 1010;
-`
+`;
 
 const ModalHeader = styled(Header)`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const ModalFooter = styled(Footer)`
   display: flex;
   justify-content: flex-end;
-`
+`;
 
 const ModalCloseButton = styled.span`
   font-size: 1.3rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   cursor: pointer;
-`
+`;
 
 const Modal = ({
   StyledContainer = ModalContainer,
@@ -69,21 +69,18 @@ const Modal = ({
   StyledHeader = ModalHeader,
   StyledFooter = ModalFooter,
   StyledCloseButton = ModalCloseButton,
-
-  onClickOutside= () => {},
+  onClickOutside = () => {},
   onClose = () => {},
-
   header,
   body,
   footer,
-
   backgroundBlur,
-  backgroundDarkness
+  backgroundDarkness,
 }: ModalProps) => {
   const cardHeader = <>
     <span>{header}</span>
     <StyledCloseButton onClick={onClose}>&times;</StyledCloseButton>
-  </>
+  </>;
   return (
     <>
       <StyledContainer>
@@ -104,6 +101,6 @@ const Modal = ({
       />
     </>
   );
-}
+};
 
 export default Modal;

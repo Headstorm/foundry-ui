@@ -19,8 +19,8 @@ export interface TextProps {
   color?: string,
   iconPrefix?: string | JSX.Element,
   iconSuffix?: string | JSX.Element,
-  isLoading?: Boolean,
-  isProcessing?: Boolean,
+  isLoading?: boolean,
+  isProcessing?: boolean,
   size?: string
   StyledContainer?: string & StyledComponentBase<any, {}>,
 }
@@ -57,7 +57,6 @@ const LeftIconContainer = styled.div`
   margin-right: .25rem;
 `;
 
-
 const RightIconContainer = styled.div`
   display: inline-flex;
   margin-left: .25rem;
@@ -83,7 +82,8 @@ const Text = ({
 
     {!isLoading && iconSuffix &&
       (typeof iconSuffix === 'string' ?
-      <RightIconContainer><Icon path={iconSuffix} size={size}/></RightIconContainer> : <RightIconContainer>{iconSuffix}</RightIconContainer>)}
+      <RightIconContainer><Icon path={iconSuffix} size={size}/></RightIconContainer> :
+      <RightIconContainer>{iconSuffix}</RightIconContainer>)}
   </StyledContainer>
 );
 

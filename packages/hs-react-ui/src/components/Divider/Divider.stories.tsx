@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { text, number } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 import colors from '../../constants/colors';
 
 import Divider from './Divider';
 
 export default {
   title: 'Divider',
-  component: Divider
+  component: Divider,
 };
 
 /* Default */
 
 export const Default = () => (
-  <Divider 
+  <Divider
   width={text('width', '90%')}
   height={text('height', '1px')}
   />
@@ -32,7 +32,7 @@ const ThemedDivider = styled.hr`
 `;
 
 export const Themed = () => (
-  <Divider 
+  <Divider
     StyledDivider={ThemedDivider}
     width={text('width', '90%')}
     height={text('height', '2px')}

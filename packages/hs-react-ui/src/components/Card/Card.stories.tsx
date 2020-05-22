@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
+import colors from '../../../src/constants/colors';
+import timings from '../../../src/constants/timings';
 import Card, { Header, Footer } from './Card';
 
 export default {
   title: 'Card',
-  component: Card
+  component: Card,
 };
 
 /* Default */
@@ -28,7 +28,7 @@ export const Default = () => (
 const themeColors = {
   ...colors,
   background: 'beige',
-  primary: 'purple'
+  primary: 'purple',
 };
 
 const themeTimings = {
