@@ -4,7 +4,7 @@ import useResizeObserver from 'use-resize-observer';
 import Icon from '@mdi/react';
 import { mdiArrowDown } from '@mdi/js';
 
-import colors from '../../constants/colors';
+import colors from '../../enums/colors';
 
 export type TableProps = {
   columnGap?: string;

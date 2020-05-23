@@ -8,7 +8,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
 
-import colors from '../../constants/colors';
+import colors from '../../enums/colors';
 import Table, { Row, Cell } from './Table';
 import Checkbox from '../Checkbox';
 
