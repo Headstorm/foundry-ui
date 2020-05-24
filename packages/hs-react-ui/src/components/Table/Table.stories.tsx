@@ -8,8 +8,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
 
-import colors from '../../enums/colors';
-import Table, { Row, Cell } from './Table';
+import Table, { Cell } from './Table';
 import Checkbox from '../Checkbox';
 
 addDecorator(withA11y);
@@ -19,14 +18,6 @@ const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/u6xQ3W5NYB1d2zLeRCYwva/ARM?node-id=322%3A8318',
 };
-
-const GroupRow = styled(Row)`
-  background-color: ${colors.grayLight};
-  color: ${colors.background};
-  margin: 0.5rem;
-  padding: 0 1.5rem;
-  border-radius: 0.5rem;
-`;
 
 const ActionCellContainer = styled(Cell)`
   cursor: pointer;

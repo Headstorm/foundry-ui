@@ -6,11 +6,20 @@ import { mdiArrowDown } from '@mdi/js';
 
 import colors from '../../enums/colors';
 
+export interface columnTypes {
+  any: {
+    name: string;
+    width: string;
+    sortable?: boolean;
+    cellComponent?: any;
+  };
+}
+
 export type TableProps = {
   columnGap?: string;
   defaultSort?: [string, boolean]; // key, direction
-  data?: object[][];
-  columns: { name: string; width: string; sortable?: boolean }[];
+  data?: object;
+  columns: columnTypes;
 
   minWidthBreakpoint: number;
 
@@ -32,7 +41,7 @@ export const TableContainer = styled.table`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
     width: ${reachedMinWidth ? '100%' : 'auto'};
     font-family: Montserrat;
-    background-color: white;
+    background-color: ${colors.background};
     border-collapse: collapse;
 
     border-radius: 8px;
