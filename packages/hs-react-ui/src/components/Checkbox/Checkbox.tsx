@@ -3,12 +3,19 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
-import { CheckboxTypes } from '../../enums/CheckboxTypes';
 import colors from '../../enums/colors';
 
+export enum CheckboxTypes {
+  fill = 'fill',
+  cross = 'cross',
+  check = 'check',
+  default = 'default',
+  neutral = 'neutral',
+}
+
+// Hide checkbox visually but remain accessible to screen readers.
+// Source: https://polished.js.org/docs/#hidevisually
 export const Input = styled.input.attrs({ type: 'checkbox' })`
-  // Hide checkbox visually but remain accessible to screen readers.
-  // Source: https://polished.js.org/docs/#hidevisually
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);

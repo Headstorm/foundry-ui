@@ -4,6 +4,13 @@ import { ButtonContainer } from './ButtonContainers';
 
 const Text = styled.span``;
 
+export enum ButtonTypes {
+  primary = 'primary',
+  secondary = 'secondary',
+  default = 'default',
+  destructive = 'destructive',
+}
+
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   icon?: any;
