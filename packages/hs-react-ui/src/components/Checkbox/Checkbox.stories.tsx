@@ -20,13 +20,14 @@ storiesOf('Checkbox', module).add(
     const [checked, setChecked] = useState(boolean('Checked', false));
 
     return (
-    <Checkbox
-      checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
-      checked={checked}
-      onClick={(() => setChecked(!checked))}
-    >
-      {text('Children', 'The label for the checkbox')}
-    </Checkbox>
-  )},
+      <Checkbox
+        checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
+        checked={checked}
+        onClick={() => setChecked(!checked)}
+      >
+        {text('Children', 'The label for the checkbox')}
+      </Checkbox>
+    );
+  },
   { design },
 );

@@ -202,10 +202,11 @@ export default ({
       {width > minWidthBreakpoint && (
         <StyledHeader columnGap={columnGap} columnWidths={columnWidths}>
           {Object.keys(columns).map((headerColumnKey: string) => {
-            const RenderedHeaderCell =              columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
+            const RenderedHeaderCell =
+              columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
             return (
-              (!columns[headerColumnKey].minTableWidth
-                || width > columns[headerColumnKey].minTableWidth) && (
+              (!columns[headerColumnKey].minTableWidth ||
+                width > columns[headerColumnKey].minTableWidth) && (
                 <RenderedHeaderCell
                   key={headerColumnKey}
                   onClick={() => {
@@ -240,8 +241,8 @@ export default ({
             {Object.keys(columns).map(headerColumnKey => {
               const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
               return (
-                (!columns[headerColumnKey].minTableWidth
-                  || width > columns[headerColumnKey].minTableWidth) && (
+                (!columns[headerColumnKey].minTableWidth ||
+                  width > columns[headerColumnKey].minTableWidth) && (
                   <RenderedCell
                     // all cells should have full access to all the data in the row
                     {...row} // eslint-disable-line react/jsx-props-no-spreading
