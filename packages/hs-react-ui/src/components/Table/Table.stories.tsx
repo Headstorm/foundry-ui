@@ -8,7 +8,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
 
-import Table, { Cell } from './Table';
+import Table, { Cell, RowProps } from './Table';
 import Checkbox from '../Checkbox';
 
 addDecorator(withA11y);
@@ -40,7 +40,6 @@ const generateSampleData = (rows: number) => {
 
   for (let i = 0; i < rows; i += 1) {
     finalData.push({
-      key: Math.random() * 10,
       name: name.findName(),
       title: name.title(),
       address: address.streetAddress(),
@@ -64,27 +63,43 @@ storiesOf('Table', module).add(
       setRows(newRows);
     };
 
+    const onSelect = (index, selected) => {
+      const newRows = [...rows];
+      newRows[index].selected = !selected;
+      setRows(newRows);
+    };
+
+    const selectAll = (evt: SyntheticEvent) => {
+      const currentlyChecked = evt.target.checked;
+      const newRows = rows.map((row: RowProps) => ({ ...row, selected: currentlyChecked }));
+      setRows(newRows);
+    };
+
+    const SelectAllCell = () => (
+      <Checkbox
+        checkboxType={
+          rows.filter(row => row.hasOwnProperty('selected') && row.selected).length === rows.length
+            ? 'check'
+            : 'neutral'
+        }
+        checked={Boolean(rows.filter(row => row.hasOwnProperty('selected') && row.selected).length)}
+        onClick={selectAll}
+      />
+    );
+
     const SelectionCell = ({ index, selected, reachedMinWidth }) => (
-      <Cell
-        onClick={() => {
-          const newRows = [...rows];
-          newRows[index].selected = !selected;
-          setRows(newRows);
-        }}
-      >
-        <Checkbox checked={selected}>{reachedMinWidth ? 'Select for download' : ''}</Checkbox>
+      <Cell onClick={() => onSelect(index, selected)}>
+        <Checkbox checkboxType="check" checked={selected}>
+          {reachedMinWidth ? 'Select for download' : ''}
+        </Checkbox>
       </Cell>
     );
 
-    const NotesCell = ({ notes }: { notes: string }) => {
-      console.log(notes);
-
-      return (
-        <Cell>
-          <NoteField rows="3" value={notes} />
-        </Cell>
-      );
-    };
+    const NotesCell = ({ notes }: { notes: string }) => (
+      <Cell>
+        <NoteField rows="3" value={notes} />
+      </Cell>
+    );
 
     const ActionCell = ({ index, reachedMinWidth }) => (
       <ActionCellContainer
@@ -100,7 +115,8 @@ storiesOf('Table', module).add(
 
     const sampleColumns = {
       selection: {
-        name: <Checkbox />,
+        name: '',
+        headerCellComponent: SelectAllCell,
         width: text('Selection width', '2rem'),
         cellComponent: SelectionCell,
         sortable: false,
@@ -121,8 +137,8 @@ storiesOf('Table', module).add(
         name: 'Notes',
         width: text('Notes width', '12rem'),
         cellComponent: NotesCell,
-        // minTableWidth: 800,
-        sortFunction: (a, b) => a.length > b.length,
+        minTableWidth: 800,
+        sortFunction: (a, b) => (a.length > b.length ? -1 : 1),
       },
       action: {
         name: '',

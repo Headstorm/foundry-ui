@@ -147,8 +147,9 @@ const SortIcon = styled(Icon)`
   `}
 `;
 
-// TODO: Finish figuring out media query per column based on table width
-// TODO: Finish custom sort by column
+// TODO: Add the table width observer to a container which fills the area, so the table can grow
+//   once there is enough room for it to do so (if the table itself isn't full width)
+// TODO: Add window media query
 
 export default ({
   columnGap = '1rem',
@@ -167,14 +168,14 @@ export default ({
   const [sortedData, sortData] = useState(data);
   const [sortMethod, setSortMethod] = useState(defaultSort);
 
-  const { ref, width } = useResizeObserver();
+  const { ref, width = Infinity } = useResizeObserver();
 
   // this builds the string from the columns
   const columnWidths = Object.values(columns)
     .map((col: { width: string }) => {
-      /* if (!col.minTableWidth || width > col.minTableWidth) {
+      if (col.minTableWidth && width <= col.minTableWidth) {
         return '0px';
-      } */
+      }
       return col.width || '1fr';
     })
     .join(' ');
@@ -196,15 +197,19 @@ export default ({
     onSort(sortMethod[0], sortMethod[1]);
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  console.log('render');
+
   return (
     <StyledContainer ref={ref} reachedMinWidth={width < minWidthBreakpoint}>
       {width > minWidthBreakpoint && (
         <StyledHeader columnGap={columnGap} columnWidths={columnWidths}>
-          {Object.keys(columns).map(
-            (headerColumnKey: string) =>
+          {Object.keys(columns).map((headerColumnKey: string) => {
+            const RenderedHeaderCell =
+              columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
+            return (
               (!columns[headerColumnKey].minTableWidth ||
                 width > columns[headerColumnKey].minTableWidth) && (
-                <StyledHeaderCell
+                <RenderedHeaderCell
                   key={headerColumnKey}
                   onClick={() => {
                     onSort(
@@ -219,9 +224,10 @@ export default ({
                     direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
                     path={mdiArrowDown}
                   />
-                </StyledHeaderCell>
-              ),
-          )}
+                </RenderedHeaderCell>
+              )
+            );
+          })}
         </StyledHeader>
       )}
       {sortedData.map((row: object[], index: number) => {
@@ -231,7 +237,7 @@ export default ({
             columnGap={columnGap}
             columnWidths={columnWidths}
             rowNum={index}
-            key={`row${index}`}
+            key={`row${JSON.stringify(row)}`}
             reachedMinWidth={width < minWidthBreakpoint}
           >
             {Object.keys(columns).map(headerColumnKey => {
@@ -240,10 +246,11 @@ export default ({
                 (!columns[headerColumnKey].minTableWidth ||
                   width > columns[headerColumnKey].minTableWidth) && (
                   <RenderedCell
-                    reachedMinWidth={width < minWidthBreakpoint}
+                    // all cells should have full access to all the data in the row
+                    {...row} // eslint-disable-line react/jsx-props-no-spreading
                     index={index}
-                    key={headerColumnKey}
-                    {...row}
+                    reachedMinWidth={width < minWidthBreakpoint}
+                    key={`${headerColumnKey}${index}`}
                   >
                     {width < minWidthBreakpoint && (
                       <ResponsiveTitle
