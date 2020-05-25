@@ -127,13 +127,11 @@ export const Row = styled.tr`
 `;
 
 export const Cell = styled.td`
-  ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
-    display: block;
-    padding: 1rem 0rem;
-    word-break: break-word;
-    hyphens: auto;
-    width: unset;
-  `}
+  display: block;
+  padding: 1rem 0rem;
+  word-break: break-word;
+  hyphens: auto;
+  width: unset;
 `;
 
 const SortIcon = styled(Icon)`
@@ -183,7 +181,7 @@ export default ({
   const onSort = (key: string, newDirection: boolean) => {
     sortData(
       data.sort((a: any, b: any) => {
-        if (columns[key] && columns[key].hasOwnProperty('sortFunction')) {
+        if (columns[key] && Object.prototype.hasOwnProperty.call(columns[key], 'sortFunction')) {
           return columns[key].sortFunction(a[key], b[key]) ? -1 : 1;
         }
         const comparison = newDirection ? a[key] < b[key] : a[key] > b[key];

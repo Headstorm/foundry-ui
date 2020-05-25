@@ -78,11 +78,15 @@ storiesOf('Table', module).add(
     const SelectAllCell = () => (
       <Checkbox
         checkboxType={
-          rows.filter(row => row.hasOwnProperty('selected') && row.selected).length === rows.length
+          rows.filter(row => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
+            .length === rows.length
             ? 'check'
             : 'neutral'
         }
-        checked={Boolean(rows.filter(row => row.hasOwnProperty('selected') && row.selected).length)}
+        checked={Boolean(
+          rows.filter(row => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
+            .length,
+        )}
         onClick={selectAll}
       />
     );
