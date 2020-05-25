@@ -7,21 +7,26 @@ import { mdiArrowDown } from '@mdi/js';
 import colors from '../../enums/colors';
 
 export interface columnTypes {
-  any: {
-    name: string;
-    width: string;
+  [index: string]: {
+    name?: string;
+    width?: string;
+    minTableWidth?: number;
     sortable?: boolean;
+    sortFunction?: Function;
+
     cellComponent?: any;
+    rowComponent?: any;
+    headerCellComponent?: any;
   };
 }
 
 export type TableProps = {
   columnGap?: string;
   defaultSort?: [string, boolean]; // key, direction
-  data?: object;
+  data?: columnTypes[];
   columns: columnTypes;
 
-  minWidthBreakpoint: number;
+  minWidthBreakpoint?: number;
 
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
@@ -170,7 +175,7 @@ export default ({
 
   // this builds the string from the columns
   const columnWidths = Object.values(columns)
-    .map((col: { width: string }) => {
+    .map((col: columnTypes) => {
       if (col.minTableWidth && width <= col.minTableWidth) {
         return '0px';
       }
@@ -194,8 +199,6 @@ export default ({
   useEffect(() => {
     onSort(sortMethod[0], sortMethod[1]);
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  console.log('render');
 
   return (
     <StyledContainer ref={ref} reachedMinWidth={width < minWidthBreakpoint}>
@@ -228,9 +231,11 @@ export default ({
           })}
         </StyledHeader>
       )}
-      {sortedData.map((row: object[], index: number) => {
+      {sortedData.map((row: columnTypes, index: number) => {
+        // map over the rows
         const RenderedRow = row.rowComponent || StyledRow;
         return (
+          // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
           <RenderedRow
             columnGap={columnGap}
             columnWidths={columnWidths}

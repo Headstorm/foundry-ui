@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
@@ -8,8 +8,8 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
 
-import Table, { Cell, RowProps } from './Table';
-import Checkbox from '../Checkbox';
+import Table, { Cell, RowProps, columnTypes } from './Table';
+import Checkbox, { CheckboxTypes } from '../Checkbox/CheckBox';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -50,7 +50,7 @@ const generateSampleData = (rows: number) => {
   return finalData;
 };
 
-const sampleData = generateSampleData(10);
+const sampleData: any[] = generateSampleData(10);
 
 storiesOf('Table', module).add(
   'Default',
@@ -58,13 +58,13 @@ storiesOf('Table', module).add(
     const [rows, setRows] = useState(sampleData);
 
     const onDelete = (index: number) => {
-      const newRows = [...rows];
+      const newRows = {...rows};
       newRows.splice(index, 1);
       setRows(newRows);
     };
 
-    const onSelect = (index, selected) => {
-      const newRows = [...rows];
+    const onSelect = (index: number, selected: boolean) => {
+      const newRows = {...rows};
       newRows[index].selected = !selected;
       setRows(newRows);
     };
@@ -78,22 +78,22 @@ storiesOf('Table', module).add(
     const SelectAllCell = () => (
       <Checkbox
         checkboxType={
-          rows.filter(row => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
+          rows.filter((row: columnTypes) => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
             .length === rows.length
-            ? 'check'
-            : 'neutral'
+            ? CheckboxTypes.check
+            : CheckboxTypes.neutral
         }
         checked={Boolean(
-          rows.filter(row => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
+          rows.filter((row: columnTypes) => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
             .length,
         )}
         onClick={selectAll}
       />
     );
 
-    const SelectionCell = ({ index, selected, reachedMinWidth }) => (
-      <Cell onClick={() => onSelect(index, selected)}>
-        <Checkbox checkboxType="check" checked={selected}>
+    const SelectionCell = ({ index, selected, reachedMinWidth }: { index: number, selected: boolean, reachedMinWidth: boolean }) => (
+      <Cell>
+        <Checkbox onClick={() => onSelect(index, selected)} checkboxType={CheckboxTypes.check} checked={selected}>
           {reachedMinWidth ? 'Select for download' : ''}
         </Checkbox>
       </Cell>
@@ -101,11 +101,11 @@ storiesOf('Table', module).add(
 
     const NotesCell = ({ notes }: { notes: string }) => (
       <Cell>
-        <NoteField rows="3" value={notes} />
+        <NoteField rows={3} value={notes} />
       </Cell>
     );
 
-    const ActionCell = ({ index, reachedMinWidth }) => (
+    const ActionCell = ({ index, reachedMinWidth }: { index: number, reachedMinWidth: boolean }) => (
       <ActionCellContainer
         onClick={() => {
           onDelete(index);
@@ -117,7 +117,7 @@ storiesOf('Table', module).add(
       </ActionCellContainer>
     );
 
-    const sampleColumns = {
+    const sampleColumns: { [index: string]: any } = {
       selection: {
         name: '',
         headerCellComponent: SelectAllCell,
@@ -142,7 +142,7 @@ storiesOf('Table', module).add(
         width: text('Notes width', '12rem'),
         cellComponent: NotesCell,
         minTableWidth: 800,
-        sortFunction: (a, b) => (a.length > b.length ? -1 : 1),
+        sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
       },
       action: {
         name: '',
