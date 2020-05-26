@@ -103,4 +103,5 @@ const Text = ({
   </StyledContainer>
 );
 
+Text.Container = TextContainer;
 export default Text;

@@ -31,9 +31,7 @@
     "noEmit": false
   },
   "include": [
-    "src/**/*",
-    "index.ts",
-    "src/**/*.stories.tsx"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

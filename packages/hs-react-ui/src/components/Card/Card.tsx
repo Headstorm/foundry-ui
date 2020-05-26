@@ -81,4 +81,9 @@ const Card = ({
   </StyledContainer>
 );
 
+Card.Header = Header;
+Card.Footer = Footer;
+Card.Body = Body;
+Card.Container = CardContainer;
+
 export default Card;

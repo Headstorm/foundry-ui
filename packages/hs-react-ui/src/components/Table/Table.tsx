@@ -154,7 +154,7 @@ const SortIcon = styled(Icon)`
 //   once there is enough room for it to do so (if the table itself isn't full width)
 // TODO: Add window media query
 
-export default ({
+const Table = ({
   columnGap = '1rem',
   defaultSort = ['', false], // key, direction
   data = [],
@@ -286,3 +286,11 @@ export default ({
     </StyledContainer>
   );
 };
+
+Table.Container = TableContainer;
+Table.Header = Header;
+Table.HeaderCell = HeaderCell;
+Table.Row = Row;
+Table.Cell = Cell;
+Table.Title = ResponsiveTitle;
+export default Table;
