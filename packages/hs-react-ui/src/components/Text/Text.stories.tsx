@@ -51,7 +51,7 @@ export const Default = () => (
     size={text('size', '1rem')}
     color={color2('color', colors.grayXlight)}
     iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconSuffixPath(select('iconSuffix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >
@@ -83,7 +83,7 @@ export const ThemedText = () => (
     size={text('size', '1rem')}
     color={color2('color', colors.grayDark)}
     iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconSuffixPath(select('iconSuffix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >
