@@ -28,12 +28,12 @@ export interface TextProps {
 /* Keyframes for the loading bar gradient */
 const movingGradient = keyframes`
   0% { background-position: 0% bottom; }
-  100% { background-position: 100% bottom; }
+  100% { background-position: 200% bottom; }
 `;
 
 /* Animation to scroll the gradient toward the right */
 const animation = css`
-  ${movingGradient} 2s linear infinite;
+  ${movingGradient} 8s linear infinite;
 `;
 
 /* Styled div that represents the scroll bar
@@ -49,7 +49,7 @@ const Progress = styled.div`
         rgba(255, 255, 255, 0.2)
       )
       repeat;
-    background-size: 200% 100%;
+    background-size: 400% 100%;
     width: calc(${size} * 10);
     height: ${size};
     border-radius: 9999px;
@@ -79,10 +79,10 @@ const Text = ({
 }: TextProps) => (
   <StyledContainer size={size} color={color}>
     {isLoading && <Progress size={size} />}
-    {!isLoading &&
-      !isProcessing &&
-      iconPrefix &&
-      (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+    {!isLoading
+      && !isProcessing
+      && iconPrefix
+      && (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
         <LeftIconContainer>
           <Icon path={iconPrefix} size={size} />
         </LeftIconContainer>
@@ -96,9 +96,9 @@ const Text = ({
     )}
     {!isLoading && children}
 
-    {!isLoading &&
-      iconSuffix &&
-      (typeof iconSuffix === 'string' ? (
+    {!isLoading
+      && iconSuffix
+      && (typeof iconSuffix === 'string' ? (
         <RightIconContainer>
           <Icon path={iconSuffix} size={size} />
         </RightIconContainer>
