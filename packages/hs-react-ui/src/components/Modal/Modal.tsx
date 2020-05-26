@@ -105,4 +105,9 @@ const Modal = ({
   );
 };
 
+Modal.Header = ModalHeader;
+Modal.Footer = ModalFooter;
+Modal.Overlay = ModalOverlay;
+Modal.CloseButton = ModalCloseButton;
+Modal.Container = ModalContainer;
 export default Modal;

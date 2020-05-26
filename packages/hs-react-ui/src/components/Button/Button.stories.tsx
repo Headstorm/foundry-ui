@@ -7,8 +7,8 @@ import { mdiLeadPencil, mdiLoading } from '@mdi/js';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
-import { ButtonContainers, ButtonContainer } from './ButtonContainers';
-import Button, { ButtonTypes } from './Button';
+import { ButtonContainers } from './ButtonContainers';
+import Button, { ButtonTypes, ButtonContainer } from './Button';
 
 addDecorator(withA11y);
 addDecorator(withDesign);

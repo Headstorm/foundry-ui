@@ -37,4 +37,5 @@ const Divider = ({
   </StyledDividerContainer>
 );
 
+Divider.Container = DefaultDividerContainer;
 export default Divider;
