@@ -81,8 +81,6 @@ storiesOf('Table', module).add(
       const checkRowForSelection = (row: columnTypes) =>
         Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected;
 
-      console.log(typeof rows);
-
       return (
         <Checkbox
           checkboxType={
