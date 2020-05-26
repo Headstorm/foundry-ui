@@ -1,51 +1,87 @@
 import React, { useState, SyntheticEvent } from 'react';
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Icon from '@mdi/react';
 import * as IconPaths from '@mdi/js';
 import TextInput from './TextInput';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { withA11y } from '@storybook/addon-a11y';
+import { withDesign } from 'storybook-addon-designs';
 
-export default {
-  title: 'TextInput',
-  component: TextInput,
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A29',
+addDecorator(withA11y);
+addDecorator(withDesign);
+
+const design = {
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A29',
+};
+
+storiesOf('TextInput', module).add(
+  'Basic Text Input',
+  () => {
+    const [inputValue, setInputValue] = useState('');
+    const options = {
+      none: '',
+      ...IconPaths,
+    };
+    const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
+    
+
+    return (
+      <TextInput
+        onChange={(event: SyntheticEvent) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const newValue = event.target.value;
+          setInputValue(newValue);
+          action('onChange')(newValue);
+        }}
+        value={inputValue}
+        placeholder={text('placeholder', 'Place Holder')}
+        onClear={boolean('onClear?', false) ? () => {
+          setInputValue('');
+          action('onClear')(); 
+        } : null}
+        iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+        isMultiline={boolean('isMultiline?', false)}
+        errorMessage={text('errorMessage', '')}
+      />
+    );
   },
-};
+  { design },
+)
+.add(
+  'Text Input with all the gadgets',
+  () => {
 
-export const Basic = () => {
-  const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState('');
+    const options = {
+      none: '',
+      ...IconPaths,
+    };
+    const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
+    const isMultiline = inputValue.length > 15;
+    const isError = inputValue.length < 5 && inputValue.length > 0 ? 'Short Message Error' : null;
 
-  const options = {
-    none: '',
-    ...IconPaths,
-  };
-
-  const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
-
-  const isMultiLine = inputValue.length > 15;
-
-  const isError = inputValue.length < 5 && inputValue.length > 0 ? 'Short Message Error' : null;
-
-  return (
+    return(
     <TextInput
-      onChange={(event: SyntheticEvent) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const newValue = event.target.value;
-        setInputValue(newValue);
-        action('onChange')(newValue);
-      }}
-      value={inputValue}
-      placeholder={text('placeholder', 'Place Holder')}
-      onClear={() => {
-        setInputValue('');
-        action('onClear')();
-      }}
-      iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
-      multiline={isMultiLine}
-      errorMessage={isError}
-    />
-  );
-};
+        onChange={(event: SyntheticEvent) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const newValue = event.target.value;
+          setInputValue(newValue);
+          action('onChange')(newValue);
+        }}
+        value={inputValue}
+        placeholder={text('placeholder', 'Place Holder')}
+        onClear={() => {
+          setInputValue('');
+          action('onClear')();
+        }}
+        iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+        isMultiline={isMultiline}
+        errorMessage={isError}
+      />)
+      },
+      { design }
+);

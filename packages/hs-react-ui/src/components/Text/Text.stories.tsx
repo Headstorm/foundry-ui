@@ -29,8 +29,8 @@ const options = {
   ...Icons,
 };
 
-const getIconPrefixPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
-const getIconSuffixPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
+const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
+
 
 const ThemedContainer = styled.div`
   ${({ size, color }: { size: number | string; color: string }) => `
@@ -50,8 +50,8 @@ export const Default = () => (
   <Text
     size={text('size', '1rem')}
     color={color2('color', colors.grayXlight)}
-    iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconPrefix', options, options.mdiComment))}
+    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconPath(select('iconPrefix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >
@@ -66,8 +66,8 @@ export const ThemedTextWithStaticIcons = () => (
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
     color={color2('color', colors.grayDark)}
-    iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconPrefix', options, options.mdiComment))}
+    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconPath(select('iconPrefix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >
@@ -82,8 +82,8 @@ export const ThemedText = () => (
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
     color={color2('color', colors.grayDark)}
-    iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconPrefix', options, options.mdiComment))}
+    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconPath(select('iconPrefix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >

@@ -1,9 +1,7 @@
 import React, { SyntheticEvent } from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
-
-import { TextInputTypes } from '../../enums/TextInputTypes';
 
 const TextInputContainer = styled.input`
   ${({ hasIconPrefix, hasMultiline }: { hasIconPrefix: boolean; hasMultiline: boolean }) => `
@@ -48,22 +46,15 @@ const DivContainer = styled.div`
 `;
 
 export type TextInputProps = {
-  textInputType?: TextInputTypes;
   placeholder?: string;
   iconPrefix?: any;
   onClear?: (event: SyntheticEvent) => void;
   onChange?: (event: SyntheticEvent) => void;
   value?: string;
-  multiline?: any;
-  cols?: any;
-  rows?: any;
+  isMultiline?: any;
   errorMessage?: string;
-  style?: any;
+  StyledDivContainer?: StyledComponentBase<any, {}>;
 };
-
-// const TextInputContainers = {
-//   [TextInputTypes.icon]: IconInputContainer
-// };
 
 const TextInput = ({
   placeholder = 'test props',
@@ -71,28 +62,29 @@ const TextInput = ({
   onClear,
   onChange,
   value,
-  multiline,
+  isMultiline,
   errorMessage,
+  StyledDivContainer = DivContainer
 }: TextInputProps) => {
   const StyledTextInputContainer = TextInputContainer;
   return (
-    <DivContainer>
-      <IconContainer>{iconPrefix}</IconContainer>
+    <StyledDivContainer>
+       {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
       {onClear && value && (
         <ClearIconContainer onClick={onClear}>
           <Icon path={mdiClose} size="16px" />
         </ClearIconContainer>
       )}
       <StyledTextInputContainer
-        as={multiline ? 'textarea' : 'input'}
-        hasMultiline={!!multiline}
+        as={isMultiline ? 'textarea' : 'input'}
+        hasMultiline={!!isMultiline}
         hasIconPrefix={!!iconPrefix}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
       />
-      <ErrorContainer>{errorMessage}</ErrorContainer>
-    </DivContainer>
+     {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+    </StyledDivContainer>
   );
 };
 export default TextInput;
