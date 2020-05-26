@@ -1,3 +1,3 @@
 export enum TextInputTypes {
-    icon = 'icon'
+  icon = 'icon',
 }
