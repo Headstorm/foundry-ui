@@ -33,7 +33,8 @@
   "include": [
     "src/**/*",
     "index.ts",
-    "src/**/*.stories.tsx"
+    "src/**/*.stories.tsx",
+    "node_modules/@types"
   ],
   "exclude": [
     "node_modules",

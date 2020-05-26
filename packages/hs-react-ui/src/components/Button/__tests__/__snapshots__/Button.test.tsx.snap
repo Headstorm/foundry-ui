@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -3,9 +3,9 @@
+      class=\\"sc-AxjAm hegPnM\\"
+    >
+      <span
+        class=\\"sc-AxhUy kMyssT\\"
+      >
+-       Loading... ⌛
++       Submit 
+      </span>
+    </button>
+  </DocumentFragment>"
+`;
+
+exports[`Button shows loading text when provided 1`] = `
+.c0 {
+  display: inline-block;
+  font-family: Montserrat;
+  font-size: 1em;
+  line-height: 0;
+  padding: 1.25em 1em;
+  border-radius: 0.25em;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #d3d6d7;
+  color: #252c35;
+}
+
+<div>
+  <button
+    class="c0"
+  >
+    <span
+      class=""
+    >
+      Loading...
+       
+      ⌛
+    </span>
+  </button>
+</div>
+`;
