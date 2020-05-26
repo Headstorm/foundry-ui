@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
-import { CheckboxTypes } from '../../enums/CheckboxTypes';
 import colors from '../../enums/colors';
 
+export enum CheckboxTypes {
+  fill = 'fill',
+  cross = 'cross',
+  check = 'check',
+  default = 'default',
+  neutral = 'neutral',
+}
+
+// Hide checkbox visually but remain accessible to screen readers.
+// Source: https://polished.js.org/docs/#hidevisually
 export const Input = styled.input.attrs({ type: 'checkbox' })`
-  // Hide checkbox visually but remain accessible to screen readers.
-  // Source: https://polished.js.org/docs/#hidevisually
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -24,6 +31,7 @@ export const Input = styled.input.attrs({ type: 'checkbox' })`
 export const Label = styled.label`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   ${Input}:focus + & {
     box-shadow: 0 0 0 3px ${colors.grayXlight};
@@ -86,9 +94,10 @@ export interface CheckboxProps {
   StyledBox?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
 
-  checkboxType: CheckboxTypes;
-  children: string | Node;
-  checked: boolean;
+  checkboxType?: CheckboxTypes;
+  children?: string | Node;
+  checked?: boolean;
+  onClick: (event: SyntheticEvent) => void;
 }
 
 const iconPaths = {
@@ -107,7 +116,7 @@ export const iconComponents = {
   [CheckboxTypes.fill]: DefaultIcon,
 };
 
-const Checkbox = ({
+export default ({
   StyledLabel = Label,
   StyledCheckboxContainer = CheckboxContainer,
   StyledBox = Box,
@@ -116,6 +125,8 @@ const Checkbox = ({
   checkboxType = CheckboxTypes.default,
   checked = false,
   children,
+
+  onClick,
 }: CheckboxProps) => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = iconComponents[checkboxType];
@@ -123,11 +134,9 @@ const Checkbox = ({
     <StyledLabel>
       <StyledCheckboxContainer>
         <StyledBox>{checked ? <IconComponent path={iconPath} /> : null}</StyledBox>
-        <StyledInput checked={checked} />
+        <StyledInput onClick={onClick} checked={checked} />
       </StyledCheckboxContainer>
       {children}
     </StyledLabel>
   );
 };
-
-export default Checkbox;
