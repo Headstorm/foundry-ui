@@ -1,9 +1,7 @@
-import { StyledComponentBase } from 'styled-components';
-
 export type valueProp = {
   value: number;
-  label?: String | number | Node;
-  color?: String;
+  label?: string | number | Node;
+  color?: string;
 };
 
 export type containerProps = {
@@ -15,7 +13,7 @@ export type containerProps = {
 
 export type handleProps = {
   beingDragged?: boolean;
-  color: String;
+  color: string;
 };
 
 export type handleLabelProps = { velocity?: number };
@@ -25,12 +23,12 @@ export type selectedRangeProps = { min: number; max: number; selectedRange: numb
 export type domainLabelProps = { position: 'left' | 'right' };
 
 export type RangeSliderProps = {
-  StyledContainer?: String & StyledComponentBase<any, {}>;
-  StyledDragHandle?: String & StyledComponentBase<any, {}>;
-  StyledHandleLabel?: String & StyledComponentBase<any, {}>;
-  StyledSlideRail?: String & StyledComponentBase<any, {}>;
-  StyledSelectedRangeRail?: String & StyledComponentBase<any, {}>;
-  StyledDomainLabel?: String & StyledComponentBase<any, {}>;
+  StyledContainer?: any;
+  StyledDragHandle?: any;
+  StyledHandleLabel?: any;
+  StyledSlideRail?: any;
+  StyledSelectedRangeRail?: any;
+  StyledDomainLabel?: any;
 
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;
@@ -38,7 +36,7 @@ export type RangeSliderProps = {
   motionBlur?: boolean;
   springOnRelease?: boolean;
   debounceInterval?: number;
-  axisLock?: 'x' | 'y';
+  axisLock?: 'x' | 'y' | '';
   onDrag?: Function;
   disabled?: boolean;
   min: number;

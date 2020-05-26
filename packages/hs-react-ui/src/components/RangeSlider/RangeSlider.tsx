@@ -7,8 +7,8 @@ import { useDrag } from 'react-use-gesture';
 import useMeasure from 'react-use-measure';
 import polyfill from '@juggle/resize-observer';
 
-import fonts from '../../constants/fonts';
-import colors from '../../constants/colors';
+import fonts from '../../enums/fonts';
+import colors from '../../enums/colors';
 import { clamp } from '../../utils/math';
 
 import {
@@ -163,21 +163,21 @@ export default ({
   values,
 }: RangeSliderProps) => {
   let hasHandleLabels = false;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore This expression is not callable.
   const processedValues = values.map((val: number | valueProp) => {
     if (typeof val === 'number') {
       return { value: val, label: null };
-    } else {
-      if (val.hasOwnProperty('label')) {
-        hasHandleLabels = true;
-      }
-      return val;
     }
+    if (Object.prototype.hasOwnProperty.call(val, 'label')) {
+      hasHandleLabels = true;
+    }
+    return val;
   });
   const selectedRange = [
     Math.min(
       ...processedValues.map((val: valueProp) => val.value),
-      showSelectedRange && values.length === 1 ? min : Infinity,
+      showSelectedRange && values && values.length === 1 ? min : Infinity,
     ),
     Math.max(...processedValues.map((val: valueProp) => val.value)),
   ];
@@ -190,8 +190,9 @@ export default ({
   const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
-  const [draggedHandle, setDraggedHandle] = useState(null);
+  const [draggedHandle, setDraggedHandle] = useState(-1);
   // get the bounding box of the slider
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill });
   const pixelPositions = processedValues.map(
@@ -203,17 +204,22 @@ export default ({
     [values],
   );
   const bind = useDrag(
-    ({ active, down, movement: [deltaX, deltaY], vxvy: [vx, vy] }) => {
+    ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
       valueBuffer.current = clamp(delta, min, max);
       if (motionBlur) {
         requestAnimationFrame(() => {
-          const blurSize = Math.round(Math.abs(vx * 10));
+          const blurSize = Math.round(Math.abs(vx * 10)) || 0;
+          if (blurRef.current === null) {
+            return;
+          }
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore ts(2531)
           blurRef.current.setAttribute('stdDeviation', `${down && active ? blurSize : 0}, 0`);
         });
       }
 
-      setDraggedHandle(down ? 0 : null);
+      setDraggedHandle(down ? 0 : -1);
       debouncedDrag();
       set({
         x: down ? deltaX : pixelPositions[0],
@@ -263,6 +269,7 @@ export default ({
 
       {processedValues.map(({ value, label, color }: valueProp, i: number) => (
         <StyledDragHandle
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...bind()}
           draggable={false}
           beingDragged={i === draggedHandle}

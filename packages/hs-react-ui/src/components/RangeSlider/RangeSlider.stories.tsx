@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import { readableColor, toColorString } from 'polished';
-import fonts from '../../constants/fonts';
+import fonts from '../../enums/fonts';
 
-import colors from '../../constants/colors';
+import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
-import Card, { NoPaddingHeader } from '../Card/Card';
+import Card from '../Card';
 
 const Row = styled.div`
   ${fonts.body}
@@ -67,11 +67,11 @@ const Default = () => {
           max: 100,
           step: 1,
         })}
-        onDrag={(val: number) => {
-          setVal(Math.round(val));
-          action('onDrag')(val);
+        onDrag={(newVal: number) => {
+          setVal(Math.round(newVal));
+          action('onDrag')(newVal);
         }}
-        axisLock={select('axisLock', ['x', 'y', null], 'x')}
+        axisLock={select('axisLock', ['x', 'y', ''], 'x')}
         values={[
           {
             value: val,
@@ -150,11 +150,11 @@ const Rating = () => {
           max: 100,
           step: 1,
         })}
-        onDrag={(val: number) => {
-          setVal(Math.round(val));
-          action('onDrag')(val);
+        onDrag={(newVal: number) => {
+          setVal(Math.round(newVal));
+          action('onDrag')(newVal);
         }}
-        axisLock={select('axisLock', ['x', 'y', null], 'x')}
+        axisLock={select('axisLock', ['x', 'y', ''], 'x')}
         values={[
           {
             value: val,
@@ -235,8 +235,8 @@ const ColorPicker = () => {
   return (
     <Card
       elevation={2}
-      StyledHeader={NoPaddingHeader}
-      header={
+      StyledHeader={Card.NoPaddingHeader}
+      header={(
         <ColorPreview
           style={{
             backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
@@ -244,19 +244,22 @@ const ColorPicker = () => {
           }}
         >
           {toColorString({
-            hue: hue,
+            hue,
             saturation: sat / 100,
             lightness: light / 100,
           })}
         </ColorPreview>
-      }
+      )}
     >
       <Row>
         <span>H:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
           StyledSlideRail={forwardRef((props, ref) => (
             <SlideRail
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               ref={ref}
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...props}
               style={{
                 backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`,
@@ -286,7 +289,10 @@ const ColorPicker = () => {
         <RangeSlider
           StyledSlideRail={forwardRef((props, ref) => (
             <SlideRail
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               ref={ref}
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...props}
               style={{
                 backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`,
@@ -315,8 +321,10 @@ const ColorPicker = () => {
         <RangeSlider
           StyledSlideRail={forwardRef((props, ref) => (
             <SlideRail
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               ref={ref}
-              {...props}
+              {...props} // eslint-disable-line react/jsx-props-no-spreading
               style={{
                 backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`,
               }}
