@@ -1,7 +1,5 @@
 import React, { SyntheticEvent, useState } from 'react';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import { text } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
@@ -10,9 +8,6 @@ import { name, address, company } from 'faker';
 
 import Table, { RowProps, columnTypes } from './Table';
 import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
-
-addDecorator(withA11y);
-addDecorator(withDesign);
 
 const design = {
   type: 'figma',

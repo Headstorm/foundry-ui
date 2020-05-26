@@ -1,13 +1,22 @@
 import React, { useState, useEffect, forwardRef } from 'react';
+import { storiesOf, addDecorator } from '@storybook/react';
 import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import { readableColor, toColorString } from 'polished';
-import fonts from '../../enums/fonts';
 
+import withCenter from '../../storyDecorators/withCenter';
+import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
 import Card from '../Card';
+
+addDecorator(withCenter);
+
+const design = {
+  type: 'figma',
+  url: 'https://www.figma.com/file/u6xQ3W5NYB1d2zLeRCYwva/ARM?node-id=322%3A8318',
+};
 
 const Row = styled.div`
   ${fonts.body}
@@ -27,7 +36,9 @@ export default {
 
 /* Default */
 
-const Default = () => {
+storiesOf('RangeSlider', module).add(
+  'Default',
+  () => {
   const [val, setVal] = useState(0);
 
   const storyValue = number('values', val, {
@@ -81,12 +92,9 @@ const Default = () => {
       />
     </Row>
   );
-};
-
-Default.design = {
-  type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2',
-};
+},
+{ design },
+);
 
 /* Rating */
 
@@ -351,4 +359,4 @@ const ColorPicker = () => {
   );
 };
 
-export { Default, Rating, ColorPicker };
+export { Rating, ColorPicker };
