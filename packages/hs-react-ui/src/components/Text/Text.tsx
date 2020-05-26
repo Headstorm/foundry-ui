@@ -6,7 +6,7 @@ import { mdiLoading } from '@mdi/js';
 
 /* Default Styled Text Container */
 export const TextContainer = styled.span`
-  ${({ size, color }: { size: string, color: string }) => `
+  ${({ size, color }: { size: string; color: string }) => `
     display: inline-block;
     font-family: Gotham;
     font-size: ${size};
@@ -15,14 +15,14 @@ export const TextContainer = styled.span`
 `;
 
 export interface TextProps {
-  children?: string | Node,
-  color?: string,
-  iconPrefix?: string | JSX.Element,
-  iconSuffix?: string | JSX.Element,
-  isLoading?: Boolean,
-  isProcessing?: Boolean,
-  size?: string
-  StyledContainer?: string & StyledComponentBase<any, {}>,
+  children?: string | Node;
+  color?: string;
+  iconPrefix?: string | JSX.Element;
+  iconSuffix?: string | JSX.Element;
+  isLoading?: boolean;
+  isProcessing?: boolean;
+  size?: string;
+  StyledContainer?: string & StyledComponentBase<any, {}>;
 }
 
 /* Keyframes for the loading bar gradient */
@@ -54,13 +54,12 @@ const Progress = styled.div`
 
 const LeftIconContainer = styled.div`
   display: inline-flex;
-  margin-right: .25rem;
+  margin-right: 0.25rem;
 `;
-
 
 const RightIconContainer = styled.div`
   display: inline-flex;
-  margin-left: .25rem;
+  margin-left: 0.25rem;
 `;
 
 const Text = ({
@@ -73,18 +72,36 @@ const Text = ({
   size = '1rem',
   StyledContainer = TextContainer,
 }: TextProps) => (
-  <StyledContainer size={size} color={color} >
+  <StyledContainer size={size} color={color}>
     {isLoading && <Progress size={size} />}
-    {!isLoading && !isProcessing && iconPrefix &&
-      (typeof iconPrefix === 'string' && iconPrefix !== '' ?
-      <LeftIconContainer><Icon path={iconPrefix} size={size} /></LeftIconContainer> : <LeftIconContainer>{iconPrefix}</LeftIconContainer>)}
-    {!isLoading && isProcessing && <LeftIconContainer><Icon path={mdiLoading} size={size} spin={1} /></LeftIconContainer>}
+    {!isLoading &&
+      !isProcessing &&
+      iconPrefix &&
+      (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+        <LeftIconContainer>
+          <Icon path={iconPrefix} size={size} />
+        </LeftIconContainer>
+      ) : (
+        <LeftIconContainer>{iconPrefix}</LeftIconContainer>
+      ))}
+    {!isLoading && isProcessing && (
+      <LeftIconContainer>
+        <Icon path={mdiLoading} size={size} spin={1} />
+      </LeftIconContainer>
+    )}
     {!isLoading && children}
 
-    {!isLoading && iconSuffix &&
-      (typeof iconSuffix === 'string' ?
-      <RightIconContainer><Icon path={iconSuffix} size={size}/></RightIconContainer> : <RightIconContainer>{iconSuffix}</RightIconContainer>)}
+    {!isLoading &&
+      iconSuffix &&
+      (typeof iconSuffix === 'string' ? (
+        <RightIconContainer>
+          <Icon path={iconSuffix} size={size} />
+        </RightIconContainer>
+      ) : (
+        <RightIconContainer>{iconSuffix}</RightIconContainer>
+      ))}
   </StyledContainer>
 );
 
+Text.Container = TextContainer;
 export default Text;

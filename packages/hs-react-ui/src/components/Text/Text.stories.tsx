@@ -1,36 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, text, number, boolean, select } from '@storybook/addon-knobs';
+import { color as color2, text, boolean, select } from '@storybook/addon-knobs';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
-import Text from './Text';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
+import Text from './Text';
+import colors from '../../enums/colors';
+import timings from '../../enums/timings';
 
 export default {
   title: 'Text',
-  component: Text
+  component: Text,
 };
 
 const themeColors = {
   ...colors,
   background: 'beige',
-  primary: 'purple'
+  primary: 'purple',
 };
 
 const themeTimings = {
   ...timings,
   xSlow: '2s',
-}
+};
 
-const icon = <Icon path={Icons.mdiComment} size='1rem' />;
+const options = {
+  none: '',
+  ...Icons,
+};
 
 const getIconPrefixPath = (path: string) => path ? <Icon size={'16px'} path={path} /> : null
 const getIconSuffixPath = (path: string) => path ? <Icon size={'16px'} path={path} /> : null
 
 const ThemedContainer = styled.div`
-  ${({ size, color }: { size: number | String, color: String }) => `
+  ${({ size, color }: { size: number | string; color: string }) => `
     width: fit-content;
     background-color: ${themeColors.background};
     transition: transform ${themeTimings.xSlow};
@@ -62,7 +65,7 @@ export const ThemedTextWithStaticIcons = () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color2('color', colors.grayDark)}
     iconPrefix={icon}
     iconSuffix={icon}
     isProcessing={boolean('isProcessing', false)}
@@ -71,11 +74,6 @@ export const ThemedTextWithStaticIcons = () => (
     {text('children', 'Lorem ipsum dolor sit amet.')}
   </Text>
 );
-
-const options = {
-  none: '',
-  ...Icons
-};
 
 /* Themed with all knobs */
 
