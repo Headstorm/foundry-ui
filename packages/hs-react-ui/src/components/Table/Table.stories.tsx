@@ -58,13 +58,13 @@ storiesOf('Table', module).add(
     const [rows, setRows] = useState(sampleData);
 
     const onDelete = (index: number) => {
-      const newRows = { ...rows };
+      const newRows = [...rows];
       newRows.splice(index, 1);
       setRows(newRows);
     };
 
     const onSelect = (index: number, selected: boolean) => {
-      const newRows = { ...rows };
+      const newRows = [...rows];
       newRows[index].selected = !selected;
       setRows(newRows);
     };
@@ -77,25 +77,24 @@ storiesOf('Table', module).add(
       setRows(newRows);
     };
 
-    const SelectAllCell = () => (
-      <Checkbox
-        checkboxType={
-          rows.filter(
-            (row: columnTypes) =>
-              Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected,
-          ).length === rows.length
-            ? CheckboxTypes.check
-            : CheckboxTypes.neutral
-        }
-        checked={Boolean(
-          rows.filter(
-            (row: columnTypes) =>
-              Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected,
-          ).length,
-        )}
-        onClick={selectAll}
-      />
-    );
+    const SelectAllCell = () => {
+      const checkRowForSelection = (row: columnTypes) =>
+        Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected;
+
+      console.log(typeof rows);
+
+      return (
+        <Checkbox
+          checkboxType={
+            rows.filter((row: columnTypes) => checkRowForSelection(row)).length === rows.length
+              ? CheckboxTypes.check
+              : CheckboxTypes.neutral
+          }
+          checked={Boolean(rows.filter((row: columnTypes) => checkRowForSelection(row)).length)}
+          onClick={selectAll}
+        />
+      );
+    };
 
     const SelectionCell = ({
       index,
