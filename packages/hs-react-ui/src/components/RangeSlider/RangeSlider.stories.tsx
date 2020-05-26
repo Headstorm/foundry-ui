@@ -14,7 +14,7 @@ const Row = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
   min-width: 20rem;
   width: 90%;
   margin: 0 auto;
@@ -22,7 +22,7 @@ const Row = styled.div`
 
 export default {
   title: 'RangeSlider',
-  component: RangeSlider
+  component: RangeSlider,
 };
 
 /* Default */
@@ -75,30 +75,36 @@ const Default = () => {
         values={[
           {
             value: val,
-            label: val
-          }
+            label: val,
+          },
         ]}
       />
-    </ Row>
+    </Row>
   );
 };
 
 Default.design = {
   type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2'
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2',
 };
-
 
 /* Rating */
 
-const skillLabels = ['WhatJS?', 'I\'ve used it...', 'We\'re aight', 'I love it', 'I dream in React', 'I am React'];
+const skillLabels = [
+  'WhatJS?',
+  "I've used it...",
+  "We're aight",
+  'I love it',
+  'I dream in React',
+  'I am React',
+];
 const skillColors = ['red', 'orangered', 'orange', 'goldenrod', 'yellowgreen', 'forestgreen'];
 
 const StyledSlideRail = styled(SlideRail)`
   filter: grayscale(0.5) brightness(1.3);
-  border: .5px solid ${colors.grayLight};
-  height: .5rem;
-  border-radius: .25rem;
+  border: 0.5px solid ${colors.grayLight};
+  height: 0.5rem;
+  border-radius: 0.25rem;
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;
 
@@ -153,17 +159,17 @@ const Rating = () => {
           {
             value: val,
             label: skillLabels[Math.round(val)],
-            color: skillColors[Math.round(val)]
-          }
+            color: skillColors[Math.round(val)],
+          },
         ]}
       />
-    </ Row>
+    </Row>
   );
 };
 
 Rating.design = {
   type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2'
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=126%3A2',
 };
 
 /* Color Picker */
@@ -173,7 +179,7 @@ const ColorPreview = styled.div`
 
   height: 12rem;
   width: 34rem;
-  transition: color .5s;
+  transition: color 0.5s;
   font-size: 5rem;
   display: flex;
   justify-content: center;
@@ -220,32 +226,43 @@ const ColorPicker = () => {
     setLight(storyLight);
   }, [storyLight]);
 
-  const allHues   = Array.from({length: 360}, (_, i) => i).map(num => `hsl(${num}, ${sat}%, ${light}%)`);
-  const allSats   = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
+  const allHues = Array.from({ length: 360 }, (_, i) => i).map(
+    num => `hsl(${num}, ${sat}%, ${light}%)`,
+  );
+  const allSats = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
   const allLights = [`hsl(${hue}, ${sat}%, 10%)`, `hsl(${hue}, ${sat}%, 90%)`];
 
   return (
     <Card
       elevation={2}
       StyledHeader={NoPaddingHeader}
-      header={(<ColorPreview
-        style={{
-          backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
-          color: readableColor(`hsl(${hue},${sat}%,${light}%)`)
-        }}>
-        {toColorString({
-          hue: hue,
-          saturation: sat/100,
-          lightness: light/100
-        })}
-      </ColorPreview>)}
+      header={
+        <ColorPreview
+          style={{
+            backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
+            color: readableColor(`hsl(${hue},${sat}%,${light}%)`),
+          }}
+        >
+          {toColorString({
+            hue: hue,
+            saturation: sat / 100,
+            lightness: light / 100,
+          })}
+        </ColorPreview>
+      }
     >
       <Row>
         <span>H:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
-          StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
-            backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`
-          }} />)}
+          StyledSlideRail={forwardRef((props, ref) => (
+            <SlideRail
+              ref={ref}
+              {...props}
+              style={{
+                backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`,
+              }}
+            />
+          ))}
           disabled={boolean('disabled', false)}
           showDomainLabels={boolean('showDomainLabels', false)}
           showSelectedRange={false}
@@ -259,17 +276,23 @@ const ColorPicker = () => {
             {
               value: hue,
               label: hue,
-              color: colors.grayLight
-            }
+              color: colors.grayLight,
+            },
           ]}
         />
-      </ Row>
+      </Row>
       <Row>
         <span>S:&nbsp;&nbsp;&nbsp;</span>
         <RangeSlider
-          StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
-            backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`
-          }} />)}
+          StyledSlideRail={forwardRef((props, ref) => (
+            <SlideRail
+              ref={ref}
+              {...props}
+              style={{
+                backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`,
+              }}
+            />
+          ))}
           min={0}
           max={100}
           onDrag={(val: number) => {
@@ -282,35 +305,41 @@ const ColorPicker = () => {
             {
               value: sat,
               label: sat,
-              color: colors.grayLight
-            }
+              color: colors.grayLight,
+            },
           ]}
         />
-      </ Row>
+      </Row>
       <Row>
-      <span>L:&nbsp;&nbsp;&nbsp;</span>
-      <RangeSlider
-        StyledSlideRail={forwardRef((props, ref) => <SlideRail ref={ref} {...props} style={{
-          backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`
-        }} />)}
-        min={0}
-        max={100}
-        onDrag={(val: number) => {
-          setLight(Math.round(val));
-          action('onDrag light')(val);
-        }}
-        showDomainLabels={false}
-        showSelectedRange={false}
-        values={[
-          {
-            value: light,
-            label: light,
-            color: colors.grayLight
-          }
-        ]}
-      />
-    </ Row>
-  </Card>
+        <span>L:&nbsp;&nbsp;&nbsp;</span>
+        <RangeSlider
+          StyledSlideRail={forwardRef((props, ref) => (
+            <SlideRail
+              ref={ref}
+              {...props}
+              style={{
+                backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`,
+              }}
+            />
+          ))}
+          min={0}
+          max={100}
+          onDrag={(val: number) => {
+            setLight(Math.round(val));
+            action('onDrag light')(val);
+          }}
+          showDomainLabels={false}
+          showSelectedRange={false}
+          values={[
+            {
+              value: light,
+              label: light,
+              color: colors.grayLight,
+            },
+          ]}
+        />
+      </Row>
+    </Card>
   );
 };
 

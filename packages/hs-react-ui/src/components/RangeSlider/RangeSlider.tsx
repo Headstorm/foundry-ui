@@ -18,7 +18,7 @@ import {
   handleLabelProps,
   RangeSliderProps,
   selectedRangeProps,
-  domainLabelProps
+  domainLabelProps,
 } from './types';
 
 export const Container = styled.div`
@@ -35,28 +35,37 @@ export const Container = styled.div`
 
     transition: filter .1s;
 
-    ${disabled ? `
+    ${
+      disabled
+        ? `
       filter: grayscale(1) contrast(.5) brightness(1.2);
       pointer-events: none;
-    ` : ''}
+    `
+        : ''
+    }
 
-    ${showDomainLabels ? `
+    ${
+      showDomainLabels
+        ? `
         top: -.5rem;
         margin-top: 1rem;
-      ` : ''};
+      `
+        : ''
+    };
 
-      ${hasHandleLabels ? `
+      ${
+        hasHandleLabels
+          ? `
         top: -.75rem;
         margin-top: 1.5rem;
-      ` : ''};
+      `
+          : ''
+      };
   `}
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({
-    beingDragged = false,
-    color = colors.primary
-  }: handleProps) => `
+  ${({ beingDragged = false, color = colors.primary }: handleProps) => `
     position: absolute;
     bottom: -.125rem;
     left: -.5rem;
@@ -97,11 +106,11 @@ export const SlideRail = styled.div`
   transform: translateY(-50%);
 
   width: 100%;
-  height: .25rem;
+  height: 0.25rem;
 
   overflow: hidden;
 
-  border-radius: .125rem;
+  border-radius: 0.125rem;
   background-color: ${colors.grayXlight};
 `;
 
@@ -145,14 +154,16 @@ export default ({
 
   debounceInterval = 8,
   axisLock = 'x',
-  onDrag = (newVal: number) => {console.log(newVal)},
+  onDrag = (newVal: number) => {
+    console.log(newVal);
+  },
   disabled = false,
   min,
   max,
   values,
 }: RangeSliderProps) => {
   let hasHandleLabels = false;
-   // @ts-ignore This expression is not callable.
+  // @ts-ignore This expression is not callable.
   const processedValues = values.map((val: number | valueProp) => {
     if (typeof val === 'number') {
       return { value: val, label: null };
@@ -166,7 +177,7 @@ export default ({
   const selectedRange = [
     Math.min(
       ...processedValues.map((val: valueProp) => val.value),
-      showSelectedRange && values.length === 1 ? min : Infinity
+      showSelectedRange && values.length === 1 ? min : Infinity,
     ),
     Math.max(...processedValues.map((val: valueProp) => val.value)),
   ];
@@ -183,35 +194,48 @@ export default ({
   // get the bounding box of the slider
   // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill });
-  const pixelPositions = processedValues.map((val: valueProp) => (val.value / domain) * sliderBounds.width);
+  const pixelPositions = processedValues.map(
+    (val: valueProp) => (val.value / domain) * sliderBounds.width,
+  );
   // get the x offset and an animation setter function
-  const [{ x = pixelPositions[0], y }, set] = useSpring(() => ({ x: pixelPositions[0], y: 0, config: {friction: 13, tension: 100} }), [values]);
-  const bind = useDrag(({ active, down, movement: [deltaX, deltaY], vxvy: [vx, vy] }) => {
-    const delta = (deltaX / sliderBounds.width) * domain;
-    valueBuffer.current = clamp(delta, min, max);
-    if (motionBlur) {
-      requestAnimationFrame(() => {
-        const blurSize = Math.round(Math.abs(vx * 10));
-        blurRef.current.setAttribute('stdDeviation',`${down && active ? blurSize : 0}, 0`);
+  const [{ x = pixelPositions[0], y }, set] = useSpring(
+    () => ({ x: pixelPositions[0], y: 0, config: { friction: 13, tension: 100 } }),
+    [values],
+  );
+  const bind = useDrag(
+    ({ active, down, movement: [deltaX, deltaY], vxvy: [vx, vy] }) => {
+      const delta = (deltaX / sliderBounds.width) * domain;
+      valueBuffer.current = clamp(delta, min, max);
+      if (motionBlur) {
+        requestAnimationFrame(() => {
+          const blurSize = Math.round(Math.abs(vx * 10));
+          blurRef.current.setAttribute('stdDeviation', `${down && active ? blurSize : 0}, 0`);
+        });
+      }
+
+      setDraggedHandle(down ? 0 : null);
+      debouncedDrag();
+      set({
+        x: down ? deltaX : pixelPositions[0],
+        y: down ? deltaY : 0,
+
+        immediate: springOnRelease ? down : true,
+        config: { friction: 13, tension: 100 },
       });
-    }
-
-    setDraggedHandle(down ? 0 : null);
-    debouncedDrag();
-    set({
-      x: down ? deltaX : pixelPositions[0],
-      y: down ? deltaY : 0,
-
-      immediate: springOnRelease ? down : true,
-      config: {friction: 13, tension: 100}});
-  },
-  {
-    axis: axisLock,
-    initial: [pixelPositions[0], 0],
-    threshold: 1,
-    bounds: { left: 0, right: sliderBounds.width + 4, top: -8, bottom: (sliderBounds.height / 2) + 8 },
-    rubberband: .1
-  });
+    },
+    {
+      axis: axisLock,
+      initial: [pixelPositions[0], 0],
+      threshold: 1,
+      bounds: {
+        left: 0,
+        right: sliderBounds.width + 4,
+        top: -8,
+        bottom: sliderBounds.height / 2 + 8,
+      },
+      rubberband: 0.1,
+    },
+  );
 
   return (
     <StyledContainer
@@ -219,26 +243,23 @@ export default ({
       hasHandleLabels={hasHandleLabels}
       showDomainLabels={showDomainLabels}
     >
-
-      <StyledSlideRail
-        ref={ref}
-      >
-        {showSelectedRange &&
+      <StyledSlideRail ref={ref}>
+        {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
           />
-        }
+        )}
       </StyledSlideRail>
 
-      {showDomainLabels &&
+      {showDomainLabels && (
         <>
           <StyledDomainLabel position="left">{min}</StyledDomainLabel>
           <StyledDomainLabel position="right">{max}</StyledDomainLabel>
         </>
-      }
+      )}
 
       {processedValues.map(({ value, label, color }: valueProp, i: number) => (
         <StyledDragHandle
@@ -253,7 +274,7 @@ export default ({
         </StyledDragHandle>
       ))}
 
-      {motionBlur &&
+      {motionBlur && (
         <svg viewBox="-200 -100 200 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
           <defs>
             <filter id="blur">
@@ -261,7 +282,7 @@ export default ({
             </filter>
           </defs>
         </svg>
-      }
+      )}
     </StyledContainer>
-  )
+  );
 };

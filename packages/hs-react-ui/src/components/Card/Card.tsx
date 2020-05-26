@@ -28,7 +28,7 @@ export const CardContainer = styled.div`
 
 export const Header = styled.div`
   padding: 1.5rem 1.5rem 0rem;
-  border-radius: 0.25rem .25rem 0rem 0rem;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
   text-transform: uppercase;
   color: ${colors.grayDark};
@@ -80,7 +80,7 @@ const Card = ({
   children,
   footer,
 
-  elevation = 1
+  elevation = 1,
 }: CardProps) => (
   <StyledContainer elevation={elevation}>
     {header && <StyledHeader>{header}</StyledHeader>}
