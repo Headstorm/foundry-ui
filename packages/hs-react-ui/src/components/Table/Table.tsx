@@ -187,6 +187,8 @@ export default ({
     sortData(
       data.sort((a: any, b: any) => {
         if (columns[key] && Object.prototype.hasOwnProperty.call(columns[key], 'sortFunction')) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
           return columns[key].sortFunction(a[key], b[key]) ? -1 : 1;
         }
         const comparison = newDirection ? a[key] < b[key] : a[key] > b[key];
@@ -235,6 +237,7 @@ export default ({
         // map over the rows
         const RenderedRow = row.rowComponent || StyledRow;
         return (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
           <RenderedRow
             columnGap={columnGap}

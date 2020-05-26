@@ -116,7 +116,7 @@ export const iconComponents = {
   [CheckboxTypes.fill]: DefaultIcon,
 };
 
-const Checkbox = ({
+export default ({
   StyledLabel = Label,
   StyledCheckboxContainer = CheckboxContainer,
   StyledBox = Box,
@@ -140,5 +140,3 @@ const Checkbox = ({
     </StyledLabel>
   );
 };
-
-export default Checkbox;

@@ -9,7 +9,7 @@ import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
 
 import Table, { Cell, RowProps, columnTypes } from './Table';
-import Checkbox, { CheckboxTypes } from '../Checkbox/CheckBox';
+import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -58,18 +58,20 @@ storiesOf('Table', module).add(
     const [rows, setRows] = useState(sampleData);
 
     const onDelete = (index: number) => {
-      const newRows = {...rows};
+      const newRows = { ...rows };
       newRows.splice(index, 1);
       setRows(newRows);
     };
 
     const onSelect = (index: number, selected: boolean) => {
-      const newRows = {...rows};
+      const newRows = { ...rows };
       newRows[index].selected = !selected;
       setRows(newRows);
     };
 
     const selectAll = (evt: SyntheticEvent) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const currentlyChecked = evt.target.checked;
       const newRows = rows.map((row: RowProps) => ({ ...row, selected: currentlyChecked }));
       setRows(newRows);
@@ -78,22 +80,38 @@ storiesOf('Table', module).add(
     const SelectAllCell = () => (
       <Checkbox
         checkboxType={
-          rows.filter((row: columnTypes) => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
-            .length === rows.length
+          rows.filter(
+            (row: columnTypes) =>
+              Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected,
+          ).length === rows.length
             ? CheckboxTypes.check
             : CheckboxTypes.neutral
         }
         checked={Boolean(
-          rows.filter((row: columnTypes) => Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected)
-            .length,
+          rows.filter(
+            (row: columnTypes) =>
+              Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected,
+          ).length,
         )}
         onClick={selectAll}
       />
     );
 
-    const SelectionCell = ({ index, selected, reachedMinWidth }: { index: number, selected: boolean, reachedMinWidth: boolean }) => (
+    const SelectionCell = ({
+      index,
+      selected,
+      reachedMinWidth,
+    }: {
+      index: number;
+      selected: boolean;
+      reachedMinWidth: boolean;
+    }) => (
       <Cell>
-        <Checkbox onClick={() => onSelect(index, selected)} checkboxType={CheckboxTypes.check} checked={selected}>
+        <Checkbox
+          onClick={() => onSelect(index, selected)}
+          checkboxType={CheckboxTypes.check}
+          checked={selected}
+        >
           {reachedMinWidth ? 'Select for download' : ''}
         </Checkbox>
       </Cell>
@@ -105,7 +123,13 @@ storiesOf('Table', module).add(
       </Cell>
     );
 
-    const ActionCell = ({ index, reachedMinWidth }: { index: number, reachedMinWidth: boolean }) => (
+    const ActionCell = ({
+      index,
+      reachedMinWidth,
+    }: {
+      index: number;
+      reachedMinWidth: boolean;
+    }) => (
       <ActionCellContainer
         onClick={() => {
           onDelete(index);
