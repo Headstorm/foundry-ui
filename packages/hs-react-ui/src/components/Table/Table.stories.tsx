@@ -106,7 +106,7 @@ storiesOf('Table', module).add(
     }: {
       index: number;
       selected: boolean;
-      reachedMinWidth: boolean;
+      reachedMinWidth?: boolean;
     }) => (
       <Table.Cell>
         <Checkbox
@@ -121,7 +121,7 @@ storiesOf('Table', module).add(
 
     const NotesCell = ({ notes }: { notes: string }) => (
       <Table.Cell>
-        <NoteField onChange={() => {}} rows={3} value={notes} />
+        <NoteField onChange={() => console.log()} rows={3} value={notes} />
       </Table.Cell>
     );
 

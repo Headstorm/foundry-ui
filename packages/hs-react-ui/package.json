@@ -56,6 +56,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.2",
     "faker": "^4.1.0",
+    "pre-commit": "^1.2.2",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
@@ -105,6 +106,9 @@
     "webpack": "webpack --config webpack.config.js",
     "dts": "tsc --declaration --outDir dist/types/ --emitDeclarationOnly --declarationMap --allowJs false --checkJs false"
   },
+  "pre-commit": [
+    "lint-ci"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
