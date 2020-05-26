@@ -1,33 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, text, number, boolean, select } from '@storybook/addon-knobs';
+import { color as color2, text, boolean, select } from '@storybook/addon-knobs';
 
-import colors from 'src/constants/colors';
-import timings from 'src/constants/timings';
-import Text from './Text';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
+import Text from './Text';
+import colors from '../../enums/colors';
+import timings from '../../enums/timings';
 
 export default {
   title: 'Text',
-  component: Text
+  component: Text,
 };
 
 const themeColors = {
   ...colors,
   background: 'beige',
-  primary: 'purple'
+  primary: 'purple',
 };
 
 const themeTimings = {
   ...timings,
   xSlow: '2s',
-}
+};
 
-const icon = <Icon path={Icons.mdiComment} size='1rem' />;
+const options = {
+  none: '',
+  ...Icons,
+};
+
+const icon = <Icon path={Icons.mdiComment} size="1rem" />;
 
 const ThemedContainer = styled.div`
-  ${({ size, color }: { size: number | String, color: String }) => `
+  ${({ size, color }: { size: number | string; color: string }) => `
     width: fit-content;
     background-color: ${themeColors.background};
     transition: transform ${themeTimings.xSlow};
@@ -43,7 +48,7 @@ const ThemedContainer = styled.div`
 export const Default = () => (
   <Text
     size={text('size', '1rem')}
-    color={color('color', colors.grayXlight)}
+    color={color2('color', colors.grayDark)}
     iconPrefix={select('iconPrefix', options, options.mdiComment)}
     iconSuffix={select('iconSuffix', options, options.mdiComment)}
     isProcessing={boolean('isProcessing', false)}
@@ -55,11 +60,11 @@ export const Default = () => (
 
 /* Themed with a static Icon */
 
-export const ThemedTextWithStaticIcons= () => (
+export const ThemedTextWithStaticIcons = () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color2('color', colors.grayDark)}
     iconPrefix={icon}
     iconSuffix={icon}
     isProcessing={boolean('isProcessing', false)}
@@ -69,18 +74,13 @@ export const ThemedTextWithStaticIcons= () => (
   </Text>
 );
 
-const options = {
-  none: '',
-  ...Icons
-};
-
 /* Themed with all knobs */
 
 export const ThemedText = () => (
   <Text
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
-    color={color('color', colors.grayDark)}
+    color={color2('color', colors.grayDark)}
     iconPrefix={select('iconPrefix', options, options.none)}
     iconSuffix={select('iconSuffix', options, options.none)}
     isProcessing={boolean('isProcessing', false)}

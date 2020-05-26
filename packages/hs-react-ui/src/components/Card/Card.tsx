@@ -1,9 +1,9 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import fonts from '../../constants/fonts';
-import colors from '../../constants/colors';
-import timings from '../../constants/timings';
+import colors from '../../enums/colors';
+import timings from '../../enums/timings';
+import fonts from '../../enums/fonts';
 
 export const CardContainer = styled.div`
   ${({ elevation }: { elevation: number }) => `
@@ -17,10 +17,11 @@ export const CardContainer = styled.div`
     border-radius: 0.25rem;
     margin: .25rem;
 
-    ${!elevation ? `border: 1px solid ${colors.grayXlight};`: ''};
+    border: 1px solid ${!elevation ? colors.grayXlight : 'transparent'};
 
     transition: box-shadow ${timings.slow};
-    box-shadow: 0rem ${elevation * .25}rem ${elevation * .75}rem ${elevation * -.25}rem rgba(0,0,0,${.6 - elevation * .1});
+    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
+    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
     background-color: ${colors.background};
   `}
 `;
@@ -54,20 +55,20 @@ export const Footer = styled.div`
   color: ${colors.grayLight};
 
   border-top: 1px solid ${colors.grayXlight};
-  border-radius: 0rem 0rem .25rem .25rem;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 `;
 
 export interface CardProps {
-  StyledContainer?: String & StyledComponentBase<any, {}>,
-  StyledHeader?: String & StyledComponentBase<any, {}>,
-  StyledBody?: String & StyledComponentBase<any, {}>,
-  StyledFooter?: String & StyledComponentBase<any, {}>,
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledHeader?: string & StyledComponentBase<any, {}>;
+  StyledBody?: string & StyledComponentBase<any, {}>;
+  StyledFooter?: string & StyledComponentBase<any, {}>;
 
-  header?: ReactNode,
-  children?: ReactNode,
-  footer?: ReactNode,
+  header?: ReactNode;
+  children?: ReactNode;
+  footer?: ReactNode;
 
-  elevation?: Number
+  elevation?: number;
 }
 
 const Card = ({
@@ -75,7 +76,6 @@ const Card = ({
   StyledHeader = Header,
   StyledBody = Body,
   StyledFooter = Footer,
-
   header,
   children,
   footer,
@@ -88,5 +88,10 @@ const Card = ({
     {footer && <StyledFooter>{footer}</StyledFooter>}
   </StyledContainer>
 );
+
+Card.Header = Header;
+Card.Footer = Footer;
+Card.Body = Body;
+Card.Container = CardContainer;
 
 export default Card;

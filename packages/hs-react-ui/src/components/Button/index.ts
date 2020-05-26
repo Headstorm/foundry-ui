@@ -1,13 +1,3 @@
-import Button from './Button'
-import { ButtonContainer,
-    PrimaryButtonContainer,
-    SecondaryButtonContainer,
-    DestructiveButtonContainer } from './ButtonContainers'
+import Button from './Button';
 
-export {
-  ButtonContainer,
-  PrimaryButtonContainer,
-  SecondaryButtonContainer,
-  DestructiveButtonContainer
-}
 export default Button;
