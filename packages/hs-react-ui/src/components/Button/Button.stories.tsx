@@ -8,8 +8,7 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import { ButtonContainers, ButtonContainer } from './ButtonContainers';
-import Button from './Button';
-import { ButtonTypes } from '../../enums/ButtonTypes';
+import Button, { ButtonTypes } from './Button';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
