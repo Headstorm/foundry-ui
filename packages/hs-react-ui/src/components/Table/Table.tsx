@@ -175,7 +175,7 @@ export default ({
 
   // this builds the string from the columns
   const columnWidths = Object.values(columns)
-    .map((col: columnTypes) => {
+    .map((col: columnTypes[0]) => {
       if (col.minTableWidth && width <= col.minTableWidth) {
         return '0px';
       }
@@ -209,9 +209,9 @@ export default ({
           {Object.keys(columns).map((headerColumnKey: string) => {
             const RenderedHeaderCell =
               columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
+            const breakpointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
             return (
-              (!columns[headerColumnKey].minTableWidth ||
-                width > columns[headerColumnKey].minTableWidth) && (
+              (!columns[headerColumnKey].minTableWidth || breakpointHit) && (
                 <RenderedHeaderCell
                   key={headerColumnKey}
                   onClick={() => {
@@ -248,9 +248,9 @@ export default ({
           >
             {Object.keys(columns).map(headerColumnKey => {
               const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
+              const breakPointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
               return (
-                (!columns[headerColumnKey].minTableWidth ||
-                  width > columns[headerColumnKey].minTableWidth) && (
+                (!columns[headerColumnKey].minTableWidth || breakPointHit) && (
                   <RenderedCell
                     // all cells should have full access to all the data in the row
                     {...row} // eslint-disable-line react/jsx-props-no-spreading
