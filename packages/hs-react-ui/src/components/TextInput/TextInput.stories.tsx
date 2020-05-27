@@ -3,10 +3,10 @@ import { text, select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Icon from '@mdi/react';
 import * as IconPaths from '@mdi/js';
-import TextInput from './TextInput';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
+import TextInput from './TextInput';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
