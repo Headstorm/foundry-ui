@@ -28,8 +28,8 @@ export interface TextProps {
 
 /* Keyframes for the loading bar gradient */
 const movingGradient = keyframes`
-  0% { background-position: 0% bottom; }
-  100% { background-position: 200% bottom; }
+  0% { background-position: 200% bottom; }
+  100% { background-position: 0% bottom; }
 `;
 
 /* Animation to scroll the gradient toward the right */

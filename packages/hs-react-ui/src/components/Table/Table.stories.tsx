@@ -35,6 +35,14 @@ const NoteField = styled.textarea`
   resize: none;
 `;
 
+const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5) => {
+  const groupData = [];
+  for (let i = 0; i < numberOfGroups; i++) {
+    groupData.push(generateSampleData(groupSize));
+  }
+  return groupData;
+};
+
 const generateSampleData = (rows: number) => {
   const finalData = [];
 
@@ -50,7 +58,8 @@ const generateSampleData = (rows: number) => {
   return finalData;
 };
 
-const sampleData: any[] = generateSampleData(10);
+//const sampleData: any[] = generateSampleData(10);
+const sampleData: any[] = generateSampleGroups();
 
 storiesOf('Table', module).add(
   'Default',

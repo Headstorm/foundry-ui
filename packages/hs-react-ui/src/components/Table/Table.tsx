@@ -14,7 +14,7 @@ export interface columnTypes {
     minTableWidth?: number;
     sortable?: boolean;
     sortFunction?: Function;
-
+    isGroupLabel?: boolean;
     cellComponent?: any;
     rowComponent?: any;
     headerCellComponent?: any;
@@ -24,7 +24,8 @@ export interface columnTypes {
 export type TableProps = {
   columnGap?: string;
   defaultSort?: [string, boolean]; // key, direction
-  data?: columnTypes[];
+  data?: columnTypes[] | Array<Array<columnTypes>>;
+  groupLabelPosition?: 'above' | 'below';
   columns: columnTypes;
 
   minWidthBreakpoint?: number;
@@ -159,6 +160,7 @@ const Table = ({
   columnGap = '1rem',
   defaultSort = ['', false], // key, direction
   data = [],
+  groupLabelPosition = 'above',
   columns,
 
   minWidthBreakpoint = 640,
@@ -185,7 +187,8 @@ const Table = ({
     .join(' ');
 
   const onSort = (key: string, newDirection: boolean) => {
-    sortData(
+    // If the first element of the data is not an array, then we do not have groups
+    if(!Array.isArray(data[0])) {
       data.sort((a: any, b: any) => {
         if (columns[key] && Object.prototype.hasOwnProperty.call(columns[key], 'sortFunction')) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -194,15 +197,32 @@ const Table = ({
         }
         const comparison = newDirection ? a[key] < b[key] : a[key] > b[key];
         return comparison ? -1 : 1;
-      }),
-    );
+      });
+    } else {
+      // Cast data to the correct type and iterate over each group, sorting them
+      (data as Array<Array<columnTypes>>).forEach((group) => {
+        group.sort((a: any, b: any) => {
+          if (columns[key] && Object.prototype.hasOwnProperty.call(columns[key], 'sortFunction')) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
+            return columns[key].sortFunction(a[key], b[key]) ? -1 : 1;
+          }
+          const comparison = newDirection ? a[key] < b[key] : a[key] > b[key];
+          return comparison ? -1 : 1;
+        });
+      });
+    }
+    sortData(data);
     setSortMethod([key, newDirection]);
   };
+
+  const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
 
   useEffect(() => {
     onSort(sortMethod[0], sortMethod[1]);
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Table return
   return (
     <StyledContainer ref={ref} reachedMinWidth={width < minWidthBreakpoint}>
       <thead>
@@ -212,6 +232,7 @@ const Table = ({
               const RenderedHeaderCell =
                 columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
               const breakpointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
+              // columns.map return
               return (
                 (!columns[headerColumnKey].minTableWidth || breakpointHit) && (
                   <RenderedHeaderCell
@@ -236,58 +257,133 @@ const Table = ({
           </StyledHeader>
         )}
       </thead>
-      <tbody>
-        {sortedData.map((row: columnTypes, index: number) => {
-          // map over the rows
-          const RenderedRow = row.rowComponent || StyledRow;
-          return (
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
-            <RenderedRow
-              columnGap={columnGap}
-              columnWidths={columnWidths}
-              rowNum={index}
-              key={`row${JSON.stringify(row)}`}
-              reachedMinWidth={width < minWidthBreakpoint}
-            >
-              {Object.keys(columns).map(headerColumnKey => {
-                const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
-                const breakPointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
-                return (
-                  (!columns[headerColumnKey].minTableWidth || breakPointHit) && (
-                    <RenderedCell
-                      // all cells should have full access to all the data in the row
-                      {...row} // eslint-disable-line react/jsx-props-no-spreading
-                      index={index}
-                      reachedMinWidth={width < minWidthBreakpoint}
-                      key={`${headerColumnKey}${index}`}
-                    >
-                      {width < minWidthBreakpoint && (
-                        <ResponsiveTitle
-                          onClick={() => {
-                            onSort(
-                              headerColumnKey,
-                              headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
-                            );
-                          }}
-                          sortable={columns[headerColumnKey].sortable !== false}
-                        >
-                          {columns[headerColumnKey].name}
-                          <SortIcon
-                            direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
-                            path={mdiArrowDown}
-                          />
-                        </ResponsiveTitle>
-                      )}
-                      {row[headerColumnKey]}
-                    </RenderedCell>
-                  )
-                );
-              })}
-            </RenderedRow>
-          );
-        })}
-      </tbody>
+      {usingGroups ?
+        (sortedData as Array<Array<columnTypes>>).map((group: Array<columnTypes>, idx: number) => {
+          let groupLabelIndex: number = -1;
+
+          const rows = group.map((row: columnTypes, index: number) => {
+            const RenderedRow = row.rowComponent || StyledRow;
+            if (row.isGroupLabel) {
+              groupLabelIndex = index;
+            }
+
+            // Rows.map return
+            return (
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
+              <RenderedRow
+                columnGap={columnGap}
+                columnWidths={columnWidths}
+                rowNum={index}
+                key={`row${JSON.stringify(row)}`}
+                reachedMinWidth={width < minWidthBreakpoint}
+              >
+                {Object.keys(columns).map(headerColumnKey => {
+                  const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
+                  const breakPointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
+                  // Declaring each column cell of the row
+                  return (
+                    (!columns[headerColumnKey].minTableWidth || breakPointHit) && (
+                      <RenderedCell
+                        // all cells should have full access to all the data in the row
+                        {...row} // eslint-disable-line react/jsx-props-no-spreading
+                        index={index}
+                        reachedMinWidth={width < minWidthBreakpoint}
+                        key={`${headerColumnKey}${index}`}
+                      >
+                        {width < minWidthBreakpoint && (
+                          <ResponsiveTitle
+                            onClick={() => {
+                              onSort(
+                                headerColumnKey,
+                                headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
+                              );
+                            }}
+                            sortable={columns[headerColumnKey].sortable !== false}
+                          >
+                            {columns[headerColumnKey].name}
+                            <SortIcon
+                              direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
+                              path={mdiArrowDown}
+                            />
+                          </ResponsiveTitle>
+                        )}
+                        {row[headerColumnKey]}
+                      </RenderedCell>
+                    )
+                  );
+                })}
+              </RenderedRow>
+            );
+          });
+
+          const label = groupLabelIndex >= 0 ? rows.splice(groupLabelIndex, 1)[0] : null;
+
+          // Put the header at the correct index for the group based on its position
+          if (label !== null) {
+            groupLabelPosition === 'above' ? rows.splice(0, 0, label) : rows.push(label);
+          }
+
+          return <tbody key={`row${idx}`}>
+            {rows}
+          </tbody>
+        })
+        :
+        <tbody>
+          {(sortedData as Array<columnTypes>).map((row: columnTypes, index: number) => {
+            // map over the rows
+            const RenderedRow = row.rowComponent || StyledRow;
+            // Rows.map return
+            return (
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
+              <RenderedRow
+                columnGap={columnGap}
+                columnWidths={columnWidths}
+                rowNum={index}
+                key={`row${JSON.stringify(row)}`}
+                reachedMinWidth={width < minWidthBreakpoint}
+              >
+                {Object.keys(columns).map(headerColumnKey => {
+                  const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
+                  const breakPointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
+                  // Declaring each column cell of the row
+                  return (
+                    (!columns[headerColumnKey].minTableWidth || breakPointHit) && (
+                      <RenderedCell
+                        // all cells should have full access to all the data in the row
+                        {...row} // eslint-disable-line react/jsx-props-no-spreading
+                        index={index}
+                        reachedMinWidth={width < minWidthBreakpoint}
+                        key={`${headerColumnKey}${index}`}
+                      >
+                        {width < minWidthBreakpoint && (
+                          <ResponsiveTitle
+                            onClick={() => {
+                              onSort(
+                                headerColumnKey,
+                                headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
+                              );
+                            }}
+                            sortable={columns[headerColumnKey].sortable !== false}
+                          >
+                            {columns[headerColumnKey].name}
+                            <SortIcon
+                              direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
+                              path={mdiArrowDown}
+                            />
+                          </ResponsiveTitle>
+                        )}
+                        {row[headerColumnKey]}
+                      </RenderedCell>
+                    )
+                  );
+                })}
+              </RenderedRow>
+            );
+          })}
+        </tbody>
+      }
     </StyledContainer>
   );
 };
