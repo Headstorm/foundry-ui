@@ -208,7 +208,8 @@ const Table = ({
         {width > minWidthBreakpoint && (
           <StyledHeader columnGap={columnGap} columnWidths={columnWidths}>
             {Object.keys(columns).map((headerColumnKey: string) => {
-              const RenderedHeaderCell =                columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
+              const RenderedHeaderCell =
+                columns[headerColumnKey].headerCellComponent || StyledHeaderCell;
               const breakpointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
               return (
                 (!columns[headerColumnKey].minTableWidth || breakpointHit) && (

@@ -23,5 +23,5 @@ storiesOf('Label', module).add(
       color={select('Color', colors, colors.grayDark)}
     />
   ),
-  { design },
+  { design, centered: true },
 );

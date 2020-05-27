@@ -29,5 +29,5 @@ storiesOf('Checkbox', module).add(
       </Checkbox>
     );
   },
-  { design },
+  { design, centered: true },
 );

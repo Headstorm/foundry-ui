@@ -31,7 +31,7 @@ storiesOf('Button', module)
         {text('children', 'Default text')}
       </Button>
     ),
-    { design },
+    { design, centered: true },
   )
   .add(
     'Themed Button',
@@ -72,5 +72,5 @@ storiesOf('Button', module)
         </Button>
       );
     },
-    { design },
+    { design, centered: true },
   );
