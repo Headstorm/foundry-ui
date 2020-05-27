@@ -29,8 +29,7 @@ const options = {
   ...Icons,
 };
 
-const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
-
+const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : undefined);
 
 const ThemedContainer = styled.div`
   ${({ size, color }: { size: number | string; color: string }) => `
@@ -50,8 +49,8 @@ export const Default = () => (
   <Text
     size={text('size', '1rem')}
     color={color2('color', colors.grayXlight)}
-    iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconSuffix', options, options.mdiComment))}
+    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >
@@ -82,8 +81,8 @@ export const ThemedText = () => (
     StyledContainer={ThemedContainer}
     size={text('size', '1rem')}
     color={color2('color', colors.grayDark)}
-    iconPrefix={getIconPrefixPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconSuffixPath(select('iconSuffix', options, options.mdiComment))}
+    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+    iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
     isProcessing={boolean('isProcessing', false)}
     isLoading={boolean('isLoading', false)}
   >
