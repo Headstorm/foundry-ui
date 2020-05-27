@@ -11,7 +11,7 @@ import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
 
 const design = {
   type: 'figma',
-  url: 'https://www.figma.com/file/u6xQ3W5NYB1d2zLeRCYwva/ARM?node-id=322%3A8318',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A86',
 };
 
 const ActionCellContainer = styled(Table.Cell)`
