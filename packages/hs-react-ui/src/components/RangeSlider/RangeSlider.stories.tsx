@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from 'react';
-import { storiesOf, addDecorator } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { select, number, boolean } from '@storybook/addon-knobs';
@@ -59,288 +59,291 @@ const StyledSlideRail = styled(SlideRail)`
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;
 
-storiesOf('RangeSlider', module).add(
-  'Default',
-  () => {
-    const [val, setVal] = useState(0);
+storiesOf('RangeSlider', module)
+  .add(
+    'Default',
+    () => {
+      const [val, setVal] = useState(0);
 
-    const storyValue = number('values', val, {
-      range: true,
-      min: 0,
-      max: 5,
-      step: 1,
-    });
+      const storyValue = number('values', val, {
+        range: true,
+        min: 0,
+        max: 5,
+        step: 1,
+      });
 
-    useEffect(() => {
-      setVal(storyValue);
-    }, [storyValue]);
+      useEffect(() => {
+        setVal(storyValue);
+      }, [storyValue]);
 
-    return (
-      <Row>
-        <RangeSlider
-          disabled={boolean('disabled', false)}
-          showDomainLabels={boolean('showDomainLabels', false)}
-          showSelectedRange={boolean('showSelectedRange', true)}
-          motionBlur={boolean('motionBlur', false)}
-          springOnRelease={boolean('springOnRelease', true)}
-          min={number('min', 0, {
-            range: true,
-            min: -10,
-            max: 10,
-            step: 1,
-          })}
-          max={number('max', 5, {
-            range: true,
-            min: -10,
-            max: 10,
-            step: 1,
-          })}
-          debounceInterval={number('debounceInterval', 8, {
-            range: true,
-            min: 0,
-            max: 100,
-            step: 1,
-          })}
-          onDrag={(newVal: number) => {
-            setVal(Math.round(newVal));
-            action('onDrag')(newVal);
-          }}
-          axisLock={select('axisLock', ['x', 'y', ''], 'x')}
-          values={[
-            {
-              value: val,
-              label: val,
-            },
-          ]}
-        />
-      </Row>
-    );
-  },
-  { design, centered: true },
-).add(
-  'Rating',
-  () => {
-    const [val, setVal] = useState(0);
-  
-    const storyValue = number('values', val, {
-      range: true,
-      min: 0,
-      max: 5,
-      step: 1,
-    });
-  
-    useEffect(() => {
-      setVal(storyValue);
-    }, [storyValue]);
-  
-    return (
-      <Row>
-        <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <RangeSlider
-          StyledSlideRail={StyledSlideRail}
-          disabled={boolean('disabled', false)}
-          showDomainLabels={boolean('showDomainLabels', false)}
-          showSelectedRange={boolean('showSelectedRange', false)}
-          motionBlur={boolean('motionBlur', false)}
-          springOnRelease={boolean('springOnRelease', true)}
-          min={number('min', 0, {
-            range: true,
-            min: -10,
-            max: 10,
-            step: 1,
-          })}
-          max={number('max', 5, {
-            range: true,
-            min: -10,
-            max: 10,
-            step: 1,
-          })}
-          debounceInterval={number('debounceInterval', 8, {
-            range: true,
-            min: 0,
-            max: 100,
-            step: 1,
-          })}
-          onDrag={(newVal: number) => {
-            setVal(Math.round(newVal));
-            action('onDrag')(newVal);
-          }}
-          axisLock={select('axisLock', ['x', 'y', ''], 'x')}
-          values={[
-            {
-              value: val,
-              label: skillLabels[Math.round(val)],
-              color: skillColors[Math.round(val)],
-            },
-          ]}
-        />
-      </Row>
-    );
-  },
-  { design, centered: true }
-).add(
-  'Color Picker',
-  () => {
-    const [hue, setHue] = useState(0);
-    const [sat, setSat] = useState(50);
-    const [light, setLight] = useState(50);
-  
-    const storyHue = number('hue', hue, {
-      range: true,
-      min: 0,
-      max: 255,
-      step: 1,
-    });
-  
-    const storySat = number('saturation', sat, {
-      range: true,
-      min: 0,
-      max: 99,
-      step: 1,
-    });
-  
-    const storyLight = number('lightness', light, {
-      range: true,
-      min: 0,
-      max: 99,
-      step: 1,
-    });
-  
-    useEffect(() => {
-      setHue(storyHue);
-    }, [storyHue]);
-  
-    useEffect(() => {
-      setSat(storySat);
-    }, [storySat]);
-  
-    useEffect(() => {
-      setLight(storyLight);
-    }, [storyLight]);
-  
-    const allHues = Array.from({ length: 360 }, (_, i) => i).map(
-      num => `hsl(${num}, ${sat}%, ${light}%)`,
-    );
-    const allSats = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
-    const allLights = [`hsl(${hue}, ${sat}%, 10%)`, `hsl(${hue}, ${sat}%, 90%)`];
-  
-    return (
-      <Card
-        elevation={2}
-        StyledHeader={Card.NoPaddingHeader}
-        header={
-          <ColorPreview
-            style={{
-              backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
-              color: readableColor(`hsl(${hue},${sat}%,${light}%)`),
-            }}
-          >
-            {toColorString({
-              hue,
-              saturation: sat / 100,
-              lightness: light / 100,
-            })}
-          </ColorPreview>
-        }
-      >
+      return (
         <Row>
-          <span>H:&nbsp;&nbsp;&nbsp;</span>
           <RangeSlider
-            StyledSlideRail={forwardRef((props, ref) => (
-              <SlideRail
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                ref={ref}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...props}
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`,
-                }}
-              />
-            ))}
             disabled={boolean('disabled', false)}
             showDomainLabels={boolean('showDomainLabels', false)}
-            showSelectedRange={false}
-            min={0}
-            max={360}
-            onDrag={(val: number) => {
-              setHue(Math.round(val));
-              action('onDrag hue')(val);
+            showSelectedRange={boolean('showSelectedRange', true)}
+            motionBlur={boolean('motionBlur', false)}
+            springOnRelease={boolean('springOnRelease', true)}
+            min={number('min', 0, {
+              range: true,
+              min: -10,
+              max: 10,
+              step: 1,
+            })}
+            max={number('max', 5, {
+              range: true,
+              min: -10,
+              max: 10,
+              step: 1,
+            })}
+            debounceInterval={number('debounceInterval', 8, {
+              range: true,
+              min: 0,
+              max: 100,
+              step: 1,
+            })}
+            onDrag={(newVal: number) => {
+              setVal(Math.round(newVal));
+              action('onDrag')(newVal);
             }}
+            axisLock={select('axisLock', ['x', 'y', ''], 'x')}
             values={[
               {
-                value: hue,
-                label: hue,
-                color: colors.grayLight,
+                value: val,
+                label: val,
               },
             ]}
           />
         </Row>
+      );
+    },
+    { design, centered: true },
+  )
+  .add(
+    'Rating',
+    () => {
+      const [val, setVal] = useState(0);
+
+      const storyValue = number('values', val, {
+        range: true,
+        min: 0,
+        max: 5,
+        step: 1,
+      });
+
+      useEffect(() => {
+        setVal(storyValue);
+      }, [storyValue]);
+
+      return (
         <Row>
-          <span>S:&nbsp;&nbsp;&nbsp;</span>
+          <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <RangeSlider
-            StyledSlideRail={forwardRef((props, ref) => (
-              <SlideRail
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                ref={ref}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...props}
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`,
-                }}
-              />
-            ))}
-            min={0}
-            max={100}
-            onDrag={(val: number) => {
-              setSat(Math.round(val));
-              action('onDrag saturation')(val);
+            StyledSlideRail={StyledSlideRail}
+            disabled={boolean('disabled', false)}
+            showDomainLabels={boolean('showDomainLabels', false)}
+            showSelectedRange={boolean('showSelectedRange', false)}
+            motionBlur={boolean('motionBlur', false)}
+            springOnRelease={boolean('springOnRelease', true)}
+            min={number('min', 0, {
+              range: true,
+              min: -10,
+              max: 10,
+              step: 1,
+            })}
+            max={number('max', 5, {
+              range: true,
+              min: -10,
+              max: 10,
+              step: 1,
+            })}
+            debounceInterval={number('debounceInterval', 8, {
+              range: true,
+              min: 0,
+              max: 100,
+              step: 1,
+            })}
+            onDrag={(newVal: number) => {
+              setVal(Math.round(newVal));
+              action('onDrag')(newVal);
             }}
-            showDomainLabels={false}
-            showSelectedRange={false}
+            axisLock={select('axisLock', ['x', 'y', ''], 'x')}
             values={[
               {
-                value: sat,
-                label: sat,
-                color: colors.grayLight,
+                value: val,
+                label: skillLabels[Math.round(val)],
+                color: skillColors[Math.round(val)],
               },
             ]}
           />
         </Row>
-        <Row>
-          <span>L:&nbsp;&nbsp;&nbsp;</span>
-          <RangeSlider
-            StyledSlideRail={forwardRef((props, ref) => (
-              <SlideRail
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                ref={ref}
-                {...props} // eslint-disable-line react/jsx-props-no-spreading
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`,
-                }}
-              />
-            ))}
-            min={0}
-            max={100}
-            onDrag={(val: number) => {
-              setLight(Math.round(val));
-              action('onDrag light')(val);
-            }}
-            showDomainLabels={false}
-            showSelectedRange={false}
-            values={[
-              {
-                value: light,
-                label: light,
-                color: colors.grayLight,
-              },
-            ]}
-          />
-        </Row>
-      </Card>
-    );
-  },
-  { design, centered: true }
-);
+      );
+    },
+    { design, centered: true },
+  )
+  .add(
+    'Color Picker',
+    () => {
+      const [hue, setHue] = useState(0);
+      const [sat, setSat] = useState(50);
+      const [light, setLight] = useState(50);
+
+      const storyHue = number('hue', hue, {
+        range: true,
+        min: 0,
+        max: 255,
+        step: 1,
+      });
+
+      const storySat = number('saturation', sat, {
+        range: true,
+        min: 0,
+        max: 99,
+        step: 1,
+      });
+
+      const storyLight = number('lightness', light, {
+        range: true,
+        min: 0,
+        max: 99,
+        step: 1,
+      });
+
+      useEffect(() => {
+        setHue(storyHue);
+      }, [storyHue]);
+
+      useEffect(() => {
+        setSat(storySat);
+      }, [storySat]);
+
+      useEffect(() => {
+        setLight(storyLight);
+      }, [storyLight]);
+
+      const allHues = Array.from({ length: 360 }, (_, i) => i).map(
+        num => `hsl(${num}, ${sat}%, ${light}%)`,
+      );
+      const allSats = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
+      const allLights = [`hsl(${hue}, ${sat}%, 10%)`, `hsl(${hue}, ${sat}%, 90%)`];
+
+      return (
+        <Card
+          elevation={2}
+          StyledHeader={Card.NoPaddingHeader}
+          header={
+            <ColorPreview
+              style={{
+                backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
+                color: readableColor(`hsl(${hue},${sat}%,${light}%)`),
+              }}
+            >
+              {toColorString({
+                hue,
+                saturation: sat / 100,
+                lightness: light / 100,
+              })}
+            </ColorPreview>
+          }
+        >
+          <Row>
+            <span>H:&nbsp;&nbsp;&nbsp;</span>
+            <RangeSlider
+              StyledSlideRail={forwardRef((props, ref) => (
+                <SlideRail
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  ref={ref}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
+                  {...props}
+                  style={{
+                    backgroundImage: `linear-gradient(to right, ${allHues.join(', ')})`,
+                  }}
+                />
+              ))}
+              disabled={boolean('disabled', false)}
+              showDomainLabels={boolean('showDomainLabels', false)}
+              showSelectedRange={false}
+              min={0}
+              max={360}
+              onDrag={(val: number) => {
+                setHue(Math.round(val));
+                action('onDrag hue')(val);
+              }}
+              values={[
+                {
+                  value: hue,
+                  label: hue,
+                  color: colors.grayLight,
+                },
+              ]}
+            />
+          </Row>
+          <Row>
+            <span>S:&nbsp;&nbsp;&nbsp;</span>
+            <RangeSlider
+              StyledSlideRail={forwardRef((props, ref) => (
+                <SlideRail
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  ref={ref}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
+                  {...props}
+                  style={{
+                    backgroundImage: `linear-gradient(to right, ${allSats.join(', ')})`,
+                  }}
+                />
+              ))}
+              min={0}
+              max={100}
+              onDrag={(val: number) => {
+                setSat(Math.round(val));
+                action('onDrag saturation')(val);
+              }}
+              showDomainLabels={false}
+              showSelectedRange={false}
+              values={[
+                {
+                  value: sat,
+                  label: sat,
+                  color: colors.grayLight,
+                },
+              ]}
+            />
+          </Row>
+          <Row>
+            <span>L:&nbsp;&nbsp;&nbsp;</span>
+            <RangeSlider
+              StyledSlideRail={forwardRef((props, ref) => (
+                <SlideRail
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  ref={ref}
+                  {...props} // eslint-disable-line react/jsx-props-no-spreading
+                  style={{
+                    backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`,
+                  }}
+                />
+              ))}
+              min={0}
+              max={100}
+              onDrag={(val: number) => {
+                setLight(Math.round(val));
+                action('onDrag light')(val);
+              }}
+              showDomainLabels={false}
+              showSelectedRange={false}
+              values={[
+                {
+                  value: light,
+                  label: light,
+                  color: colors.grayLight,
+                },
+              ]}
+            />
+          </Row>
+        </Card>
+      );
+    },
+    { design, centered: true },
+  );
