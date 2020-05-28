@@ -3,7 +3,7 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean, select } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
@@ -35,10 +35,20 @@ const NoteField = styled.textarea`
   resize: none;
 `;
 
+const above: 'above' = 'above';
+const below: 'below' = 'below';
+const groupLabelPositionOptions = { above, below};
+
 const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5) => {
   const groupData = [];
   for (let i = 0; i < numberOfGroups; i++) {
-    groupData.push(generateSampleData(groupSize));
+    const groupRows = generateSampleData(groupSize);
+    groupRows.push({
+      name: `Group ${i}`,
+      isGroupLabel: true,
+    })
+
+    groupData.push(groupRows);
   }
   return groupData;
 };
@@ -58,8 +68,8 @@ const generateSampleData = (rows: number) => {
   return finalData;
 };
 
-//const sampleData: any[] = generateSampleData(10);
-const sampleData: any[] = generateSampleGroups();
+const sampleData: any[] = generateSampleData(10);
+const sampleGroupData: any[] = generateSampleGroups();
 
 storiesOf('Table', module).add(
   'Default',
@@ -188,6 +198,38 @@ storiesOf('Table', module).add(
     };
 
     return <Table columns={sampleColumns} data={rows} />;
+  },
+  { design },
+);
+
+storiesOf('Table', module).add(
+  'Groups',
+  () => {
+    const [rows, setRows] = useState(sampleGroupData);
+
+    const sampleColumns: { [index: string]: any } = {
+      name: {
+        name: 'Name',
+        width: text('Name width', '1fr'),
+      },
+      title: {
+        name: 'Title',
+        width: text('Title width', '1fr'),
+      },
+      address: {
+        name: 'Address',
+        width: text('Address width', '1fr'),
+      },
+    };
+
+    return <Table
+      columns={sampleColumns}
+      data={rows}
+      sortGroups={boolean('sortGroups', false)}
+      groupLabelPosition={select('groupLabelPosition', groupLabelPositionOptions, 'above')}
+      isCollapsable={boolean('isCollapsable', false)}
+      minWidthBreakpoint={0}
+    />;
   },
   { design },
 );

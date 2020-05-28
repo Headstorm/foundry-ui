@@ -22,19 +22,20 @@ export interface columnTypes {
 }
 
 export type TableProps = {
+  isCollapsable?: boolean;
   columnGap?: string;
-  defaultSort?: [string, boolean]; // key, direction
-  data?: columnTypes[] | Array<Array<columnTypes>>;
-  groupLabelPosition?: 'above' | 'below';
   columns: columnTypes;
-
+  data?: columnTypes[] | Array<Array<columnTypes>>;
+  defaultSort?: [string, boolean]; // key, direction
+  groupLabelPosition?: 'above' | 'below';
   minWidthBreakpoint?: number;
-
+  sortGroups?: boolean;
+  StyledCell?: string & StyledComponentBase<any, {}>;
   StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledGroupLabelRow?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
   StyledHeaderCell?: string & StyledComponentBase<any, {}>;
   StyledRow?: string & StyledComponentBase<any, {}>;
-  StyledCell?: string & StyledComponentBase<any, {}>;
 };
 
 export type RowProps = {
@@ -42,6 +43,7 @@ export type RowProps = {
   columnWidths: string;
   rowNum?: number;
   reachedMinWidth?: boolean;
+  isCollapsed?: boolean;
 };
 
 export const TableContainer = styled.table`
@@ -101,8 +103,8 @@ export const ResponsiveTitle = styled.span`
 `;
 
 export const Row = styled.tr`
-  ${({ columnGap, columnWidths, reachedMinWidth }: RowProps) => `
-    display: grid;
+  ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => `
+    display: ${isCollapsed ? 'none' : 'grid'};
     grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
     padding: ${reachedMinWidth ? '1rem' : '0rem'} 2rem;
     row-gap: .5rem;
@@ -133,6 +135,10 @@ export const Row = styled.tr`
   `}
 `;
 
+export const GroupRow = styled(Row)`
+    background-color: #e75b2770;
+`;
+
 export const Cell = styled.td`
   display: block;
   padding: 1rem 0rem;
@@ -152,27 +158,31 @@ const SortIcon = styled(Icon)`
   `}
 `;
 
+const defaultCollapsed: string[] = [];
+
 // TODO: Add the table width observer to a container which fills the area, so the table can grow
 // once there is enough room for it to do so (if the table itself isn't full width)
 // TODO: Add window width media query to compliment the table width media query API
 
 const Table = ({
   columnGap = '1rem',
-  defaultSort = ['', false], // key, direction
-  data = [],
-  groupLabelPosition = 'above',
   columns,
-
+  isCollapsable = false,
+  data = [],
+  defaultSort = ['', false], // key, direction
+  groupLabelPosition = 'above',
   minWidthBreakpoint = 640,
-
+  sortGroups = false,
+  StyledCell = Cell,
   StyledContainer = TableContainer,
+  StyledGroupLabelRow = GroupRow,
   StyledHeader = Header,
   StyledHeaderCell = HeaderCell,
   StyledRow = Row,
-  StyledCell = Cell,
 }: TableProps) => {
   const [sortedData, sortData] = useState(data);
   const [sortMethod, setSortMethod] = useState(defaultSort);
+  const [collapsedGroups, setCollapsedGroups] = useState(defaultCollapsed)
 
   const { ref, width = Infinity } = useResizeObserver();
 
@@ -185,6 +195,18 @@ const Table = ({
       return col.width || '1fr';
     })
     .join(' ');
+
+  const toggleGroupCollapse = (key: string) => {
+    const index = collapsedGroups.indexOf(key);
+    const temp = [...collapsedGroups];
+    if (index >= 0) {
+      temp.splice(index, 1);
+    } else {
+      temp.push(key);
+    }
+
+    setCollapsedGroups(temp);
+  }
 
   const onSort = (key: string, newDirection: boolean) => {
     // If the first element of the data is not an array, then we do not have groups
@@ -211,9 +233,23 @@ const Table = ({
           return comparison ? -1 : 1;
         });
       });
+      // Sort the groups only if sortGroups is supplied as true
+      if (sortGroups) {
+        (data as Array<Array<columnTypes>>).sort((a: any, b: any) => {
+          if (columns[key] && Object.prototype.hasOwnProperty.call(columns[key], 'sortFunction')) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
+            return columns[key].sortFunction(a[0][key], b[0][key]) ? -1 : 1;
+          }
+          const comparison = newDirection ? a[0][key] < b[0][key] : a[0][key] > b[0][key];
+          return comparison ? -1 : 1;
+        });
+      }
     }
+
     sortData(data);
     setSortMethod([key, newDirection]);
+    setCollapsedGroups(defaultCollapsed);
   };
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
@@ -258,14 +294,25 @@ const Table = ({
         )}
       </thead>
       {usingGroups ?
-        (sortedData as Array<Array<columnTypes>>).map((group: Array<columnTypes>, idx: number) => {
-          let groupLabelIndex: number = -1;
+        // Generate groupings - Note that we are making shallow copies of the arrays so that we do not
+        // modify the props directly since this is an Array of Arrays and is accessed by reference.
+        [...sortedData as Array<Array<columnTypes>>].map((group: Array<columnTypes>, idx: number) => {
+          const groupLabelIndex: number = group.findIndex((grp) => {
+            return grp.isGroupLabel === true;
+          });
+          const groupCopy = [...group];
 
-          const rows = group.map((row: columnTypes, index: number) => {
-            const RenderedRow = row.rowComponent || StyledRow;
-            if (row.isGroupLabel) {
-              groupLabelIndex = index;
-            }
+          // Get the group label data
+          const groupLabelData = groupLabelIndex >= 0 ? groupCopy.splice(groupLabelIndex, 1)[0] : undefined;
+
+          const groupLabelDataString = JSON.stringify(groupLabelData);
+          // Get index modifier for creating the rows of the data. Everything group element's index
+          // should be increased by 1 for all labels that are above the group
+          const indexModifier = groupLabelPosition === 'above' ? 1 : 0;
+          const isCollapsed = collapsedGroups.indexOf(groupLabelDataString) >= 0;
+          // Generate the rows for this group
+          const rows = groupCopy.map((row: columnTypes, index: number) => {
+            let RenderedRow = row.rowComponent || StyledRow;
 
             // Rows.map return
             return (
@@ -274,9 +321,10 @@ const Table = ({
               <RenderedRow
                 columnGap={columnGap}
                 columnWidths={columnWidths}
-                rowNum={index}
+                rowNum={index + indexModifier}
                 key={`row${JSON.stringify(row)}`}
                 reachedMinWidth={width < minWidthBreakpoint}
+                isCollapsed={isCollapsable && isCollapsed}
               >
                 {Object.keys(columns).map(headerColumnKey => {
                   const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
@@ -287,9 +335,9 @@ const Table = ({
                       <RenderedCell
                         // all cells should have full access to all the data in the row
                         {...row} // eslint-disable-line react/jsx-props-no-spreading
-                        index={index}
+                        index={index + indexModifier}
                         reachedMinWidth={width < minWidthBreakpoint}
-                        key={`${headerColumnKey}${index}`}
+                        key={`${headerColumnKey}${index + indexModifier}`}
                       >
                         {width < minWidthBreakpoint && (
                           <ResponsiveTitle
@@ -317,18 +365,67 @@ const Table = ({
             );
           });
 
-          const label = groupLabelIndex >= 0 ? rows.splice(groupLabelIndex, 1)[0] : null;
-
-          // Put the header at the correct index for the group based on its position
-          if (label !== null) {
-            groupLabelPosition === 'above' ? rows.splice(0, 0, label) : rows.push(label);
+          if (groupLabelData) {
+            const index = indexModifier === 0 ? rows.length : 0;
+            const RenderedRow = groupLabelData.rowComponent || StyledGroupLabelRow;
+            const label = (
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
+              <RenderedRow
+                columnGap={columnGap}
+                columnWidths={columnWidths}
+                rowNum={index}
+                key={`row${groupLabelDataString}`}
+                reachedMinWidth={width < minWidthBreakpoint}
+                onClick={() => { toggleGroupCollapse(groupLabelDataString) }}
+              >
+                {Object.keys(columns).map(headerColumnKey => {
+                  const RenderedCell = columns[headerColumnKey].cellComponent || StyledCell;
+                  const breakPointHit = width > (columns[headerColumnKey].minTableWidth || Infinity);
+                  // Declaring each column cell of the row
+                  return (
+                    (!columns[headerColumnKey].minTableWidth || breakPointHit) && (
+                      <RenderedCell
+                        // all cells should have full access to all the data in the row
+                        {...groupLabelData} // eslint-disable-line react/jsx-props-no-spreading
+                        index={index}
+                        reachedMinWidth={width < minWidthBreakpoint}
+                        key={`${headerColumnKey}${index}`}
+                      >
+                        {width < minWidthBreakpoint && (
+                          <ResponsiveTitle
+                            onClick={() => {
+                              onSort(
+                                headerColumnKey,
+                                headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
+                              );
+                            }}
+                            sortable={columns[headerColumnKey].sortable !== false}
+                          >
+                            {columns[headerColumnKey].name}
+                            <SortIcon
+                              direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
+                              path={mdiArrowDown}
+                            />
+                          </ResponsiveTitle>
+                        )}
+                        {groupLabelData[headerColumnKey]}
+                      </RenderedCell>
+                    )
+                  );
+                })}
+              </RenderedRow>
+            );
+            index === 0 ? rows.splice(0, 0, label) : rows.push(label);
           }
 
           return <tbody key={`row${idx}`}>
             {rows}
           </tbody>
         })
+        // End of group generation
         :
+        // Generate non-grouped table data
         <tbody>
           {(sortedData as Array<columnTypes>).map((row: columnTypes, index: number) => {
             // map over the rows
@@ -392,6 +489,7 @@ Table.Container = TableContainer;
 Table.Header = Header;
 Table.HeaderCell = HeaderCell;
 Table.Row = Row;
+Table.GroupHeader = GroupRow;
 Table.Cell = Cell;
 Table.Title = ResponsiveTitle;
 export default Table;
