@@ -64,12 +64,12 @@ const TextInput = ({
   value,
   isMultiline,
   errorMessage,
-  StyledDivContainer = DivContainer
+  StyledDivContainer = DivContainer,
 }: TextInputProps) => {
   const StyledTextInputContainer = TextInputContainer;
   return (
     <StyledDivContainer>
-       {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
+      {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
       {onClear && value && (
         <ClearIconContainer onClick={onClear}>
           <Icon path={mdiClose} size="16px" />
@@ -83,7 +83,7 @@ const TextInput = ({
         onChange={onChange}
         value={value}
       />
-     {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+      {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
     </StyledDivContainer>
   );
 };
