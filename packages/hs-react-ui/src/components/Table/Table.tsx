@@ -158,7 +158,8 @@ const SortIcon = styled(Icon)`
   `}
 `;
 
-const defaultCollapsed: string[] = [];
+type collapsedState = {[key: string]: string};
+const defaultCollapsed: collapsedState = {};
 
 // TODO: Add the table width observer to a container which fills the area, so the table can grow
 // once there is enough room for it to do so (if the table itself isn't full width)
@@ -196,17 +197,25 @@ const Table = ({
     })
     .join(' ');
 
+  // Toggles the collapsed
   const toggleGroupCollapse = (key: string) => {
-    const index = collapsedGroups.indexOf(key);
-    const temp = [...collapsedGroups];
-    if (index >= 0) {
-      temp.splice(index, 1);
+    const group = collapsedGroups[key];
+
+    // Make a copy of the dictionary-like object. Because this object
+    // doesn't have nested objects, a shallow copy is fine
+    const temp: collapsedState = Object.assign({}, collapsedGroups);
+    if (group) {
+      delete temp[key];
     } else {
-      temp.push(key);
+      temp[key] = key;
     }
 
     setCollapsedGroups(temp);
   }
+
+  const isGroupCollapsed = (group: string): boolean => {
+    return !!collapsedGroups[group];
+  };
 
   const onSort = (key: string, newDirection: boolean) => {
     // If the first element of the data is not an array, then we do not have groups
@@ -309,7 +318,7 @@ const Table = ({
           // Get index modifier for creating the rows of the data. Everything group element's index
           // should be increased by 1 for all labels that are above the group
           const indexModifier = groupLabelPosition === 'above' ? 1 : 0;
-          const isCollapsed = collapsedGroups.indexOf(groupLabelDataString) >= 0;
+          const isCollapsed = isGroupCollapsed(groupLabelDataString);
           // Generate the rows for this group
           const rows = groupCopy.map((row: columnTypes, index: number) => {
             let RenderedRow = row.rowComponent || StyledRow;
