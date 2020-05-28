@@ -226,7 +226,7 @@ storiesOf('Table', module).add(
       columns={sampleColumns}
       data={rows}
       sortGroups={boolean('sortGroups', false)}
-      groupLabelPosition={select('groupLabelPosition', groupLabelPositionOptions, 'above')}
+      groupHeaderPosition={select('groupLabelPosition', groupLabelPositionOptions, 'above')}
       isCollapsable={boolean('isCollapsable', false)}
       minWidthBreakpoint={0}
     />;
