@@ -8,19 +8,18 @@ export const CardContainer = styled.div`
   ${({ elevation = 0 }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
-    width: fit-content;
 
     font-family: Gotham;
     font-size: 1rem;
 
     border-radius: 0.25rem;
-    margin: .25rem;
 
-    border: 1px solid ${!elevation ? colors.grayXlight : 'transparent'};
+    border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
 
-    transition: box-shadow ${timings.slow};
-    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
+    transition: box-shadow ${timings.slow}, border ${timings.normal};
+    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${
+    elevation * -0.25
+  }rem rgba(0,0,0,${0.6 - elevation * 0.1});
     background-color: ${colors.background};
   `}
 `;
@@ -28,7 +27,6 @@ export const CardContainer = styled.div`
 export const Header = styled.div`
   padding: 1.5rem 1.5rem 0rem;
   font-weight: bold;
-  text-transform: uppercase;
   color: ${colors.grayDark};
 `;
 

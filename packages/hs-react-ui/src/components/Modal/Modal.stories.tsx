@@ -22,6 +22,9 @@ storiesOf('Modal', module).add(
     const Background = styled.div`
       background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Chicago_cityscape_%285253757001%29.jpg);
       background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       height: 100vh;
       width: 100vw;
@@ -34,7 +37,7 @@ storiesOf('Modal', module).add(
 
       color: #5a27e7;
     `;
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const ModalFooter = () => (
       <>
         <ModalActionText onClick={() => setIsOpen(false)}>Cancel</ModalActionText>
