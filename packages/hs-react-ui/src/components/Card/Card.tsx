@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
+import fonts from '../../enums/fonts';
 
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';

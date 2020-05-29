@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../enums/colors';
+import fonts from '../../enums/fonts';
 
 const Text = styled.span``;
 
