@@ -5,6 +5,7 @@ import Icon from '@mdi/react';
 import { mdiArrowDown } from '@mdi/js';
 
 import colors from '../../enums/colors';
+import fonts from '../../enums/fonts';
 
 export interface columnTypes {
   [index: string]: {
@@ -45,7 +46,7 @@ export type RowProps = {
 export const TableContainer = styled.table`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
     width: ${reachedMinWidth ? '100%' : 'auto'};
-    font-family: Montserrat;
+    ${fonts.body}
     background-color: ${colors.background};
     border-collapse: collapse;
 

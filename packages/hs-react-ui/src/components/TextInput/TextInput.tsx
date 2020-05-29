@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
+import fonts from '../../enums/fonts';
 
 const TextInputContainer = styled.input`
   ${({ hasIconPrefix, hasMultiline }: { hasIconPrefix: boolean; hasMultiline: boolean }) => `
@@ -12,7 +13,7 @@ border-radius: 0.5em;
 border 0 none;
 outline: 0 none;
 height: 2em;
-font-family: Gothic;
+${fonts.body}
 font-size: 16px; 
 width: 100%;
 background-color: white;
@@ -64,12 +65,12 @@ const TextInput = ({
   value,
   isMultiline,
   errorMessage,
-  StyledDivContainer = DivContainer
+  StyledDivContainer = DivContainer,
 }: TextInputProps) => {
   const StyledTextInputContainer = TextInputContainer;
   return (
     <StyledDivContainer>
-       {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
+      {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
       {onClear && value && (
         <ClearIconContainer onClick={onClear}>
           <Icon path={mdiClose} size="16px" />
@@ -83,7 +84,7 @@ const TextInput = ({
         onChange={onChange}
         value={value}
       />
-     {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+      {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
     </StyledDivContainer>
   );
 };
