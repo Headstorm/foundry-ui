@@ -3,7 +3,7 @@ import { storiesOf, addDecorator } from '@storybook/react';
 
 const design = {
   type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=0%3A1',
 };
 
 storiesOf('Appendix', module).add(
