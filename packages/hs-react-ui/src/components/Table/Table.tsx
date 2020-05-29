@@ -57,6 +57,7 @@ export type ExpansionIconProps = {
   expandedIcon?: string;
   isCollapsed: boolean;
   groupHeaderPosition: 'above' | 'below';
+  onClick: Function;
 };
 
 export const TableContainer = styled.table`
@@ -184,10 +185,11 @@ const ExpansionIcon: React.FunctionComponent<ExpansionIconProps> = ({
   collapsedIcon = mdiChevronRight,
   expandedIcon = mdiChevronDown,
   isCollapsed,
+  onClick,
 }: ExpansionIconProps) => {
   const path = isCollapsed ? collapsedIcon : expandedIcon;
   return (
-      <Icon path={path} size={'1rem'}/>
+      <Icon path={path} size={'1rem'} onClick={onClick} />
   );
 };
 
@@ -420,10 +422,9 @@ const Table = ({
                 rowNum={index}
                 key={`row${groupLabelDataString}`}
                 reachedMinWidth={width < minWidthBreakpoint}
-                onClick={() => { toggleGroupCollapse(groupLabelDataString) }}
               >
                 {Object.keys(copiedColumns).map(headerColumnKey => {
-                  const RenderedCell =  usingGroups && headerColumnKey === expansionKey ?
+                  const RenderedCell =  usingGroups ?
                   copiedColumns[headerColumnKey].groupCellComponent || StyledCell :
                     copiedColumns[headerColumnKey].cellComponent || StyledCell;
                   const breakPointHit = width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
@@ -465,6 +466,7 @@ const Table = ({
                             expandedIcon={expandedIcon}
                             isCollapsed={isCollapsed}
                             groupHeaderPosition={groupHeaderPosition}
+                            onClick={() => { toggleGroupCollapse(groupLabelDataString) }}
                           /> : null}
                     </RenderedCell>
                     )

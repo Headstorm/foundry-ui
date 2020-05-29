@@ -206,6 +206,13 @@ storiesOf('Table', module).add(
   'Groups',
   () => {
     const [rows, setRows] = useState(sampleGroupData);
+    const GroupHeaderNoteCell = () => <Table.Cell />;
+
+    const NotesCell = ({ notes }: { notes: string }) => (
+      <Table.Cell>
+        <NoteField onChange={() => console.log()} rows={3} value={notes} />
+      </Table.Cell>
+    );
 
     const sampleColumns: { [index: string]: any } = {
       name: {
@@ -219,6 +226,14 @@ storiesOf('Table', module).add(
       address: {
         name: 'Address',
         width: text('Address width', '1fr'),
+      },
+      notes: {
+        name: 'Notes',
+        width: text('Notes width', '12rem'),
+        cellComponent: NotesCell,
+        minTableWidth: 800,
+        sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
+        groupCellComponent: GroupHeaderNoteCell,
       },
     };
 
