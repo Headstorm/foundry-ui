@@ -35,28 +35,15 @@ const NoteField = styled.textarea`
   resize: none;
 `;
 
-const above: 'above' = 'above';
-const below: 'below' = 'below';
-const groupLabelPositionOptions = { above, below };
+const groupLabelPositionOptions: { above: 'above'; below: 'below' } = {
+  above: 'above',
+  below: 'below',
+};
 const options = {
   none: '',
   mdiChevronDoubleDown,
   mdiChevronDoubleRight,
   mdiChevronDoubleUp,
-};
-
-const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5) => {
-  const groupData = [];
-  for (let i = 0; i < numberOfGroups; i++) {
-    const groupRows = generateSampleData(groupSize);
-    groupRows.push({
-      title: commerce.department() + ' Department',
-      isGroupLabel: true,
-    });
-
-    groupData.push(groupRows);
-  }
-  return groupData;
 };
 
 const generateSampleData = (rows: number) => {
@@ -72,6 +59,20 @@ const generateSampleData = (rows: number) => {
   }
 
   return finalData;
+};
+
+const generateSampleGroups = (numberOfGroups = 5, groupSize = 5) => {
+  const groupData = [];
+  for (let i = 0; i < numberOfGroups; i++) {
+    const groupRows = generateSampleData(groupSize);
+    groupRows.push({
+      title: `${commerce.department()} Department`,
+      isGroupLabel: true,
+    });
+
+    groupData.push(groupRows);
+  }
+  return groupData;
 };
 
 const sampleData: any[] = generateSampleData(10);
@@ -324,7 +325,7 @@ storiesOf('Table', module).add(
         groupCellComponent: EmptyCell,
       },
     };
-    let position = select('groupLabelPosition', groupLabelPositionOptions, 'above');
+    const position = select('groupLabelPosition', groupLabelPositionOptions, 'above');
     return (
       <Table
         columns={sampleColumns}

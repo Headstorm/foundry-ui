@@ -4,6 +4,7 @@ import useResizeObserver from 'use-resize-observer';
 import Icon from '@mdi/react';
 import { mdiArrowDown, mdiChevronRight, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 
+import ExpansionIcon, { ExpansionIconProps } from './TableExpansionIcon';
 import colors from '../../enums/colors';
 import fonts from '../../enums/fonts';
 
@@ -48,14 +49,6 @@ export type RowProps = {
   rowNum?: number;
   reachedMinWidth?: boolean;
   isCollapsed?: boolean;
-};
-
-export type ExpansionIconProps = {
-  collapsedIcon: string;
-  expandedIcon: string;
-  isCollapsed: boolean;
-  groupHeaderPosition: 'above' | 'below';
-  onClick: any;
 };
 
 export const TableContainer = styled.table`
@@ -179,19 +172,6 @@ const collapseIconColumn = {
 };
 
 export const ExpansionIconColumnKey = '__EXPANSION_COLUMN__';
-const ExpansionIcon: React.FunctionComponent<ExpansionIconProps> = ({
-  collapsedIcon,
-  expandedIcon,
-  isCollapsed,
-  onClick,
-}: ExpansionIconProps) => {
-  const path = isCollapsed ? collapsedIcon : expandedIcon;
-  return (
-    <span onClick={onClick}>
-      <Icon path={path} size={'1rem'} />
-    </span>
-  );
-};
 
 // TODO: Add the table width observer to a container which fills the area, so the table can grow
 // once there is enough room for it to do so (if the table itself isn't full width)
@@ -222,7 +202,7 @@ const Table = ({
   const { ref, width = Infinity } = useResizeObserver();
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
-  const copiedColumns = Object.assign({}, columns); // Shallow copy so not to manipulate props
+  const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
   copiedColumns[ExpansionIconColumnKey] = collapseIconColumn;
 
   // this builds the string from the columns
@@ -241,7 +221,7 @@ const Table = ({
 
     // Make a copy of the dictionary-like object. Because this object
     // doesn't have nested objects, a shallow copy is fine
-    const temp: collapsedState = Object.assign({}, collapsedGroups);
+    const temp: collapsedState = { ...collapsedGroups };
     if (group) {
       delete temp[key];
     } else {
@@ -356,13 +336,13 @@ const Table = ({
         // modify the props directly since this is an Array of Arrays and is accessed by reference.
         [...(sortedData as Array<Array<columnTypes>>)].map(
           (group: Array<columnTypes>, idx: number) => {
-            let groupLabelIndex: number = group.findIndex(grp => {
+            const groupLabelIndex: number = group.findIndex(grp => {
               return grp.isGroupLabel === true;
             });
             const groupCopy = [...group];
 
             // Get the group label data
-            let groupLabelData = groupLabelIndex >= 0 ? groupCopy[groupLabelIndex] : undefined;
+            const groupLabelData = groupLabelIndex >= 0 ? groupCopy[groupLabelIndex] : undefined;
 
             const groupLabelDataString = JSON.stringify(groupLabelData);
             // Get index modifier for creating the rows of the data. Everything group element's index
@@ -371,7 +351,7 @@ const Table = ({
             const isCollapsed = isGroupCollapsed(groupLabelDataString);
             // Generate the rows for this group
             const rows = groupCopy.map((row: columnTypes, index: number) => {
-              let RenderedRow = row.rowComponent || StyledRow;
+              const RenderedRow = row.rowComponent || StyledRow;
               if (index === groupLabelIndex) return null;
 
               // Rows.map return
@@ -501,7 +481,11 @@ const Table = ({
                   })}
                 </RenderedRow>
               );
-              index === 0 ? rows.splice(0, 0, label) : rows.push(label);
+              if (index === 0) {
+                rows.splice(0, 0, label);
+              } else {
+                rows.push(label);
+              }
             }
 
             return <tbody key={`group${idx}`}>{rows}</tbody>;
