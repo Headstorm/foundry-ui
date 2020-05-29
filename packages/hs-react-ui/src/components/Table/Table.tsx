@@ -148,7 +148,7 @@ export const Row = styled.tr`
 `;
 
 export const GroupRow = styled(Row)`
-    background-color: #e75b2770;
+    background-color: #e8e8e8;
 `;
 
 export const Cell = styled.td`

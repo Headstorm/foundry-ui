@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { text, boolean, select } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
 import { mdiClose, mdiChevronDoubleRight, mdiChevronDoubleDown, mdiChevronDoubleUp } from '@mdi/js';
-import { name, address, company } from 'faker';
+import { name, address, company, commerce } from 'faker';
 
 import Table, { RowProps, columnTypes } from './Table';
 import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
@@ -50,7 +50,9 @@ const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5)
   for (let i = 0; i < numberOfGroups; i++) {
     const groupRows = generateSampleData(groupSize);
     groupRows.push({
-      name: `Group ${i}`,
+      name: company.companyName(),
+      title: commerce.department(),
+      address: address.streetAddress(),
       isGroupLabel: true,
     })
 
