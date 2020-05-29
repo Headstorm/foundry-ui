@@ -37,7 +37,7 @@ const NoteField = styled.textarea`
 
 const above: 'above' = 'above';
 const below: 'below' = 'below';
-const groupLabelPositionOptions = { above, below};
+const groupLabelPositionOptions = { above, below };
 const options = {
   none: '',
   mdiChevronDoubleDown,
@@ -52,7 +52,7 @@ const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5)
     groupRows.push({
       title: commerce.department() + ' Department',
       isGroupLabel: true,
-    })
+    });
 
     groupData.push(groupRows);
   }
@@ -215,8 +215,8 @@ storiesOf('Table', module).add(
 
     const onSelect = (index: number, groupIndex: number, selected: boolean) => {
       const newRows = [];
-      rows.forEach((grp) => {
-        newRows.push([...grp])
+      rows.forEach(grp => {
+        newRows.push([...grp]);
       });
       // const newRows = [...rows];
       newRows[groupIndex][index].selected = !selected;
@@ -229,19 +229,20 @@ storiesOf('Table', module).add(
       const currentlyChecked = evt.target.checked;
       const newRows: Array<Array<RowProps>> = [];
       rows.forEach((group: Array<RowProps>) => {
-        newRows.push(group.map((row: RowProps) => {
-          return { ...row, selected: currentlyChecked }
-        }));
+        newRows.push(
+          group.map((row: RowProps) => {
+            return { ...row, selected: currentlyChecked };
+          }),
+        );
       });
       setRows(newRows);
     };
 
     const SelectAllCell = () => {
-
       let totalSelected = 0;
       let totalCheckboxesAccumulator = 0;
-      rows.forEach((groupRows) => {
-        groupRows.forEach((row) => {
+      rows.forEach(groupRows => {
+        groupRows.forEach(row => {
           if (groupRows.isGroupLabel) return;
           if (row.selected) totalSelected++;
           totalCheckboxesAccumulator++;
@@ -255,9 +256,7 @@ storiesOf('Table', module).add(
       return (
         <Table.HeaderCell sortable>
           <Checkbox
-            checkboxType={
-              allChecked ? CheckboxTypes.check : CheckboxTypes.neutral
-            }
+            checkboxType={allChecked ? CheckboxTypes.check : CheckboxTypes.neutral}
             checked={Boolean(totalSelected)}
             onClick={selectAll}
           />
@@ -326,16 +325,18 @@ storiesOf('Table', module).add(
       },
     };
     let position = select('groupLabelPosition', groupLabelPositionOptions, 'above');
-    return <Table
-      columns={sampleColumns}
-      data={rows}
-      sortGroups={boolean('sortGroups', false)}
-      groupHeaderPosition={position}
-      isCollapsable={boolean('isCollapsable', false)}
-      minWidthBreakpoint={0}
-      collapsedIcon={select('collapsedIcon', options, options.none)}
-      expandedIcon={select('expandedIcon', options, options.none)}
-    />;
+    return (
+      <Table
+        columns={sampleColumns}
+        data={rows}
+        sortGroups={boolean('sortGroups', false)}
+        groupHeaderPosition={position}
+        isCollapsable={boolean('isCollapsable', false)}
+        minWidthBreakpoint={0}
+        collapsedIcon={select('collapsedIcon', options, options.none)}
+        expandedIcon={select('expandedIcon', options, options.none)}
+      />
+    );
   },
   { design },
 );
