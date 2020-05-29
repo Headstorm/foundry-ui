@@ -1,0 +1,12 @@
+{
+    "defaults": {
+        "timeout": 8000,
+        "viewport": {
+            "width": 320,
+            "height": 480
+        }
+    },
+    "urls": [
+        "http://localhost:9009"
+    ]
+}

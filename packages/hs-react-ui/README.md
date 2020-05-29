@@ -12,6 +12,10 @@ The app will automatically reload if you change any of the source files.
 
 Run `yarn test` to execute the unit tests via Jest.
 
+## Running accessibility tests
+
+Run `yarn pa11y-test` to execute accessibility tests via pa11y-ci.
+
 # Theming components
 
 HS-UI is themeable on many levels and allows you to customize as little or as much as you want. Gone are the days of having to use deep CSS selectors with `!important` on every style.
