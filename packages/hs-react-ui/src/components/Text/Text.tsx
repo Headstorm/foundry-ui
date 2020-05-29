@@ -3,12 +3,13 @@ import styled, { css, keyframes, StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
+import fonts from '../../enums/fonts';
 
 /* Default Styled Text Container */
 export const TextContainer = styled.span`
   ${({ size, color }: { size: string; color: string }) => `
     display: inline-block;
-    font-family: Gotham;
+    ${fonts.body}
     font-size: ${size};
     color: ${color};
   `}

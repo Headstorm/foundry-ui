@@ -14,7 +14,7 @@ export enum ButtonTypes {
 export const ButtonContainer = styled.button`
   display: inline-block;
 
-  font-family: Montserrat;
+  ${fonts.body}
   font-size: 1em;
   line-height: 0;
 
