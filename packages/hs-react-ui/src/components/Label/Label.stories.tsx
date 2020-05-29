@@ -26,7 +26,7 @@ storiesOf('Label', module).add(
       isRequired={boolean('isRequired', false)}
       checkValidity={boolean('checkValidity', false)}
       isValid={boolean('isValid', false)}
-      htmlFor={"default"}
+      htmlFor="default"
     />
   ),
   { design },

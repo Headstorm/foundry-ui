@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
-import { mdiCheckBold } from '@mdi/js';
-import { mdiAsterisk } from '@mdi/js';
+import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import colors from '../../enums/colors';
 
 export const StyledLabel = styled.label`
@@ -52,16 +51,33 @@ const Label = ({
   colorInvalid = colors.destructive,
   htmlFor = 'default',
   isRequired = false,
-}: LabelProps) => (
-  <StyledDiv>
-    <StyledLabel htmlFor={htmlFor} color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}>
-      {labelText}
-    </StyledLabel>
-    <IconContainer>
-    <Icon path={isRequired ? (checkValidity && isValid ? mdiCheckBold : mdiAsterisk) : (checkValidity && isValid ? mdiCheckBold : '')} size="11px" color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}/>
-    </IconContainer>
-    <Child id={htmlFor} color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}/>
-  </StyledDiv>
-);
+}: LabelProps) => {
+    let shownColor: string | colors;
+    let shownIcon: string | JSX.Element;
+
+    if (checkValidity) {
+      shownColor = isValid ? colorValid : colorInvalid;
+    } else {
+      shownColor = color;
+    }
+
+    if (isRequired) {
+      shownIcon = checkValidity && isValid ? mdiCheckBold : mdiAsterisk;
+    } else {
+      shownIcon = checkValidity && isValid ? mdiCheckBold : '';
+    }
+
+    return(
+    <StyledDiv>
+      <StyledLabel htmlFor={htmlFor} color={shownColor}>
+        {labelText}
+      </StyledLabel>
+      <IconContainer>
+      <Icon path={shownIcon} size="11px" color={shownColor}/>
+      </IconContainer>
+      <Child id={htmlFor} color={shownColor}/>
+    </StyledDiv>
+    )
+};
 
 export default Label;
