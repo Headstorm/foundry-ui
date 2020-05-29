@@ -1,5 +1,5 @@
 import React from 'react';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, boolean } from '@storybook/addon-knobs';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
@@ -20,7 +20,10 @@ storiesOf('Label', module).add(
   () => (
     <Label
       labelText={text('labelText', 'This is the label text')}
-      color={select('Color', colors, colors.grayDark)}
+      color={select('Color', colors, colors.grayLight)}
+      isRequired={boolean('isRequired', false)}
+      isValid={boolean('isValid', false)}
+      htmlFor={"default"}
     />
   ),
   { design },
