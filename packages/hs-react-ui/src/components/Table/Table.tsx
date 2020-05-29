@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import useResizeObserver from 'use-resize-observer';
 import Icon from '@mdi/react';
-import { mdiArrowDown, mdiChevronRight, mdiChevronDown } from '@mdi/js';
+import { mdiArrowDown, mdiChevronRight, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 
 import colors from '../../enums/colors';
 import fonts from '../../enums/fonts';
@@ -18,6 +18,9 @@ export interface columnTypes {
     cellComponent?: any;
     rowComponent?: any;
     headerCellComponent?: any;
+    groupCellComponent?: any;
+    collapsedIcon?: any;
+    expandedIcon?: any;
   };
 }
 
@@ -28,9 +31,9 @@ export type TableProps = {
   data?: columnTypes[] | Array<Array<columnTypes>>;
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
-  collapsedCell?: string & StyledComponentBase<any, {}>;
-  collapsedIcon?: string | React.Component<ExpansionIconProps>;
-  expandedIcon?: string | React.Component<ExpansionIconProps>
+  expansionIconComponent?: React.FunctionComponent<ExpansionIconProps>;
+  collapsedIcon?: string | React.FunctionComponent<any>;
+  expandedIcon?: string | React.FunctionComponent<any>;
   minWidthBreakpoint?: number;
   sortGroups?: boolean;
   StyledCell?: string & StyledComponentBase<any, {}>;
@@ -53,6 +56,7 @@ export type ExpansionIconProps = {
   collapsedIcon?: string;
   expandedIcon?: string;
   isCollapsed: boolean;
+  groupHeaderPosition: 'above' | 'below';
 };
 
 export const TableContainer = styled.table`
@@ -176,7 +180,7 @@ const collapseIconColumn = {
 }
 
 const expansionKey = '__EXPANSION_COLUMN__';
-const ExpansionIcon = ({
+const ExpansionIcon: React.FunctionComponent<ExpansionIconProps> = ({
   collapsedIcon = mdiChevronRight,
   expandedIcon = mdiChevronDown,
   isCollapsed,
@@ -185,7 +189,7 @@ const ExpansionIcon = ({
   return (
       <Icon path={path} size={'1rem'}/>
   );
-}
+};
 
 // TODO: Add the table width observer to a container which fills the area, so the table can grow
 // once there is enough room for it to do so (if the table itself isn't full width)
@@ -198,9 +202,7 @@ const Table = ({
   data = [],
   defaultSort = ['', false], // key, direction
   groupHeaderPosition = 'above',
-  collapsedCell = Cell,
-  collapsedIcon,
-  expandedIcon,
+  expansionIconComponent,
   minWidthBreakpoint = 640,
   sortGroups = false,
   StyledCell = Cell,
@@ -408,6 +410,7 @@ const Table = ({
           if (groupLabelData) {
             const index = indexModifier === 0 ? rows.length : 0;
             const RenderedRow = groupLabelData.rowComponent || StyledGroupLabelRow;
+            const CollapseIcon = expansionIconComponent || ExpansionIcon;
             const label = (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
@@ -421,9 +424,13 @@ const Table = ({
               >
                 {Object.keys(copiedColumns).map(headerColumnKey => {
                   const RenderedCell =  usingGroups && headerColumnKey === expansionKey ?
-                    collapsedCell || StyledCell :
+                  copiedColumns[headerColumnKey].groupCellComponent || StyledCell :
                     copiedColumns[headerColumnKey].cellComponent || StyledCell;
                   const breakPointHit = width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                  const collapsedIcon = copiedColumns[headerColumnKey].collapsedIcon ||
+                    mdiChevronRight;
+                  const expandedIcon = copiedColumns[headerColumnKey].collapsedIcon ||
+                    groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
                   // Declaring each column cell of the row
                   return (
                     (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) && (
@@ -452,8 +459,14 @@ const Table = ({
                           </ResponsiveTitle>
                         )}
                         {groupLabelData[headerColumnKey]}
-                        {isCollapsable && headerColumnKey === expansionKey ? <ExpansionIcon isCollapsed={isCollapsed} /> : null}
-                      </RenderedCell>
+                        {isCollapsable && headerColumnKey === expansionKey ?
+                          <CollapseIcon
+                            collapsedIcon={collapsedIcon}
+                            expandedIcon={expandedIcon}
+                            isCollapsed={isCollapsed}
+                            groupHeaderPosition={groupHeaderPosition}
+                          /> : null}
+                    </RenderedCell>
                     )
                   );
                 })}
