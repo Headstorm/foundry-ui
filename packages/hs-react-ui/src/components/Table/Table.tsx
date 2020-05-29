@@ -19,8 +19,6 @@ export interface columnTypes {
     rowComponent?: any;
     headerCellComponent?: any;
     groupCellComponent?: any;
-    collapsedIcon?: any;
-    expandedIcon?: any;
   };
 }
 
@@ -53,11 +51,11 @@ export type RowProps = {
 };
 
 export type ExpansionIconProps = {
-  collapsedIcon?: string;
-  expandedIcon?: string;
+  collapsedIcon: string;
+  expandedIcon: string;
   isCollapsed: boolean;
   groupHeaderPosition: 'above' | 'below';
-  onClick: Function;
+  onClick: any;
 };
 
 export const TableContainer = styled.table`
@@ -180,16 +178,16 @@ const collapseIconColumn = {
   width: '1rem',
 }
 
-const expansionKey = '__EXPANSION_COLUMN__';
+export const ExpansionIconColumnKey = '__EXPANSION_COLUMN__';
 const ExpansionIcon: React.FunctionComponent<ExpansionIconProps> = ({
-  collapsedIcon = mdiChevronRight,
-  expandedIcon = mdiChevronDown,
+  collapsedIcon,
+  expandedIcon,
   isCollapsed,
   onClick,
 }: ExpansionIconProps) => {
   const path = isCollapsed ? collapsedIcon : expandedIcon;
   return (
-      <Icon path={path} size={'1rem'} onClick={onClick} />
+      <span onClick={onClick}><Icon path={path} size={'1rem'} /></span>
   );
 };
 
@@ -203,6 +201,8 @@ const Table = ({
   isCollapsable = false,
   data = [],
   defaultSort = ['', false], // key, direction
+  collapsedIcon,
+  expandedIcon,
   groupHeaderPosition = 'above',
   expansionIconComponent,
   minWidthBreakpoint = 640,
@@ -221,7 +221,7 @@ const Table = ({
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = Object.assign({}, columns); // Shallow copy so not to manipulate props
-  copiedColumns[expansionKey] = collapseIconColumn;
+  copiedColumns[ExpansionIconColumnKey] = collapseIconColumn;
 
   // this builds the string from the columns
   const columnWidths = Object.values(copiedColumns)
@@ -254,7 +254,7 @@ const Table = ({
   };
 
   const onSort = (key: string, newDirection: boolean) => {
-    if (key === expansionKey) return;
+    if (key === ExpansionIconColumnKey) return;
     // If the first element of the data is not an array, then we do not have groups
     if(!Array.isArray(data[0])) {
       data.sort((a: any, b: any) => {
@@ -271,6 +271,7 @@ const Table = ({
       (data as Array<Array<columnTypes>>).forEach((group) => {
         group.sort((a: any, b: any) => {
           if (copiedColumns[key] && Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')) {
+            if (a.isGroupLabel || b.isGroupLabel) return 0;
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
             return copiedColumns[key].sortFunction(a[key], b[key]) ? -1 : 1;
@@ -283,6 +284,7 @@ const Table = ({
       if (sortGroups) {
         (data as Array<Array<columnTypes>>).sort((a: any, b: any) => {
           if (copiedColumns[key] && Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')) {
+            if (a.isGroupLabel || b.isGroupLabel) return 0;
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
             return copiedColumns[key].sortFunction(a[0][key], b[0][key]) ? -1 : 1;
@@ -341,13 +343,13 @@ const Table = ({
         // Generate groupings - Note that we are making shallow copies of the arrays so that we do not
         // modify the props directly since this is an Array of Arrays and is accessed by reference.
         [...sortedData as Array<Array<columnTypes>>].map((group: Array<columnTypes>, idx: number) => {
-          const groupLabelIndex: number = group.findIndex((grp) => {
+          let groupLabelIndex: number = group.findIndex((grp) => {
             return grp.isGroupLabel === true;
           });
           const groupCopy = [...group];
 
           // Get the group label data
-          const groupLabelData = groupLabelIndex >= 0 ? groupCopy.splice(groupLabelIndex, 1)[0] : undefined;
+          let groupLabelData = groupLabelIndex >= 0 ? groupCopy[groupLabelIndex] : undefined;
 
           const groupLabelDataString = JSON.stringify(groupLabelData);
           // Get index modifier for creating the rows of the data. Everything group element's index
@@ -357,6 +359,7 @@ const Table = ({
           // Generate the rows for this group
           const rows = groupCopy.map((row: columnTypes, index: number) => {
             let RenderedRow = row.rowComponent || StyledRow;
+            if (index === groupLabelIndex) return null;
 
             // Rows.map return
             return (
@@ -379,7 +382,8 @@ const Table = ({
                       <RenderedCell
                         // all cells should have full access to all the data in the row
                         {...row} // eslint-disable-line react/jsx-props-no-spreading
-                        index={index + indexModifier}
+                        index={index}
+                        groupIndex={idx}
                         reachedMinWidth={width < minWidthBreakpoint}
                         key={`${headerColumnKey}${index + indexModifier}`}
                       >
@@ -408,11 +412,12 @@ const Table = ({
               </RenderedRow>
             );
           });
-
+          rows.splice(groupLabelIndex, 1);
           if (groupLabelData) {
             const index = indexModifier === 0 ? rows.length : 0;
             const RenderedRow = groupLabelData.rowComponent || StyledGroupLabelRow;
             const CollapseIcon = expansionIconComponent || ExpansionIcon;
+            const isUsingExpansionIconComponent = !!expansionIconComponent;
             const label = (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
@@ -428,10 +433,11 @@ const Table = ({
                   copiedColumns[headerColumnKey].groupCellComponent || StyledCell :
                     copiedColumns[headerColumnKey].cellComponent || StyledCell;
                   const breakPointHit = width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
-                  const collapsedIcon = copiedColumns[headerColumnKey].collapsedIcon ||
+                  const cIcon = isUsingExpansionIconComponent ? collapsedIcon : collapsedIcon ||
                     mdiChevronRight;
-                  const expandedIcon = copiedColumns[headerColumnKey].collapsedIcon ||
-                    groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
+                  const defaultExpandedIcon = groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
+                  const eIcon = isUsingExpansionIconComponent ?
+                    expandedIcon : expandedIcon || defaultExpandedIcon;
                   // Declaring each column cell of the row
                   return (
                     (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) && (
@@ -459,11 +465,11 @@ const Table = ({
                             />
                           </ResponsiveTitle>
                         )}
-                        {groupLabelData[headerColumnKey]}
-                        {isCollapsable && headerColumnKey === expansionKey ?
+                        {groupLabelData && groupLabelData[headerColumnKey]}
+                        {isCollapsable && headerColumnKey === ExpansionIconColumnKey ?
                           <CollapseIcon
-                            collapsedIcon={collapsedIcon}
-                            expandedIcon={expandedIcon}
+                            collapsedIcon={cIcon as string}
+                            expandedIcon={eIcon as string}
                             isCollapsed={isCollapsed}
                             groupHeaderPosition={groupHeaderPosition}
                             onClick={() => { toggleGroupCollapse(groupLabelDataString) }}

@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 import { text, boolean, select } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
-import { mdiClose } from '@mdi/js';
+import { mdiClose, mdiChevronDoubleRight, mdiChevronDoubleDown, mdiChevronDoubleUp } from '@mdi/js';
 import { name, address, company } from 'faker';
 
 import Table, { RowProps, columnTypes } from './Table';
@@ -38,6 +38,12 @@ const NoteField = styled.textarea`
 const above: 'above' = 'above';
 const below: 'below' = 'below';
 const groupLabelPositionOptions = { above, below};
+const options = {
+  none: '',
+  mdiChevronDoubleDown,
+  mdiChevronDoubleRight,
+  mdiChevronDoubleUp,
+};
 
 const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5) => {
   const groupData = [];
@@ -206,7 +212,82 @@ storiesOf('Table', module).add(
   'Groups',
   () => {
     const [rows, setRows] = useState(sampleGroupData);
-    const GroupHeaderNoteCell = () => <Table.Cell />;
+
+    const onSelect = (index: number, groupIndex: number, selected: boolean) => {
+      const newRows = [];
+      rows.forEach((grp) => {
+        newRows.push([...grp])
+      });
+      // const newRows = [...rows];
+      newRows[groupIndex][index].selected = !selected;
+      setRows(newRows);
+    };
+
+    const selectAll = (evt: SyntheticEvent) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const currentlyChecked = evt.target.checked;
+      const newRows: Array<Array<RowProps>> = [];
+      rows.forEach((group: Array<RowProps>) => {
+        newRows.push(group.map((row: RowProps) => {
+          return { ...row, selected: currentlyChecked }
+        }));
+      });
+      setRows(newRows);
+    };
+
+    const SelectAllCell = () => {
+
+      let totalSelected = 0;
+      let totalCheckboxesAccumulator = 0;
+      rows.forEach((groupRows) => {
+        groupRows.forEach((row) => {
+          if (groupRows.isGroupLabel) return;
+          if (row.selected) totalSelected++;
+          totalCheckboxesAccumulator++;
+        });
+      });
+      const allChecked = totalSelected === totalCheckboxesAccumulator;
+
+      // TODO: don't use pointer-events to control if a column is sortable - it should be checked
+      // within the sorting listeners so that `sortable` doesn't need to be passed here just to give
+      // it pointer-events
+      return (
+        <Table.HeaderCell sortable>
+          <Checkbox
+            checkboxType={
+              allChecked ? CheckboxTypes.check : CheckboxTypes.neutral
+            }
+            checked={Boolean(totalSelected)}
+            onClick={selectAll}
+          />
+        </Table.HeaderCell>
+      );
+    };
+
+    const SelectionCell = ({
+      index,
+      selected,
+      reachedMinWidth,
+      groupIndex,
+    }: {
+      index: number;
+      selected: boolean;
+      reachedMinWidth?: boolean;
+      groupIndex?: number;
+    }) => (
+      <Table.Cell>
+        <Checkbox
+          onClick={() => onSelect(index, groupIndex, selected)}
+          checkboxType={CheckboxTypes.check}
+          checked={selected}
+        >
+          {reachedMinWidth ? 'Select for download' : ''}
+        </Checkbox>
+      </Table.Cell>
+    );
+
+    const EmptyCell = () => <Table.Cell />;
 
     const NotesCell = ({ notes }: { notes: string }) => (
       <Table.Cell>
@@ -215,6 +296,14 @@ storiesOf('Table', module).add(
     );
 
     const sampleColumns: { [index: string]: any } = {
+      selection: {
+        name: '',
+        headerCellComponent: SelectAllCell,
+        width: text('Selection width', '2rem'),
+        cellComponent: SelectionCell,
+        sortable: false,
+        groupCellComponent: EmptyCell,
+      },
       name: {
         name: 'Name',
         width: text('Name width', '1fr'),
@@ -233,17 +322,19 @@ storiesOf('Table', module).add(
         cellComponent: NotesCell,
         minTableWidth: 800,
         sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
-        groupCellComponent: GroupHeaderNoteCell,
+        groupCellComponent: EmptyCell,
       },
     };
-
+    let position = select('groupLabelPosition', groupLabelPositionOptions, 'above');
     return <Table
       columns={sampleColumns}
       data={rows}
       sortGroups={boolean('sortGroups', false)}
-      groupHeaderPosition={select('groupLabelPosition', groupLabelPositionOptions, 'above')}
+      groupHeaderPosition={position}
       isCollapsable={boolean('isCollapsable', false)}
       minWidthBreakpoint={0}
+      collapsedIcon={select('collapsedIcon', options, options.none)}
+      expandedIcon={select('expandedIcon', options, options.none)}
     />;
   },
   { design },
