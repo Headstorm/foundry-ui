@@ -11,7 +11,7 @@ export const StyledLabel = styled.label`
     color: ${color};
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: .25em;
-    font-size: .75em;
+    font-size: .8em;
   `}
 `;
 
