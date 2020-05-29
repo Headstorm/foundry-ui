@@ -9,7 +9,7 @@ export const StyledLabel = styled.label`
   ${({ color = colors.grayLight }: { color: colors | string }) => `
     display: inline-flex;
     color: ${color};
-    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
     margin-bottom: .25em;
     font-size: .75em;
   `}
@@ -39,7 +39,6 @@ export interface LabelProps {
   checkValidity: boolean;
   colorValid: colors | string;
   colorInvalid: colors | string;
-  value?: string;
   htmlFor: string;
   isRequired: boolean;
 }
@@ -51,7 +50,6 @@ const Label = ({
   checkValidity = false,
   colorValid = colors.success,
   colorInvalid = colors.destructive,
-  value,
   htmlFor = 'default',
   isRequired = false,
 }: LabelProps) => (
@@ -60,9 +58,9 @@ const Label = ({
       {labelText}
     </StyledLabel>
     <IconContainer>
-    <Icon path={isRequired ? (checkValidity && isValid ? mdiCheckBold : mdiAsterisk) : (checkValidity && isValid ? mdiCheckBold : '')} size="16px" color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}/>
+    <Icon path={isRequired ? (checkValidity && isValid ? mdiCheckBold : mdiAsterisk) : (checkValidity && isValid ? mdiCheckBold : '')} size="11px" color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}/>
     </IconContainer>
-    <Child id={htmlFor} color={checkValidity ? (isValid ? colorValid : colorInvalid) : color} value={value}/>
+    <Child id={htmlFor} color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}/>
   </StyledDiv>
 );
 
