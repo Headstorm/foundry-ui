@@ -11,7 +11,7 @@ storiesOf('Appendix', module).add(
   () => {
     return (
       <div>
-        <h1>{'Welcome to the HS-UI Appendix'}</h1>
+        <h1>'Welcome to the HS-UI Appendix'</h1>
         {/* <img src={require('/ThemingExample.png')} alt="Theming Example" /> */}
       </div>
     );
