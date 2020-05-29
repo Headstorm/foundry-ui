@@ -36,6 +36,9 @@ export interface LabelProps {
   labelText: string;
   color?: colors | string;
   isValid: boolean;
+  checkValidity: boolean;
+  colorValid: colors | string;
+  colorInvalid: colors | string;
   value?: string;
   htmlFor: string;
   isRequired: boolean;
@@ -45,18 +48,21 @@ const Label = ({
   labelText,
   color = colors.grayLight,
   isValid = false,
+  checkValidity = false,
+  colorValid = colors.success,
+  colorInvalid = colors.destructive,
   value,
   htmlFor = 'default',
   isRequired = false,
 }: LabelProps) => (
   <StyledDiv>
-    <StyledLabel htmlFor={htmlFor} color={color}>
+    <StyledLabel htmlFor={htmlFor} color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}>
       {labelText}
     </StyledLabel>
     <IconContainer>
-    <Icon path={isRequired ? (isValid ? mdiCheckBold : mdiAsterisk) : (isValid ? mdiCheckBold : '')} size="16px" color={color}/>
+    <Icon path={isRequired ? (checkValidity && isValid ? mdiCheckBold : mdiAsterisk) : (checkValidity && isValid ? mdiCheckBold : '')} size="16px" color={checkValidity ? (isValid ? colorValid : colorInvalid) : color}/>
     </IconContainer>
-    <Child id={htmlFor} color={color} value={value}/>
+    <Child id={htmlFor} color={checkValidity ? (isValid ? colorValid : colorInvalid) : color} value={value}/>
   </StyledDiv>
 );
 
