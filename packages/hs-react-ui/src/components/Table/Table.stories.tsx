@@ -50,9 +50,7 @@ const generateSampleGroups = (numberOfGroups: number = 5, groupSize: number = 5)
   for (let i = 0; i < numberOfGroups; i++) {
     const groupRows = generateSampleData(groupSize);
     groupRows.push({
-      name: company.companyName(),
-      title: commerce.department(),
-      address: address.streetAddress(),
+      title: commerce.department() + ' Department',
       isGroupLabel: true,
     })
 
