@@ -6,6 +6,7 @@
   },
   "scripts": {
     "test-react": "cd packages/hs-react-ui && npm install && npm test",
-    "build-react": "cd packages/hs-react-ui && npm install && npm run build && npm run build-storybook"
+    "build-react": "cd packages/hs-react-ui && npm install && npm run build && npm run build-storybook",
+    "test-accessibility": "cd packages/hs-react-ui && npm install && test-pa11y"
   }
 }

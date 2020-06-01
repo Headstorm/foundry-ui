@@ -12,8 +12,8 @@ jobs:
           steps:
             - run: npm run build-react
       - run:
-          name: test accessibility
-          command: npm run test-pa11y
+          name: Test Accessibility
+          command: npm run test-accessibility
 workflows:
   PR-Merge:
     jobs:
