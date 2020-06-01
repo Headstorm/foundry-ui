@@ -27,13 +27,13 @@ export interface TextProps {
 
 /* Keyframes for the loading bar gradient */
 const movingGradient = keyframes`
-  0% { background-position: left bottom; }
-  100% { background-position: right bottom; }
+  0% { background-position: 0% bottom; }
+  100% { background-position: 200% bottom; }
 `;
 
 /* Animation to scroll the gradient toward the right */
 const animation = css`
-  ${movingGradient} 1s linear infinite;
+  ${movingGradient} 8s linear infinite;
 `;
 
 /* Styled div that represents the scroll bar
@@ -41,14 +41,19 @@ const animation = css`
 const Progress = styled.div`
   ${({ size }: { size: string }) => css`
     background: linear-gradient(
-      45deg,
-      #E1E4E6 0%,
-      #C8D1D9 100%) repeat;
-    background-size; 50% 100%;
+        45deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2),
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2),
+        rgba(255, 255, 255, 0.2)
+      )
+      repeat;
+    background-size: 400% 100%;
     width: calc(${size} * 10);
     height: ${size};
     border-radius: 9999px;
-    animation: ${animation}
+    animation: ${animation};
   `}
 `;
 
@@ -74,10 +79,10 @@ const Text = ({
 }: TextProps) => (
   <StyledContainer size={size} color={color}>
     {isLoading && <Progress size={size} />}
-    {!isLoading
-      && !isProcessing
-      && iconPrefix
-      && (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+    {!isLoading &&
+      !isProcessing &&
+      iconPrefix &&
+      (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
         <LeftIconContainer>
           <Icon path={iconPrefix} size={size} />
         </LeftIconContainer>
@@ -91,9 +96,9 @@ const Text = ({
     )}
     {!isLoading && children}
 
-    {!isLoading
-      && iconSuffix
-      && (typeof iconSuffix === 'string' ? (
+    {!isLoading &&
+      iconSuffix &&
+      (typeof iconSuffix === 'string' ? (
         <RightIconContainer>
           <Icon path={iconSuffix} size={size} />
         </RightIconContainer>
@@ -103,4 +108,5 @@ const Text = ({
   </StyledContainer>
 );
 
+Text.Container = TextContainer;
 export default Text;
