@@ -32,16 +32,16 @@
   },
   "include": [
     "src/**/*",
-    "index.ts",
-    "src/**/*.stories.tsx",
     "node_modules/@types"
   ],
   "exclude": [
     "node_modules",
     "build",
     "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
     "scripts",
     "src/serviceWorker.ts",
-    "src/setupTests.ts",
+    "src/setupTests.ts"
   ]
 }

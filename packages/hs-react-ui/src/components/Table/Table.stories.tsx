@@ -8,7 +8,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company } from 'faker';
 
-import Table, { Cell, RowProps, columnTypes } from './Table';
+import Table, { RowProps, columnTypes } from './Table';
 import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
 
 addDecorator(withA11y);
@@ -19,7 +19,7 @@ const design = {
   url: 'https://www.figma.com/file/u6xQ3W5NYB1d2zLeRCYwva/ARM?node-id=322%3A8318',
 };
 
-const ActionCellContainer = styled(Cell)`
+const ActionCellContainer = styled(Table.Cell)`
   cursor: pointer;
   user-select: none;
   font-size: 1rem;
@@ -58,13 +58,13 @@ storiesOf('Table', module).add(
     const [rows, setRows] = useState(sampleData);
 
     const onDelete = (index: number) => {
-      const newRows = { ...rows };
+      const newRows = [...rows];
       newRows.splice(index, 1);
       setRows(newRows);
     };
 
     const onSelect = (index: number, selected: boolean) => {
-      const newRows = { ...rows };
+      const newRows = [...rows];
       newRows[index].selected = !selected;
       setRows(newRows);
     };
@@ -77,25 +77,27 @@ storiesOf('Table', module).add(
       setRows(newRows);
     };
 
-    const SelectAllCell = () => (
-      <Checkbox
-        checkboxType={
-          rows.filter(
-            (row: columnTypes) =>
-              Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected,
-          ).length === rows.length
-            ? CheckboxTypes.check
-            : CheckboxTypes.neutral
-        }
-        checked={Boolean(
-          rows.filter(
-            (row: columnTypes) =>
-              Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected,
-          ).length,
-        )}
-        onClick={selectAll}
-      />
-    );
+    const SelectAllCell = () => {
+      const checkRowForSelection = (row: columnTypes) =>
+        Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected;
+
+      // TODO: don't use pointer-events to control if a column is sortable - it should be checked
+      // within the sorting listeners so that `sortable` doesn't need to be passed here just to give
+      // it pointer-events
+      return (
+        <Table.HeaderCell sortable>
+          <Checkbox
+            checkboxType={
+              rows.filter((row: columnTypes) => checkRowForSelection(row)).length === rows.length
+                ? CheckboxTypes.check
+                : CheckboxTypes.neutral
+            }
+            checked={Boolean(rows.filter((row: columnTypes) => checkRowForSelection(row)).length)}
+            onClick={selectAll}
+          />
+        </Table.HeaderCell>
+      );
+    };
 
     const SelectionCell = ({
       index,
@@ -104,9 +106,9 @@ storiesOf('Table', module).add(
     }: {
       index: number;
       selected: boolean;
-      reachedMinWidth: boolean;
+      reachedMinWidth?: boolean;
     }) => (
-      <Cell>
+      <Table.Cell>
         <Checkbox
           onClick={() => onSelect(index, selected)}
           checkboxType={CheckboxTypes.check}
@@ -114,13 +116,13 @@ storiesOf('Table', module).add(
         >
           {reachedMinWidth ? 'Select for download' : ''}
         </Checkbox>
-      </Cell>
+      </Table.Cell>
     );
 
     const NotesCell = ({ notes }: { notes: string }) => (
-      <Cell>
-        <NoteField rows={3} value={notes} />
-      </Cell>
+      <Table.Cell>
+        <NoteField onChange={() => console.log()} rows={3} value={notes} />
+      </Table.Cell>
     );
 
     const ActionCell = ({

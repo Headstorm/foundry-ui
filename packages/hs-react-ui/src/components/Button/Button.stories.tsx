@@ -7,8 +7,9 @@ import { mdiLeadPencil, mdiLoading } from '@mdi/js';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
-import { ButtonContainers, ButtonContainer } from './ButtonContainers';
-import Button, { ButtonTypes } from './Button';
+import { ButtonContainers } from './ButtonContainers';
+import Button, { ButtonTypes, ButtonContainer } from './Button';
+import fonts from '../../enums/fonts';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -43,7 +44,7 @@ storiesOf('Button', module)
       const icon = <Icon path={mdiLeadPencil} size={1} horizontal vertical rotate={90} />;
 
       const ThemedContainer = styled(ButtonContainer)`
-        font-family: Helvetica;
+        ${fonts.body}
         font-size: 2em;
         vertical-align: middle;
         text-align: center;

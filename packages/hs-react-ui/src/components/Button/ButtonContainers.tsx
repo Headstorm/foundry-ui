@@ -1,26 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { ButtonTypes } from './Button';
+import { ButtonTypes, ButtonContainer } from './Button';
 import colors from '../../enums/colors';
-
-export const ButtonContainer = styled.button`
-  display: inline-block;
-
-  font-family: Montserrat;
-  font-size: 1em;
-  line-height: 0;
-
-  padding: 1.25em 1em;
-  border-radius: 0.25em;
-
-  outline: 0 none;
-  border: 0 none;
-
-  cursor: pointer;
-
-  background-color: ${colors.grayXlight};
-  color: ${colors.grayDark};
-`;
 
 export const PrimaryButtonContainer = styled(ButtonContainer)`
   color: ${colors.background};
