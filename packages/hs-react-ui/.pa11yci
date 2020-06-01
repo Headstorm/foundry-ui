@@ -1,8 +1,8 @@
 {
-  "defaults": {
-    "timeout": 8000,
-  },
-  "urls": [
-    "http://localhost:9009"
-  ]
+    "defaults": {
+        "timeout": 8000
+    },
+    "urls": [
+        "http://localhost:9009"
+    ]
 }
