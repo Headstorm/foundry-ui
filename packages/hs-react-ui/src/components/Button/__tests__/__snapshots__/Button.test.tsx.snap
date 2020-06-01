@@ -1,27 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
-"Snapshot Diff:
-- First value
-+ Second value
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  line-height: 0;
+  padding: 1.25em 1em;
+  border-radius: 0.25em;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #d3d6d7;
+  color: #252c35;
+}
 
-@@ -3,9 +3,9 @@
-      class=\\"sc-AxjAm hegPnM\\"
-    >
-      <span
-        class=\\"sc-AxhUy kMyssT\\"
-      >
--       Loading... ⌛
-+       Submit 
-      </span>
-    </button>
-  </DocumentFragment>"
+<button
+  class="c0"
+>
+  <span
+    class=""
+  >
+    Loading... ⌛
+  </span>
+</button>
+`;
+
+exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  line-height: 0;
+  padding: 1.25em 1em;
+  border-radius: 0.25em;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #d3d6d7;
+  color: #252c35;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class=""
+  >
+    Submit 
+  </span>
+</button>
 `;
 
 exports[`Button shows loading text when provided 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
   display: inline-block;
-  font-family: Montserrat;
+  font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
   line-height: 0;
   padding: 1.25em 1em;

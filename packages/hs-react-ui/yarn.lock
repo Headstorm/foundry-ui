@@ -15511,15 +15511,6 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snapshot-diff@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/snapshot-diff/-/snapshot-diff-0.8.0.tgz#8f175700cb8bce852245a33265b4df06260965ee"
-  integrity sha512-BFNQpuavPQj2Oql6Ym85h3fA4rqMYjuWbkz9MvfdPwNYUrSOMkwZZDprpizlo3u0hzwLcWDZLoaClHfbMsTNIA==
-  dependencies:
-    jest-diff "^26.0.1"
-    jest-snapshot "^26.0.1"
-    pretty-format "^26.0.1"
-
 sockjs-client@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.4.0.tgz#c9f2568e19c8fd8173b4997ea3420e0bb306c7d5"

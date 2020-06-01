@@ -142,7 +142,7 @@ module.exports = {
   // The test environment that will be used for testing
   // TODO: Some part of the create-react-app dependency set doesn't like
   //   the latest version of jest/react-testing-library
-  // See https://stackoverflow.com/questions/61036156/react-typescript-testing-typeerror-mutationobserver-is-not-a-constructor
+  //  See https://stackoverflow.com/questions/61036156/react-typescript-testing-typeerror-mutationobserver-is-not-a-constructor
   //   for entrypoint into the conversation/band-aid fix. We should be able to use
   //   the native jsdom environment once this issue is resolved.
   testEnvironment: 'jest-environment-jsdom-sixteen',

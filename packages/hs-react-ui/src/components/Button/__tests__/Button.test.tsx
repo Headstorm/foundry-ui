@@ -36,6 +36,9 @@ describe('Button', () => {
     await waitFor(() => getByText(/Submit/));
     const loadedFragment = asFragment();
 
-    expect(loadingFragment).toMatchDiffSnapshot(loadedFragment);
+    // TODO: Use toMatchDiffSnapshot() between the fragments once we can figure out
+    //  how to make it use the jest-styled-components plugin
+    expect(loadingFragment.firstChild).toMatchSnapshot();
+    expect(loadedFragment.firstChild).toMatchSnapshot();
   });
 });

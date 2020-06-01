@@ -6,7 +6,9 @@
 import '@testing-library/jest-dom/extend-expect';
 
 // .toMatchDiffSnapshot()
-import 'snapshot-diff/extend-expect';
+// TODO - integrate with jest-styled-components, currently it does not make use of the
+//  cleaner diffs
+// import 'snapshot-diff/extend-expect';
 
 // utilities for cleaner snapshot diffs with styled components and .toHaveStyleRule() for expect
 import 'jest-styled-components';
