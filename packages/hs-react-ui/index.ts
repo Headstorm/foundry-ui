@@ -5,4 +5,5 @@ import * as TextInput from './src/components/TextInput'
 import * as Modal from './src/components/Modal';
 import * as Label from './src/components/Label';
 
-export { Button, Card, Checkbox, Modal, Label, TextInput};
+
+export {  Button, Card, Checkbox, Modal, Label, TextInput};
