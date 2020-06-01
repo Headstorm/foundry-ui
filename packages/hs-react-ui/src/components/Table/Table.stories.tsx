@@ -14,6 +14,21 @@ import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
 addDecorator(withA11y);
 addDecorator(withDesign);
 
+type SampleDataType = {
+  name?: string;
+  title?: string;
+  address?: string;
+  notes?: string;
+  isGroupLabel?: boolean;
+};
+
+type SampleSelectionCellType = {
+  index: number;
+  selected: boolean;
+  reachedMinWidth?: boolean;
+  groupIndex?: number;
+};
+
 const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/u6xQ3W5NYB1d2zLeRCYwva/ARM?node-id=322%3A8318',
@@ -46,7 +61,7 @@ const options = {
   mdiChevronDoubleUp,
 };
 
-const generateSampleData = (rows: number) => {
+const generateSampleData = (rows: number): SampleDataType[] => {
   const finalData = [];
 
   for (let i = 0; i < rows; i += 1) {
@@ -61,7 +76,7 @@ const generateSampleData = (rows: number) => {
   return finalData;
 };
 
-const generateSampleGroups = (numberOfGroups = 5, groupSize = 5) => {
+const generateSampleGroups = (numberOfGroups = 5, groupSize = 5): Array<SampleDataType[]> => {
   const groupData = [];
   for (let i = 0; i < numberOfGroups; i++) {
     const groupRows = generateSampleData(groupSize);
@@ -214,9 +229,9 @@ storiesOf('Table', module).add(
   () => {
     const [rows, setRows] = useState(sampleGroupData);
 
-    const onSelect = (index: number, groupIndex: number, selected: boolean) => {
-      const newRows = [];
-      rows.forEach(grp => {
+    const onSelect = (index: number, groupIndex = 0, selected: boolean) => {
+      const newRows: Array<SampleSelectionCellType[]> = [];
+      rows.forEach((grp: SampleSelectionCellType[]) => {
         newRows.push([...grp]);
       });
       // const newRows = [...rows];
@@ -243,7 +258,7 @@ storiesOf('Table', module).add(
       let totalSelected = 0;
       let totalCheckboxesAccumulator = 0;
       rows.forEach(groupRows => {
-        groupRows.forEach(row => {
+        groupRows.forEach((row: columnTypes) => {
           if (groupRows.isGroupLabel) return;
           if (row.selected) totalSelected++;
           totalCheckboxesAccumulator++;
