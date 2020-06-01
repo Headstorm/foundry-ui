@@ -11,9 +11,9 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm run build-react
-      - pa11y-ci:
-          steps:
-            - run: npm run test-pa11y
+      - run:
+          name: test accessibility
+          command: npm run test-pa11y
 workflows:
   PR-Merge:
     jobs:
