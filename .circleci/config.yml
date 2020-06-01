@@ -13,7 +13,7 @@ jobs:
             - run: npm run build-react
       - pa11y-ci:
           steps:
-            - run: yarn test-pa11y
+            - run: npm run test-pa11y
 workflows:
   PR-Merge:
     jobs:
