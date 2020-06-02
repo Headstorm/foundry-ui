@@ -1,3 +1,4 @@
+[[![https://img.shields.io/endpoint?url=&style<STYLE>](https://img.shields.io/circleci/build/gh/Headstorm/hs-ui)
 [![CircleCI](https://circleci.com/gh/Headstorm/hs-ui.svg?style=svg)](https://app.circleci.com/pipelines/github/Headstorm/hs-ui)
 
 # Headstorm React UI
