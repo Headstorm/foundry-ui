@@ -8,7 +8,7 @@ import Icon from '@mdi/react';
 import { mdiClose, mdiChevronDoubleRight, mdiChevronDoubleDown, mdiChevronDoubleUp } from '@mdi/js';
 import { name, address, company, commerce } from 'faker';
 
-import Table, { RowProps, columnTypes } from './Table';
+import Table, { RowProps, columnTypes, ExpansionIconProps, ExpansionIconColumnName } from './Table';
 import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
 
 addDecorator(withA11y);
@@ -28,6 +28,26 @@ type SampleSelectionCellType = {
   reachedMinWidth?: boolean;
   groupIndex?: number;
 };
+
+const StyledContainer = styled.span`
+  font-size: 10px;
+  cursor: pointer;
+`;
+
+// Keyboard listener required for a11y on the clickable span
+const onKeyPress = (evt: React.KeyboardEvent<HTMLSpanElement>) => {
+  if (evt.key === 'Enter' || evt.key === ' ') {
+    evt.preventDefault();
+    (evt.target as any).click();
+  }
+};
+
+// Custom icon used for overriding the default collapse/expand icons
+const expansionIconOverride = ({ isCollapsed, onClick }: ExpansionIconProps) => (
+  <StyledContainer tabIndex={0} onClick={onClick} role="button" onKeyPress={onKeyPress}>
+    {isCollapsed ? 'Collapsed' : 'Expanded'}
+  </StyledContainer>
+);
 
 const design = {
   type: 'figma',
@@ -339,8 +359,15 @@ storiesOf('Table', module).add(
         sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
         groupCellComponent: EmptyCell,
       },
+      [ExpansionIconColumnName]: {
+        name: '',
+        sortable: false,
+        width: '3rem',
+      },
     };
     const position = select('groupLabelPosition', groupLabelPositionOptions, 'above');
+
+    const useCustomLabel = boolean('useCustomLabel', false);
     return (
       <Table
         columns={sampleColumns}
@@ -348,7 +375,7 @@ storiesOf('Table', module).add(
         sortGroups={boolean('sortGroups', false)}
         groupHeaderPosition={position}
         areGroupsCollapsable={boolean('areGroupsCollapsable', false)}
-        //minWidthBreakpoint={0}
+        expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
         collapsedIcon={select('collapsedIcon', options, options.none)}
         expandedIcon={select('expandedIcon', options, options.none)}
       />

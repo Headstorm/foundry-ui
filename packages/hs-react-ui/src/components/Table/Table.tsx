@@ -23,7 +23,15 @@ export type CellOptions = {
   groupLabelDataString?: string;
 };
 
-type ExpansionIconProps = {
+export type ExpansionIconProps = {
+  collapsedIcon?: string | React.FunctionComponent<any>;
+  expandedIcon?: string | React.FunctionComponent<any>;
+  isCollapsed: boolean;
+  groupHeaderPosition: 'above' | 'below';
+  onClick?: any;
+};
+
+type InternalExpansionIconProps = {
   collapsedIcon: string;
   expandedIcon: string;
   isCollapsed: boolean;
@@ -53,7 +61,7 @@ export type TableProps = {
   data?: columnTypes[] | Array<Array<columnTypes>>;
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
-  expansionIconComponent?: React.FunctionComponent<ExpansionIconProps>;
+  expansionIconComponent?: React.FunctionComponent<InternalExpansionIconProps>;
   collapsedIcon?: string | React.FunctionComponent<any>;
   expandedIcon?: string | React.FunctionComponent<any>;
   minWidthBreakpoint?: number;
@@ -77,6 +85,10 @@ export type RowProps = {
 type collapsedState = { [key: string]: string };
 
 /** Start of styled components */
+
+const StyledExpansionIconSpan = styled.span`
+  cursor: pointer;
+`;
 
 export const TableContainer = styled.table`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
@@ -136,13 +148,14 @@ export const ResponsiveTitle = styled.span`
 
 export const Row = styled.tr`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => `
-    display: ${isCollapsed ? 'none' : 'grid'};
+    display: grid;
     grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
     padding: ${reachedMinWidth ? '1rem' : '0rem'} 2rem;
     row-gap: .5rem;
     column-gap: ${columnGap};
     position: relative;
     background-color: white;
+    height: ${isCollapsed ? '0px' : '100%'};
 
     &:not(:last-child) {
       border-bottom: 1px solid rgb(211, 214, 215);
@@ -193,6 +206,8 @@ export const SortIcon = styled(Icon)`
 /** Start of variables */
 
 const defaultCollapsed: collapsedState = {};
+
+// Default expansion column added
 const collapsexpandedIconColumn = {
   name: '',
   sortable: false,
@@ -208,21 +223,21 @@ const onKeyPress = (evt: React.KeyboardEvent<HTMLSpanElement>) => {
 };
 
 // Supporting component used for the collapse icon by default in the Table
-const ExpansionIcon: React.FunctionComponent<ExpansionIconProps> = ({
+const ExpansionIcon: React.FunctionComponent<InternalExpansionIconProps> = ({
   collapsedIcon,
   expandedIcon,
   isCollapsed,
   onClick,
-}: ExpansionIconProps) => {
+}: InternalExpansionIconProps) => {
   const path = isCollapsed ? collapsedIcon : expandedIcon;
   return (
-    <span tabIndex={0} onClick={onClick} role="button" onKeyPress={onKeyPress}>
+    <StyledExpansionIconSpan tabIndex={0} onClick={onClick} role="button" onKeyPress={onKeyPress}>
       <Icon path={path} size="1rem" />
-    </span>
+    </StyledExpansionIconSpan>
   );
 };
 
-export const ExpansionIconColumnKey = '__EXPANSION_COLUMN__';
+export const ExpansionIconColumnName = '__EXPANSION_COLUMN__';
 
 // TODO: Add the table width observer to a container which fills the area, so the table can grow
 // once there is enough room for it to do so (if the table itself isn't full width)
@@ -254,7 +269,9 @@ const Table = ({
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
-  copiedColumns[ExpansionIconColumnKey] = collapsexpandedIconColumn;
+  if (!copiedColumns[ExpansionIconColumnName]) {
+    copiedColumns[ExpansionIconColumnName] = collapsexpandedIconColumn;
+  }
 
   // this builds the string from the columns
   const columnWidths = Object.values(copiedColumns)
@@ -379,8 +396,8 @@ const Table = ({
     CollapsexpandedIcon,
     groupIndex,
     isCollapsed = false,
-    collapsedIcon,
-    expandedIcon,
+    collapsedIcon, // eslint-disable-line no-shadow
+    expandedIcon, // eslint-disable-line no-shadow
     groupLabelDataString,
   }: CellOptions): JSX.Element | false => {
     return (
@@ -411,14 +428,14 @@ const Table = ({
           {CollapsexpandedIcon &&
           usingGroups &&
           areGroupsCollapsable &&
-          headerColumnKey === ExpansionIconColumnKey ? (
+          headerColumnKey === ExpansionIconColumnName ? (
             <CollapsexpandedIcon
               collapsedIcon={collapsedIcon as string}
               expandedIcon={expandedIcon as string}
               isCollapsed={isCollapsed}
               groupHeaderPosition={groupHeaderPosition}
               onClick={() => {
-                toggleGroupCollapse(groupLabelDataString || JSON.stringify(row));
+                toggleGroupCollapse((groupLabelDataString || JSON.stringify(row)) + groupIndex);
               }}
             />
           ) : null}
@@ -451,7 +468,7 @@ const Table = ({
         // Get index modifier for creating the rows of the data. Everything group element's index
         // should be increased by 1 for all labels that are above the group
         const indexModifier = groupHeaderPosition === 'above' ? 1 : 0;
-        const isCollapsed = !!collapsedGroups[groupLabelDataString];
+        const isCollapsed = !!collapsedGroups[groupLabelDataString + idx];
 
         // Generate the rows for this group
         const rows = groupCopy.map((row: columnTypes, index: number) => {
@@ -464,7 +481,7 @@ const Table = ({
               columnGap={columnGap}
               columnWidths={columnWidths}
               rowNum={index + indexModifier}
-              key={`row${JSON.stringify(row)}`}
+              key={`row${JSON.stringify(row) + index}`}
               reachedMinWidth={width < minWidthBreakpoint}
               isCollapsed={areGroupsCollapsable && isCollapsed}
             >
@@ -516,7 +533,9 @@ const Table = ({
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = usingGroups
-                  ? copiedColumns[headerColumnKey].groupCellComponent || copiedColumns[headerColumnKey].cellComponent || StyledCell
+                  ? copiedColumns[headerColumnKey].groupCellComponent ||
+                    copiedColumns[headerColumnKey].cellComponent ||
+                    StyledCell
                   : copiedColumns[headerColumnKey].cellComponent || StyledCell;
                 const breakPointHit =
                   width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
@@ -651,6 +670,6 @@ Table.Row = Row;
 Table.GroupRow = GroupRow;
 Table.Cell = Cell;
 Table.Title = ResponsiveTitle;
-Table.ExpansionIconColumnKey = ExpansionIconColumnKey;
+Table.ExpansionIconColumnName = ExpansionIconColumnName;
 
 export default Table;
