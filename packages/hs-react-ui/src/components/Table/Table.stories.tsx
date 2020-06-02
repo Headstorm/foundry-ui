@@ -29,21 +29,9 @@ type SampleSelectionCellType = {
   groupIndex?: number;
 };
 
-// Keyboard listener required for a11y on the clickable span
-const onKeyPress = (evt: React.KeyboardEvent<HTMLSpanElement>) => {
-  if (evt.key === 'Enter' || evt.key === ' ') {
-    evt.preventDefault();
-    (evt.target as any).click();
-  }
-};
-
 // Custom icon used for overriding the default collapse/expand icons
 const expansionIconOverride = ({ isCollapsed, onClick }: ExpansionIconProps) => (
-  <Checkbox
-    checked={!isCollapsed}
-    onClick={onClick}
-    checkboxType={CheckboxTypes.check}
-  />
+  <Checkbox checked={!isCollapsed} onClick={onClick} checkboxType={CheckboxTypes.check} />
 );
 
 const design = {
