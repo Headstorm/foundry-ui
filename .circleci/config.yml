@@ -11,12 +11,7 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm run build-react
-            - store_artifacts:
-                path: docs
             - run: npm run test-react
-            - run:
-              name: "Run Jest and Collect Coverage Reports"
-              command: jest --collectCoverage=true
             - store_artifacts:
                 path: coverage
 
