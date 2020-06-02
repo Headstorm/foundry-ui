@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/Headstorm/hs-ui.svg?style=shield)](https://app.circleci.com/pipelines/github/Headstorm/hs-ui)
+[![CircleCI](https://circleci.com/gh/Headstorm/hs-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/hs-ui/tree/master)
 
 # Headstorm React UI
 
