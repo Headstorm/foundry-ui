@@ -5,7 +5,9 @@ HS-UI is lovingly developed by Headstorm's Open Source group. Please reach out t
 To go directly to one of the READMES of each library, use these links:
 
 - [hs-react-ui](https://github.com/Headstorm/hs-ui/tree/master/packages/hs-react-ui)
-  [![CircleCI](https://circleci.com/gh/Headstorm/hs-ui.svg?style=shield)](https://app.circleci.com/pipelines/github/Headstorm/hs-ui)
+
+[![CircleCI](https://circleci.com/gh/Headstorm/hs-ui.svg?style=shield)](https://app.circleci.com/pipelines/github/Headstorm/hs-ui)
+
 - [hs-angular-ui](https://github.com/Headstorm/hs-ui/tree/master/packages/hs-angular-ui)
 
 # Contributing
