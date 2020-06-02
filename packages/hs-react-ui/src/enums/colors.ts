@@ -7,6 +7,8 @@ enum colors {
   grayLight = '#7c8186',
   grayXlight = '#d3d6d7',
 
+  groupLabel = '#e8e8e8',
+
   success = '#698F00',
   destructive = '#d00',
 }

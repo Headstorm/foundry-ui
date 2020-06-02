@@ -234,7 +234,7 @@ storiesOf('Table', module).add(
       rows.forEach((grp: SampleSelectionCellType[]) => {
         newRows.push([...grp]);
       });
-      // const newRows = [...rows];
+
       newRows[groupIndex][index].selected = !selected;
       setRows(newRows);
     };
@@ -347,8 +347,8 @@ storiesOf('Table', module).add(
         data={rows}
         sortGroups={boolean('sortGroups', false)}
         groupHeaderPosition={position}
-        isCollapsable={boolean('isCollapsable', false)}
-        minWidthBreakpoint={0}
+        areGroupsCollapsable={boolean('areGroupsCollapsable', false)}
+        //minWidthBreakpoint={0}
         collapsedIcon={select('collapsedIcon', options, options.none)}
         expandedIcon={select('expandedIcon', options, options.none)}
       />
