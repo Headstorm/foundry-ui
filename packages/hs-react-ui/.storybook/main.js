@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../src/components/**/*.stories.tsx'],
+  stories: ['../src/components/**/*.stories.tsx', '../src/**/*.stories.(js|mdx)'],
   addons: [
     {
       name: '@storybook/preset-create-react-app',
@@ -21,6 +21,7 @@ module.exports = {
         },
       },
     },
+    '@storybook/addon-docs',
     '@storybook/addon-actions',
     'storybook-addon-designs/register',
     '@storybook/addon-knobs',
@@ -28,5 +29,5 @@ module.exports = {
     '@storybook/addon-backgrounds',
     '@storybook/addon-links',
     '@storybook/addon-storysource',
-  ]
+  ],
 };

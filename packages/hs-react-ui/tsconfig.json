@@ -31,14 +31,17 @@
     "noEmit": false
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "node_modules/@types"
   ],
   "exclude": [
     "node_modules",
     "build",
     "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
     "scripts",
     "src/serviceWorker.ts",
-    "src/setupTests.ts",
+    "src/setupTests.ts"
   ]
 }

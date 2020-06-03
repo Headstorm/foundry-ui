@@ -8,6 +8,7 @@ import { withDesign } from 'storybook-addon-designs';
 import Card, { Header, Footer } from './Card';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
+import fonts from '../../enums/fonts';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -59,7 +60,7 @@ storiesOf('Card', module)
         transition: transform ${themeTimings.xSlow};
         transform: scale(${elevation * 0.05 + 1});
     
-        font-family: Roboto, sans-serif;
+        ${fonts.body}
         font-size: 1rem;
         border: 1px solid ${themeColors.primary};
       `}

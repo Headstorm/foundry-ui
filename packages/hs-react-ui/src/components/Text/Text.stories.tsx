@@ -7,6 +7,7 @@ import * as Icons from '@mdi/js';
 import Text from './Text';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
+import fonts from '../../enums/fonts';
 
 export default {
   title: 'Text',
@@ -36,7 +37,7 @@ const ThemedContainer = styled.div`
     width: fit-content;
     background-color: ${themeColors.background};
     transition: transform ${themeTimings.xSlow};
-    font-family: Roboto, sans-serif;
+    ${fonts.body}
     font-size: ${size};
     color: ${color};
     border: 1px solid ${themeColors.primary};

@@ -8,6 +8,8 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  // TODO enable typechecking on tests
+  ignorePatterns: ['src/**/*.test.tsx'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
