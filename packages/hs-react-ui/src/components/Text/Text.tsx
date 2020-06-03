@@ -43,11 +43,11 @@ const Progress = styled.div`
   ${({ size }: { size: string }) => css`
     background: linear-gradient(
         45deg,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.2)
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0.75),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0.75),
+        rgba(255, 255, 255, 0.75)
       )
       repeat;
     background-size: 400% 100%;

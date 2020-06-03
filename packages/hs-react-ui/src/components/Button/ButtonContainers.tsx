@@ -27,8 +27,7 @@ ${({ elevation = 0, color }: StyledButtonProps) =>`
   padding: 1.25em 1em;
   border-radius: 0.25em;
 
-  filter: drop-shadow(0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1}));
+  filter: drop-shadow(0rem ${elevation * 0.25}rem ${elevation * 0.75}rem rgba(0,0,0,${0.6 - elevation * 0.1}));
 
 
   outline: 0 none;

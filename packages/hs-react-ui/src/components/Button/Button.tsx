@@ -4,14 +4,6 @@ import Text from '../Text/Text';
 import {ButtonContainers, ButtonTypes, ButtonContainer} from './ButtonContainers';
 
 const ButtonText = styled.span``;
-const SVG = styled.svg`
-${({elevation = 0}: ButtonProps) => `
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1}));
-`}
-`;
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, { elevation?: number, color?: string}>;
