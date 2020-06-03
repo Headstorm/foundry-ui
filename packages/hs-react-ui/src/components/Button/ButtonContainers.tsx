@@ -130,20 +130,10 @@ export const LinkButtonContainer = styled(ButtonContainer)`
   color: ${color || colors.grayDark};
   background-color: ${colors.transparent};
   &:hover {
-    background-color: ${darken(
-      0.05,
-      color
-        ? getComplementaryColor(color || colors.grayDark, colors.grayXlight)
-        : colors.grayXlight,
-    )};
+    background-color: ${colors.transparent};
   }
   &:active {
-    background-color: ${darken(
-      0.1,
-      color
-        ? getComplementaryColor(color || colors.grayDark, colors.grayXlight)
-        : colors.grayXlight,
-    )};
+    background-color: ${colors.transparent};
   }
   `}
 `;
@@ -152,19 +142,13 @@ export const OutlineButtonContainer = styled(ButtonContainer)`
   ${({ color, fillColor }: StyledButtonProps) => `
   color: ${color || colors.grayDark};
   background-color: ${fillColor ||
-    getComplementaryColor(fillColor || colors.grayDark, colors.background)};
+    getComplementaryColor(color || colors.grayDark, colors.background)};
   border: 1px solid ${color || colors.grayDark};
   &:hover {
-    background-color: ${darken(
-      0.05,
-      fillColor ? fillColor || colors.background : colors.background,
-    )};
+    background-color: ${darken(0.05, fillColor || getComplementaryColor(color || colors.grayDark, colors.background))};
   }
   &:active {
-    background-color: ${darken(
-      0.1,
-      fillColor ? fillColor || colors.background : colors.background,
-    )};
+    background-color: ${darken(0.1, fillColor || getComplementaryColor(color || colors.grayDark, colors.background))};
   }
   `}
 `;
