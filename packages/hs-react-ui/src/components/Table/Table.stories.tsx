@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 import { text, boolean, select } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
-import { mdiClose, mdiChevronDoubleRight, mdiChevronDoubleDown, mdiChevronDoubleUp } from '@mdi/js';
+import { mdiClose } from '@mdi/js';
 import { name, address, company, commerce } from 'faker';
 
 import Table, { RowProps, columnTypes, ExpansionIconProps, ExpansionIconColumnName } from './Table';
@@ -58,12 +58,6 @@ const NoteField = styled.textarea`
 const groupLabelPositionOptions: { above: 'above'; below: 'below' } = {
   above: 'above',
   below: 'below',
-};
-const options = {
-  none: '',
-  mdiChevronDoubleDown,
-  mdiChevronDoubleRight,
-  mdiChevronDoubleUp,
 };
 
 const generateSampleData = (rows: number): SampleDataType[] => {
@@ -344,12 +338,16 @@ storiesOf('Table', module).add(
         sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
         groupCellComponent: EmptyCell,
       },
-      [ExpansionIconColumnName]: {
+    };
+
+    if (!boolean('Use default expansion column', false)) {
+      sampleColumns[ExpansionIconColumnName] = {
         name: '',
         sortable: false,
-        width: '1rem',
-      },
-    };
+        width: text('Expansion Icon width', '1rem'),
+      };
+    }
+
     const position = select('groupLabelPosition', groupLabelPositionOptions, 'above');
 
     const useCustomLabel = boolean('useCustomLabel', false);
@@ -361,8 +359,6 @@ storiesOf('Table', module).add(
         groupHeaderPosition={position}
         areGroupsCollapsable={boolean('areGroupsCollapsable', false)}
         expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
-        collapsedIcon={select('collapsedIcon', options, options.none)}
-        expandedIcon={select('expandedIcon', options, options.none)}
       />
     );
   },

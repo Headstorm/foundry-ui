@@ -15,25 +15,18 @@ export type CellOptions = {
   row: columnTypes;
   index: number;
   indexModifier?: number;
-  CollapsexpandedIcon?: any;
+  CollapseExpandedIcon?: any;
   groupIndex?: number;
   isCollapsed?: boolean;
-  collapsedIcon?: any;
-  expandedIcon?: any;
   groupLabelDataString?: string;
 };
 
 export type ExpansionIconProps = {
-  collapsedIcon?: string | React.FunctionComponent<any>;
-  expandedIcon?: string | React.FunctionComponent<any>;
   isCollapsed: boolean;
-  groupHeaderPosition: 'above' | 'below';
-  onClick?: any;
+  onClick: any;
 };
 
 type InternalExpansionIconProps = {
-  collapsedIcon: string;
-  expandedIcon: string;
   isCollapsed: boolean;
   groupHeaderPosition: 'above' | 'below';
   onClick: any;
@@ -62,8 +55,6 @@ export type TableProps = {
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
   expansionIconComponent?: React.FunctionComponent<InternalExpansionIconProps>;
-  collapsedIcon?: string | React.FunctionComponent<any>;
-  expandedIcon?: string | React.FunctionComponent<any>;
   minWidthBreakpoint?: number;
   sortGroups?: boolean;
   StyledCell?: string & StyledComponentBase<any, {}>;
@@ -224,12 +215,12 @@ const onKeyPress = (evt: React.KeyboardEvent<HTMLSpanElement>) => {
 
 // Supporting component used for the collapse icon by default in the Table
 const ExpansionIcon: React.FunctionComponent<InternalExpansionIconProps> = ({
-  collapsedIcon,
-  expandedIcon,
   isCollapsed,
+  groupHeaderPosition,
   onClick,
 }: InternalExpansionIconProps) => {
-  const path = isCollapsed ? collapsedIcon : expandedIcon;
+  const expanded = groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
+  const path = isCollapsed ? mdiChevronRight : expanded;
   return (
     <StyledExpansionIconSpan tabIndex={0} onClick={onClick} role="button" onKeyPress={onKeyPress}>
       <Icon path={path} size="1rem" />
@@ -249,8 +240,6 @@ const Table = ({
   areGroupsCollapsable = false,
   data = [],
   defaultSort = ['', false], // key, direction
-  collapsedIcon,
-  expandedIcon,
   groupHeaderPosition = 'above',
   expansionIconComponent,
   minWidthBreakpoint = 640,
@@ -269,7 +258,7 @@ const Table = ({
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
-  if (!copiedColumns[ExpansionIconColumnName]) {
+  if (areGroupsCollapsable && !copiedColumns[ExpansionIconColumnName]) {
     copiedColumns[ExpansionIconColumnName] = collapsexpandedIconColumn;
   }
 
@@ -378,11 +367,9 @@ const Table = ({
    * @param {columnTypes} options.row - the data for the row, each cell should be able to the row's data
    * @param {number} options.index - The index of the cell in the row
    * @param {number} options.indexModifier - Used only when creating cells in a group. Used to account for group labels
-   * @param {any} options.CollapsexpandedIcon - Component to be used for the collapse icon. Only used for collapsable group label cells
+   * @param {any} options.CollapseExpandedIcon - Component to be used for the collapse icon. Only used for collapsable group label cells
    * @param {number} options.groupIndex - The index of the group. Used only when creating cells as part of a group
-   * @param {boolean} options.isCollapsed - Used when creating cells with a CollapsexpandedIcon
-   * @param {any} options.collapsedIcon - The collapse icon used, if supplied
-   * @param {any} options.expandedIcon - The expand icon used, if supplied
+   * @param {boolean} options.isCollapsed - Used when creating cells with a CollapseExpandedIcon
    * @param {string} options.groupLabelDataString - The stringified version of the group label row
    *
    */
@@ -393,11 +380,9 @@ const Table = ({
     row,
     index,
     indexModifier = 0,
-    CollapsexpandedIcon,
+    CollapseExpandedIcon,
     groupIndex,
     isCollapsed = false,
-    collapsedIcon, // eslint-disable-line no-shadow
-    expandedIcon, // eslint-disable-line no-shadow
     groupLabelDataString,
   }: CellOptions): JSX.Element | false => {
     return (
@@ -425,13 +410,11 @@ const Table = ({
             </ResponsiveTitle>
           )}
           {row && row[headerColumnKey]}
-          {CollapsexpandedIcon &&
+          {CollapseExpandedIcon &&
           usingGroups &&
           areGroupsCollapsable &&
           headerColumnKey === ExpansionIconColumnName ? (
-            <CollapsexpandedIcon
-              collapsedIcon={collapsedIcon as string}
-              expandedIcon={expandedIcon as string}
+            <CollapseExpandedIcon
               isCollapsed={isCollapsed}
               groupHeaderPosition={groupHeaderPosition}
               onClick={() => {
@@ -519,8 +502,7 @@ const Table = ({
         if (groupLabelData) {
           const index = indexModifier === 0 ? rows.length : 0;
           const RenderedRow = groupLabelData.rowComponent || StyledGroupLabelRow;
-          const CollapsexpandedIcon = expansionIconComponent || ExpansionIcon;
-          const isUsingExpansionIconComponent = !!expansionIconComponent;
+          const CollapseExpandedIcon = expansionIconComponent || ExpansionIcon;
           const label = (
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
@@ -539,18 +521,8 @@ const Table = ({
                   : copiedColumns[headerColumnKey].cellComponent || StyledCell;
                 const breakPointHit =
                   width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
-                const cIcon = isUsingExpansionIconComponent
-                  ? collapsedIcon
-                  : collapsedIcon || mdiChevronRight;
-                const defaultExpandedIcon =
-                  groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
-                const eIcon = isUsingExpansionIconComponent
-                  ? expandedIcon
-                  : expandedIcon || defaultExpandedIcon;
 
                 const options = {
-                  expandedIcon: eIcon,
-                  collapsedIcon: cIcon,
                   breakPointHit,
                   RenderedCell,
                   headerColumnKey,
@@ -558,7 +530,7 @@ const Table = ({
                   groupLabelDataString,
                   index,
                   groupIndex: idx,
-                  CollapsexpandedIcon,
+                  CollapseExpandedIcon,
                   isCollapsed,
                 };
                 // Create each cell for the row
