@@ -6,7 +6,7 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import Modal from './Modal';
-import Button, { ButtonContainer } from '../Button/Button';
+import {ButtonContainer} from '../Button/ButtonContainers';
 
 addDecorator(withA11y);
 addDecorator(withDesign);

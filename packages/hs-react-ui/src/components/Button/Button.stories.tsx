@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
-import { select, text, boolean } from '@storybook/addon-knobs';
+import { select, text, boolean, number, color } from '@storybook/addon-knobs';
 import Icon from '@mdi/react';
 import { mdiLeadPencil, mdiLoading } from '@mdi/js';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
-import { ButtonContainers } from './ButtonContainers';
-import Button, { ButtonTypes, ButtonContainer } from './Button';
+import Button from './Button';
 import fonts from '../../enums/fonts';
+
+const ButtonContainers = Button.Containers;
+const ButtonTypes = Button.Types;
+const ButtonContainer = Button.Container;
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -22,16 +25,18 @@ const design = {
 storiesOf('Button', module)
   .add(
     'Basic Button',
-    () => (
-      <Button
-        StyledContainer={
-          ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]
-        }
+    () => {
+      const useColor = boolean('Use Color Prop', false);
+      return <Button
+        type={select('type', ButtonTypes, ButtonTypes.default)}
+        color={useColor ? color('color', '#000') : undefined}
         onClick={action('button-click')}
+        isLoading={boolean('isLoading', false)}
+        elevation={number('elevation', 0)}
       >
         {text('children', 'Default text')}
       </Button>
-    ),
+    },
     { design },
   )
   .add(
