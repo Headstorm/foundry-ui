@@ -1,32 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import colors from '../../enums/colors';
 
-export const StyledLabel = styled.label`
+export const DefaultStyledLabel = styled.label`
   ${({ color = colors.grayLight }: { color: colors | string }) => `
     display: inline-flex;
     color: ${color};
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: .25em;
-    font-size: .8em;
+    font-size: .75em;
   `}
 `;
 
-export const Child = styled.input`
-  ${({ color = colors.grayLight }: { color: colors | string }) => `
-  display: block;  
-  border: solid 2px ${color};
-  width: 15%;
-  `}
+export const DefaultStyledTextContainer = styled.div`
+
 `;
 
-export const StyledDiv = styled.div`
+export const DefaultStyledLabelContainer = styled.div`
   
 `;
 
-const IconContainer = styled.span`
+const DefaultStyledIconContainer = styled.span`
   display: inline-flex;
   margin-left: 0.25rem;
 `;
@@ -36,14 +32,23 @@ export interface LabelProps {
   color?: colors | string;
   isValid: boolean;
   checkValidity: boolean;
-  colorValid: colors | string;
-  colorInvalid: colors | string;
+  colorValid?: colors | string;
+  colorInvalid?: colors | string;
   htmlFor: string;
   isRequired: boolean;
+  children?: JSX.Element;
+  StyledLabelContainer?: string & StyledComponentBase<any, {}>;
+  StyledTextContainer?: string & StyledComponentBase<any, {}>;
+  StyledLabel?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
 }
 
 const Label = ({
   labelText,
+  StyledLabelContainer = DefaultStyledLabelContainer,
+  StyledTextContainer = DefaultStyledTextContainer,
+  StyledLabel = DefaultStyledLabel,
+  StyledIconContainer = DefaultStyledIconContainer,
   color = colors.grayLight,
   isValid = false,
   checkValidity = false,
@@ -51,7 +56,8 @@ const Label = ({
   colorInvalid = colors.destructive,
   htmlFor = 'default',
   isRequired = false,
-}: LabelProps) => {
+  children,
+}: LabelProps): JSX.Element => {
     let shownColor: string | colors;
     let shownIcon: string | JSX.Element;
 
@@ -67,17 +73,19 @@ const Label = ({
       shownIcon = checkValidity && isValid ? mdiCheckBold : '';
     }
 
-    return(
-    <StyledDiv>
+    return (
+    <StyledLabelContainer>
+      <StyledTextContainer>
       <StyledLabel htmlFor={htmlFor} color={shownColor}>
         {labelText}
       </StyledLabel>
-      <IconContainer>
-      <Icon path={shownIcon} size="11px" color={shownColor}/>
-      </IconContainer>
-      <Child id={htmlFor} color={shownColor}/>
-    </StyledDiv>
-    )
+      <StyledIconContainer>
+      <Icon path={shownIcon} size=".75rem" color={shownColor} />
+      </StyledIconContainer>
+      </StyledTextContainer>
+      {children}
+    </StyledLabelContainer>
+    );
 };
 
 export default Label;

@@ -6,6 +6,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import colors from '../../enums/colors';
 import Label from './Label';
+import TextInput from '../TextInput';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -21,13 +22,17 @@ storiesOf('Label', module).add(
     <Label
       labelText={text('labelText', 'This is the label text')}
       color={select('Color', colors, colors.grayLight)}
-      colorValid={select('Color-valid', colors, colors.success)}
-      colorInvalid={select('Color-invalid', colors, colors.destructive)}
+      colorValid={select('ColorValid', colors, colors.success)}
+      colorInvalid={select('ColorInvalid', colors, colors.destructive)}
       isRequired={boolean('isRequired', false)}
       checkValidity={boolean('checkValidity', false)}
       isValid={boolean('isValid', false)}
-      htmlFor="default"
-    />
+      htmlFor={text('htmlFor', 'default')}
+    >
+
+      <input id="default" />
+
+    </Label>
   ),
   { design },
 );
