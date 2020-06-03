@@ -2,14 +2,14 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
-import fonts from 'src/enums/fonts';
+import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 
 export const DefaultStyledLabel = styled.label`
   ${({ color = colors.grayLight }: { color: colors | string }) => `
     display: inline-flex;
     color: ${color};
-    font-family: ${fonts.body};
+    ${fonts.body}
     margin-bottom: .25em;
     font-size: .75em;
   `}
@@ -25,13 +25,13 @@ const DefaultStyledIconContainer = styled.span`
 `;
 
 export interface LabelProps {
-  labelText: string;
+  labelText?: string;
   color?: colors | string;
   isValid?: boolean;
   colorValid?: colors | string;
   colorInvalid?: colors | string;
-  htmlFor: string;
-  isRequired: boolean;
+  htmlFor?: string;
+  isRequired?: boolean;
   children?: JSX.Element;
   StyledLabelContainer?: string & StyledComponentBase<any, {}>;
   StyledTextContainer?: string & StyledComponentBase<any, {}>;
@@ -61,7 +61,7 @@ const Label = ({
     shownIcon = mdiCheckBold;
   } else if (isValid === false) {
     shownColor = colorInvalid;
-    shownIcon = '';
+    shownIcon = isRequired ? mdiAsterisk : '';
   } else {
     shownColor = color;
     shownIcon = isRequired ? mdiAsterisk : '';
