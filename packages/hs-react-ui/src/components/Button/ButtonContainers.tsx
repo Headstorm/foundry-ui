@@ -17,6 +17,11 @@ export enum ButtonTypes {
   outline = 'outline',
 }
 
+/**
+ * Returns color2 if color1 and color2 are contrasting, otherwise it returns the complementary color
+ * @param color1 The first color and color we want to have a >=4.5 contrast ration with
+ * @param color2 The second color and color we return if the contrast ration is >=4.5
+ */
 const getComplementaryColor = (color1: string, color2: string): string => {
   const contrast = getContrast(color1, color2);
 
@@ -66,23 +71,16 @@ export const Progress = styled.div`
 export const ButtonContainer = styled.button`
   ${({ elevation = 0 }: StyledButtonProps) => `
   display: inline-block;
-
   ${fonts.body}
   font-size: 1rem;
   line-height: 0;
-
   padding: 1.25em 1em;
   border-radius: 0.25em;
-
   filter: drop-shadow(0rem ${elevation * 0.25}rem ${elevation * 0.75}rem rgba(0,0,0,${0.6 -
     elevation * 0.1}));
-
-
   outline: 0 none;
   border: 0 none;
-
   cursor: pointer;
-
   background-color: ${colors.grayXlight};
   color: ${colors.grayDark};
   &:hover {
