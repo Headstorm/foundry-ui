@@ -25,7 +25,6 @@ storiesOf('Label', module).add(
       colorValid={select('ColorValid', colors, colors.success)}
       colorInvalid={select('ColorInvalid', colors, colors.destructive)}
       isRequired={boolean('isRequired', false)}
-      checkValidity={boolean('checkValidity', false)}
       isValid={boolean('isValid', false)}
       htmlFor={text('htmlFor', 'default')}
     >
