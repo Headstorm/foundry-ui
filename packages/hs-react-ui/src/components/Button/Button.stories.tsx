@@ -10,9 +10,14 @@ import { withDesign } from 'storybook-addon-designs';
 import Button from './Button';
 import fonts from '../../enums/fonts';
 
-const ButtonContainers = Button.Containers;
 const ButtonTypes = Button.Types;
 const ButtonContainer = Button.Container;
+
+const options = {
+  none: '',
+  mdiLeadPencil,
+  mdiLoading,
+};
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -26,26 +31,38 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
-      const useColor = boolean('Use Color Prop', false);
-      return <Button
-        type={select('type', ButtonTypes, ButtonTypes.default)}
-        color={useColor ? color('color', '#000') : undefined}
-        onClick={action('button-click')}
-        isLoading={boolean('isLoading', false)}
-        elevation={number('elevation', 0)}
-      >
-        {text('children', 'Default text')}
-      </Button>
+      let useColor = false;
+      let useFillColor = false;
+      const type = select('type', ButtonTypes, ButtonTypes.primary);
+
+      if (type === ButtonTypes.link || type === ButtonTypes.outline) {
+        useColor = boolean('Use color property', false);
+      }
+      if (type === ButtonTypes.outline) {
+        useFillColor = boolean('Use fillColor property', false);
+      }
+
+      return (
+        <Button
+          type={type}
+          color={useColor ? color('color', '#000') : undefined}
+          fillColor={useFillColor ? color('fillColor', '#fff') : undefined}
+          onClick={action('button-click')}
+          isLoading={boolean('isLoading', false)}
+          elevation={number('elevation', 0)}
+          isProcessing={boolean('isProcessing', false)}
+          iconPrefix={select('iconPrefix', options, options.none)}
+          iconSuffix={select('iconSuffix', options, options.none)}
+        >
+          {text('children', 'Default text')}
+        </Button>
+      );
     },
     { design },
   )
   .add(
     'Themed Button',
     () => {
-      const isLoading = {
-        icon: <Icon path={mdiLoading} size={1} horizontal vertical rotate={90} />,
-        children: 'Loading',
-      };
       const icon = <Icon path={mdiLeadPencil} size={1} horizontal vertical rotate={90} />;
 
       const ThemedContainer = styled(ButtonContainer)`
@@ -70,8 +87,8 @@ storiesOf('Button', module)
       return (
         <Button
           StyledContainer={ThemedContainer}
-          isLoading={boolean('isLoading?', false) ? isLoading : null}
-          icon={boolean('Icon?', true) ? icon : null}
+          isLoading={boolean('isLoading', false)}
+          iconPrefix={boolean('iconPrefix', true) ? icon : undefined}
           onClick={action('button-click')}
         >
           {text('children', 'Edit')}

@@ -8,7 +8,6 @@ import fonts from '../../enums/fonts';
 /* Default Styled Text Container */
 export const TextContainer = styled.span`
   ${({ size, color }: { size: string; color: string }) => `
-    display: inline-block;
     ${fonts.body}
     font-size: ${size};
     color: ${color};
@@ -58,12 +57,12 @@ const Progress = styled.div`
   `}
 `;
 
-const LeftIconContainer = styled.div`
+const LeftIconContainer = styled.span`
   display: inline-flex;
   margin-right: 0.25rem;
 `;
 
-const RightIconContainer = styled.div`
+const RightIconContainer = styled.span`
   display: inline-flex;
   margin-left: 0.25rem;
 `;
