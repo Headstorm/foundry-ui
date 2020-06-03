@@ -2,8 +2,8 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
-import colors from '../../enums/colors';
 import fonts from 'src/enums/fonts';
+import colors from '../../enums/colors';
 
 export const DefaultStyledLabel = styled.label`
   ${({ color = colors.grayLight }: { color: colors | string }) => `
@@ -15,13 +15,9 @@ export const DefaultStyledLabel = styled.label`
   `}
 `;
 
-export const DefaultStyledTextContainer = styled.div`
+export const DefaultStyledTextContainer = styled.div``;
 
-`;
-
-export const DefaultStyledLabelContainer = styled.div`
-  
-`;
+export const DefaultStyledLabelContainer = styled.div``;
 
 const DefaultStyledIconContainer = styled.span`
   display: inline-flex;
@@ -57,33 +53,33 @@ const Label = ({
   isRequired = false,
   children,
 }: LabelProps) => {
-    let shownColor: string | colors;
-    let shownIcon: string | JSX.Element;
+  let shownColor: string | colors;
+  let shownIcon: string | JSX.Element;
 
-    if (isValid === true) {
-      shownColor = colorValid;
-      shownIcon = mdiCheckBold;
-    } else if (isValid === false) {
-      shownColor = colorInvalid;
-      shownIcon = '';
-    } else {
-      shownColor = color;
-      shownIcon = isRequired ? mdiAsterisk : '';
-    }
+  if (isValid === true) {
+    shownColor = colorValid;
+    shownIcon = mdiCheckBold;
+  } else if (isValid === false) {
+    shownColor = colorInvalid;
+    shownIcon = '';
+  } else {
+    shownColor = color;
+    shownIcon = isRequired ? mdiAsterisk : '';
+  }
 
-    return (
+  return (
     <StyledLabelContainer>
       <StyledTextContainer>
-      <StyledLabel htmlFor={htmlFor} color={shownColor}>
-        {labelText}
-      </StyledLabel>
-      <StyledIconContainer>
-      <Icon path={shownIcon} size=".75rem" color={shownColor} />
-      </StyledIconContainer>
+        <StyledLabel htmlFor={htmlFor} color={shownColor}>
+          {labelText}
+        </StyledLabel>
+        <StyledIconContainer>
+          <Icon path={shownIcon} size=".75rem" color={shownColor} />
+        </StyledIconContainer>
       </StyledTextContainer>
       {children}
     </StyledLabelContainer>
-    );
+  );
 };
 
 export default Label;

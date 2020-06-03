@@ -28,9 +28,7 @@ storiesOf('Label', module).add(
       isValid={boolean('isValid', false)}
       htmlFor={text('htmlFor', 'default')}
     >
-
       <TextInput id={text('htmlFor', 'default')} placeholder="placeholder" />
-
     </Label>
   ),
   { design },
