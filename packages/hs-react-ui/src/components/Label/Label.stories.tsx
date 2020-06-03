@@ -1,11 +1,12 @@
 import React from 'react';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, boolean } from '@storybook/addon-knobs';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 
 import colors from '../../enums/colors';
 import Label from './Label';
+import TextInput from '../TextInput';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -21,7 +22,14 @@ storiesOf('Label', module).add(
     <Label
       labelText={text('labelText', 'This is the label text')}
       color={select('Color', colors, colors.grayDark)}
-    />
+      colorValid={select('ColorValid', colors, colors.success)}
+      colorInvalid={select('ColorInvalid', colors, colors.destructive)}
+      isRequired={boolean('isRequired', false)}
+      isValid={boolean('isValid', false)}
+      htmlFor={text('htmlFor', 'default')}
+    >
+      <TextInput id={text('htmlFor', 'default')} placeholder="placeholder" />
+    </Label>
   ),
   { design },
 );

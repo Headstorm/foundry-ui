@@ -47,6 +47,7 @@ const DivContainer = styled.div`
 `;
 
 export type TextInputProps = {
+  id?: string;
   placeholder?: string;
   iconPrefix?: any;
   onClear?: (event: SyntheticEvent) => void;
@@ -58,6 +59,7 @@ export type TextInputProps = {
 };
 
 const TextInput = ({
+  id,
   placeholder = 'test props',
   iconPrefix,
   onClear,
@@ -83,6 +85,7 @@ const TextInput = ({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        id={id}
       />
       {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
     </StyledDivContainer>
