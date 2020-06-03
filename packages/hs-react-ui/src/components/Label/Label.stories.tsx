@@ -21,7 +21,7 @@ storiesOf('Label', module).add(
   () => (
     <Label
       labelText={text('labelText', 'This is the label text')}
-      color={select('Color', colors, colors.grayLight)}
+      color={select('Color', colors, colors.grayDark)}
       colorValid={select('ColorValid', colors, colors.success)}
       colorInvalid={select('ColorInvalid', colors, colors.destructive)}
       isRequired={boolean('isRequired', false)}

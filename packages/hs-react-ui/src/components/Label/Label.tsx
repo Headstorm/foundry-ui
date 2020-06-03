@@ -32,7 +32,7 @@ export interface LabelProps {
   colorInvalid?: colors | string;
   htmlFor?: string;
   isRequired?: boolean;
-  children?: JSX.Element;
+  children?: any;
   StyledLabelContainer?: string & StyledComponentBase<any, {}>;
   StyledTextContainer?: string & StyledComponentBase<any, {}>;
   StyledLabel?: string & StyledComponentBase<any, {}>;
@@ -81,5 +81,10 @@ const Label = ({
     </StyledLabelContainer>
   );
 };
+
+Label.LabelContainer = DefaultStyledLabelContainer;
+Label.TextContainer = DefaultStyledTextContainer;
+Label.Label = DefaultStyledLabel;
+Label.IconContainer = DefaultStyledIconContainer;
 
 export default Label;
