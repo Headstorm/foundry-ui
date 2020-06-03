@@ -29,7 +29,7 @@ storiesOf('Label', module).add(
       htmlFor={text('htmlFor', 'default')}
     >
 
-      <input id="default" />
+      <TextInput id={text('htmlFor', 'default')} placeholder="placeholder" />
 
     </Label>
   ),

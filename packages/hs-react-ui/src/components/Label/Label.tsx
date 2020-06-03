@@ -56,7 +56,7 @@ const Label = ({
   htmlFor = 'default',
   isRequired = false,
   children,
-}: LabelProps): JSX.Element => {
+}: LabelProps) => {
     let shownColor: string | colors;
     let shownIcon: string | JSX.Element;
 
