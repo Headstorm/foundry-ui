@@ -1,18 +1,16 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, configure } from '@testing-library/react';
 
 import Button from '../Button';
+
+configure({ testIdAttribute: 'data-test-id' });
 
 const testId = 'hsui-button';
 
 describe('Button', () => {
   it('fires click handler when clicked', () => {
     const clickSpy = jest.fn();
-    const { getByTestId } = render(
-      <Button data-testid={testId} onClick={clickSpy}>
-        Click me
-      </Button>,
-    );
+    const { getByTestId } = render(<Button onClick={clickSpy}>Click me</Button>);
 
     fireEvent.click(getByTestId(testId));
 
@@ -20,9 +18,7 @@ describe('Button', () => {
   });
 
   it('shows loading text when provided', async () => {
-    const { container, getByTestId } = render(
-      <Button data-testid={testId} isLoading={true} onClick={() => {}} />,
-    );
+    const { container, getByTestId } = render(<Button isLoading={true} onClick={() => {}} />);
 
     await waitFor(() => getByTestId(testId));
 
@@ -32,17 +28,13 @@ describe('Button', () => {
   it('keeps the container the same when switching between isLoading and not isLoading', async () => {
     const onClick = jest.fn();
     const { getByTestId, rerender, asFragment } = render(
-      <Button data-testid={testId} isLoading={true} onClick={onClick} />,
+      <Button isLoading={true} onClick={onClick} />,
     );
 
     await waitFor(() => getByTestId(testId));
     const loadingFragment = asFragment();
 
-    rerender(
-      <Button data-testid={testId} onClick={onClick}>
-        Submit
-      </Button>,
-    );
+    rerender(<Button onClick={onClick}>Submit</Button>);
     await waitFor(() => getByTestId(testId));
     const loadedFragment = asFragment();
 

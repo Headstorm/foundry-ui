@@ -2,10 +2,11 @@ import React from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
-import { ButtonContainers, ButtonTypes, ButtonContainer, Progress } from './ButtonContainers';
+import ButtonContainer, { ButtonTypes, ButtonContainerProps } from './ButtonContainers';
+import Progress from '../Progress/Progress';
 
 export type ButtonProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}, { elevation?: number; color?: string }>;
+  StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
@@ -14,7 +15,6 @@ export type ButtonProps = {
   elevation?: number;
   type?: string;
   color?: string;
-  fillColor?: string;
   onClick: (...args: any[]) => void;
 };
 
@@ -24,6 +24,13 @@ const Text = styled.span`
   display: inline-block;
   margin-top: -8px;
   margin-bottom: -8px;
+`;
+
+export const StyledProgress = styled(Progress)`
+  width: 5rem;
+  height: 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
 `;
 
 const LeftIconContainer = styled(Text)`
@@ -44,21 +51,20 @@ const Button = ({
   elevation = 0,
   type = ButtonTypes.default,
   color,
-  fillColor,
   onClick,
 }: ButtonProps) => {
-  const Container = StyledContainer || ButtonContainers[type];
+  const Container = StyledContainer || ButtonContainer;
   return isLoading ? (
-    <Container data-testid="hsui-button" elevation={elevation} color={color} fillColor={fillColor}>
+    <Container data-test-id="hsui-button" elevation={elevation} color={color} type={type}>
       <Progress />
     </Container>
   ) : (
     <Container
-      data-testid="hsui-button"
+      data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
       color={color}
-      fillColor={fillColor}
+      type={type}
     >
       <Text>
         {!isProcessing &&
@@ -92,5 +98,4 @@ const Button = ({
 
 Button.Container = ButtonContainer;
 Button.Types = ButtonTypes;
-Button.Containers = ButtonContainers;
 export default Button;

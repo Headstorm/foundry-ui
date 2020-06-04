@@ -9,6 +9,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import Button from './Button';
 import fonts from '../../enums/fonts';
+import colors from '../../enums/colors';
 
 const ButtonTypes = Button.Types;
 const ButtonContainer = Button.Container;
@@ -31,22 +32,13 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
-      let useColor = false;
-      let useFillColor = false;
+      const useColor = boolean('Enable color property', false);
       const type = select('type', ButtonTypes, ButtonTypes.primary);
-
-      if (type === ButtonTypes.link || type === ButtonTypes.outline) {
-        useColor = boolean('Use color property', false);
-      }
-      if (type === ButtonTypes.outline) {
-        useFillColor = boolean('Use fillColor property', false);
-      }
 
       return (
         <Button
           type={type}
-          color={useColor ? color('color', '#000') : undefined}
-          fillColor={useFillColor ? color('fillColor', '#fff') : undefined}
+          color={useColor ? color('color', colors.grayDark) : undefined}
           onClick={action('button-click')}
           isLoading={boolean('isLoading', false)}
           elevation={number('elevation', 0)}

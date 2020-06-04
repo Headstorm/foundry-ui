@@ -1,19 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
-.c1 {
-  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
-  background-size: 400% 100%;
-  width: 5rem;
-  height: 10px;
-  margin-top: -5px;
-  margin-bottom: -5px;
-  border-radius: 9999px;
-  -webkit-animation: ia-dwnO 8s linear infinite;
-  animation: ia-dwnO 8s linear infinite;
-  line-height: 0;
-}
-
 500;700;900&display=swap'); .c0 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
@@ -38,10 +25,22 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #b8bdbf;
 }
 
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+}
+
 <button
   class="c0"
-  data-testid="hsui-button"
+  data-test-id="hsui-button"
   elevation="0"
+  type="default"
 >
   <div
     class="c1"
@@ -82,8 +81,9 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 <button
   class="c0"
-  data-testid="hsui-button"
+  data-test-id="hsui-button"
   elevation="0"
+  type="default"
 >
   <span
     class="c1"
@@ -94,19 +94,6 @@ exports[`Button keeps the container the same when switching between isLoading an
 `;
 
 exports[`Button shows loading text when provided 1`] = `
-.c1 {
-  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
-  background-size: 400% 100%;
-  width: 5rem;
-  height: 10px;
-  margin-top: -5px;
-  margin-bottom: -5px;
-  border-radius: 9999px;
-  -webkit-animation: ia-dwnO 8s linear infinite;
-  animation: ia-dwnO 8s linear infinite;
-  line-height: 0;
-}
-
 500;700;900&display=swap'); .c0 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
@@ -131,11 +118,23 @@ exports[`Button shows loading text when provided 1`] = `
   background-color: #b8bdbf;
 }
 
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+}
+
 <div>
   <button
     class="c0"
-    data-testid="hsui-button"
+    data-test-id="hsui-button"
     elevation="0"
+    type="default"
   >
     <div
       class="c1"
