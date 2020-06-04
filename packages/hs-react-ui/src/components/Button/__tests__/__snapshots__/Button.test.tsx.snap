@@ -18,11 +18,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 <button
   class="c0"
 >
-  <span
-    class=""
-  >
-    Loading... ⌛
-  </span>
+  Loading... ⌛
 </button>
 `;
 
@@ -44,11 +40,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 <button
   class="c0"
 >
-  <span
-    class=""
-  >
-    Submit 
-  </span>
+  Submit 
 </button>
 `;
 
@@ -71,13 +63,9 @@ exports[`Button shows loading text when provided 1`] = `
   <button
     class="c0"
   >
-    <span
-      class=""
-    >
-      Loading...
-       
-      ⌛
-    </span>
+    Loading...
+     
+    ⌛
   </button>
 </div>
 `;
