@@ -57,6 +57,7 @@ export const ButtonContainer: string &
   ${({ elevation = 0, color, type }: ButtonContainerProps) => {
     const backgroundColor = getBackgroundColorFromType(type, color);
     const fontColor = getFontColorFromType(type, color);
+    const elevationYOffset = elevation && elevation >=1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     return `
     display: inline-block;
     ${fonts.body}
@@ -64,7 +65,7 @@ export const ButtonContainer: string &
     line-height: 0;
     padding: 1.25em 1em;
     border-radius: 0.25em;
-    filter: drop-shadow(0rem ${elevation * 0.25}rem ${elevation * 0.2}rem rgba(0,0,0,${0.6 -
+    filter: drop-shadow(0rem ${elevationYOffset}rem ${elevation * 0.2}rem rgba(0,0,0,${0.6 -
       elevation * 0.1}));
     outline: 0 none;
     border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : `0 none;`};
