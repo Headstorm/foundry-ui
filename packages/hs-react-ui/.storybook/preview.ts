@@ -6,9 +6,9 @@ import Colors from '../src/enums/colors';
 
 addParameters({
   backgrounds: [
-    { name: 'grayDark', value: Colors.grayDark, default: true },
+    { name: 'grayDark', value: Colors.grayDark },
     { name: 'grayLight', value: Colors.grayLight },
-    { name: 'background', value: Colors.background },
+    { name: 'background', value: Colors.background, default: true },
   ],
 });
 
