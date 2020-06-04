@@ -172,7 +172,7 @@ export const Row = styled.tr`
 `;
 
 export const GroupRow = styled(Row)`
-  background-color: ${colors.groupLabel};
+  background-color: ${colors.grayXlight};
 `;
 
 export const Cell = styled.td`
@@ -198,8 +198,8 @@ export const SortIcon = styled(Icon)`
 
 const defaultCollapsed: collapsedState = {};
 
-// Default expansion column added
-const collapsexpandedIconColumn = {
+// Default expansion column added if there isn't one
+const collapsedExpandedIconColumn = {
   name: '',
   sortable: false,
   width: '1rem',
@@ -259,7 +259,7 @@ const Table = ({
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
   if (areGroupsCollapsable && !copiedColumns[ExpansionIconColumnName]) {
-    copiedColumns[ExpansionIconColumnName] = collapsexpandedIconColumn;
+    copiedColumns[ExpansionIconColumnName] = collapsedExpandedIconColumn;
   }
 
   // this builds the string from the columns
