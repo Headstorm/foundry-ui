@@ -231,7 +231,6 @@ export const Dropdown = ({
         <StyledValueItem>{((values.length && values) || state.selectedValues).join(', ')}</StyledValueItem>
         <ValueIconContainer>
           {clearable && (
-
             <Icon
               // TODO Fix issue with Icon not correctly exposing its onClick on its declaration file
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -5,6 +5,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -64,12 +68,13 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -101,6 +106,10 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -160,12 +169,13 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -198,6 +208,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -302,12 +316,13 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -378,6 +393,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -436,12 +455,13 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -471,6 +491,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -530,12 +554,13 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -565,6 +590,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -670,12 +699,13 @@ exports[`Dropdown displays all options when focused 1`] = `
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -745,6 +775,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -804,12 +838,13 @@ exports[`Dropdown does not display options on initial render 1`] = `
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -839,6 +874,10 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -898,12 +937,13 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
@@ -935,6 +975,10 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
 }
 
 500;700;900&display=swap'); .c1 {
@@ -994,12 +1038,13 @@ exports[`Dropdown selects options from values prop 1`] = `
   <div
     class="c0"
     data-testid="choosePokemon-valueContainer"
+    elevation="0"
     id="choosePokemon-valueContainer"
     name="choosePokemon"
     tabindex="0"
   >
     <button
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     >
       <div
         class="c2"
