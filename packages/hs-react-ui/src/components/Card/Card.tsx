@@ -18,8 +18,8 @@ export const CardContainer = styled.div`
     border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
 
     transition: box-shadow ${timings.slow}, border ${timings.normal};
-    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
+    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation
+    * -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
     background-color: ${colors.background};
   `}
 `;

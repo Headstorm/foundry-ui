@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
@@ -7,9 +7,19 @@ import { readableColor } from 'polished';
 import Button from '../Button';
 import { ButtonContainer } from '../Button/Button';
 import colors from '../../enums/colors';
+import timings from '../../enums/timings';
 
-const Container = styled.div`
-  width: fit-content;
+const Container = styled.div<{ elevation: number }>`
+  ${({ elevation }) => {
+  const elevationYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
+  const elevationBlur = elevation && elevation >= 1 ? (elevation / 16) * 0.1 + 0.3 : 0;
+  return `
+    width: fit-content;
+    transition: filter ${timings.slow};
+    filter: drop-shadow(0rem ${elevationYOffset}rem ${elevationBlur}rem rgba(0,0,0,${0.6 - elevation * 0.1}));
+  `;
+}}
+  
 `;
 const ValueContainer = styled(ButtonContainer)`
   display: flex;
@@ -27,7 +37,7 @@ const ValueIconContainer = styled.div`
   justify-content: flex-end;
   
   width: 3rem;
-`
+`;
 
 const ValueItem = styled.div`
   width: 100%;
@@ -56,7 +66,7 @@ const OptionItem = styled.div`
     cursor: pointer;
     outline: none;
   }
-`
+`;
 const CheckContainer = styled.div`
   display: flex;
   align-items: center;
@@ -64,7 +74,7 @@ const CheckContainer = styled.div`
   
   padding-right: 0.2rem;
   width: 2rem;
-`
+`;
 
 export interface DropdownProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
@@ -74,6 +84,7 @@ export interface DropdownProps {
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
 
   clearable?: boolean,
+  elevation?: number,
   multi?: boolean,
   name: string,
   onClear?: () => void,
@@ -83,9 +94,7 @@ export interface DropdownProps {
   values?: Array<string>,
 }
 
-// TODO @Jake
-//  Placeholder text -- Wait until input is finalized
-//  Aware of where it opens so it can open up
+// TODO Placeholder text -- Wait until input is finalized
 export const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
@@ -94,10 +103,11 @@ export const Dropdown = ({
   StyledOptionItem = OptionItem,
 
   clearable = false,
+  elevation = 0,
   multi = false,
   name,
-  onClear = () => {},
-  onSelect = () => {},
+  onClear,
+  onSelect,
   options,
   tabIndex = 0,
   values = [],
@@ -105,15 +115,15 @@ export const Dropdown = ({
   const [state, setState] = useState<{ isOpen: boolean, selectedValues: Array<string>, id: string}>({
     isOpen: false,
     selectedValues: values,
-    id: name
+    id: name,
   });
 
   const handleBlur = useCallback((e: React.FocusEvent) => {
     e.preventDefault();
     const target = e.nativeEvent.relatedTarget as HTMLElement | null;
     // check if we're focusing on something we don't control
-    if (!target || (target.id && !target.id.startsWith(state.id)) ) {
-      setState(state => ({ ...state, isOpen: false }));
+    if (!target || (target.id && !target.id.startsWith(state.id))) {
+      setState(curState => ({ ...curState, isOpen: false }));
     }
   }, [state.id]);
 
@@ -123,16 +133,19 @@ export const Dropdown = ({
         const selectedValues = myState.selectedValues.includes(selected)
           ? myState.selectedValues.filter(val => val !== selected)
           : [...myState.selectedValues, selected];
-
-        onSelect(selectedValues);
+        if (onSelect) {
+          onSelect(selectedValues);
+        }
         return {
           ...myState,
           isOpen: true,
           selectedValues,
         };
       }
-      onSelect(selected);
-      return { ...myState, selectedValues: [selected], isOpen: false }
+      if (onSelect) {
+        onSelect(selected);
+      }
+      return { ...myState, selectedValues: [selected], isOpen: false };
     });
   }, [onSelect, multi]);
 
@@ -143,8 +156,10 @@ export const Dropdown = ({
       ...curState,
       selectedValues: [],
     }));
-    onClear();
-  }, []);
+    if (onClear) {
+      onClear();
+    }
+  }, [onClear]);
 
   const keyDownHandler = useCallback(({ key }) => {
     // setTimeout(0) needed when responding to key events to push back call
@@ -153,7 +168,7 @@ export const Dropdown = ({
       const focusedElement = document.activeElement;
       switch (key) {
         case 'Enter':
-          const match = focusedElement && focusedElement.id.match(`${state.id}-option-(.*)`)
+          const match = focusedElement && focusedElement.id.match(`${state.id}-option-(.*)`);
           if (match) {
             handleSelect(match[1]);
           }
@@ -167,7 +182,6 @@ export const Dropdown = ({
           }
           break;
         case 'ArrowDown':
-          // FIXME @Jake: Simplify this logic
           if (focusedElement && focusedElement.id === `${state.id}-valueContainer`) {
             const optionsContainer = focusedElement.children[1];
             if (optionsContainer) {
@@ -176,7 +190,6 @@ export const Dropdown = ({
                 toFocus.focus();
               }
             }
-
           } else if (focusedElement && focusedElement.id.match(`${state.id}-option-.*`)) {
             const sibling = focusedElement.nextElementSibling as HTMLElement | null;
             if (sibling) {
@@ -195,29 +208,34 @@ export const Dropdown = ({
     window.addEventListener('keydown', keyDownHandler);
     return () => {
       window.removeEventListener('keydown', keyDownHandler);
-    }
+    };
   }, [keyDownHandler]);
 
   return (
     <StyledContainer
       data-testid={`${state.id}-valueContainer`}
+      elevation={elevation}
       id={`${state.id}-valueContainer`}
       name={name}
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {
         e.preventDefault();
-        setState(state => ({ ...state, isOpen: true }));
+        setState(curState => ({ ...curState, isOpen: true }));
       }}
       tabIndex={tabIndex}
     >
       <Button
         StyledContainer={StyledValueContainer}
-        onClick={() => {}}
+        onClick={(e) => e.preventDefault()}
       >
         <StyledValueItem>{((values.length && values) || state.selectedValues).join(', ')}</StyledValueItem>
         <ValueIconContainer>
           {clearable && (
+
             <Icon
+              // TODO Fix issue with Icon not correctly exposing its onClick on its declaration file
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               onClick={handleClear}
               onFocus={(e: FocusEvent) => e.stopPropagation()}
               path={mdiClose}
@@ -225,12 +243,13 @@ export const Dropdown = ({
               tabIndex={tabIndex}
             />
           )}
-          <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75}/>
+          <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
         </ValueIconContainer>
       </Button>
       {
-        state.isOpen &&
-        <StyledOptionsContainer>
+        state.isOpen
+        && (
+<StyledOptionsContainer>
           {options.map(opt => (
             <StyledOptionItem
               id={`${state.id}-option-${opt}`}
@@ -240,18 +259,21 @@ export const Dropdown = ({
               tabIndex={tabIndex}
             >
               <CheckContainer>
-                {state.selectedValues.includes(opt) &&
-                  (<Icon
-                    path={mdiCheck}
-                    size={0.75}
-                    color={readableColor(colors.blueCharcoal50, colors.success)}
-                  />)
+                {state.selectedValues.includes(opt)
+                  && (
+<Icon
+  path={mdiCheck}
+  size={0.75}
+  color={readableColor(colors.blueCharcoal50, colors.success)}
+/>
+)
                 }
               </CheckContainer>
               <span>{opt}</span>
             </StyledOptionItem>
           ))}
-        </StyledOptionsContainer>
+</StyledOptionsContainer>
+)
       }
     </StyledContainer>
   );

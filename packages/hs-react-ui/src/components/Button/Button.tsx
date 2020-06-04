@@ -1,9 +1,7 @@
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../enums/colors';
 import fonts from '../../enums/fonts';
-
-const Text = styled.span``;
 
 export enum ButtonTypes {
   primary = 'primary',
