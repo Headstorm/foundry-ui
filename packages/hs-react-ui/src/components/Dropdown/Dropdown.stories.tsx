@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
 import { Dropdown } from './Dropdown';
 
@@ -24,7 +25,8 @@ storiesOf('Dropdown', module)
           elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
           multi={boolean('multi', false)}
           name="fave-fruit"
-          onSelect={(selected) => console.log(selected)}
+          onClear={action('onClear')}
+          onSelect={action('onSelect')}
           options={options}
         />
       </Background>
