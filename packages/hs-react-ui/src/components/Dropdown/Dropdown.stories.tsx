@@ -10,14 +10,15 @@ import { Dropdown } from './Dropdown';
 const OtherDomElement = styled.div`background: red; height: 10rem; width: 10rem;`
 const Background = styled.div`background: white; height: 100%;`;
 storiesOf('Dropdown', module)
-  .add('test', () => {
-    const options = ['Cat', 'Dog', 'Bowl of Doritos'];
+  .add('Basic', () => {
+    const options = ['Apple', 'Banana', 'Grapefruit', 'Grape', 'Orange', 'Watermelon'];
     return (
       <Background>
-        <label htmlFor={'fave-pet'}>Favorite Pet?</label>
+        <label htmlFor={'fave-fruit'}>What's your favorite fruit?</label>
         <Dropdown
+          clearable={boolean('clearable', false)}
           multi={boolean('multi', false)}
-          name={'fave-pet'}
+          name={'fave-fruit'}
           onSelect={(selected) => console.log(selected)}
           options={options}
         />

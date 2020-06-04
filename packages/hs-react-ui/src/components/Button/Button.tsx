@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../enums/colors';
 import fonts from '../../enums/fonts';
@@ -35,7 +35,7 @@ export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   icon?: any;
   isLoading?: any;
-  children?: string | Node;
+  children?: ReactNode;
   onClick: (...args: any[]) => void;
 };
 
@@ -48,15 +48,11 @@ const Button = ({
 }: ButtonProps) => {
   return isLoading ? (
     <StyledContainer>
-      <Text>
-        {isLoading.children} {isLoading.icon}
-      </Text>
+      {isLoading.children} {isLoading.icon}
     </StyledContainer>
   ) : (
     <StyledContainer onClick={onClick}>
-      <Text>
-        {children} {icon}
-      </Text>
+      {children} {icon}
     </StyledContainer>
   );
 };
