@@ -3,11 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
-import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import { Dropdown } from './Dropdown';
 
-const OtherDomElement = styled.div`background: red; height: 10rem; width: 10rem;`
+addDecorator(withDesign);
+const design = {
+    type: 'figma',
+    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',
+};
+
 const Background = styled.div`background: white; height: 100%;`;
 storiesOf('Dropdown', module)
   .add('Basic', () => {
@@ -22,6 +26,6 @@ storiesOf('Dropdown', module)
           onSelect={(selected) => console.log(selected)}
           options={options}
         />
-        <OtherDomElement>Hey I'm here don't move me</OtherDomElement>
     </Background>)
-  });
+  }
+  , { design });
