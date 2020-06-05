@@ -251,7 +251,7 @@ export const Dropdown = ({
       tabIndex={tabIndex}
     >
       <Button StyledContainer={StyledValueContainer} onClick={e => e.preventDefault()}>
-        <StyledValueItem valueColor={valueColor}>
+        <StyledValueItem>
           {((values.length && values) || state.selectedValues).join(', ')}
         </StyledValueItem>
         <ValueIconContainer>
@@ -261,10 +261,10 @@ export const Dropdown = ({
               onFocus={(e: React.FocusEvent) => e.stopPropagation()}
               tabIndex={tabIndex}
             >
-              <Icon color={valueColor} path={mdiClose} size={0.75} />
+              <Icon path={mdiClose} size={0.75} />
             </CloseIconContainer>
           )}
-          <Icon color={valueColor} path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
+          <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
         </ValueIconContainer>
       </Button>
       {state.isOpen && (
