@@ -2,6 +2,8 @@ import React from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
+import colors from '../../enums/colors';
+
 import ButtonContainer, { ButtonTypes, ButtonContainerProps } from './ButtonContainers';
 import Progress from '../Progress/Progress';
 
@@ -51,13 +53,13 @@ const Button = ({
   children,
   elevation = 0,
   type = ButtonTypes.fill,
-  color,
+  color = colors.grayDark,
   onClick,
   LoadingBar = StyledProgress,
 }: ButtonProps) => {
   const Container = StyledContainer || ButtonContainer;
   return isLoading ? (
-    <Container data-test-id="hsui-button" elevation={elevation} color={color} type={type}>
+    <Container data-test-id="hsui-button" onClick={onClick} elevation={elevation} color={color} type={type}>
       <LoadingBar />
     </Container>
   ) : (
