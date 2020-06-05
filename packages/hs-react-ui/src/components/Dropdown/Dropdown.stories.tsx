@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf, addDecorator } from '@storybook/react';
-import { boolean, number } from '@storybook/addon-knobs';
+import {boolean, number, select} from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
 import { Dropdown } from './Dropdown';
@@ -16,6 +16,8 @@ storiesOf('Dropdown', module).add(
   'Basic',
   () => {
     const options = ['Apple', 'Banana', 'Grapefruit', 'Grape', 'Orange', 'Watermelon'];
+    const selectedValue = select('values', options, undefined);
+    const values = selectedValue ? [selectedValue] : undefined;
     return (
       <>
         <label htmlFor="fave-fruit">What's your favorite fruit?</label>
@@ -28,6 +30,7 @@ storiesOf('Dropdown', module).add(
           onClear={action('onClear')}
           onSelect={action('onSelect')}
           options={options}
+          values={values}
         />
       </>
     );
