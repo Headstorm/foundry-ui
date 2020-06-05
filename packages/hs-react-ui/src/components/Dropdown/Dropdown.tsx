@@ -5,7 +5,7 @@ import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { readableColor } from 'polished';
 
 import Button from '../Button';
-import { ButtonContainer } from '../Button/Button';
+import { ButtonContainer, ButtonTypes } from '../Button/ButtonContainers';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import fonts from '../../enums/fonts';
@@ -26,10 +26,10 @@ const Container = styled.div<{ elevation: number }>`
 // TODO - Add constants for width
 export const ValueContainer = styled(ButtonContainer)`
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
-
+  
   width: 15rem;
   padding: 0.5rem;
 `;
@@ -89,6 +89,7 @@ export interface DropdownProps {
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
 
   clearable?: boolean;
+  color?: string,
   elevation?: number;
   multi?: boolean;
   name: string;
@@ -97,6 +98,7 @@ export interface DropdownProps {
   onSelect?: (selected: string | Array<string>) => void;
   options: Array<string>;
   tabIndex?: number;
+  type?: ButtonTypes;
   values?: Array<string>;
 }
 
@@ -109,6 +111,7 @@ export const Dropdown = ({
   StyledOptionItem = OptionItem,
 
   clearable = false,
+  color,
   elevation = 0,
   multi = false,
   name,
@@ -117,6 +120,7 @@ export const Dropdown = ({
   onSelect,
   options,
   tabIndex = 0,
+  type = ButtonTypes.fill,
   values = [],
 }: DropdownProps) => {
   const [state, setState] = useState<{
@@ -237,6 +241,21 @@ export const Dropdown = ({
     };
   }, [keyDownHandler]);
 
+  const closeIcons = (
+    <ValueIconContainer>
+      {clearable && (
+        <CloseIconContainer
+          onClick={handleClear}
+          onFocus={(e: React.FocusEvent) => e.stopPropagation()}
+          tabIndex={tabIndex}
+        >
+          <Icon path={mdiClose} size={0.75} />
+        </CloseIconContainer>
+      )}
+      <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
+    </ValueIconContainer>
+  );
+
   return (
     <StyledContainer
       data-testid={`${state.id}-valueContainer`}
@@ -250,22 +269,16 @@ export const Dropdown = ({
       }}
       tabIndex={tabIndex}
     >
-      <Button StyledContainer={StyledValueContainer} onClick={e => e.preventDefault()}>
+      <Button
+        StyledContainer={StyledValueContainer}
+        color={color}
+        onClick={(e: React.MouseEvent) => e.preventDefault()}
+        type={type}
+      >
         <StyledValueItem>
           {((values.length && values) || state.selectedValues).join(', ')}
         </StyledValueItem>
-        <ValueIconContainer>
-          {clearable && (
-            <CloseIconContainer
-              onClick={handleClear}
-              onFocus={(e: React.FocusEvent) => e.stopPropagation()}
-              tabIndex={tabIndex}
-            >
-              <Icon path={mdiClose} size={0.75} />
-            </CloseIconContainer>
-          )}
-          <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
-        </ValueIconContainer>
+        {closeIcons}
       </Button>
       {state.isOpen && (
         <StyledOptionsContainer>

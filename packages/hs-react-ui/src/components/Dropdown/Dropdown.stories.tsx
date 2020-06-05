@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { storiesOf, addDecorator } from '@storybook/react';
-import {boolean, number, select} from '@storybook/addon-knobs';
+import {boolean, color, number, select} from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
 import { Dropdown } from './Dropdown';
+import colors from '../../enums/colors';
 
 addDecorator(withDesign);
 const design = {
@@ -23,6 +24,7 @@ storiesOf('Dropdown', module).add(
         <label htmlFor="fave-fruit">What's your favorite fruit?</label>
         <Dropdown
           clearable={boolean('clearable', false)}
+          color={color('color', colors.grayXlight)}
           elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
           multi={boolean('multi', false)}
           name="fave-fruit"
@@ -30,6 +32,7 @@ storiesOf('Dropdown', module).add(
           onClear={action('onClear')}
           onSelect={action('onSelect')}
           options={options}
+          type={select('type', ['fill', 'link', 'outline'], 'fill')}
           values={values}
         />
       </>

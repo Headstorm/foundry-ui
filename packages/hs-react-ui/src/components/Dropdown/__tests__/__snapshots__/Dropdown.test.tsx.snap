@@ -15,31 +15,41 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -74,6 +84,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -94,7 +108,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </div>
@@ -115,31 +128,41 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -174,6 +197,10 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -194,7 +221,6 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </div>
@@ -216,31 +242,41 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -319,6 +355,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -337,7 +377,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
           />
         </svg>
       </div>
-       
     </button>
     <div
       class="c4"
@@ -399,31 +438,41 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -457,6 +506,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -475,7 +528,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </DocumentFragment>
@@ -496,31 +548,41 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -555,6 +617,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -573,7 +639,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </div>
@@ -594,31 +659,41 @@ exports[`Dropdown displays all options when focused 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -698,6 +773,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -716,7 +795,6 @@ exports[`Dropdown displays all options when focused 1`] = `
           />
         </svg>
       </div>
-       
     </button>
     <div
       class="c4"
@@ -777,31 +855,41 @@ exports[`Dropdown does not display options on initial render 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -836,6 +924,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -854,7 +946,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </div>
@@ -875,31 +966,41 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -934,6 +1035,10 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -954,7 +1059,6 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </div>
@@ -975,31 +1079,41 @@ exports[`Dropdown selects options from values prop 1`] = `
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 1.25em 1em;
   border-radius: 0.25em;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
   padding: 0.5rem;
+}
+
+.c1:hover {
+  background-color: #1b2026;
+}
+
+.c1:active {
+  background-color: #101317;
 }
 
 .c3 {
@@ -1034,6 +1148,10 @@ exports[`Dropdown selects options from values prop 1`] = `
   >
     <button
       class="sc-AxjAm c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="fill"
     >
       <div
         class="c2"
@@ -1054,7 +1172,6 @@ exports[`Dropdown selects options from values prop 1`] = `
           />
         </svg>
       </div>
-       
     </button>
   </div>
 </div>
