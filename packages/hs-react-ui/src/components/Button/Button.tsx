@@ -16,6 +16,7 @@ export type ButtonProps = {
   type?: string;
   color?: string;
   onClick: (...args: any[]) => void;
+  LoadingBar?: string & StyledComponentBase<any, {}>;
 };
 
 const Icon = styled(UnstyledIcon)``;
@@ -42,7 +43,7 @@ const RightIconContainer = styled(Text)`
 `;
 
 const Button = ({
-  StyledContainer,
+  StyledContainer = ButtonContainer,
   iconPrefix,
   iconSuffix,
   isLoading,
@@ -52,11 +53,12 @@ const Button = ({
   type = ButtonTypes.fill,
   color,
   onClick,
+  LoadingBar = StyledProgress,
 }: ButtonProps) => {
   const Container = StyledContainer || ButtonContainer;
   return isLoading ? (
     <Container data-test-id="hsui-button" elevation={elevation} color={color} type={type}>
-      <Progress />
+      <LoadingBar />
     </Container>
   ) : (
     <Container
@@ -98,4 +100,5 @@ const Button = ({
 
 Button.Container = ButtonContainer;
 Button.Types = ButtonTypes;
+Button.LoadingBar = StyledProgress;
 export default Button;

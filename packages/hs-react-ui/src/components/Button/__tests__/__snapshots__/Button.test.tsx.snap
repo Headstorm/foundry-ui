@@ -34,6 +34,10 @@ exports[`Button keeps the container the same when switching between isLoading an
   -webkit-animation: ia-dwnO 8s linear infinite;
   animation: ia-dwnO 8s linear infinite;
   line-height: 0;
+  width: 5rem;
+  height: 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 <button
@@ -43,7 +47,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   type="fill"
 >
   <div
-    class="c1"
+    class="sc-AxirZ c1"
   />
 </button>
 `;
@@ -127,6 +131,10 @@ exports[`Button shows loading text when provided 1`] = `
   -webkit-animation: ia-dwnO 8s linear infinite;
   animation: ia-dwnO 8s linear infinite;
   line-height: 0;
+  width: 5rem;
+  height: 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 <div>
@@ -137,7 +145,7 @@ exports[`Button shows loading text when provided 1`] = `
     type="fill"
   >
     <div
-      class="c1"
+      class="sc-AxirZ c1"
     />
   </button>
 </div>
