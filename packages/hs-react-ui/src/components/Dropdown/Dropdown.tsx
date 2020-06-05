@@ -8,12 +8,14 @@ import Button from '../Button';
 import { ButtonContainer } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
+import fonts from '../../enums/fonts';
 
 const Container = styled.div<{ elevation: number }>`
   ${({ elevation }) => {
   const elevationYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
   const elevationBlur = elevation && elevation >= 1 ? (elevation / 16) * 0.1 + 0.3 : 0;
   return `
+    ${fonts.body}
     width: fit-content;
     transition: filter ${timings.slow};
     filter: drop-shadow(0rem ${elevationYOffset}rem ${elevationBlur}rem rgba(0,0,0,${0.6 - elevation * 0.1}));
@@ -21,13 +23,13 @@ const Container = styled.div<{ elevation: number }>`
 }}
   
 `;
+// TODO - Add constants for width
 const ValueContainer = styled(ButtonContainer)`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  
-  line-height: initial;
+
   width: 15rem;
   padding: 0.5rem;
 `;
@@ -38,6 +40,11 @@ const ValueIconContainer = styled.div`
   
   width: 3rem;
 `;
+
+// TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
+const CloseIconContainer = styled.div`
+  height: 1.125rem;
+`
 
 const ValueItem = styled.div`
   width: 100%;
@@ -54,12 +61,10 @@ const OptionsContainer = styled.div`
 `;
 
 const OptionItem = styled.div`
-  height: 2rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
-  
-  font-family: Montserrat,Roboto,sans-serif;
-  
+    
   &:focus,
   &:hover {
     background: ${colors.blueCharcoal50};
@@ -87,6 +92,7 @@ export interface DropdownProps {
   elevation?: number,
   multi?: boolean,
   name: string,
+  onBlur?: () => void,
   onClear?: () => void,
   onSelect?: (selected: string | Array<string>) => void,
   options: Array<string>,
@@ -106,6 +112,7 @@ export const Dropdown = ({
   elevation = 0,
   multi = false,
   name,
+  onBlur,
   onClear,
   onSelect,
   options,
@@ -124,8 +131,11 @@ export const Dropdown = ({
     // check if we're focusing on something we don't control
     if (!target || (target.id && !target.id.startsWith(state.id))) {
       setState(curState => ({ ...curState, isOpen: false }));
+      if (onBlur) {
+        onBlur();
+      }
     }
-  }, [state.id]);
+  }, [state.id, onBlur]);
 
   const handleSelect = useCallback((selected: string) => {
     setState(myState => {
@@ -149,7 +159,7 @@ export const Dropdown = ({
     });
   }, [onSelect, multi]);
 
-  const handleClear = useCallback((e: MouseEvent) => {
+  const handleClear = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setState(curState => ({
@@ -231,16 +241,16 @@ export const Dropdown = ({
         <StyledValueItem>{((values.length && values) || state.selectedValues).join(', ')}</StyledValueItem>
         <ValueIconContainer>
           {clearable && (
-            <Icon
-              // TODO Fix issue with Icon not correctly exposing its onClick on its declaration file
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
+            <CloseIconContainer
               onClick={handleClear}
-              onFocus={(e: FocusEvent) => e.stopPropagation()}
-              path={mdiClose}
-              size={0.75}
+              onFocus={(e: React.FocusEvent) => e.stopPropagation()}
               tabIndex={tabIndex}
-            />
+            >
+              <Icon
+                path={mdiClose}
+                size={0.75}
+              />
+            </CloseIconContainer>
           )}
           <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
         </ValueIconContainer>
@@ -248,7 +258,7 @@ export const Dropdown = ({
       {
         state.isOpen
         && (
-<StyledOptionsContainer>
+        <StyledOptionsContainer>
           {options.map(opt => (
             <StyledOptionItem
               id={`${state.id}-option-${opt}`}
@@ -260,18 +270,18 @@ export const Dropdown = ({
               <CheckContainer>
                 {state.selectedValues.includes(opt)
                   && (
-<Icon
-  path={mdiCheck}
-  size={0.75}
-  color={readableColor(colors.blueCharcoal50, colors.success)}
-/>
+                <Icon
+                  path={mdiCheck}
+                  size={0.75}
+                  color={readableColor(colors.blueCharcoal50, colors.success)}
+                />
 )
                 }
               </CheckContainer>
               <span>{opt}</span>
             </StyledOptionItem>
           ))}
-</StyledOptionsContainer>
+        </StyledOptionsContainer>
 )
       }
     </StyledContainer>

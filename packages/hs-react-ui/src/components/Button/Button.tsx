@@ -15,7 +15,6 @@ export const ButtonContainer = styled.button`
 
   ${fonts.body}
   font-size: 1em;
-  line-height: 0;
 
   padding: 1.25em 1em;
   border-radius: 0.25em;

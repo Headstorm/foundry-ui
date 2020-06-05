@@ -428,7 +428,7 @@ const Table = ({
   };
 
   /**
-   * Creates groups to be rendred within the Table.
+   * Creates groups to be rendered within the Table.
    */
   const createGroups = () => {
     // Generate groupings - Note that we are making shallow copies of the arrays so that we do not
@@ -470,7 +470,7 @@ const Table = ({
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = copiedColumns[headerColumnKey].cellComponent || StyledCell;
-                const breakPointHit =                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                const breakPointHit = width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
 
                 const options = {
                   RenderedCell,
