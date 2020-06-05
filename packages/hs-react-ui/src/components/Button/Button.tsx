@@ -49,7 +49,7 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  type = ButtonTypes.default,
+  type = ButtonTypes.fill,
   color,
   onClick,
 }: ButtonProps) => {

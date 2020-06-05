@@ -32,13 +32,10 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
-      const useColor = boolean('Enable color property', false);
-      const type = select('type', ButtonTypes, ButtonTypes.primary);
-
       return (
         <Button
-          type={type}
-          color={useColor ? color('color', colors.grayDark) : undefined}
+          type={select('type', ButtonTypes, ButtonTypes.fill)}
+          color={color('color', colors.grayXlight)}
           onClick={action('button-click')}
           isLoading={boolean('isLoading', false)}
           elevation={number('elevation', 0)}

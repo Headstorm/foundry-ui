@@ -40,7 +40,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   class="c0"
   data-test-id="hsui-button"
   elevation="0"
-  type="default"
+  type="fill"
 >
   <div
     class="c1"
@@ -83,7 +83,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   class="c0"
   data-test-id="hsui-button"
   elevation="0"
-  type="default"
+  type="fill"
 >
   <span
     class="c1"
@@ -134,7 +134,7 @@ exports[`Button shows loading text when provided 1`] = `
     class="c0"
     data-test-id="hsui-button"
     elevation="0"
-    type="default"
+    type="fill"
   >
     <div
       class="c1"
