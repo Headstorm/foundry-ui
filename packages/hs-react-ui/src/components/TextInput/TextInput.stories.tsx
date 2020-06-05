@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from 'react';
-import { text, select, boolean } from '@storybook/addon-knobs';
+import { text, select, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Icon from '@mdi/react';
 import * as IconPaths from '@mdi/js';
@@ -46,8 +46,11 @@ storiesOf('TextInput', module)
                 }
               : undefined
           }
-          iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+          iconPrefix={select('iconPrefix', options, options.none)}
           isMultiline={boolean('isMultiline?', false)}
+          rows={number('rows', 0)}
+          cols={number('cols', 0)}
+          isValid={boolean('isValid', true)}
           errorMessage={text('errorMessage', '')}
         />
       );

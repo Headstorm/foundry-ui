@@ -4,20 +4,25 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import fonts from '../../enums/fonts';
 
-const TextInputContainer = styled.input`
-  ${({ hasIconPrefix, hasMultiline }: { hasIconPrefix: boolean; hasMultiline: boolean }) => `
-padding-left: ${hasIconPrefix ? '2em' : '.5em'} ;
-cols: ${hasMultiline ? '100' : ''};
-rows: ${hasMultiline ? '10' : ''};
-border-radius: 0.5em;
-border 0 none;
-outline: 0 none;
-height: 2em;
-${fonts.body}
-font-size: 16px; 
-width: 100%;
-background-color: white;
-`}
+export type StyledInputProps = {
+  iconPrefix?: string | JSX.Element;
+  rows?: number;
+  cols?: number;
+  isMultiline?: number;
+};
+
+const TextInputContainer = styled.textarea`
+  ${({ isMultiline, iconPrefix }: StyledInputProps) => `
+    padding-left: ${!!iconPrefix ? '2em' : '.5em'} ;
+    border-radius: 0.5em;
+    border 1px solid;
+    outline: 0 none;
+    height: ${ isMultiline ? undefined : '2em'};
+    ${fonts.body}
+    font-size: 16px;
+    width: 10rem;
+    background-color: white;
+  `}
 `;
 
 const ClearIconContainer = styled.div`
@@ -28,35 +33,48 @@ const ClearIconContainer = styled.div`
   color: red;
 `;
 
-const IconContainer = styled.div`
+const IconContainer = styled.span`
+${({ isMultiline, }: { isMultiline?: boolean }) => `
   position: absolute;
-  left: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-`;
+  left: .5rem;
+  height: 16px;
+  margin-top: ${ isMultiline ? '0.25rem' : '0.5rem'};
+`}`;
 
-const ErrorContainer = styled.div`
-  top: 100px;
-  postition: abosolute;
+const ErrorText = styled.span`
+  font-size: .75rem;
   color: red;
 `;
 
-const DivContainer = styled.div`
-  width: 10rem;
-  position: relative;
-`;
+const Label = styled.label`
+  display: grid;
+`
 
 export type TextInputProps = {
   id?: string;
   placeholder?: string;
-  iconPrefix?: any;
+  iconPrefix?: string | JSX.Element;
   onClear?: (event: SyntheticEvent) => void;
   onChange?: (event: SyntheticEvent) => void;
   value?: string;
-  isMultiline?: any;
+  rows?: number;
+  cols?: number;
+  isMultiline?: boolean;
+  isValid?: boolean;
   errorMessage?: string;
-  StyledDivContainer?: StyledComponentBase<any, {}>;
+  Container?: StyledComponentBase<any, {}>;
+  ErrorLabel?: StyledComponentBase<any, {}>;
+  Input?: StyledComponentBase<"input", any, StyledInputProps, never>;
+
 };
+
+const createIcon = (iconPrefix: string | JSX.Element, isMultiline?: boolean) => {
+  if (typeof iconPrefix === 'string') {
+    return <IconContainer isMultiline={isMultiline}><Icon size="16px" path={iconPrefix} /></IconContainer>;
+  }
+
+  return <IconContainer>{iconPrefix}</IconContainer>;
+}
 
 const TextInput = ({
   id,
@@ -64,31 +82,42 @@ const TextInput = ({
   iconPrefix,
   onClear,
   onChange,
+  rows,
+  cols,
   value,
+  isValid,
   isMultiline,
   errorMessage,
-  StyledDivContainer = DivContainer,
+  Container = Label,
+  Input = TextInputContainer,
+  ErrorLabel = ErrorText,
+
 }: TextInputProps) => {
-  const StyledTextInputContainer = TextInputContainer;
+
   return (
-    <StyledDivContainer>
-      {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
+    <Container>
+      {iconPrefix && createIcon(iconPrefix, isMultiline)}
       {onClear && value && (
         <ClearIconContainer onClick={onClear}>
           <Icon path={mdiClose} size="16px" />
         </ClearIconContainer>
       )}
-      <StyledTextInputContainer
+      <Input
         as={isMultiline ? 'textarea' : 'input'}
-        hasMultiline={!!isMultiline}
-        hasIconPrefix={!!iconPrefix}
         placeholder={placeholder}
+        rows={rows}
+        cols={cols}
         onChange={onChange}
         value={value}
         id={id}
+        iconPrefix={iconPrefix}
       />
-      {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
-    </StyledDivContainer>
+      <ErrorLabel>{isValid === false && errorMessage}</ErrorLabel>
+    </Container>
   );
-};
+}
+
+TextInput.ErrorLabel = ErrorText;
+TextInput.Container = Label;
+TextInput.Input = TextInputContainer;
 export default TextInput;
