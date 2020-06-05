@@ -1,14 +1,14 @@
 import React from 'react';
-import styled, { css, keyframes, StyledComponentBase } from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import fonts from '../../enums/fonts';
+import Progress from '../Progress/Progress';
 
 /* Default Styled Text Container */
 export const TextContainer = styled.span`
   ${({ size, color }: { size: string; color: string }) => `
-    display: inline-block;
     ${fonts.body}
     font-size: ${size};
     color: ${color};
@@ -26,44 +26,20 @@ export interface TextProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
 }
 
-/* Keyframes for the loading bar gradient */
-const movingGradient = keyframes`
-  0% { background-position: 200% bottom; }
-  100% { background-position: 0% bottom; }
-`;
-
-/* Animation to scroll the gradient toward the right */
-const animation = css`
-  ${movingGradient} 8s linear infinite;
-`;
-
-/* Styled div that represents the scroll bar
-   Note: The border-radius 9999px is used to create a pill shape */
-const Progress = styled.div`
-  ${({ size }: { size: string }) => css`
-    background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.2)
-      )
-      repeat;
-    background-size: 400% 100%;
+/* Styled div that represents the scroll bar */
+const StyledProgress = styled(Progress)`
+  ${({ size }: { size: string }) => `
     width: calc(${size} * 10);
     height: ${size};
-    border-radius: 9999px;
-    animation: ${animation};
   `}
 `;
 
-const LeftIconContainer = styled.div`
+const LeftIconContainer = styled.span`
   display: inline-flex;
   margin-right: 0.25rem;
 `;
 
-const RightIconContainer = styled.div`
+const RightIconContainer = styled.span`
   display: inline-flex;
   margin-left: 0.25rem;
 `;
@@ -79,7 +55,7 @@ const Text = ({
   StyledContainer = TextContainer,
 }: TextProps) => (
   <StyledContainer size={size} color={color}>
-    {isLoading && <Progress size={size} />}
+    {isLoading && <StyledProgress size={size} />}
     {!isLoading &&
       !isProcessing &&
       iconPrefix &&
