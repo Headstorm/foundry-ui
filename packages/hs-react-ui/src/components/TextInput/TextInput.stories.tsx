@@ -64,7 +64,8 @@ storiesOf('TextInput', module)
       };
       const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
       const isMultiline = inputValue.length > 15;
-      const isError =        inputValue.length < 5 && inputValue.length > 0 ? 'Short Message Error' : undefined;
+      const isError =
+        inputValue.length < 5 && inputValue.length > 0 ? 'Short Message Error' : undefined;
 
       return (
         <TextInput

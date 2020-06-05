@@ -303,8 +303,8 @@ const Table = ({
     if (!Array.isArray(data[0])) {
       data.sort((a: any, b: any) => {
         if (
-          copiedColumns[key]
-          && Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
+          copiedColumns[key] &&
+          Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
@@ -318,8 +318,8 @@ const Table = ({
       (data as Array<Array<columnTypes>>).forEach(group => {
         group.sort((a: any, b: any) => {
           if (
-            copiedColumns[key]
-            && Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
+            copiedColumns[key] &&
+            Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
           ) {
             if (a.isGroupLabel || b.isGroupLabel) return 0;
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -335,8 +335,8 @@ const Table = ({
       if (sortGroups) {
         (data as Array<Array<columnTypes>>).sort((a: any, b: any) => {
           if (
-            copiedColumns[key]
-            && Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
+            copiedColumns[key] &&
+            Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
           ) {
             if (a.isGroupLabel || b.isGroupLabel) return 0;
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -410,10 +410,10 @@ const Table = ({
             </ResponsiveTitle>
           )}
           {row && row[headerColumnKey]}
-          {CollapseExpandedIcon
-          && usingGroups
-          && areGroupsCollapsable
-          && headerColumnKey === ExpansionIconColumnName ? (
+          {CollapseExpandedIcon &&
+          usingGroups &&
+          areGroupsCollapsable &&
+          headerColumnKey === ExpansionIconColumnName ? (
             <CollapseExpandedIcon
               isCollapsed={isCollapsed}
               groupHeaderPosition={groupHeaderPosition}
@@ -470,7 +470,8 @@ const Table = ({
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = copiedColumns[headerColumnKey].cellComponent || StyledCell;
-                const breakPointHit = width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                const breakPointHit =
+                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
 
                 const options = {
                   RenderedCell,
@@ -484,8 +485,8 @@ const Table = ({
                 };
                 // Declaring each cell of the row
                 return (
-                  (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit)
-                  && createCell(options)
+                  (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) &&
+                  createCell(options)
                 );
               })}
             </RenderedRow>
@@ -514,11 +515,12 @@ const Table = ({
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = usingGroups
-                  ? copiedColumns[headerColumnKey].groupCellComponent
-                    || copiedColumns[headerColumnKey].cellComponent
-                    || StyledCell
+                  ? copiedColumns[headerColumnKey].groupCellComponent ||
+                    copiedColumns[headerColumnKey].cellComponent ||
+                    StyledCell
                   : copiedColumns[headerColumnKey].cellComponent || StyledCell;
-                const breakPointHit =                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                const breakPointHit =
+                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
 
                 const options = {
                   breakPointHit,
@@ -533,8 +535,8 @@ const Table = ({
                 };
                 // Create each cell for the row
                 return (
-                  (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit)
-                  && createCell(options)
+                  (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) &&
+                  createCell(options)
                 );
               })}
             </RenderedRow>
@@ -580,7 +582,8 @@ const Table = ({
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = copiedColumns[headerColumnKey].cellComponent || StyledCell;
-                const breakPointHit =                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                const breakPointHit =
+                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
                 // Create each cell of the row
                 return createCell({ RenderedCell, headerColumnKey, breakPointHit, row, index });
               })}
@@ -598,8 +601,10 @@ const Table = ({
         {width > minWidthBreakpoint && (
           <StyledHeader columnGap={columnGap} columnWidths={columnWidths}>
             {Object.keys(copiedColumns).map((headerColumnKey: string) => {
-              const RenderedHeaderCell =                copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
-              const breakpointHit =                width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+              const RenderedHeaderCell =
+                copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
+              const breakpointHit =
+                width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
               // columns.map return
               return (
                 (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (

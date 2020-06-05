@@ -5,7 +5,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -27,7 +26,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -49,7 +47,6 @@ exports[`Button shows loading text when provided 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;

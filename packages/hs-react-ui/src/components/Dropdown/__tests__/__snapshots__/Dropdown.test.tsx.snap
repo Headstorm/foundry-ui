@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -15,7 +16,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -38,7 +38,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -102,7 +101,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 `;
 
 exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -116,7 +116,6 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -139,7 +138,6 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -204,7 +202,8 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  .c0 {
+  500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -218,7 +217,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -241,7 +239,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -277,7 +274,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c5 {
-  height: 2rem;
+  padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -286,7 +283,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: Montserrat,Roboto,sans-serif;
 }
 
 .c5:focus,
@@ -389,7 +385,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  .c0 {
+  500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -403,7 +400,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -426,7 +422,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -487,7 +482,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -501,7 +497,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -524,7 +519,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -586,7 +580,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -600,7 +595,6 @@ exports[`Dropdown displays all options when focused 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -623,7 +617,6 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -659,7 +652,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c5 {
-  height: 2rem;
+  padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -668,7 +661,6 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: Montserrat,Roboto,sans-serif;
 }
 
 .c5:focus,
@@ -771,7 +763,8 @@ exports[`Dropdown displays all options when focused 1`] = `
 `;
 
 exports[`Dropdown does not display options on initial render 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -785,7 +778,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -808,7 +800,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -870,7 +861,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
 `;
 
 exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -884,7 +876,6 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -907,7 +898,6 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }
@@ -971,7 +961,8 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
-.c0 {
+500;700;900&display=swap'); .c0 {
+  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -985,7 +976,6 @@ exports[`Dropdown selects options from values prop 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1em;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   outline: 0 none;
@@ -1008,7 +998,6 @@ exports[`Dropdown selects options from values prop 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  line-height: initial;
   width: 15rem;
   padding: 0.5rem;
 }

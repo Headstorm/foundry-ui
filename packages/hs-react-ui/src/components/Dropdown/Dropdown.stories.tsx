@@ -1,6 +1,5 @@
 import React from 'react';
 
-import styled from 'styled-components';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -9,12 +8,13 @@ import { Dropdown } from './Dropdown';
 
 addDecorator(withDesign);
 const design = {
-    type: 'figma',
-    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',
+  type: 'figma',
+  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',
 };
 
-storiesOf('Dropdown', module)
-  .add('Basic', () => {
+storiesOf('Dropdown', module).add(
+  'Basic',
+  () => {
     const options = ['Apple', 'Banana', 'Grapefruit', 'Grape', 'Orange', 'Watermelon'];
     return (
       <>
@@ -30,6 +30,7 @@ storiesOf('Dropdown', module)
           options={options}
         />
       </>
-);
+    );
   },
-   { design });
+  { design },
+);

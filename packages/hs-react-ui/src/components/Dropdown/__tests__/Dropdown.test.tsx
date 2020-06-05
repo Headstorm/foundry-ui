@@ -5,21 +5,25 @@ import { Dropdown } from '../Dropdown';
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
-    const { container } = render(<Dropdown name="choosePokemon" options={options}/>);
+    const { container } = render(<Dropdown name="choosePokemon" options={options} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('displays all options when focused', () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
-    const { container, getByTestId, getByText } = render(<Dropdown name="choosePokemon" options={options}/>);
+    const { container, getByTestId, getByText } = render(
+      <Dropdown name="choosePokemon" options={options} />,
+    );
     fireEvent.focus(getByTestId('choosePokemon-valueContainer'));
     expect(container).toMatchSnapshot();
   });
 
   it('can focus dropdown and select option', async () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
-    const { container, getByTestId, getByText } = render(<Dropdown name="choosePokemon" options={options}/>);
+    const { container, getByTestId, getByText } = render(
+      <Dropdown name="choosePokemon" options={options} />,
+    );
 
     // TODO - Don't use data-testid, see if we can use a more semantically meaningful element
     fireEvent.focus(getByTestId('choosePokemon-valueContainer'));
@@ -31,17 +35,14 @@ describe('Dropdown', () => {
   it('selects multiple options when dropdown is multi', async () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText, queryByText } = render(
-      <Dropdown
-        multi
-        name="choosePokemon"
-        options={options}
-      />);
+      <Dropdown multi name="choosePokemon" options={options} />,
+    );
 
     getByTestId('choosePokemon-valueContainer').focus();
     fireEvent.click(getByText('Charmander'));
     fireEvent.click(getByText('Squirtle'));
     fireEvent.blur(getByTestId('choosePokemon-valueContainer'));
-    await waitFor(() => queryByText(/Bulbasaur/) === null)
+    await waitFor(() => queryByText(/Bulbasaur/) === null);
 
     expect(container).toMatchSnapshot();
   });
@@ -49,11 +50,8 @@ describe('Dropdown', () => {
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText, getAllByText } = render(
-      <Dropdown
-        multi
-        name="choosePokemon"
-        options={options}
-      />);
+      <Dropdown multi name="choosePokemon" options={options} />,
+    );
 
     fireEvent.focus(getByTestId('choosePokemon-valueContainer'));
     fireEvent.click(getByText('Charmander'));
@@ -64,7 +62,9 @@ describe('Dropdown', () => {
 
   it('closes options when clicking outside', async () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
-    const { container, getByTestId, getByText, queryByText, asFragment } = render(<Dropdown name="choosePokemon" options={options}/>);
+    const { container, getByTestId, getByText, queryByText, asFragment } = render(
+      <Dropdown name="choosePokemon" options={options} />,
+    );
 
     getByTestId('choosePokemon-valueContainer').focus();
     await waitFor(() => queryByText('Squirtle') !== null);
@@ -80,7 +80,9 @@ describe('Dropdown', () => {
 
   it('can use arrow keys and enter to navigate options', async () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
-    const { container, getByTestId, getByText, queryByText, rerender } = render(<Dropdown name="choosePokemon" options={options}/>);
+    const { container, getByTestId, getByText, queryByText, rerender } = render(
+      <Dropdown name="choosePokemon" options={options} />,
+    );
     getByTestId('choosePokemon-valueContainer').focus();
     await waitFor(() => queryByText('Bulbasaur') !== null);
     fireEvent.keyDown(document.activeElement, { key: 'ArrowDown', code: 'ArrowDown' });
@@ -88,8 +90,8 @@ describe('Dropdown', () => {
     fireEvent.keyDown(document.activeElement, { key: 'ArrowDown', code: 'ArrowDown' });
     fireEvent.keyDown(document.activeElement, { key: 'ArrowUp', code: 'ArrowUp' });
     act(() => {
-      fireEvent.keyDown(document.activeElement, { key: 'Enter', code: 'Enter'});
-    })
+      fireEvent.keyDown(document.activeElement, { key: 'Enter', code: 'Enter' });
+    });
 
     await waitFor(() => expect(queryByText('Squirtle')).toBeNull());
     expect(getByText('Charmander')).toBeInTheDocument();
@@ -105,7 +107,8 @@ describe('Dropdown', () => {
         name="choosePokemon"
         options={options}
         values={['Bulbasaur', 'Charmander']}
-      />);
+      />,
+    );
 
     expect(container).toMatchSnapshot();
   });
