@@ -24,7 +24,7 @@ const Container = styled.div<{ elevation: number }>`
   }}
 `;
 // TODO - Add constants for width
-const ValueContainer = styled(ButtonContainer)`
+export const ValueContainer = styled(ButtonContainer)`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -47,8 +47,12 @@ const CloseIconContainer = styled.div`
 `;
 
 const ValueItem = styled.div`
-  width: 100%;
-  text-align: left;
+  ${({ valueColor }) => `
+    width: 100%;
+    text-align: left;
+  
+    color: ${valueColor}
+  `}
 `;
 
 const OptionsContainer = styled.div`
@@ -57,7 +61,7 @@ const OptionsContainer = styled.div`
   max-height: 10rem;
   overflow-y: scroll;
   width: 15rem;
-  border: 0.5px solid ${colors.blueCharcoal25};
+  border: 0.5px solid ${colors.grayDark25};
 `;
 
 const OptionItem = styled.div`
@@ -67,7 +71,7 @@ const OptionItem = styled.div`
 
   &:focus,
   &:hover {
-    background: ${colors.blueCharcoal50};
+    background: ${colors.grayDark50};
     cursor: pointer;
     outline: none;
   }
@@ -98,6 +102,7 @@ export interface DropdownProps {
   options: Array<string>;
   tabIndex?: number;
   values?: Array<string>;
+  valueColor?: string;
 }
 
 // TODO Placeholder text -- Wait until input is finalized
@@ -118,6 +123,7 @@ export const Dropdown = ({
   options,
   tabIndex = 0,
   values = [],
+  valueColor = '#000',
 }: DropdownProps) => {
   const [state, setState] = useState<{
     isOpen: boolean;
@@ -251,7 +257,7 @@ export const Dropdown = ({
       tabIndex={tabIndex}
     >
       <Button StyledContainer={StyledValueContainer} onClick={e => e.preventDefault()}>
-        <StyledValueItem>
+        <StyledValueItem valueColor={valueColor}>
           {((values.length && values) || state.selectedValues).join(', ')}
         </StyledValueItem>
         <ValueIconContainer>
@@ -261,10 +267,10 @@ export const Dropdown = ({
               onFocus={(e: React.FocusEvent) => e.stopPropagation()}
               tabIndex={tabIndex}
             >
-              <Icon path={mdiClose} size={0.75} />
+              <Icon color={valueColor} path={mdiClose} size={0.75} />
             </CloseIconContainer>
           )}
-          <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
+          <Icon color={valueColor} path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
         </ValueIconContainer>
       </Button>
       {state.isOpen && (
@@ -282,7 +288,7 @@ export const Dropdown = ({
                   <Icon
                     path={mdiCheck}
                     size={0.75}
-                    color={readableColor(colors.blueCharcoal50, colors.success)}
+                    color={readableColor(colors.grayDark50, colors.success)}
                   />
                 )}
               </CheckContainer>
