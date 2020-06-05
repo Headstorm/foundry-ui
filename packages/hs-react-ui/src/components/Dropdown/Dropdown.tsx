@@ -47,12 +47,8 @@ const CloseIconContainer = styled.div`
 `;
 
 const ValueItem = styled.div`
-  ${({ valueColor }) => `
-    width: 100%;
-    text-align: left;
-  
-    color: ${valueColor}
-  `}
+  width: 100%;
+  text-align: left;
 `;
 
 const OptionsContainer = styled.div`
@@ -102,7 +98,6 @@ export interface DropdownProps {
   options: Array<string>;
   tabIndex?: number;
   values?: Array<string>;
-  valueColor?: string;
 }
 
 // TODO Placeholder text -- Wait until input is finalized
@@ -123,7 +118,6 @@ export const Dropdown = ({
   options,
   tabIndex = 0,
   values = [],
-  valueColor = '#000',
 }: DropdownProps) => {
   const [state, setState] = useState<{
     isOpen: boolean;

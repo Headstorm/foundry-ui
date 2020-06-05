@@ -4,10 +4,7 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
-import {Dropdown, ValueContainer} from './Dropdown';
-import styled from 'styled-components';
-import {readableColor} from 'polished';
-import colors from '../../enums/colors';
+import { Dropdown } from './Dropdown';
 
 addDecorator(withDesign);
 const design = {
@@ -37,25 +34,4 @@ storiesOf('Dropdown', module).add(
   },
   { design },
 
-).add(
-  'Themed',
-  () => {
-    const options = ['Free parking', 'Paid parking', 'Stadium seating', 'Office seating'];
-    const StyledValueContainer = styled(ValueContainer)`
-      background-color: #8D1EF8;
-    `
-    return (
-      <Dropdown
-        StyledValueContainer={StyledValueContainer}
-        clearable={boolean('clearable', false)}
-        elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
-        name="fave-fruit"
-        onBlur={action('onBlur')}
-        onClear={action('onClear')}
-        onSelect={action('onSelect')}
-        options={options}
-        valueColor={readableColor('#8D1EF8', '#000', '#fff')}
-      />
-    )
-  }
 );
