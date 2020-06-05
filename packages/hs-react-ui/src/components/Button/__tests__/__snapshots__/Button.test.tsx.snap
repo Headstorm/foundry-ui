@@ -13,16 +13,16 @@ exports[`Button keeps the container the same when switching between isLoading an
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
 }
 
 .c0:hover {
-  background-color: #c6cacb;
+  background-color: #1b2026;
 }
 
 .c0:active {
-  background-color: #b8bdbf;
+  background-color: #101317;
 }
 
 .c1 {
@@ -42,6 +42,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 <button
   class="c0"
+  color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
   type="fill"
@@ -65,16 +66,16 @@ exports[`Button keeps the container the same when switching between isLoading an
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
 }
 
 .c0:hover {
-  background-color: #c6cacb;
+  background-color: #1b2026;
 }
 
 .c0:active {
-  background-color: #b8bdbf;
+  background-color: #101317;
 }
 
 .c1 {
@@ -85,6 +86,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 <button
   class="c0"
+  color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
   type="fill"
@@ -110,16 +112,16 @@ exports[`Button shows loading text when provided 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #d3d6d7;
-  color: #252c35;
+  background-color: #252c35;
+  color: #fff;
 }
 
 .c0:hover {
-  background-color: #c6cacb;
+  background-color: #1b2026;
 }
 
 .c0:active {
-  background-color: #b8bdbf;
+  background-color: #101317;
 }
 
 .c1 {
@@ -140,6 +142,7 @@ exports[`Button shows loading text when provided 1`] = `
 <div>
   <button
     class="c0"
+    color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="fill"

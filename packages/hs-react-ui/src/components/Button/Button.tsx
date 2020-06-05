@@ -59,7 +59,13 @@ const Button = ({
 }: ButtonProps) => {
   const Container = StyledContainer || ButtonContainer;
   return isLoading ? (
-    <Container data-test-id="hsui-button" onClick={onClick} elevation={elevation} color={color} type={type}>
+    <Container
+      data-test-id="hsui-button"
+      onClick={onClick}
+      elevation={elevation}
+      color={color}
+      type={type}
+    >
       <LoadingBar />
     </Container>
   ) : (
