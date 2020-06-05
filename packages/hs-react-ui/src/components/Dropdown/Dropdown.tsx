@@ -29,7 +29,7 @@ export const ValueContainer = styled(ButtonContainer)`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  
+
   width: 15rem;
   padding: 0.5rem;
 `;
@@ -89,7 +89,7 @@ export interface DropdownProps {
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
 
   clearable?: boolean;
-  color?: string,
+  color?: string;
   elevation?: number;
   multi?: boolean;
   name: string;

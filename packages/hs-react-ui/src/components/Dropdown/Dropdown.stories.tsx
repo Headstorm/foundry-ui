@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { storiesOf, addDecorator } from '@storybook/react';
-import {boolean, color, number, select} from '@storybook/addon-knobs';
+import { boolean, color, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
 import { Dropdown } from './Dropdown';
 import colors from '../../enums/colors';
+import { ButtonTypes } from '../Button/ButtonContainers';
 
 addDecorator(withDesign);
 const design = {
@@ -32,12 +33,11 @@ storiesOf('Dropdown', module).add(
           onClear={action('onClear')}
           onSelect={action('onSelect')}
           options={options}
-          type={select('type', ['fill', 'link', 'outline'], 'fill')}
+          type={select('type', ButtonTypes, ButtonTypes.fill)}
           values={values}
         />
       </>
     );
   },
   { design },
-
 );
