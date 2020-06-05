@@ -6,7 +6,7 @@ HS-UI is lovingly developed by Headstorm's Open Source group. Please reach out t
 
 # Previewing components in Storybook
 
-## [Live Documentation/Component Viewer](https://headstorm.github.io/hs-ui/)
+## [🔥 Live Documentation/Component Viewer](https://headstorm.github.io/hs-ui/)
 
 ## Locally
 
