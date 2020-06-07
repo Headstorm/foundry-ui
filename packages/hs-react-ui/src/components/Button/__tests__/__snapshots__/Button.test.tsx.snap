@@ -5,7 +5,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
@@ -58,7 +57,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
@@ -78,12 +76,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #101317;
 }
 
-.c1 {
-  display: inline-block;
-  margin-top: -8px;
-  margin-bottom: -8px;
-}
-
 <button
   class="c0"
   color="#252c35"
@@ -91,11 +83,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   elevation="0"
   type="fill"
 >
-  <span
-    class="c1"
-  >
-    Submit
-  </span>
+  Submit
 </button>
 `;
 
@@ -104,7 +92,6 @@ exports[`Button shows loading text when provided 1`] = `
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
-  line-height: 0;
   padding: 1.25em 1em;
   border-radius: 0.25em;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));

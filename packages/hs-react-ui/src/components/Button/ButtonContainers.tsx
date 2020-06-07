@@ -58,7 +58,6 @@ export const ButtonContainer: string &
     display: inline-block;
     ${fonts.body}
     font-size: 1rem;
-    line-height: 0;
     padding: 1.25em 1em;
     border-radius: 0.25em;
     filter: drop-shadow(0rem ${elevationYOffset}rem ${elevationBlur}rem rgba(0,0,0,${0.6 -
