@@ -4,11 +4,13 @@ exports[`Button keeps the container the same when switching between isLoading an
 500;700;900&display=swap'); .c0 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -47,7 +49,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   type="fill"
 >
   <div
-    class="sc-AxirZ c1"
+    class="sc-AxjAm c1"
   />
 </button>
 `;
@@ -56,11 +58,13 @@ exports[`Button keeps the container the same when switching between isLoading an
 500;700;900&display=swap'); .c0 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -91,11 +95,13 @@ exports[`Button shows loading text when provided 1`] = `
 500;700;900&display=swap'); .c0 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -135,7 +141,7 @@ exports[`Button shows loading text when provided 1`] = `
     type="fill"
   >
     <div
-      class="sc-AxirZ c1"
+      class="sc-AxjAm c1"
     />
   </button>
 </div>

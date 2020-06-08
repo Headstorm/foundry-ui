@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
-import { Dropdown } from '../Dropdown';
+import Dropdown from '../Dropdown';
 
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
