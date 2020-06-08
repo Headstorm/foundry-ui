@@ -15,14 +15,6 @@ addDecorator(withDesign);
 
 storiesOf('Progress', module).add(
   'Basic Progress',
-  () => {
-    // Wrapping progress in a div because storybook styles are overriding
-    // The component's default due to their style #root > div { height: 100% }
-    return (
-      <div>
-        <Progress />
-      </div>
-    );
-  },
+  () => <Progress />,
   // { design }, Once we have a design for Progress we can link it here
 );

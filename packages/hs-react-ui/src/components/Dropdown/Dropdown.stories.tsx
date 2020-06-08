@@ -4,9 +4,10 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { boolean, color, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
-import { Dropdown } from './Dropdown';
+
+import Button from '../Button';
+import Dropdown from './Dropdown';
 import colors from '../../enums/colors';
-import { ButtonTypes } from '../Button/ButtonContainers';
 
 addDecorator(withDesign);
 const design = {
@@ -26,14 +27,14 @@ storiesOf('Dropdown', module).add(
         <Dropdown
           clearable={boolean('clearable', false)}
           color={color('color', colors.grayXlight)}
-          elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
+          elevation={number('elevation', 1, { range: true, min: 0, max: 5, step: 1 })}
           multi={boolean('multi', false)}
           name="fave-fruit"
           onBlur={action('onBlur')}
           onClear={action('onClear')}
           onSelect={action('onSelect')}
           options={options}
-          type={select('type', ButtonTypes, ButtonTypes.fill)}
+          type={select('type', Button.types, Button.types.fill)}
           values={values}
         />
       </>

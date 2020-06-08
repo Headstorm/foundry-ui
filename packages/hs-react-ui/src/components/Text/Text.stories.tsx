@@ -30,8 +30,6 @@ const options = {
   ...Icons,
 };
 
-const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : undefined);
-
 const ThemedContainer = styled.div`
   ${({ size, color }: { size: number | string; color: string }) => `
     width: fit-content;
@@ -46,47 +44,41 @@ const ThemedContainer = styled.div`
 
 /* Default */
 
-export const Default = () => (
-  <Text
-    size={text('size', '1rem')}
-    color={color2('color', colors.grayXlight)}
-    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
-    isProcessing={boolean('isProcessing', false)}
-    isLoading={boolean('isLoading', false)}
-  >
-    {text('children', 'Lorem ipsum dolor sit amet.')}
-  </Text>
-);
+export const Default = () => {
+  const getIconPath = (path: string) =>
+    path ? <Icon size={text('size', '1rem')} path={path} /> : undefined;
 
-/* Themed with a static Icon */
-
-export const ThemedTextWithStaticIcons = () => (
-  <Text
-    StyledContainer={ThemedContainer}
-    size={text('size', '1rem')}
-    color={color2('color', colors.grayDark)}
-    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconPath(select('iconPrefix', options, options.mdiComment))}
-    isProcessing={boolean('isProcessing', false)}
-    isLoading={boolean('isLoading', false)}
-  >
-    {text('children', 'Lorem ipsum dolor sit amet.')}
-  </Text>
-);
+  return (
+    <Text
+      size={text('size', '1rem')}
+      color={color2('color', colors.grayDark)}
+      iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+      iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
+      isProcessing={boolean('isProcessing', false)}
+      isLoading={boolean('isLoading', false)}
+    >
+      {text('children', 'Lorem ipsum dolor sit amet.')}
+    </Text>
+  );
+};
 
 /* Themed with all knobs */
 
-export const ThemedText = () => (
-  <Text
-    StyledContainer={ThemedContainer}
-    size={text('size', '1rem')}
-    color={color2('color', colors.grayDark)}
-    iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
-    iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
-    isProcessing={boolean('isProcessing', false)}
-    isLoading={boolean('isLoading', false)}
-  >
-    {text('children', 'Lorem ipsum dolor sit amet.')}
-  </Text>
-);
+export const ThemedText = () => {
+  const getIconPath = (path: string) =>
+    path ? <Icon size={text('size', '1rem')} path={path} /> : undefined;
+
+  return (
+    <Text
+      StyledContainer={ThemedContainer}
+      size={text('size', '1rem')}
+      color={color2('color', colors.grayDark)}
+      iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+      iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
+      isProcessing={boolean('isProcessing', false)}
+      isLoading={boolean('isLoading', false)}
+    >
+      {text('children', 'Lorem ipsum dolor sit amet.')}
+    </Text>
+  );
+};

@@ -24,6 +24,7 @@ export interface TextProps {
   isProcessing?: boolean;
   size?: string;
   StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
 }
 
 /* Styled div that represents the scroll bar */
@@ -34,16 +35,18 @@ const StyledProgress = styled(Progress)`
   `}
 `;
 
-const LeftIconContainer = styled.span`
-  display: inline-flex;
-  margin-right: 0.25rem;
+const IconContainer = styled.span`
+  ${({ side }: { side: 'left' | 'right' }) => `
+    margin-${side === 'left' ? 'right' : 'left'}: .5em;
+    display: inline-flex;
+    vertical-align: text-bottom;
+  `}
 `;
 
-const RightIconContainer = styled.span`
-  display: inline-flex;
-  margin-left: 0.25rem;
-`;
-
+// TODO: If children are passed in and loading===true,
+// set the children to visibility: none and have the loading bar fill their width
+// that way the end developer can pass "placeholder" text for how long the text will probably be
+// when loaded
 const Text = ({
   children,
   color,
@@ -53,6 +56,7 @@ const Text = ({
   isProcessing,
   size = '1rem',
   StyledContainer = TextContainer,
+  StyledIconContainer = IconContainer,
 }: TextProps) => (
   <StyledContainer size={size} color={color}>
     {isLoading && <StyledProgress size={size} />}
@@ -60,30 +64,33 @@ const Text = ({
       !isProcessing &&
       iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-        <LeftIconContainer>
+        <StyledIconContainer side="left">
           <Icon path={iconPrefix} size={size} />
-        </LeftIconContainer>
+        </StyledIconContainer>
       ) : (
-        <LeftIconContainer>{iconPrefix}</LeftIconContainer>
+        <StyledIconContainer side="left" size={size}>
+          {iconPrefix}
+        </StyledIconContainer>
       ))}
     {!isLoading && isProcessing && (
-      <LeftIconContainer>
+      <StyledIconContainer side="left">
         <Icon path={mdiLoading} size={size} spin={1} />
-      </LeftIconContainer>
+      </StyledIconContainer>
     )}
     {!isLoading && children}
 
     {!isLoading &&
       iconSuffix &&
       (typeof iconSuffix === 'string' ? (
-        <RightIconContainer>
+        <StyledIconContainer side="right">
           <Icon path={iconSuffix} size={size} />
-        </RightIconContainer>
+        </StyledIconContainer>
       ) : (
-        <RightIconContainer>{iconSuffix}</RightIconContainer>
+        <StyledIconContainer side="right">{iconSuffix}</StyledIconContainer>
       ))}
   </StyledContainer>
 );
 
 Text.Container = TextContainer;
+Text.IconContainer = IconContainer;
 export default Text;
