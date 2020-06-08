@@ -34,7 +34,7 @@ storiesOf('Dropdown', module).add(
           onClear={action('onClear')}
           onSelect={action('onSelect')}
           options={options}
-          type={select('type', Button.types, Button.types.fill)}
+          type={select('type', Button.ButtonTypes, Button.ButtonTypes.fill)}
           values={values}
         />
       </>

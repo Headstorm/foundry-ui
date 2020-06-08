@@ -184,6 +184,6 @@ const Button = ({
 };
 
 Button.Container = ButtonContainer;
-Button.types = ButtonTypes;
+Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;

@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { readableColor } from 'polished';
 
-import Button from '../Button';
+import Button, { ButtonTypes } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import fonts from '../../enums/fonts';
@@ -98,7 +98,7 @@ export interface DropdownProps {
   onSelect?: (selected: string | Array<string>) => void;
   options: Array<string>;
   tabIndex?: number;
-  type?: Button.types;
+  type?: ButtonTypes;
   values?: Array<string>;
 }
 
@@ -120,7 +120,7 @@ const Dropdown = ({
   onSelect,
   options,
   tabIndex = 0,
-  type = Button.types.fill,
+  type = Button.ButtonTypes.fill,
   values = [],
 }: DropdownProps) => {
   const [state, setState] = useState<{

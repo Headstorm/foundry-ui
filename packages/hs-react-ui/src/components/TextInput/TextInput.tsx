@@ -79,6 +79,8 @@ const TextInput = ({
 }: TextInputProps) => (
   <StyledContainer>
     {iconPrefix && <StyledIconContainer>{iconPrefix}</StyledIconContainer>}
+    {/*
+      // @ts-ignore */}
     <StyledTextInputContainer
       as={isMultiline ? 'textarea' : 'input'}
       cols={cols}
