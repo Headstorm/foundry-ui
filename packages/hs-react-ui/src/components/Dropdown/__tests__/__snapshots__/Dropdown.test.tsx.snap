@@ -8,18 +8,20 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -83,7 +85,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -121,18 +123,20 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -196,7 +200,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -235,18 +239,20 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -354,7 +360,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -431,18 +437,20 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -505,7 +513,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -541,18 +549,20 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -616,7 +626,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -652,18 +662,20 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -772,7 +784,7 @@ exports[`Dropdown displays all options when focused 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -848,18 +860,20 @@ exports[`Dropdown does not display options on initial render 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -923,7 +937,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -959,18 +973,20 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -1034,7 +1050,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1072,18 +1088,20 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
 500;700;900&display=swap'); .c1 {
   display: inline-block;
   font-family: Montserrat,Roboto,sans-serif;
-  font-size: 1rem;
-  padding: 1.25em 1em;
+  font-size: 1em;
+  padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.6));
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -1147,7 +1165,7 @@ exports[`Dropdown selects options from values prop 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxjAm c1"
+      class="sc-AxirZ c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"

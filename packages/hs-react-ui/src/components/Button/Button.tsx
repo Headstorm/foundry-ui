@@ -2,10 +2,24 @@ import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
+import { readableColor, darken } from 'polished';
 
+import timings from '../../enums/timings';
+import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
-import ButtonContainer, { ButtonTypes, ButtonContainerProps } from './ButtonContainers';
 import Progress from '../Progress/Progress';
+
+export type ButtonContainerProps = {
+  elevation?: number;
+  color?: string;
+  type: string;
+};
+
+export enum ButtonTypes {
+  fill = 'fill',
+  link = 'link',
+  outline = 'outline',
+}
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
@@ -21,26 +35,93 @@ export type ButtonProps = {
   LoadingBar?: string & StyledComponentBase<any, {}>;
 };
 
-const Icon = styled(UnstyledIcon)``;
+/**
+ * Get the appropriate font color for the button based on the type of button
+ * @param {string} type - The type of button
+ * @param {string} color - The color prop passed into the button
+ */
+export const getFontColorFromType = (type: string, color?: string) => {
+  switch (type) {
+    case ButtonTypes.link:
+    case ButtonTypes.outline:
+      return color || colors.grayDark;
+    case ButtonTypes.fill:
+    default:
+      return color
+        ? readableColor(color, colors.background, colors.grayDark, true)
+        : colors.grayDark;
+  }
+};
 
-const Text = styled.span`
-  margin-top: -8px;
-  margin-bottom: -8px;
+/**
+ * Get the appropriate background color for the button based on the type of button
+ * @param {string} type - The type of button
+ * @param {string} color - The color prop passed into the button
+ */
+export const getBackgroundColorFromType = (type: string, color?: string) => {
+  switch (type) {
+    case ButtonTypes.link:
+    case ButtonTypes.outline:
+      return colors.transparent;
+    default:
+      return color || colors.grayXlight;
+  }
+};
+
+export const ButtonContainer: string &
+  StyledComponentBase<any, {}, ButtonContainerProps> = styled.button`
+  ${({ elevation = 0, color, type }: ButtonContainerProps) => {
+    const backgroundColor = getBackgroundColorFromType(type, color);
+    const fontColor = getFontColorFromType(type, color);
+    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
+    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
+    const shadowOpacity = 0.5 - elevation * 0.075;
+
+    return `
+      display: inline-block;
+      ${fonts.body}
+      font-size: 1em;
+      padding: .75em 1em;
+      border-radius: 0.25em;
+      transition: filter ${timings.slow};
+      filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
+      outline: 0 none;
+      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : `0 none;`};
+      cursor: pointer;
+      background-color: ${backgroundColor};
+      color: ${fontColor};
+      &:hover {
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
+        };
+      }
+      &:active {
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.1, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
+        };
+      }
+    `;
+  }}
 `;
 
-export const StyledProgress = styled(Progress)`
+const StyledProgress = styled(Progress)`
   width: 5rem;
   height: 10px;
   margin-top: -5px;
   margin-bottom: -5px;
 `;
 
-const LeftIconContainer = styled(Text)`
-  margin-right: 0.25rem;
+const IconContainer = styled.span`
+  margin-top: -8px;
+  margin-bottom: -8px;
 `;
 
-const RightIconContainer = styled(Text)`
-  margin-left: 0.25rem;
+const LeftIconContainer = styled(IconContainer)`
+  margin-right: 1em;
+`;
+
+const RightIconContainer = styled(IconContainer)`
+  margin-left: 1em;
 `;
 
 const Button = ({
@@ -78,14 +159,14 @@ const Button = ({
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <LeftIconContainer>
-            <Icon path={iconPrefix} size="1rem" />
+            <UnstyledIcon path={iconPrefix} size="1rem" />
           </LeftIconContainer>
         ) : (
           <LeftIconContainer>{iconPrefix}</LeftIconContainer>
         ))}
       {isProcessing && (
         <LeftIconContainer>
-          <Icon path={mdiLoading} size="1rem" spin={1} />
+          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
         </LeftIconContainer>
       )}
       {children}
@@ -93,7 +174,7 @@ const Button = ({
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
           <RightIconContainer>
-            <Icon path={iconSuffix} size="1rem" />
+            <UnstyledIcon path={iconSuffix} size="1rem" />
           </RightIconContainer>
         ) : (
           <RightIconContainer>{iconSuffix}</RightIconContainer>
@@ -103,6 +184,6 @@ const Button = ({
 };
 
 Button.Container = ButtonContainer;
-Button.Types = ButtonTypes;
+Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;

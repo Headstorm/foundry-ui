@@ -4,27 +4,27 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { readableColor } from 'polished';
 
-import Button from '../Button';
-import { ButtonContainer, ButtonTypes } from '../Button/ButtonContainers';
+import Button, { ButtonTypes } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import fonts from '../../enums/fonts';
 
 const Container = styled.div<{ elevation: number }>`
   ${({ elevation }) => {
-    const elevationYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const elevationBlur = elevation && elevation >= 1 ? (elevation / 16) * 0.1 + 0.3 : 0;
+    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
+    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
+    const shadowOpacity = 0.5 - elevation * 0.075;
+
     return `
     ${fonts.body}
     width: fit-content;
     transition: filter ${timings.slow};
-    filter: drop-shadow(0rem ${elevationYOffset}rem ${elevationBlur}rem rgba(0,0,0,${0.6 -
-      elevation * 0.1}));
+    filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
   `;
   }}
 `;
 // TODO - Add constants for width
-export const ValueContainer = styled(ButtonContainer)`
+export const ValueContainer = styled(Button.Container)`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -103,7 +103,7 @@ export interface DropdownProps {
 }
 
 // TODO Placeholder text -- Wait until input is finalized
-export const Dropdown = ({
+const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
   StyledValueItem = ValueItem,
@@ -120,7 +120,7 @@ export const Dropdown = ({
   onSelect,
   options,
   tabIndex = 0,
-  type = ButtonTypes.fill,
+  type = Button.ButtonTypes.fill,
   values = [],
 }: DropdownProps) => {
   const [state, setState] = useState<{
@@ -307,3 +307,11 @@ export const Dropdown = ({
     </StyledContainer>
   );
 };
+
+Dropdown.Container = Container;
+Dropdown.OptionsContainer = OptionsContainer;
+Dropdown.OptionItem = OptionItem;
+Dropdown.ValueContainer = ValueContainer;
+Dropdown.ValueItem = ValueItem;
+
+export default Dropdown;

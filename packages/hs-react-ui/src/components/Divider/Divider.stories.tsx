@@ -10,7 +10,7 @@ import Divider from './Divider';
 addDecorator(withA11y);
 
 storiesOf('Divider', module)
-  .add('Default', () => <Divider width={text('width', '90%')} height={text('height', '1px')} />)
+  .add('Default', () => <Divider width={text('width', '10rem')} height={text('height', '1px')} />)
   .add('Themed', () => {
     const ThemedDivider = styled.hr`
       ${({ height, width }: { height: string; width: string }) => `
@@ -24,7 +24,7 @@ storiesOf('Divider', module)
     return (
       <Divider
         StyledDivider={ThemedDivider}
-        width={text('width', '90%')}
+        width={text('width', '10rem')}
         height={text('height', '2px')}
       />
     );
