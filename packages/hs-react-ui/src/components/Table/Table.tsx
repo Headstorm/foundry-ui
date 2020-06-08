@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
-import useResizeObserver from 'use-resize-observer';
+import useResizeObserver from 'use-resize-observer/polyfilled';
 import { mdiArrowDown, mdiChevronRight, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
 import colors from '../../enums/colors';
 import fonts from '../../enums/fonts';
 
-/** Types and Interfaces */
+/* Types and Interfaces */
 
 export type CellOptions = {
   RenderedCell: any;
