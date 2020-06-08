@@ -1,6 +1,6 @@
 {
   "name": "@headstorm/hs-react-ui",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Robust UI library written in React. It's DRY, with CSS in JS; stirred, not shaken.",
   "author": "Headstorm LLC",
   "homepage": "http://headstorm.com",
@@ -109,7 +109,7 @@
     "clean": "rm -rf ./dist/*",
     "webpack": "webpack --config webpack.config.js",
     "dts": "tsc --declaration --outDir dist/types/ --emitDeclarationOnly --declarationMap --allowJs false --checkJs false",
-    "test": "jest"
+    "test": "jest --collectCoverage=true"
   },
   "pre-commit": [
     "lint-ci"

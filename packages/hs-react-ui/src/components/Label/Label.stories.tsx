@@ -25,7 +25,9 @@ storiesOf('Label', module).add(
       colorValid={select('ColorValid', colors, colors.success)}
       colorInvalid={select('ColorInvalid', colors, colors.destructive)}
       isRequired={boolean('isRequired', false)}
-      isValid={boolean('isValid', false)}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      isValid={select('isValid', { true: true, false: false, undefined }, undefined)}
       htmlFor={text('htmlFor', 'default')}
     >
       <TextInput id={text('htmlFor', 'default')} placeholder="placeholder" />

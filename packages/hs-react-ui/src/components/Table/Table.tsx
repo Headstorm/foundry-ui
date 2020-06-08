@@ -428,7 +428,7 @@ const Table = ({
   };
 
   /**
-   * Creates groups to be rendred within the Table.
+   * Creates groups to be rendered within the Table.
    */
   const createGroups = () => {
     // Generate groupings - Note that we are making shallow copies of the arrays so that we do not

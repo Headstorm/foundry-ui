@@ -6,7 +6,7 @@ import { storiesOf, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import Modal from './Modal';
-import Button, { ButtonContainer } from '../Button/Button';
+import Button from '../Button/Button';
 
 addDecorator(withA11y);
 addDecorator(withDesign);
@@ -48,7 +48,7 @@ storiesOf('Modal', module).add(
     return (
       <Background>
         {!isOpen && (
-          <Button StyledContainer={ButtonContainer} onClick={() => setIsOpen(true)}>
+          <Button StyledContainer={Button.Container} onClick={() => setIsOpen(true)}>
             Toggle modal
           </Button>
         )}
