@@ -1,4 +1,5 @@
-import React, { useState, SyntheticEvent } from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import { text, select, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Icon from '@mdi/react';
@@ -25,11 +26,10 @@ storiesOf('TextInput', module)
         none: '',
         ...IconPaths,
       };
-      const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
 
       return (
         <TextInput
-          onChange={(event: SyntheticEvent) => {
+          onChange={(event) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const newValue = event.target.value;
@@ -39,7 +39,7 @@ storiesOf('TextInput', module)
           value={inputValue}
           placeholder={text('placeholder', 'Place Holder')}
           onClear={
-            boolean('onClear?', false)
+            boolean('clearable', false)
               ? () => {
                   setInputValue('');
                   action('onClear')();
@@ -52,6 +52,7 @@ storiesOf('TextInput', module)
           cols={number('cols', 0)}
           isValid={boolean('isValid', true)}
           errorMessage={text('errorMessage', '')}
+          defaultValue={text('defaultValue', '')}
         />
       );
     },
@@ -60,19 +61,23 @@ storiesOf('TextInput', module)
   .add(
     'Text Input with all the gadgets',
     () => {
+      const Input = styled(TextInput.Input)`
+        width: 300px;
+        height: 80px;
+      `;
       const [inputValue, setInputValue] = useState('');
       const options = {
         none: '',
         ...IconPaths,
       };
-      const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : null);
+      const getIconPath = (path: string) => (path ? <Icon size="16px" path={path} /> : undefined);
       const isMultiline = inputValue.length > 15;
       const isError =
         inputValue.length < 5 && inputValue.length > 0 ? 'Short Message Error' : undefined;
 
       return (
         <TextInput
-          onChange={(event: SyntheticEvent) => {
+          onChange={(event) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const newValue = event.target.value;
@@ -88,6 +93,7 @@ storiesOf('TextInput', module)
           iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
           isMultiline={isMultiline}
           errorMessage={isError}
+          Input={Input}
         />
       );
     },
