@@ -10,7 +10,11 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: npm run test-react
             - run: npm run build-react
+            - store_artifacts:
+                path: coverage
+
 workflows:
   PR-Merge:
     jobs:

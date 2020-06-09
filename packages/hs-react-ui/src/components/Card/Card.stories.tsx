@@ -2,19 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { storiesOf } from '@storybook/react';
+
 import Card, { Header, Footer } from './Card';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
-
-addDecorator(withA11y);
-addDecorator(withDesign);
-export default {
-  title: 'Card',
-  component: Card,
-};
+import fonts from '../../enums/fonts';
 
 const design = {
   type: 'figma',
@@ -59,7 +52,7 @@ storiesOf('Card', module)
         transition: transform ${themeTimings.xSlow};
         transform: scale(${elevation * 0.05 + 1});
     
-        font-family: Roboto, sans-serif;
+        ${fonts.body}
         font-size: 1rem;
         border: 1px solid ${themeColors.primary};
       `}

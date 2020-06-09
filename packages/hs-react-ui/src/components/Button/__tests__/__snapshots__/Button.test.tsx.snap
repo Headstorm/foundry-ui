@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+  width: 5rem;
+  height: 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+<button
+  class="c0"
+  color="#252c35"
+  data-test-id="hsui-button"
+  elevation="0"
+  type="fill"
+>
+  <div
+    class="sc-AxjAm c1"
+  />
+</button>
+`;
+
+exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+<button
+  class="c0"
+  color="#252c35"
+  data-test-id="hsui-button"
+  elevation="0"
+  type="fill"
+>
+  Submit
+</button>
+`;
+
+exports[`Button shows loading text when provided 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+  width: 5rem;
+  height: 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+<div>
+  <button
+    class="c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="fill"
+  >
+    <div
+      class="sc-AxjAm c1"
+    />
+  </button>
+</div>
+`;

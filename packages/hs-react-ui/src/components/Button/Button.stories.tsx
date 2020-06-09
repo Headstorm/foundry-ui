@@ -1,76 +1,40 @@
 import React from 'react';
-import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
-import { select, text, boolean } from '@storybook/addon-knobs';
-import Icon from '@mdi/react';
-import { mdiLeadPencil, mdiLoading } from '@mdi/js';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
-import { ButtonContainers } from './ButtonContainers';
-import Button, { ButtonTypes, ButtonContainer } from './Button';
+import { select, text, boolean, number, color } from '@storybook/addon-knobs';
+import { mdiMessage, mdiSend } from '@mdi/js';
+import { storiesOf } from '@storybook/react';
 
-addDecorator(withA11y);
-addDecorator(withDesign);
+import Button from './Button';
+import colors from '../../enums/colors';
+
+const options = {
+  none: '',
+  mdiMessage,
+  mdiSend,
+};
 
 const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
 };
 
-storiesOf('Button', module)
-  .add(
-    'Basic Button',
-    () => (
+storiesOf('Button', module).add(
+  'Basic Button',
+  () => {
+    return (
       <Button
-        StyledContainer={
-          ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]
-        }
+        type={select('type', Button.ButtonTypes, Button.ButtonTypes.fill)}
+        color={color('color', colors.grayDark)}
         onClick={action('button-click')}
+        isLoading={boolean('isLoading', false)}
+        elevation={number('elevation', 0)}
+        isProcessing={boolean('isProcessing', false)}
+        iconPrefix={select('iconPrefix', options, options.none)}
+        iconSuffix={select('iconSuffix', options, options.none)}
       >
         {text('children', 'Default text')}
       </Button>
-    ),
-    { design, centered: true },
-  )
-  .add(
-    'Themed Button',
-    () => {
-      const isLoading = {
-        icon: <Icon path={mdiLoading} size={1} horizontal vertical rotate={90} />,
-        children: 'Loading',
-      };
-      const icon = <Icon path={mdiLeadPencil} size={1} horizontal vertical rotate={90} />;
-
-      const ThemedContainer = styled(ButtonContainer)`
-        font-family: Helvetica;
-        font-size: 2em;
-        vertical-align: middle;
-        text-align: center;
-        line-height: 0.5em;
-        background-color: rgb(51, 29, 138);
-        color: white;
-        width: 10em;
-        height: 2em;
-        border-radius: 2em;
-        &:hover {
-          background-color: rgb(51, 29, 138, 0.7);
-        }
-        &:active {
-          background-color: rgb(51, 29, 138, 0.3);
-        }
-      `;
-
-      return (
-        <Button
-          StyledContainer={ThemedContainer}
-          isLoading={boolean('isLoading?', false) ? isLoading : null}
-          icon={boolean('Icon?', true) ? icon : null}
-          onClick={action('button-click')}
-        >
-          {text('children', 'Edit')}
-        </Button>
-      );
-    },
-    { design, centered: true },
-  );
+    );
+  },
+  { design },
+);

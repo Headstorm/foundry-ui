@@ -6,7 +6,7 @@ import { Footer, Header } from '../Card/Card';
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
   StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledOverlay?: string & StyledComponentBase<any, {}>;
+  StyledUnderlay?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
   StyledFooter?: string & StyledComponentBase<any, {}>;
   StyledCloseButton?: string & StyledComponentBase<any, {}>;
@@ -22,7 +22,7 @@ export interface ModalProps {
   backgroundDarkness?: number;
 }
 
-const ModalOverlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
+const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur = '0', backgroundDarkness = 0 }) => `
     height: 100%;
     width: 100%;
@@ -47,8 +47,7 @@ const ModalContainer = styled.div`
 `;
 
 const ModalHeader = styled(Header)`
-  display: flex;
-  justify-content: space-between;
+  max-width: calc(100% - 4rem);
 `;
 
 const ModalFooter = styled(Footer)`
@@ -57,6 +56,9 @@ const ModalFooter = styled(Footer)`
 `;
 
 const ModalCloseButton = styled.span`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   font-size: 1.3rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
@@ -65,7 +67,7 @@ const ModalCloseButton = styled.span`
 
 const Modal = ({
   StyledContainer = ModalContainer,
-  StyledOverlay = ModalOverlay,
+  StyledUnderlay = ModalUnderlay,
   StyledHeader = ModalHeader,
   StyledFooter = ModalFooter,
   StyledCloseButton = ModalCloseButton,
@@ -96,7 +98,7 @@ const Modal = ({
           {body}
         </Card>
       </StyledContainer>
-      <StyledOverlay
+      <StyledUnderlay
         backgroundBlur={backgroundBlur}
         backgroundDarkness={backgroundDarkness}
         onClick={onClickOutside}
@@ -107,7 +109,7 @@ const Modal = ({
 
 Modal.Header = ModalHeader;
 Modal.Footer = ModalFooter;
-Modal.Overlay = ModalOverlay;
+Modal.Underlay = ModalUnderlay;
 Modal.CloseButton = ModalCloseButton;
 Modal.Container = ModalContainer;
 export default Modal;

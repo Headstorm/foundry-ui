@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
-import Modal from './Modal';
-import Button, { ButtonContainer } from '../Button/Button';
+import { storiesOf } from '@storybook/react';
 
-addDecorator(withA11y);
-addDecorator(withDesign);
+import Modal from './Modal';
+import Button from '../Button/Button';
 
 const design = {
   type: 'figma',
@@ -22,6 +18,9 @@ storiesOf('Modal', module).add(
     const Background = styled.div`
       background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Chicago_cityscape_%285253757001%29.jpg);
       background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       height: 100vh;
       width: 100vw;
@@ -34,7 +33,7 @@ storiesOf('Modal', module).add(
 
       color: #5a27e7;
     `;
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const ModalFooter = () => (
       <>
         <ModalActionText onClick={() => setIsOpen(false)}>Cancel</ModalActionText>
@@ -45,7 +44,7 @@ storiesOf('Modal', module).add(
     return (
       <Background>
         {!isOpen && (
-          <Button StyledContainer={ButtonContainer} onClick={() => setIsOpen(true)}>
+          <Button StyledContainer={Button.Container} onClick={() => setIsOpen(true)}>
             Toggle modal
           </Button>
         )}
