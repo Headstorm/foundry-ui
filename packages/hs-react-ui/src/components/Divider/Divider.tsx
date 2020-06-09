@@ -1,14 +1,14 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import Colors from '../../enums/colors';
+import colors from '../../enums/colors';
 
 export const DefaultDivider = styled.hr`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `
     border: none;
     height: ${height};
     width: ${width};
-    background-color: ${Colors.grayLight};
+    background-color: ${colors.grayLight};
   `}
 `;
 
