@@ -7,6 +7,8 @@ const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => st
   ${fonts.body}
 `;
 
+// Use these elements over native styled.xx elements, as they apply
+// sensible defaults for each element. If an element doesn't exist, add it to this block
 export const Div = withGlobalStyle(styled.div``);
 export const Span = withGlobalStyle(styled.span``);
 export const Button = withGlobalStyle(styled.button``);
