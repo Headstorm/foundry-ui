@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
+import { Div, Input as InputElement } from '../../boilerplate';
 
 const Container = styled.div`
   width: 10rem;
@@ -20,7 +21,7 @@ const Container = styled.div`
   }
 `;
 
-const TextInputContainer = styled.input`
+const TextInputContainer = styled(InputElement)`
   border: 0 none;
   outline: 0 none;
   height: 2em;
@@ -31,7 +32,7 @@ const TextInputContainer = styled.input`
   background-color: ${colors.background};
 `;
 
-const IconContainer = styled.div`
+const IconContainer = styled(Div)`
   padding: 0.5em;
   height: 100%;
   display: flex;
@@ -40,7 +41,7 @@ const IconContainer = styled.div`
   color: ${colors.grayMedium};
 `;
 
-const ErrorContainer = styled.div`
+const ErrorContainer = styled(Div)`
   position: absolute;
   top: calc(100% + 0.25em);
   color: ${colors.destructive};

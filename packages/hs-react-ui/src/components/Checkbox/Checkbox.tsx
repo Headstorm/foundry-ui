@@ -1,9 +1,10 @@
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import colors from '../../enums/colors';
+import { Div, Input as InputElement, Label as LabelElement } from '../../boilerplate';
 
 export enum CheckboxTypes {
   fill = 'fill',
@@ -15,7 +16,7 @@ export enum CheckboxTypes {
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
-export const Input = styled.input.attrs({ type: 'checkbox' })`
+export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -28,7 +29,7 @@ export const Input = styled.input.attrs({ type: 'checkbox' })`
   width: 1px;
 `;
 
-export const Label = styled.label`
+export const Label = styled(LabelElement)`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -38,7 +39,7 @@ export const Label = styled.label`
   }
 `;
 
-export const Box = styled.div`
+export const Box = styled(Div)`
   border: 1px solid ${colors.grayLight};
   border-radius: 2px;
   width: 0.75rem;
@@ -95,9 +96,9 @@ export interface CheckboxProps {
   StyledInput?: string & StyledComponentBase<any, {}>;
 
   checkboxType?: CheckboxTypes;
-  children?: string | Node;
+  children?: React.ReactNode;
   checked?: boolean;
-  onClick: (event: SyntheticEvent) => void;
+  onClick: (event: React.MouseEvent) => void;
 }
 
 const iconPaths = {

@@ -2,8 +2,9 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import Colors from '../../enums/colors';
+import { Div, HR } from '../../boilerplate';
 
-export const DefaultDivider = styled.hr`
+export const DefaultDivider = styled(HR)`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `
     border: none;
     height: ${height};
@@ -12,7 +13,7 @@ export const DefaultDivider = styled.hr`
   `}
 `;
 
-export const DefaultDividerContainer = styled.div`
+export const DefaultDividerContainer = styled(Div)`
   display: flex;
   justify-content: center;
   margin-top: 10px;

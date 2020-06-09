@@ -5,9 +5,9 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { readableColor, darken } from 'polished';
 
 import timings from '../../enums/timings';
-import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
+import { Span, Button as ButtonElement } from '../../boilerplate';
 
 export type ButtonContainerProps = {
   elevation?: number;
@@ -68,8 +68,9 @@ export const getBackgroundColorFromType = (type: string, color?: string) => {
   }
 };
 
-export const ButtonContainer: string &
-  StyledComponentBase<any, {}, ButtonContainerProps> = styled.button`
+export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
+  ButtonElement,
+)`
   ${({ elevation = 0, color, type }: ButtonContainerProps) => {
     const backgroundColor = getBackgroundColorFromType(type, color);
     const fontColor = getFontColorFromType(type, color);
@@ -79,7 +80,6 @@ export const ButtonContainer: string &
 
     return `
       display: inline-block;
-      ${fonts.body}
       font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
@@ -111,7 +111,7 @@ const StyledProgress = styled(Progress)`
   margin-bottom: -5px;
 `;
 
-const IconContainer = styled.span`
+const IconContainer = styled(Span)`
   margin-top: -8px;
   margin-bottom: -8px;
 `;
