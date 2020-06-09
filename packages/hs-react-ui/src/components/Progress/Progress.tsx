@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-import { Div } from '../../boilerplate';
+import { Div } from '../../htmlElements';
 
 /* Keyframes for the loading bar gradient */
 export const movingGradient = keyframes`

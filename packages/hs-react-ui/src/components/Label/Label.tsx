@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
-import { Div, Label as LabelElement, Span } from '../../boilerplate';
+import { Div, Label as LabelElement, Span } from '../../htmlElements';
 
 export const DefaultStyledLabel = styled(LabelElement)`
   ${({ color = colors.grayLight }: { color: colors | string }) => `

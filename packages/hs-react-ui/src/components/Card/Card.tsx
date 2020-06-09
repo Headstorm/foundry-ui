@@ -3,7 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
-import { Div } from '../../boilerplate';
+import { Div } from '../../htmlElements';
 
 export const CardContainer = styled(Div)`
   ${({ elevation = 0 }: { elevation: number }) => `

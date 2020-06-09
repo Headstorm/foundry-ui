@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import colors from '../../enums/colors';
-import { Div, Input as InputElement, Label as LabelElement } from '../../boilerplate';
+import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 
 export enum CheckboxTypes {
   fill = 'fill',

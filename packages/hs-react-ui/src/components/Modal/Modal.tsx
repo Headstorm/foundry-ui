@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Card from '../Card';
 import { Footer, Header } from '../Card/Card';
-import { Div, Span } from '../../boilerplate';
+import { Div, Span } from '../../htmlElements';
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`

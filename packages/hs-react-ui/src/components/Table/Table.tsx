@@ -5,7 +5,7 @@ import { mdiArrowDown, mdiChevronRight, mdiChevronDown, mdiChevronUp } from '@md
 import Icon from '@mdi/react';
 import colors from '../../enums/colors';
 import fonts from '../../enums/fonts';
-import { Span, Table as TableElement, TD, TH, TR } from '../../boilerplate';
+import { Span, Table as TableElement, TD, TH, TR } from '../../htmlElements';
 
 /* Types and Interfaces */
 

@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
-import { Div, Input as InputElement } from '../../boilerplate';
+import { Div, Input as InputElement } from '../../htmlElements';
 
 const Container = styled.div`
   width: 10rem;

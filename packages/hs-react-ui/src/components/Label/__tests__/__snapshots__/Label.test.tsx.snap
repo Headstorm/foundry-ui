@@ -4,7 +4,9 @@ exports[`Label should have asterisk icon if isRequired is true 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    500;700;900&display=swap'); .c0 {
+    500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -15,7 +17,19 @@ Object {
   font-size: .75em;
 }
 
-.c1 {
+500;700;900&display=swap'); .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c3 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -25,20 +39,20 @@ Object {
 
 <div>
       <div
-        class=""
+        class="sc-AxjAm sc-AxirZ c0"
       >
         <div
-          class=""
+          class="sc-AxjAm sc-AxirZ c1"
         >
           <label
-            class="c0"
+            class="sc-AxmLO sc-fzozJi c2"
             color="#7c8186"
             for="default"
           >
             Test text
           </label>
           <span
-            class="c1"
+            class="sc-AxiKw sc-AxhCb c3"
           >
             <svg
               role="presentation"
@@ -57,20 +71,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxiKw bOTXee"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
     >
       <div
-        class="sc-AxirZ ktnnZK"
+        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
       >
         <label
-          class="sc-AxjAm drAbMu"
+          class="sc-AxmLO sc-fzozJi sc-fzoLag kAlzJl"
           color="#7c8186"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxhCb caZSwy"
+          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
         >
           <svg
             role="presentation"
@@ -144,7 +158,9 @@ exports[`Label should have default color text if not given a isValid 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    500;700;900&display=swap'); .c0 {
+    500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -155,7 +171,19 @@ Object {
   font-size: .75em;
 }
 
-.c1 {
+500;700;900&display=swap'); .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c3 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -165,20 +193,20 @@ Object {
 
 <div>
       <div
-        class=""
+        class="sc-AxjAm sc-AxirZ c0"
       >
         <div
-          class=""
+          class="sc-AxjAm sc-AxirZ c1"
         >
           <label
-            class="c0"
+            class="sc-AxmLO sc-fzozJi c2"
             color="#FF4500"
             for="default"
           >
             Test text
           </label>
           <span
-            class="c1"
+            class="sc-AxiKw sc-AxhCb c3"
           >
             <svg
               role="presentation"
@@ -197,20 +225,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxiKw bOTXee"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
     >
       <div
-        class="sc-AxirZ ktnnZK"
+        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
       >
         <label
-          class="sc-AxjAm bIrdOE"
+          class="sc-AxmLO sc-fzozJi sc-fzoLag bWeSID"
           color="#FF4500"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxhCb caZSwy"
+          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
         >
           <svg
             role="presentation"
@@ -283,7 +311,9 @@ Object {
 exports[`Label should have text be colorInvalid if given a isValid prop of false 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": 500;700;900&display=swap'); .c0 {
+  "baseElement": 500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -294,7 +324,19 @@ Object {
   font-size: .75em;
 }
 
-.c1 {
+500;700;900&display=swap'); .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c3 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -305,20 +347,20 @@ Object {
 <body>
     <div>
       <div
-        class=""
+        class="sc-AxjAm sc-AxirZ c0"
       >
         <div
-          class=""
+          class="sc-AxjAm sc-AxirZ c1"
         >
           <label
-            class="c0"
+            class="sc-AxmLO sc-fzozJi c2"
             color="#9400D3"
             for="default"
           >
             Test text
           </label>
           <span
-            class="c1"
+            class="sc-AxiKw sc-AxhCb c3"
           >
             <svg
               role="presentation"
@@ -337,20 +379,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxiKw bOTXee"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
     >
       <div
-        class="sc-AxirZ ktnnZK"
+        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
       >
         <label
-          class="sc-AxjAm dRrrWL"
+          class="sc-AxmLO sc-fzozJi sc-fzoLag cXViwM"
           color="#9400D3"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxhCb caZSwy"
+          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
         >
           <svg
             role="presentation"
@@ -424,7 +466,9 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    500;700;900&display=swap'); .c0 {
+    500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -435,7 +479,19 @@ Object {
   font-size: .75em;
 }
 
-.c1 {
+500;700;900&display=swap'); .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+500;700;900&display=swap'); .c3 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -445,20 +501,20 @@ Object {
 
 <div>
       <div
-        class=""
+        class="sc-AxjAm sc-AxirZ c0"
       >
         <div
-          class=""
+          class="sc-AxjAm sc-AxirZ c1"
         >
           <label
-            class="c0"
+            class="sc-AxmLO sc-fzozJi c2"
             color="#0000FF"
             for="default"
           >
             Test text
           </label>
           <span
-            class="c1"
+            class="sc-AxiKw sc-AxhCb c3"
           >
             <svg
               role="presentation"
@@ -477,20 +533,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxiKw bOTXee"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
     >
       <div
-        class="sc-AxirZ ktnnZK"
+        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
       >
         <label
-          class="sc-AxjAm errOZt"
+          class="sc-AxmLO sc-fzozJi sc-fzoLag fhQidO"
           color="#0000FF"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxhCb caZSwy"
+          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
         >
           <svg
             role="presentation"

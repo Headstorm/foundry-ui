@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import Colors from '../../enums/colors';
-import { Div, HR } from '../../boilerplate';
+import { Div, HR } from '../../htmlElements';
 
 export const DefaultDivider = styled(HR)`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `

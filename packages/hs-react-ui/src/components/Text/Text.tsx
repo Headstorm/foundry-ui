@@ -5,7 +5,7 @@ import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import fonts from '../../enums/fonts';
 import Progress from '../Progress/Progress';
-import { Span } from '../../boilerplate';
+import { Span } from '../../htmlElements';
 
 /* Default Styled Text Container */
 export const TextContainer = styled(Span)`

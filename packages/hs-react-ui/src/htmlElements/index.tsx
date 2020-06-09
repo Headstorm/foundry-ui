@@ -1,7 +1,7 @@
+import styled, { StyledComponent } from 'styled-components';
 import fonts from '../enums/fonts';
-import styled from 'styled-components';
 
-const withGlobalStyle = Component => styled(Component)`
+const withGlobalStyle = (Component: StyledComponent<any, any>) => styled(Component)`
   box-sizing: border-box;
   ${fonts.body}
 `;

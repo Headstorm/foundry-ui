@@ -7,7 +7,7 @@ import { readableColor } from 'polished';
 import Button, { ButtonTypes } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
-import { Div } from '../../boilerplate';
+import { Div } from '../../htmlElements';
 
 const Container = styled(Div)`
   ${({ elevation }) => {
@@ -16,10 +16,10 @@ const Container = styled(Div)`
     const shadowOpacity = 0.5 - elevation * 0.075;
 
     return `
-    width: fit-content;
-    transition: filter ${timings.slow};
-    filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
-  `;
+      width: fit-content;
+      transition: filter ${timings.slow};
+      filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
+    `;
   }}
 `;
 // TODO - Add constants for width

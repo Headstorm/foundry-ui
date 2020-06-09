@@ -7,7 +7,7 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
-import { Span, Button as ButtonElement } from '../../boilerplate';
+import { Span, Button as ButtonElement } from '../../htmlElements';
 
 export type ButtonContainerProps = {
   elevation?: number;
