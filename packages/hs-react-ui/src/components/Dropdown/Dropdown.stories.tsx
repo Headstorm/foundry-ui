@@ -1,15 +1,13 @@
 import React from 'react';
 
-import { storiesOf, addDecorator } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import { boolean, color, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { withDesign } from 'storybook-addon-designs';
 
 import Button from '../Button';
 import Dropdown from './Dropdown';
 import colors from '../../enums/colors';
 
-addDecorator(withDesign);
 const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',

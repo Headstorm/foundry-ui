@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { number, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { storiesOf } from '@storybook/react';
+
 import Modal from './Modal';
 import Button from '../Button/Button';
-
-addDecorator(withA11y);
-addDecorator(withDesign);
 
 const design = {
   type: 'figma',

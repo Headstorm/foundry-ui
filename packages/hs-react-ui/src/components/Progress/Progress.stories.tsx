@@ -1,11 +1,7 @@
 import React from 'react';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
-import Progress from './Progress';
+import { storiesOf } from '@storybook/react';
 
-addDecorator(withA11y);
-addDecorator(withDesign);
+import Progress from './Progress';
 
 // Once we have a design, we can use this block to set it
 // const design = {
