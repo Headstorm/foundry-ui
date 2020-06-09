@@ -231,7 +231,7 @@ storiesOf('RangeSlider', module)
         <Card
           elevation={2}
           StyledHeader={Card.NoPaddingHeader}
-          header={
+          header={(
             <ColorPreview
               style={{
                 backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
@@ -244,7 +244,7 @@ storiesOf('RangeSlider', module)
                 lightness: light / 100,
               })}
             </ColorPreview>
-          }
+          )}
         >
           <Row>
             <span>H:&nbsp;&nbsp;&nbsp;</span>

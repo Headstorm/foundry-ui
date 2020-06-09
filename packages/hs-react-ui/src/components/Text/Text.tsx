@@ -60,10 +60,10 @@ const Text = ({
 }: TextProps) => (
   <StyledContainer size={size} color={color}>
     {isLoading && <StyledProgress size={size} />}
-    {!isLoading &&
-      !isProcessing &&
-      iconPrefix &&
-      (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+    {!isLoading
+      && !isProcessing
+      && iconPrefix
+      && (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
         <StyledIconContainer side="left">
           <Icon path={iconPrefix} size={size} />
         </StyledIconContainer>
@@ -79,9 +79,9 @@ const Text = ({
     )}
     {!isLoading && children}
 
-    {!isLoading &&
-      iconSuffix &&
-      (typeof iconSuffix === 'string' ? (
+    {!isLoading
+      && iconSuffix
+      && (typeof iconSuffix === 'string' ? (
         <StyledIconContainer side="right">
           <Icon path={iconSuffix} size={size} />
         </StyledIconContainer>
