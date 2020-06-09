@@ -6,11 +6,13 @@ import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 
 const Container = styled.div`
-  width: 10rem;
+${({isValid}: {isValid?: boolean}) => `
+  border 2px solid ${ isValid === false ? colors.destructive : colors.grayMedium};
+  min-width: 10rem;
+  // width: 100%;
   position: relative;
   display: flex;
-  flex-flow: row nowrap;
-  border 2px solid ${colors.grayMedium};
+  flex-flow: row;
   border-radius: 0.25em;
   ${fonts.body}
 
@@ -18,6 +20,7 @@ const Container = styled.div`
   * * {
     box-sizing: border-box;
   }
+`}
 `;
 
 const TextInputContainer = styled.input`
@@ -26,9 +29,21 @@ const TextInputContainer = styled.input`
   height: 2em;
   ${fonts.body}
   font-size: 1em;
-  width: 0px;
-  flex: 1 1 100%;
+  // width: 0px;
+  // flex: 1 1 100%;
   background-color: ${colors.background};
+`;
+
+const TextAreaInputContainer = styled.textarea`
+  border: 0 none;
+  outline: 0 none;
+  min-height: 2em;
+  ${fonts.body}
+  font-size: 1em;
+  min-width: 0px;
+  // flex: 1 1 100%;
+  background-color: ${colors.background};
+  resize: none;
 `;
 
 const IconContainer = styled.div`
@@ -49,31 +64,40 @@ const ErrorContainer = styled.div`
 export type TextInputProps = {
   id?: string;
   placeholder?: string;
-  iconPrefix?: ReactNode;
+  iconPrefix?: string | ReactNode;
   onClear?: (event: SyntheticEvent) => void;
   onChange?: (event: SyntheticEvent) => void;
+  onKeypress?: (event: SyntheticEvent) => void;
+  onKeydown?: (event: SyntheticEvent) => void;
+  onKeyup?: (event: SyntheticEvent) => void;
+  onBlur?: (event: SyntheticEvent) => void;
+  onInput?: (event: SyntheticEvent) => void;
+  onFocus?: (event: SyntheticEvent) => void;
+  onReset?: (event: SyntheticEvent) => void;
   cols?: number;
   rows?: number;
   value?: string;
+  defaultValue?: string;
   isValid?: boolean;
   isMultiline?: boolean;
   errorMessage?: string;
   ariaLabel?: string;
   StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledTextInputContainer?: string & StyledComponentBase<any, {}>;
+  Input?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
 };
 
-const createIcon = (iconPrefix: string | JSX.Element, isMultiline?: boolean) => {
+const createIcon = (StyledIconContainer: string & StyledComponentBase<any, {}>,
+  iconPrefix: ReactNode) => {
   if (typeof iconPrefix === 'string') {
     return (
-      <IconContainer>
+      <StyledIconContainer>
         <Icon size="16px" path={iconPrefix} />
-      </IconContainer>
+      </StyledIconContainer>
     );
   }
 
-  return <IconContainer>{iconPrefix}</IconContainer>;
+  return <StyledIconContainer>{iconPrefix}</StyledIconContainer>;
 };
 
 const TextInput = ({
@@ -82,42 +106,68 @@ const TextInput = ({
   iconPrefix,
   onClear,
   onChange,
+  onKeypress,
+  onKeydown,
+  onKeyup,
+  onBlur,
+  onInput,
+  onFocus,
+  onReset,
   cols = 10,
   rows = 10,
   value,
+  defaultValue,
   isValid,
   isMultiline,
   errorMessage,
   ariaLabel,
   StyledContainer = Container,
-  StyledTextInputContainer = TextInputContainer,
+  Input, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
-}: TextInputProps) => (
-  <StyledContainer>
-    {iconPrefix && <StyledIconContainer>{iconPrefix}</StyledIconContainer>}
-    {/*
-      // @ts-ignore */}
-    <StyledTextInputContainer
-      as={isMultiline ? 'textarea' : 'input'}
-      cols={cols}
-      rows={rows}
-      aria-label={ariaLabel}
-      placeholder={placeholder}
-      onChange={onChange}
-      value={value}
-      id={id}
-    />
-    {onClear && value && (
-      <StyledIconContainer onClick={onClear}>
-        <Icon path={mdiClose} size="1em" />
-      </StyledIconContainer>
-    )}
-    {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
-  </StyledContainer>
-);
+}: TextInputProps) => {
+  // Determine the correct input type. Using a single input and the 'as' keyword
+  // to display as a text area disables the ability to set cols/rows
+  let InputComponent: string & StyledComponentBase<any, {}> = TextInputContainer;
+  if (Input) {
+    InputComponent = Input;
+  } else if (isMultiline) {
+    InputComponent = TextAreaInputContainer;
+  }
+  return (
+    <StyledContainer isValid={isValid}>
+      {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
+      {/*
+        // @ts-ignore */}
+      <InputComponent
+        cols={cols}
+        rows={rows}
+        aria-label={ariaLabel}
+        placeholder={placeholder}
+        onChange={onChange}
+        onKeypress={onKeypress}
+        onKeydown={onKeydown}
+        onKeyup={onKeyup}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onReset={onReset}
+        onInput={onInput}
+        value={value}
+        defaultValue={value ? undefined : defaultValue}
+        id={id}
+      />
+      {onClear && value && (
+        <StyledIconContainer onClick={onClear}>
+          <Icon path={mdiClose} size="1em" />
+        </StyledIconContainer>
+      )}
+      {isValid === false && errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+    </StyledContainer>
+  )
+};
 
 TextInput.Container = Container;
-TextInput.TextInputContainer = TextInputContainer;
+TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
+TextInput.TextArea = TextAreaInputContainer;
 
 export default TextInput;

@@ -28,33 +28,35 @@ storiesOf('TextInput', module)
       };
 
       return (
-        <TextInput
-          aria-label='textInput'
-          onChange={(event) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const newValue = event.target.value;
-            setInputValue(newValue);
-            action('onChange')(newValue);
-          }}
-          value={inputValue}
-          placeholder={text('placeholder', 'Place Holder')}
-          onClear={
-            boolean('clearable', false)
-              ? () => {
-                  setInputValue('');
-                  action('onClear')();
-                }
-              : undefined
-          }
-          iconPrefix={select('iconPrefix', options, options.none)}
-          isMultiline={boolean('isMultiline?', false)}
-          rows={number('rows', 0)}
-          cols={number('cols', 0)}
-          isValid={boolean('isValid', true)}
-          errorMessage={text('errorMessage', '')}
-          defaultValue={text('defaultValue', '')}
-        />
+        <>
+          <TextInput
+            ariaLabel='textInput'
+            onChange={(event) => {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              const newValue = event.target.value;
+              setInputValue(newValue);
+              action('onChange')(newValue);
+            }}
+            value={inputValue}
+            placeholder={text('placeholder', 'Place Holder')}
+            onClear={
+              boolean('clearable', false)
+                ? () => {
+                    setInputValue('');
+                    action('onClear')();
+                  }
+                : undefined
+            }
+            iconPrefix={select('iconPrefix', options, options.none)}
+            isMultiline={boolean('isMultiline?', false)}
+            rows={number('rows', 0)}
+            cols={number('cols', 0)}
+            isValid={boolean('isValid', true)}
+            errorMessage={text('errorMessage', '')}
+            defaultValue={text('defaultValue', '')}
+          />
+        </>
       );
     },
     { design },
