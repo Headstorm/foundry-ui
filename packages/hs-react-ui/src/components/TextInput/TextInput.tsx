@@ -16,6 +16,7 @@ const Container = styled.div`
   flex-flow: row;
   border-radius: 0.25em;
   ${fonts.body}
+  background-color: ${colors.background};
 
   *,
   * * {
@@ -30,8 +31,7 @@ const TextInputContainer = styled.input`
   height: 2em;
   ${fonts.body}
   font-size: 1em;
-  // width: 0px;
-  // flex: 1 1 100%;
+  padding-left: 0.5rem;
   background-color: ${colors.background};
 `;
 
@@ -42,7 +42,6 @@ const TextAreaInputContainer = styled.textarea`
   ${fonts.body}
   font-size: 1em;
   min-width: 0px;
-  // flex: 1 1 100%;
   background-color: ${colors.background};
   resize: none;
 `;
@@ -84,6 +83,7 @@ export type TextInputProps = {
   isMultiline?: boolean;
   errorMessage?: string;
   ariaLabel?: string;
+  type?: string;
   debounceInterval?: number;
   StyledContainer?: string & StyledComponentBase<any, {}>;
   Input?: string & StyledComponentBase<any, {}>;
@@ -128,6 +128,7 @@ const TextInput = ({
   isMultiline,
   errorMessage,
   ariaLabel,
+  type = 'text',
   StyledContainer = Container,
   Input, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
@@ -170,6 +171,7 @@ const TextInput = ({
         onInput={onInput}
         value={value ? value : defaultValue}
         id={id}
+        type={type}
       />
       {onClear && value && (
         <StyledIconContainer onClick={onClear}>

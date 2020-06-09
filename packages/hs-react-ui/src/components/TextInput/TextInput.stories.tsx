@@ -38,7 +38,7 @@ storiesOf('TextInput', module)
             setInputValue(newValue);
             action('onChange')(newValue);
           }}
-          debounceInterval={1000}
+          debounceInterval={150}
           debouncedOnChange={event => {
             console.log(event);
             action('debouncedOnChange')(++debounceCounter);
@@ -60,6 +60,7 @@ storiesOf('TextInput', module)
           isValid={boolean('isValid', true)}
           errorMessage={text('errorMessage', '')}
           defaultValue={text('defaultValue', '')}
+          type={text('type', '')}
         />
       );
     },
