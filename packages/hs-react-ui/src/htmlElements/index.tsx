@@ -3,6 +3,7 @@ import fonts from '../enums/fonts';
 
 const withGlobalStyle = (Component: StyledComponent<any, any>) => styled(Component)`
   box-sizing: border-box;
+  ${process.env.NODE_ENV !== 'test' ? fonts.importFonts : ''}
   ${fonts.body}
 `;
 

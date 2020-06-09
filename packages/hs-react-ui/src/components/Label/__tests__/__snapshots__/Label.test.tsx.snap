@@ -4,7 +4,7 @@ exports[`Label should have asterisk icon if isRequired is true 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+    .c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
@@ -12,22 +12,21 @@ Object {
   display: -ms-inline-flexbox;
   display: inline-flex;
   color: #7c8186;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-bottom: .25em;
   font-size: .75em;
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
 }
 
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
@@ -71,20 +70,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC fZIUoG"
     >
       <div
-        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
+        class="sc-AxjAm sc-AxirZ sc-fzoXzr lojETd"
       >
         <label
-          class="sc-AxmLO sc-fzozJi sc-fzoLag kAlzJl"
+          class="sc-AxmLO sc-fzozJi sc-fzoLag gnhNZK"
           color="#7c8186"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
+          class="sc-AxiKw sc-AxhCb sc-fznxsB jDTVXZ"
         >
           <svg
             role="presentation"
@@ -157,8 +156,7 @@ Object {
 exports[`Label should have default color text if not given a isValid 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
-    500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+  "baseElement": .c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
@@ -166,22 +164,21 @@ Object {
   display: -ms-inline-flexbox;
   display: inline-flex;
   color: #FF4500;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-bottom: .25em;
   font-size: .75em;
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
 }
 
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
@@ -191,7 +188,8 @@ Object {
   margin-left: 0.25rem;
 }
 
-<div>
+<body>
+    <div>
       <div
         class="sc-AxjAm sc-AxirZ c0"
       >
@@ -225,20 +223,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC fZIUoG"
     >
       <div
-        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
+        class="sc-AxjAm sc-AxirZ sc-fzoXzr lojETd"
       >
         <label
-          class="sc-AxmLO sc-fzozJi sc-fzoLag bWeSID"
+          class="sc-AxmLO sc-fzozJi sc-fzoLag iekDaY"
           color="#FF4500"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
+          class="sc-AxiKw sc-AxhCb sc-fznxsB jDTVXZ"
         >
           <svg
             role="presentation"
@@ -309,9 +307,7 @@ Object {
 `;
 
 exports[`Label should have text be colorInvalid if given a isValid prop of false 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": 500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
@@ -319,177 +315,21 @@ Object {
   display: -ms-inline-flexbox;
   display: inline-flex;
   color: #9400D3;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-bottom: .25em;
   font-size: .75em;
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
 }
 
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
 }
 
-500;700;900&display=swap'); .c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  margin-left: 0.25rem;
-}
-
-<body>
-    <div>
-      <div
-        class="sc-AxjAm sc-AxirZ c0"
-      >
-        <div
-          class="sc-AxjAm sc-AxirZ c1"
-        >
-          <label
-            class="sc-AxmLO sc-fzozJi c2"
-            color="#9400D3"
-            for="default"
-          >
-            Test text
-          </label>
-          <span
-            class="sc-AxiKw sc-AxhCb c3"
-          >
-            <svg
-              role="presentation"
-              style="width: .75rem; height: .75rem;"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z"
-                style="fill: #9400D3;"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
-    >
-      <div
-        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
-      >
-        <label
-          class="sc-AxmLO sc-fzozJi sc-fzoLag cXViwM"
-          color="#9400D3"
-          for="default"
-        >
-          Test text
-        </label>
-        <span
-          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
-        >
-          <svg
-            role="presentation"
-            style="width: .75rem; height: .75rem;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z"
-              style="fill: #9400D3;"
-            />
-          </svg>
-        </span>
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
-exports[`Label should have text be colorValid and a check icon if given a isValid prop of true 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body>
-    500;700;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap'); .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  color: #0000FF;
-  font-family: Montserrat,Roboto,sans-serif;
-  margin-bottom: .25em;
-  font-size: .75em;
-}
-
-500;700;900&display=swap'); .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-500;700;900&display=swap'); .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
@@ -500,118 +340,100 @@ Object {
 }
 
 <div>
-      <div
-        class="sc-AxjAm sc-AxirZ c0"
-      >
-        <div
-          class="sc-AxjAm sc-AxirZ c1"
-        >
-          <label
-            class="sc-AxmLO sc-fzozJi c2"
-            color="#0000FF"
-            for="default"
-          >
-            Test text
-          </label>
-          <span
-            class="sc-AxiKw sc-AxhCb c3"
-          >
-            <svg
-              role="presentation"
-              style="width: .75rem; height: .75rem;"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
-                style="fill: #0000FF;"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
+  <div
+    class="sc-AxjAm sc-AxirZ c0"
+  >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fzpjYC fEsBZT"
+      class="sc-AxjAm sc-AxirZ c1"
     >
-      <div
-        class="sc-AxjAm sc-AxirZ sc-fzoXzr kaRujs"
+      <label
+        class="sc-AxmLO sc-fzozJi c2"
+        color="#9400D3"
+        for="default"
       >
-        <label
-          class="sc-AxmLO sc-fzozJi sc-fzoLag fhQidO"
-          color="#0000FF"
-          for="default"
+        Test text
+      </label>
+      <span
+        class="sc-AxiKw sc-AxhCb c3"
+      >
+        <svg
+          role="presentation"
+          style="width: .75rem; height: .75rem;"
+          viewBox="0 0 24 24"
         >
-          Test text
-        </label>
-        <span
-          class="sc-AxiKw sc-AxhCb sc-fznxsB ENtBQ"
-        >
-          <svg
-            role="presentation"
-            style="width: .75rem; height: .75rem;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
-              style="fill: #0000FF;"
-            />
-          </svg>
-        </span>
-      </div>
+          <path
+            d="M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z"
+            style="fill: #9400D3;"
+          />
+        </svg>
+      </span>
     </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
+  </div>
+</div>
+`;
+
+exports[`Label should have text be colorValid and a check icon if given a isValid prop of true 1`] = `
+.c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: #0000FF;
+  margin-bottom: .25em;
+  font-size: .75em;
 }
+
+.c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+.c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+}
+
+.c3 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-left: 0.25rem;
+}
+
+<div>
+  <div
+    class="sc-AxjAm sc-AxirZ c0"
+  >
+    <div
+      class="sc-AxjAm sc-AxirZ c1"
+    >
+      <label
+        class="sc-AxmLO sc-fzozJi c2"
+        color="#0000FF"
+        for="default"
+      >
+        Test text
+      </label>
+      <span
+        class="sc-AxiKw sc-AxhCb c3"
+      >
+        <svg
+          role="presentation"
+          style="width: .75rem; height: .75rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+            style="fill: #0000FF;"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+</div>
 `;

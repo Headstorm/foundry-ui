@@ -2,30 +2,22 @@ import React, { ReactNode, SyntheticEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
-import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import { Div, Input as InputElement } from '../../htmlElements';
 
-const Container = styled.div`
+const Container = styled(Div)`
   width: 10rem;
   position: relative;
   display: flex;
   flex-flow: row nowrap;
   border 2px solid ${colors.grayMedium};
   border-radius: 0.25em;
-  ${fonts.body}
-
-  *,
-  * * {
-    box-sizing: border-box;
-  }
 `;
 
 const TextInputContainer = styled(InputElement)`
   border: 0 none;
   outline: 0 none;
   height: 2em;
-  ${fonts.body}
   font-size: 1em;
   width: 0px;
   flex: 1 1 100%;

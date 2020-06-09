@@ -85,7 +85,6 @@ const StyledExpansionIconSpan = styled(Span)`
 export const TableContainer = styled(TableElement)`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
     width: ${reachedMinWidth ? '100%' : 'auto'};
-    ${fonts.body}
     background-color: ${colors.background};
     border-collapse: collapse;
 

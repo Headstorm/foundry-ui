@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -13,7 +13,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -56,7 +56,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -74,7 +74,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
@@ -122,7 +122,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 `;
 
 exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -134,7 +134,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -177,7 +177,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -195,7 +195,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
@@ -244,7 +244,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  500;700;900&display=swap'); .c0 {
+  .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -256,7 +256,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -299,7 +299,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -317,14 +317,14 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
   text-align: left;
 }
 
-500;700;900&display=swap'); .c4 {
+.c4 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   background: white;
@@ -335,7 +335,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border: 0.5px solid rgba(211,214,215,0.25);
 }
 
-500;700;900&display=swap'); .c5 {
+.c5 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   padding: 0.5rem;
@@ -356,7 +356,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   outline: none;
 }
 
-500;700;900&display=swap'); .c6 {
+.c6 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -454,7 +454,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  500;700;900&display=swap'); .c0 {
+  .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -466,7 +466,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -509,7 +509,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -527,7 +527,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
@@ -572,7 +572,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -584,7 +584,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -627,7 +627,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -645,7 +645,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
@@ -691,7 +691,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -703,7 +703,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -746,7 +746,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -764,14 +764,14 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
   text-align: left;
 }
 
-500;700;900&display=swap'); .c4 {
+.c4 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   background: white;
@@ -782,7 +782,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   border: 0.5px solid rgba(211,214,215,0.25);
 }
 
-500;700;900&display=swap'); .c5 {
+.c5 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   padding: 0.5rem;
@@ -803,7 +803,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   outline: none;
 }
 
-500;700;900&display=swap'); .c6 {
+.c6 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -901,7 +901,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 `;
 
 exports[`Dropdown does not display options on initial render 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -913,7 +913,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -956,7 +956,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -974,7 +974,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
@@ -1020,7 +1020,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 `;
 
 exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -1032,7 +1032,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -1075,7 +1075,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -1093,7 +1093,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
@@ -1141,7 +1141,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
-500;700;900&display=swap'); .c0 {
+.c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
@@ -1153,7 +1153,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
 }
 
-500;700;900&display=swap'); .c1 {
+.c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: inline-block;
@@ -1196,7 +1196,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   background-color: #101317;
 }
 
-500;700;900&display=swap'); .c3 {
+.c3 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
@@ -1214,7 +1214,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: 3rem;
 }
 
-500;700;900&display=swap'); .c2 {
+.c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
