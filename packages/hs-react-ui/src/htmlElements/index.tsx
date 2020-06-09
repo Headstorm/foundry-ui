@@ -1,7 +1,8 @@
+import { ComponentType } from 'react'
 import styled, { StyledComponent } from 'styled-components';
 import fonts from '../enums/fonts';
 
-const withGlobalStyle = (Component: StyledComponent<any, any>) => styled(Component)`
+const withGlobalStyle = (Component: StyledComponent<ComponentType, object>) => styled(Component)`
   box-sizing: border-box;
   ${process.env.NODE_ENV !== 'test' ? fonts.importFonts : ''}
   ${fonts.body}
