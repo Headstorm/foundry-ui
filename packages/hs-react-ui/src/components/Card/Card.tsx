@@ -3,13 +3,13 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
+import { Div } from '../../htmlElements';
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Div)`
   ${({ elevation = 0 }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
 
-    font-family: Gotham;
     font-size: 1rem;
 
     border-radius: 0.25rem;
@@ -23,18 +23,18 @@ export const CardContainer = styled.div`
   `}
 `;
 
-export const Header = styled.div`
+export const Header = styled(Div)`
   padding: 1.5rem 1.5rem 0rem;
   font-weight: bold;
   color: ${colors.grayDark};
 `;
 
-export const Body = styled.div`
+export const Body = styled(Div)`
   padding: 1.5rem 1.5rem;
   color: ${colors.grayMedium};
 `;
 
-export const Footer = styled.div`
+export const Footer = styled(Div)`
   padding: 1rem 1.5rem;
   display: flex;
   flex-flow: row wrap;

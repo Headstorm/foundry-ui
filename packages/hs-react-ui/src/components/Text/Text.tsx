@@ -1,14 +1,14 @@
 import React from 'react';
-import styled, { css, keyframes, StyledComponentBase } from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
+import Progress from '../Progress/Progress';
+import { Span } from '../../htmlElements';
 
 /* Default Styled Text Container */
-export const TextContainer = styled.span`
+export const TextContainer = styled(Span)`
   ${({ size, color }: { size: string; color: string }) => `
-    display: inline-block;
-    font-family: Gotham;
     font-size: ${size};
     color: ${color};
   `}
@@ -23,50 +23,29 @@ export interface TextProps {
   isProcessing?: boolean;
   size?: string;
   StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
 }
 
-/* Keyframes for the loading bar gradient */
-const movingGradient = keyframes`
-  0% { background-position: 0% bottom; }
-  100% { background-position: 200% bottom; }
-`;
-
-/* Animation to scroll the gradient toward the right */
-const animation = css`
-  ${movingGradient} 8s linear infinite;
-`;
-
-/* Styled div that represents the scroll bar
-   Note: The border-radius 9999px is used to create a pill shape */
-const Progress = styled.div`
-  ${({ size }: { size: string }) => css`
-    background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2),
-        rgba(255, 255, 255, 0.2)
-      )
-      repeat;
-    background-size: 400% 100%;
+/* Styled div that represents the scroll bar */
+const StyledProgress = styled(Progress)`
+  ${({ size }: { size: string }) => `
     width: calc(${size} * 10);
     height: ${size};
-    border-radius: 9999px;
-    animation: ${animation};
   `}
 `;
 
-const LeftIconContainer = styled.div`
-  display: inline-flex;
-  margin-right: 0.25rem;
+const IconContainer = styled(Span)`
+  ${({ side }: { side: 'left' | 'right' }) => `
+    margin-${side === 'left' ? 'right' : 'left'}: .5em;
+    display: inline-flex;
+    vertical-align: text-bottom;
+  `}
 `;
 
-const RightIconContainer = styled.div`
-  display: inline-flex;
-  margin-left: 0.25rem;
-`;
-
+// TODO: If children are passed in and loading===true,
+// set the children to visibility: none and have the loading bar fill their width
+// that way the end developer can pass "placeholder" text for how long the text will probably be
+// when loaded
 const Text = ({
   children,
   color,
@@ -76,37 +55,41 @@ const Text = ({
   isProcessing,
   size = '1rem',
   StyledContainer = TextContainer,
+  StyledIconContainer = IconContainer,
 }: TextProps) => (
   <StyledContainer size={size} color={color}>
-    {isLoading && <Progress size={size} />}
+    {isLoading && <StyledProgress size={size} />}
     {!isLoading &&
       !isProcessing &&
       iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-        <LeftIconContainer>
+        <StyledIconContainer side="left">
           <Icon path={iconPrefix} size={size} />
-        </LeftIconContainer>
+        </StyledIconContainer>
       ) : (
-        <LeftIconContainer>{iconPrefix}</LeftIconContainer>
+        <StyledIconContainer side="left" size={size}>
+          {iconPrefix}
+        </StyledIconContainer>
       ))}
     {!isLoading && isProcessing && (
-      <LeftIconContainer>
+      <StyledIconContainer side="left">
         <Icon path={mdiLoading} size={size} spin={1} />
-      </LeftIconContainer>
+      </StyledIconContainer>
     )}
     {!isLoading && children}
 
     {!isLoading &&
       iconSuffix &&
       (typeof iconSuffix === 'string' ? (
-        <RightIconContainer>
+        <StyledIconContainer side="right">
           <Icon path={iconSuffix} size={size} />
-        </RightIconContainer>
+        </StyledIconContainer>
       ) : (
-        <RightIconContainer>{iconSuffix}</RightIconContainer>
+        <StyledIconContainer side="right">{iconSuffix}</StyledIconContainer>
       ))}
   </StyledContainer>
 );
 
 Text.Container = TextContainer;
+Text.IconContainer = IconContainer;
 export default Text;

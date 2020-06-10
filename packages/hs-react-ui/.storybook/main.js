@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 // @ts-ignore
 const path = require('path');
 
@@ -30,4 +32,14 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-storysource',
   ],
+  webpackFinal: async (config, { configType }) => {
+    config.plugins.push(
+      // Removing Speedy so the static storybook styling doesn't break
+      new webpack.DefinePlugin({
+        SC_DISABLE_SPEEDY: true,
+      }),
+    );
+
+    return config;
+  },
 };

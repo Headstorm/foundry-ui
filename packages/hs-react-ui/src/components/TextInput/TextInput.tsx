@@ -1,90 +1,99 @@
-import React, { SyntheticEvent } from 'react';
+import React, { ReactNode, SyntheticEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
+import colors from '../../enums/colors';
+import { Div, Input as InputElement } from '../../htmlElements';
 
-const TextInputContainer = styled.input`
-  ${({ hasIconPrefix, hasMultiline }: { hasIconPrefix: boolean; hasMultiline: boolean }) => `
-padding-left: ${hasIconPrefix ? '2em' : '.5em'} ;
-cols: ${hasMultiline ? '100' : ''};
-rows: ${hasMultiline ? '10' : ''};
-border-radius: 0.5em;
-border 0 none;
-outline: 0 none;
-height: 2em;
-font-family: Gothic;
-font-size: 16px; 
-width: 100%;
-background-color: white;
-`}
-`;
-
-const ClearIconContainer = styled.div`
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  color: red;
-`;
-
-const IconContainer = styled.div`
-  position: absolute;
-  left: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-
-const ErrorContainer = styled.div`
-  top: 100px;
-  postition: abosolute;
-  color: red;
-`;
-
-const DivContainer = styled.div`
+const Container = styled(Div)`
   width: 10rem;
   position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  border 2px solid ${colors.grayMedium};
+  border-radius: 0.25em;
+`;
+
+const TextInputContainer = styled(InputElement)`
+  border: 0 none;
+  outline: 0 none;
+  height: 2em;
+  font-size: 1em;
+  width: 0px;
+  flex: 1 1 100%;
+  background-color: ${colors.background};
+`;
+
+const IconContainer = styled(Div)`
+  padding: 0.5em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${colors.grayMedium};
+`;
+
+const ErrorContainer = styled(Div)`
+  position: absolute;
+  top: calc(100% + 0.25em);
+  color: ${colors.destructive};
 `;
 
 export type TextInputProps = {
+  id?: string;
   placeholder?: string;
-  iconPrefix?: any;
+  iconPrefix?: ReactNode;
   onClear?: (event: SyntheticEvent) => void;
   onChange?: (event: SyntheticEvent) => void;
+  cols?: number;
+  rows?: number;
   value?: string;
-  isMultiline?: any;
+  isMultiline?: boolean;
   errorMessage?: string;
-  StyledDivContainer?: StyledComponentBase<any, {}>;
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledTextInputContainer?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
 };
 
 const TextInput = ({
+  id,
   placeholder = 'test props',
   iconPrefix,
   onClear,
   onChange,
+  cols = 10,
+  rows = 10,
   value,
   isMultiline,
   errorMessage,
-  StyledDivContainer = DivContainer,
-}: TextInputProps) => {
-  const StyledTextInputContainer = TextInputContainer;
-  return (
-    <StyledDivContainer>
-      {iconPrefix && <IconContainer>{iconPrefix}</IconContainer>}
-      {onClear && value && (
-        <ClearIconContainer onClick={onClear}>
-          <Icon path={mdiClose} size="16px" />
-        </ClearIconContainer>
-      )}
-      <StyledTextInputContainer
-        as={isMultiline ? 'textarea' : 'input'}
-        hasMultiline={!!isMultiline}
-        hasIconPrefix={!!iconPrefix}
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-      />
-      {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
-    </StyledDivContainer>
-  );
-};
+  StyledContainer = Container,
+  StyledTextInputContainer = TextInputContainer,
+  StyledIconContainer = IconContainer,
+}: TextInputProps) => (
+  <StyledContainer>
+    {iconPrefix && <StyledIconContainer>{iconPrefix}</StyledIconContainer>}
+    {/*
+      // @ts-ignore */}
+    <StyledTextInputContainer
+      as={isMultiline ? 'textarea' : 'input'}
+      cols={cols}
+      rows={rows}
+      placeholder={placeholder}
+      onChange={onChange}
+      value={value}
+      id={id}
+    />
+    {onClear && value && (
+      <StyledIconContainer onClick={onClear}>
+        <Icon path={mdiClose} size="1em" />
+      </StyledIconContainer>
+    )}
+    {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+  </StyledContainer>
+);
+
+TextInput.Container = Container;
+TextInput.TextInputContainer = TextInputContainer;
+TextInput.IconContainer = IconContainer;
+
 export default TextInput;
