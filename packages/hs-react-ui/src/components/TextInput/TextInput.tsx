@@ -1,4 +1,4 @@
-import React, { ReactNode, SyntheticEvent } from 'react';
+import React, { ReactNode, SyntheticEvent, useCallback } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
@@ -135,7 +135,7 @@ const TextInput = ({
   debounceInterval = 8,
 }: TextInputProps) => {
 
-  const debouncedChange = debounce(debouncedOnChange, debounceInterval);
+  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
 
   // Determine the correct input type. Using a single input and the 'as' keyword
   // to display as a text area disables the ability to set cols/rows
