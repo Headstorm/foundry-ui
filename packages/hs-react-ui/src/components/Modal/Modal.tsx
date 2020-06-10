@@ -23,7 +23,7 @@ export interface ModalProps {
 }
 
 const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
-  ${({ backgroundBlur = '0', backgroundDarkness = 0 }) => `
+  ${({ backgroundBlur = '0', backgroundDarkness = 100 }) => `
     height: 100%;
     width: 100%;
 
@@ -33,10 +33,10 @@ const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: n
 
     z-index: 1000;
 
-    backdrop-filter: blur(${backgroundBlur}) opacity(${1 - backgroundDarkness / 100});
+    backdrop-filter: blur(${backgroundBlur}) brightness(${1 - backgroundDarkness});
   `}
 `;
-
+ 
 const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
@@ -76,7 +76,7 @@ const Modal = ({
   header,
   body,
   footer,
-  backgroundBlur,
+  backgroundBlur, 
   backgroundDarkness,
 }: ModalProps) => {
   const cardHeader = (

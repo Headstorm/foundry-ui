@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../enums/colors';
 
+
 const Text = styled.span``;
 
 export enum ButtonTypes {
@@ -9,6 +10,7 @@ export enum ButtonTypes {
   secondary = 'secondary',
   default = 'default',
   destructive = 'destructive',
+  
 }
 
 export const ButtonContainer = styled.button`
@@ -36,6 +38,7 @@ export type ButtonProps = {
   isLoading?: any;
   children?: string | Node;
   onClick: (...args: any[]) => void;
+
 };
 
 const Button = ({

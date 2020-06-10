@@ -73,4 +73,16 @@ storiesOf('Button', module)
       );
     },
     { design },
+  )
+  
+  
+  .add(
+    'Link Button',
+    () => (
+
+  
+            <a href="http://localhost:9009/?path=/story/appendix--appendix">Appendix</a>
+
+    ),
+    { design },
   );
