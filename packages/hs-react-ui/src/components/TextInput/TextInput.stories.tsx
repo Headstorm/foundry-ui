@@ -60,7 +60,7 @@ storiesOf('TextInput', module)
         <TextInput
           ariaLabel={text('ariaLabel', 'textInput')}
           onChange={onChangeCallback}
-          debounceInterval={150}
+          debounceInterval={number('debounceInterval', 150)}
           debouncedOnChange={onDebounceCallback}
           value={inputValue}
           placeholder={text('placeholder', 'Place Holder')}
