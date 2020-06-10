@@ -4,10 +4,9 @@ import useResizeObserver from 'use-resize-observer/polyfilled';
 import { mdiArrowDown, mdiChevronRight, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
 import colors from '../../enums/colors';
-import fonts from '../../enums/fonts';
+import { Span, Table as TableElement, TD, TH, TR } from '../../htmlElements';
 
 /* Types and Interfaces */
-
 export type CellOptions = {
   RenderedCell: any;
   headerColumnKey: string;
@@ -48,7 +47,7 @@ export interface columnTypes {
 }
 
 export type TableProps = {
-  areGroupsCollapsable?: boolean;
+  areGroupsCollapsible?: boolean;
   columnGap?: string;
   columns: columnTypes;
   data?: columnTypes[] | Array<Array<columnTypes>>;
@@ -77,14 +76,13 @@ type collapsedState = { [key: string]: string };
 
 /** Start of styled components */
 
-const StyledExpansionIconSpan = styled.span`
+const StyledExpansionIconSpan = styled(Span)`
   cursor: pointer;
 `;
 
-export const TableContainer = styled.table`
+export const TableContainer = styled(TableElement)`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
     width: ${reachedMinWidth ? '100%' : 'auto'};
-    ${fonts.body}
     background-color: ${colors.background};
     border-collapse: collapse;
 
@@ -93,7 +91,7 @@ export const TableContainer = styled.table`
   `}
 `;
 
-export const Header = styled.tr`
+export const Header = styled(TR)`
   ${({ columnGap, columnWidths }: RowProps) => `
     display: grid;
     grid-template-columns: ${columnWidths};
@@ -106,7 +104,7 @@ export const Header = styled.tr`
   `}
 `;
 
-export const HeaderCell = styled.th`
+export const HeaderCell = styled(TH)`
   ${({ sortable }: { sortable: boolean }) => `
     display: flex;
     flex-flow: row;
@@ -124,7 +122,7 @@ export const HeaderCell = styled.th`
   `}
 `;
 
-export const ResponsiveTitle = styled.span`
+export const ResponsiveTitle = styled(Span)`
   ${({ sortable }: { sortable: boolean }) => `
     color: ${colors.primary};
     padding: 0.5rem;
@@ -137,7 +135,7 @@ export const ResponsiveTitle = styled.span`
   `}
 `;
 
-export const Row = styled.tr`
+export const Row = styled(TR)`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => `
     display: grid;
     grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
@@ -175,7 +173,7 @@ export const GroupRow = styled(Row)`
   background-color: ${colors.grayXlight};
 `;
 
-export const Cell = styled.td`
+export const Cell = styled(TD)`
   display: block;
   padding: 1rem 0rem;
   word-break: break-word;
@@ -232,12 +230,12 @@ export const ExpansionIconColumnName = '__EXPANSION_COLUMN__';
 
 // TODO: Add the table width observer to a container which fills the area, so the table can grow
 // once there is enough room for it to do so (if the table itself isn't full width)
-// TODO: Add window width media query to compliment the table width media query API
+// TODO: Add window width media query to complement the table width media query API
 
 const Table = ({
   columnGap = '1rem',
   columns,
-  areGroupsCollapsable = false,
+  areGroupsCollapsible = false,
   data = [],
   defaultSort = ['', false], // key, direction
   groupHeaderPosition = 'above',
@@ -258,7 +256,7 @@ const Table = ({
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
-  if (areGroupsCollapsable && !copiedColumns[ExpansionIconColumnName]) {
+  if (areGroupsCollapsible && !copiedColumns[ExpansionIconColumnName]) {
     copiedColumns[ExpansionIconColumnName] = collapsedExpandedIconColumn;
   }
 
@@ -367,7 +365,7 @@ const Table = ({
    * @param {columnTypes} options.row - the data for the row, each cell should be able to the row's data
    * @param {number} options.index - The index of the cell in the row
    * @param {number} options.indexModifier - Used only when creating cells in a group. Used to account for group labels
-   * @param {any} options.CollapseExpandedIcon - Component to be used for the collapse icon. Only used for collapsable group label cells
+   * @param {any} options.CollapseExpandedIcon - Component to be used for the collapse icon. Only used for collapsible group label cells
    * @param {number} options.groupIndex - The index of the group. Used only when creating cells as part of a group
    * @param {boolean} options.isCollapsed - Used when creating cells with a CollapseExpandedIcon
    * @param {string} options.groupLabelDataString - The stringified version of the group label row
@@ -412,7 +410,7 @@ const Table = ({
           {row && row[headerColumnKey]}
           {CollapseExpandedIcon &&
           usingGroups &&
-          areGroupsCollapsable &&
+          areGroupsCollapsible &&
           headerColumnKey === ExpansionIconColumnName ? (
             <CollapseExpandedIcon
               isCollapsed={isCollapsed}
@@ -466,7 +464,7 @@ const Table = ({
               rowNum={index + indexModifier}
               key={`row${JSON.stringify(row) + index}`}
               reachedMinWidth={width < minWidthBreakpoint}
-              isCollapsed={areGroupsCollapsable && isCollapsed}
+              isCollapsed={areGroupsCollapsible && isCollapsed}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = copiedColumns[headerColumnKey].cellComponent || StyledCell;
