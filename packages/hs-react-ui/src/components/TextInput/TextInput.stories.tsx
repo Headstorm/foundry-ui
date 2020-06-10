@@ -32,7 +32,6 @@ storiesOf('TextInput', module)
       }, []);
       const onDebounceCallback = useCallback(event => {
         action('onDebounceCallback')(event.target.value);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onClearCallback = useCallback(() => {
         setInputValue('');
@@ -40,27 +39,21 @@ storiesOf('TextInput', module)
       }, []);
       const onFocusCallback = useCallback(event => {
         action('onFocusCallback')(event.target.value);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onBlurCallback = useCallback(event => {
         action('onBlurCallback')(event.target.value);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onInputCallback = useCallback(event => {
         action('onInputCallback')(event.target.value);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onKeyPressCallback = useCallback(event => {
         action('onKeypressCallback')(event.key);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onKeyDownCallback = useCallback(event => {
         action('onKeyDownCallback')(event.key);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onKeyUpCallback = useCallback(event => {
         action('onKeyUpCallback')(event.key);
-        // action('debouncedOnChange')(++debounceCounter);
       }, []);
 
       return (
