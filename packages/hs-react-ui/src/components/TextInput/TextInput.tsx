@@ -7,7 +7,7 @@ import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
 
-const Container = styled.div`
+const Container = styled(Div)`
   ${({ isValid }: { isValid?: boolean }) => `
   border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
   min-width: 10rem;
