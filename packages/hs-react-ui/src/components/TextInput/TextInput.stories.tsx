@@ -58,7 +58,7 @@ storiesOf('TextInput', module)
 
       return (
         <TextInput
-          ariaLabel="textInput"
+          ariaLabel={text('ariaLabel', 'textInput')}
           onChange={onChangeCallback}
           debounceInterval={150}
           debouncedOnChange={onDebounceCallback}
@@ -119,7 +119,7 @@ storiesOf('TextInput', module)
           iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
           isMultiline={isMultiline}
           errorMessage={isError}
-          Input={Input}
+          StyledInput={Input}
         />
       );
     },
