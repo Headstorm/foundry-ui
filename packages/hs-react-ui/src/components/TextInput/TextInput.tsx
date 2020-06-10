@@ -28,13 +28,15 @@ const TextInputContainer = styled(InputElement)`
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
-  border: 0 none;
-  outline: 0 none;
-  min-height: 2em;
-  font-size: 1em;
-  min-width: 0px;
-  background-color: ${colors.background};
-  resize: none;
+  ${({ multiLineIsResizable }: TextInputProps) => `
+    border: 0 none;
+    outline: 0 none;
+    min-height: 2em;
+    font-size: 1em;
+    min-width: 0px;
+    background-color: ${colors.background};
+    resize: ${multiLineIsResizable ? 'both' : 'none'};
+  `}
 `;
 
 const IconContainer = styled(Div)`
@@ -78,6 +80,7 @@ export type TextInputProps = {
   ariaLabel?: string;
   type?: string;
   debounceInterval?: number;
+  multiLineIsResizable?: boolean;
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
@@ -127,6 +130,7 @@ const TextInput = ({
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
   debounceInterval = 8,
+  multiLineIsResizable,
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
@@ -165,6 +169,7 @@ const TextInput = ({
         value={value || defaultValue}
         id={id}
         type={type}
+        multiLineIsResizable={multiLineIsResizable}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear}>

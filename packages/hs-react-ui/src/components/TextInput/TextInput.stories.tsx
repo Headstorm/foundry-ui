@@ -79,6 +79,7 @@ storiesOf('TextInput', module)
           onKeyUp={onKeyUpCallback}
           onFocus={onFocusCallback}
           onBlur={onBlurCallback}
+          multiLineIsResizable={boolean('multiLineIsResizable', false)}
         />
       );
     },
