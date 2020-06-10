@@ -105,14 +105,15 @@ const createIcon = (
   return <StyledIconContainer>{iconPrefix}</StyledIconContainer>;
 };
 
+const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
   id,
   placeholder = 'test props',
   iconPrefix,
   onClear,
-  onChange = (e: SyntheticEvent) => {},
-  debouncedOnChange = () => {},
+  onChange = defaultCallback,
+  debouncedOnChange = defaultCallback,
   onKeyPress,
   onKeyDown,
   onKeyUp,
@@ -134,7 +135,6 @@ const TextInput = ({
   StyledIconContainer = IconContainer,
   debounceInterval = 8,
 }: TextInputProps) => {
-
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
 
@@ -169,7 +169,7 @@ const TextInput = ({
         onBlur={onBlur}
         onReset={onReset}
         onInput={onInput}
-        value={value ? value : defaultValue}
+        value={value || defaultValue}
         id={id}
         type={type}
       />

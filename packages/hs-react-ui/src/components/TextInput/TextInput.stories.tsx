@@ -12,7 +12,6 @@ const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A29',
 };
-let debounceCounter = 0;
 storiesOf('TextInput', module)
   .add(
     'Basic Text Input',
@@ -24,43 +23,42 @@ storiesOf('TextInput', module)
       };
 
       // Setup callbacks to prevent unnecessary rendering
-      const onChangeCallback = useCallback((event) => {
+      const onChangeCallback = useCallback(event => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const newValue = event.target.value;
         setInputValue(newValue);
         action('onChange')(newValue);
       }, []);
-      const onDebounceCallback = useCallback((event) => {
-        debounceCounter++
-        action('onDebounceCallback')(debounceCounter);
+      const onDebounceCallback = useCallback(event => {
+        action('onDebounceCallback')(event.target.value);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
       const onClearCallback = useCallback(() => {
         setInputValue('');
         action('onClear')();
       }, []);
-      const onFocusCallback = useCallback((event) => {
+      const onFocusCallback = useCallback(event => {
         action('onFocusCallback')(event.target.value);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
-      const onBlurCallback = useCallback((event) => {
+      const onBlurCallback = useCallback(event => {
         action('onBlurCallback')(event.target.value);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
-      const onInputCallback = useCallback((event) => {
+      const onInputCallback = useCallback(event => {
         action('onInputCallback')(event.target.value);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
-      const onKeyPressCallback = useCallback((event) => {
+      const onKeyPressCallback = useCallback(event => {
         action('onKeypressCallback')(event.key);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
-      const onKeyDownCallback = useCallback((event) => {
+      const onKeyDownCallback = useCallback(event => {
         action('onKeyDownCallback')(event.key);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
-      const onKeyUpCallback = useCallback((event) => {
+      const onKeyUpCallback = useCallback(event => {
         action('onKeyUpCallback')(event.key);
         // action('debouncedOnChange')(++debounceCounter);
       }, []);
