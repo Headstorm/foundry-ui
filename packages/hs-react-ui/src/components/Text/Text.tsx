@@ -3,13 +3,12 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
-import fonts from '../../enums/fonts';
 import Progress from '../Progress/Progress';
+import { Span } from '../../htmlElements';
 
 /* Default Styled Text Container */
-export const TextContainer = styled.span`
+export const TextContainer = styled(Span)`
   ${({ size, color }: { size: string; color: string }) => `
-    ${fonts.body}
     font-size: ${size};
     color: ${color};
   `}
@@ -35,7 +34,7 @@ const StyledProgress = styled(Progress)`
   `}
 `;
 
-const IconContainer = styled.span`
+const IconContainer = styled(Span)`
   ${({ side }: { side: 'left' | 'right' }) => `
     margin-${side === 'left' ? 'right' : 'left'}: .5em;
     display: inline-flex;
