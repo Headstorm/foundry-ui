@@ -10,7 +10,6 @@ const Container = styled.div`
   ${({ isValid }: { isValid?: boolean }) => `
   border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
   min-width: 10rem;
-  // width: 100%;
   position: relative;
   display: flex;
   flex-flow: row;
@@ -53,6 +52,7 @@ const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: ${colors.grayMedium};
+  cursor: pointer;
 `;
 
 const ErrorContainer = styled.div`
@@ -68,9 +68,9 @@ export type TextInputProps = {
   onClear?: (event: SyntheticEvent) => void;
   onChange?: (event: SyntheticEvent) => void;
   debouncedOnChange?: (event: SyntheticEvent) => void;
-  onKeypress?: (event: SyntheticEvent) => void;
-  onKeydown?: (event: SyntheticEvent) => void;
-  onKeyup?: (event: SyntheticEvent) => void;
+  onKeyPress?: (event: SyntheticEvent) => void;
+  onKeyDown?: (event: SyntheticEvent) => void;
+  onKeyUp?: (event: SyntheticEvent) => void;
   onBlur?: (event: SyntheticEvent) => void;
   onInput?: (event: SyntheticEvent) => void;
   onFocus?: (event: SyntheticEvent) => void;
@@ -113,9 +113,9 @@ const TextInput = ({
   onClear,
   onChange = (e: SyntheticEvent) => {},
   debouncedOnChange = () => {},
-  onKeypress,
-  onKeydown,
-  onKeyup,
+  onKeyPress,
+  onKeyDown,
+  onKeyUp,
   onBlur,
   onInput,
   onFocus,
@@ -135,6 +135,7 @@ const TextInput = ({
   debounceInterval = 8,
 }: TextInputProps) => {
 
+  // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
 
   // Determine the correct input type. Using a single input and the 'as' keyword
@@ -146,7 +147,6 @@ const TextInput = ({
     InputComponent = TextAreaInputContainer;
   }
 
-  console.log()
   return (
     <StyledContainer isValid={isValid}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
@@ -162,9 +162,9 @@ const TextInput = ({
           onChange(e);
           debouncedChange(e);
         }}
-        onKeyPress={onKeypress}
-        onKeyDown={onKeydown}
-        onKeyUp={onKeyup}
+        onKeyPress={onKeyPress}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
         onFocus={onFocus}
         onBlur={onBlur}
         onReset={onReset}
@@ -173,7 +173,7 @@ const TextInput = ({
         id={id}
         type={type}
       />
-      {onClear && value && (
+      {onClear && (
         <StyledIconContainer onClick={onClear}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>

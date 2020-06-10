@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { text, select, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -23,32 +23,57 @@ storiesOf('TextInput', module)
         ...IconPaths,
       };
 
+      // Setup callbacks to prevent unnecessary rendering
+      const onChangeCallback = useCallback((event) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const newValue = event.target.value;
+        setInputValue(newValue);
+        action('onChange')(newValue);
+      }, []);
+      const onDebounceCallback = useCallback((event) => {
+        debounceCounter++
+        action('onDebounceCallback')(debounceCounter);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
+      const onClearCallback = useCallback(() => {
+        setInputValue('');
+        action('onClear')();
+      }, []);
+      const onFocusCallback = useCallback((event) => {
+        action('onFocusCallback')(event.target.value);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
+      const onBlurCallback = useCallback((event) => {
+        action('onBlurCallback')(event.target.value);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
+      const onInputCallback = useCallback((event) => {
+        action('onInputCallback')(event.target.value);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
+      const onKeyPressCallback = useCallback((event) => {
+        action('onKeypressCallback')(event.key);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
+      const onKeyDownCallback = useCallback((event) => {
+        action('onKeyDownCallback')(event.key);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
+      const onKeyUpCallback = useCallback((event) => {
+        action('onKeyUpCallback')(event.key);
+        // action('debouncedOnChange')(++debounceCounter);
+      }, []);
 
       return (
         <TextInput
           ariaLabel="textInput"
-          onChange={event => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const newValue = event.target.value;
-            setInputValue(newValue);
-            action('onChange')(newValue);
-          }}
+          onChange={onChangeCallback}
           debounceInterval={150}
-          debouncedOnChange={event => {
-            console.log(event);
-            action('debouncedOnChange')(++debounceCounter);
-          }}
+          debouncedOnChange={onDebounceCallback}
           value={inputValue}
           placeholder={text('placeholder', 'Place Holder')}
-          onClear={
-            boolean('clearable', false)
-              ? () => {
-                  setInputValue('');
-                  action('onClear')();
-                }
-              : undefined
-          }
+          onClear={boolean('clearable', false) ? onClearCallback : undefined}
           iconPrefix={select('iconPrefix', options, options.none)}
           isMultiline={boolean('isMultiline?', false)}
           rows={number('rows', 0)}
@@ -57,6 +82,12 @@ storiesOf('TextInput', module)
           errorMessage={text('errorMessage', '')}
           defaultValue={text('defaultValue', '')}
           type={text('type', '')}
+          onInput={onInputCallback}
+          onKeyPress={onKeyPressCallback}
+          onKeyDown={onKeyDownCallback}
+          onKeyUp={onKeyUpCallback}
+          onFocus={onFocusCallback}
+          onBlur={onBlurCallback}
         />
       );
     },
