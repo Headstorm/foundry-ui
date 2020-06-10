@@ -52,7 +52,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   type="fill"
 >
   <div
-    class="sc-AxjAm sc-AxirZ sc-fzoLag c1"
+    class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
   />
 </button>
 `;
@@ -148,7 +148,7 @@ exports[`Button shows loading text when provided 1`] = `
     type="fill"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fzoLag c1"
+      class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
     />
   </button>
 </div>
