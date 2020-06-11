@@ -155,9 +155,9 @@ const Button = ({
       color={color}
       type={type}
     >
-      {!isProcessing
-        && iconPrefix
-        && (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+      {!isProcessing &&
+        iconPrefix &&
+        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <LeftIconContainer>
             <UnstyledIcon path={iconPrefix} size="1rem" />
           </LeftIconContainer>
@@ -171,8 +171,8 @@ const Button = ({
       )}
       {children}
 
-      {iconSuffix
-        && (typeof iconSuffix === 'string' ? (
+      {iconSuffix &&
+        (typeof iconSuffix === 'string' ? (
           <RightIconContainer>
             <UnstyledIcon path={iconSuffix} size="1rem" />
           </RightIconContainer>

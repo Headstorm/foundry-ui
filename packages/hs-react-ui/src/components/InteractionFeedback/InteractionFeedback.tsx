@@ -4,6 +4,8 @@ import styled, { StyledComponentBase } from 'styled-components';
 import shortid from 'shortid';
 import colors from '../../enums/colors';
 
+// TODO Reduce amount of any/ts-ignore done here
+
 const Circle = styled.svg`
   pointer-events: none;
   position: absolute;
@@ -21,10 +23,10 @@ enum feedbackTypes {
 type Animation = { cx: string; cy: string; id: string };
 type Transition = { r: string } & Animation;
 type InteractionFeedbackProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}>
+  StyledContainer?: string & StyledComponentBase<any, {}>;
 
   children: React.ReactNode;
-  interpolationFunctions?: Record<string, (val: any) => any>,
+  interpolationFunctions?: Record<string, (val: any) => any>;
   transitionProps: any;
   type?: feedbackTypes;
 };
@@ -53,19 +55,10 @@ const InteractionFeedback = ({
     }
   }, [ref]);
 
-  const transitions = useTransition<Animation, { r: string }>(
-    animations,
-    item => item.id,
-    {
-      ...transitionProps,
-      // TODO onRest is not specified in useTransition's types, but it is available for us to use.
-      //   Discussions suggest that updating to v9 will fix this.
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      onRest: (item: Transition) =>
-        setAnimations(animations.filter(ani => ani.id !== item.id)),
-    },
-  );
+  const transitions: any = useTransition<Animation, any>(animations, (item: Animation) => item.id, {
+    ...transitionProps,
+    onRest: (item: Transition) => setAnimations(animations.filter(ani => ani.id !== item.id)),
+  });
 
   const mouseDownHandler = useCallback(
     (e: React.MouseEvent) => {
@@ -90,7 +83,7 @@ const InteractionFeedback = ({
         height={`${dimensions.height}px`}
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
       >
-        {transitions.map(({ item, props }) => {
+        {transitions.map(({ item, props }: { item: Transition; props: any }) => {
           const circleProps = Object.entries(props).reduce((acc, [key, val]) => {
             return {
               ...acc,
@@ -104,7 +97,8 @@ const InteractionFeedback = ({
               fill={colors.primary}
               cx={item.cx}
               cy={item.cy}
-              {...circleProps // eslint-disable-line react/jsx-props-no-spreading
+              {
+                ...circleProps // eslint-disable-line react/jsx-props-no-spreading
               }
             />
           );

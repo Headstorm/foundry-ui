@@ -1,8 +1,7 @@
 import React from 'react';
-import { color, number, select } from '@storybook/addon-knobs';
+import { color, number } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { config } from 'react-spring';
 
 import InteractionFeedback from './InteractionFeedback';
 import Button from '../Button';
@@ -14,19 +13,49 @@ const design = {
 };
 
 storiesOf('InteractionFeedback', module).add(
-  'Splashy splash',
+  'Splash',
   () => {
-    const entranceOpacity = number('Circle entrance opacity', 0.5, { range: true, min: 0, max: 1, step: 0.05 });
-    const exitOpacity = number('Circle exit opacity', 0, { range: true, min: 0, max: 1, step: 0.05 });
-    const fill = color('fillColor', colors.grayLight);
+    const entranceOpacity = number(
+      'Circle entrance opacity',
+      0.25,
+      {
+        range: true,
+        min: 0,
+        max: 1,
+        step: 0.05,
+      },
+      'Circle fill',
+    );
+    const exitOpacity = number(
+      'Circle exit opacity',
+      0,
+      {
+        range: true,
+        min: 0,
+        max: 1,
+        step: 0.05,
+      },
+      'Circle fill',
+    );
+    const fill = color('fillColor', colors.grayLight, 'Circle fill');
     const transitionProps = {
       enter: {
-        r: `${number('Maximum circle radius', 20, { range: true, min: 0, max: 40, step: 1 })}`,
+        r: `${number(
+          'Maximum circle radius',
+          100,
+          { range: true, min: 0, max: 100, step: 1 },
+          'Circle radius',
+        )}`,
         opacity: entranceOpacity,
         fill,
       },
       from: {
-        r: `${number('Starting circle radius', 0, { range: true, min: 0, max: 10, step: 1 })}`,
+        r: `${number(
+          'Starting circle radius',
+          0,
+          { range: true, min: 0, max: 100, step: 1 },
+          'Circle radius',
+        )}`,
         opacity: entranceOpacity,
         fill,
       },
@@ -35,7 +64,21 @@ storiesOf('InteractionFeedback', module).add(
         opacity: exitOpacity,
         fill,
       },
-      config: select('Circle physics', config, config.default),
+      config: {
+        mass: number('mass', 1, { range: true, min: 1, max: 10, step: 1 }, 'Circle physics'),
+        tension: number(
+          'tension',
+          750,
+          { range: true, min: 50, max: 1000, step: 50 },
+          'Circle physics',
+        ),
+        friction: number(
+          'friction',
+          35,
+          { range: true, min: 1, max: 100, step: 5 },
+          'Circle physics',
+        ),
+      },
     };
 
     const interpolationFunctions = {
