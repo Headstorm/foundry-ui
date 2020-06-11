@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { number, text, select } from '@storybook/addon-knobs';
+import { select, text, boolean, number, color } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import Modal from './Modal';
 import Button, { ButtonContainer, ButtonTypes } from '../Button/Button';
+import { mdiMessage, mdiSend } from '@mdi/js';
+import colors from '../../enums/colors';
 
 const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14',
+};
+
+const options = {
+  none: '',
+  mdiMessage,
+  mdiSend,
 };
 
 storiesOf('Modal', module)
@@ -53,13 +61,14 @@ storiesOf('Modal', module)
               header={text('header', 'Title')}
               body={text('body', 'Wait! You need to see this important information!')}
               footer={<ModalFooter />}
-              backgroundDarkness={number('backgroundDarkness', 0, {
+              insideClose={boolean('insideClose', false)}
+              backgroundDarkness={number('backgroundDarkness', 1, {
                 range: true,
                 min: 0,
                 max: 1,
                 step: 0.05,
               })}
-              backgroundBlur={`${number('backgroundBlur', 1, {
+              backgroundBlur={`${number('backgroundBlur', 0, {
                 range: true,
                 min: 0,
                 max: 5,
@@ -99,15 +108,16 @@ storiesOf('Modal', module)
           )}
           {isOpen && (
             <Button
-              StyledContainer={
-                ButtonContainers[select('StyledContainer', ButtonTypes, ButtonTypes.primary)]
-              }
-              onClick={() => {
-                setIsOpen(false);
-                action('button-click')();
-              }}
+              type={select('type', Button.ButtonTypes, Button.ButtonTypes.fill)}
+              color={color('color', colors.grayDark)}
+              onClick={() => setIsOpen(false)}
+              isLoading={boolean('isLoading', false)}
+              elevation={number('elevation', 0)}
+              isProcessing={boolean('isProcessing', false)}
+              iconPrefix={select('iconPrefix', options, options.none)}
+              iconSuffix={select('iconSuffix', options, options.none)}
             >
-              {text('children', 'Button Modal')}
+              {text('children', 'Default text')}
             </Button>
           )}
         </Background>

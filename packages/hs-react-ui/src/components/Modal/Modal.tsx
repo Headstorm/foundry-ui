@@ -3,6 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Card from '../Card';
 import { Footer, Header } from '../Card/Card';
 import { Div, Span } from '../../htmlElements';
+import colors from 'src/enums/colors';
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
@@ -11,7 +12,7 @@ export interface ModalProps {
   StyledHeader?: string & StyledComponentBase<any, {}>;
   StyledFooter?: string & StyledComponentBase<any, {}>;
   StyledCloseButton?: string & StyledComponentBase<any, {}>;
-
+  insideClose?: boolean;
   header?: ReactNode;
   body?: ReactNode;
   footer?: ReactNode;
@@ -24,7 +25,7 @@ export interface ModalProps {
 }
 
 const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
-  ${({ backgroundBlur = '0', backgroundDarkness = 100 }) => `
+  ${({ backgroundBlur = '0', backgroundDarkness = 1 }) => `
     height: 100%;
     width: 100%;
 
@@ -34,7 +35,7 @@ const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: n
 
     z-index: 1000;
 
-    backdrop-filter: blur(${backgroundBlur}) brightness(${1 - backgroundDarkness});
+    backdrop-filter: blur(${backgroundBlur}) brightness(${backgroundDarkness});
   `}
 `;
 
@@ -57,13 +58,17 @@ const ModalFooter = styled(Footer)`
 `;
 
 const ModalCloseButton = styled(Span)`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  ${({ insideClose }: { insideClose: boolean }) => `
+  position: ${insideClose ? 'absolute': 'fixed'};
+  top: ${insideClose ? '1rem' : '8rem'};
+  right: ${insideClose ? '1rem': '15rem'};
   font-size: 1.3rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   cursor: pointer;
+  z-index: ${insideClose ? null : '1011'};
+  color: ${insideClose ? colors.grayDark : colors.background};
+`}
 `;
 
 const Modal = ({
@@ -79,15 +84,25 @@ const Modal = ({
   footer,
   backgroundBlur,
   backgroundDarkness,
+  insideClose,
 }: ModalProps) => {
   const cardHeader = (
     <>
       <span>{header}</span>
-      <StyledCloseButton onClick={onClose}>&times;</StyledCloseButton>
+      {insideClose && (
+        <StyledCloseButton insideClose={insideClose} type="link" onClick={onClose}>
+          &times;
+        </StyledCloseButton>
+      )}
     </>
   );
   return (
     <>
+      {!insideClose && (
+        <StyledCloseButton insideClose={insideClose} type="link" onClick={onClose}>
+          &times;
+        </StyledCloseButton>
+      )}
       <StyledContainer>
         <Card
           elevation={1}
