@@ -155,7 +155,7 @@ export default ({
   debounceInterval = 8,
   axisLock = 'x',
   onDrag = (newVal: number) => {
-    console.log(newVal);
+    console.log(newVal); // eslint-disable-line no-console
   },
   disabled = false,
   min,
