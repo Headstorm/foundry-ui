@@ -12,7 +12,6 @@ import Dropdown from '../Dropdown';
 import Modal from '../Modal';
 import Text from '../Text';
 import Label from '../Label';
-import Table from '../Table';
 import colors from '../../enums/colors';
 
 const design = {
@@ -20,6 +19,7 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=0%3A1',
 };
 
+// All 50 + DC
 const stateAbbreviations = [
   'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL',
   'GA','HI','ID','IL','IN','IA','KS','KY','LA','ME',
@@ -29,19 +29,18 @@ const stateAbbreviations = [
  ];
 
  interface state {
-  firstName?: string;
-  lastName?: string;
-  title?: string;
-  city?: string;
-  streetAddress?: string;
-  state?: string;
-  phone?: string;
-  email?: string;
-  company?: string;
-  department?: string;
-  notifications?: boolean;
-  bio?: string;
-  age?: string; // TODO should be number, but input typing breaks it
+  firstName: string;
+  lastName: string;
+  title: string;
+  city: string;
+  state: string;
+  phone: string;
+  email: string;
+  company: string;
+  department: string;
+  notifications: boolean;
+  bio: string;
+  age: number;
  }
 
 const defaultState: state = {
@@ -49,10 +48,9 @@ const defaultState: state = {
   lastName: name.lastName(),
   title: name.title(),
   city: address.city(),
-  streetAddress: address.streetAddress(),
   state: address.stateAbbr(),
   phone: phone.phoneNumber(),
-  age: Math.ceil(Math.random() * 50 + 18) + '',
+  age: Math.ceil(Math.random() * 50 + 18),
   email: internet.email(),
   company: company.companyName(),
   department: commerce.department(),
@@ -67,14 +65,9 @@ const StyledFooter = styled(Card.Footer)`
 
 const StyledBody = styled(Card.Body)`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 0.5rem;
-  row-gap: 0.5rem;
-`;
-
-const StyledAgeInputContainer = styled(TextInput.Container)`
-  width: 5rem;
-  min-width: 0;
+  grid-template-columns: 1fr 1fr ;
+  column-gap: 5rem;
+  row-gap: 1.5rem;
 `;
 
 const StyledInput = styled(TextInput.Input)`
@@ -116,10 +109,11 @@ storiesOf('Form Example', module).add(
 
     const onReset = () => {
       setIsResetting(true);
+      setIsModalOpen(false);
       setTimeout(() => {
         setIsResetting(false);
         setState(Object.assign({}, savedState));
-      }, Math.random() * 750);
+      }, Math.random() * 1000);
     }
 
     const closeModal = () => {
@@ -178,7 +172,7 @@ storiesOf('Form Example', module).add(
     const Header = (
       <>
         <Text key="headerText" iconPrefix={mdiAccountCircleOutline}>
-          {`${state.firstName || ''}'s Profile`}
+          Edit Your Profile
         </Text>
         <Divider width="100%" />
       </>
@@ -197,8 +191,8 @@ storiesOf('Form Example', module).add(
           <Label
             labelText="First Name"
             htmlFor="firstName"
+            isValid={state.firstName === '' ? false : undefined}
             isRequired
-            isValid={typeof state.firstName !== 'undefined' && state.firstName.length > 0}
             key="firstName"
           >
             <TextInput
@@ -214,15 +208,11 @@ storiesOf('Form Example', module).add(
           <Label
             labelText="Last Name"
             htmlFor="lastName"
-            isRequired
-            isValid={typeof state.lastName !== 'undefined' && state.lastName.length > 0}
             key="lastName"
           >
             <TextInput
               onChange={createTextInputCallback("lastName")}
               value={state.lastName}
-              isValid={typeof state.lastName !== 'undefined' && state.lastName.length > 0}
-              errorMessage="Last Name cannot be blank"
               id="lastName"
               Input={StyledInput}
             />
@@ -231,31 +221,44 @@ storiesOf('Form Example', module).add(
           <Label
             labelText="Age"
             htmlFor="age"
+            isRequired
+            isValid={!!state.age && +state.age > 13}
             key="age"
           >
             <TextInput
               onChange={createTextInputCallback("age")}
-              value={state.age}
-              errorMessage="Invalid Age"
+              value={state.age + ''}
+              errorMessage="Must be 13+"
+              isValid={!!state.age && +state.age > 13}
               id="age"
               type="number"
-              StyledContainer={StyledAgeInputContainer}
               Input={StyledInput}
+            />
+          </Label>
+
+          <Label
+            labelText="Bio"
+            htmlFor="bio"
+            key="bio"
+          >
+            <TextInput
+              onChange={createTextInputCallback("bio")}
+              value={state.bio}
+              id="bio"
+              isMultiline
+              rows={3}
+              cols={25}
             />
           </Label>
 
           <Label
             labelText="Title"
             htmlFor="title"
-            isRequired
-            isValid={typeof state.title !== 'undefined' && state.title.length > 0}
             key="title"
           >
             <TextInput
               onChange={createTextInputCallback("title")}
               value={state.title}
-              isValid={typeof state.title !== 'undefined' && state.title.length > 0}
-              errorMessage="Title cannot be blank"
               id="title"
               Input={StyledInput}
             />
@@ -264,7 +267,6 @@ storiesOf('Form Example', module).add(
           <Label
             labelText="Company"
             htmlFor="company"
-            isValid={typeof state.company !== 'undefined' && state.company.length > 0}
             key="company"
           >
             <TextInput
@@ -276,18 +278,14 @@ storiesOf('Form Example', module).add(
           </Label>
 
           <Label
-            labelText="Street Address"
-            htmlFor="streetAddress"
-            isRequired
-            isValid={typeof state.streetAddress !== 'undefined' && state.streetAddress.length > 0}
-            key="streetAddress"
+            labelText="City"
+            htmlFor="city"
+            key="city"
           >
             <TextInput
-              onChange={createTextInputCallback("streetAddress")}
-              value={state.streetAddress}
-              isValid={typeof state.streetAddress !== 'undefined' && state.streetAddress.length > 0}
-              errorMessage="Street Address cannot be blank"
-              id="streetAddress"
+              onChange={createTextInputCallback("city")}
+              value={state.city}
+              id="city"
               Input={StyledInput}
             />
           </Label>
@@ -304,27 +302,12 @@ storiesOf('Form Example', module).add(
               options={stateAbbreviations}
               color={colors.grayXlight}
               values={[state.state as string]}
-              onSelect={(val) => { setState(Object.assign({}, { state: val as string })) }}
+              onSelect={(val) => { setState(Object.assign({}, state, { state: val as string })) }}
             />
           </Label>
 
           <Label
-            labelText="Bio"
-            htmlFor="bio"
-            key="bio"
-          >
-            <TextInput
-              onChange={createTextInputCallback("bio")}
-              value={state.bio}
-              id="bio"
-              isMultiline
-              rows={5}
-              cols={25}
-            />
-          </Label>
-
-          <Label
-            labelText="Enable Notifications"
+            labelText="Notifications"
             htmlFor="notifications"
             key="notifications"
           >
@@ -332,7 +315,9 @@ storiesOf('Form Example', module).add(
               onClick={() => {setState(Object.assign({}, state, { notifications: !state.notifications}))}}
               checked={state.notifications}
               checkboxType={Checkbox.Types.check}
-            />
+            >
+              {state.notifications ? 'Enabled' : 'Disabled'}
+            </Checkbox>
           </Label>
         </Card>
         {isModalOpen && <Modal
@@ -341,6 +326,7 @@ storiesOf('Form Example', module).add(
           footer={[abortButton, confirmButton]}
           onClose={closeModal}
           onClickOutside={closeModal}
+          backgroundDarkness={50}
 
         />}
       </>
