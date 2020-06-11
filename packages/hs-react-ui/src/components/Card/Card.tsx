@@ -3,14 +3,13 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
-import fonts from '../../enums/fonts';
+import { Div } from '../../htmlElements';
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
 
-    ${fonts.body}
     font-size: 1rem;
 
     border-radius: 0.25rem;
@@ -24,7 +23,7 @@ export const CardContainer = styled.div`
   `}
 `;
 
-export const Header = styled.div`
+export const Header = styled(Div)`
   padding: 1.5rem 1.5rem 0rem;
   border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
@@ -36,12 +35,12 @@ export const NoPaddingHeader = styled(Header)`
   overflow: hidden;
 `;
 
-export const Body = styled.div`
+export const Body = styled(Div)`
   padding: 1.5rem 1.5rem;
   color: ${colors.grayMedium};
 `;
 
-export const Footer = styled.div`
+export const Footer = styled(Div)`
   padding: 1rem 1.5rem;
   display: flex;
   flex-flow: row wrap;

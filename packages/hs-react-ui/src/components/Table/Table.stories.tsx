@@ -353,7 +353,7 @@ storiesOf('Table', module)
           data={rows}
           sortGroups={boolean('sortGroups', false)}
           groupHeaderPosition={position}
-          areGroupsCollapsable={boolean('areGroupsCollapsable', false)}
+          areGroupsCollapsible={boolean('areGroupsCollapsible', false)}
           expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
         />
       );

@@ -7,20 +7,19 @@ import { readableColor } from 'polished';
 import Button, { ButtonTypes } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
-import fonts from '../../enums/fonts';
+import { Div } from '../../htmlElements';
 
-const Container = styled.div<{ elevation: number }>`
+const Container = styled(Div)`
   ${({ elevation }) => {
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
 
     return `
-    ${fonts.body}
-    width: fit-content;
-    transition: filter ${timings.slow};
-    filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
-  `;
+      width: fit-content;
+      transition: filter ${timings.slow};
+      filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
+    `;
   }}
 `;
 // TODO - Add constants for width
@@ -33,7 +32,8 @@ export const ValueContainer = styled(Button.Container)`
   width: 15rem;
   padding: 0.5rem;
 `;
-const ValueIconContainer = styled.div`
+
+const ValueIconContainer = styled(Div)`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -42,16 +42,16 @@ const ValueIconContainer = styled.div`
 `;
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
-const CloseIconContainer = styled.div`
+const CloseIconContainer = styled(Div)`
   height: 1.125rem;
 `;
 
-const ValueItem = styled.div`
+const ValueItem = styled(Div)`
   width: 100%;
   text-align: left;
 `;
 
-const OptionsContainer = styled.div`
+const OptionsContainer = styled(Div)`
   background: white;
   position: absolute;
   max-height: 10rem;
@@ -60,7 +60,7 @@ const OptionsContainer = styled.div`
   border: 0.5px solid ${colors.grayDark25};
 `;
 
-const OptionItem = styled.div`
+const OptionItem = styled(Div)`
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -72,7 +72,7 @@ const OptionItem = styled.div`
     outline: none;
   }
 `;
-const CheckContainer = styled.div`
+const CheckContainer = styled(Div)`
   display: flex;
   align-items: center;
   justify-content: center;
