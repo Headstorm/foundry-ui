@@ -58,7 +58,7 @@ const Text = ({
   StyledContainer = TextContainer,
   StyledIconContainer = IconContainer,
 }: TextProps) => (
-  <StyledContainer size={size} color={color}>
+  <StyledContainer data-test-id='hsui-Text' size={size} color={color}>
     {isLoading && <StyledProgress size={size} />}
     {!isLoading &&
       !isProcessing &&

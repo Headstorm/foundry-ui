@@ -10,8 +10,8 @@ import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
 
 export type ButtonContainerProps = {
-  elevation?: number;
-  color?: string;
+  elevation: number;
+  color: string;
   type: string;
 };
 
@@ -40,17 +40,11 @@ export type ButtonProps = {
  * @param {string} type - The type of button
  * @param {string} color - The color prop passed into the button
  */
-export const getFontColorFromType = (type: string, color?: string) => {
-  switch (type) {
-    case ButtonTypes.link:
-    case ButtonTypes.outline:
-      return color || colors.grayDark;
-    case ButtonTypes.fill:
-    default:
-      return color
-        ? readableColor(color, colors.background, colors.grayDark, true)
-        : colors.grayDark;
+export const getFontColorFromType = (type: string, color: string) => {
+  if (type === 'fill') {
+    return readableColor(color, colors.background, colors.grayDark, true);
   }
+  return color;
 };
 
 /**
@@ -58,19 +52,19 @@ export const getFontColorFromType = (type: string, color?: string) => {
  * @param {string} type - The type of button
  * @param {string} color - The color prop passed into the button
  */
-export const getBackgroundColorFromType = (type: string, color?: string) => {
+export const getBackgroundColorFromType = (type: string, color: string) => {
   switch (type) {
     case ButtonTypes.link:
     case ButtonTypes.outline:
       return colors.transparent;
     default:
-      return color || colors.grayXlight;
+      return color;
   }
 };
 
 export const ButtonContainer: string &
   StyledComponentBase<any, {}, ButtonContainerProps> = styled.button`
-  ${({ elevation = 0, color, type }: ButtonContainerProps) => {
+  ${({ elevation, color, type }: ButtonContainerProps) => {
     const backgroundColor = getBackgroundColorFromType(type, color);
     const fontColor = getFontColorFromType(type, color);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;

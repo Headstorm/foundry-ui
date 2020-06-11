@@ -131,10 +131,12 @@ const Checkbox = ({
   const iconPath = iconPaths[checkboxType];
   const IconComponent = iconComponents[checkboxType];
   return (
-    <StyledLabel>
+    <StyledLabel data-test-id="hsui-Checkbox">
       <StyledCheckboxContainer>
-        <StyledBox>{checked ? <IconComponent path={iconPath} /> : null}</StyledBox>
-        <StyledInput onClick={onClick} checked={checked} />
+        <StyledBox>
+          {checked ? <IconComponent data-test-id="hsui-Checkbox-Icon" path={iconPath} /> : null}
+        </StyledBox>
+        <StyledInput data-test-id="hsui-Checkbox-Input" onClick={onClick} checked={checked} />
       </StyledCheckboxContainer>
       {children}
     </StyledLabel>

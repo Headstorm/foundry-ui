@@ -91,6 +91,377 @@ exports[`Button keeps the container the same when switching between isLoading an
 </button>
 `;
 
+exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+<div>
+  <button
+    class="c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="fill"
+  />
+</div>
+`;
+
+exports[`Button shows ButtonContainer ButtonType.link 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #252c35;
+}
+
+.c0:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c0:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+<div>
+  <button
+    class="c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="link"
+  />
+</div>
+`;
+
+exports[`Button shows ButtonContainer ButtonType.outline 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: transparent;
+  color: null;
+}
+
+.c0:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c0:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+<div>
+  <button
+    class="c0"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="outline"
+  />
+</div>
+`;
+
+exports[`Button shows ButtonContainer with nondefault props type and color 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0.6em 0.6em rgba(0,0,0,0.35));
+  filter: drop-shadow(0em 0.6em 0.6em rgba(0,0,0,0.35));
+  outline: 0 none;
+  border: 1px solid #000;
+  cursor: pointer;
+  background-color: transparent;
+  color: #000;
+}
+
+.c0:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c0:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+<div>
+  <button
+    class="c0"
+    color="#000"
+    data-test-id="hsui-button"
+    elevation="2"
+    type="outline"
+  />
+</div>
+`;
+
+exports[`Button shows LeftIconContainer when isProcessing 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+.c1 {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  margin-right: 1em;
+}
+
+<div>
+  <button
+    class="c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="fill"
+  >
+    <span
+      class="sc-AxhCb c1"
+    >
+      <svg
+        role="presentation"
+        style="width: 1rem; height: 1rem;"
+        viewBox="0 0 24 24"
+      >
+        <style>
+          @keyframes spin { to { transform: rotate(360deg) } }
+        </style>
+        <g
+          style="animation: spin linear 1s infinite; transform-origin: center;"
+        >
+          <path
+            d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"
+            style="fill: currentColor;"
+          />
+          <rect
+            fill="transparent"
+            height="24"
+            width="24"
+          />
+        </g>
+      </svg>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button shows icons 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+.c1 {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  margin-right: 1em;
+}
+
+.c2 {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  margin-left: 1em;
+}
+
+<div>
+  <button
+    class="c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="fill"
+  >
+    <span
+      class="sc-AxhCb c1"
+    >
+      <svg
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="mdiComment"
+          style="fill: currentColor;"
+        />
+      </svg>
+    </span>
+    <span
+      class="sc-AxhCb c2"
+    >
+      <svg
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="mdiComment"
+          style="fill: currentColor;"
+        />
+      </svg>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button shows icons with type string 1`] = `
+500;700;900&display=swap'); .c0 {
+  display: inline-block;
+  font-family: Montserrat,Roboto,sans-serif;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #252c35;
+  color: #fff;
+}
+
+.c0:hover {
+  background-color: #1b2026;
+}
+
+.c0:active {
+  background-color: #101317;
+}
+
+.c1 {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  margin-right: 1em;
+}
+
+.c2 {
+  margin-top: -8px;
+  margin-bottom: -8px;
+  margin-left: 1em;
+}
+
+<div>
+  <button
+    class="c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="fill"
+  >
+    <span
+      class="sc-AxhCb c1"
+    >
+      <svg
+        role="presentation"
+        style="width: 1rem; height: 1rem;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="mdiComment"
+          style="fill: currentColor;"
+        />
+      </svg>
+    </span>
+    <span
+      class="sc-AxhCb c2"
+    >
+      <svg
+        role="presentation"
+        style="width: 1rem; height: 1rem;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="mdiComment"
+          style="fill: currentColor;"
+        />
+      </svg>
+    </span>
+  </button>
+</div>
+`;
+
 exports[`Button shows loading text when provided 1`] = `
 500;700;900&display=swap'); .c0 {
   display: inline-block;
