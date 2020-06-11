@@ -4,7 +4,7 @@ import { select, text, boolean, number, color } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import Modal from './Modal';
-import Button, { ButtonContainer, ButtonTypes } from '../Button/Button';
+import Button, { ButtonContainer } from '../Button/Button';
 import { mdiMessage, mdiSend } from '@mdi/js';
 import colors from '../../enums/colors';
 
