@@ -3,7 +3,6 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
-import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
 
@@ -15,7 +14,6 @@ const Container = styled(Div)`
   display: flex;
   flex-flow: row;
   border-radius: 0.25em;
-  ${fonts.body}
   background-color: ${colors.background};
 `}
 `;
@@ -30,14 +28,15 @@ const TextInputContainer = styled(InputElement)`
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
-  border: 0 none;
-  outline: 0 none;
-  min-height: 2em;
-  ${fonts.body}
-  font-size: 1em;
-  min-width: 0px;
-  background-color: ${colors.background};
-  resize: none;
+  ${({ multiLineIsResizable }: TextInputProps) => `
+    border: 0 none;
+    outline: 0 none;
+    min-height: 2em;
+    font-size: 1em;
+    min-width: 0px;
+    background-color: ${colors.background};
+    resize: ${multiLineIsResizable ? 'both' : 'none'};
+  `}
 `;
 
 const IconContainer = styled(Div)`
@@ -54,6 +53,7 @@ const ErrorContainer = styled(Div)`
   position: absolute;
   top: calc(100% + 0.25em);
   color: ${colors.destructive};
+  font-size: 0.75rem;
 `;
 
 export type TextInputProps = {
@@ -80,8 +80,9 @@ export type TextInputProps = {
   ariaLabel?: string;
   type?: string;
   debounceInterval?: number;
+  multiLineIsResizable?: boolean;
   StyledContainer?: string & StyledComponentBase<any, {}>;
-  Input?: string & StyledComponentBase<any, {}>;
+  StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
 };
 
@@ -100,11 +101,11 @@ const createIcon = (
   return <StyledIconContainer>{iconPrefix}</StyledIconContainer>;
 };
 
-const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+const defaultCallback = () => {};
 
 const TextInput = ({
   id,
-  placeholder = 'test props',
+  placeholder,
   iconPrefix,
   onClear,
   onChange = defaultCallback,
@@ -126,9 +127,10 @@ const TextInput = ({
   ariaLabel,
   type = 'text',
   StyledContainer = Container,
-  Input, // Not defaulting here due to the issue with <input as="textarea" />
+  StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
   debounceInterval = 8,
+  multiLineIsResizable,
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
@@ -136,8 +138,8 @@ const TextInput = ({
   // Determine the correct input type. Using a single input and the 'as' keyword
   // to display as a text area disables the ability to set cols/rows
   let InputComponent: string & StyledComponentBase<any, {}> = TextInputContainer;
-  if (Input) {
-    InputComponent = Input;
+  if (StyledInput) {
+    InputComponent = StyledInput;
   } else if (isMultiline) {
     InputComponent = TextAreaInputContainer;
   }
@@ -167,6 +169,7 @@ const TextInput = ({
         value={value || defaultValue}
         id={id}
         type={type}
+        multiLineIsResizable={multiLineIsResizable}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear}>
