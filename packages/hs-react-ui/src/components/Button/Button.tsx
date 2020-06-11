@@ -86,7 +86,7 @@ export const ButtonContainer: string &
       transition: filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : `0 none;`};
+      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -155,9 +155,9 @@ const Button = ({
       color={color}
       type={type}
     >
-      {!isProcessing &&
-        iconPrefix &&
-        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+      {!isProcessing
+        && iconPrefix
+        && (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <LeftIconContainer>
             <UnstyledIcon path={iconPrefix} size="1rem" />
           </LeftIconContainer>
@@ -171,8 +171,8 @@ const Button = ({
       )}
       {children}
 
-      {iconSuffix &&
-        (typeof iconSuffix === 'string' ? (
+      {iconSuffix
+        && (typeof iconSuffix === 'string' ? (
           <RightIconContainer>
             <UnstyledIcon path={iconSuffix} size="1rem" />
           </RightIconContainer>
