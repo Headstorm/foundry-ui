@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
+import colors from '../../enums/colors';
 import styled, { StyledComponentBase } from 'styled-components';
 import Card from '../Card';
 import { Footer, Header } from '../Card/Card';
 import { Div, Span } from '../../htmlElements';
-import colors from 'src/enums/colors';
+
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
@@ -59,9 +60,9 @@ const ModalFooter = styled(Footer)`
 
 const ModalCloseButton = styled(Span)`
   ${({ insideClose }: { insideClose: boolean }) => `
-  position: ${insideClose ? 'absolute': 'fixed'};
+  position: ${insideClose ? 'absolute' : 'fixed'};
   top: ${insideClose ? '1rem' : '8rem'};
-  right: ${insideClose ? '1rem': '15rem'};
+  right: ${insideClose ? '1rem' : '15rem'};
   font-size: 1.3rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
