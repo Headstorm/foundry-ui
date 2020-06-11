@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Card from '../Card';
 import { Footer, Header } from '../Card/Card';
+import { Div, Span } from '../../htmlElements';
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
@@ -22,7 +23,7 @@ export interface ModalProps {
   backgroundDarkness?: number;
 }
 
-const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
+const ModalUnderlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur = '0', backgroundDarkness = 0 }) => `
     height: 100%;
     width: 100%;
@@ -37,7 +38,7 @@ const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: n
   `}
 `;
 
-const ModalContainer = styled.div`
+const ModalContainer = styled(Div)`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -55,7 +56,7 @@ const ModalFooter = styled(Footer)`
   justify-content: flex-end;
 `;
 
-const ModalCloseButton = styled.span`
+const ModalCloseButton = styled(Span)`
   position: absolute;
   top: 1rem;
   right: 1rem;

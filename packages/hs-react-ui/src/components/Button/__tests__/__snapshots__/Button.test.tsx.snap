@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -27,6 +28,8 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -42,22 +45,23 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 <button
-  class="c0"
+  class="sc-AxhUy sc-AxgMl c0"
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
   type="fill"
 >
   <div
-    class="sc-AxjAm c1"
+    class="sc-AxjAm sc-AxirZ sc-fzoLag c1"
   />
 </button>
 `;
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -81,7 +85,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 <button
-  class="c0"
+  class="sc-AxhUy sc-AxgMl c0"
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
@@ -92,9 +96,10 @@ exports[`Button keeps the container the same when switching between isLoading an
 `;
 
 exports[`Button shows loading text when provided 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -118,6 +123,8 @@ exports[`Button shows loading text when provided 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -134,14 +141,14 @@ exports[`Button shows loading text when provided 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="fill"
   >
     <div
-      class="sc-AxjAm c1"
+      class="sc-AxjAm sc-AxirZ sc-fzoLag c1"
     />
   </button>
 </div>
