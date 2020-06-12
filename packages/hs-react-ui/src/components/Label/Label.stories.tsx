@@ -1,15 +1,10 @@
 import React from 'react';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { storiesOf } from '@storybook/react';
 
 import colors from '../../enums/colors';
 import Label from './Label';
 import TextInput from '../TextInput';
-
-addDecorator(withA11y);
-addDecorator(withDesign);
 
 const design = {
   type: 'figma',
@@ -22,8 +17,8 @@ storiesOf('Label', module).add(
     <Label
       labelText={text('labelText', 'This is the label text')}
       color={select('Color', colors, colors.grayDark)}
-      colorValid={select('ColorValid', colors, colors.success)}
-      colorInvalid={select('ColorInvalid', colors, colors.destructive)}
+      colorValid={select('colorValid', colors, colors.success)}
+      colorInvalid={select('colorInvalid', colors, colors.destructive)}
       isRequired={boolean('isRequired', false)}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore

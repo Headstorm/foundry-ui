@@ -9,8 +9,8 @@ const colors = {
   grayLight: '#7c8186',
   grayXlight: '#d3d6d7',
 
-  destructive: '#dd0000'
-}
+  destructive: '#dd0000',
+};
 
 export default create({
   base: 'dark',
@@ -45,5 +45,5 @@ export default create({
 
   brandTitle: 'Headstorm UI',
   brandUrl: 'https://headstorm.com',
-  brandImage: 'headstorm-logo.png',
+  brandImage: '/headstorm-logo.png',
 });

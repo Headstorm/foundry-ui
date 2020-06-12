@@ -2,20 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
 
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { storiesOf } from '@storybook/react';
+
 import Card, { Header, Footer } from './Card';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import fonts from '../../enums/fonts';
-
-addDecorator(withA11y);
-addDecorator(withDesign);
-export default {
-  title: 'Card',
-  component: Card,
-};
 
 const design = {
   type: 'figma',

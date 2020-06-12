@@ -2,24 +2,23 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
-import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
+import { Div, Label as LabelElement, Span } from '../../htmlElements';
 
-export const DefaultStyledLabel = styled.label`
+export const DefaultStyledLabel = styled(LabelElement)`
   ${({ color = colors.grayLight }: { color: colors | string }) => `
     display: inline-flex;
     color: ${color};
-    ${fonts.body}
     margin-bottom: .25em;
     font-size: .75em;
   `}
 `;
 
-export const DefaultStyledTextContainer = styled.div``;
+export const DefaultStyledTextContainer = styled(Div)``;
 
-export const DefaultStyledLabelContainer = styled.div``;
+export const DefaultStyledLabelContainer = styled(Div)``;
 
-const DefaultStyledIconContainer = styled.span`
+const DefaultStyledIconContainer = styled(Span)`
   display: inline-flex;
   margin-left: 0.25rem;
 `;
@@ -32,7 +31,7 @@ export interface LabelProps {
   colorInvalid?: colors | string;
   htmlFor?: string;
   isRequired?: boolean;
-  children?: any;
+  children?: React.ReactNode;
   StyledLabelContainer?: string & StyledComponentBase<any, {}>;
   StyledTextContainer?: string & StyledComponentBase<any, {}>;
   StyledLabel?: string & StyledComponentBase<any, {}>;

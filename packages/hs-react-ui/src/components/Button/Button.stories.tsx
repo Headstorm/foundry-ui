@@ -2,9 +2,8 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { select, text, boolean, number, color } from '@storybook/addon-knobs';
 import { mdiMessage, mdiSend } from '@mdi/js';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { storiesOf } from '@storybook/react';
+
 import Button from './Button';
 import colors from '../../enums/colors';
 
@@ -13,9 +12,6 @@ const options = {
   mdiMessage,
   mdiSend,
 };
-
-addDecorator(withA11y);
-addDecorator(withDesign);
 
 const design = {
   type: 'figma',

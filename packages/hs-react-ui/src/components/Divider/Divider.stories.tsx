@@ -2,12 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { text } from '@storybook/addon-knobs';
 
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
+import { storiesOf } from '@storybook/react';
+
 import colors from '../../enums/colors';
 import Divider from './Divider';
-
-addDecorator(withA11y);
 
 storiesOf('Divider', module)
   .add('Default', () => <Divider width={text('width', '10rem')} height={text('height', '1px')} />)
