@@ -96,9 +96,10 @@ exports[`Button keeps the container the same when switching between isLoading an
 `;
 
 exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -123,7 +124,7 @@ exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -133,9 +134,10 @@ exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
 `;
 
 exports[`Button shows ButtonContainer ButtonType.link 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -160,7 +162,7 @@ exports[`Button shows ButtonContainer ButtonType.link 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -170,9 +172,10 @@ exports[`Button shows ButtonContainer ButtonType.link 1`] = `
 `;
 
 exports[`Button shows ButtonContainer ButtonType.outline 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -197,7 +200,7 @@ exports[`Button shows ButtonContainer ButtonType.outline 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     data-test-id="hsui-button"
     elevation="0"
     type="outline"
@@ -206,9 +209,10 @@ exports[`Button shows ButtonContainer ButtonType.outline 1`] = `
 `;
 
 exports[`Button shows ButtonContainer with nondefault props type and color 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -233,7 +237,7 @@ exports[`Button shows ButtonContainer with nondefault props type and color 1`] =
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#000"
     data-test-id="hsui-button"
     elevation="2"
@@ -243,9 +247,10 @@ exports[`Button shows ButtonContainer with nondefault props type and color 1`] =
 `;
 
 exports[`Button shows LeftIconContainer when isProcessing 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -269,6 +274,8 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   margin-top: -8px;
   margin-bottom: -8px;
   margin-right: 1em;
@@ -276,14 +283,14 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="fill"
   >
     <span
-      class="sc-AxhCb c1"
+      class="sc-AxiKw sc-AxhCb sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -313,9 +320,10 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 `;
 
 exports[`Button shows icons 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -339,12 +347,16 @@ exports[`Button shows icons 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   margin-top: -8px;
   margin-bottom: -8px;
   margin-right: 1em;
 }
 
 .c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   margin-top: -8px;
   margin-bottom: -8px;
   margin-left: 1em;
@@ -352,14 +364,14 @@ exports[`Button shows icons 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="fill"
   >
     <span
-      class="sc-AxhCb c1"
+      class="sc-AxiKw sc-AxhCb sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -372,7 +384,7 @@ exports[`Button shows icons 1`] = `
       </svg>
     </span>
     <span
-      class="sc-AxhCb c2"
+      class="sc-AxiKw sc-AxhCb sc-fznWqX c2"
     >
       <svg
         role="presentation"
@@ -389,9 +401,10 @@ exports[`Button shows icons 1`] = `
 `;
 
 exports[`Button shows icons with type string 1`] = `
-500;700;900&display=swap'); .c0 {
-  display: inline-block;
+.c0 {
+  box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
+  display: inline-block;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -415,12 +428,16 @@ exports[`Button shows icons with type string 1`] = `
 }
 
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   margin-top: -8px;
   margin-bottom: -8px;
   margin-right: 1em;
 }
 
 .c2 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   margin-top: -8px;
   margin-bottom: -8px;
   margin-left: 1em;
@@ -428,14 +445,14 @@ exports[`Button shows icons with type string 1`] = `
 
 <div>
   <button
-    class="c0"
+    class="sc-AxhUy sc-AxgMl c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="fill"
   >
     <span
-      class="sc-AxhCb c1"
+      class="sc-AxiKw sc-AxhCb sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -449,7 +466,7 @@ exports[`Button shows icons with type string 1`] = `
       </svg>
     </span>
     <span
-      class="sc-AxhCb c2"
+      class="sc-AxiKw sc-AxhCb sc-fznWqX c2"
     >
       <svg
         role="presentation"

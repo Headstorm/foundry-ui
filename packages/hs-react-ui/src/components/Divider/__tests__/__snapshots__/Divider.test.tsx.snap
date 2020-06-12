@@ -2,6 +2,8 @@
 
 exports[`Divider matches snapshot 1`] = `
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   border: none;
   height: 1px;
   width: 90%;
@@ -9,6 +11,8 @@ exports[`Divider matches snapshot 1`] = `
 }
 
 .c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,11 +27,11 @@ exports[`Divider matches snapshot 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="sc-AxjAm sc-AxirZ c0"
     data-test-id="hsui-Divider"
   >
     <hr
-      class="c1"
+      class="sc-fzoLsD sc-fzpans c1"
       height="1px"
       width="90%"
     />
@@ -37,6 +41,8 @@ exports[`Divider matches snapshot 1`] = `
 
 exports[`Divider matches snapshot with props 1`] = `
 .c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   border: none;
   height: 2rem;
   width: 50%;
@@ -44,6 +50,8 @@ exports[`Divider matches snapshot with props 1`] = `
 }
 
 .c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -58,11 +66,11 @@ exports[`Divider matches snapshot with props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="sc-AxjAm sc-AxirZ c0"
     data-test-id="hsui-Divider"
   >
     <hr
-      class="c1"
+      class="sc-fzoLsD sc-fzpans c1"
       height="2rem"
       width="50%"
     />
