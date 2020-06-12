@@ -19,3 +19,4 @@ export const Table = withGlobalStyle(styled.table``);
 export const TH = withGlobalStyle(styled.th``);
 export const TD = withGlobalStyle(styled.td``);
 export const TR = withGlobalStyle(styled.tr``);
+export const TextArea = withGlobalStyle(styled.textarea``);

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider matches snapshot 1`] = `
+.c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  border: none;
+  height: 1px;
+  width: 90%;
+  background-color: #7c8186;
+}
+
+.c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+<div>
+  <div
+    class="sc-AxjAm sc-AxirZ c0"
+    data-test-id="hsui-Divider"
+  >
+    <hr
+      class="sc-fzoLsD sc-fzpans c1"
+      height="1px"
+      width="90%"
+    />
+  </div>
+</div>
+`;
+
+exports[`Divider matches snapshot with props 1`] = `
+.c1 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  border: none;
+  height: 2rem;
+  width: 50%;
+  background-color: #7c8186;
+}
+
+.c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+<div>
+  <div
+    class="sc-AxjAm sc-AxirZ c0"
+    data-test-id="hsui-Divider"
+  >
+    <hr
+      class="sc-fzoLsD sc-fzpans c1"
+      height="2rem"
+      width="50%"
+    />
+  </div>
+</div>
+`;

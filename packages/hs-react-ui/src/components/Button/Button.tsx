@@ -7,11 +7,11 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
-import { Span, Button as ButtonElement } from '../../htmlElements';
+import { Div, Button as ButtonElement } from '../../htmlElements';
 
 export type ButtonContainerProps = {
-  elevation?: number;
-  color?: string;
+  elevation: number;
+  color: string;
   type: string;
 };
 
@@ -40,17 +40,11 @@ export type ButtonProps = {
  * @param {string} type - The type of button
  * @param {string} color - The color prop passed into the button
  */
-export const getFontColorFromType = (type: string, color?: string) => {
-  switch (type) {
-    case ButtonTypes.link:
-    case ButtonTypes.outline:
-      return color || colors.grayDark;
-    case ButtonTypes.fill:
-    default:
-      return color
-        ? readableColor(color, colors.background, colors.grayDark, true)
-        : colors.grayDark;
+export const getFontColorFromType = (type: string, color: string) => {
+  if (type === 'fill') {
+    return readableColor(color, colors.background, colors.grayDark, true);
   }
+  return color;
 };
 
 /**
@@ -58,13 +52,13 @@ export const getFontColorFromType = (type: string, color?: string) => {
  * @param {string} type - The type of button
  * @param {string} color - The color prop passed into the button
  */
-export const getBackgroundColorFromType = (type: string, color?: string) => {
+export const getBackgroundColorFromType = (type: string, color: string) => {
   switch (type) {
     case ButtonTypes.link:
     case ButtonTypes.outline:
       return colors.transparent;
     default:
-      return color || colors.grayXlight;
+      return color;
   }
 };
 
@@ -79,7 +73,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
     const shadowOpacity = 0.5 - elevation * 0.075;
 
     return `
-      display: inline-block;
+      display: inline-flex;
       font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
@@ -111,9 +105,8 @@ const StyledProgress = styled(Progress)`
   margin-bottom: -5px;
 `;
 
-const IconContainer = styled(Span)`
-  margin-top: -8px;
-  margin-bottom: -8px;
+const IconContainer = styled(Div)`
+  height: 1rem;
 `;
 
 const LeftIconContainer = styled(IconContainer)`
