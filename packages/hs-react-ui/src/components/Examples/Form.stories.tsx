@@ -58,6 +58,7 @@ const defaultState: state = {
   bio: lorem.paragraph(5),
 };
 
+// Adjusting the style of the footer to help position the buttons added
 const StyledFooter = styled(Card.Footer)`
   display: flex;
   justify-items: flex-end;
@@ -83,10 +84,10 @@ storiesOf('Form Example', module).add(
     const [savedState, setSavedState] = useState(defaultState);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // This is not the best way to handle this, but will work for the current example
     // By creating a callback function like this, we will create a new callback for each
-    // handler on every render, which is not the ideal scenario. To prevent this,
-    // use the useCallback helper.
+    // handler on every render, which is not the ideal scenario for maximum performance.
+    // To prevent this, use the useCallback helper. We're  doing this to shorten the length
+    // of the example's souce code.
     const createTextInputCallback = (property: string): (event: any) => void => {
       return (event) => {
         setState(Object.assign({}, state, {[property]: event.target.value}));
@@ -96,6 +97,8 @@ storiesOf('Form Example', module).add(
     const onSave = () => {
       const newSavedState = Object.assign({}, state);
       setIsSaving(true);
+
+      // Use a setTimeout to simulate a network call
       setTimeout(() => {
         setSavedState(newSavedState);
         setIsSaving(false);
@@ -105,6 +108,8 @@ storiesOf('Form Example', module).add(
     const onReset = () => {
       setIsResetting(true);
       setIsModalOpen(false);
+
+      // Simulate network call
       setTimeout(() => {
         setIsResetting(false);
         setState(Object.assign({}, savedState));
@@ -173,8 +178,6 @@ storiesOf('Form Example', module).add(
       </>
     );
 
-    const actionButtons = [];
-    actionButtons.push()
     return (
       <>
         <Card
@@ -318,7 +321,6 @@ storiesOf('Form Example', module).add(
           onClose={closeModal}
           onClickOutside={closeModal}
           backgroundDarkness={50}
-
         />}
       </>
     );
