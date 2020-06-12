@@ -16,8 +16,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -137,8 +140,11 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -259,8 +265,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -469,8 +478,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -587,8 +599,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -706,8 +721,11 @@ exports[`Dropdown displays all options when focused 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -916,8 +934,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -1035,8 +1056,11 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -1156,8 +1180,11 @@ exports[`Dropdown selects options from values prop 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
-  font-size: 1em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
