@@ -33,7 +33,7 @@ const Divider = ({
   width = '90%',
   height = '1px',
 }: DividerProps) => (
-  <StyledDividerContainer>
+  <StyledDividerContainer data-test-id="hsui-Divider">
     <StyledDivider width={width} height={height} />
   </StyledDividerContainer>
 );
