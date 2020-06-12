@@ -20,6 +20,7 @@ const Container = styled(Div)`
 
 const TextInputContainer = styled(InputElement)`
   border: 0 none;
+  flex-grow: 1;
   outline: 0 none;
   height: 2em;
   font-size: 1em;
@@ -30,6 +31,7 @@ const TextInputContainer = styled(InputElement)`
 const TextAreaInputContainer = styled(TextArea)`
   ${({ multiLineIsResizable }: TextInputProps) => `
     border: 0 none;
+    flex-grow: 1;
     outline: 0 none;
     min-height: 2em;
     font-size: 1em;
