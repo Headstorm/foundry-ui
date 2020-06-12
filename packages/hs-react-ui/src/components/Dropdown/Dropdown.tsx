@@ -24,13 +24,24 @@ const Container = styled(Div)`
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
+  ${({ modalIsOpen }) => `
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 
-  width: 15rem;
-  padding: 0.5rem;
+    ${
+      modalIsOpen
+        ? `
+      border-bottom-right-radius: 0rem;
+      border-bottom-left-radius: 0rem;
+    `
+        : ''
+    }
+
+    width: 15rem;
+    padding: 0.5rem;
+  `}
 `;
 
 const ValueIconContainer = styled(Div)`
@@ -271,6 +282,9 @@ const Dropdown = ({
     >
       <Button
         StyledContainer={StyledValueContainer}
+        containerProps={{
+          modalIsOpen: state.isOpen,
+        }}
         color={color}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         type={type}

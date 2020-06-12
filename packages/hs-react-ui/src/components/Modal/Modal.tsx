@@ -1,32 +1,13 @@
 import React, { ReactNode } from 'react';
-import colors from '../../enums/colors';
 import styled, { StyledComponentBase } from 'styled-components';
-import Card from '../Card';
-import { Footer, Header } from '../Card/Card';
-import { Div, Span } from '../../htmlElements';
+import { mdiClose } from '@mdi/js';
 
+import colors from '../../enums/colors';
+import Button from '../Button';
+import { Div } from '../../htmlElements';
 
-export interface ModalProps {
-  // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledUnderlay?: string & StyledComponentBase<any, {}>;
-  StyledHeader?: string & StyledComponentBase<any, {}>;
-  StyledFooter?: string & StyledComponentBase<any, {}>;
-  StyledCloseButton?: string & StyledComponentBase<any, {}>;
-  insideClose?: boolean;
-  header?: ReactNode;
-  body?: ReactNode;
-  footer?: ReactNode;
-
-  onClickOutside?: () => void;
-  onClose?: () => void;
-
-  backgroundBlur?: string;
-  backgroundDarkness?: number;
-}
-
-const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: number }>`
-  ${({ backgroundBlur = '0', backgroundDarkness = 1 }) => `
+const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
+  ${({ backgroundBlur, backgroundDarkness }) => `
     height: 100%;
     width: 100%;
 
@@ -36,12 +17,13 @@ const ModalUnderlay = styled.div<{ backgroundBlur: string; backgroundDarkness: n
 
     z-index: 1000;
 
-    backdrop-filter: blur(${backgroundBlur}) brightness(${backgroundDarkness});
+    transition: backdrop-filter .2s;
+    backdrop-filter: blur(${backgroundBlur}) brightness(${1 - backgroundDarkness});
   `}
 `;
 
-const ModalContainer = styled(Div)`
-  position: fixed;
+const Container = styled(Div)`
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -49,84 +31,90 @@ const ModalContainer = styled(Div)`
   z-index: 1010;
 `;
 
-const ModalHeader = styled(Header)`
-  max-width: calc(100% - 4rem);
+const CloseButtonContainer = styled(Button.Container)`
+  ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
+    let distance;
+    switch (closeButtonAttachment) {
+      case 'inside':
+        distance = '0rem';
+        break;
+      case 'outside':
+        distance = '-2rem';
+        break;
+      case 'corner':
+        distance = '0rem';
+        break;
+      default:
+        distance = '0rem';
+        break;
+    }
+
+    return `
+      position: absolute;
+      top: ${distance};
+      right: ${distance};
+      z-index: 1011;
+      border-radius: 50%;
+      padding: .5rem;
+    `;
+  }}
 `;
 
-const ModalFooter = styled(Footer)`
-  display: flex;
-  justify-content: flex-end;
-`;
+export interface ModalProps {
+  // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
+  StyledContainer?: (string & StyledComponentBase<any, {}>) | ReactNode;
+  StyledUnderlay?: (string & StyledComponentBase<any, {}>) | ReactNode;
+  StyledCloseButton?: (string & StyledComponentBase<any, {}>) | Button.ButtonTypes;
+  closeButtonProps?: object;
+  StyledCloseButtonContainer?: (string & StyledComponentBase<any, {}>) | ReactNode;
+  children: ReactNode;
 
-const ModalCloseButton = styled(Span)`
-  ${({ insideClose }: { insideClose: boolean }) => `
-  position: ${insideClose ? 'absolute' : 'fixed'};
-  top: ${insideClose ? '1rem' : '8rem'};
-  right: ${insideClose ? '1rem' : '15rem'};
-  font-size: 1.3rem;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
-  cursor: pointer;
-  z-index: ${insideClose ? null : '1011'};
-  color: ${insideClose ? colors.grayDark : colors.background};
-`}
-`;
+  onClickOutside?: () => void;
+  onClose?: () => void;
+
+  closeButtonAttachment?: string;
+  backgroundBlur?: string;
+  backgroundDarkness?: number;
+}
 
 const Modal = ({
-  StyledContainer = ModalContainer,
-  StyledUnderlay = ModalUnderlay,
-  StyledHeader = ModalHeader,
-  StyledFooter = ModalFooter,
-  StyledCloseButton = ModalCloseButton,
+  StyledContainer = Container,
+  StyledUnderlay = Underlay,
+  StyledCloseButton = Button,
+  StyledCloseButtonContainer = CloseButtonContainer,
+  closeButtonProps = {},
+  children,
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-  header,
-  body,
-  footer,
-  backgroundBlur,
-  backgroundDarkness,
-  insideClose,
-}: ModalProps) => {
-  const cardHeader = (
-    <>
-      <span>{header}</span>
-      {insideClose && (
-        <StyledCloseButton insideClose={insideClose} type="link" onClick={onClose}>
-          &times;
-        </StyledCloseButton>
-      )}
-    </>
-  );
-  return (
-    <>
-      {!insideClose && (
-        <StyledCloseButton insideClose={insideClose} type="link" onClick={onClose}>
-          &times;
-        </StyledCloseButton>
-      )}
-      <StyledContainer>
-        <Card
-          elevation={1}
-          StyledHeader={StyledHeader}
-          StyledFooter={StyledFooter}
-          header={cardHeader}
-          footer={footer}
-        >
-          {body}
-        </Card>
-      </StyledContainer>
-      <StyledUnderlay
-        backgroundBlur={backgroundBlur}
-        backgroundDarkness={backgroundDarkness}
-        onClick={onClickOutside}
+  closeButtonAttachment = 'inside',
+  backgroundBlur = '.5',
+  backgroundDarkness = 0.2,
+}: ModalProps) => (
+  <>
+    <StyledContainer>
+      {children}
+      <StyledCloseButton
+        StyledContainer={StyledCloseButtonContainer}
+        containerProps={{
+          closeButtonAttachment,
+        }}
+        iconPrefix={mdiClose}
+        color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
+        elevation={closeButtonAttachment === 'inside' ? 0 : 2}
+        type="link"
+        onClick={onClose}
+        {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
       />
-    </>
-  );
-};
+    </StyledContainer>
+    <StyledUnderlay
+      backgroundBlur={backgroundBlur}
+      backgroundDarkness={backgroundDarkness}
+      onClick={onClickOutside}
+    />
+  </>
+);
 
-Modal.Header = ModalHeader;
-Modal.Footer = ModalFooter;
-Modal.Underlay = ModalUnderlay;
-Modal.CloseButton = ModalCloseButton;
-Modal.Container = ModalContainer;
+Modal.Underlay = Underlay;
+Modal.CloseButtonContainer = CloseButtonContainer;
+Modal.Container = Container;
 export default Modal;
