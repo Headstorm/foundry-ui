@@ -4,7 +4,10 @@ exports[`Button keeps the container the same when switching between isLoading an
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -61,7 +64,10 @@ exports[`Button keeps the container the same when switching between isLoading an
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -487,7 +493,10 @@ exports[`Button shows loading text when provided 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;

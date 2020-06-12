@@ -7,7 +7,7 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
-import { Span, Button as ButtonElement } from '../../htmlElements';
+import { Div, Button as ButtonElement } from '../../htmlElements';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -73,7 +73,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
     const shadowOpacity = 0.5 - elevation * 0.075;
 
     return `
-      display: inline-block;
+      display: inline-flex;
       font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
@@ -105,9 +105,8 @@ const StyledProgress = styled(Progress)`
   margin-bottom: -5px;
 `;
 
-const IconContainer = styled(Span)`
-  margin-top: -8px;
-  margin-bottom: -8px;
+const IconContainer = styled(Div)`
+  height: 1rem;
 `;
 
 const LeftIconContainer = styled(IconContainer)`
