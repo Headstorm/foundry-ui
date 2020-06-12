@@ -20,7 +20,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -144,7 +144,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -269,7 +269,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -482,7 +482,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -603,7 +603,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -725,7 +725,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -938,7 +938,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -1060,7 +1060,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -1184,7 +1184,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;

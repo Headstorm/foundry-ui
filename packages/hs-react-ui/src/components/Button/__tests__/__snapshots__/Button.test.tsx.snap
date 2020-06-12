@@ -8,7 +8,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -68,7 +68,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
@@ -109,7 +109,7 @@ exports[`Button shows loading text when provided 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
   -webkit-transition: filter .5s;
