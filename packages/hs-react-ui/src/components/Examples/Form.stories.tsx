@@ -70,11 +70,6 @@ const StyledBody = styled(Card.Body)`
   row-gap: 1.5rem;
 `;
 
-const StyledInput = styled(TextInput.Input)`
-  min-width: 0px;
-  flex-grow: 1;
-`;
-
 const ResetButtonContainer = styled(Button.Container)`
   margin-right: 1.5rem;
 `;
@@ -104,7 +99,7 @@ storiesOf('Form Example', module).add(
       setTimeout(() => {
         setSavedState(newSavedState);
         setIsSaving(false);
-      }, Math.random() * 500);
+      }, Math.random() * 1000);
     }
 
     const onReset = () => {
@@ -201,7 +196,6 @@ storiesOf('Form Example', module).add(
               isValid={typeof state.firstName !== 'undefined' && state.firstName.length > 0}
               errorMessage="First Name cannot be blank"
               id="firstName"
-              Input={StyledInput}
             />
           </Label>
 
@@ -214,7 +208,6 @@ storiesOf('Form Example', module).add(
               onChange={createTextInputCallback("lastName")}
               value={state.lastName}
               id="lastName"
-              Input={StyledInput}
             />
           </Label>
 
@@ -232,7 +225,6 @@ storiesOf('Form Example', module).add(
               isValid={!!state.age && +state.age > 13}
               id="age"
               type="number"
-              Input={StyledInput}
             />
           </Label>
 
@@ -240,11 +232,15 @@ storiesOf('Form Example', module).add(
             labelText="Bio"
             htmlFor="bio"
             key="bio"
+            isRequired
+            isValid={!!state.bio && state.bio.length > 30}
           >
             <TextInput
               onChange={createTextInputCallback("bio")}
               value={state.bio}
               id="bio"
+              isValid={!!state.bio && state.bio.length > 30}
+              errorMessage="Write a little more"
               isMultiline
               rows={3}
               cols={25}
@@ -260,7 +256,6 @@ storiesOf('Form Example', module).add(
               onChange={createTextInputCallback("title")}
               value={state.title}
               id="title"
-              Input={StyledInput}
             />
           </Label>
 
@@ -273,7 +268,6 @@ storiesOf('Form Example', module).add(
               onChange={createTextInputCallback("company")}
               value={state.company}
               id="company"
-              Input={StyledInput}
             />
           </Label>
 
@@ -286,15 +280,12 @@ storiesOf('Form Example', module).add(
               onChange={createTextInputCallback("city")}
               value={state.city}
               id="city"
-              Input={StyledInput}
             />
           </Label>
 
           <Label
             labelText="State"
             htmlFor="state"
-            isRequired
-            isValid={typeof state.state !== 'undefined'}
             key="state"
           >
             <Dropdown
