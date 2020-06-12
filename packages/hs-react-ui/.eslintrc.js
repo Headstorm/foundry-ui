@@ -21,6 +21,7 @@ module.exports = {
   plugins: ['react', 'react-hooks'],
   rules: {
     'no-confusing-arrow': 0,
+    'no-empty-function': 1,
     'react/jsx-filename-extension': 0, // didn't like jsx in tsx lol
     'linebreak-style': 0,
     'arrow-parens': 0,
