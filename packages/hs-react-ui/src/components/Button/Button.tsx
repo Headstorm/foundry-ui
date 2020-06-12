@@ -80,7 +80,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
 
     return `
       display: inline-flex;
-      font-size: 1rem;
+      font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
       transition: filter ${timings.slow};
