@@ -11,8 +11,8 @@ exports[`Button keeps the container the same when switching between isLoading an
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -71,8 +71,8 @@ exports[`Button keeps the container the same when switching between isLoading an
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -105,12 +105,15 @@ exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -143,12 +146,15 @@ exports[`Button shows ButtonContainer ButtonType.link 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -181,12 +187,15 @@ exports[`Button shows ButtonContainer ButtonType.outline 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -218,12 +227,15 @@ exports[`Button shows ButtonContainer with nondefault props type and color 1`] =
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0.6em 0.6em rgba(0,0,0,0.35));
   filter: drop-shadow(0em 0.6em 0.6em rgba(0,0,0,0.35));
   outline: 0 none;
@@ -256,12 +268,15 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -282,9 +297,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  margin-top: -8px;
-  margin-bottom: -8px;
-  margin-right: 1em;
+  height: 1rem;
 }
 
 <div>
@@ -295,8 +308,8 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
     elevation="0"
     type="fill"
   >
-    <span
-      class="sc-AxiKw sc-AxhCb sc-fznWqX c1"
+    <div
+      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -320,7 +333,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
           />
         </g>
       </svg>
-    </span>
+    </div>
   </button>
 </div>
 `;
@@ -329,12 +342,15 @@ exports[`Button shows icons 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -355,17 +371,13 @@ exports[`Button shows icons 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  margin-top: -8px;
-  margin-bottom: -8px;
-  margin-right: 1em;
+  height: 1rem;
 }
 
 .c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  margin-top: -8px;
-  margin-bottom: -8px;
-  margin-left: 1em;
+  height: 1rem;
 }
 
 <div>
@@ -376,8 +388,8 @@ exports[`Button shows icons 1`] = `
     elevation="0"
     type="fill"
   >
-    <span
-      class="sc-AxiKw sc-AxhCb sc-fznWqX c1"
+    <div
+      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -388,9 +400,9 @@ exports[`Button shows icons 1`] = `
           style="fill: currentColor;"
         />
       </svg>
-    </span>
-    <span
-      class="sc-AxiKw sc-AxhCb sc-fznWqX c2"
+    </div>
+    <div
+      class="sc-AxjAm sc-AxirZ sc-fznWqX c2"
     >
       <svg
         role="presentation"
@@ -401,7 +413,7 @@ exports[`Button shows icons 1`] = `
           style="fill: currentColor;"
         />
       </svg>
-    </span>
+    </div>
   </button>
 </div>
 `;
@@ -410,12 +422,15 @@ exports[`Button shows icons with type string 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -436,17 +451,13 @@ exports[`Button shows icons with type string 1`] = `
 .c1 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  margin-top: -8px;
-  margin-bottom: -8px;
-  margin-right: 1em;
+  height: 1rem;
 }
 
 .c2 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
-  margin-top: -8px;
-  margin-bottom: -8px;
-  margin-left: 1em;
+  height: 1rem;
 }
 
 <div>
@@ -457,8 +468,8 @@ exports[`Button shows icons with type string 1`] = `
     elevation="0"
     type="fill"
   >
-    <span
-      class="sc-AxiKw sc-AxhCb sc-fznWqX c1"
+    <div
+      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -470,9 +481,9 @@ exports[`Button shows icons with type string 1`] = `
           style="fill: currentColor;"
         />
       </svg>
-    </span>
-    <span
-      class="sc-AxiKw sc-AxhCb sc-fznWqX c2"
+    </div>
+    <div
+      class="sc-AxjAm sc-AxirZ sc-fznWqX c2"
     >
       <svg
         role="presentation"
@@ -484,7 +495,7 @@ exports[`Button shows icons with type string 1`] = `
           style="fill: currentColor;"
         />
       </svg>
-    </span>
+    </div>
   </button>
 </div>
 `;
@@ -500,8 +511,8 @@ exports[`Button shows loading text when provided 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;

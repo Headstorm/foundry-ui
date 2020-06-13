@@ -8,14 +8,14 @@ import { Div, TextArea, Input as InputElement } from '../../htmlElements';
 
 const Container = styled(Div)`
   ${({ isValid }: { isValid?: boolean }) => `
-  border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
-  min-width: 10rem;
-  position: relative;
-  display: flex;
-  flex-flow: row;
-  border-radius: 0.25em;
-  background-color: ${colors.background};
-`}
+    border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
+    min-width: 10rem;
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    border-radius: 0.25em;
+    background-color: ${colors.background};
+  `}
 `;
 
 const TextInputContainer = styled(InputElement)`
@@ -24,7 +24,7 @@ const TextInputContainer = styled(InputElement)`
   outline: 0 none;
   height: 2em;
   font-size: 1em;
-  padding-left: 0.5rem;
+  padding: 0.5rem;
   background-color: ${colors.background};
 `;
 
@@ -33,9 +33,10 @@ const TextAreaInputContainer = styled(TextArea)`
     border: 0 none;
     flex-grow: 1;
     outline: 0 none;
-    min-height: 2em;
     font-size: 1em;
+    min-height: 2em;
     min-width: 0px;
+    padding: .5rem;
     background-color: ${colors.background};
     resize: ${multiLineIsResizable ? 'both' : 'none'};
   `}
@@ -103,7 +104,7 @@ const createIcon = (
   return <StyledIconContainer>{iconPrefix}</StyledIconContainer>;
 };
 
-const defaultCallback = () => {};
+const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
   id,

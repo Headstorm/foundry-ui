@@ -23,8 +23,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -48,7 +48,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -147,8 +147,8 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -172,7 +172,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -272,8 +272,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -296,8 +296,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -342,6 +344,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
+  border-radius: 0rem 0rem .25rem .25rem;
 }
 
 .c5 {
@@ -485,8 +488,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -510,7 +513,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -606,8 +609,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -631,7 +634,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -728,8 +731,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -752,8 +755,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -798,6 +803,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
+  border-radius: 0rem 0rem .25rem .25rem;
 }
 
 .c5 {
@@ -941,8 +947,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -966,7 +972,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -1063,8 +1069,8 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -1088,7 +1094,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
@@ -1187,8 +1193,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
@@ -1212,7 +1218,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 15rem;
-  padding: 0.5rem;
+  padding: .5rem 1rem;
 }
 
 .c1:hover {
