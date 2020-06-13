@@ -26,21 +26,7 @@ storiesOf('Modal', module).add(
       height: 100vh;
       width: 100vw;
     `;
-
-    const ModalActionText = styled.span`
-      cursor: pointer;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-
-      color: #5a27e7;
-    `;
     const [isOpen, setIsOpen] = useState(true);
-    const CardFooter = () => (
-      <>
-        <ModalActionText onClick={() => setIsOpen(false)}>Cancel</ModalActionText>
-        <ModalActionText onClick={() => setIsOpen(false)}>Okay</ModalActionText>
-      </>
-    );
 
     const handleClose = () => {
       setIsOpen(false);
@@ -63,9 +49,6 @@ storiesOf('Modal', module).add(
         {isOpen && (
           <Modal
             closeButtonAttachment={buttonAttachment}
-            closeButtonProps={{
-              type: buttonAttachment === 'inside' ? 'link' : 'outline',
-            }}
             backgroundDarkness={number('backgroundDarkness', 0.5, {
               range: true,
               min: 0,
@@ -81,8 +64,13 @@ storiesOf('Modal', module).add(
             onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
             onClose={handleClose}
           >
-            <Card footer={CardFooter} elevation={1}>
-              Hello world!
+            <Card
+              header="Hello world!"
+              footer={<Button onClick={handleClose}>Okay...</Button>}
+              elevation={1}
+            >
+              Welcome to the wonderful world of modals. Hope you have a great time, and please pick
+              up a t-shirt or mug from the giftshop on your way out!
             </Card>
           </Modal>
         )}

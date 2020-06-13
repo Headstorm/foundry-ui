@@ -36,23 +36,28 @@ const CloseButton = styled(Button)``;
 const CloseButtonContainer = styled(Button.Container)`
   ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
     let distance;
+    let position;
     switch (closeButtonAttachment) {
       case 'inside':
-        distance = '0rem';
+        distance = '.5rem';
+        position = 'absolute';
         break;
       case 'outside':
         distance = '-2rem';
+        position = 'absolute';
         break;
       case 'corner':
-        distance = '0rem';
+        distance = '1rem';
+        position = 'fixed';
         break;
       default:
         distance = '0rem';
+        position = 'absolute';
         break;
     }
 
     return `
-      position: absolute;
+      position: ${position};
       top: ${distance};
       right: ${distance};
       z-index: 1011;
@@ -89,24 +94,40 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   closeButtonAttachment = 'inside',
-  backgroundBlur = '.5',
+  backgroundBlur = '.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps) => (
   <>
-    <StyledContainer>
-      {children}
+    {closeButtonAttachment === 'corner' && (
       <StyledCloseButton
         StyledContainer={StyledCloseButtonContainer}
         containerProps={{
           closeButtonAttachment,
         }}
         iconPrefix={mdiClose}
-        color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
-        elevation={closeButtonAttachment === 'inside' ? 0 : 2}
+        color={colors.background}
+        elevation={1}
         type="link"
         onClick={onClose}
         {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
       />
+    )}
+    <StyledContainer>
+      {children}
+      {closeButtonAttachment !== 'corner' && (
+        <StyledCloseButton
+          StyledContainer={StyledCloseButtonContainer}
+          containerProps={{
+            closeButtonAttachment,
+          }}
+          iconPrefix={mdiClose}
+          color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
+          elevation={closeButtonAttachment === 'inside' ? 0 : 1}
+          type="link"
+          onClick={onClose}
+          {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
+        />
+      )}
     </StyledContainer>
     <StyledUnderlay
       backgroundBlur={backgroundBlur}

@@ -8,14 +8,14 @@ import { Div, TextArea, Input as InputElement } from '../../htmlElements';
 
 const Container = styled(Div)`
   ${({ isValid }: { isValid?: boolean }) => `
-  border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
-  min-width: 10rem;
-  position: relative;
-  display: flex;
-  flex-flow: row;
-  border-radius: 0.25em;
-  background-color: ${colors.background};
-`}
+    border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
+    min-width: 10rem;
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    border-radius: 0.25em;
+    background-color: ${colors.background};
+  `}
 `;
 
 const TextInputContainer = styled(InputElement)`

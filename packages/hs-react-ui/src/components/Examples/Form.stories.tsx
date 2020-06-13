@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import { mdiAccountCircleOutline } from '@mdi/js';
+import { mdiAccountCircleOutline, mdiRefresh } from '@mdi/js';
 import { name, address, internet, company, phone, commerce, lorem } from 'faker';
 import TextInput from '../TextInput';
 import Button from '../Button';
@@ -107,7 +107,7 @@ const defaultState: state = {
 // Adjusting the style of the footer to help position the buttons added
 const StyledFooter = styled(Card.Footer)`
   display: flex;
-  justify-items: flex-end;
+  justify-content: space-between;
 `;
 
 const StyledBody = styled(Card.Body)`
@@ -159,7 +159,7 @@ storiesOf('Form Example', module).add(
       setTimeout(() => {
         setIsResetting(false);
         setState({ ...savedState });
-      }, Math.random() * 1000);
+      }, Math.random() * 1000 + 500);
     };
 
     const closeModal = () => {
@@ -171,13 +171,8 @@ storiesOf('Form Example', module).add(
     };
 
     const saveButton = (
-      <Button
-        key="saveButton"
-        onClick={onSave}
-        type={Button.ButtonTypes.outline}
-        isProcessing={isSaving}
-      >
-        Save
+      <Button key="saveButton" onClick={onSave} color={colors.primaryDark} isProcessing={isSaving}>
+        {isSaving ? 'Saving' : 'Save'}
       </Button>
     );
 
@@ -185,9 +180,9 @@ storiesOf('Form Example', module).add(
       <Button
         key="cancelButton"
         onClick={openModal}
-        color={colors.grayXlight}
+        color={colors.destructive}
         isProcessing={isResetting}
-        StyledContainer={ResetButtonContainer}
+        type={Button.ButtonTypes.link}
       >
         Reset
       </Button>
@@ -197,10 +192,10 @@ storiesOf('Form Example', module).add(
       <Button
         key="confirmButton"
         onClick={onReset}
-        type={Button.ButtonTypes.outline}
-        color={colors.success}
+        color={colors.destructive}
+        iconPrefix={mdiRefresh}
       >
-        Confirm
+        Reset form
       </Button>
     );
 
@@ -209,9 +204,10 @@ storiesOf('Form Example', module).add(
         key="cancelButton"
         onClick={closeModal}
         color={colors.destructive}
+        type={Button.ButtonTypes.link}
         StyledContainer={ResetButtonContainer}
       >
-        Abort
+        Go back
       </Button>
     );
 
@@ -236,7 +232,7 @@ storiesOf('Form Example', module).add(
           <Label
             labelText="First Name"
             htmlFor="firstName"
-            isValid={state.firstName === '' ? false : undefined}
+            isValid={state.firstName !== ''}
             isRequired
             key="firstName"
           >
@@ -313,7 +309,7 @@ storiesOf('Form Example', module).add(
             <Dropdown
               name="state-dropdown"
               options={stateAbbreviations}
-              color={colors.grayXlight}
+              color={colors.primaryDark}
               values={[state.state as string]}
               onSelect={val => {
                 setState({ ...state, state: val as string });
@@ -334,16 +330,15 @@ storiesOf('Form Example', module).add(
           </Label>
         </Card>
         {isModalOpen && (
-          <Modal
-            header="Would you like to continue?"
-            body={
-              <Text>You will lose any unsaved changes, are you sure you would like to reset?</Text>
-            }
-            footer={[abortButton, confirmButton]}
-            onClose={closeModal}
-            onClickOutside={closeModal}
-            backgroundDarkness={50}
-          />
+          <Modal onClose={closeModal} onClickOutside={closeModal} backgroundDarkness={0.5}>
+            <Card
+              elevation={1}
+              header="Would you like to continue?"
+              footer={[abortButton, confirmButton]}
+            >
+              You will lose any unsaved changes, are you sure you would like to reset?
+            </Card>
+          </Modal>
         )}
       </>
     );

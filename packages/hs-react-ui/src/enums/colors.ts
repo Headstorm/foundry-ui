@@ -1,6 +1,7 @@
 enum colors {
   background = '#fff',
   primary = '#e75b27',
+  primaryDark = '#c54516',
 
   black = '#000',
   grayDark = '#252c35',

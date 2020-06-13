@@ -17,8 +17,9 @@ export const CardContainer = styled(Div)`
     border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
 
     transition: box-shadow ${timings.slow}, border ${timings.normal};
-    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
+    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${
+    elevation * -0.25
+  }rem rgba(0,0,0,${0.6 - elevation * 0.1});
     background-color: ${colors.background};
   `}
 `;
@@ -44,7 +45,6 @@ export const Footer = styled(Div)`
 
   color: ${colors.grayLight};
 
-  border-top: 1px solid ${colors.grayXlight};
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 `;
 
