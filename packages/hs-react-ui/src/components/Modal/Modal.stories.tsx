@@ -4,6 +4,7 @@ import { boolean, select, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
+import colors from '../../enums/colors';
 import Modal from './Modal';
 import Button from '../Button/Button';
 import Card from '../Card';
@@ -42,7 +43,12 @@ storiesOf('Modal', module).add(
     return (
       <Background>
         {!isOpen && (
-          <Button StyledContainer={Button.Container} onClick={() => setIsOpen(true)}>
+          <Button
+            color={colors.primaryDark}
+            elevation={1}
+            StyledContainer={Button.Container}
+            onClick={() => setIsOpen(true)}
+          >
             Toggle modal
           </Button>
         )}
@@ -66,7 +72,11 @@ storiesOf('Modal', module).add(
           >
             <Card
               header="Hello world!"
-              footer={<Button onClick={handleClose}>Okay...</Button>}
+              footer={
+                <Button color={colors.primaryDark} onClick={handleClose}>
+                  Okay...
+                </Button>
+              }
               elevation={1}
             >
               Welcome to the wonderful world of modals. Hope you have a great time, and please pick

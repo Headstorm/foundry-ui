@@ -31,6 +31,7 @@ const Container = styled(Div)`
   z-index: 1010;
 `;
 
+// Just so that the types can match a styled component
 const CloseButton = styled(Button)``;
 
 const CloseButtonContainer = styled(Button.Container)`
@@ -94,7 +95,7 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   closeButtonAttachment = 'inside',
-  backgroundBlur = '.5rem',
+  backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps) => (
   <>
