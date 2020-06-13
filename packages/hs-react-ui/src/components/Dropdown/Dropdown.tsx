@@ -40,7 +40,7 @@ export const ValueContainer = styled(Button.Container)`
     }
 
     width: 15rem;
-    padding: 0.5rem;
+    padding: .5rem 1rem;
   `}
 `;
 
