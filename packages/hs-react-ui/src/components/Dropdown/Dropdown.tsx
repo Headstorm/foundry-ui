@@ -69,6 +69,7 @@ const OptionsContainer = styled(Div)`
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid ${colors.grayDark25};
+  border-radius 0rem 0rem .25rem .25rem;
 `;
 
 const OptionItem = styled(Div)`

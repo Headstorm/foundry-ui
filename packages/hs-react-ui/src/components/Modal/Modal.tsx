@@ -3,7 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 
 import colors from '../../enums/colors';
-import Button from '../Button';
+import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
 
 const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
@@ -30,6 +30,8 @@ const Container = styled(Div)`
 
   z-index: 1010;
 `;
+
+const CloseButton = styled(Button)``;
 
 const CloseButtonContainer = styled(Button.Container)`
   ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
@@ -62,11 +64,11 @@ const CloseButtonContainer = styled(Button.Container)`
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
-  StyledContainer?: (string & StyledComponentBase<any, {}>) | ReactNode;
-  StyledUnderlay?: (string & StyledComponentBase<any, {}>) | ReactNode;
-  StyledCloseButton?: (string & StyledComponentBase<any, {}>) | Button.ButtonTypes;
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledUnderlay?: string & StyledComponentBase<any, {}>;
+  StyledCloseButton?: string & StyledComponentBase<any, {}>;
   closeButtonProps?: object;
-  StyledCloseButtonContainer?: (string & StyledComponentBase<any, {}>) | ReactNode;
+  StyledCloseButtonContainer?: string & StyledComponentBase<any, {}>;
   children: ReactNode;
 
   onClickOutside?: () => void;
@@ -80,7 +82,7 @@ export interface ModalProps {
 const Modal = ({
   StyledContainer = Container,
   StyledUnderlay = Underlay,
-  StyledCloseButton = Button,
+  StyledCloseButton = CloseButton,
   StyledCloseButtonContainer = CloseButtonContainer,
   closeButtonProps = {},
   children,

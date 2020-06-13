@@ -85,7 +85,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : `0 none;`};
+      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -116,13 +116,13 @@ const IconContainer = styled(Div)`
 
 const LeftIconContainer = styled(IconContainer)`
   ${({ hasContent }: { hasContent: boolean }) => `
-    ${hasContent ? `margin-right: 1em;` : ''}
+    ${hasContent ? 'margin-right: 1em;' : ''}
   `}
 `;
 
 const RightIconContainer = styled(IconContainer)`
   ${({ hasContent }: { hasContent: boolean }) => `
-    ${hasContent ? `margin-left: 1em;` : ''}
+    ${hasContent ? 'margin-left: 1em;' : ''}
   `}
 `;
 

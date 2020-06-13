@@ -27,7 +27,9 @@ describe('Button', () => {
   });
 
   it('shows ButtonContainer with nondefault props type and color', async () => {
-    const { container, getByTestId } = render(<Button color={colors.black} elevation={2} type={ButtonTypes.outline} onClick={() => {}} />);
+    const { container, getByTestId } = render(
+      <Button color={colors.black} elevation={2} type={ButtonTypes.outline} onClick={() => {}} />,
+    );
 
     await waitFor(() => getByTestId(testId));
 
@@ -35,7 +37,9 @@ describe('Button', () => {
   });
 
   it('shows ButtonContainer ButtonType.link', async () => {
-    const { container, getByTestId } = render(<Button type={ButtonTypes.link} onClick={() => {}} />);
+    const { container, getByTestId } = render(
+      <Button type={ButtonTypes.link} onClick={() => {}} />,
+    );
 
     await waitFor(() => getByTestId(testId));
 
@@ -43,7 +47,9 @@ describe('Button', () => {
   });
 
   it('shows ButtonContainer ButtonType.fill', async () => {
-    const { container, getByTestId } = render(<Button type={ButtonTypes.fill} onClick={() => {}} />);
+    const { container, getByTestId } = render(
+      <Button type={ButtonTypes.fill} onClick={() => {}} />,
+    );
 
     await waitFor(() => getByTestId(testId));
 
@@ -51,7 +57,9 @@ describe('Button', () => {
   });
 
   it('shows ButtonContainer ButtonType.outline', async () => {
-    const { container, getByTestId } = render(<Button type={ButtonTypes.outline} color={null} onClick={() => {}} />);
+    const { container, getByTestId } = render(
+      <Button type={ButtonTypes.outline} color={null} onClick={() => {}} />,
+    );
 
     await waitFor(() => getByTestId(testId));
 
@@ -67,7 +75,9 @@ describe('Button', () => {
   });
 
   it('shows icons with type string', async () => {
-    const { container, getByTestId } = render(<Button iconSuffix='mdiComment' iconPrefix='mdiComment' onClick={() => {}} />);
+    const { container, getByTestId } = render(
+      <Button iconSuffix="mdiComment" iconPrefix="mdiComment" onClick={() => {}} />,
+    );
 
     await waitFor(() => getByTestId(testId));
 
@@ -75,7 +85,13 @@ describe('Button', () => {
   });
 
   it('shows icons', async () => {
-    const { container, getByTestId } = render(<Button iconSuffix={<Icon path={'mdiComment'}/>} iconPrefix={<Icon path={'mdiComment'}/>} onClick={() => {}} />);
+    const { container, getByTestId } = render(
+      <Button
+        iconSuffix={<Icon path={'mdiComment'} />}
+        iconPrefix={<Icon path={'mdiComment'} />}
+        onClick={() => {}}
+      />,
+    );
 
     await waitFor(() => getByTestId(testId));
 

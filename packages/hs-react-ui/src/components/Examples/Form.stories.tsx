@@ -136,12 +136,12 @@ storiesOf('Form Example', module).add(
     // of the example's source code.
     const createTextInputCallback = (property: string): ((event: any) => void) => {
       return event => {
-        setState(Object.assign({}, state, { [property]: event.target.value }));
+        setState({ ...state, [property]: event.target.value });
       };
     };
 
     const onSave = () => {
-      const newSavedState = Object.assign({}, state);
+      const newSavedState = { ...state };
       setIsSaving(true);
 
       // Use a setTimeout to simulate a network call
@@ -158,7 +158,7 @@ storiesOf('Form Example', module).add(
       // Simulate network call
       setTimeout(() => {
         setIsResetting(false);
-        setState(Object.assign({}, savedState));
+        setState({ ...savedState });
       }, Math.random() * 1000);
     };
 
@@ -172,7 +172,7 @@ storiesOf('Form Example', module).add(
 
     const saveButton = (
       <Button
-        key={'saveButton'}
+        key="saveButton"
         onClick={onSave}
         type={Button.ButtonTypes.outline}
         isProcessing={isSaving}
@@ -183,7 +183,7 @@ storiesOf('Form Example', module).add(
 
     const cancelButton = (
       <Button
-        key={'cancelButton'}
+        key="cancelButton"
         onClick={openModal}
         color={colors.grayXlight}
         isProcessing={isResetting}
@@ -195,7 +195,7 @@ storiesOf('Form Example', module).add(
 
     const confirmButton = (
       <Button
-        key={'confirmButton'}
+        key="confirmButton"
         onClick={onReset}
         type={Button.ButtonTypes.outline}
         color={colors.success}
@@ -206,7 +206,7 @@ storiesOf('Form Example', module).add(
 
     const abortButton = (
       <Button
-        key={'cancelButton'}
+        key="cancelButton"
         onClick={closeModal}
         color={colors.destructive}
         StyledContainer={ResetButtonContainer}
@@ -266,7 +266,7 @@ storiesOf('Form Example', module).add(
           >
             <TextInput
               onChange={createTextInputCallback('age')}
-              value={state.age + ''}
+              value={`${state.age}`}
               errorMessage="Must be 13+"
               isValid={!!state.age && +state.age > 13}
               id="age"
@@ -316,7 +316,7 @@ storiesOf('Form Example', module).add(
               color={colors.grayXlight}
               values={[state.state as string]}
               onSelect={val => {
-                setState(Object.assign({}, state, { state: val as string }));
+                setState({ ...state, state: val as string });
               }}
             />
           </Label>
@@ -324,7 +324,7 @@ storiesOf('Form Example', module).add(
           <Label labelText="Notifications" htmlFor="notifications" key="notifications">
             <Checkbox
               onClick={() => {
-                setState(Object.assign({}, state, { notifications: !state.notifications }));
+                setState({ ...state, notifications: !state.notifications });
               }}
               checked={state.notifications}
               checkboxType={Checkbox.Types.check}
@@ -335,7 +335,7 @@ storiesOf('Form Example', module).add(
         </Card>
         {isModalOpen && (
           <Modal
-            header={'Would you like to continue?'}
+            header="Would you like to continue?"
             body={
               <Text>You will lose any unsaved changes, are you sure you would like to reset?</Text>
             }

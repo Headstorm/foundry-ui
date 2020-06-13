@@ -103,7 +103,7 @@ const createIcon = (
   return <StyledIconContainer>{iconPrefix}</StyledIconContainer>;
 };
 
-const defaultCallback = () => {};
+const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
   id,
