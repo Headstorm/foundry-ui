@@ -43,7 +43,7 @@ export type ButtonProps = {
  */
 export const getFontColorFromType = (type: string, color: string) => {
   if (type === 'fill') {
-    return readableColor(color, colors.grayDark, colors.background, true);
+    return readableColor(color, colors.background, colors.grayDark, true);
   }
   return color;
 };
