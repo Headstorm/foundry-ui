@@ -11,6 +11,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -135,6 +136,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -260,6 +262,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -344,7 +347,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
-  border-radius: 0rem 0rem .25rem .25rem;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
 .c5 {
@@ -476,6 +479,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -597,6 +601,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -719,6 +724,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -803,7 +809,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
-  border-radius: 0rem 0rem .25rem .25rem;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
 .c5 {
@@ -935,6 +941,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -1057,6 +1064,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
@@ -1181,6 +1189,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   transition: filter .5s;
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  z-index: 1;
 }
 
 .c1 {
