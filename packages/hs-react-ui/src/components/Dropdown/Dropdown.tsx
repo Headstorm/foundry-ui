@@ -21,6 +21,7 @@ const Container = styled(Div)`
       filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
     `;
   }}
+  z-index: 1;
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
@@ -69,7 +70,7 @@ const OptionsContainer = styled(Div)`
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid ${colors.grayDark25};
-  border-radius 0rem 0rem .25rem .25rem;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 `;
 
 const OptionItem = styled(Div)`
