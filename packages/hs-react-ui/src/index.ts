@@ -21,5 +21,5 @@ export {
   Table,
   Text,
   TextInput,
-  Progress
+  Progress,
 };
