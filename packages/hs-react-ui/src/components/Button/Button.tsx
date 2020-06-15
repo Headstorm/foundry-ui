@@ -23,6 +23,7 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+  containerProps?: object;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
@@ -77,7 +78,11 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
-      transition: filter ${timings.slow};
+      transition:
+        background-color ${timings.fast},
+        color ${timings.slow},
+        outline ${timings.slow},
+        filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
       border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
@@ -110,15 +115,20 @@ const IconContainer = styled(Div)`
 `;
 
 const LeftIconContainer = styled(IconContainer)`
-  margin-right: 1em;
+  ${({ hasContent }: { hasContent: boolean }) => `
+    ${hasContent ? 'margin-right: 1em;' : ''}
+  `}
 `;
 
 const RightIconContainer = styled(IconContainer)`
-  margin-left: 1em;
+  ${({ hasContent }: { hasContent: boolean }) => `
+    ${hasContent ? 'margin-left: 1em;' : ''}
+  `}
 `;
 
 const Button = ({
   StyledContainer = ButtonContainer,
+  containerProps = {},
   iconPrefix,
   iconSuffix,
   isLoading,
@@ -130,6 +140,8 @@ const Button = ({
   onClick,
   LoadingBar = StyledProgress,
 }: ButtonProps) => {
+  const hasContent = Boolean(children);
+
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
@@ -137,6 +149,7 @@ const Button = ({
       elevation={elevation}
       color={color}
       type={type}
+      {...containerProps} // eslint-disable-line react/jsx-props-no-spreading
     >
       <LoadingBar />
     </StyledContainer>
@@ -147,30 +160,31 @@ const Button = ({
       elevation={elevation}
       color={color}
       type={type}
+      {...containerProps} // eslint-disable-line react/jsx-props-no-spreading
     >
-      {!isProcessing
-        && iconPrefix
-        && (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-          <LeftIconContainer>
+      {!isProcessing &&
+        iconPrefix &&
+        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+          <LeftIconContainer hasContent={hasContent}>
             <UnstyledIcon path={iconPrefix} size="1rem" />
           </LeftIconContainer>
         ) : (
           <LeftIconContainer>{iconPrefix}</LeftIconContainer>
         ))}
       {isProcessing && (
-        <LeftIconContainer>
+        <LeftIconContainer hasContent={hasContent}>
           <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
         </LeftIconContainer>
       )}
       {children}
 
-      {iconSuffix
-        && (typeof iconSuffix === 'string' ? (
-          <RightIconContainer>
+      {iconSuffix &&
+        (typeof iconSuffix === 'string' ? (
+          <RightIconContainer hasContent={hasContent}>
             <UnstyledIcon path={iconSuffix} size="1rem" />
           </RightIconContainer>
         ) : (
-          <RightIconContainer>{iconSuffix}</RightIconContainer>
+          <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
         ))}
     </StyledContainer>
   );

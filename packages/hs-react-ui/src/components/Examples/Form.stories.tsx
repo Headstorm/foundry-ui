@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import { mdiAccountCircleOutline } from '@mdi/js';
+import { mdiAccountCircleOutline, mdiRefresh } from '@mdi/js';
 import { name, address, internet, company, phone, commerce, lorem } from 'faker';
 import TextInput from '../TextInput';
 import Button from '../Button';
@@ -21,14 +21,60 @@ const design = {
 
 // All 50 + DC
 const stateAbbreviations = [
-  'AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL',
-  'GA','HI','ID','IL','IN','IA','KS','KY','LA','ME',
-  'MD','MA','MI','MN','MS','MO','MT','NE','NV','NH',
-  'NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI',
-  'SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'
- ];
+  'AL',
+  'AK',
+  'AZ',
+  'AR',
+  'CA',
+  'CO',
+  'CT',
+  'DE',
+  'DC',
+  'FL',
+  'GA',
+  'HI',
+  'ID',
+  'IL',
+  'IN',
+  'IA',
+  'KS',
+  'KY',
+  'LA',
+  'ME',
+  'MD',
+  'MA',
+  'MI',
+  'MN',
+  'MS',
+  'MO',
+  'MT',
+  'NE',
+  'NV',
+  'NH',
+  'NJ',
+  'NM',
+  'NY',
+  'NC',
+  'ND',
+  'OH',
+  'OK',
+  'OR',
+  'PA',
+  'RI',
+  'SC',
+  'SD',
+  'TN',
+  'TX',
+  'UT',
+  'VT',
+  'VA',
+  'WA',
+  'WV',
+  'WI',
+  'WY',
+];
 
- interface state {
+interface state {
   firstName: string;
   lastName: string;
   title: string;
@@ -41,7 +87,7 @@ const stateAbbreviations = [
   notifications: boolean;
   bio: string;
   age: number;
- }
+}
 
 const defaultState: state = {
   firstName: name.firstName(),
@@ -61,13 +107,13 @@ const defaultState: state = {
 // Adjusting the style of the footer to help position the buttons added
 const StyledFooter = styled(Card.Footer)`
   display: flex;
-  justify-items: flex-end;
+  justify-content: space-between;
 `;
 
 const StyledBody = styled(Card.Body)`
   display: grid;
-  grid-template-columns: 1fr 1fr ;
-  column-gap: 5rem;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
   row-gap: 1.5rem;
 `;
 
@@ -87,15 +133,15 @@ storiesOf('Form Example', module).add(
     // By creating a callback function like this, we will create a new callback for each
     // handler on every render, which is not the ideal scenario for maximum performance.
     // To prevent this, use the useCallback helper. We're  doing this to shorten the length
-    // of the example's souce code.
-    const createTextInputCallback = (property: string): (event: any) => void => {
-      return (event) => {
-        setState(Object.assign({}, state, {[property]: event.target.value}));
-      }
-    }
+    // of the example's source code.
+    const createTextInputCallback = (property: string): ((event: any) => void) => {
+      return event => {
+        setState({ ...state, [property]: event.target.value });
+      };
+    };
 
     const onSave = () => {
-      const newSavedState = Object.assign({}, state);
+      const newSavedState = { ...state };
       setIsSaving(true);
 
       // Use a setTimeout to simulate a network call
@@ -103,7 +149,7 @@ storiesOf('Form Example', module).add(
         setSavedState(newSavedState);
         setIsSaving(false);
       }, Math.random() * 1000);
-    }
+    };
 
     const onReset = () => {
       setIsResetting(true);
@@ -112,36 +158,31 @@ storiesOf('Form Example', module).add(
       // Simulate network call
       setTimeout(() => {
         setIsResetting(false);
-        setState(Object.assign({}, savedState));
-      }, Math.random() * 1000);
-    }
+        setState({ ...savedState });
+      }, Math.random() * 1000 + 500);
+    };
 
     const closeModal = () => {
       setIsModalOpen(false);
-    }
+    };
 
     const openModal = () => {
       setIsModalOpen(true);
-    }
+    };
 
     const saveButton = (
-      <Button
-        key={"saveButton"}
-        onClick={onSave}
-        type={Button.ButtonTypes.outline}
-        isProcessing={isSaving}
-      >
-        Save
+      <Button key="saveButton" onClick={onSave} color={colors.primaryDark} isProcessing={isSaving}>
+        {isSaving ? 'Saving' : 'Save'}
       </Button>
     );
 
     const cancelButton = (
       <Button
-        key={"cancelButton"}
+        key="cancelButton"
         onClick={openModal}
-        color={colors.grayXlight}
+        color={colors.destructive}
         isProcessing={isResetting}
-        StyledContainer={ResetButtonContainer}
+        type={Button.ButtonTypes.link}
       >
         Reset
       </Button>
@@ -149,23 +190,24 @@ storiesOf('Form Example', module).add(
 
     const confirmButton = (
       <Button
-        key={"confirmButton"}
+        key="confirmButton"
         onClick={onReset}
-        type={Button.ButtonTypes.outline}
-        color={colors.success}
+        color={colors.destructive}
+        iconPrefix={mdiRefresh}
       >
-        Confirm
+        Reset form
       </Button>
     );
 
     const abortButton = (
       <Button
-        key={"cancelButton"}
+        key="cancelButton"
         onClick={closeModal}
         color={colors.destructive}
+        type={Button.ButtonTypes.link}
         StyledContainer={ResetButtonContainer}
       >
-        Abort
+        Go back
       </Button>
     );
 
@@ -181,6 +223,7 @@ storiesOf('Form Example', module).add(
     return (
       <>
         <Card
+          elevation={1}
           header={Header}
           footer={[cancelButton, saveButton]}
           StyledFooter={StyledFooter}
@@ -189,12 +232,12 @@ storiesOf('Form Example', module).add(
           <Label
             labelText="First Name"
             htmlFor="firstName"
-            isValid={state.firstName === '' ? false : undefined}
+            isValid={state.firstName !== ''}
             isRequired
             key="firstName"
           >
             <TextInput
-              onChange={createTextInputCallback("firstName")}
+              onChange={createTextInputCallback('firstName')}
               value={state.firstName}
               isValid={typeof state.firstName !== 'undefined' && state.firstName.length > 0}
               errorMessage="First Name cannot be blank"
@@ -202,13 +245,9 @@ storiesOf('Form Example', module).add(
             />
           </Label>
 
-          <Label
-            labelText="Last Name"
-            htmlFor="lastName"
-            key="lastName"
-          >
+          <Label labelText="Last Name" htmlFor="lastName" key="lastName">
             <TextInput
-              onChange={createTextInputCallback("lastName")}
+              onChange={createTextInputCallback('lastName')}
               value={state.lastName}
               id="lastName"
             />
@@ -222,8 +261,8 @@ storiesOf('Form Example', module).add(
             key="age"
           >
             <TextInput
-              onChange={createTextInputCallback("age")}
-              value={state.age + ''}
+              onChange={createTextInputCallback('age')}
+              value={`${state.age}`}
               errorMessage="Must be 13+"
               isValid={!!state.age && +state.age > 13}
               id="age"
@@ -239,7 +278,7 @@ storiesOf('Form Example', module).add(
             isValid={!!state.bio && state.bio.length > 30}
           >
             <TextInput
-              onChange={createTextInputCallback("bio")}
+              onChange={createTextInputCallback('bio')}
               value={state.bio}
               id="bio"
               isValid={!!state.bio && state.bio.length > 30}
@@ -250,63 +289,39 @@ storiesOf('Form Example', module).add(
             />
           </Label>
 
-          <Label
-            labelText="Title"
-            htmlFor="title"
-            key="title"
-          >
-            <TextInput
-              onChange={createTextInputCallback("title")}
-              value={state.title}
-              id="title"
-            />
+          <Label labelText="Title" htmlFor="title" key="title">
+            <TextInput onChange={createTextInputCallback('title')} value={state.title} id="title" />
           </Label>
 
-          <Label
-            labelText="Company"
-            htmlFor="company"
-            key="company"
-          >
+          <Label labelText="Company" htmlFor="company" key="company">
             <TextInput
-              onChange={createTextInputCallback("company")}
+              onChange={createTextInputCallback('company')}
               value={state.company}
               id="company"
             />
           </Label>
 
-          <Label
-            labelText="City"
-            htmlFor="city"
-            key="city"
-          >
-            <TextInput
-              onChange={createTextInputCallback("city")}
-              value={state.city}
-              id="city"
-            />
+          <Label labelText="City" htmlFor="city" key="city">
+            <TextInput onChange={createTextInputCallback('city')} value={state.city} id="city" />
           </Label>
 
-          <Label
-            labelText="State"
-            htmlFor="state"
-            key="state"
-          >
+          <Label labelText="State" htmlFor="state" key="state">
             <Dropdown
               name="state-dropdown"
               options={stateAbbreviations}
-              color={colors.grayXlight}
+              color={colors.primaryDark}
               values={[state.state as string]}
-              onSelect={(val) => { setState(Object.assign({}, state, { state: val as string })) }}
+              onSelect={val => {
+                setState({ ...state, state: val as string });
+              }}
             />
           </Label>
 
-          <Label
-            labelText="Notifications"
-            htmlFor="notifications"
-            key="notifications"
-          >
+          <Label labelText="Notifications" htmlFor="notifications" key="notifications">
             <Checkbox
-              onClick={() => {setState(Object.assign({}, state, { notifications: !state.notifications}))}}
+              onClick={() => {
+                setState({ ...state, notifications: !state.notifications });
+              }}
               checked={state.notifications}
               checkboxType={Checkbox.Types.check}
             >
@@ -314,14 +329,17 @@ storiesOf('Form Example', module).add(
             </Checkbox>
           </Label>
         </Card>
-        {isModalOpen && <Modal
-          header={"Would you like to continue?"}
-          body={<Text>You will lose any unsaved changes, are you sure you would like to reset?</Text>}
-          footer={[abortButton, confirmButton]}
-          onClose={closeModal}
-          onClickOutside={closeModal}
-          backgroundDarkness={50}
-        />}
+        {isModalOpen && (
+          <Modal onClose={closeModal} onClickOutside={closeModal} backgroundDarkness={0.5}>
+            <Card
+              elevation={1}
+              header="Would you like to continue?"
+              footer={[abortButton, confirmButton]}
+            >
+              You will lose any unsaved changes, are you sure you would like to reset?
+            </Card>
+          </Modal>
+        )}
       </>
     );
   },

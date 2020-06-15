@@ -50,7 +50,6 @@ export const Footer = styled(Div)`
 
   color: ${colors.grayLight};
 
-  border-top: 1px solid ${colors.grayXlight};
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 `;
 
