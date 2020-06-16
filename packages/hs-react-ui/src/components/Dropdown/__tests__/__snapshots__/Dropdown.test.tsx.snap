@@ -346,6 +346,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   font-family: Montserrat,Roboto,sans-serif;
   background: white;
   position: absolute;
+  top: 100%;
+  left: 0px;
   max-height: 10rem;
   top: 100%;
   left: 0px;
@@ -353,6 +355,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+  z-index: 1000;
 }
 
 .c5 {
@@ -813,6 +816,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   font-family: Montserrat,Roboto,sans-serif;
   background: white;
   position: absolute;
+  top: 100%;
+  left: 0px;
   max-height: 10rem;
   top: 100%;
   left: 0px;
@@ -820,6 +825,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+  z-index: 1000;
 }
 
 .c5 {
