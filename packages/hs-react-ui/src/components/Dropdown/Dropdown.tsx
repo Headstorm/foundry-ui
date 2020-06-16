@@ -67,6 +67,8 @@ const ValueItem = styled(Div)`
 const OptionsContainer = styled(Div)`
   background: white;
   position: absolute;
+  top: 100%;
+  left: 0px;
   max-height: 10rem;
   top: 100%;
   left: 0px;
@@ -74,6 +76,7 @@ const OptionsContainer = styled(Div)`
   width: 15rem;
   border: 0.5px solid ${colors.grayDark25};
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+  z-index: 1000;
 `;
 
 const OptionItem = styled(Div)`
