@@ -347,6 +347,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background: white;
   position: absolute;
   max-height: 10rem;
+  top: 100%;
+  left: 0px;
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
@@ -812,6 +814,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   background: white;
   position: absolute;
   max-height: 10rem;
+  top: 100%;
+  left: 0px;
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid rgba(211,214,215,0.25);
