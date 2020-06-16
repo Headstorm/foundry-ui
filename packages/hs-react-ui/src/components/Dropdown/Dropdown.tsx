@@ -10,7 +10,7 @@ import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 
 const Container = styled(Div)`
-  ${({ elevation }) => {
+  ${({ elevation, isOpen }) => {
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
@@ -19,11 +19,7 @@ const Container = styled(Div)`
       width: fit-content;
       transition: filter ${timings.slow};
       filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
-    `;
-  }}
-  position: relative;
-  ${({ isOpen }) => {
-    return `
+      position: relative;
       ${isOpen ? 'z-index: 7;' : 'z-index: 1;'}
     `;
   }}
