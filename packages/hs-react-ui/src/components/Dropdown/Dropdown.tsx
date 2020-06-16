@@ -22,6 +22,7 @@ const Container = styled(Div)`
     `;
   }}
   z-index: 1;
+  position: relative;
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
