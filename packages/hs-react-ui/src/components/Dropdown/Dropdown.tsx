@@ -70,8 +70,6 @@ const OptionsContainer = styled(Div)`
   top: 100%;
   left: 0px;
   max-height: 10rem;
-  top: 100%;
-  left: 0px;
   overflow-y: scroll;
   width: 15rem;
   border: 0.5px solid ${colors.grayDark25};
