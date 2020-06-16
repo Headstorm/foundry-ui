@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor, configure } from '@testing-library/react';
 import Icon from '@mdi/react';
 import colors from '../../../enums/colors';
-import Button, { ButtonTypes } from '../Button';
+import Button, { ButtonVariants } from '../Button';
 
 configure({ testIdAttribute: 'data-test-id' });
 
@@ -26,9 +26,14 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('shows ButtonContainer with nondefault props type and color', async () => {
+  it('shows ButtonContainer with nondefault props variant and color', async () => {
     const { container, getByTestId } = render(
-      <Button color={colors.black} elevation={2} type={ButtonTypes.outline} onClick={() => {}} />,
+      <Button
+        color={colors.black}
+        elevation={2}
+        variant={ButtonVariants.outline}
+        onClick={() => {}}
+      />,
     );
 
     await waitFor(() => getByTestId(testId));
@@ -36,9 +41,9 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('shows ButtonContainer ButtonType.link', async () => {
+  it('shows ButtonContainer ButtonVariant.text', async () => {
     const { container, getByTestId } = render(
-      <Button type={ButtonTypes.link} onClick={() => {}} />,
+      <Button variant={ButtonVariants.text} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));
@@ -46,9 +51,9 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('shows ButtonContainer ButtonType.fill', async () => {
+  it('shows ButtonContainer ButtonVariant.fill', async () => {
     const { container, getByTestId } = render(
-      <Button type={ButtonTypes.fill} onClick={() => {}} />,
+      <Button variant={ButtonVariants.fill} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));
@@ -56,9 +61,9 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('shows ButtonContainer ButtonType.outline', async () => {
+  it('shows ButtonContainer ButtonVariant.outline', async () => {
     const { container, getByTestId } = render(
-      <Button type={ButtonTypes.outline} color={null} onClick={() => {}} />,
+      <Button variant={ButtonVariants.outline} color={null} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));

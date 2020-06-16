@@ -171,7 +171,13 @@ storiesOf('Form Example', module).add(
     };
 
     const saveButton = (
-      <Button key="saveButton" onClick={onSave} color={colors.primaryDark} isProcessing={isSaving}>
+      <Button
+        key="saveButton"
+        onClick={onSave}
+        color={colors.primaryDark}
+        isProcessing={isSaving}
+        type={Button.ButtonTypes.submit}
+      >
         {isSaving ? 'Saving' : 'Save'}
       </Button>
     );
@@ -182,7 +188,7 @@ storiesOf('Form Example', module).add(
         onClick={openModal}
         color={colors.destructive}
         isProcessing={isResetting}
-        type={Button.ButtonTypes.link}
+        variant={Button.ButtonVariants.text}
       >
         Reset
       </Button>
@@ -194,6 +200,7 @@ storiesOf('Form Example', module).add(
         onClick={onReset}
         color={colors.destructive}
         iconPrefix={mdiRefresh}
+        type={Button.ButtonTypes.reset}
       >
         Reset form
       </Button>
@@ -204,8 +211,9 @@ storiesOf('Form Example', module).add(
         key="cancelButton"
         onClick={closeModal}
         color={colors.destructive}
-        type={Button.ButtonTypes.link}
+        variant={Button.ButtonVariants.text}
         StyledContainer={ResetButtonContainer}
+        type={Button.ButtonTypes.button}
       >
         Go back
       </Button>

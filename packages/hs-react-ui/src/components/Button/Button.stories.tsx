@@ -23,7 +23,7 @@ storiesOf('Button', module).add(
   () => {
     return (
       <Button
-        type={select('type', Button.ButtonTypes, Button.ButtonTypes.fill)}
+        variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.fill)}
         color={color('color', colors.primaryDark)}
         onClick={action('button-click')}
         isLoading={boolean('isLoading', false)}

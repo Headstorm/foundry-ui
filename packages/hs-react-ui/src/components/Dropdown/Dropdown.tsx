@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { readableColor } from 'polished';
 
-import Button, { ButtonTypes } from '../Button/Button';
+import Button, { ButtonVariants } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
@@ -21,8 +21,12 @@ const Container = styled(Div)`
       filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
     `;
   }}
-  z-index: 1;
   position: relative;
+  ${({ isOpen }) => {
+    return `
+      ${isOpen ? 'z-index: 7;' : 'z-index: 1;'}
+    `;
+  }}
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
@@ -115,7 +119,7 @@ export interface DropdownProps {
   onSelect?: (selected: string | Array<string>) => void;
   options: Array<string>;
   tabIndex?: number;
-  type?: ButtonTypes;
+  type?: ButtonVariants;
   values?: Array<string>;
 }
 
@@ -137,7 +141,7 @@ const Dropdown = ({
   onSelect,
   options,
   tabIndex = 0,
-  type = Button.ButtonTypes.fill,
+  type = Button.ButtonVariants.fill,
   values = [],
 }: DropdownProps) => {
   const [state, setState] = useState<{
@@ -293,7 +297,7 @@ const Dropdown = ({
         }}
         color={color}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
-        type={type}
+        variant={type}
       >
         <StyledValueItem>
           {((values.length && values) || state.selectedValues).join(', ')}
