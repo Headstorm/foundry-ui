@@ -20,8 +20,8 @@ storiesOf('Label', module).add(
       <Label
         labelText={text('labelText', 'This is the label text')}
         color={select('Color', colors, colors.grayDark)}
-      colorValid={select('colorValid', colors, colors.success)}
-      colorInvalid={select('colorInvalid', colors, colors.destructive)}
+        colorValid={select('colorValid', colors, colors.success)}
+        colorInvalid={select('colorInvalid', colors, colors.destructive)}
         isRequired={boolean('isRequired', false)}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore

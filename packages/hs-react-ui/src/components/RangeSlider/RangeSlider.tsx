@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
 import { useSpring, a } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import useMeasure from 'react-use-measure';
-import polyfill from '@juggle/resize-observer';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
@@ -53,14 +53,14 @@ export const Container = styled.div`
         : ''
     };
 
-      ${
-        hasHandleLabels
-          ? `
-        top: -.75rem;
-        margin-top: 1.5rem;
-      `
-          : ''
-      };
+    ${
+      hasHandleLabels
+        ? `
+      top: -.75rem;
+      margin-top: 1.5rem;
+    `
+        : ''
+    };
   `}
 `;
 
@@ -161,19 +161,23 @@ export default ({
   min,
   max,
   values,
-}: RangeSliderProps) => {
+
+  testId,
+}: RangeSliderProps): JSX.Element | null => {
   let hasHandleLabels = false;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore This expression is not callable.
-  const processedValues = values.map((val: number | valueProp) => {
-    if (typeof val === 'number') {
-      return { value: val, label: null };
-    }
-    if (Object.prototype.hasOwnProperty.call(val, 'label')) {
-      hasHandleLabels = true;
-    }
-    return val;
-  });
+  const processedValues = values
+    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore This expression is not callable.
+      values.map((val: number | valueProp) => {
+        if (typeof val === 'number') {
+          return { value: val, label: null };
+        }
+        if (Object.prototype.hasOwnProperty.call(val, 'label')) {
+          hasHandleLabels = true;
+        }
+        return val;
+      })
+    : [];
   const selectedRange = [
     Math.min(
       ...processedValues.map((val: valueProp) => val.value),
@@ -194,15 +198,17 @@ export default ({
   // get the bounding box of the slider
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const [ref, sliderBounds] = useMeasure({ polyfill });
+  const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
   const pixelPositions = processedValues.map(
     (val: valueProp) => (val.value / domain) * sliderBounds.width,
   );
+
   // get the x offset and an animation setter function
-  const [{ x = pixelPositions[0], y }, set] = useSpring(
-    () => ({ x: pixelPositions[0], y: 0, config: { friction: 13, tension: 100 } }),
+  const [{ x, y }, set] = useSpring(
+    () => ({ to: { x: pixelPositions[0], y: 0 }, config: { friction: 13, tension: 100 } }),
     [values],
   );
+
   const bind = useDrag(
     ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
@@ -243,8 +249,19 @@ export default ({
     },
   );
 
+  useEffect(() => {
+    set({
+      x: pixelPositions[0],
+      y: 0,
+
+      immediate: true,
+      config: { friction: 13, tension: 100 },
+    });
+  }, [pixelPositions, set]);
+
   return (
     <StyledContainer
+      data-test-id={['hs-ui-range-slider', testId].join('-')}
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
       showDomainLabels={showDomainLabels}

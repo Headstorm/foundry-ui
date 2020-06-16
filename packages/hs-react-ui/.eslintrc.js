@@ -41,13 +41,13 @@ module.exports = {
     'react/no-unescaped-entities': 0,
     'consistent-return': 0,
     'react/jsx-one-expression-per-line': 0,
+    'operator-linebreak': 0,
 
     'import/no-extraneous-dependencies': 1,
     '@typescript-eslint/ban-types': 1, // StyledComponentBase<any, {}> failed every time
     'import/no-unresolved': 1,
     'import/extensions': 1,
     'comma-dangle': 1,
-    'operator-linebreak': 1,
     'comma-spacing': 1,
     quotes: 1,
     'padded-blocks': 1,

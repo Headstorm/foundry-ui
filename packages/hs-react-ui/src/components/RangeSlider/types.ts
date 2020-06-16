@@ -37,10 +37,10 @@ export type RangeSliderProps = {
   springOnRelease?: boolean;
   debounceInterval?: number;
   axisLock?: 'x' | 'y' | '';
-  onDrag?: Function;
+  onDrag?: (val) => void;
   disabled?: boolean;
   min: number;
   max: number;
   values?: number[] | valueProp[];
-  markers?: number[] | valueProp[];
+  testId: string;
 };
