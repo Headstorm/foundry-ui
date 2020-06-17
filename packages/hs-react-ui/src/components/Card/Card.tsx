@@ -6,7 +6,7 @@ import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 
 export const CardContainer = styled(Div)`
-  ${({ elevation = 0 }: { elevation: number }) => `
+  ${({ elevation }: { elevation: number }) => `
     display: inline-flex;
     flex-flow: column nowrap;
 
@@ -25,8 +25,14 @@ export const CardContainer = styled(Div)`
 
 export const Header = styled(Div)`
   padding: 1.5rem 1.5rem 0rem;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
   color: ${colors.grayDark};
+`;
+
+export const NoPaddingHeader = styled(Header)`
+  padding: 0rem;
+  overflow: hidden;
 `;
 
 export const Body = styled(Div)`
@@ -68,7 +74,8 @@ const Card = ({
   header,
   children,
   footer,
-  elevation = 0,
+
+  elevation = 1,
 }: CardProps) => (
   <StyledContainer elevation={elevation}>
     {header && <StyledHeader>{header}</StyledHeader>}
@@ -78,6 +85,7 @@ const Card = ({
 );
 
 Card.Header = Header;
+Card.NoPaddingHeader = NoPaddingHeader;
 Card.Footer = Footer;
 Card.Body = Body;
 Card.Container = CardContainer;
