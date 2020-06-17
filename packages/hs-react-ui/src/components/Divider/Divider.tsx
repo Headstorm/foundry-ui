@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import Colors from '../../enums/colors';
+import colors from '../../enums/colors';
 import { Div, HR } from '../../htmlElements';
 
 export const DefaultDivider = styled(HR)`
@@ -9,7 +9,7 @@ export const DefaultDivider = styled(HR)`
     border: none;
     height: ${height};
     width: ${width};
-    background-color: ${Colors.grayLight};
+    background-color: ${colors.grayLight};
   `}
 `;
 

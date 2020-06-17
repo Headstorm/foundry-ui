@@ -29,7 +29,7 @@ storiesOf('Card', module)
         )}
       </Card>
     ),
-    { design },
+    { design, centered: true },
   )
   .add('Themed', () => {
     const themeColors = {
