@@ -63,7 +63,7 @@ describe('Button', () => {
 
   it('shows ButtonContainer ButtonVariant.outline', async () => {
     const { container, getByTestId } = render(
-      <Button variant={ButtonVariants.outline} color={null} onClick={() => {}} />,
+      <Button variant={ButtonVariants.outline} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));

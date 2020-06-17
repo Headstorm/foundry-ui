@@ -161,7 +161,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
-  color: null;
+  color: #252c35;
 }
 
 .c0:hover {
@@ -175,6 +175,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 <div>
   <button
     class="sc-AxhUy sc-AxgMl c0"
+    color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
