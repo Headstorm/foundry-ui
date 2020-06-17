@@ -265,7 +265,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   position: relative;
-  z-index: 1;
+  z-index: 7;
 }
 
 .c1 {
@@ -733,7 +733,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
   position: relative;
-  z-index: 1;
+  z-index: 7;
 }
 
 .c1 {

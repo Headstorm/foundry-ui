@@ -20,7 +20,7 @@ const Container = styled(Div)`
       transition: filter ${timings.slow};
       filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
       position: relative;
-      ${isOpen ? 'z-index: 7;' : 'z-index: 1;'}
+      z-index: ${isOpen ? '7' : '1'};
     `;
   }}
 `;
@@ -139,7 +139,7 @@ const Dropdown = ({
   tabIndex = 0,
   type = Button.ButtonVariants.fill,
   values = [],
-}: DropdownProps) => {
+}: DropdownProps): JSX.Element | null => {
   const [state, setState] = useState<{
     isOpen: boolean;
     selectedValues: Array<string>;
@@ -277,6 +277,7 @@ const Dropdown = ({
     <StyledContainer
       data-testid={`${state.id}-valueContainer`}
       elevation={elevation}
+      isOpen={state.isOpen}
       id={`${state.id}-valueContainer`}
       name={name}
       onBlur={handleBlur}
