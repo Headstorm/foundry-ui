@@ -52,7 +52,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
-  type="fill"
+  type="button"
 >
   <div
     class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
@@ -95,13 +95,13 @@ exports[`Button keeps the container the same when switching between isLoading an
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
-  type="fill"
+  type="button"
 >
   Submit
 </button>
 `;
 
-exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
+exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
@@ -137,12 +137,53 @@ exports[`Button shows ButtonContainer ButtonType.fill 1`] = `
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
-    type="fill"
+    type="button"
   />
 </div>
 `;
 
-exports[`Button shows ButtonContainer ButtonType.link 1`] = `
+exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
+.c0 {
+  box-sizing: border-box;
+  font-family: Montserrat,Roboto,sans-serif;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: transparent;
+  color: #252c35;
+}
+
+.c0:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c0:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+<div>
+  <button
+    class="sc-AxhUy sc-AxgMl c0"
+    color="#252c35"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="button"
+  />
+</div>
+`;
+
+exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
@@ -178,52 +219,12 @@ exports[`Button shows ButtonContainer ButtonType.link 1`] = `
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
-    type="link"
+    type="button"
   />
 </div>
 `;
 
-exports[`Button shows ButtonContainer ButtonType.outline 1`] = `
-.c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  outline: 0 none;
-  border: 1px solid #252c35;
-  cursor: pointer;
-  background-color: transparent;
-  color: null;
-}
-
-.c0:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-.c0:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
-<div>
-  <button
-    class="sc-AxhUy sc-AxgMl c0"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="outline"
-  />
-</div>
-`;
-
-exports[`Button shows ButtonContainer with nondefault props type and color 1`] = `
+exports[`Button shows ButtonContainer with nondefault props variant and color 1`] = `
 .c0 {
   box-sizing: border-box;
   font-family: Montserrat,Roboto,sans-serif;
@@ -259,7 +260,7 @@ exports[`Button shows ButtonContainer with nondefault props type and color 1`] =
     color="#000"
     data-test-id="hsui-button"
     elevation="2"
-    type="outline"
+    type="button"
   />
 </div>
 `;
@@ -306,7 +307,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
-    type="fill"
+    type="button"
   >
     <div
       class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
@@ -386,7 +387,7 @@ exports[`Button shows icons 1`] = `
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
-    type="fill"
+    type="button"
   >
     <div
       class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
@@ -466,7 +467,7 @@ exports[`Button shows icons with type string 1`] = `
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
-    type="fill"
+    type="button"
   >
     <div
       class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
@@ -553,7 +554,7 @@ exports[`Button shows loading text when provided 1`] = `
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
-    type="fill"
+    type="button"
   >
     <div
       class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"

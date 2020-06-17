@@ -12,13 +12,20 @@ import { Div, Button as ButtonElement } from '../../htmlElements';
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
+  variant: string;
   type: string;
 };
 
-export enum ButtonTypes {
+export enum ButtonVariants {
   fill = 'fill',
-  link = 'link',
+  text = 'text',
   outline = 'outline',
+}
+
+export enum ButtonTypes {
+  button = 'button',
+  reset = 'reset',
+  submit = 'submit',
 }
 
 export type ButtonProps = {
@@ -30,6 +37,7 @@ export type ButtonProps = {
   isProcessing?: boolean;
   children?: ReactNode;
   elevation?: number;
+  variant?: ButtonVariants;
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
@@ -37,26 +45,26 @@ export type ButtonProps = {
 };
 
 /**
- * Get the appropriate font color for the button based on the type of button
- * @param {string} type - The type of button
+ * Get the appropriate font color for the button based on the variant of button
+ * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
  */
-export const getFontColorFromType = (type: string, color: string) => {
-  if (type === 'fill') {
+export const getFontColorFromVariant = (variant: string, color: string) => {
+  if (variant === 'fill') {
     return readableColor(color, colors.background, colors.grayDark, true);
   }
   return color;
 };
 
 /**
- * Get the appropriate background color for the button based on the type of button
- * @param {string} type - The type of button
+ * Get the appropriate background color for the button based on the variant of button
+ * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
  */
-export const getBackgroundColorFromType = (type: string, color: string) => {
-  switch (type) {
-    case ButtonTypes.link:
-    case ButtonTypes.outline:
+export const getBackgroundColorFromVariant = (variant: string, color: string) => {
+  switch (variant) {
+    case ButtonVariants.text:
+    case ButtonVariants.outline:
       return colors.transparent;
     default:
       return color;
@@ -66,9 +74,9 @@ export const getBackgroundColorFromType = (type: string, color: string) => {
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
   ButtonElement,
 )`
-  ${({ elevation = 0, color, type }: ButtonContainerProps) => {
-    const backgroundColor = getBackgroundColorFromType(type, color);
-    const fontColor = getFontColorFromType(type, color);
+  ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
+    const backgroundColor = getBackgroundColorFromVariant(variant, color);
+    const fontColor = getFontColorFromVariant(variant, color);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
@@ -85,7 +93,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
+      border: ${
+        variant === ButtonVariants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'
+      };
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -135,11 +145,12 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  type = ButtonTypes.fill,
+  variant = ButtonVariants.fill,
+  type = ButtonTypes.button,
   color = colors.grayDark,
   onClick,
   LoadingBar = StyledProgress,
-}: ButtonProps) => {
+}: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
 
   return isLoading ? (
@@ -148,6 +159,7 @@ const Button = ({
       onClick={onClick}
       elevation={elevation}
       color={color}
+      variant={variant}
       type={type}
       {...containerProps} // eslint-disable-line react/jsx-props-no-spreading
     >
@@ -159,6 +171,7 @@ const Button = ({
       onClick={onClick}
       elevation={elevation}
       color={color}
+      variant={variant}
       type={type}
       {...containerProps} // eslint-disable-line react/jsx-props-no-spreading
     >
@@ -191,6 +204,7 @@ const Button = ({
 };
 
 Button.Container = ButtonContainer;
+Button.ButtonVariants = ButtonVariants;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;
