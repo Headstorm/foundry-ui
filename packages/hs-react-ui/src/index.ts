@@ -5,6 +5,7 @@ import Divider from './components/Divider';
 import Dropdown from './components/Dropdown';
 import Label from './components/Label';
 import Modal from './components/Modal';
+import RangeSlider from './components/RangeSlider';
 import Table from './components/Table';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
@@ -18,6 +19,7 @@ export {
   Dropdown,
   Label,
   Modal,
+  RangeSlider,
   Table,
   Text,
   TextInput,
