@@ -378,9 +378,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 .c5:focus {
   outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .c6 {
@@ -852,9 +849,6 @@ exports[`Dropdown displays all options when focused 1`] = `
 
 .c5:focus {
   outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .c6 {
