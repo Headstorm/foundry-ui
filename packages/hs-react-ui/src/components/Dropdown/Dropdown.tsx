@@ -82,10 +82,12 @@ const OptionItem = styled(Div)`
   display: flex;
   align-items: center;
 
-  &:focus,
   &:hover {
     background: ${colors.grayDark50};
     cursor: pointer;
+    outline: none;
+  }
+  &:focus {
     outline: none;
   }
 `;
