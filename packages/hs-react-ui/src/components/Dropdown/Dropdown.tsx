@@ -89,7 +89,6 @@ const OptionItem = styled(Div)`
   }
   &:focus {
     outline: none;
-    appearance: none;
   }
 `;
 const CheckContainer = styled(Div)`
