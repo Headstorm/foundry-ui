@@ -370,11 +370,17 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   align-items: center;
 }
 
-.c5:focus,
 .c5:hover {
   background: rgba(211,214,215,0.5);
   cursor: pointer;
   outline: none;
+}
+
+.c5:focus {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .c6 {
@@ -838,11 +844,17 @@ exports[`Dropdown displays all options when focused 1`] = `
   align-items: center;
 }
 
-.c5:focus,
 .c5:hover {
   background: rgba(211,214,215,0.5);
   cursor: pointer;
   outline: none;
+}
+
+.c5:focus {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .c6 {
