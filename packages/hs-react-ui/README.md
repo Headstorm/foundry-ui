@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/Headstorm/hs-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/hs-ui/tree/master)
+[![CircleCI](https://circleci.com/gh/Headstorm/hs-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/hs-ui/tree/master) [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui)
 
 # Headstorm React UI
 
