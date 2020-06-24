@@ -1,6 +1,6 @@
-# Headstorm UI
+# Rasa UI
 
-HS-UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
+Rasa-UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
 
 To go directly to one of the READMES of each library, use these links:
 
