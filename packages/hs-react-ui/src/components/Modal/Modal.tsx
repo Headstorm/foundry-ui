@@ -108,7 +108,7 @@ const Modal = ({
         iconPrefix={mdiClose}
         color={colors.background}
         elevation={1}
-        type="link"
+        variant="text"
         onClick={onClose}
         {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
       />
@@ -124,7 +124,7 @@ const Modal = ({
           iconPrefix={mdiClose}
           color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
           elevation={closeButtonAttachment === 'inside' ? 0 : 1}
-          type="link"
+          variant="text"
           onClick={onClose}
           {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
         />

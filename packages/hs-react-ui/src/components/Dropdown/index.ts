@@ -1,3 +1,4 @@
-import Dropdown from './Dropdown';
+import Dropdown, { OptionProps } from './Dropdown';
 
+export type { OptionProps };
 export default Dropdown;

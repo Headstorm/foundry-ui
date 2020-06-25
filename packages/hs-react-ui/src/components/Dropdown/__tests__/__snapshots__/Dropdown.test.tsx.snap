@@ -1323,3 +1323,5 @@ exports[`Dropdown selects options from values prop 1`] = `
   </div>
 </div>
 `;
+
+exports[`Dropdown selects options from values prop 2`] = `<DocumentFragment />`;

@@ -2,12 +2,13 @@ import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
-import { readableColor, darken } from 'polished';
+import { darken } from 'polished';
 
 import timings from '../../enums/timings';
 import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -42,33 +43,6 @@ export type ButtonProps = {
   color?: string;
   onClick: (...args: any[]) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
-};
-
-/**
- * Get the appropriate font color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- */
-export const getFontColorFromVariant = (variant: string, color: string) => {
-  if (variant === 'fill') {
-    return readableColor(color, colors.background, colors.grayDark, true);
-  }
-  return color;
-};
-
-/**
- * Get the appropriate background color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- */
-export const getBackgroundColorFromVariant = (variant: string, color: string) => {
-  switch (variant) {
-    case ButtonVariants.text:
-    case ButtonVariants.outline:
-      return colors.transparent;
-    default:
-      return color;
-  }
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
