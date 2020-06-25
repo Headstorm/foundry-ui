@@ -4,9 +4,9 @@ Rasa-UI is lovingly developed by Headstorm's Open Source group. Please reach out
 
 To go directly to one of the READMES of each library, use these links:
 
-- [rasa-react-ui](https://github.com/Headstorm/hs-ui/tree/master/packages/hs-react-ui) - [🔥 Live Demo](https://headstorm.github.io/rasa-ui/) - [![CircleCI](https://circleci.com/gh/Headstorm/rasa-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/rasa-ui/tree/master) [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui)
+- [rasa-react-ui](https://github.com/Headstorm/rasa-ui/tree/master/packages/hs-react-ui) - [🔥 Live Demo](https://headstorm.github.io/rasa-ui/) - [![CircleCI](https://circleci.com/gh/Headstorm/rasa-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/rasa-ui/tree/master) [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui)
 
-- [rasa-angular-ui](https://github.com/Headstorm/hs-ui/tree/master/packages/hs-angular-ui)
+- [rasa-angular-ui](https://github.com/Headstorm/rasa-ui/tree/master/packages/hs-angular-ui)
 
 # Contributing
 
