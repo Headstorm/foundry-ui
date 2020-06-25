@@ -325,8 +325,15 @@ const Dropdown = ({
         <StyledValueItem>
           {values
             .filter(val => val !== undefined)
-            .map(val =>
-              optionsHash[val] !== undefined ? optionsHash[val].optionValue : undefined,
+            .map((val, i) =>
+              optionsHash[val] !== undefined ? (
+                <>
+                  {i !== 0 && ', '}
+                  {optionsHash[val].optionValue}
+                </>
+              ) : (
+                undefined
+              ),
             )}
         </StyledValueItem>
         {closeIcons}
