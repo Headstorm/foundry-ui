@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/Headstorm/hs-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/hs-ui/tree/master) [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui)
+[![CircleCI](https://circleci.com/gh/Headstorm/rasa-ui/tree/master.svg?style=shield)](https://circleci.com/gh/Headstorm/rasa-ui/tree/master) [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui)
 
 # Headstorm React UI
 
@@ -6,7 +6,7 @@ HS-UI is lovingly developed by Headstorm's Open Source group. Please reach out t
 
 # Previewing components in Storybook
 
-## [🔥 Live Documentation/Component Viewer](https://headstorm.github.io/hs-ui/)
+## [🔥 Live Documentation/Component Viewer](https://headstorm.github.io/rasa-ui/)
 
 ## Locally
 
