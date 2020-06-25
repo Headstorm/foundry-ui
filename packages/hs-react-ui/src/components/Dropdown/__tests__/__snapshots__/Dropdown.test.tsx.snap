@@ -1058,7 +1058,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -1303,14 +1303,16 @@ exports[`Dropdown selects options from values prop 1`] = `
       <div
         class="sc-AxjAm sc-AxirZ c2"
       >
-        Bulbasaur, Charmander
+        Bulbasaur
+        , 
+        Charmander
       </div>
       <div
         class="sc-AxjAm sc-AxirZ c3"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path

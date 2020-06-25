@@ -2,27 +2,30 @@ import React from 'react';
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import Dropdown from '../Dropdown';
 
+const pokeOptions = [
+  { id: 'bulbasaur', optionValue: 'Bulbasaur' },
+  { id: 'charmander', optionValue: 'Charmander' },
+  { id: 'squirtle', optionValue: 'Squirtle' },
+];
+
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
-    const { container } = render(<Dropdown name="choosePokemon" options={options} />);
+    const { container } = render(<Dropdown name="choosePokemon" options={pokeOptions} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('displays all options when focused', () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText } = render(
-      <Dropdown name="choosePokemon" options={options} />,
+      <Dropdown name="choosePokemon" options={pokeOptions} />,
     );
     fireEvent.focus(getByTestId('choosePokemon-valueContainer'));
     expect(container).toMatchSnapshot();
   });
 
   it('can focus dropdown and select option', async () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText } = render(
-      <Dropdown name="choosePokemon" options={options} />,
+      <Dropdown name="choosePokemon" options={pokeOptions} />,
     );
 
     // TODO - Don't use data-testid, see if we can use a more semantically meaningful element
@@ -33,9 +36,8 @@ describe('Dropdown', () => {
   });
 
   it('selects multiple options when dropdown is multi', async () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText, queryByText } = render(
-      <Dropdown multi name="choosePokemon" options={options} />,
+      <Dropdown multi name="choosePokemon" options={pokeOptions} />,
     );
 
     getByTestId('choosePokemon-valueContainer').focus();
@@ -48,9 +50,8 @@ describe('Dropdown', () => {
   });
 
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText, getAllByText } = render(
-      <Dropdown multi name="choosePokemon" options={options} />,
+      <Dropdown multi name="choosePokemon" options={pokeOptions} />,
     );
 
     fireEvent.focus(getByTestId('choosePokemon-valueContainer'));
@@ -61,9 +62,8 @@ describe('Dropdown', () => {
   });
 
   it('closes options when clicking outside', async () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText, queryByText, asFragment } = render(
-      <Dropdown name="choosePokemon" options={options} />,
+      <Dropdown name="choosePokemon" options={pokeOptions} />,
     );
 
     getByTestId('choosePokemon-valueContainer').focus();
@@ -79,9 +79,8 @@ describe('Dropdown', () => {
   });
 
   it('can use arrow keys and enter to navigate options', async () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText, queryByText, rerender } = render(
-      <Dropdown name="choosePokemon" options={options} />,
+      <Dropdown name="choosePokemon" options={pokeOptions} />,
     );
     getByTestId('choosePokemon-valueContainer').focus();
     await waitFor(() => queryByText('Bulbasaur') !== null);
@@ -100,13 +99,12 @@ describe('Dropdown', () => {
   });
 
   it('selects options from values prop', () => {
-    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container } = render(
       <Dropdown
         multi
         name="choosePokemon"
-        options={options}
-        values={['Bulbasaur', 'Charmander']}
+        options={pokeOptions}
+        values={['bulbasaur', 'charmander']}
       />,
     );
 
