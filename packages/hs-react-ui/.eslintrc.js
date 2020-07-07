@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks'],
   rules: {
+    'react/jsx-props-no-spreading': 0,
     'react/jsx-wrap-multilines': 0,
     'no-confusing-arrow': 0,
     'no-empty-function': 1,

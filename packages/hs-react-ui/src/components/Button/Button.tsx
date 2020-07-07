@@ -53,7 +53,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
     const fontColor = getFontColorFromVariant(variant, color);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
+    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
 
     return `
       display: inline-flex;

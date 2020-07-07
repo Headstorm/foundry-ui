@@ -87,8 +87,8 @@ storiesOf('Dropdown', module)
         <>
           <Label labelText="City" htmlFor="cities-list">
             <Dropdown
-              color={color('color', colors.grayXlight)}
-              elevation={number('elevation', 1, { range: true, min: 0, max: 5, step: 1 })}
+              color={color('color', undefined)}
+              elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
               multi={boolean('multi', false)}
               name="cities-list"
               onBlur={action('onBlur')}
@@ -98,7 +98,7 @@ storiesOf('Dropdown', module)
                 setValues(newVals);
               }}
               options={cities}
-              variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.fill)}
+              variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.outline)}
               values={values}
             />
           </Label>

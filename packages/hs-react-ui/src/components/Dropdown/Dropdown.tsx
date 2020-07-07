@@ -20,7 +20,7 @@ const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
+    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
 
     return `
       width: fit-content;
@@ -120,6 +120,10 @@ const OptionItem = styled(Div)`
     }
     &:focus {
       outline: none;
+      background-color: ${shade(
+        0.1,
+        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
+      )};
     }
   `;
   }}
@@ -146,6 +150,12 @@ export interface DropdownProps {
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
 
+  containerProps?: Record<string, unknown>;
+  valueContainerProps?: Record<string, unknown>;
+  valueItemProps?: Record<string, unknown>;
+  optionsContainerProps?: Record<string, unknown>;
+  optionItemProps?: Record<string, unknown>;
+
   color?: string;
   elevation?: number;
   multi?: boolean;
@@ -169,7 +179,13 @@ const Dropdown = ({
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
 
-  color,
+  containerProps,
+  valueContainerProps,
+  valueItemProps,
+  optionsContainerProps,
+  optionItemProps,
+
+  color = colors.grayDark,
   elevation = 0,
   multi = false,
   name,
@@ -178,7 +194,7 @@ const Dropdown = ({
   onSelect,
   options = [],
   tabIndex = 0,
-  variant = ButtonVariants.fill,
+  variant = ButtonVariants.outline,
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -253,7 +269,7 @@ const Dropdown = ({
             }
             break;
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-valueContainer`) {
+            if (focusedElement && focusedElement.id === `${name}-container`) {
               const optionsContainer = focusedElement.children[1];
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
@@ -301,10 +317,10 @@ const Dropdown = ({
 
   return (
     <StyledContainer
-      data-testid={`${name}-valueContainer`}
+      data-test-id={`${name}-container`}
       elevation={elevation}
       isOpen={isOpen}
-      id={`${name}-valueContainer`}
+      id={`${name}-container`}
       name={name}
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {
@@ -312,6 +328,7 @@ const Dropdown = ({
         setIsOpen(true);
       }}
       tabIndex={tabIndex}
+      {...containerProps}
     >
       <Button
         StyledContainer={StyledValueContainer}
@@ -321,25 +338,24 @@ const Dropdown = ({
         color={color}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         variant={variant}
+        {...valueContainerProps}
       >
-        <StyledValueItem>
+        <StyledValueItem {...valueItemProps}>
           {values
             .filter(val => val !== undefined)
             .map((val, i) =>
               optionsHash[val] !== undefined ? (
-                <>
+                <span key={val}>
                   {i !== 0 && ', '}
                   {optionsHash[val].optionValue}
-                </>
-              ) : (
-                undefined
-              ),
+                </span>
+              ) : undefined,
             )}
         </StyledValueItem>
         {closeIcons}
       </Button>
       {isOpen && (
-        <StyledOptionsContainer color={color} variant={variant}>
+        <StyledOptionsContainer color={color} variant={variant} {...optionsContainerProps}>
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
@@ -351,11 +367,12 @@ const Dropdown = ({
               variant={variant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
+              {...optionItemProps}
             >
               {multi && (
                 <CheckContainer
                   color={color}
-                  seleted={optionsHash[option.id].isSelected}
+                  selected={optionsHash[option.id].isSelected}
                   variant={variant}
                 >
                   {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
