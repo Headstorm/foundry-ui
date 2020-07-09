@@ -17,9 +17,9 @@ const FullWidthImage = styled.img`
 storiesOf('Appendix', module).add('Appendix', () => {
   return (
     <DocContainer>
-      <h1>Welcome to Rasa UI</h1>
+      <h1>Welcome to Headstorm UI</h1>
       <p>
-        Rasa UI is a component library which is in it for the long haul. Unlike other bootstrap
+        Headstorm UI is a component library which is in it for the long haul. Unlike other bootstrap
         libraries, it lets you fully customize and theme every piece of it through a
         straight-forward API, which means you won't have to rip out your components and rewrite them
         once your app is out of the "POC" phase.

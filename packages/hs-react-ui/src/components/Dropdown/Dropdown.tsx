@@ -256,6 +256,7 @@ const Dropdown = ({
         switch (key) {
           case 'Enter':
             const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
+            console.log(focusedElement.id);
             if (match) {
               handleSelect(match[1]); // TODO: fix this
             }
@@ -318,9 +319,9 @@ const Dropdown = ({
   return (
     <StyledContainer
       data-test-id={`${name}-container`}
+      id={`${name}-container`}
       elevation={elevation}
       isOpen={isOpen}
-      id={`${name}-container`}
       name={name}
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {

@@ -316,12 +316,13 @@ storiesOf('Form Example', module).add(
           <Label labelText="State" htmlFor="state" key="state">
             <Dropdown
               name="state-dropdown"
-              options={stateAbbreviations}
+              options={stateAbbreviations.map(abr => ({ id: abr, optionValue: abr }))}
               color={colors.primaryDark}
-              values={[state.state as string]}
+              values={[state]}
               onSelect={val => {
                 setState({ ...state, state: val as string });
               }}
+              variant="fill"
             />
           </Label>
 
