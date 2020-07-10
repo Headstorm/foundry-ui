@@ -1,5 +1,6 @@
 import { readableColor } from 'polished';
-import { ButtonVariants } from '../components/Button/Button';
+
+import variants from '../enums/variants';
 import colors from '../enums/colors';
 
 /**
@@ -21,8 +22,8 @@ export const getFontColorFromVariant = (variant: string, color: string): string 
  */
 export const getBackgroundColorFromVariant = (variant: string, color: string): string => {
   switch (variant) {
-    case ButtonVariants.text:
-    case ButtonVariants.outline:
+    case variants.text:
+    case variants.outline:
       return colors.transparent;
     default:
       return color;

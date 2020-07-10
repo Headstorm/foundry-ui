@@ -6,6 +6,7 @@ import { darken } from 'polished';
 
 import timings from '../../enums/timings';
 import colors from '../../enums/colors';
+import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
@@ -13,15 +14,9 @@ import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../ut
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
-  variant: string;
+  variant: variant;
   type: string;
 };
-
-export enum ButtonVariants {
-  fill = 'fill',
-  text = 'text',
-  outline = 'outline',
-}
 
 export enum ButtonTypes {
   button = 'button',
@@ -38,7 +33,7 @@ export type ButtonProps = {
   isProcessing?: boolean;
   children?: ReactNode;
   elevation?: number;
-  variant?: ButtonVariants;
+  variant?: variants;
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
@@ -67,9 +62,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${
-        variant === ButtonVariants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'
-      };
+      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -119,7 +112,7 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  variant = ButtonVariants.fill,
+  variant = variants.fill,
   type = ButtonTypes.button,
   color = colors.grayDark,
   onClick,
@@ -178,7 +171,6 @@ const Button = ({
 };
 
 Button.Container = ButtonContainer;
-Button.ButtonVariants = ButtonVariants;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;

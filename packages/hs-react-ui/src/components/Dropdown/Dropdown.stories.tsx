@@ -7,7 +7,7 @@ import { address } from 'faker';
 
 import Button from '../Button';
 import Dropdown, { OptionProps } from './Dropdown';
-import colors from '../../enums/colors';
+import variants from '../../enums/variants';
 import Label from '../Label';
 import { useState } from '@storybook/addons';
 import { mdiLeaf } from '@mdi/js';
@@ -98,7 +98,7 @@ storiesOf('Dropdown', module)
                 setValues(newVals);
               }}
               options={cities}
-              variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.outline)}
+              variant={select('variant', variants, variants.outline)}
               values={values}
             />
           </Label>
@@ -124,7 +124,7 @@ storiesOf('Dropdown', module)
                 setValues(newVals);
               }}
               options={teaOptions}
-              variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.fill)}
+              variant={select('variant', variants, variants.fill)}
               values={values}
             />
           </Label>

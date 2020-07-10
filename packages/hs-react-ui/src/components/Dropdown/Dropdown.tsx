@@ -4,8 +4,9 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance } from 'polished';
 
-import Button, { ButtonVariants } from '../Button/Button';
+import Button from '../Button/Button';
 import colors from '../../enums/colors';
+import variants from '../../enums/variants';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
@@ -168,7 +169,7 @@ export interface DropdownProps {
   values?: Array<string | number>;
   options?: Array<OptionProps>;
   tabIndex?: number;
-  variant?: ButtonVariants;
+  variant?: variants;
 }
 
 // TODO Placeholder text -- Wait until input is finalized
@@ -194,7 +195,7 @@ const Dropdown = ({
   onSelect,
   options = [],
   tabIndex = 0,
-  variant = ButtonVariants.outline,
+  variant = variants.outline,
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
