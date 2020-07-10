@@ -3,7 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 
 import colors from '../../enums/colors';
-import variants from '../../enums/colors';
+import variants from '../../enums/variants';
 
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
