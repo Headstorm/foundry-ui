@@ -103,37 +103,47 @@ describe('Dropdown', () => {
 
   it('can use arrow keys and enter to navigate options', async () => {
     debugger;
-    const { container, getByTestId, getByText, queryByText } = render(
+    const { container, getByTestId, getByText, queryByText, rerender } = render(
       <Dropdown onSelect={mockedSelectHandler} name="choosePokemon" options={pokeOptions} />,
     );
     act(() => {
-      fireEvent.focus(getByTestId('choosePokemon-container'));
+      getByTestId('choosePokemon-container').focus();
     });
     await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
     act(() => {
-      fireEvent.keyDown(getByTestId('choosePokemon-container'), {
+      fireEvent.keyDown(document.activeElement, {
         key: 'ArrowDown',
         code: 'ArrowDown',
       });
-      fireEvent.keyDown(getByTestId('choosePokemon-container'), {
+      fireEvent.keyDown(document.activeElement, {
         key: 'ArrowDown',
         code: 'ArrowDown',
       });
-      fireEvent.keyDown(getByTestId('choosePokemon-container'), {
+      fireEvent.keyDown(document.activeElement, {
         key: 'ArrowDown',
         code: 'ArrowDown',
       });
-      fireEvent.keyDown(getByTestId('choosePokemon-container'), {
+      fireEvent.keyDown(document.activeElement, {
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+      });
+      fireEvent.keyDown(document.activeElement, {
         key: 'ArrowUp',
         code: 'ArrowUp',
       });
-      fireEvent.keyDown(getByTestId('choosePokemon-container'), { key: 'Enter', code: 'Enter' });
+      fireEvent.keyDown(document.activeElement, { key: 'Enter', code: 'Enter' });
     });
 
-    await waitFor(() => expect(mockedSelectHandler).toHaveBeenCalled());
+    await waitFor(() => expect(mockedSelectHandler).toHaveBeenCalledWith(['charmander']));
+    rerender(
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        name="choosePokemon"
+        options={pokeOptions}
+        values={['charmander']}
+      />,
+    );
     await waitFor(() => queryByText('Squirtle') === null);
-    await waitFor(() => expect(getByText('Charmander')).toBeInTheDocument());
-
     expect(container).toMatchSnapshot();
   });
 

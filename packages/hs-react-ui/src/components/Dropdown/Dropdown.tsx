@@ -256,9 +256,8 @@ const Dropdown = ({
         switch (key) {
           case 'Enter':
             const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
-            console.log(focusedElement.id);
             if (match) {
-              handleSelect(match[1]); // TODO: fix this
+              handleSelect(match[1]);
             }
             break;
           case 'ArrowUp':
@@ -350,7 +349,9 @@ const Dropdown = ({
                   {i !== 0 && ', '}
                   {optionsHash[val].optionValue}
                 </span>
-              ) : undefined,
+              ) : (
+                undefined
+              ),
             )}
         </StyledValueItem>
         {closeIcons}
