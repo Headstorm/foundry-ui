@@ -320,9 +320,9 @@ storiesOf('Form Example', module).add(
               name="state-dropdown"
               options={stateAbbreviations.map(abr => ({ id: abr, optionValue: abr }))}
               color={colors.primaryDark}
-              values={[state]}
+              values={[state.state]}
               onSelect={val => {
-                setState({ ...state, state: val as string });
+                setState({ ...state, state: `${val}` });
               }}
               variant={variants.fill}
             />

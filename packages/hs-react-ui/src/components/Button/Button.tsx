@@ -14,7 +14,7 @@ import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../ut
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
-  variant: variant;
+  variant: variants;
   type: string;
 };
 

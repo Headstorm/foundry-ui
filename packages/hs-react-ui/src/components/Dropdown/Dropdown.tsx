@@ -74,13 +74,7 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ multi, selected, variant, color }) => `
-    
-    /* use extra props for ts */
-    ${multi ? '' : ''}
-    ${variant ? '' : ''}
-    ${selected ? '' : ''}
-  
+  ${({ color }: { multi?: boolean; selected?: boolean; variant?: variants; color: string }) => `
     background: white;
     position: absolute;
     top: 100%;
@@ -96,7 +90,15 @@ const OptionsContainer = styled(Div)`
 `;
 
 const OptionItem = styled(Div)`
-  ${({ multi, selected, variant, color }) => {
+  ${({
+    selected,
+    color,
+  }: {
+    multi?: boolean;
+    selected?: boolean;
+    variant?: variants;
+    color: string;
+  }) => {
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
     return `
     padding: 0.5rem;
@@ -106,10 +108,6 @@ const OptionItem = styled(Div)`
     background-color: ${
       selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'transparent'
     };
-
-    /* use extra props for ts */
-    ${multi ? '' : ''}
-    ${variant ? '' : ''}
 
     &:hover {
       background-color: ${shade(
@@ -343,7 +341,7 @@ const Dropdown = ({
       >
         <StyledValueItem {...valueItemProps}>
           {values
-            .filter(val => val !== undefined)
+            .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i) =>
               optionsHash[val] !== undefined ? (
                 <span key={val}>
