@@ -17,6 +17,13 @@ export type OptionProps = {
   isSelected?: boolean;
 };
 
+type UsefulDropdownState = {
+  color: string;
+  multi?: boolean;
+  selected?: boolean;
+  variant?: variants;
+};
+
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
@@ -74,7 +81,7 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color }: { multi?: boolean; selected?: boolean; variant?: variants; color: string }) => `
+  ${({ color }: UsefulDropdownState) => `
     background: white;
     position: absolute;
     top: 100%;
@@ -90,15 +97,7 @@ const OptionsContainer = styled(Div)`
 `;
 
 const OptionItem = styled(Div)`
-  ${({
-    selected,
-    color,
-  }: {
-    multi?: boolean;
-    selected?: boolean;
-    variant?: variants;
-    color: string;
-  }) => {
+  ${({ selected, color }: UsefulDropdownState) => {
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
     return `
     padding: 0.5rem;
@@ -128,10 +127,7 @@ const OptionItem = styled(Div)`
   }}
 `;
 const CheckContainer = styled(Div)`
-  ${({ selected, variant, color }) => `
-    ${selected ? '' : ''}
-    ${variant ? '' : ''}
-
+  ${({ color }: UsefulDropdownState) => `
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,12 +144,14 @@ export interface DropdownProps {
   StyledValueItem?: string & StyledComponentBase<any, {}>;
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
+  StyledCheckContainer?: string & StyledComponentBase<any, {}>;
 
   containerProps?: Record<string, unknown>;
   valueContainerProps?: Record<string, unknown>;
   valueItemProps?: Record<string, unknown>;
   optionsContainerProps?: Record<string, unknown>;
   optionItemProps?: Record<string, unknown>;
+  checkContainerProps?: Record<string, unknown>;
 
   color?: string;
   elevation?: number;
@@ -177,12 +175,14 @@ const Dropdown = ({
   StyledValueItem = ValueItem,
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
+  StyledCheckContainer = CheckContainer,
 
   containerProps,
   valueContainerProps,
   valueItemProps,
   optionsContainerProps,
   optionItemProps,
+  checkContainerProps,
 
   color = colors.grayDark,
   elevation = 0,
@@ -348,9 +348,7 @@ const Dropdown = ({
                   {i !== 0 && ', '}
                   {optionsHash[val].optionValue}
                 </span>
-              ) : (
-                undefined
-              ),
+              ) : undefined,
             )}
         </StyledValueItem>
         {closeIcons}
@@ -371,13 +369,15 @@ const Dropdown = ({
               {...optionItemProps}
             >
               {multi && (
-                <CheckContainer
+                <StyledCheckContainer
                   color={color}
                   selected={optionsHash[option.id].isSelected}
                   variant={variant}
+                  multi={multi}
+                  {...checkContainerProps}
                 >
                   {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
-                </CheckContainer>
+                </StyledCheckContainer>
               )}
               <span>{option.optionValue}</span>
             </StyledOptionItem>
