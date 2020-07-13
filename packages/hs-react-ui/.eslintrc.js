@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks'],
   rules: {
+    'react/jsx-props-no-spreading': 0,
     'react/jsx-wrap-multilines': 0,
     'no-confusing-arrow': 0,
     'no-empty-function': 1,
@@ -45,6 +46,7 @@ module.exports = {
 
     'import/no-extraneous-dependencies': 1,
     '@typescript-eslint/ban-types': 1, // StyledComponentBase<any, {}> failed every time
+    '@typescript-eslint/no-empty-function': 0,
     'import/no-unresolved': 1,
     'import/extensions': 1,
     'comma-dangle': 1,
