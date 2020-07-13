@@ -319,7 +319,7 @@ storiesOf('RangeSlider', module)
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
                   ref={ref}
-                  {...props} // eslint-disable-line react/jsx-props-no-spreading
+                  {...props}
                   style={{
                     backgroundImage: `linear-gradient(to right, ${allLights.join(', ')})`,
                   }}

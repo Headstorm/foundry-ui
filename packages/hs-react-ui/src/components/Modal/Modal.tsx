@@ -110,7 +110,7 @@ const Modal = ({
         elevation={1}
         type="link"
         onClick={onClose}
-        {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
+        {...closeButtonProps}
       />
     )}
     <StyledContainer>
@@ -126,7 +126,7 @@ const Modal = ({
           elevation={closeButtonAttachment === 'inside' ? 0 : 1}
           type="link"
           onClick={onClose}
-          {...closeButtonProps} // eslint-disable-line react/jsx-props-no-spreading
+          {...closeButtonProps}
         />
       )}
     </StyledContainer>

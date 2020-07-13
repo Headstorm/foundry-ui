@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../enums/colors';
@@ -59,6 +59,13 @@ export interface CardProps {
   StyledBody?: string & StyledComponentBase<any, {}>;
   StyledFooter?: string & StyledComponentBase<any, {}>;
 
+  containerProps?: Record<string, unknown>;
+  headerProps?: Record<string, unknown>;
+  bodyProps?: Record<string, unknown>;
+  footerProps?: Record<string, unknown>;
+
+  onClick?: (evt: MouseEvent) => void;
+
   header?: ReactNode;
   children?: ReactNode;
   footer?: ReactNode;
@@ -71,16 +78,24 @@ const Card = ({
   StyledHeader = Header,
   StyledBody = Body,
   StyledFooter = Footer,
+
+  containerProps,
+  headerProps,
+  bodyProps,
+  footerProps,
+
+  onClick = () => {},
+
   header,
   children,
   footer,
 
   elevation = 1,
-}: CardProps) => (
-  <StyledContainer elevation={elevation}>
-    {header && <StyledHeader>{header}</StyledHeader>}
-    {children && <StyledBody>{children}</StyledBody>}
-    {footer && <StyledFooter>{footer}</StyledFooter>}
+}: CardProps): JSX.Element | null => (
+  <StyledContainer onClick={onClick} elevation={elevation} {...containerProps}>
+    {header && <StyledHeader {...headerProps}>{header}</StyledHeader>}
+    {children && <StyledBody {...bodyProps}>{children}</StyledBody>}
+    {footer && <StyledFooter {...footerProps}>{footer}</StyledFooter>}
   </StyledContainer>
 );
 
