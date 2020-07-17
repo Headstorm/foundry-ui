@@ -6,3 +6,7 @@ packages/hs-react-ui/.cache/
 packages/hs-react-ui/dist/
 
 .vscode/
+
+packages/.DS_Store
+
+.DS_Store

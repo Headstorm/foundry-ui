@@ -75,12 +75,7 @@ storiesOf('Dropdown', module)
   .add(
     'Basic',
     () => {
-      const storyValue = select(
-        'values',
-        cities.map(f => f.id),
-        cities[0].id,
-      );
-      const [values, setValues] = useState([storyValue]);
+      const [values, setValues] = useState<(string | number)[] | undefined>([cities[0].id]);
       return (
         <>
           <Label labelText="City" htmlFor="cities-list">
@@ -93,9 +88,9 @@ storiesOf('Dropdown', module)
               name="cities-list"
               onBlur={action('onBlur')}
               onClear={boolean('clearable', false) ? action('onClear') : undefined}
-              onSelect={newVals => {
+              onSelect={(selected?: Array<string | number>) => {
                 action('onSelect')();
-                setValues(newVals);
+                setValues(selected);
               }}
               options={cities}
               variant={select('variant', variants, variants.outline)}
@@ -110,7 +105,7 @@ storiesOf('Dropdown', module)
   .add(
     'Icons',
     () => {
-      const [values, setValues] = useState();
+      const [values, setValues] = useState<(string | number)[] | undefined>();
       return (
         <>
           <Label labelText="How strong do you like your tea?" htmlFor="tea-rank">
@@ -119,9 +114,9 @@ storiesOf('Dropdown', module)
               elevation={number('elevation', 1, { range: true, min: 0, max: 5, step: 1 })}
               multi={boolean('multi', false)}
               name="tea-rank"
-              onSelect={newVals => {
+              onSelect={(selected?: (string | number)[]) => {
                 action('onSelect')();
-                setValues(newVals);
+                setValues(selected);
               }}
               options={teaOptions}
               variant={select('variant', variants, variants.fill)}
