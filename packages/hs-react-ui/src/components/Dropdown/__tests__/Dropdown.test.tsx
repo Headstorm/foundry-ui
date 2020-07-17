@@ -210,6 +210,7 @@ describe('Dropdown', () => {
         name="choosePokemon"
         options={pokeOptions}
         values={['bulbasaur', 'charmander']}
+        onSelect={mockedSelectHandler}
       />,
     );
 
