@@ -4,12 +4,12 @@ import { storiesOf } from '@storybook/react';
 import { boolean, color, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { address } from 'faker';
+import Icon from '@mdi/react';
+import { mdiLeaf } from '@mdi/js';
 
 import Dropdown, { OptionProps } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
-import { mdiLeaf } from '@mdi/js';
-import Icon from '@mdi/react';
 
 const design = {
   type: 'figma',

@@ -348,8 +348,9 @@ const Dropdown = ({
                   {i !== 0 && ', '}
                   {optionsHash[val].optionValue}
                 </span>
-              ) : undefined,
-            )}
+              ) : (
+                undefined
+              ))}
         </StyledValueItem>
         {closeIcons}
       </Button>
