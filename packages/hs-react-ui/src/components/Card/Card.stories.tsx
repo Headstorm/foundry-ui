@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { text, number } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { storiesOf } from '@storybook/react';
 
@@ -22,6 +23,7 @@ storiesOf('Card', module)
         header={text('header', 'Card title')}
         footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
         elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
+        onClick={action('onClick')}
       >
         {text(
           'children',

@@ -46,6 +46,7 @@ module.exports = {
 
     'import/no-extraneous-dependencies': 1,
     '@typescript-eslint/ban-types': 1, // StyledComponentBase<any, {}> failed every time
+    '@typescript-eslint/no-empty-function': 0,
     'import/no-unresolved': 1,
     'import/extensions': 1,
     'comma-dangle': 1,

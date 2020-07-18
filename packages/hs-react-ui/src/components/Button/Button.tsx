@@ -128,7 +128,7 @@ const Button = ({
       color={color}
       variant={variant}
       type={type}
-      {...containerProps} // eslint-disable-line react/jsx-props-no-spreading
+      {...containerProps}
     >
       <LoadingBar />
     </StyledContainer>
@@ -140,7 +140,7 @@ const Button = ({
       color={color}
       variant={variant}
       type={type}
-      {...containerProps} // eslint-disable-line react/jsx-props-no-spreading
+      {...containerProps}
     >
       {!isProcessing &&
         iconPrefix &&

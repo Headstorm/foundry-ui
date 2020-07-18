@@ -387,7 +387,7 @@ const Table = ({
       (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) && (
         <RenderedCell
           // all cells should have full access to all the data in the row
-          {...row} // eslint-disable-line react/jsx-props-no-spreading
+          {...row}
           index={index}
           groupIndex={groupIndex}
           reachedMinWidth={width < minWidthBreakpoint}
