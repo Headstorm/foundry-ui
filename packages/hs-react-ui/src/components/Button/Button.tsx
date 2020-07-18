@@ -2,25 +2,21 @@ import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
-import { readableColor, darken } from 'polished';
+import { darken } from 'polished';
 
 import timings from '../../enums/timings';
 import colors from '../../enums/colors';
+import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
-  variant: string;
+  variant: variants;
   type: string;
 };
-
-export enum ButtonVariants {
-  fill = 'fill',
-  text = 'text',
-  outline = 'outline',
-}
 
 export enum ButtonTypes {
   button = 'button',
@@ -37,38 +33,11 @@ export type ButtonProps = {
   isProcessing?: boolean;
   children?: ReactNode;
   elevation?: number;
-  variant?: ButtonVariants;
+  variant?: variants;
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
-};
-
-/**
- * Get the appropriate font color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- */
-export const getFontColorFromVariant = (variant: string, color: string) => {
-  if (variant === 'fill') {
-    return readableColor(color, colors.background, colors.grayDark, true);
-  }
-  return color;
-};
-
-/**
- * Get the appropriate background color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- */
-export const getBackgroundColorFromVariant = (variant: string, color: string) => {
-  switch (variant) {
-    case ButtonVariants.text:
-    case ButtonVariants.outline:
-      return colors.transparent;
-    default:
-      return color;
-  }
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -79,7 +48,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
     const fontColor = getFontColorFromVariant(variant, color);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
+    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
 
     return `
       display: inline-flex;
@@ -93,9 +62,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${
-        variant === ButtonVariants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'
-      };
+      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -145,7 +112,7 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  variant = ButtonVariants.fill,
+  variant = variants.fill,
   type = ButtonTypes.button,
   color = colors.grayDark,
   onClick,
@@ -204,7 +171,6 @@ const Button = ({
 };
 
 Button.Container = ButtonContainer;
-Button.ButtonVariants = ButtonVariants;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;
