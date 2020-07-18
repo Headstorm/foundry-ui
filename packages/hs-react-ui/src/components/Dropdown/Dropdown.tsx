@@ -350,7 +350,8 @@ const Dropdown = ({
                 </span>
               ) : (
                 undefined
-              ))}
+              ),
+            )}
         </StyledValueItem>
         {closeIcons}
       </Button>
