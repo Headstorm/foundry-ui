@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { boolean, color, number, select } from '@storybook/addon-knobs';
+import { boolean, color, number, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import Button from '../Button';
@@ -31,6 +31,7 @@ storiesOf('Dropdown', module).add(
           onBlur={action('onBlur')}
           onClear={action('onClear')}
           onSelect={action('onSelect')}
+          placeholder={text('placeholder', 'My favorite is...')}
           options={options}
           type={select('type', Button.ButtonVariants, Button.ButtonVariants.fill)}
           values={values}

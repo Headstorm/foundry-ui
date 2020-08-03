@@ -7,7 +7,7 @@ import { readableColor } from 'polished';
 import Button, { ButtonVariants } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
+import { Div, Span } from '../../htmlElements';
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
@@ -64,6 +64,10 @@ const ValueItem = styled(Div)`
   text-align: left;
 `;
 
+const Placeholder = styled(Span)`
+  opacity: 0.8;
+`;
+
 const OptionsContainer = styled(Div)`
   background: white;
   position: absolute;
@@ -106,6 +110,7 @@ export interface DropdownProps {
   StyledValueItem?: string & StyledComponentBase<any, {}>;
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
+  StyledPlaceholder?: string & StyledComponentBase<any, {}>;
 
   clearable?: boolean;
   color?: string;
@@ -116,6 +121,7 @@ export interface DropdownProps {
   onClear?: () => void;
   onSelect?: (selected: string | Array<string>) => void;
   options: Array<string>;
+  placeholder?: string;
   tabIndex?: number;
   type?: ButtonVariants;
   values?: Array<string>;
@@ -128,6 +134,7 @@ const Dropdown = ({
   StyledValueItem = ValueItem,
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
+  StyledPlaceholder = Placeholder,
 
   clearable = false,
   color,
@@ -137,6 +144,7 @@ const Dropdown = ({
   onBlur,
   onClear,
   onSelect,
+  placeholder,
   options,
   tabIndex = 0,
   type = Button.ButtonVariants.fill,
@@ -300,6 +308,9 @@ const Dropdown = ({
       >
         <StyledValueItem>
           {((values.length && values) || state.selectedValues).join(', ')}
+          {!values.length && !state.selectedValues.length && (
+            <StyledPlaceholder>{placeholder}</StyledPlaceholder>
+          )}
         </StyledValueItem>
         {closeIcons}
       </Button>
@@ -336,5 +347,6 @@ Dropdown.OptionsContainer = OptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
+Dropdown.Placeholder = Placeholder;
 
 export default Dropdown;
