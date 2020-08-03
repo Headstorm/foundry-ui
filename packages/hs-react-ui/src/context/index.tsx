@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { css, StyledComponentBase } from 'styled-components';
 import fonts from '../enums/fonts';
+import colorsEnum from '../enums/colors';
 
 export const defaultGlobalStyles = `
   ${
@@ -15,9 +16,13 @@ export const defaultGlobalStyles = `
 
 `;
 
-export type FoundryContextType = { globalStyles: string };
+export type FoundryContextType = {
+  globalStyles: string;
+  colors: Record<string, string>;
+};
 export const FoundryContext = React.createContext<FoundryContextType>({
   globalStyles: '',
+  colors: {},
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 });
 
@@ -25,9 +30,24 @@ export const FoundryProvider = ({
   value,
   children,
 }: {
-  value: FoundryContextType;
+  value: Partial<FoundryContextType>;
   children: React.ReactNode;
-}) => <FoundryContext.Provider value={value}>{children}</FoundryContext.Provider>;
+}) => {
+  const { globalStyles = '', colors = colorsEnum } = value;
+  const mergedGlobalStyles = `
+    ${defaultGlobalStyles}
+    ${globalStyles}
+  `;
+  const mergedColors = {
+    ...colorsEnum,
+    ...colors,
+  };
+  return (
+    <FoundryContext.Provider value={{ globalStyles: mergedGlobalStyles, colors: mergedColors }}>
+      {children}
+    </FoundryContext.Provider>
+  );
+};
 
 export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => {
   const ComponentWithGlobalStyles = styled(Component)`
@@ -36,10 +56,6 @@ export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>
 
   return (props: any) => {
     const { globalStyles } = useContext(FoundryContext);
-    const mergedGlobalStyles = `
-      ${defaultGlobalStyles}
-      ${globalStyles}
-    `;
-    return <ComponentWithGlobalStyles globalStyles={mergedGlobalStyles} {...props} />;
+    return <ComponentWithGlobalStyles globalStyles={globalStyles} {...props} />;
   };
 };

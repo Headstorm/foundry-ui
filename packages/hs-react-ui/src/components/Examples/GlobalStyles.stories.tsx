@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { FoundryProvider } from '../../index';
-import { select } from '@storybook/addon-knobs';
+import { color, select } from '@storybook/addon-knobs';
 import Text from '../Text';
 import Card from '../Card';
 import Button from '../Button';
 import { action } from '@storybook/addon-actions';
+import colorsEnum from '../../enums/colors';
 
 const StyledTextContainer = styled(Text.Container)`
   margin-bottom: 1rem;
@@ -26,11 +27,17 @@ storiesOf('Global styles', module).add('Example', () => {
     ['Montserrat', 'Times New Roman', 'Monospace', 'unset'],
     'Montserrat',
   );
+  const primary = color('primary', colorsEnum.primary);
+  const grayDark = color('grayDark', colorsEnum.grayDark);
   const globalStyles = `
     font-family: ${fontFamilyOptions[fontFamily]};
   `;
+  const colors = {
+    primary,
+    grayDark,
+  };
   return (
-    <FoundryProvider value={{ globalStyles }}>
+    <FoundryProvider value={{ globalStyles, colors }}>
       <Text StyledContainer={StyledTextContainer}>Hello!</Text>
       <Card StyledContainer={StyledCardContainer} header={'Title'}>
         These components all have a global set of styles applied to them through React's Context
