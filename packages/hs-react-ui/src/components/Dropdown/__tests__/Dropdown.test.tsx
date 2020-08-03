@@ -10,6 +10,16 @@ describe('Dropdown', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('displays placeholder value on initial render', () => {
+    const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
+    const { container, getByTestId, getByText } = render(
+      <Dropdown name="choosePokemon" options={options} placeholder="Choose a pokemon" />,
+    );
+    const placeholder = getByText('Choose a pokemon');
+    expect(placeholder).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+
   it('displays all options when focused', () => {
     const options = ['Bulbasaur', 'Charmander', 'Squirtle'];
     const { container, getByTestId, getByText } = render(
