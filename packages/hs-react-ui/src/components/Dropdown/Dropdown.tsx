@@ -194,7 +194,7 @@ const Dropdown = ({
 
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
-      e.preventDefault();
+      // not preventing default to retain the focus event on the clear button
       e.stopPropagation();
       setState(curState => ({
         ...curState,
@@ -264,7 +264,7 @@ const Dropdown = ({
     <ValueIconContainer>
       {clearable && (
         <CloseIconContainer
-          onClick={handleClear}
+          onMouseDown={handleClear}
           onFocus={(e: React.FocusEvent) => e.stopPropagation()}
           tabIndex={tabIndex}
         >
@@ -285,6 +285,9 @@ const Dropdown = ({
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {
         e.preventDefault();
+        if (state.isOpen) {
+          return;
+        }
         setState(curState => ({ ...curState, isOpen: true }));
       }}
       tabIndex={tabIndex}
@@ -296,6 +299,14 @@ const Dropdown = ({
         }}
         color={color}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
+        onMouseDown={(e: React.MouseEvent) => {
+          // Using MouseDown to prevent the focus event from firing
+          e.preventDefault();
+          setState(curState => ({ ...curState, isOpen: !curState.isOpen }));
+          // Focus the element without causing the on focus event so that
+          // blur will still close the menu
+          document.getElementById(`${state.id}-valueContainer`)?.focus();
+        }}
         variant={type}
       >
         <StyledValueItem>
