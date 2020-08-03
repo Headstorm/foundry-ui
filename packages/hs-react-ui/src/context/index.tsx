@@ -1,16 +1,23 @@
 import React, { useContext } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled, { css, StyledComponentBase } from 'styled-components';
 import fonts from '../enums/fonts';
 
 export const defaultGlobalStyles = `
-  box-sizing: border-box;
-  ${process.env.NODE_ENV !== 'test' ? fonts.importFonts : ''}
-  ${fonts.body}
+  ${
+    process.env.NODE_ENV !== 'test'
+      ? css`
+          box-sizing: border-box;
+          ${fonts.importFonts}
+          ${fonts.body}
+        `
+      : ''
+  }
+
 `;
 
 export type FoundryContextType = { globalStyles: string };
 export const FoundryContext = React.createContext<FoundryContextType>({
-  globalStyles: defaultGlobalStyles,
+  globalStyles: '',
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 });
 

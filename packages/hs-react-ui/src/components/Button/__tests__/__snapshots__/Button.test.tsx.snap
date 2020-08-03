@@ -2,8 +2,6 @@
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -31,8 +29,6 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -48,22 +44,20 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 <button
-  class="sc-AxhUy sc-AxgMl c0"
+  class="sc-AxhUy c0"
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
   type="button"
 >
   <div
-    class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
+    class="sc-AxjAm sc-fzpjYC c1"
   />
 </button>
 `;
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -91,7 +85,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 <button
-  class="sc-AxhUy sc-AxgMl c0"
+  class="sc-AxhUy c0"
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
@@ -103,8 +97,6 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -133,7 +125,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -144,8 +136,6 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 
 exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -174,7 +164,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -185,8 +175,6 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 
 exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -215,7 +203,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -226,8 +214,6 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 
 exports[`Button shows ButtonContainer with nondefault props variant and color 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -256,7 +242,7 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#000"
     data-test-id="hsui-button"
     elevation="2"
@@ -267,8 +253,6 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
 
 exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -296,21 +280,19 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   height: 1rem;
 }
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
+      class="sc-AxjAm sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -341,8 +323,6 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 
 exports[`Button shows icons 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -370,27 +350,23 @@ exports[`Button shows icons 1`] = `
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   height: 1rem;
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   height: 1rem;
 }
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
+      class="sc-AxjAm sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -403,7 +379,7 @@ exports[`Button shows icons 1`] = `
       </svg>
     </div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c2"
+      class="sc-AxjAm sc-fznWqX c2"
     >
       <svg
         role="presentation"
@@ -421,8 +397,6 @@ exports[`Button shows icons 1`] = `
 
 exports[`Button shows icons with type string 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -450,27 +424,23 @@ exports[`Button shows icons with type string 1`] = `
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   height: 1rem;
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   height: 1rem;
 }
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
+      class="sc-AxjAm sc-fznWqX c1"
     >
       <svg
         role="presentation"
@@ -484,7 +454,7 @@ exports[`Button shows icons with type string 1`] = `
       </svg>
     </div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c2"
+      class="sc-AxjAm sc-fznWqX c2"
     >
       <svg
         role="presentation"
@@ -503,8 +473,6 @@ exports[`Button shows icons with type string 1`] = `
 
 exports[`Button shows loading text when provided 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -532,8 +500,6 @@ exports[`Button shows loading text when provided 1`] = `
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -550,14 +516,14 @@ exports[`Button shows loading text when provided 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="sc-AxhUy c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
+      class="sc-AxjAm sc-fzpjYC c1"
     />
   </button>
 </div>
