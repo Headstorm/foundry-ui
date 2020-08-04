@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
@@ -197,6 +197,7 @@ const Dropdown = ({
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const optionsHash: { [key: string]: OptionProps } = {};
   options.forEach(option => {
@@ -237,13 +238,28 @@ const Dropdown = ({
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
-      e.stopPropagation();
+      e.nativeEvent.stopImmediatePropagation();
       onSelect(multi ? [] : undefined);
       if (onClear) {
         onClear();
       }
     },
     [multi, onClear, onSelect],
+  );
+
+  // clickHandler will be used in onMouseDown to prevent the focus event
+  // opening the dropdown and the click closing it
+  const clickHandler = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+      setIsOpen(!isOpen);
+      if (containerRef && containerRef.current) {
+        // Focus the container even when clicking
+        containerRef.current.focus();
+      }
+    },
+    [containerRef, isOpen, setIsOpen],
   );
 
   const keyDownHandler = useCallback(
@@ -326,6 +342,7 @@ const Dropdown = ({
         e.preventDefault();
         setIsOpen(true);
       }}
+      ref={containerRef}
       tabIndex={tabIndex}
       {...containerProps}
     >
@@ -336,10 +353,11 @@ const Dropdown = ({
         }}
         color={color}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
+        onMouseDown={clickHandler}
         variant={variant}
         {...valueContainerProps}
       >
-        <StyledValueItem {...valueItemProps}>
+        <StyledValueItem {...valueItemProps} onMouseDown={clickHandler}>
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i) =>
