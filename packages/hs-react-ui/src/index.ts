@@ -10,6 +10,7 @@ import Table from './components/Table';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
+import { FoundryProvider, FoundryContext, useColors } from './context';
 
 export {
   Button,
@@ -24,4 +25,7 @@ export {
   Text,
   TextInput,
   Progress,
+  FoundryProvider,
+  FoundryContext,
+  useColors,
 };
