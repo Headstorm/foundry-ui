@@ -18,11 +18,11 @@ export const defaultGlobalStyles = `
 
 export type FoundryContextType = {
   globalStyles: string;
-  colors: Record<string, string>;
+  colors: Record<keyof typeof colorsEnum, string>;
 };
 export const FoundryContext = React.createContext<FoundryContextType>({
   globalStyles: '',
-  colors: {},
+  colors: colorsEnum,
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 });
 
@@ -30,7 +30,7 @@ export const FoundryProvider = ({
   value,
   children,
 }: {
-  value: Partial<FoundryContextType>;
+  value: { globalStyles?: string, colors: Partial<Record<keyof typeof colorsEnum, string>>}
   children: React.ReactNode;
 }) => {
   const { globalStyles = '', colors = colorsEnum } = value;

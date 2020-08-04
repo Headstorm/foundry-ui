@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
 import { readableColor, darken } from 'polished';
 
 import timings from '../../enums/timings';
-import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
+import { FoundryContext } from '../../context';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -48,10 +48,12 @@ export type ButtonProps = {
  * Get the appropriate font color for the button based on the variant of button
  * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
+ * @param {string} lightReturnColor - The color to return if the color is too dark
+ * @param {string} darkReturnColor - The color to return if the color is too dark
  */
-export const getFontColorFromVariant = (variant: string, color: string) => {
+export const getFontColorFromVariant = (variant: string, color: string, lightReturnColor: string, darkReturnColor: string) => {
   if (variant === 'fill') {
-    return readableColor(color, colors.background, colors.grayDark, true);
+    return readableColor(color, lightReturnColor, darkReturnColor, true);
   }
   return color;
 };
@@ -60,12 +62,13 @@ export const getFontColorFromVariant = (variant: string, color: string) => {
  * Get the appropriate background color for the button based on the variant of button
  * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
+ * @param {string} transparentColor - The color to use for a transparent background
  */
-export const getBackgroundColorFromVariant = (variant: string, color: string) => {
+export const getBackgroundColorFromVariant = (variant: string, color: string, transparentColor: string) => {
   switch (variant) {
     case ButtonVariants.text:
     case ButtonVariants.outline:
-      return colors.transparent;
+      return transparentColor;
     default:
       return color;
   }
@@ -75,8 +78,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const backgroundColor = getBackgroundColorFromVariant(variant, color);
-    const fontColor = getFontColorFromVariant(variant, color);
+    const { colors } = useContext(FoundryContext);
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
+    const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
@@ -147,10 +151,11 @@ const Button = ({
   elevation = 0,
   variant = ButtonVariants.fill,
   type = ButtonTypes.button,
-  color = colors.grayDark,
+  color,
   onClick,
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
+  const { colors } = useContext(FoundryContext);
   const hasContent = Boolean(children);
 
   return isLoading ? (
@@ -170,7 +175,7 @@ const Button = ({
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={color || colors.grayDark}
       variant={variant}
       type={type}
       {...containerProps}

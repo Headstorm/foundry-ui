@@ -21,6 +21,7 @@ const fontFamilyOptions = {
   Monospace: '"Lucida Console",Courier,monospace',
   unset: 'unset',
 };
+
 storiesOf('Global styles', module).add('Example', () => {
   const fontFamily = select(
     'font-family',
