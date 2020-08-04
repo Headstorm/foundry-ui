@@ -163,7 +163,7 @@ const Button = ({
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={color || colors.grayDark}
       variant={variant}
       type={type}
       {...containerProps}

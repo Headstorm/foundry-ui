@@ -24,7 +24,6 @@ const Container = styled(Div)`
     `;
   }}
 `;
-console.log({ Button})
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ modalIsOpen }) => `
