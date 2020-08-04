@@ -108,8 +108,8 @@ const Modal = ({
             closeButtonAttachment,
           }}
           iconPrefix={mdiClose}
-          color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
-          elevation={closeButtonAttachment === 'inside' ? 0 : 1}
+          color={colors.background}
+          elevation={1}
           variant="text"
           onClick={onClose}
           {...closeButtonProps}
