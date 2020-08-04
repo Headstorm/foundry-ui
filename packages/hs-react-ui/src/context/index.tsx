@@ -30,7 +30,7 @@ export const FoundryProvider = ({
   value,
   children,
 }: {
-  value: { globalStyles?: string, colors: Partial<Record<keyof typeof colorsEnum, string>>}
+  value: { globalStyles?: string; colors: Partial<Record<keyof typeof colorsEnum, string>> };
   children: React.ReactNode;
 }) => {
   const { globalStyles = '', colors = colorsEnum } = value;
@@ -53,14 +53,22 @@ type validColor = keyof typeof colorsEnum;
 export function isValidColor(color: string, colors: FoundryColorsType): color is validColor {
   return color in colors;
 }
+
 export function useColors<T extends validColor>(color: T): string;
-export function useColors<T extends Array<keyof typeof colorsEnum>>(colors: T): Record<T[0], string>
-export function useColors(param: validColor | Array<validColor>) {
+export function useColors<T extends Array<keyof typeof colorsEnum>>(
+  colors: T,
+): Record<T[0], string>;
+export function useColors(): FoundryColorsType;
+export function useColors(param?: validColor | Array<validColor>) {
   const { colors } = useContext(FoundryContext);
   if (typeof param === 'string' && isValidColor(param, colors)) {
     return colors[param];
-  } else if (Array.isArray(param)) {
-    return param.reduce((acc, p) => ({ ...acc, [p]: colors[p] }), {})
+  }
+  if (Array.isArray(param)) {
+    return param.reduce((acc, p) => ({ ...acc, [p]: colors[p] }), {});
+  }
+  if (!param) {
+    return colors;
   }
 }
 

@@ -51,7 +51,12 @@ export type ButtonProps = {
  * @param {string} lightReturnColor - The color to return if the color is too dark
  * @param {string} darkReturnColor - The color to return if the color is too dark
  */
-export const getFontColorFromVariant = (variant: string, color: string, lightReturnColor: string, darkReturnColor: string) => {
+export const getFontColorFromVariant = (
+  variant: string,
+  color: string,
+  lightReturnColor: string,
+  darkReturnColor: string,
+) => {
   if (variant === 'fill') {
     return readableColor(color, lightReturnColor, darkReturnColor, true);
   }
@@ -64,7 +69,11 @@ export const getFontColorFromVariant = (variant: string, color: string, lightRet
  * @param {string} color - The color prop passed into the button
  * @param {string} transparentColor - The color to use for a transparent background
  */
-export const getBackgroundColorFromVariant = (variant: string, color: string, transparentColor: string) => {
+export const getBackgroundColorFromVariant = (
+  variant: string,
+  color: string,
+  transparentColor: string,
+) => {
   switch (variant) {
     case ButtonVariants.text:
     case ButtonVariants.outline:
@@ -78,7 +87,11 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { transparent, background, grayDark } = useColors(['transparent', 'background', 'grayDark'])
+    const { transparent, background, grayDark } = useColors([
+      'transparent',
+      'background',
+      'grayDark',
+    ]);
     const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
@@ -97,9 +110,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${
-        variant === ButtonVariants.outline ? `1px solid ${color || grayDark}` : '0 none;'
-      };
+      border: ${variant === ButtonVariants.outline ? `1px solid ${color || grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};

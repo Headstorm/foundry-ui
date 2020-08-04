@@ -8,7 +8,6 @@ import useMeasure from 'react-use-measure';
 import { ResizeObserver } from '@juggle/resize-observer';
 
 import fonts from '../../enums/fonts';
-import colors from '../../enums/colors';
 import { clamp } from '../../utils/math';
 
 import {
@@ -20,6 +19,7 @@ import {
   selectedRangeProps,
   domainLabelProps,
 } from './types';
+import { useColors } from '../../context';
 
 export const Container = styled.div`
   ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: containerProps) => `
@@ -65,77 +65,95 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color = colors.primary }: handleProps) => `
-    position: absolute;
-    bottom: -.125rem;
-    left: -.5rem;
-
-    width: 1rem;
-    height: 1rem;
-
-    background-color: ${color};
-    color: ${color};
-    border: .125rem solid ${colors.background};
-    border-radius: 50%;
-
-    filter: url(#blur);
-
-    cursor: ${beingDragged ? 'grabbing' : 'grab'};
-  `}
+  ${({ beingDragged = false, color }: handleProps) => {
+    const { primary, background } = useColors();
+    const handleColor = color || primary;
+    return `
+      position: absolute;
+      bottom: -.125rem;
+      left: -.5rem;
+  
+      width: 1rem;
+      height: 1rem;
+  
+      background-color: ${handleColor};
+      color: ${handleColor};
+      border: .125rem solid ${background};
+      border-radius: 50%;
+  
+      filter: url(#blur);
+  
+      cursor: ${beingDragged ? 'grabbing' : 'grab'};
+    `;
+  }}
 `;
 
 export const HandleLabel = styled.div`
-  ${({ velocity = 0 }: handleLabelProps) => `
+  ${({ velocity = 0 }: handleLabelProps) => {
+    const { background } = useColors();
+    return `
       position: absolute;
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
-
-      background-color: ${colors.background};
+  
+      background-color: ${background};
       border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
-
+  
       pointer-events: none;
-  `}
+    `;
+  }}
 `;
 
 export const SlideRail = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 100%;
-  height: 0.25rem;
-
-  overflow: hidden;
-
-  border-radius: 0.125rem;
-  background-color: ${colors.grayXlight};
+  ${() => {
+    const grayXlight = useColors('grayXlight');
+    return `
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    
+      width: 100%;
+      height: 0.25rem;
+    
+      overflow: hidden;
+    
+      border-radius: 0.125rem;
+      background-color: ${grayXlight};
+    `;
+  }}
 `;
 
 export const SelectedRangeRail = styled.div`
-  ${({ min, max, selectedRange }: selectedRangeProps) => `
-    position: absolute;
-    top: 0%;
-    height: 100%;
-    left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
-    right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
-
-    transition: left .3s, right .3s;
-
-    background-color: ${colors.primary};
-  `}
+  ${({ min, max, selectedRange }: selectedRangeProps) => {
+    const primary = useColors('primary');
+    return `
+      position: absolute;
+      top: 0%;
+      height: 100%;
+      left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
+      right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
+  
+      transition: left .3s, right .3s;
+  
+      background-color: ${primary};
+    `;
+  }}
 `;
 
 export const DomainLabel = styled.div`
-  ${({ position }: domainLabelProps) => `
-    position: absolute;
-    bottom: 100%;
-    ${position}: 0rem;
-    color: ${colors.grayMedium};
-    font-size: .5rem;
-  `}
+  ${({ position }: domainLabelProps) => {
+    const grayMedium = useColors('grayMedium');
+    return `
+      position: absolute;
+      bottom: 100%;
+      ${position}: 0rem;
+      color: ${grayMedium};
+      font-size: .5rem;
+    `;
+  }}
 `;
 
 export default ({

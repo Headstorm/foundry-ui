@@ -1,16 +1,19 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import colors from '../../enums/colors';
 import { Div, HR } from '../../htmlElements';
+import { useColors } from '../../context';
 
 export const DefaultDivider = styled(HR)`
-  ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `
-    border: none;
-    height: ${height};
-    width: ${width};
-    background-color: ${colors.grayLight};
-  `}
+  ${({ width = '90%', height = '1px' }: { width: string; height: string }) => {
+    const grayLight = useColors('grayLight');
+    return `
+      border: none;
+      height: ${height};
+      width: ${width};
+      background-color: ${grayLight};
+  `;
+  }}
 `;
 
 export const DefaultDividerContainer = styled(Div)`
