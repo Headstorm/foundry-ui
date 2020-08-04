@@ -80,7 +80,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -95,10 +95,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       />
       <div
-        class="sc-AxjAm sc-AxirZ c3"
+        class="sc-AxjAm c3"
       >
         <svg
           role="presentation"
@@ -119,8 +119,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
   .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -133,8 +131,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -182,8 +178,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -200,15 +194,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
   text-align: left;
 }
 
 .c4 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   background: white;
   position: absolute;
   top: 100%;
@@ -223,8 +213,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c5 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -250,7 +238,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -258,17 +246,17 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-AxgMl sc-fznxsB c1"
+      class="sc-AxhUy sc-fznxsB c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       />
       <div
-        class="sc-AxjAm sc-AxirZ c3"
+        class="sc-AxjAm c3"
       >
         <svg
           role="presentation"
@@ -283,11 +271,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm sc-AxirZ c4"
+      class="sc-AxjAm c4"
       color="#252c35"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c5"
+        class="sc-AxjAm c5"
         color="#252c35"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
@@ -297,7 +285,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class="sc-AxjAm sc-AxirZ c5"
+        class="sc-AxjAm c5"
         color="#252c35"
         id="choosePokemon-option-charmander"
         tabindex="0"
@@ -307,7 +295,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class="sc-AxjAm sc-AxirZ c5"
+        class="sc-AxjAm c5"
         color="#252c35"
         id="choosePokemon-option-squirtle"
         tabindex="0"
@@ -324,8 +312,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
   .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -338,8 +324,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -384,8 +368,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -402,14 +384,12 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
   text-align: left;
 }
 
 <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -417,14 +397,14 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-AxgMl sc-fznxsB c1"
+      class="sc-AxhUy sc-fznxsB c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       />
       <div
         class="sc-AxjAm c3"
@@ -525,7 +505,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -540,7 +520,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       />
       <div
         class="sc-AxjAm c3"
@@ -561,9 +541,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 </div>
 `;
 
-exports[`Dropdown closes options when clicking outside 1`] = `
-<DocumentFragment>
-  .c0 {
+exports[`Dropdown displays all options when focused 1`] = `
+.c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -684,7 +663,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -717,11 +696,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm sc-AxirZ c4"
+      class="sc-AxjAm c4"
       color="#252c35"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c5"
+        class="sc-AxjAm c5"
         color="#252c35"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
@@ -731,7 +710,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class="sc-AxjAm sc-AxirZ c5"
+        class="sc-AxjAm c5"
         color="#252c35"
         id="choosePokemon-option-charmander"
         tabindex="0"
@@ -741,7 +720,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class="sc-AxjAm sc-AxirZ c5"
+        class="sc-AxjAm c5"
         color="#252c35"
         id="choosePokemon-option-squirtle"
         tabindex="0"
@@ -755,9 +734,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 </div>
 `;
 
-exports[`Dropdown closes options when clicking outside 2`] = `
-<DocumentFragment>
-  .c0 {
+exports[`Dropdown does not display options on initial render 1`] = `
+.c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -836,7 +814,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -952,7 +930,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -967,7 +945,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       >
         <span>
           Bulbasaur
@@ -1072,7 +1050,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1080,17 +1058,17 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-AxgMl sc-fznxsB c1"
+      class="sc-AxhUy sc-fznxsB c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       />
       <div
-        class="sc-AxjAm sc-AxirZ c3"
+        class="sc-AxjAm c3"
       >
         <svg
           role="presentation"
@@ -1110,8 +1088,6 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1124,8 +1100,6 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1170,8 +1144,6 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1188,15 +1160,13 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   width: 100%;
   text-align: left;
 }
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1211,7 +1181,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       >
         <span>
           Bulbasaur
@@ -1232,46 +1202,6 @@ exports[`Dropdown renders one value when given two values but only one matches a
         </svg>
       </div>
     </button>
-    <div
-      class="sc-AxjAm c4"
-    >
-      <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Bulbasaur"
-        tabindex="0"
-      >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Charmander"
-        tabindex="0"
-      >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
-          Charmander
-        </span>
-      </div>
-      <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Squirtle"
-        tabindex="0"
-      >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
-          Squirtle
-        </span>
-      </div>
-    </div>
   </div>
 </div>
 `;
@@ -1356,7 +1286,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1371,7 +1301,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
       type="button"
     >
       <div
-        class="sc-AxjAm sc-AxirZ c2"
+        class="sc-AxjAm c2"
       >
         <span>
           Bulbasaur
@@ -1480,7 +1410,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1604,7 +1534,7 @@ exports[`Dropdown selects options from values prop 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
