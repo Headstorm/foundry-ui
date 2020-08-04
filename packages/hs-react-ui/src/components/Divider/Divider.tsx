@@ -6,7 +6,7 @@ import { useColors } from '../../context';
 
 export const DefaultDivider = styled(HR)`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => {
-    const grayLight = useColors('grayLight');
+    const { grayLight } = useColors();
     return `
       border: none;
       height: ${height};

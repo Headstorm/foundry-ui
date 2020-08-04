@@ -31,7 +31,7 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
 
 export const Label = styled(LabelElement)`
   ${() => {
-    const grayXlight = useColors('grayXlight');
+    const { grayXlight } = useColors();
     return `
       display: flex;
       align-items: center;
@@ -46,7 +46,7 @@ export const Label = styled(LabelElement)`
 
 export const Box = styled(Div)`
   ${() => {
-    const grayLight = useColors('grayLight');
+    const { grayLight } = useColors();
     return `
       border: 1px solid ${grayLight};
       border-radius: 2px;
@@ -72,7 +72,7 @@ export const StyledIcon = styled(Icon)`
 
 const CheckIcon = styled(StyledIcon)`
   ${() => {
-    const success = useColors('success');
+    const { success } = useColors();
     return `
       color: ${success};
       height: 2rem;
@@ -84,7 +84,7 @@ const CheckIcon = styled(StyledIcon)`
 
 const CrossIcon = styled(StyledIcon)`
   ${() => {
-    const destructive = useColors('destructive');
+    const { destructive } = useColors();
     return `
       color: ${destructive};
       height: 1rem;
@@ -95,7 +95,7 @@ const CrossIcon = styled(StyledIcon)`
 
 const DefaultIcon = styled(StyledIcon)`
   ${() => {
-    const grayMedium = useColors('grayMedium');
+    const { grayMedium } = useColors();
     return `
       color: ${grayMedium};
       height: 0.7rem;
@@ -106,7 +106,7 @@ const DefaultIcon = styled(StyledIcon)`
 
 const NeutralIcon = styled(StyledIcon)`
   ${() => {
-    const grayMedium = useColors('grayMedium');
+    const { grayMedium } = useColors();
     return `
       color: ${grayMedium};
       height: 0.65rem;

@@ -67,7 +67,7 @@ export const getFontColorFromVariant = (
  * Get the appropriate background color for the button based on the variant of button
  * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
- * @param {string} transparentColor - The color to use for a transparent background
+ * @param {string} [transparentColor] - The color to use for a transparent background
  */
 export const getBackgroundColorFromVariant = (
   variant: string,
@@ -77,7 +77,7 @@ export const getBackgroundColorFromVariant = (
   switch (variant) {
     case ButtonVariants.text:
     case ButtonVariants.outline:
-      return transparentColor;
+      return transparentColor || 'transparent';
     default:
       return color;
   }
@@ -87,11 +87,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { transparent, background, grayDark } = useColors([
-      'transparent',
-      'background',
-      'grayDark',
-    ]);
+    const { transparent, background, grayDark } = useColors();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
@@ -167,7 +163,7 @@ const Button = ({
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
-  const grayDark = useColors('grayDark');
+  const { grayDark } = useColors();
   const containerColor = color || grayDark;
 
   return isLoading ? (

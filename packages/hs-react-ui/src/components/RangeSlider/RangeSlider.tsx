@@ -109,7 +109,7 @@ export const HandleLabel = styled.div`
 
 export const SlideRail = styled.div`
   ${() => {
-    const grayXlight = useColors('grayXlight');
+    const { grayXlight } = useColors();
     return `
       position: absolute;
       top: 50%;
@@ -128,7 +128,7 @@ export const SlideRail = styled.div`
 
 export const SelectedRangeRail = styled.div`
   ${({ min, max, selectedRange }: selectedRangeProps) => {
-    const primary = useColors('primary');
+    const { primary } = useColors();
     return `
       position: absolute;
       top: 0%;
@@ -145,7 +145,7 @@ export const SelectedRangeRail = styled.div`
 
 export const DomainLabel = styled.div`
   ${({ position }: domainLabelProps) => {
-    const grayMedium = useColors('grayMedium');
+    const { grayMedium } = useColors();
     return `
       position: absolute;
       bottom: 100%;

@@ -7,7 +7,7 @@ import { useColors } from '../../context';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
-    const { grayXlight, background } = useColors(['grayXlight', 'background']);
+    const { grayXlight, background } = useColors();
     return `
       display: inline-flex;
       flex-flow: column nowrap;
@@ -24,7 +24,7 @@ export const CardContainer = styled(Div)`
 
 export const Header = styled(Div)`
   ${() => {
-    const grayDark = useColors('grayDark');
+    const { grayDark } = useColors();
     return `
       padding: 1.5rem 1.5rem 0rem;
       border-radius: 0.25rem 0.25rem 0rem 0rem;
@@ -41,7 +41,7 @@ export const NoPaddingHeader = styled(Header)`
 
 export const Body = styled(Div)`
   ${() => {
-    const grayMedium = useColors('grayMedium');
+    const { grayMedium } = useColors();
     return `
       padding: 1.5rem 1.5rem;
       color: ${grayMedium};
@@ -51,7 +51,7 @@ export const Body = styled(Div)`
 
 export const Footer = styled(Div)`
   ${() => {
-    const grayLight = useColors('grayLight');
+    const { grayLight } = useColors();
     return `
       padding: 1rem 1.5rem;
       display: flex;

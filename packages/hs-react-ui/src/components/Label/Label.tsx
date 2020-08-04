@@ -8,7 +8,7 @@ import { useColors } from '../../context';
 
 export const DefaultStyledLabel = styled(LabelElement)`
   ${({ color }: { color: colors | string }) => {
-    const grayLight = useColors('grayLight');
+    const { grayLight } = useColors();
     const labelColor = color || grayLight;
     return `
       display: inline-flex;

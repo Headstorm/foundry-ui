@@ -8,11 +8,7 @@ import { useColors } from '../../context';
 
 const Container = styled(Div)`
   ${({ isValid }: { isValid?: boolean }) => {
-    const { destructive, grayMedium, background } = useColors([
-      'destructive',
-      'grayMedium',
-      'background',
-    ]);
+    const { destructive, grayMedium, background } = useColors();
     return `
       border 2px solid ${isValid === false ? destructive : grayMedium};
       min-width: 10rem;
@@ -27,7 +23,7 @@ const Container = styled(Div)`
 
 const TextInputContainer = styled(InputElement)`
   ${() => {
-    const background = useColors('background');
+    const { background } = useColors();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -42,7 +38,7 @@ const TextInputContainer = styled(InputElement)`
 
 const TextAreaInputContainer = styled(TextArea)`
   ${({ multiLineIsResizable }: TextInputProps) => {
-    const background = useColors('background');
+    const { background } = useColors();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -59,7 +55,7 @@ const TextAreaInputContainer = styled(TextArea)`
 
 const IconContainer = styled(Div)`
   ${() => {
-    const grayMedium = useColors('grayMedium');
+    const { grayMedium } = useColors();
     return `
       padding: 0.5em;
       height: 100%;
@@ -74,7 +70,7 @@ const IconContainer = styled(Div)`
 
 const ErrorContainer = styled(Div)`
   ${() => {
-    const destructive = useColors('destructive');
+    const { destructive } = useColors();
     return `
       position: absolute;
       top: calc(100% + 0.25em);

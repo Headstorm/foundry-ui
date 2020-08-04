@@ -66,7 +66,7 @@ const ValueItem = styled(Div)`
 
 const OptionsContainer = styled(Div)`
   ${() => {
-    const grayDark25 = useColors('grayDark25');
+    const { grayDark25 } = useColors();
     return `
       background: white;
       position: absolute;
@@ -84,7 +84,7 @@ const OptionsContainer = styled(Div)`
 
 const OptionItem = styled(Div)`
   ${() => {
-    const grayDark50 = useColors('grayDark50');
+    const { grayDark50 } = useColors();
     return `  
       padding: 0.5rem;
       display: flex;

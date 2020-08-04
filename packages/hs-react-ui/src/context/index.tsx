@@ -49,27 +49,9 @@ export const FoundryProvider = ({
   );
 };
 
-type validColor = keyof typeof colorsEnum;
-export function isValidColor(color: string, colors: FoundryColorsType): color is validColor {
-  return color in colors;
-}
-
-export function useColors<T extends validColor>(color: T): string;
-export function useColors<T extends Array<keyof typeof colorsEnum>>(
-  colors: T,
-): Record<T[0], string>;
-export function useColors(): FoundryColorsType;
-export function useColors(param?: validColor | Array<validColor>) {
+export function useColors(): FoundryColorsType {
   const { colors } = useContext(FoundryContext);
-  if (typeof param === 'string' && isValidColor(param, colors)) {
-    return colors[param];
-  }
-  if (Array.isArray(param)) {
-    return param.reduce((acc, p) => ({ ...acc, [p]: colors[p] }), {});
-  }
-  if (!param) {
-    return colors;
-  }
+  return colors;
 }
 
 export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => {
