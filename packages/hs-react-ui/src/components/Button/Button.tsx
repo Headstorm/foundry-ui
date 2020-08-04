@@ -106,7 +106,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${variant === ButtonVariants.outline ? `1px solid ${color || grayDark}` : '0 none;'};
+      border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -163,8 +163,8 @@ const Button = ({
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
-  const { grayDark } = useColors();
-  const containerColor = color || grayDark;
+  const { grayLight } = useColors();
+  const containerColor = color || grayLight;
 
   return isLoading ? (
     <StyledContainer
