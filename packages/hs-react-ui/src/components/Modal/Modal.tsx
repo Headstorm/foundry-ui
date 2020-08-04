@@ -7,6 +7,7 @@ import variants from '../../enums/variants';
 
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
+import { SubcomponentPropType } from '../commonTypes';
 
 const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur, backgroundDarkness }) => `
@@ -75,8 +76,12 @@ export interface ModalProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledUnderlay?: string & StyledComponentBase<any, {}>;
   StyledCloseButton?: string & StyledComponentBase<any, {}>;
-  closeButtonProps?: object;
   StyledCloseButtonContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropType;
+  underlayProps?: SubcomponentPropType;
+  closeButtonProps?: SubcomponentPropType;
+  closeButtonContainerProps?: SubcomponentPropType;
+
   children: ReactNode;
 
   onClickOutside?: () => void;
@@ -92,7 +97,11 @@ const Modal = ({
   StyledUnderlay = Underlay,
   StyledCloseButton = CloseButton,
   StyledCloseButtonContainer = CloseButtonContainer,
+  containerProps = {},
+  underlayProps = {},
   closeButtonProps = {},
+  closeButtonContainerProps = {},
+
   children,
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
@@ -106,6 +115,7 @@ const Modal = ({
         StyledContainer={StyledCloseButtonContainer}
         containerProps={{
           closeButtonAttachment,
+          ...closeButtonContainerProps,
         }}
         iconPrefix={mdiClose}
         color={colors.background}
@@ -115,7 +125,7 @@ const Modal = ({
         {...closeButtonProps}
       />
     )}
-    <StyledContainer>
+    <StyledContainer {...containerProps}>
       {children}
       {closeButtonAttachment !== 'corner' && (
         <StyledCloseButton
@@ -136,6 +146,7 @@ const Modal = ({
       backgroundBlur={backgroundBlur}
       backgroundDarkness={backgroundDarkness}
       onClick={onClickOutside}
+      {...underlayProps}
     />
   </>
 );

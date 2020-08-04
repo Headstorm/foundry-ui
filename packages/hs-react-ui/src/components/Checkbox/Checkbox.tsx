@@ -5,6 +5,7 @@ import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import colors from '../../enums/colors';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
+import { SubcomponentPropType } from '../commonTypes';
 
 export enum CheckboxTypes {
   fill = 'fill',
@@ -95,6 +96,11 @@ export interface CheckboxProps {
   StyledBox?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
 
+  labelProps?: SubcomponentPropType;
+  checkboxContainerProps?: SubcomponentPropType;
+  boxProps?: SubcomponentPropType;
+  inputProps?: SubcomponentPropType;
+
   checkboxType?: CheckboxTypes;
   children?: React.ReactNode;
   checked?: boolean;
@@ -123,6 +129,11 @@ const Checkbox = ({
   StyledBox = Box,
   StyledInput = Input,
 
+  labelProps = {},
+  checkboxContainerProps = {},
+  boxProps = {},
+  inputProps = {},
+
   checkboxType = CheckboxTypes.default,
   checked = false,
   children,
@@ -132,12 +143,17 @@ const Checkbox = ({
   const iconPath = iconPaths[checkboxType];
   const IconComponent = iconComponents[checkboxType];
   return (
-    <StyledLabel data-test-id="hsui-Checkbox">
-      <StyledCheckboxContainer>
-        <StyledBox>
+    <StyledLabel data-test-id="hsui-Checkbox" {...labelProps}>
+      <StyledCheckboxContainer {...checkboxContainerProps}>
+        <StyledBox {...boxProps}>
           {checked ? <IconComponent data-test-id="hsui-Checkbox-Icon" path={iconPath} /> : null}
         </StyledBox>
-        <StyledInput data-test-id="hsui-Checkbox-Input" onClick={onClick} checked={checked} />
+        <StyledInput
+          data-test-id="hsui-Checkbox-Input"
+          onClick={onClick}
+          checked={checked}
+          {...inputProps}
+        />
       </StyledCheckboxContainer>
       {children}
     </StyledLabel>

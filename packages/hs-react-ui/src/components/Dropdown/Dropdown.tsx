@@ -10,6 +10,7 @@ import variants from '../../enums/variants';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropType } from '../commonTypes';
 
 export type OptionProps = {
   id: number | string;
@@ -146,12 +147,12 @@ export interface DropdownProps {
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
 
-  containerProps?: Record<string, unknown>;
-  valueContainerProps?: Record<string, unknown>;
-  valueItemProps?: Record<string, unknown>;
-  optionsContainerProps?: Record<string, unknown>;
-  optionItemProps?: Record<string, unknown>;
-  checkContainerProps?: Record<string, unknown>;
+  containerProps?: SubcomponentPropType;
+  valueContainerProps?: SubcomponentPropType;
+  valueItemProps?: SubcomponentPropType;
+  optionsContainerProps?: SubcomponentPropType;
+  optionItemProps?: SubcomponentPropType;
+  checkContainerProps?: SubcomponentPropType;
 
   color?: string;
   elevation?: number;

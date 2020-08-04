@@ -5,6 +5,7 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import colors from '../../enums/colors';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
+import { SubcomponentPropType } from '../commonTypes';
 
 const Container = styled(Div)`
   ${({ isValid }: { isValid?: boolean }) => `
@@ -84,9 +85,15 @@ export type TextInputProps = {
   type?: string;
   debounceInterval?: number;
   multiLineIsResizable?: boolean;
+
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledErrorContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropType;
+  inputProps?: SubcomponentPropType;
+  iconContainerProps?: SubcomponentPropType;
+  errorContainerProps?: SubcomponentPropType;
 };
 
 const createIcon = (
@@ -129,11 +136,16 @@ const TextInput = ({
   errorMessage,
   ariaLabel,
   type = 'text',
+  debounceInterval = 8,
+  multiLineIsResizable,
   StyledContainer = Container,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
-  debounceInterval = 8,
-  multiLineIsResizable,
+  StyledErrorContainer = ErrorContainer,
+  containerProps = {},
+  inputProps = {},
+  iconContainerProps = {},
+  errorContainerProps = {},
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
@@ -148,7 +160,7 @@ const TextInput = ({
   }
 
   return (
-    <StyledContainer isValid={isValid}>
+    <StyledContainer isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       {/*
         // @ts-ignore */}
@@ -173,18 +185,22 @@ const TextInput = ({
         id={id}
         type={type}
         multiLineIsResizable={multiLineIsResizable}
+        {...inputProps}
       />
       {onClear && (
-        <StyledIconContainer onClick={onClear}>
+        <StyledIconContainer onClick={onClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
-      {isValid === false && errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+      {isValid === false && errorMessage && (
+        <StyledErrorContainer {...errorContainerProps}>{errorMessage}</StyledErrorContainer>
+      )}
     </StyledContainer>
   );
 };
 
 TextInput.Container = Container;
+TextInput.ErrorContainer = ErrorContainer;
 TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
 TextInput.TextArea = TextAreaInputContainer;
