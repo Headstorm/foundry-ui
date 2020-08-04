@@ -11,6 +11,11 @@ import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
 
+import colors from './enums/colors';
+import timings from './enums/timings';
+import fonts from './enums/fonts';
+import variants from './enums/variants';
+
 export {
   Button,
   Card,
@@ -24,4 +29,8 @@ export {
   Text,
   TextInput,
   Progress,
+  colors,
+  timings,
+  fonts,
+  variants,
 };
