@@ -16,16 +16,16 @@ exports[`Button keeps the container the same when switching between isLoading an
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c1 {
@@ -45,7 +45,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 <button
   class="sc-AxhUy c0"
-  color="#252c35"
+  color="#7c8186"
   data-test-id="hsui-button"
   elevation="0"
   type="button"
@@ -72,21 +72,21 @@ exports[`Button keeps the container the same when switching between isLoading an
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 <button
   class="sc-AxhUy c0"
-  color="#252c35"
+  color="#7c8186"
   data-test-id="hsui-button"
   elevation="0"
   type="button"
@@ -111,22 +111,22 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
@@ -148,10 +148,10 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #7c8186;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #7c8186;
 }
 
 .c0:hover {
@@ -165,7 +165,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
@@ -190,7 +190,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   border: 0 none;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #7c8186;
 }
 
 .c0:hover {
@@ -204,7 +204,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
@@ -267,16 +267,16 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c1 {
@@ -286,7 +286,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
@@ -337,16 +337,16 @@ exports[`Button shows icons 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c1 {
@@ -360,7 +360,7 @@ exports[`Button shows icons 1`] = `
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
@@ -411,16 +411,16 @@ exports[`Button shows icons with type string 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c1 {
@@ -434,7 +434,7 @@ exports[`Button shows icons with type string 1`] = `
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
@@ -487,16 +487,16 @@ exports[`Button shows loading text when provided 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
 }
 
 .c0:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c0:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c1 {
@@ -517,7 +517,7 @@ exports[`Button shows loading text when provided 1`] = `
 <div>
   <button
     class="sc-AxhUy c0"
-    color="#252c35"
+    color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"

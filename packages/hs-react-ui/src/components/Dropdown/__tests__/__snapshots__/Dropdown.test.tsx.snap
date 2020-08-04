@@ -28,8 +28,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -50,11 +50,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -89,7 +89,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -146,8 +146,8 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,11 +168,11 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -207,7 +207,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -265,8 +265,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -289,11 +289,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -379,7 +379,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -475,8 +475,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -497,11 +497,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -535,7 +535,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -590,8 +590,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -612,11 +612,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -651,7 +651,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -706,8 +706,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -730,11 +730,11 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -821,7 +821,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -916,8 +916,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -938,11 +938,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -977,7 +977,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1032,8 +1032,8 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1054,11 +1054,11 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -1093,7 +1093,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1150,8 +1150,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
-  background-color: #252c35;
-  color: #fff;
+  background-color: #7c8186;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1172,11 +1172,11 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c1:hover {
-  background-color: #1b2026;
+  background-color: #707479;
 }
 
 .c1:active {
-  background-color: #101317;
+  background-color: #63686c;
 }
 
 .c3 {
@@ -1211,7 +1211,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
