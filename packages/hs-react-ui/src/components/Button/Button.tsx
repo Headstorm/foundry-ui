@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
@@ -7,7 +7,7 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { FoundryContext } from '../../context';
+import { useColors } from '../../context';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -78,9 +78,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { colors } = useContext(FoundryContext);
-    const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
-    const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
+    const { transparent, background, grayDark } = useColors(['transparent', 'background', 'grayDark'])
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
+    const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
@@ -98,7 +98,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
       border: ${
-        variant === ButtonVariants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'
+        variant === ButtonVariants.outline ? `1px solid ${color || grayDark}` : '0 none;'
       };
       cursor: pointer;
       background-color: ${backgroundColor};
@@ -155,15 +155,16 @@ const Button = ({
   onClick,
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
-  const { colors } = useContext(FoundryContext);
   const hasContent = Boolean(children);
+  const grayDark = useColors('grayDark');
+  const containerColor = color || grayDark;
 
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color || colors.grayDark}
+      color={containerColor}
       variant={variant}
       type={type}
       {...containerProps}
@@ -175,7 +176,7 @@ const Button = ({
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color || colors.grayDark}
+      color={containerColor}
       variant={variant}
       type={type}
       {...containerProps}
