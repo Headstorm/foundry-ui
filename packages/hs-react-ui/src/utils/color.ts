@@ -31,12 +31,12 @@ export const getFontColorFromVariant = (
 export const getBackgroundColorFromVariant = (
   variant: string,
   color: string,
-  transparentColor: string,
+  transparentColor = 'transparent',
 ) => {
   switch (variant) {
     case variants.text:
     case variants.outline:
-      return transparentColor || 'transparent';
+      return transparentColor;
     default:
       return color;
   }
