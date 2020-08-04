@@ -12,6 +12,11 @@ import TextInput from './components/TextInput';
 import Progress from './components/Progress';
 import { FoundryProvider, FoundryContext, useColors } from './context';
 
+import colors from './enums/colors';
+import timings from './enums/timings';
+import fonts from './enums/fonts';
+import variants from './enums/variants';
+
 export {
   Button,
   Card,
@@ -28,4 +33,8 @@ export {
   FoundryProvider,
   FoundryContext,
   useColors,
+  colors,
+  timings,
+  fonts,
+  variants,
 };

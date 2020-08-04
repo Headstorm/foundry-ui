@@ -11,8 +11,8 @@ exports[`Button keeps the container the same when switching between isLoading an
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -67,8 +67,8 @@ exports[`Button keeps the container the same when switching between isLoading an
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -106,8 +106,8 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -145,8 +145,8 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -184,8 +184,8 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -262,8 +262,8 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -332,8 +332,8 @@ exports[`Button shows icons 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -406,8 +406,8 @@ exports[`Button shows icons with type string 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -482,8 +482,8 @@ exports[`Button shows loading text when provided 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
