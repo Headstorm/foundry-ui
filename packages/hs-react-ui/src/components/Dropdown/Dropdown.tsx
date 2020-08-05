@@ -5,9 +5,9 @@ import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { readableColor } from 'polished';
 
 import Button, { ButtonVariants } from '../Button/Button';
-import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { useColors } from '../../context';
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
@@ -65,31 +65,40 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  background: white;
-  position: absolute;
-  top: 100%;
-  left: 0px;
-  max-height: 10rem;
-  overflow-y: scroll;
-  width: 15rem;
-  border: 0.5px solid ${colors.grayDark25};
-  border-radius: 0rem 0rem 0.25rem 0.25rem;
-  z-index: 1000;
+  ${() => {
+    const { grayDark25 } = useColors();
+    return `
+      background: white;
+      position: absolute;
+      top: 100%;
+      left: 0px;
+      max-height: 10rem;
+      overflow-y: scroll;
+      width: 15rem;
+      border: 0.5px solid ${grayDark25};
+      border-radius: 0rem 0rem 0.25rem 0.25rem;
+      z-index: 1000;
+    `;
+  }}
 `;
 
 const OptionItem = styled(Div)`
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    background: ${colors.grayDark50};
-    cursor: pointer;
-    outline: none;
-  }
-  &:focus {
-    outline: none;
-  }
+  ${() => {
+    const { grayDark50 } = useColors();
+    return `  
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+    
+      &:hover {
+        background: ${grayDark50};
+        cursor: pointer;
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+      }`;
+  }}
 `;
 const CheckContainer = styled(Div)`
   display: flex;
@@ -151,6 +160,7 @@ const Dropdown = ({
     selectedValues: values,
     id: name,
   });
+  const colors = useColors();
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
