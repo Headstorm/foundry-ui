@@ -1044,6 +1044,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
