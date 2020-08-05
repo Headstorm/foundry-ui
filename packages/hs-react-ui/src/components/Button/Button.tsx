@@ -5,30 +5,39 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { readableColor, darken } from 'polished';
 
 import timings from '../../enums/timings';
-import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
-import { Span, Button as ButtonElement } from '../../htmlElements';
+import { Div, Button as ButtonElement } from '../../htmlElements';
+import { useColors } from '../../context';
 
 export type ButtonContainerProps = {
-  elevation?: number;
-  color?: string;
+  elevation: number;
+  color: string;
+  variant: string;
   type: string;
 };
 
-export enum ButtonTypes {
+export enum ButtonVariants {
   fill = 'fill',
-  link = 'link',
+  text = 'text',
   outline = 'outline',
+}
+
+export enum ButtonTypes {
+  button = 'button',
+  reset = 'reset',
+  submit = 'submit',
 }
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+  containerProps?: object;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
   isProcessing?: boolean;
   children?: ReactNode;
   elevation?: number;
+  variant?: ButtonVariants;
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
@@ -36,60 +45,72 @@ export type ButtonProps = {
 };
 
 /**
- * Get the appropriate font color for the button based on the type of button
- * @param {string} type - The type of button
+ * Get the appropriate font color for the button based on the variant of button
+ * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
+ * @param {string} lightReturnColor - The color to return if the color is too dark
+ * @param {string} darkReturnColor - The color to return if the color is too dark
  */
-export const getFontColorFromType = (type: string, color?: string) => {
-  switch (type) {
-    case ButtonTypes.link:
-    case ButtonTypes.outline:
-      return color || colors.grayDark;
-    case ButtonTypes.fill:
-    default:
-      return color
-        ? readableColor(color, colors.background, colors.grayDark, true)
-        : colors.grayDark;
+export const getFontColorFromVariant = (
+  variant: string,
+  color: string,
+  lightReturnColor: string,
+  darkReturnColor: string,
+) => {
+  if (variant === 'fill') {
+    return readableColor(color, lightReturnColor, darkReturnColor, true);
   }
+  return color;
 };
 
 /**
- * Get the appropriate background color for the button based on the type of button
- * @param {string} type - The type of button
+ * Get the appropriate background color for the button based on the variant of button
+ * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
+ * @param {string} [transparentColor] - The color to use for a transparent background
  */
-export const getBackgroundColorFromType = (type: string, color?: string) => {
-  switch (type) {
-    case ButtonTypes.link:
-    case ButtonTypes.outline:
-      return colors.transparent;
+export const getBackgroundColorFromVariant = (
+  variant: string,
+  color: string,
+  transparentColor: string,
+) => {
+  switch (variant) {
+    case ButtonVariants.text:
+    case ButtonVariants.outline:
+      return transparentColor || 'transparent';
     default:
-      return color || colors.grayXlight;
+      return color;
   }
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
   ButtonElement,
 )`
-  ${({ elevation = 0, color, type }: ButtonContainerProps) => {
-    const backgroundColor = getBackgroundColorFromType(type, color);
-    const fontColor = getFontColorFromType(type, color);
+  ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
+    const { transparent, background, grayDark } = useColors();
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
+    const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
 
     return `
-      display: inline-block;
+      display: inline-flex;
       font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
-      transition: filter ${timings.slow};
+      transition:
+        background-color ${timings.fast},
+        color ${timings.slow},
+        outline ${timings.slow},
+        filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${type === ButtonTypes.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
+      border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
+      align-items: center;
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
@@ -111,39 +132,50 @@ const StyledProgress = styled(Progress)`
   margin-bottom: -5px;
 `;
 
-const IconContainer = styled(Span)`
-  margin-top: -8px;
-  margin-bottom: -8px;
+const IconContainer = styled(Div)`
+  height: 1rem;
 `;
 
 const LeftIconContainer = styled(IconContainer)`
-  margin-right: 1em;
+  ${({ hasContent }: { hasContent: boolean }) => `
+    ${hasContent ? 'margin-right: 1em;' : ''}
+  `}
 `;
 
 const RightIconContainer = styled(IconContainer)`
-  margin-left: 1em;
+  ${({ hasContent }: { hasContent: boolean }) => `
+    ${hasContent ? 'margin-left: 1em;' : ''}
+  `}
 `;
 
 const Button = ({
   StyledContainer = ButtonContainer,
+  containerProps = {},
   iconPrefix,
   iconSuffix,
   isLoading,
   isProcessing,
   children,
   elevation = 0,
-  type = ButtonTypes.fill,
-  color = colors.grayDark,
+  variant = ButtonVariants.fill,
+  type = ButtonTypes.button,
+  color,
   onClick,
   LoadingBar = StyledProgress,
-}: ButtonProps) => {
+}: ButtonProps): JSX.Element | null => {
+  const hasContent = Boolean(children);
+  const { grayLight } = useColors();
+  const containerColor = color || grayLight;
+
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={containerColor}
+      variant={variant}
       type={type}
+      {...containerProps}
     >
       <LoadingBar />
     </StyledContainer>
@@ -152,20 +184,22 @@ const Button = ({
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={containerColor}
+      variant={variant}
       type={type}
+      {...containerProps}
     >
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-          <LeftIconContainer>
+          <LeftIconContainer hasContent={hasContent}>
             <UnstyledIcon path={iconPrefix} size="1rem" />
           </LeftIconContainer>
         ) : (
           <LeftIconContainer>{iconPrefix}</LeftIconContainer>
         ))}
       {isProcessing && (
-        <LeftIconContainer>
+        <LeftIconContainer hasContent={hasContent}>
           <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
         </LeftIconContainer>
       )}
@@ -173,17 +207,18 @@ const Button = ({
 
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
-          <RightIconContainer>
+          <RightIconContainer hasContent={hasContent}>
             <UnstyledIcon path={iconSuffix} size="1rem" />
           </RightIconContainer>
         ) : (
-          <RightIconContainer>{iconSuffix}</RightIconContainer>
+          <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
         ))}
     </StyledContainer>
   );
 };
 
 Button.Container = ButtonContainer;
+Button.ButtonVariants = ButtonVariants;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;

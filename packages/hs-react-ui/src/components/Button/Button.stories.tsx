@@ -23,11 +23,11 @@ storiesOf('Button', module).add(
   () => {
     return (
       <Button
-        type={select('type', Button.ButtonTypes, Button.ButtonTypes.fill)}
-        color={color('color', colors.grayDark)}
+        variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.fill)}
+        color={color('color', colors.primaryDark)}
         onClick={action('button-click')}
         isLoading={boolean('isLoading', false)}
-        elevation={number('elevation', 0)}
+        elevation={number('elevation', 1)}
         isProcessing={boolean('isProcessing', false)}
         iconPrefix={select('iconPrefix', options, options.none)}
         iconSuffix={select('iconSuffix', options, options.none)}

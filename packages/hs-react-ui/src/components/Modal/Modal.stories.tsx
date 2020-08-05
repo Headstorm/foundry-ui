@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { number, text } from '@storybook/addon-knobs';
+import { boolean, select, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
+import colors from '../../enums/colors';
 import Modal from './Modal';
 import Button from '../Button/Button';
+import Card from '../Card';
 
 const design = {
   type: 'figma',
@@ -16,7 +18,7 @@ storiesOf('Modal', module).add(
   'Default',
   () => {
     const Background = styled.div`
-      background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Chicago_cityscape_%285253757001%29.jpg);
+      background-image: url(https://source.unsplash.com/weekly?landscape);
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -25,51 +27,62 @@ storiesOf('Modal', module).add(
       height: 100vh;
       width: 100vw;
     `;
-
-    const ModalActionText = styled.span`
-      cursor: pointer;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-
-      color: #5a27e7;
-    `;
     const [isOpen, setIsOpen] = useState(true);
-    const ModalFooter = () => (
-      <>
-        <ModalActionText onClick={() => setIsOpen(false)}>Cancel</ModalActionText>
-        <ModalActionText onClick={() => setIsOpen(false)}>Okay</ModalActionText>
-      </>
+
+    const handleClose = () => {
+      setIsOpen(false);
+      action('close')();
+    };
+
+    const buttonAttachment = select(
+      'closeButtonAttachment',
+      ['inside', 'outside', 'corner'],
+      'inside',
     );
 
     return (
       <Background>
         {!isOpen && (
-          <Button StyledContainer={Button.Container} onClick={() => setIsOpen(true)}>
+          <Button
+            color={colors.primaryDark}
+            elevation={1}
+            StyledContainer={Button.Container}
+            onClick={() => setIsOpen(true)}
+          >
             Toggle modal
           </Button>
         )}
         {isOpen && (
           <Modal
-            header={text('header', 'Title')}
-            body={text('body', 'Wait! You need to see this important information!')}
-            footer={<ModalFooter />}
-            backgroundDarkness={number('backgroundDarkness', 10, {
+            closeButtonAttachment={buttonAttachment}
+            backgroundDarkness={number('backgroundDarkness', 0.5, {
               range: true,
               min: 0,
-              max: 100,
-              step: 1,
+              max: 1,
+              step: 0.05,
             })}
-            backgroundBlur={`${number('backgroundBlur', 1, {
+            backgroundBlur={`${number('backgroundBlur', 0.5, {
               range: true,
               min: 0,
               max: 5,
               step: 0.1,
             })}rem`}
-            onClose={() => {
-              setIsOpen(false);
-              action('click')();
-            }}
-          />
+            onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
+            onClose={handleClose}
+          >
+            <Card
+              header="Hello world!"
+              footer={
+                <Button color={colors.primaryDark} onClick={handleClose}>
+                  Okay...
+                </Button>
+              }
+              elevation={1}
+            >
+              Welcome to the wonderful world of modals. Hope you have a great time, and please pick
+              up a t-shirt or mug from the giftshop on your way out!
+            </Card>
+          </Modal>
         )}
       </Background>
     );

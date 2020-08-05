@@ -4,13 +4,13 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { readableColor } from 'polished';
 
-import Button, { ButtonTypes } from '../Button/Button';
-import colors from '../../enums/colors';
+import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { useColors } from '../../context';
 
 const Container = styled(Div)`
-  ${({ elevation }) => {
+  ${({ elevation, isOpen }) => {
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = 0.5 - elevation * 0.075;
@@ -19,18 +19,31 @@ const Container = styled(Div)`
       width: fit-content;
       transition: filter ${timings.slow};
       filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
+      position: relative;
+      z-index: ${isOpen ? '7' : '1'};
     `;
   }}
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
+  ${({ modalIsOpen }) => `
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 
-  width: 15rem;
-  padding: 0.5rem;
+    ${
+      modalIsOpen
+        ? `
+      border-bottom-right-radius: 0rem;
+      border-bottom-left-radius: 0rem;
+    `
+        : ''
+    }
+
+    width: 15rem;
+    padding: .5rem 1rem;
+  `}
 `;
 
 const ValueIconContainer = styled(Div)`
@@ -52,25 +65,40 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  background: white;
-  position: absolute;
-  max-height: 10rem;
-  overflow-y: scroll;
-  width: 15rem;
-  border: 0.5px solid ${colors.grayDark25};
+  ${() => {
+    const { grayDark25 } = useColors();
+    return `
+      background: white;
+      position: absolute;
+      top: 100%;
+      left: 0px;
+      max-height: 10rem;
+      overflow-y: scroll;
+      width: 15rem;
+      border: 0.5px solid ${grayDark25};
+      border-radius: 0rem 0rem 0.25rem 0.25rem;
+      z-index: 1000;
+    `;
+  }}
 `;
 
 const OptionItem = styled(Div)`
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-
-  &:focus,
-  &:hover {
-    background: ${colors.grayDark50};
-    cursor: pointer;
-    outline: none;
-  }
+  ${() => {
+    const { grayDark50 } = useColors();
+    return `  
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+    
+      &:hover {
+        background: ${grayDark50};
+        cursor: pointer;
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+      }`;
+  }}
 `;
 const CheckContainer = styled(Div)`
   display: flex;
@@ -98,7 +126,7 @@ export interface DropdownProps {
   onSelect?: (selected: string | Array<string>) => void;
   options: Array<string>;
   tabIndex?: number;
-  type?: ButtonTypes;
+  type?: ButtonVariants;
   values?: Array<string>;
 }
 
@@ -120,9 +148,9 @@ const Dropdown = ({
   onSelect,
   options,
   tabIndex = 0,
-  type = Button.ButtonTypes.fill,
+  type = Button.ButtonVariants.fill,
   values = [],
-}: DropdownProps) => {
+}: DropdownProps): JSX.Element | null => {
   const [state, setState] = useState<{
     isOpen: boolean;
     selectedValues: Array<string>;
@@ -132,6 +160,7 @@ const Dropdown = ({
     selectedValues: values,
     id: name,
   });
+  const colors = useColors();
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
@@ -260,6 +289,7 @@ const Dropdown = ({
     <StyledContainer
       data-testid={`${state.id}-valueContainer`}
       elevation={elevation}
+      isOpen={state.isOpen}
       id={`${state.id}-valueContainer`}
       name={name}
       onBlur={handleBlur}
@@ -271,9 +301,12 @@ const Dropdown = ({
     >
       <Button
         StyledContainer={StyledValueContainer}
+        containerProps={{
+          modalIsOpen: state.isOpen,
+        }}
         color={color}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
-        type={type}
+        variant={type}
       >
         <StyledValueItem>
           {((values.length && values) || state.selectedValues).join(', ')}

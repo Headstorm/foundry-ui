@@ -20,7 +20,10 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks'],
   rules: {
+    'react/jsx-props-no-spreading': 0,
+    'react/jsx-wrap-multilines': 0,
     'no-confusing-arrow': 0,
+    'no-empty-function': 1,
     'react/jsx-filename-extension': 0, // didn't like jsx in tsx lol
     'linebreak-style': 0,
     'arrow-parens': 0,
@@ -39,13 +42,14 @@ module.exports = {
     'react/no-unescaped-entities': 0,
     'consistent-return': 0,
     'react/jsx-one-expression-per-line': 0,
+    'operator-linebreak': 0,
 
     'import/no-extraneous-dependencies': 1,
     '@typescript-eslint/ban-types': 1, // StyledComponentBase<any, {}> failed every time
+    '@typescript-eslint/no-empty-function': 0,
     'import/no-unresolved': 1,
     'import/extensions': 1,
     'comma-dangle': 1,
-    'operator-linebreak': 1,
     'comma-spacing': 1,
     quotes: 1,
     'padded-blocks': 1,

@@ -3,8 +3,8 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
-import colors from '../../enums/colors';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
+import { useColors } from '../../context';
 
 export enum CheckboxTypes {
   fill = 'fill',
@@ -30,25 +30,35 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
 `;
 
 export const Label = styled(LabelElement)`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  ${Input}:focus + & {
-    box-shadow: 0 0 0 3px ${colors.grayXlight};
-  }
+  ${() => {
+    const { grayXlight } = useColors();
+    return `
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    
+      ${Input}:focus + & {
+        box-shadow: 0 0 0 3px ${grayXlight};
+      }
+    `;
+  }}
 `;
 
 export const Box = styled(Div)`
-  border: 1px solid ${colors.grayLight};
-  border-radius: 2px;
-  width: 0.75rem;
-  height: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  margin-right: 0.5rem;
+  ${() => {
+    const { grayLight } = useColors();
+    return `
+      border: 1px solid ${grayLight};
+      border-radius: 2px;
+      width: 0.75rem;
+      height: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      margin-right: 0.5rem;
+    `;
+  }}
 `;
 
 export const CheckboxContainer = styled.div`
@@ -61,32 +71,52 @@ export const StyledIcon = styled(Icon)`
 `;
 
 const CheckIcon = styled(StyledIcon)`
-  color: ${colors.success};
-  height: 2rem;
-  width: 1.4rem;
-  margin: 0 0 0.1rem 0.35rem;
+  ${() => {
+    const { success } = useColors();
+    return `
+      color: ${success};
+      height: 2rem;
+      width: 1.4rem;
+      margin: 0 0 0.1rem 0.35rem;
+    `;
+  }}
 `;
 
 const CrossIcon = styled(StyledIcon)`
-  color: ${colors.destructive};
-  height: 1rem;
-  width: 1rem;
+  ${() => {
+    const { destructive } = useColors();
+    return `
+      color: ${destructive};
+      height: 1rem;
+      width: 1rem;
+    `;
+  }}
 `;
 
 const DefaultIcon = styled(StyledIcon)`
-  color: ${colors.grayMedium};
-  height: 0.7rem;
-  width: 0.7rem;
+  ${() => {
+    const { grayMedium } = useColors();
+    return `
+      color: ${grayMedium};
+      height: 0.7rem;
+      width: 0.7rem;
+    `;
+  }}
 `;
 
 const NeutralIcon = styled(StyledIcon)`
-  color: ${colors.grayMedium};
-  height: 0.65rem;
-  width: 0.65rem;
-  path {
-    stroke: ${colors.grayMedium};
-    stroke-width: 2px;
-  }
+  ${() => {
+    const { grayMedium } = useColors();
+    return `
+      color: ${grayMedium};
+      height: 0.65rem;
+      width: 0.65rem;
+      path {
+        stroke: ${grayMedium};
+        stroke-width: 2px;
+      }
+    `;
+  }}
 `;
 
 export interface CheckboxProps {
@@ -132,10 +162,12 @@ const Checkbox = ({
   const iconPath = iconPaths[checkboxType];
   const IconComponent = iconComponents[checkboxType];
   return (
-    <StyledLabel>
+    <StyledLabel data-test-id="hsui-Checkbox">
       <StyledCheckboxContainer>
-        <StyledBox>{checked ? <IconComponent path={iconPath} /> : null}</StyledBox>
-        <StyledInput onClick={onClick} checked={checked} />
+        <StyledBox>
+          {checked ? <IconComponent data-test-id="hsui-Checkbox-Icon" path={iconPath} /> : null}
+        </StyledBox>
+        <StyledInput data-test-id="hsui-Checkbox-Input" onClick={onClick} checked={checked} />
       </StyledCheckboxContainer>
       {children}
     </StyledLabel>
