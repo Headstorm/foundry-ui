@@ -21,6 +21,20 @@ describe('Dropdown', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('displays placeholder value on initial render', () => {
+    const { container, getByText } = render(
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        name="choosePokemon"
+        options={pokeOptions}
+        placeholder="Choose a pokemon"
+      />,
+    );
+    const placeholder = getByText('Choose a pokemon');
+    expect(placeholder).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+
   it('renders a value when given a matching option id through props', () => {
     const { container } = render(
       <Dropdown
