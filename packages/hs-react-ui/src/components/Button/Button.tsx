@@ -120,8 +120,8 @@ const Button = ({
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
-  const { grayDark } = useColors();
-  const containerColor = color || grayDark;
+  const { grayLight } = useColors();
+  const containerColor = color || grayLight;
 
   return isLoading ? (
     <StyledContainer

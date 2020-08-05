@@ -28,8 +28,13 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -50,11 +55,19 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -89,7 +102,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -453,8 +466,13 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -475,11 +493,19 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -514,7 +540,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -569,8 +595,13 @@ exports[`Dropdown displays all options when focused 1`] = `
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -594,11 +625,19 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -672,7 +711,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -762,8 +801,13 @@ exports[`Dropdown does not display options on initial render 1`] = `
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -784,11 +828,19 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -823,7 +875,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -878,8 +930,13 @@ exports[`Dropdown renders a value when given a matching option id through props 
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -900,11 +957,19 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -939,7 +1004,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -998,8 +1063,13 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1020,11 +1090,19 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -1175,7 +1253,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1234,8 +1312,13 @@ exports[`Dropdown renders two values when given matching option ids through prop
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1256,11 +1339,19 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -1295,7 +1386,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1358,8 +1449,13 @@ exports[`Dropdown renders two values when given matching option ids through prop
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1380,11 +1476,19 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -1419,7 +1523,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1482,8 +1586,13 @@ exports[`Dropdown selects options from values prop 1`] = `
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
+<<<<<<< HEAD
   background-color: transparent;
   color: #252c35;
+=======
+  background-color: #7c8186;
+  color: #000;
+>>>>>>> global-style-provider
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1504,11 +1613,19 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c1:hover {
+<<<<<<< HEAD
   background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
   background-color: rgba(0,0,0,0.1);
+=======
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+>>>>>>> global-style-provider
 }
 
 .c3 {
@@ -1543,7 +1660,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#252c35"
+      color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
