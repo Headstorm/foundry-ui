@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled, { StyledComponentBase } from 'styled-components';
 import shortid from 'shortid';
 import colors from '../../enums/colors';
+import useResizeObserver from 'use-resize-observer/polyfilled';
 
 // TODO Reduce amount of any/ts-ignore done here
 
@@ -38,26 +39,28 @@ const InteractionFeedback = ({
   interpolationFunctions = {},
   transitionProps,
 }: InteractionFeedbackProps) => {
-  const ref = useRef<HTMLDivElement>();
-  const [dimensions, setDimensions] = useState({
-    height: '0',
-    width: '0',
-  });
+  const { ref, width, height } = useResizeObserver();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
-  useEffect(() => {
-    if (ref && ref.current) {
-      const boundingRect = ref.current.getBoundingClientRect();
-      setDimensions({
-        height: `${boundingRect.height}`,
-        width: `${boundingRect.width}`,
-      });
-    }
-  }, [ref]);
-
-  const transitions: any = useTransition<Animation, any>(animations, (item: Animation) => item.id, {
+  const transitions = useTransition<Animation, Animation>(animations, {
+    keys: (item: Animation) => item.id,
+    onRest: (item: Transition) => setAnimations(a => a.filter(ani => ani.id === item.id)),
     ...transitionProps,
-    onRest: (item: Transition) => setAnimations(animations.filter(ani => ani.id !== item.id)),
+  });
+  const fragment = transitions((style, item) => {
+    const circleProps = Object.entries(style).reduce((acc, [key, val]) => {
+      return {
+        ...acc,
+        [key]: interpolationFunctions[key] ? interpolationFunctions[key](val) : val,
+      };
+    }, {});
+    return (
+      <animated.circle
+        cx={style.cx}
+        cy={style.cy}
+        {...circleProps}
+      />
+    );
   });
 
   const mouseDownHandler = useCallback(
@@ -69,40 +72,21 @@ const InteractionFeedback = ({
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
 
-        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: shortid() }]);
+        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, fillColor: colors.primary, id: shortid() }]);
       }
     },
     [ref],
   );
 
   return (
-    <StyledContainer ref={ref as any} onMouseDown={mouseDownHandler}>
+    <StyledContainer ref={ref} onMouseDown={mouseDownHandler}>
       {children}
       <Circle
-        width={`${dimensions.width}px`}
-        height={`${dimensions.height}px`}
-        viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
+        width={`${width}px`}
+        height={`${height}px`}
+        viewBox={`0 0 ${width} ${height}`}
       >
-        {transitions.map(({ item, props }: { item: Transition; props: any }) => {
-          const circleProps = Object.entries(props).reduce((acc, [key, val]) => {
-            return {
-              ...acc,
-              [key]: interpolationFunctions[key] ? interpolationFunctions[key](val) : val,
-            };
-          }, {});
-
-          return (
-            <animated.circle
-              key={item.id}
-              fill={colors.primary}
-              cx={item.cx}
-              cy={item.cy}
-              {
-                ...circleProps // eslint-disable-line react/jsx-props-no-spreading
-              }
-            />
-          );
-        })}
+        {fragment}
       </Circle>
     </StyledContainer>
   );

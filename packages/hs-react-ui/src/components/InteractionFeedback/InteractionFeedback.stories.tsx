@@ -82,7 +82,7 @@ storiesOf('InteractionFeedback', module).add(
     };
 
     const interpolationFunctions = {
-      r: (r: any) => r.interpolate((val: string) => `${Math.abs(parseFloat(val))}`),
+      r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val))}`),
     };
     return (
       <InteractionFeedback
