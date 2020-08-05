@@ -96,7 +96,7 @@ export type TextInputProps = {
   onReset?: (event: SyntheticEvent) => void;
   cols?: number;
   rows?: number;
-  value?: string;
+  value?: string | number;
   defaultValue?: string;
   isValid?: boolean;
   isMultiline?: boolean;
