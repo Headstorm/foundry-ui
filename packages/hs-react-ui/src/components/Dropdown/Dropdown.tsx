@@ -208,9 +208,9 @@ const Dropdown = ({
 }: DropdownProps): JSX.Element | null => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  // Merge the default styled continer prop and the placeholderProps object to get user styles
+  // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
-    ...{ StyledContainer: PlaceholderContainer },
+    StyledContainer: PlaceholderContainer,
     ...placeholderProps,
   };
 
