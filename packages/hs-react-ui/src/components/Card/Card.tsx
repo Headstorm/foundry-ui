@@ -18,8 +18,6 @@ export const CardContainer = styled(Div)`
       box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
       -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
       background-color: ${background};
-         justify-content: flex-end;
-      text-align: right;
   `;
   }}
 `;
