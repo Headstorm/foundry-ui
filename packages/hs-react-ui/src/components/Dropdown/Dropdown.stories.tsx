@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { boolean, color, number, select } from '@storybook/addon-knobs';
+import { boolean, color, number, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { address } from 'faker';
 import Icon from '@mdi/react';
@@ -86,6 +86,7 @@ storiesOf('Dropdown', module)
               elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
               multi={boolean('multi', false)}
               name="cities-list"
+              placeholder={text('placeholder', 'Choose a city...')}
               onBlur={action('onBlur')}
               onClear={boolean('clearable', false) ? action('onClear') : undefined}
               onSelect={(selected?: Array<string | number>) => {
