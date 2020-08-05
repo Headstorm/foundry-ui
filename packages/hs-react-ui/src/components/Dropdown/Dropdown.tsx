@@ -9,8 +9,9 @@ import colors from '../../enums/colors';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export type OptionProps = {
   id: number | string;
@@ -139,6 +140,10 @@ const CheckContainer = styled(Div)`
   `}
 `;
 
+const PlaceholderContainer = styled(Text.Container)`
+  opacity: 0.8;
+`;
+
 export interface DropdownProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledValueContainer?: string & StyledComponentBase<any, {}>;
@@ -146,18 +151,21 @@ export interface DropdownProps {
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
+  StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
 
-  containerProps?: SubcomponentPropType;
-  valueContainerProps?: SubcomponentPropType;
-  valueItemProps?: SubcomponentPropType;
-  optionsContainerProps?: SubcomponentPropType;
-  optionItemProps?: SubcomponentPropType;
-  checkContainerProps?: SubcomponentPropType;
+  containerProps?: SubcomponentPropsType;
+  valueContainerProps?: SubcomponentPropsType;
+  valueItemProps?: SubcomponentPropsType;
+  optionsContainerProps?: SubcomponentPropsType;
+  optionItemProps?: SubcomponentPropsType;
+  checkContainerProps?: SubcomponentPropsType;
+  placeholderProps?: SubcomponentPropsType;
 
   color?: string;
   elevation?: number;
   multi?: boolean;
   name: string;
+  placeholder?: string;
 
   onBlur?: () => void;
   onClear?: () => void;
@@ -169,7 +177,6 @@ export interface DropdownProps {
   variant?: variants;
 }
 
-// TODO Placeholder text -- Wait until input is finalized
 const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
@@ -177,6 +184,7 @@ const Dropdown = ({
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
   StyledCheckContainer = CheckContainer,
+  StyledPlaceholder = Text,
 
   containerProps,
   valueContainerProps,
@@ -184,11 +192,13 @@ const Dropdown = ({
   optionsContainerProps,
   optionItemProps,
   checkContainerProps,
+  placeholderProps,
 
   color = colors.grayDark,
   elevation = 0,
   multi = false,
   name,
+  placeholder,
   onBlur,
   onClear,
   onSelect,
@@ -198,6 +208,12 @@ const Dropdown = ({
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  // Merge the default styled container prop and the placeholderProps object to get user styles
+  const placeholderMergedProps = {
+    StyledContainer: PlaceholderContainer,
+    ...placeholderProps,
+  };
 
   const optionsHash: { [key: string]: OptionProps } = {};
   options.forEach(option => {
@@ -353,6 +369,9 @@ const Dropdown = ({
                 undefined
               ),
             )}
+          {(!values || !values.length) && (
+            <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
+          )}
         </StyledValueItem>
         {closeIcons}
       </Button>
@@ -396,5 +415,6 @@ Dropdown.OptionsContainer = OptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
+Dropdown.Placeholder = Text;
 
 export default Dropdown;

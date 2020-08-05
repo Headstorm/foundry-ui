@@ -1,1 +1,1 @@
-export type SubcomponentPropType = Record<string, unknown>;
+export type SubcomponentPropsType = Record<string, unknown>;

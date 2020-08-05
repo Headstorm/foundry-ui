@@ -7,7 +7,7 @@ import variants from '../../enums/variants';
 
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur, backgroundDarkness }) => `
@@ -77,10 +77,10 @@ export interface ModalProps {
   StyledUnderlay?: string & StyledComponentBase<any, {}>;
   StyledCloseButton?: string & StyledComponentBase<any, {}>;
   StyledCloseButtonContainer?: string & StyledComponentBase<any, {}>;
-  containerProps?: SubcomponentPropType;
-  underlayProps?: SubcomponentPropType;
-  closeButtonProps?: SubcomponentPropType;
-  closeButtonContainerProps?: SubcomponentPropType;
+  containerProps?: SubcomponentPropsType;
+  underlayProps?: SubcomponentPropsType;
+  closeButtonProps?: SubcomponentPropsType;
+  closeButtonContainerProps?: SubcomponentPropsType;
 
   children: ReactNode;
 

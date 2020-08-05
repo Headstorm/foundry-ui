@@ -4,7 +4,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => `
@@ -60,10 +60,10 @@ export interface CardProps {
   StyledBody?: string & StyledComponentBase<any, {}>;
   StyledFooter?: string & StyledComponentBase<any, {}>;
 
-  containerProps?: SubcomponentPropType;
-  headerProps?: SubcomponentPropType;
-  bodyProps?: SubcomponentPropType;
-  footerProps?: SubcomponentPropType;
+  containerProps?: SubcomponentPropsType;
+  headerProps?: SubcomponentPropsType;
+  bodyProps?: SubcomponentPropsType;
+  footerProps?: SubcomponentPropsType;
 
   onClick?: (evt: MouseEvent) => void;
 

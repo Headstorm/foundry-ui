@@ -5,7 +5,7 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import colors from '../../enums/colors';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 const Container = styled(Div)`
   ${({ isValid }: { isValid?: boolean }) => `
@@ -90,10 +90,10 @@ export type TextInputProps = {
   StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
   StyledErrorContainer?: string & StyledComponentBase<any, {}>;
-  containerProps?: SubcomponentPropType;
-  inputProps?: SubcomponentPropType;
-  iconContainerProps?: SubcomponentPropType;
-  errorContainerProps?: SubcomponentPropType;
+  containerProps?: SubcomponentPropsType;
+  inputProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
+  errorContainerProps?: SubcomponentPropsType;
 };
 
 const createIcon = (

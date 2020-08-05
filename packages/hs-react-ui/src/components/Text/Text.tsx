@@ -5,7 +5,7 @@ import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import Progress from '../Progress/Progress';
 import { Span } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 /* Default Styled Text Container */
 export const TextContainer = styled(Span)`
@@ -26,8 +26,8 @@ export interface TextProps {
 
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
-  containerProps?: SubcomponentPropType;
-  iconContainerProps?: SubcomponentPropType;
+  containerProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
 }
 
 /* Styled div that represents the scroll bar */

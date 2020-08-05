@@ -1,4 +1,4 @@
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export type valueProp = {
   value: number;
@@ -31,12 +31,12 @@ export type RangeSliderProps = {
   StyledSlideRail?: any;
   StyledSelectedRangeRail?: any;
   StyledDomainLabel?: any;
-  containerProps?: SubcomponentPropType;
-  dragHandleProps?: SubcomponentPropType;
-  handleLabelProps?: SubcomponentPropType;
-  slideRailProps?: SubcomponentPropType;
-  selectedRangeRailProps?: SubcomponentPropType;
-  domainLabelProps?: SubcomponentPropType;
+  containerProps?: SubcomponentPropsType;
+  dragHandleProps?: SubcomponentPropsType;
+  handleLabelProps?: SubcomponentPropsType;
+  slideRailProps?: SubcomponentPropsType;
+  selectedRangeRailProps?: SubcomponentPropsType;
+  domainLabelProps?: SubcomponentPropsType;
 
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;

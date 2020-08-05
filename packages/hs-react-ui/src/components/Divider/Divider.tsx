@@ -3,7 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import colors from '../../enums/colors';
 import { Div, HR } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export const DefaultDivider = styled(HR)`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `
@@ -24,8 +24,8 @@ export const DefaultDividerContainer = styled(Div)`
 export interface DividerProps {
   StyledDivider?: StyledComponentBase<any, {}>;
   StyledDividerContainer?: StyledComponentBase<any, {}>;
-  dividerProps?: SubcomponentPropType;
-  dividerContainerProps?: SubcomponentPropType;
+  dividerProps?: SubcomponentPropsType;
+  dividerContainerProps?: SubcomponentPropsType;
 
   width?: string;
   height?: string;

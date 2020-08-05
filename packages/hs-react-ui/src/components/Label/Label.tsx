@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import colors from '../../enums/colors';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export const DefaultStyledLabel = styled(LabelElement)`
   ${({ color = colors.grayLight }: { color: colors | string }) => `
@@ -30,10 +30,10 @@ export interface LabelProps {
   StyledLabel?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
 
-  labelContainerProps?: SubcomponentPropType;
-  textContainerProps?: SubcomponentPropType;
-  labelProps?: SubcomponentPropType;
-  iconContainerProps?: SubcomponentPropType;
+  labelContainerProps?: SubcomponentPropsType;
+  textContainerProps?: SubcomponentPropsType;
+  labelProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
 
   labelText?: string;
   color?: colors | string;

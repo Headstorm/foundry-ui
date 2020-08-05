@@ -1,6 +1,6 @@
 import { FunctionComponent, MouseEventHandler } from 'react';
 import { StyledComponentBase } from 'styled-components';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export type ExpansionIconProps = {
   isCollapsed: boolean;
@@ -44,12 +44,12 @@ export type TableProps = {
   StyledHeader?: string & StyledComponentBase<any, {}>;
   StyledHeaderCell?: string & StyledComponentBase<any, {}>;
   StyledRow?: string & StyledComponentBase<any, {}>;
-  cellProps?: SubcomponentPropType;
-  containerProps?: SubcomponentPropType;
-  groupLabelRowProps?: SubcomponentPropType;
-  headerProps?: SubcomponentPropType;
-  headerCellProps?: SubcomponentPropType;
-  rowProps?: SubcomponentPropType;
+  cellProps?: SubcomponentPropsType;
+  containerProps?: SubcomponentPropsType;
+  groupLabelRowProps?: SubcomponentPropsType;
+  headerProps?: SubcomponentPropsType;
+  headerCellProps?: SubcomponentPropsType;
+  rowProps?: SubcomponentPropsType;
 };
 export type RowProps = {
   columnGap: string;
@@ -69,5 +69,5 @@ export type CellOptions = {
   groupIndex?: number;
   isCollapsed?: boolean;
   groupLabelDataString?: string;
-  cellProps?: SubcomponentPropType;
+  cellProps?: SubcomponentPropsType;
 };

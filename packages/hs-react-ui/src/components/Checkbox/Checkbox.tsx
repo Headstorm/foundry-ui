@@ -5,7 +5,7 @@ import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import colors from '../../enums/colors';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
-import { SubcomponentPropType } from '../commonTypes';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export enum CheckboxTypes {
   fill = 'fill',
@@ -96,10 +96,10 @@ export interface CheckboxProps {
   StyledBox?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
 
-  labelProps?: SubcomponentPropType;
-  checkboxContainerProps?: SubcomponentPropType;
-  boxProps?: SubcomponentPropType;
-  inputProps?: SubcomponentPropType;
+  labelProps?: SubcomponentPropsType;
+  checkboxContainerProps?: SubcomponentPropsType;
+  boxProps?: SubcomponentPropsType;
+  inputProps?: SubcomponentPropsType;
 
   checkboxType?: CheckboxTypes;
   children?: React.ReactNode;
