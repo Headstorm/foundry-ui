@@ -1,60 +1,71 @@
 import React, { ReactNode, MouseEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { useColors } from '../../context';
 import { getElevationValues } from '../../utils/styles';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
     const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
+    const { grayXlight, background } = useColors();
     return `
       display: inline-flex;
       flex-flow: column nowrap;
-
       font-size: 1rem;
-
       border-radius: 0.25rem;
-
-      border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
-
+      border: ${!elevation ? `1px solid ${grayXlight}` : '0px solid transparent'};
       transition: filter ${timings.slow}, border ${timings.normal};
-
       filter: drop-shadow(${xOffset}em ${yOffset}em ${blur}em rgba(0,0,0,${opacity}));
-      background-color: ${colors.background};
-    `;
+      background-color: ${background};
+  `;
   }}
 `;
 
 export const Header = styled(Div)`
-  padding: 1.5rem 1.5rem 0rem;
-  border-radius: 0.25rem 0.25rem 0rem 0rem;
-  font-weight: bold;
-  color: ${colors.grayDark};
+  ${() => {
+    const { grayDark } = useColors();
+    return `
+      padding: 1.5rem 1.5rem 0rem;
+      border-radius: 0.25rem 0.25rem 0rem 0rem;
+      font-weight: bold;
+      color: ${grayDark};
+    `;
+  }}
 `;
 
 export const NoPaddingHeader = styled(Header)`
-  padding: 0rem;
+  padding: 0;
   overflow: hidden;
 `;
 
 export const Body = styled(Div)`
-  padding: 1.5rem 1.5rem;
-  color: ${colors.grayMedium};
+  ${() => {
+    const { grayMedium } = useColors();
+    return `
+      padding: 1.5rem 1.5rem;
+      color: ${grayMedium};
+    `;
+  }}
 `;
 
 export const Footer = styled(Div)`
-  padding: 1rem 1.5rem;
-  display: flex;
-  flex-flow: row wrap;
+  ${() => {
+    const { grayLight } = useColors();
+    return `
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-flow: row wrap;
 
-  justify-content: flex-end;
-  text-align: right;
+      justify-content: flex-end;
+      text-align: right;
 
-  color: ${colors.grayLight};
+      color: ${grayLight};
 
-  border-radius: 0rem 0rem 0.25rem 0.25rem;
+      border-radius: 0rem 0rem 0.25rem 0.25rem;
+    `;
+  }}
 `;
 
 export interface CardProps {

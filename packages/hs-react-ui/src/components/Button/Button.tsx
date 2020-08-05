@@ -5,10 +5,10 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { readableColor, darken } from 'polished';
 
 import timings from '../../enums/timings';
-import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
 import { getElevationValues } from '../../utils/styles';
+import { useColors } from '../../context';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -49,10 +49,17 @@ export type ButtonProps = {
  * Get the appropriate font color for the button based on the variant of button
  * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
+ * @param {string} lightReturnColor - The color to return if the color is too dark
+ * @param {string} darkReturnColor - The color to return if the color is too dark
  */
-export const getFontColorFromVariant = (variant: string, color: string) => {
+export const getFontColorFromVariant = (
+  variant: string,
+  color: string,
+  lightReturnColor: string,
+  darkReturnColor: string,
+) => {
   if (variant === 'fill') {
-    return readableColor(color, colors.background, colors.grayDark, true);
+    return readableColor(color, lightReturnColor, darkReturnColor, true);
   }
   return color;
 };
@@ -61,12 +68,17 @@ export const getFontColorFromVariant = (variant: string, color: string) => {
  * Get the appropriate background color for the button based on the variant of button
  * @param {string} variant - The variant of button
  * @param {string} color - The color prop passed into the button
+ * @param {string} [transparentColor] - The color to use for a transparent background
  */
-export const getBackgroundColorFromVariant = (variant: string, color: string) => {
+export const getBackgroundColorFromVariant = (
+  variant: string,
+  color: string,
+  transparentColor: string,
+) => {
   switch (variant) {
     case ButtonVariants.text:
     case ButtonVariants.outline:
-      return colors.transparent;
+      return transparentColor || 'transparent';
     default:
       return color;
   }
@@ -76,9 +88,11 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const backgroundColor = getBackgroundColorFromVariant(variant, color);
-    const fontColor = getFontColorFromVariant(variant, color);
     const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
+    const { transparent, background, grayDark } = useColors();
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
+    const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
+
     return `
       display: inline-flex;
       font-size: 1em;
@@ -91,12 +105,11 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(${xOffset}em ${yOffset}em ${blur}em rgba(0,0,0,${opacity}));
       outline: 0 none;
-      border: ${
-        variant === ButtonVariants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'
-      };
+      border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
+      align-items: center;
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
@@ -145,18 +158,20 @@ const Button = ({
   elevation = 0,
   variant = ButtonVariants.fill,
   type = ButtonTypes.button,
-  color = colors.grayDark,
+  color,
   onClick,
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
+  const { grayLight } = useColors();
+  const containerColor = color || grayLight;
 
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={containerColor}
       variant={variant}
       type={type}
       {...containerProps}
@@ -168,7 +183,7 @@ const Button = ({
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={containerColor}
       variant={variant}
       type={type}
       {...containerProps}
