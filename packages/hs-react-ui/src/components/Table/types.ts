@@ -1,15 +1,15 @@
-import React from 'react';
+import { FunctionComponent, MouseEventHandler } from 'react';
 import { StyledComponentBase } from 'styled-components';
 import { SubcomponentPropType } from '../commonTypes';
 
 export type ExpansionIconProps = {
   isCollapsed: boolean;
-  onClick: any;
+  onClick: MouseEventHandler;
 };
 export type InternalExpansionIconProps = {
   isCollapsed: boolean;
   groupHeaderPosition: 'above' | 'below';
-  onClick: any;
+  onClick: MouseEventHandler;
 };
 
 export interface columnTypes {
@@ -20,10 +20,10 @@ export interface columnTypes {
     sortable?: boolean;
     sortFunction?: Function;
     isGroupLabel?: boolean;
-    cellComponent?: any;
-    rowComponent?: any;
-    headerCellComponent?: any;
-    groupCellComponent?: any;
+    cellComponent?: string & StyledComponentBase<any, {}>;
+    rowComponent?: string & StyledComponentBase<any, {}>;
+    headerCellComponent?: string & StyledComponentBase<any, {}>;
+    groupCellComponent?: string & StyledComponentBase<any, {}>;
   };
 }
 
@@ -34,7 +34,7 @@ export type TableProps = {
   data?: columnTypes[] | Array<Array<columnTypes>>;
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
-  expansionIconComponent?: React.FunctionComponent<InternalExpansionIconProps>;
+  expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
   minWidthBreakpoint?: number;
   sortGroups?: boolean;
 
@@ -57,7 +57,7 @@ export type RowProps = {
   rowNum?: number;
   reachedMinWidth?: boolean;
   isCollapsed?: boolean;
-}; /* Types and Interfaces */
+};
 export type CellOptions = {
   RenderedCell: any;
   headerColumnKey: string;
