@@ -8,6 +8,7 @@ import timings from '../../enums/timings';
 import colors from '../../enums/colors';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
+import { getElevationValues } from '../../utils/styles';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -77,10 +78,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
     const backgroundColor = getBackgroundColorFromVariant(variant, color);
     const fontColor = getFontColorFromVariant(variant, color);
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
-
+    const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
     return `
       display: inline-flex;
       font-size: 1em;
@@ -91,7 +89,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         color ${timings.slow},
         outline ${timings.slow},
         filter ${timings.slow};
-      filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
+      filter: drop-shadow(${xOffset}em ${yOffset}em ${blur}em rgba(0,0,0,${opacity}));
       outline: 0 none;
       border: ${
         variant === ButtonVariants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'

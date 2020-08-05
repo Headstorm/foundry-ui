@@ -8,17 +8,16 @@ import Button, { ButtonVariants } from '../Button/Button';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { getElevationValues } from '../../utils/styles';
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
+    const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
 
     return `
       width: fit-content;
       transition: filter ${timings.slow};
-      filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
+      filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(0,0,0,${opacity}));
       position: relative;
       z-index: ${isOpen ? '7' : '1'};
     `;

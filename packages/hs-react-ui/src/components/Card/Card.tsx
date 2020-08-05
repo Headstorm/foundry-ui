@@ -4,23 +4,27 @@ import styled, { StyledComponentBase } from 'styled-components';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { getElevationValues } from '../../utils/styles';
 
 export const CardContainer = styled(Div)`
-  ${({ elevation }: { elevation: number }) => `
-    display: inline-flex;
-    flex-flow: column nowrap;
+  ${({ elevation }: { elevation: number }) => {
+    const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
+    return `
+      display: inline-flex;
+      flex-flow: column nowrap;
 
-    font-size: 1rem;
+      font-size: 1rem;
 
-    border-radius: 0.25rem;
+      border-radius: 0.25rem;
 
-    border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
+      border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
 
-    transition: box-shadow ${timings.slow}, border ${timings.normal};
-    box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-    -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
-    background-color: ${colors.background};
-  `}
+      transition: filter ${timings.slow}, border ${timings.normal};
+
+      filter: drop-shadow(${xOffset}em ${yOffset}em ${blur}em rgba(0,0,0,${opacity}));
+      background-color: ${colors.background};
+    `;
+  }}
 `;
 
 export const Header = styled(Div)`

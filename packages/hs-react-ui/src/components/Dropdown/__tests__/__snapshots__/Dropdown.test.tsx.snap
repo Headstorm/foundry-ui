@@ -9,8 +9,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -27,8 +27,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -135,8 +135,8 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -153,8 +153,8 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -262,8 +262,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 7;
 }
@@ -280,8 +280,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -486,8 +486,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -504,8 +504,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -609,8 +609,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -627,8 +627,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -733,8 +733,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 7;
 }
@@ -751,8 +751,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -957,8 +957,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -975,8 +975,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -1081,8 +1081,8 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -1099,8 +1099,8 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
@@ -1207,8 +1207,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -1225,8 +1225,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
   border: 0 none;
   cursor: pointer;
