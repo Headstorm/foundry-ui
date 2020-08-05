@@ -8,7 +8,7 @@ import { useColors } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
+import { Div, Span } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 
 export type OptionProps = {
@@ -138,7 +138,7 @@ const CheckContainer = styled(Div)`
       color: ${getFontColorFromVariant('fill', tint(0.5, color || grayMedium))};
       padding-right: 0.2rem;
       width: 2rem;
-    `
+    `;
   }}
 `;
 
@@ -387,7 +387,7 @@ const Dropdown = ({
                   {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                 </StyledCheckContainer>
               )}
-              <span>{option.optionValue}</span>
+              <Span>{option.optionValue}</Span>
             </StyledOptionItem>
           ))}
         </StyledOptionsContainer>
