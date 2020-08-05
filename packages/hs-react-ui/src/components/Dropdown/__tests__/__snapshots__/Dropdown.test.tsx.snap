@@ -30,6 +30,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -148,6 +152,10 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -267,6 +275,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -477,6 +489,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -592,6 +608,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -708,6 +728,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -918,6 +942,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1034,6 +1062,10 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1152,6 +1184,10 @@ exports[`Dropdown selects options from values prop 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

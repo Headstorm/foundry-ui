@@ -18,6 +18,10 @@ exports[`Button keeps the container the same when switching between isLoading an
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -74,6 +78,10 @@ exports[`Button keeps the container the same when switching between isLoading an
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -113,6 +121,10 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -152,6 +164,10 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   cursor: pointer;
   background-color: transparent;
   color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -191,6 +207,10 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   cursor: pointer;
   background-color: transparent;
   color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -230,6 +250,10 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   cursor: pointer;
   background-color: transparent;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -269,6 +293,10 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -339,6 +367,10 @@ exports[`Button shows icons 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -413,6 +445,10 @@ exports[`Button shows icons with type string 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
@@ -489,6 +525,10 @@ exports[`Button shows loading text when provided 1`] = `
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0:hover {
