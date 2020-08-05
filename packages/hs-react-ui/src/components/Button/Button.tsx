@@ -5,7 +5,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import colors from '../../enums/colors';
+import { useColors } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
@@ -44,8 +44,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const backgroundColor = getBackgroundColorFromVariant(variant, color);
-    const fontColor = getFontColorFromVariant(variant, color);
+    const { transparent, background, grayDark } = useColors();
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
+    const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
@@ -62,7 +63,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
+      border: ${variant === variants.outline ? `1px solid ${color || grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -115,18 +116,20 @@ const Button = ({
   elevation = 0,
   variant = variants.fill,
   type = ButtonTypes.button,
-  color = colors.grayDark,
+  color,
   onClick,
   LoadingBar = StyledProgress,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
+  const { grayLight } = useColors();
+  const containerColor = color || grayLight;
 
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={containerColor}
       variant={variant}
       type={type}
       {...containerProps}
@@ -138,7 +141,7 @@ const Button = ({
       data-test-id="hsui-button"
       onClick={onClick}
       elevation={elevation}
-      color={color}
+      color={containerColor}
       variant={variant}
       type={type}
       {...containerProps}

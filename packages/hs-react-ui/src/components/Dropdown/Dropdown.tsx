@@ -4,11 +4,11 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance } from 'polished';
 
+import { useColors } from '../../context';
 import Button from '../Button/Button';
-import colors from '../../enums/colors';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
+import { Div, Span } from '../../htmlElements';
 import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 
@@ -100,11 +100,12 @@ const OptionsContainer = styled(Div)`
 const OptionItem = styled(Div)`
   ${({ selected, color }: UsefulDropdownState) => {
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
+    const { grayDark } = useColors();
     return `
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : colors.grayDark};
+    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : grayDark};
     background-color: ${
       selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'transparent'
     };
@@ -128,15 +129,18 @@ const OptionItem = styled(Div)`
   }}
 `;
 const CheckContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: ${getFontColorFromVariant('fill', tint(0.5, color || colors.grayMedium))};
-    padding-right: 0.2rem;
-    width: 2rem;
-  `}
+  ${({ color }: UsefulDropdownState) => {
+    const { grayMedium } = useColors();
+    return `
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      color: ${getFontColorFromVariant('fill', tint(0.5, color || grayMedium))};
+      padding-right: 0.2rem;
+      width: 2rem;
+    `;
+  }}
 `;
 
 const PlaceholderContainer = styled(Text.Container)`
@@ -193,7 +197,7 @@ const Dropdown = ({
   checkContainerProps,
   placeholderProps,
 
-  color = colors.grayDark,
+  color,
   elevation = 0,
   multi = false,
   name,
@@ -206,6 +210,8 @@ const Dropdown = ({
   variant = variants.outline,
   values = [],
 }: DropdownProps): JSX.Element | null => {
+  const colors = useColors();
+  const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
@@ -350,7 +356,7 @@ const Dropdown = ({
         containerProps={{
           modalIsOpen: isOpen,
         }}
-        color={color}
+        color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         variant={variant}
         {...valueContainerProps}
@@ -364,9 +370,7 @@ const Dropdown = ({
                   {i !== 0 && ', '}
                   {optionsHash[val].optionValue}
                 </span>
-              ) : (
-                undefined
-              ),
+              ) : undefined,
             )}
           {(!values || !values.length) && (
             <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
@@ -375,7 +379,7 @@ const Dropdown = ({
         {closeIcons}
       </Button>
       {isOpen && (
-        <StyledOptionsContainer color={color} variant={variant} {...optionsContainerProps}>
+        <StyledOptionsContainer color={defaultedColor} variant={variant} {...optionsContainerProps}>
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
@@ -383,7 +387,7 @@ const Dropdown = ({
               onBlur={handleBlur}
               onClick={() => handleSelect(option.id)}
               tabIndex={tabIndex}
-              color={color}
+              color={defaultedColor}
               variant={variant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
@@ -391,7 +395,7 @@ const Dropdown = ({
             >
               {multi && (
                 <StyledCheckContainer
-                  color={color}
+                  color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
                   variant={variant}
                   multi={multi}
@@ -400,7 +404,7 @@ const Dropdown = ({
                   {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                 </StyledCheckContainer>
               )}
-              <span>{option.optionValue}</span>
+              <Span>{option.optionValue}</Span>
             </StyledOptionItem>
           ))}
         </StyledOptionsContainer>
