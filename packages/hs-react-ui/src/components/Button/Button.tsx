@@ -37,8 +37,8 @@ export type ButtonProps = {
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
-  onMouseDown?: (...args: any[]) => void;
-  onMouseUp?: (...args: any[]) => void;
+  onMouseDown?: (e?: React.MouseEvent) => void;
+  onMouseUp?: (e?: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
 };
 
