@@ -1,11 +1,11 @@
 // A constant factor that works well with base 10 logarithms
-const elevationFactor = Math.pow(10, 0.1);
+const elevationFactor = 10 ** 0.1;
 
 /**
  * Calculates the values for shadows based on the provided elevation
  * @param {number} elevation - The elevation to get values for
  */
-export const getElevationValues = (elevation: number = 0) => {
+export const getElevationValues = (elevation = 0) => {
   const elevationValues = {
     xOffset: 0,
     yOffset: 0,
