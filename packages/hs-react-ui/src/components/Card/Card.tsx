@@ -18,6 +18,8 @@ export const CardContainer = styled(Div)`
       box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
       -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
       background-color: ${background};
+         justify-content: flex-end;
+      text-align: right;
   `;
   }}
 `;
@@ -30,6 +32,8 @@ export const Header = styled(Div)`
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${grayDark};
+      justify-content: flex-start;
+      text-align: left;
     `;
   }}
 `;
@@ -45,6 +49,8 @@ export const Body = styled(Div)`
     return `
       padding: 1.5rem 1.5rem;
       color: ${grayMedium};
+      justify-content: flex-start;
+      text-align: left;
     `;
   }}
 `;
