@@ -24,7 +24,7 @@ const Container = styled(Div)`
 
 const TextInputContainer = styled(InputElement)`
   ${() => {
-    const { background } = useColors();
+    const { transparent } = useColors();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -32,14 +32,14 @@ const TextInputContainer = styled(InputElement)`
       height: 2em;
       font-size: 1em;
       padding: 0.5rem;
-      background-color: ${background};
+      background-color: ${transparent};
   `;
   }}
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
   ${({ multiLineIsResizable }: TextInputProps) => {
-    const { background } = useColors();
+    const { transparent } = useColors();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -48,7 +48,7 @@ const TextAreaInputContainer = styled(TextArea)`
       min-height: 2em;
       min-width: 0px;
       padding: .5rem;
-      background-color: ${background};
+      background-color: ${transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
     `;
   }}
