@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import { FoundryProvider } from '../../context';
 import { color, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { FoundryProvider } from '../../context';
 import Text from '../Text';
 import Card from '../Card';
 import Button from '../Button';
-import { action } from '@storybook/addon-actions';
 import colorsEnum from '../../enums/colors';
 
 const StyledTextContainer = styled(Text.Container)`
@@ -40,7 +40,7 @@ storiesOf('Global styles', module).add('Example', () => {
   return (
     <FoundryProvider value={{ globalStyles, colors }}>
       <Text StyledContainer={StyledTextContainer}>Hello!</Text>
-      <Card StyledContainer={StyledCardContainer} elevation={0} header={'Title'}>
+      <Card StyledContainer={StyledCardContainer} elevation={0} header="Title">
         These components all have a global set of styles applied to them through React's Context
         API.
       </Card>
