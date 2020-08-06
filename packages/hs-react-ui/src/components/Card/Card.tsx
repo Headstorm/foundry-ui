@@ -30,8 +30,6 @@ export const Header = styled(Div)`
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${grayDark};
-      justify-content: flex-start;
-      text-align: left;
     `;
   }}
 `;
@@ -47,8 +45,6 @@ export const Body = styled(Div)`
     return `
       padding: 1.5rem 1.5rem;
       color: ${grayMedium};
-      justify-content: flex-start;
-      text-align: left;
     `;
   }}
 `;
@@ -62,7 +58,6 @@ export const Footer = styled(Div)`
       flex-flow: row wrap;
     
       justify-content: flex-end;
-      text-align: right;
     
       color: ${grayLight};
     
