@@ -8,7 +8,7 @@ import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
 import Text from '../Text/Text';
-import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { useColors } from '../../context';
 import { SubcomponentPropsType } from '../commonTypes';
 
 export type OptionProps = {
