@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
@@ -15,13 +15,6 @@ export type OptionProps = {
   id: number | string;
   optionValue: ReactNode;
   isSelected?: boolean;
-};
-
-type UsefulDropdownState = {
-  color: string;
-  multi?: boolean;
-  selected?: boolean;
-  variant?: variants;
 };
 
 const Container = styled(Div)`
