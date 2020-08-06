@@ -6,7 +6,7 @@ import { readableColor } from 'polished';
 
 import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
-import { Div, Span } from '../../htmlElements';
+import { Div } from '../../htmlElements';
 import Text from '../Text/Text';
 import { useColors } from '../../context';
 import { SubcomponentPropsType } from '../commonTypes';
