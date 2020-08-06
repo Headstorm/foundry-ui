@@ -4,9 +4,7 @@ exports[`Label should have asterisk icon if isRequired is true 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
+    .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -17,18 +15,6 @@ Object {
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -38,20 +24,20 @@ Object {
 
 <div>
       <div
-        class="sc-AxjAm sc-AxirZ c0"
+        class="sc-AxjAm "
       >
         <div
-          class="sc-AxjAm sc-AxirZ c1"
+          class="sc-AxjAm "
         >
           <label
-            class="sc-AxmLO sc-fzozJi c2"
+            class="sc-AxmLO c0"
             color="#7c8186"
             for="default"
           >
             Test text
           </label>
           <span
-            class="sc-AxiKw sc-AxhCb c3"
+            class="sc-AxiKw c1"
           >
             <svg
               role="presentation"
@@ -70,20 +56,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznJRM kheEtN"
+      class="sc-AxjAm sc-AxirZ evtyGa sc-fznJRM fzFSIN"
     >
       <div
-        class="sc-AxjAm sc-AxirZ sc-fznxsB gCXFQN"
+        class="sc-AxjAm sc-AxirZ evtyGa sc-fznxsB fvMaWZ"
       >
         <label
-          class="sc-AxmLO sc-fzozJi sc-fzpjYC clbvUn"
+          class="sc-AxmLO sc-fzozJi bgAayY sc-fzpjYC dEUYct"
           color="#7c8186"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxiKw sc-AxhCb sc-fznWqX bSTsjS"
+          class="sc-AxiKw sc-AxhCb jSKloG sc-fznWqX cfUcUu"
         >
           <svg
             role="presentation"
@@ -156,9 +142,7 @@ Object {
 exports[`Label should have default color text if not given a isValid 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
+  "baseElement": .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -169,18 +153,6 @@ Object {
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -191,20 +163,20 @@ Object {
 <body>
     <div>
       <div
-        class="sc-AxjAm sc-AxirZ c0"
+        class="sc-AxjAm "
       >
         <div
-          class="sc-AxjAm sc-AxirZ c1"
+          class="sc-AxjAm "
         >
           <label
-            class="sc-AxmLO sc-fzozJi c2"
+            class="sc-AxmLO c0"
             color="#FF4500"
             for="default"
           >
             Test text
           </label>
           <span
-            class="sc-AxiKw sc-AxhCb c3"
+            class="sc-AxiKw c1"
           >
             <svg
               role="presentation"
@@ -223,20 +195,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznJRM kheEtN"
+      class="sc-AxjAm sc-AxirZ evtyGa sc-fznJRM fzFSIN"
     >
       <div
-        class="sc-AxjAm sc-AxirZ sc-fznxsB gCXFQN"
+        class="sc-AxjAm sc-AxirZ evtyGa sc-fznxsB fvMaWZ"
       >
         <label
-          class="sc-AxmLO sc-fzozJi sc-fzpjYC cbHyXt"
+          class="sc-AxmLO sc-fzozJi bgAayY sc-fzpjYC gcRvUb"
           color="#FF4500"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-AxiKw sc-AxhCb sc-fznWqX bSTsjS"
+          class="sc-AxiKw sc-AxhCb jSKloG sc-fznWqX cfUcUu"
         >
           <svg
             role="presentation"
@@ -307,9 +279,7 @@ Object {
 `;
 
 exports[`Label should have text be colorInvalid if given a isValid prop of false 1`] = `
-.c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
+.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -320,18 +290,6 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -341,20 +299,20 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm "
   >
     <div
-      class="sc-AxjAm sc-AxirZ c1"
+      class="sc-AxjAm "
     >
       <label
-        class="sc-AxmLO sc-fzozJi c2"
+        class="sc-AxmLO c0"
         color="#9400D3"
         for="default"
       >
         Test text
       </label>
       <span
-        class="sc-AxiKw sc-AxhCb c3"
+        class="sc-AxiKw c1"
       >
         <svg
           role="presentation"
@@ -373,9 +331,7 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
 `;
 
 exports[`Label should have text be colorValid and a check icon if given a isValid prop of true 1`] = `
-.c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
+.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -386,18 +342,6 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
-}
-
-.c3 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -407,20 +351,20 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="sc-AxjAm "
   >
     <div
-      class="sc-AxjAm sc-AxirZ c1"
+      class="sc-AxjAm "
     >
       <label
-        class="sc-AxmLO sc-fzozJi c2"
+        class="sc-AxmLO c0"
         color="#0000FF"
         for="default"
       >
         Test text
       </label>
       <span
-        class="sc-AxiKw sc-AxhCb c3"
+        class="sc-AxiKw c1"
       >
         <svg
           role="presentation"

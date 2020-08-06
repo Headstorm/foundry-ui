@@ -2,11 +2,10 @@ import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 
-import colors from '../../enums/colors';
 import variants from '../../enums/variants';
-
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
+import { useColors } from '../../context';
 
 const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur, backgroundDarkness }) => `
@@ -99,46 +98,49 @@ const Modal = ({
   closeButtonAttachment = 'inside',
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
-}: ModalProps) => (
-  <>
-    {closeButtonAttachment === 'corner' && (
-      <StyledCloseButton
-        StyledContainer={StyledCloseButtonContainer}
-        containerProps={{
-          closeButtonAttachment,
-        }}
-        iconPrefix={mdiClose}
-        color={colors.background}
-        elevation={1}
-        variant={variants.text}
-        onClick={onClose}
-        {...closeButtonProps}
-      />
-    )}
-    <StyledContainer>
-      {children}
-      {closeButtonAttachment !== 'corner' && (
+}: ModalProps) => {
+  const colors = useColors();
+  return (
+    <>
+      {closeButtonAttachment === 'corner' && (
         <StyledCloseButton
           StyledContainer={StyledCloseButtonContainer}
           containerProps={{
             closeButtonAttachment,
           }}
           iconPrefix={mdiClose}
-          color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
-          elevation={closeButtonAttachment === 'inside' ? 0 : 1}
+          color={colors.background}
+          elevation={1}
           variant={variants.text}
           onClick={onClose}
           {...closeButtonProps}
         />
       )}
-    </StyledContainer>
-    <StyledUnderlay
-      backgroundBlur={backgroundBlur}
-      backgroundDarkness={backgroundDarkness}
-      onClick={onClickOutside}
-    />
-  </>
-);
+      <StyledContainer>
+        {children}
+        {closeButtonAttachment !== 'corner' && (
+          <StyledCloseButton
+            StyledContainer={StyledCloseButtonContainer}
+            containerProps={{
+              closeButtonAttachment,
+            }}
+            iconPrefix={mdiClose}
+            color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
+            elevation={closeButtonAttachment === 'inside' ? 0 : 1}
+            variant={variants.text}
+            onClick={onClose}
+            {...closeButtonProps}
+          />
+        )}
+      </StyledContainer>
+      <StyledUnderlay
+        backgroundBlur={backgroundBlur}
+        backgroundDarkness={backgroundDarkness}
+        onClick={onClickOutside}
+      />
+    </>
+  );
+};
 
 Modal.Underlay = Underlay;
 Modal.CloseButtonContainer = CloseButtonContainer;
