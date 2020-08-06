@@ -163,6 +163,12 @@ export default ({
   StyledSlideRail = SlideRail,
   StyledSelectedRangeRail = SelectedRangeRail,
   StyledDomainLabel = DomainLabel,
+  containerProps = {},
+  dragHandleProps = {},
+  handleLabelProps = {},
+  slideRailProps = {},
+  selectedRangeRailProps = {},
+  domainLabelProps = {},
 
   showDomainLabels = true,
   showSelectedRange = true,
@@ -283,22 +289,28 @@ export default ({
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
       showDomainLabels={showDomainLabels}
+      {...containerProps}
     >
-      <StyledSlideRail ref={ref}>
+      <StyledSlideRail ref={ref} {...slideRailProps}>
         {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
+            {...selectedRangeRailProps}
           />
         )}
       </StyledSlideRail>
 
       {showDomainLabels && (
         <>
-          <StyledDomainLabel position="left">{min}</StyledDomainLabel>
-          <StyledDomainLabel position="right">{max}</StyledDomainLabel>
+          <StyledDomainLabel position="left" {...domainLabelProps}>
+            {min}
+          </StyledDomainLabel>
+          <StyledDomainLabel position="right" {...domainLabelProps}>
+            {max}
+          </StyledDomainLabel>
         </>
       )}
 
@@ -311,8 +323,11 @@ export default ({
           style={{ x, y }}
           color={color}
           key={`handle${i}`}
+          {...dragHandleProps}
         >
-          <StyledHandleLabel value={value}>{label}</StyledHandleLabel>
+          <StyledHandleLabel value={value} {...handleLabelProps}>
+            {label}
+          </StyledHandleLabel>
         </StyledDragHandle>
       ))}
 
