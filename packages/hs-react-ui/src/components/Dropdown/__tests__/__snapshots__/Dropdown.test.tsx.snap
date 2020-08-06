@@ -7,8 +7,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -23,10 +23,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -176,14 +176,14 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -204,18 +204,24 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -223,14 +229,17 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
       <div
         class="sc-AxjAm c2"
       >
-        Charmander
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -252,8 +261,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 7;
 }
@@ -268,10 +277,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -294,6 +303,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
   width: 15rem;
@@ -301,14 +311,14 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -329,7 +339,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   text-align: left;
 }
 
-.c4 {
+.c5 {
   background: white;
   position: absolute;
   top: 100%;
@@ -337,12 +347,13 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   max-height: 10rem;
   overflow-y: scroll;
   width: 15rem;
-  border: 0.5px solid rgba(211,214,215,0.25);
+  border: 1px solid #252c35;
+  border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
 }
 
-.c5 {
+.c6 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -352,59 +363,56 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #252c35;
+  background-color: transparent;
 }
 
-.c5:hover {
-  background: rgba(211,214,215,0.5);
+.c6:hover {
+  background-color: #e5e5e5;
   cursor: pointer;
   outline: none;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
+  background-color: #e5e5e5;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 0.2rem;
-  width: 2rem;
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
 }
 
 <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
-      />
+      >
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
+      </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -415,41 +423,42 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c4"
+      class="sc-AxjAm c5"
+      color="#252c35"
     >
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Bulbasaur"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-bulbasaur"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Charmander"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-charmander"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Squirtle"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-squirtle"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Squirtle
         </span>
       </div>
@@ -466,8 +475,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -482,10 +491,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -513,14 +522,14 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -541,30 +550,41 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
-      />
+      >
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
+      </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -585,8 +605,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -601,10 +621,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -632,14 +652,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -660,31 +680,42 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
-      />
+      >
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
+      </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -705,8 +736,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 7;
 }
@@ -721,10 +752,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -747,6 +778,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
   width: 15rem;
@@ -754,14 +786,14 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -782,7 +814,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   text-align: left;
 }
 
-.c4 {
+.c5 {
   background: white;
   position: absolute;
   top: 100%;
@@ -790,12 +822,13 @@ exports[`Dropdown displays all options when focused 1`] = `
   max-height: 10rem;
   overflow-y: scroll;
   width: 15rem;
-  border: 0.5px solid rgba(211,214,215,0.25);
+  border: 1px solid #252c35;
+  border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
 }
 
-.c5 {
+.c6 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -805,60 +838,57 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #252c35;
+  background-color: transparent;
 }
 
-.c5:hover {
-  background: rgba(211,214,215,0.5);
+.c6:hover {
+  background-color: #e5e5e5;
   cursor: pointer;
   outline: none;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
+  background-color: #e5e5e5;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 0.2rem;
-  width: 2rem;
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
 }
 
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
-      />
+      >
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
+      </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -869,41 +899,42 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c4"
+      class="sc-AxjAm c5"
+      color="#252c35"
     >
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Bulbasaur"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-bulbasaur"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Charmander"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-charmander"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Squirtle"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-squirtle"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Squirtle
         </span>
       </div>
@@ -912,15 +943,15 @@ exports[`Dropdown displays all options when focused 1`] = `
 </div>
 `;
 
-exports[`Dropdown does not display options on initial render 1`] = `
+exports[`Dropdown displays placeholder value on initial render 1`] = `
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -935,10 +966,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -966,14 +997,14 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -994,31 +1025,44 @@ exports[`Dropdown does not display options on initial render 1`] = `
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
-      />
+      >
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        >
+          Choose a pokemon
+        </span>
+      </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -1032,15 +1076,15 @@ exports[`Dropdown does not display options on initial render 1`] = `
 </div>
 `;
 
-exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
+exports[`Dropdown does not display options on initial render 1`] = `
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -1055,10 +1099,10 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: #7c8186;
   color: #000;
@@ -1086,11 +1130,142 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 3rem;
+}
+
+.c2 {
+  width: 100%;
+  text-align: left;
+}
+
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
+<div>
+  <div
+    class="sc-AxjAm c0"
+    data-test-id="choosePokemon-container"
+    elevation="0"
+    id="choosePokemon-container"
+    name="choosePokemon"
+    tabindex="0"
+  >
+    <button
+      class="sc-AxhUy sc-fznxsB c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="sc-AxjAm c2"
+      >
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
+      </div>
+      <div
+        class="sc-AxjAm c4"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown renders a value when given a matching option id through props 1`] = `
+.c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 15rem;
+  padding: .5rem 1rem;
+}
+
+.c1:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c1:active {
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {
@@ -1117,15 +1292,15 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1133,14 +1308,516 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
       <div
         class="sc-AxjAm c2"
       >
-        Charmander, Squirtle
+        <span>
+          Bulbasaur
+        </span>
       </div>
       <div
         class="sc-AxjAm c3"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
+.c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: transparent;
+  color: #252c35;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 15rem;
+  padding: .5rem 1rem;
+}
+
+.c1:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c1:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 3rem;
+}
+
+.c2 {
+  width: 100%;
+  text-align: left;
+}
+
+<div>
+  <div
+    class="sc-AxjAm c0"
+    data-test-id="choosePokemon-container"
+    elevation="0"
+    id="choosePokemon-container"
+    name="choosePokemon"
+    tabindex="0"
+  >
+    <button
+      class="sc-AxhUy sc-fznxsB c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="sc-AxjAm c2"
+      />
+      <div
+        class="sc-AxjAm c3"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
+.c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: transparent;
+  color: #252c35;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 15rem;
+  padding: .5rem 1rem;
+}
+
+.c1:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c1:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 3rem;
+}
+
+.c2 {
+  width: 100%;
+  text-align: left;
+}
+
+<div>
+  <div
+    class="sc-AxjAm c0"
+    data-test-id="choosePokemon-container"
+    elevation="0"
+    id="choosePokemon-container"
+    name="choosePokemon"
+    tabindex="0"
+  >
+    <button
+      class="sc-AxhUy sc-fznxsB c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="sc-AxjAm c2"
+      >
+        <span>
+          Bulbasaur
+        </span>
+      </div>
+      <div
+        class="sc-AxjAm c3"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown renders two values when given matching option ids through props 1`] = `
+.c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: transparent;
+  color: #252c35;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 15rem;
+  padding: .5rem 1rem;
+}
+
+.c1:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c1:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 3rem;
+}
+
+.c2 {
+  width: 100%;
+  text-align: left;
+}
+
+<div>
+  <div
+    class="sc-AxjAm c0"
+    data-test-id="choosePokemon-container"
+    elevation="0"
+    id="choosePokemon-container"
+    name="choosePokemon"
+    tabindex="0"
+  >
+    <button
+      class="sc-AxhUy sc-fznxsB c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="sc-AxjAm c2"
+      >
+        <span>
+          Bulbasaur
+        </span>
+        <span>
+          , 
+          Charmander
+        </span>
+      </div>
+      <div
+        class="sc-AxjAm c3"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
+.c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: filter .5s;
+  transition: filter .5s;
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  outline: 0 none;
+  border: 1px solid #252c35;
+  cursor: pointer;
+  background-color: transparent;
+  color: #252c35;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 15rem;
+  padding: .5rem 1rem;
+}
+
+.c1:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c1:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 3rem;
+}
+
+.c2 {
+  width: 100%;
+  text-align: left;
+}
+
+<div>
+  <div
+    class="sc-AxjAm c0"
+    data-test-id="choosePokemon-container"
+    elevation="0"
+    id="choosePokemon-container"
+    name="choosePokemon"
+    tabindex="0"
+  >
+    <button
+      class="sc-AxhUy sc-fznxsB c1"
+      color="#252c35"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="sc-AxjAm c2"
+      >
+        <span>
+          Bulbasaur
+        </span>
+        <span>
+          , 
+          Charmander
+        </span>
+      </div>
+      <div
+        class="sc-AxjAm c3"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -1161,8 +1838,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s;
   transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
   position: relative;
   z-index: 1;
 }
@@ -1177,13 +1854,13 @@ exports[`Dropdown selects options from values prop 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0.5));
+  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
-  background-color: #7c8186;
-  color: #000;
+  background-color: transparent;
+  color: #252c35;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1208,11 +1885,11 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {
@@ -1239,15 +1916,15 @@ exports[`Dropdown selects options from values prop 1`] = `
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
@@ -1255,14 +1932,20 @@ exports[`Dropdown selects options from values prop 1`] = `
       <div
         class="sc-AxjAm c2"
       >
-        Bulbasaur, Charmander
+        <span>
+          Bulbasaur
+        </span>
+        <span>
+          , 
+          Charmander
+        </span>
       </div>
       <div
         class="sc-AxjAm c3"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path

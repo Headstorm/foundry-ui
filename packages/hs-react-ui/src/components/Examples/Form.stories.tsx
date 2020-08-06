@@ -12,7 +12,9 @@ import Dropdown from '../Dropdown';
 import Modal from '../Modal';
 import Text from '../Text';
 import Label from '../Label';
+
 import colors from '../../enums/colors';
+import variants from '../../enums/variants';
 
 const design = {
   type: 'figma',
@@ -188,7 +190,7 @@ storiesOf('Form Example', module).add(
         onClick={openModal}
         color={colors.destructive}
         isProcessing={isResetting}
-        variant={Button.ButtonVariants.text}
+        variant={variants.text}
       >
         Reset
       </Button>
@@ -211,7 +213,7 @@ storiesOf('Form Example', module).add(
         key="cancelButton"
         onClick={closeModal}
         color={colors.destructive}
-        variant={Button.ButtonVariants.text}
+        variant={variants.text}
         StyledContainer={ResetButtonContainer}
         type={Button.ButtonTypes.button}
       >
@@ -316,12 +318,13 @@ storiesOf('Form Example', module).add(
           <Label labelText="State" htmlFor="state" key="state">
             <Dropdown
               name="state-dropdown"
-              options={stateAbbreviations}
+              options={stateAbbreviations.map(abr => ({ id: abr, optionValue: abr }))}
               color={colors.primaryDark}
-              values={[state.state as string]}
+              values={[state.state]}
               onSelect={val => {
-                setState({ ...state, state: val as string });
+                setState({ ...state, state: `${val}` });
               }}
+              variant={variants.fill}
             />
           </Label>
 
