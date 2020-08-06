@@ -11,6 +11,7 @@ import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
 import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export type OptionProps = {
   id: number | string;
@@ -156,13 +157,13 @@ export interface DropdownProps {
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
   StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
 
-  containerProps?: Record<string, unknown>;
-  valueContainerProps?: Record<string, unknown>;
-  valueItemProps?: Record<string, unknown>;
-  optionsContainerProps?: Record<string, unknown>;
-  optionItemProps?: Record<string, unknown>;
-  checkContainerProps?: Record<string, unknown>;
-  placeholderProps?: Record<string, unknown>;
+  containerProps?: SubcomponentPropsType;
+  valueContainerProps?: SubcomponentPropsType;
+  valueItemProps?: SubcomponentPropsType;
+  optionsContainerProps?: SubcomponentPropsType;
+  optionItemProps?: SubcomponentPropsType;
+  checkContainerProps?: SubcomponentPropsType;
+  placeholderProps?: SubcomponentPropsType;
 
   color?: string;
   elevation?: number;
@@ -370,7 +371,9 @@ const Dropdown = ({
                   {i !== 0 && ', '}
                   {optionsHash[val].optionValue}
                 </span>
-              ) : undefined,
+              ) : (
+                undefined
+              ),
             )}
           {(!values || !values.length) && (
             <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
