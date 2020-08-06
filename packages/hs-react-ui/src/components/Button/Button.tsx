@@ -7,7 +7,7 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { useColors } from '../../context';
 import { SubcomponentPropsType } from '../commonTypes';
 
 export type ButtonContainerProps = {
