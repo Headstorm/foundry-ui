@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 
-import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
 import { useColors } from '../../context';
@@ -111,7 +110,7 @@ const Modal = ({
           iconPrefix={mdiClose}
           color={colors.background}
           elevation={1}
-          variant={variants.text}
+          variant="text"
           onClick={onClose}
           {...closeButtonProps}
         />
@@ -127,7 +126,7 @@ const Modal = ({
             iconPrefix={mdiClose}
             color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
             elevation={closeButtonAttachment === 'inside' ? 0 : 1}
-            variant={variants.text}
+            variant="text"
             onClick={onClose}
             {...closeButtonProps}
           />

@@ -5,7 +5,7 @@ import colorsEnum from '../enums/colors';
 
 export const defaultGlobalStyles = `
   ${
-    process.env.NODE_ENV === 'test'
+    process && process.env && process.env.NODE_ENV === 'test'
       ? ''
       : `
           box-sizing: border-box;
@@ -13,6 +13,7 @@ export const defaultGlobalStyles = `
           ${fonts.body}
         `
   }
+
 `;
 type FoundryColorsType = Record<keyof typeof colorsEnum, string>;
 export type FoundryContextType = {
@@ -20,7 +21,7 @@ export type FoundryContextType = {
   colors: FoundryColorsType;
 };
 export const FoundryContext = React.createContext<FoundryContextType>({
-  globalStyles: defaultGlobalStyles,
+  globalStyles: '',
   colors: colorsEnum,
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 });
@@ -32,14 +33,17 @@ export const FoundryProvider = ({
   value: { globalStyles?: string; colors: Partial<Record<keyof typeof colorsEnum, string>> };
   children: React.ReactNode;
 }) => {
-  const { globalStyles = defaultGlobalStyles, colors = colorsEnum } = value;
-
+  const { globalStyles = '', colors = colorsEnum } = value;
+  const mergedGlobalStyles = `
+    ${defaultGlobalStyles}
+    ${globalStyles}
+  `;
   const mergedColors = {
     ...colorsEnum,
     ...colors,
   };
   return (
-    <FoundryContext.Provider value={{ globalStyles, colors: mergedColors }}>
+    <FoundryContext.Provider value={{ globalStyles: mergedGlobalStyles, colors: mergedColors }}>
       {children}
     </FoundryContext.Provider>
   );
@@ -52,9 +56,7 @@ export function useColors(): FoundryColorsType {
 
 export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => {
   const ComponentWithGlobalStyles = styled(Component)`
-    ${props => {
-      return props.globalStyles;
-    }}
+    ${props => props.globalStyles}
   `;
 
   return (props: any) => {

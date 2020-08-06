@@ -2,8 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor, configure } from '@testing-library/react';
 import Icon from '@mdi/react';
 import colors from '../../../enums/colors';
-import variants from '../../../enums/variants';
-import Button from '../Button';
+import Button, { ButtonVariants } from '../Button';
 
 configure({ testIdAttribute: 'data-test-id' });
 
@@ -29,7 +28,12 @@ describe('Button', () => {
 
   it('shows ButtonContainer with nondefault props variant and color', async () => {
     const { container, getByTestId } = render(
-      <Button color={colors.black} elevation={2} variant={variants.outline} onClick={() => {}} />,
+      <Button
+        color={colors.black}
+        elevation={2}
+        variant={ButtonVariants.outline}
+        onClick={() => {}}
+      />,
     );
 
     await waitFor(() => getByTestId(testId));
@@ -39,7 +43,7 @@ describe('Button', () => {
 
   it('shows ButtonContainer ButtonVariant.text', async () => {
     const { container, getByTestId } = render(
-      <Button variant={variants.text} onClick={() => {}} />,
+      <Button variant={ButtonVariants.text} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));
@@ -49,7 +53,7 @@ describe('Button', () => {
 
   it('shows ButtonContainer ButtonVariant.fill', async () => {
     const { container, getByTestId } = render(
-      <Button variant={variants.fill} onClick={() => {}} />,
+      <Button variant={ButtonVariants.fill} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));
@@ -59,7 +63,7 @@ describe('Button', () => {
 
   it('shows ButtonContainer ButtonVariant.outline', async () => {
     const { container, getByTestId } = render(
-      <Button variant={variants.outline} onClick={() => {}} />,
+      <Button variant={ButtonVariants.outline} onClick={() => {}} />,
     );
 
     await waitFor(() => getByTestId(testId));

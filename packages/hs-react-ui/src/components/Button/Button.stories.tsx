@@ -6,7 +6,6 @@ import { storiesOf } from '@storybook/react';
 
 import Button from './Button';
 import colors from '../../enums/colors';
-import variants from '../../enums/variants';
 
 const options = {
   none: '',
@@ -24,7 +23,7 @@ storiesOf('Button', module).add(
   () => {
     return (
       <Button
-        variant={select('variant', variants, variants.fill)}
+        variant={select('variant', Button.ButtonVariants, Button.ButtonVariants.fill)}
         color={color('color', colors.primaryDark)}
         onClick={action('button-click')}
         isLoading={boolean('isLoading', false)}
