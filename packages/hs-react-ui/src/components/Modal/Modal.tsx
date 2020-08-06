@@ -2,8 +2,10 @@ import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 
+import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 
 const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
@@ -73,8 +75,12 @@ export interface ModalProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledUnderlay?: string & StyledComponentBase<any, {}>;
   StyledCloseButton?: string & StyledComponentBase<any, {}>;
-  closeButtonProps?: object;
   StyledCloseButtonContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropsType;
+  underlayProps?: SubcomponentPropsType;
+  closeButtonProps?: SubcomponentPropsType;
+  closeButtonContainerProps?: SubcomponentPropsType;
+
   children: ReactNode;
 
   onClickOutside?: () => void;
@@ -90,7 +96,11 @@ const Modal = ({
   StyledUnderlay = Underlay,
   StyledCloseButton = CloseButton,
   StyledCloseButtonContainer = CloseButtonContainer,
+  containerProps = {},
+  underlayProps = {},
   closeButtonProps = {},
+  closeButtonContainerProps = {},
+
   children,
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
@@ -110,7 +120,7 @@ const Modal = ({
           iconPrefix={mdiClose}
           color={colors.background}
           elevation={1}
-          variant="text"
+          variant={variants.text}
           onClick={onClose}
           {...closeButtonProps}
         />
@@ -126,7 +136,7 @@ const Modal = ({
             iconPrefix={mdiClose}
             color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
             elevation={closeButtonAttachment === 'inside' ? 0 : 1}
-            variant="text"
+            variant={variants.text}
             onClick={onClose}
             {...closeButtonProps}
           />
