@@ -5,8 +5,6 @@ import shortid from 'shortid';
 import colors from '../../enums/colors';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 
-// TODO Reduce amount of any/ts-ignore done here
-
 const Circle = styled.svg`
   pointer-events: none;
   position: absolute;
