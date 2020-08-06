@@ -1,17 +1,20 @@
 import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
-import colors from '../../enums/colors';
 import { Div, HR } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
+import { useColors } from '../../context';
 
 export const DefaultDivider = styled(HR)`
-  ${({ width = '90%', height = '1px' }: { width: string; height: string }) => `
-    border: none;
-    height: ${height};
-    width: ${width};
-    background-color: ${colors.grayLight};
-  `}
+  ${({ width = '90%', height = '1px' }: { width: string; height: string }) => {
+    const { grayLight } = useColors();
+    return `
+      border: none;
+      height: ${height};
+      width: ${width};
+      background-color: ${grayLight};
+  `;
+  }}
 `;
 
 export const DefaultDividerContainer = styled(Div)`
@@ -39,8 +42,8 @@ const Divider = ({
   width = '90%',
   height = '1px',
 }: DividerProps) => (
-  <StyledDividerContainer data-test-id="hsui-Divider">
-    <StyledDivider width={width} height={height} />
+  <StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps}>
+    <StyledDivider width={width} height={height} {...dividerProps} />
   </StyledDividerContainer>
 );
 

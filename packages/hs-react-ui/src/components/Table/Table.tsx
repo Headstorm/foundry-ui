@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { mdiArrowDown, mdiChevronDown, mdiChevronRight, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
-import colors from '../../enums/colors';
 import { Span, Table as TableElement, TD, TH, TR } from '../../htmlElements';
 import {
   CellOptions,
@@ -12,6 +11,7 @@ import {
   RowProps,
   TableProps,
 } from './types';
+import { useColors } from '../../context';
 
 type collapsedState = Record<string, string>;
 
@@ -22,27 +22,33 @@ const StyledExpansionIconSpan = styled(Span)`
 `;
 
 export const TableContainer = styled(TableElement)`
-  ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => `
-    width: ${reachedMinWidth ? '100%' : 'auto'};
-    background-color: ${colors.background};
-    border-collapse: collapse;
-
-    border-radius: 8px;
-    overflow: hidden;
-  `}
+  ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => {
+    const { background } = useColors();
+    return `
+      width: ${reachedMinWidth ? '100%' : 'auto'};
+      background-color: ${background};
+      border-collapse: collapse;
+  
+      border-radius: 8px;
+      overflow: hidden;
+    `;
+  }}
 `;
 
 export const Header = styled(TR)`
-  ${({ columnGap, columnWidths }: RowProps) => `
-    display: grid;
-    grid-template-columns: ${columnWidths};
-    padding: 0rem 2rem;
-    column-gap: ${columnGap};
-    user-select: none;
-
-    background-color: ${colors.primary};
-    color: white;
-  `}
+  ${({ columnGap, columnWidths }: RowProps) => {
+    const { primary } = useColors();
+    return `
+      display: grid;
+      grid-template-columns: ${columnWidths};
+      padding: 0rem 2rem;
+      column-gap: ${columnGap};
+      user-select: none;
+  
+      background-color: ${primary};
+      color: white;
+    `;
+  }}
 `;
 
 export const HeaderCell = styled(TH)`
@@ -64,59 +70,70 @@ export const HeaderCell = styled(TH)`
 `;
 
 export const ResponsiveTitle = styled(Span)`
-  ${({ sortable }: { sortable: boolean }) => `
-    color: ${colors.primary};
-    padding: 0.5rem;
-    user-select: none;
-    cursor: pointer;
-    margin-right: .5rem;
-    background-color: rgba(0,0,0,0.05);
-    border-radius: .5rem;
-    ${sortable ? '' : 'pointer-events: none;'}
-  `}
+  ${({ sortable }: { sortable: boolean }) => {
+    const { primary } = useColors();
+    return `
+      color: ${primary};
+      padding: 0.5rem;
+      user-select: none;
+      cursor: pointer;
+      margin-right: .5rem;
+      background-color: rgba(0,0,0,0.05);
+      border-radius: .5rem;
+      ${sortable ? '' : 'pointer-events: none;'}
+    `;
+  }}
 `;
 
 export const Row = styled(TR)`
-  ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => `
-    display: grid;
-    grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
-    padding: ${reachedMinWidth ? '1rem' : '0rem'} 2rem;
-    row-gap: .5rem;
-    column-gap: ${columnGap};
-    position: relative;
-    background-color: white;
-    height: ${isCollapsed ? '0px' : '100%'};
-
-    &:not(:last-child) {
-      border-bottom: 1px solid rgb(211, 214, 215);
-    }
-
-    &:before {
-      content: '';
-      z-index: 0;
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.2);
-      opacity: 0;
-      transition: opacity .3s;
-
-      pointer-events: none;
-    }
-    &:hover:before {
-      opacity: .3;
-    }
-  `}
+  ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => {
+    const { background } = useColors();
+    return `
+      display: grid;
+      grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
+      padding: ${reachedMinWidth ? '1rem' : '0rem'} 2rem;
+      row-gap: .5rem;
+      column-gap: ${columnGap};
+      position: relative;
+      background-color: ${background};
+      height: ${isCollapsed ? '0px' : '100%'};
+  
+      &:not(:last-child) {
+        border-bottom: 1px solid rgb(211, 214, 215);
+      }
+  
+      &:before {
+        content: '';
+        z-index: 0;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.2);
+        opacity: 0;
+        transition: opacity .3s;
+  
+        pointer-events: none;
+      }
+      &:hover:before {
+        opacity: .3;
+      }
+    `;
+  }}
 `;
 
 export const GroupRow = styled(Row)`
-  background-color: ${colors.grayXlight};
+  ${() => {
+    const { grayXlight } = useColors();
+    return `
+      background-color: ${grayXlight};
+    `;
+  }}
 `;
 
 export const Cell = styled(TD)`
   display: block;
-  padding: 1rem 0rem;
+  padding: 1rem 0;
   word-break: break-word;
   hyphens: auto;
   width: unset;

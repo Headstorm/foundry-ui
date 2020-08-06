@@ -5,14 +5,19 @@ import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import colors from '../../enums/colors';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
+import { useColors } from '../../context';
 
 export const DefaultStyledLabel = styled(LabelElement)`
-  ${({ color = colors.grayLight }: { color: colors | string }) => `
-    display: inline-flex;
-    color: ${color};
-    margin-bottom: .25em;
-    font-size: .75em;
-  `}
+  ${({ color }: { color: colors | string }) => {
+    const { grayLight } = useColors();
+    const labelColor = color || grayLight;
+    return `
+      display: inline-flex;
+      color: ${labelColor};
+      margin-bottom: .25em;
+      font-size: .75em;
+    `;
+  }}
 `;
 
 export const DefaultStyledTextContainer = styled(Div)``;
@@ -56,25 +61,26 @@ const Label = ({
   iconContainerProps = {},
 
   labelText,
-  color = colors.grayLight,
+  color,
   isValid,
-  colorValid = colors.success,
-  colorInvalid = colors.destructive,
+  colorValid,
+  colorInvalid,
   htmlFor = 'default',
   isRequired = false,
   children,
 }: LabelProps) => {
+  const colors = useColors();
   let shownColor: string | colors;
   let shownIcon: string | JSX.Element;
 
   if (isValid === true) {
-    shownColor = colorValid;
+    shownColor = colorValid || colors.success;
     shownIcon = mdiCheckBold;
   } else if (isValid === false) {
-    shownColor = colorInvalid;
+    shownColor = colorInvalid || colors.destructive;
     shownIcon = isRequired ? mdiAsterisk : '';
   } else {
-    shownColor = color;
+    shownColor = color || colors.grayLight;
     shownIcon = isRequired ? mdiAsterisk : '';
   }
 

@@ -3,61 +3,82 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
-import colors from '../../enums/colors';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
+import { useColors } from '../../context';
 
 const Container = styled(Div)`
-  ${({ isValid }: { isValid?: boolean }) => `
-    border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
-    min-width: 10rem;
-    position: relative;
-    display: flex;
-    flex-flow: row;
-    border-radius: 0.25em;
-    background-color: ${colors.background};
-  `}
+  ${({ isValid }: { isValid?: boolean }) => {
+    const { destructive, grayMedium, background } = useColors();
+    return `
+      border 2px solid ${isValid === false ? destructive : grayMedium};
+      min-width: 10rem;
+      position: relative;
+      display: flex;
+      flex-flow: row;
+      border-radius: 0.25em;
+      background-color: ${background};
+  `;
+  }}
 `;
 
 const TextInputContainer = styled(InputElement)`
-  border: 0 none;
-  flex-grow: 1;
-  outline: 0 none;
-  height: 2em;
-  font-size: 1em;
-  padding: 0.5rem;
-  background-color: ${colors.background};
+  ${() => {
+    const { background } = useColors();
+    return `
+      border: 0 none;
+      flex-grow: 1;
+      outline: 0 none;
+      height: 2em;
+      font-size: 1em;
+      padding: 0.5rem;
+      background-color: ${background};
+  `;
+  }}
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
-  ${({ multiLineIsResizable }: TextInputProps) => `
-    border: 0 none;
-    flex-grow: 1;
-    outline: 0 none;
-    font-size: 1em;
-    min-height: 2em;
-    min-width: 0px;
-    padding: .5rem;
-    background-color: ${colors.background};
-    resize: ${multiLineIsResizable ? 'both' : 'none'};
-  `}
+  ${({ multiLineIsResizable }: TextInputProps) => {
+    const { background } = useColors();
+    return `
+      border: 0 none;
+      flex-grow: 1;
+      outline: 0 none;
+      font-size: 1em;
+      min-height: 2em;
+      min-width: 0px;
+      padding: .5rem;
+      background-color: ${background};
+      resize: ${multiLineIsResizable ? 'both' : 'none'};
+    `;
+  }}
 `;
 
 const IconContainer = styled(Div)`
-  padding: 0.5em;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${colors.grayMedium};
-  cursor: pointer;
+  ${() => {
+    const { grayMedium } = useColors();
+    return `
+      padding: 0.5em;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: ${grayMedium};
+      cursor: pointer;
+    `;
+  }}
 `;
 
 const ErrorContainer = styled(Div)`
-  position: absolute;
-  top: calc(100% + 0.25em);
-  color: ${colors.destructive};
-  font-size: 0.75rem;
+  ${() => {
+    const { destructive } = useColors();
+    return `
+      position: absolute;
+      top: calc(100% + 0.25em);
+      color: ${destructive};
+      font-size: 0.75rem;
+    `;
+  }}
 `;
 
 export type TextInputProps = {
