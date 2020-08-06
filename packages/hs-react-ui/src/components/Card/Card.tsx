@@ -58,7 +58,6 @@ export const Footer = styled(Div)`
       flex-flow: row wrap;
     
       justify-content: flex-end;
-      text-align: right;
     
       color: ${grayLight};
     
