@@ -24,7 +24,7 @@ const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: numbe
 `;
 
 const Container = styled(Div)`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
