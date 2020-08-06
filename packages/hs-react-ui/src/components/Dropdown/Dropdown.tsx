@@ -6,8 +6,23 @@ import { readableColor } from 'polished';
 
 import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
-import { useColors } from '../../context';
+import { Div, Span } from '../../htmlElements';
+import Text from '../Text/Text';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
+
+export type OptionProps = {
+  id: number | string;
+  optionValue: ReactNode;
+  isSelected?: boolean;
+};
+
+type UsefulDropdownState = {
+  color: string;
+  multi?: boolean;
+  selected?: boolean;
+  variant?: variants;
+};
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
@@ -115,6 +130,16 @@ export interface DropdownProps {
   StyledValueItem?: string & StyledComponentBase<any, {}>;
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
+  StyledCheckContainer?: string & StyledComponentBase<any, {}>;
+  StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
+
+  containerProps?: SubcomponentPropsType;
+  valueContainerProps?: SubcomponentPropsType;
+  valueItemProps?: SubcomponentPropsType;
+  optionsContainerProps?: SubcomponentPropsType;
+  optionItemProps?: SubcomponentPropsType;
+  checkContainerProps?: SubcomponentPropsType;
+  placeholderProps?: SubcomponentPropsType;
 
   clearable?: boolean;
   color?: string;
@@ -308,8 +333,22 @@ const Dropdown = ({
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         variant={type}
       >
-        <StyledValueItem>
-          {((values.length && values) || state.selectedValues).join(', ')}
+        <StyledValueItem {...valueItemProps}>
+          {values
+            .filter(val => val !== undefined && optionsHash[val] !== undefined)
+            .map((val, i) =>
+              optionsHash[val] !== undefined ? (
+                <span key={val}>
+                  {i !== 0 && ', '}
+                  {optionsHash[val].optionValue}
+                </span>
+              ) : (
+                undefined
+              ),
+            )}
+          {(!values || !values.length) && (
+            <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
+          )}
         </StyledValueItem>
         {closeIcons}
       </Button>

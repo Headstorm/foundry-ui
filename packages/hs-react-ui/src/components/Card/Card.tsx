@@ -3,6 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 
 export const CardContainer = styled(Div)`
@@ -72,10 +73,10 @@ export interface CardProps {
   StyledBody?: string & StyledComponentBase<any, {}>;
   StyledFooter?: string & StyledComponentBase<any, {}>;
 
-  containerProps?: Record<string, unknown>;
-  headerProps?: Record<string, unknown>;
-  bodyProps?: Record<string, unknown>;
-  footerProps?: Record<string, unknown>;
+  containerProps?: SubcomponentPropsType;
+  headerProps?: SubcomponentPropsType;
+  bodyProps?: SubcomponentPropsType;
+  footerProps?: SubcomponentPropsType;
 
   onClick?: (evt: MouseEvent) => void;
 
