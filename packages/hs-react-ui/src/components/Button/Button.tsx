@@ -41,6 +41,7 @@ export type ButtonProps = {
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
+  id?: string;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -124,6 +125,7 @@ const Button = ({
   onMouseDown = () => {},
   onMouseUp = () => {},
   LoadingBar = StyledProgress,
+  id,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { grayLight } = useColors();
@@ -132,7 +134,10 @@ const Button = ({
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
+      id={id}
       onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       elevation={elevation}
       color={containerColor}
       variant={variant}
@@ -144,6 +149,7 @@ const Button = ({
   ) : (
     <StyledContainer
       data-test-id="hsui-button"
+      id={id}
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}

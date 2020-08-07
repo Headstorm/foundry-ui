@@ -136,7 +136,7 @@ const CheckContainer = styled(Div)`
       display: flex;
       align-items: center;
       justify-content: center;
-  
+
       color: ${getFontColorFromVariant('fill', tint(0.5, color || grayMedium))};
       padding-right: 0.2rem;
       width: 2rem;
@@ -374,13 +374,19 @@ const Dropdown = ({
         containerProps={{
           modalIsOpen: isOpen,
         }}
+        id={`${name}-button-value`}
         color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         onMouseDown={clickHandler}
         variant={variant}
         {...valueContainerProps}
       >
-        <StyledValueItem {...valueItemProps} onMouseDown={clickHandler}>
+        <StyledValueItem
+          {...valueItemProps}
+          onMouseDown={clickHandler}
+          onBlur={handleBlur}
+          id={`${name}-value-item`}
+        >
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i) =>

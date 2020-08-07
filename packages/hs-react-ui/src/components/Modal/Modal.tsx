@@ -116,6 +116,7 @@ const Modal = ({
           StyledContainer={StyledCloseButtonContainer}
           containerProps={{
             closeButtonAttachment,
+            ...closeButtonContainerProps,
           }}
           iconPrefix={mdiClose}
           color={colors.background}
@@ -125,13 +126,14 @@ const Modal = ({
           {...closeButtonProps}
         />
       )}
-      <StyledContainer>
+      <StyledContainer {...containerProps}>
         {children}
         {closeButtonAttachment !== 'corner' && (
           <StyledCloseButton
             StyledContainer={StyledCloseButtonContainer}
             containerProps={{
               closeButtonAttachment,
+              ...closeButtonContainerProps,
             }}
             iconPrefix={mdiClose}
             color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
@@ -146,6 +148,7 @@ const Modal = ({
         backgroundBlur={backgroundBlur}
         backgroundDarkness={backgroundDarkness}
         onClick={onClickOutside}
+        {...underlayProps}
       />
     </>
   );

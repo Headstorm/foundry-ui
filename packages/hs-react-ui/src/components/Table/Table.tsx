@@ -334,7 +334,7 @@ const Table = ({
    * @param {number} options.groupIndex - The index of the group. Used only when creating cells as part of a group
    * @param {boolean} options.isCollapsed - Used when creating cells with a CollapseExpandedIcon
    * @param {string} options.groupLabelDataString - The stringified version of the group label row
-   *
+   * @param {any} options.cellProps - Props to pass through to RenderedCell
    */
   const createCell = ({
     RenderedCell,
@@ -347,7 +347,7 @@ const Table = ({
     groupIndex,
     isCollapsed = false,
     groupLabelDataString,
-    cellProps,
+    cellProps: cellPropsInput,
   }: CellOptions): JSX.Element | false => {
     return (
       (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) && (
@@ -358,7 +358,7 @@ const Table = ({
           groupIndex={groupIndex}
           reachedMinWidth={width < minWidthBreakpoint}
           key={`${headerColumnKey}${index + indexModifier}`}
-          {...cellProps}
+          {...cellPropsInput}
         >
           {width < minWidthBreakpoint && (
             <ResponsiveTitle
