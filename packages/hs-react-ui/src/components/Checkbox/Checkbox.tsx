@@ -54,9 +54,13 @@ export const Box = styled(Div)`
     if (checkboxType === CheckboxTypes.check && checked) color = success;
     if (checkboxType === CheckboxTypes.cross && checked) color = destructive;
     const backgroundColor = variant === variants.fill && checked ? color : background;
-    
+
     return `
-      ${(variant === variants.outline || variant === variants.fill) ? `border: 1px solid ${color};` : ''} 
+      ${
+        variant === variants.outline || variant === variants.fill
+          ? `border: 1px solid ${color};`
+          : ''
+      } 
       background-color: ${backgroundColor};
       border-radius: 2px;
       width: 1rem;
@@ -87,9 +91,9 @@ export const BaseIcon = styled(Icon)`
 const CheckIcon = styled(BaseIcon)`
   ${({ variant }) => {
     const { success, background } = useColors();
-    console.log({ variant })
+    console.log({ variant });
     return `
-      color: ${variant === variants.fill ? background : success };
+      color: ${variant === variants.fill ? background : success};
     `;
   }}
 `;
@@ -98,7 +102,7 @@ const CrossIcon = styled(BaseIcon)`
   ${({ variant }) => {
     const { destructive, background } = useColors();
     return `
-      color: ${variant === variants.fill ? background : destructive };
+      color: ${variant === variants.fill ? background : destructive};
     `;
   }}
 `;
@@ -106,9 +110,9 @@ const CrossIcon = styled(BaseIcon)`
 const DefaultIcon = styled(BaseIcon)`
   ${({ variant }) => {
     const { grayMedium, background } = useColors();
-    
+
     return `
-      color: ${variant === variants.fill ? background : grayMedium };
+      color: ${variant === variants.fill ? background : grayMedium};
     `;
   }}
 `;
@@ -189,7 +193,14 @@ const Checkbox = ({
     <StyledLabel data-test-id="hsui-Checkbox" {...labelProps}>
       <StyledCheckboxContainer {...checkboxContainerProps}>
         <StyledBox checkboxType={checkboxType} checked={checked} variant={variant} {...boxProps}>
-          {checked ? <IconComponent data-test-id="hsui-Checkbox-Icon" path={iconPath} variant={variant} {...iconProps} /> : null}
+          {checked ? (
+            <IconComponent
+              data-test-id="hsui-Checkbox-Icon"
+              path={iconPath}
+              variant={variant}
+              {...iconProps}
+            />
+          ) : null}
         </StyledBox>
         <StyledInput
           data-test-id="hsui-Checkbox-Input"

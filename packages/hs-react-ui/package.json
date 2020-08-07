@@ -1,6 +1,6 @@
 {
   "name": "@headstorm/hs-react-ui",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Robust UI library written in React. It's DRY, with CSS in JS; stirred, not shaken.",
   "author": "Headstorm LLC",
   "homepage": "http://headstorm.com",
