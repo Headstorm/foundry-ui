@@ -116,7 +116,7 @@ const Modal = ({
           StyledContainer={StyledCloseButtonContainer}
           containerProps={{
             closeButtonAttachment,
-            ...closeButtonContainerProps
+            ...closeButtonContainerProps,
           }}
           iconPrefix={mdiClose}
           color={colors.background}
@@ -133,7 +133,7 @@ const Modal = ({
             StyledContainer={StyledCloseButtonContainer}
             containerProps={{
               closeButtonAttachment,
-              ...closeButtonContainerProps
+              ...closeButtonContainerProps,
             }}
             iconPrefix={mdiClose}
             color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
