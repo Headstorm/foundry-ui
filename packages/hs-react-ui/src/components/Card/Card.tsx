@@ -4,11 +4,10 @@ import styled, { StyledComponentBase } from 'styled-components';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { useColors } from '../../context';
-import { getElevationValues } from '../../utils/styles';
+import { getElevationShadowStyle } from '../../utils/styles';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
-    const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
     const { grayXlight, background } = useColors();
     return `
       display: inline-flex;
@@ -16,8 +15,8 @@ export const CardContainer = styled(Div)`
       font-size: 1rem;
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${grayXlight}` : '0px solid transparent'};
-      transition: filter ${timings.slow}, border ${timings.normal};
-      filter: drop-shadow(${xOffset}em ${yOffset}em ${blur}em rgba(0,0,0,${opacity}));
+      transition: box-shadow ${timings.slow}, filter ${timings.slow}, border ${timings.slow};
+      ${getElevationShadowStyle(elevation)}
       background-color: ${background};
   `;
   }}

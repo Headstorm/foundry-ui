@@ -22,7 +22,7 @@ storiesOf('Card', module)
       <Card
         header={text('header', 'Card title')}
         footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-        elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
+        elevation={number('elevation', 2, { range: true, min: -5, max: 5, step: 1 })}
         onClick={action('onClick')}
       >
         {text(
@@ -50,10 +50,10 @@ storiesOf('Card', module)
         border-radius: 1rem;
         width: fit-content;
         background-color: ${themeColors.background};
-    
+
         transition: transform ${themeTimings.xSlow};
         transform: scale(${elevation * 0.05 + 1});
-    
+
         ${fonts.body}
         font-size: 1rem;
         border: 1px solid ${themeColors.primary};
@@ -82,7 +82,7 @@ storiesOf('Card', module)
         StyledFooter={ThemedFooter}
         header={text('header', 'Card title')}
         footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-        elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
+        elevation={number('elevation', 0, { range: true, min: -5, max: 5, step: 1 })}
       >
         {text(
           'children',

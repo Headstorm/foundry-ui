@@ -7,21 +7,17 @@ import { readableColor } from 'polished';
 import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
-import { getElevationValues } from '../../utils/styles';
+import { getElevationShadowStyle } from '../../utils/styles';
 import { useColors } from '../../context';
 
 const Container = styled(Div)`
-  ${({ elevation, isOpen }) => {
-    const { xOffset, yOffset, blur, opacity } = getElevationValues(elevation);
-
-    return `
-      width: fit-content;
-      transition: filter ${timings.slow};
-      filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(0,0,0,${opacity}));
-      position: relative;
-      z-index: ${isOpen ? '7' : '1'};
-    `;
-  }}
+  ${({ elevation, isOpen }) => `
+    width: fit-content;
+    transition: box-shadow ${timings.slow}, filter ${timings.slow};
+    ${getElevationShadowStyle(elevation)}
+    position: relative;
+    z-index: ${isOpen ? '7' : '1'};
+  `}
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`

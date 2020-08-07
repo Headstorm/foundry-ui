@@ -25,7 +25,7 @@ storiesOf('Dropdown', module).add(
         <Dropdown
           clearable={boolean('clearable', false)}
           color={color('color', colors.grayXlight)}
-          elevation={number('elevation', 1, { range: true, min: 0, max: 5, step: 1 })}
+          elevation={number('elevation', 1, { range: true, min: -5, max: 5, step: 1 })}
           multi={boolean('multi', false)}
           name="fave-fruit"
           onBlur={action('onBlur')}
