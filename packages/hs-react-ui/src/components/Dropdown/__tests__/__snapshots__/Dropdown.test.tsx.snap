@@ -102,10 +102,12 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -275,10 +277,12 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -447,10 +451,12 @@ exports[`Dropdown closes options when clicking outside 2`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -578,10 +584,12 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -751,10 +759,12 @@ exports[`Dropdown displays all options when focused 1`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -923,10 +933,12 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -1056,10 +1068,12 @@ exports[`Dropdown does not display options on initial render 1`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span
           class="sc-AxiKw sc-fzqNqU c3"
@@ -1181,10 +1195,12 @@ exports[`Dropdown renders a value when given a matching option id through props 
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span>
           Bulbasaur
@@ -1305,10 +1321,12 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       />
       <div
         class="sc-AxjAm c3"
@@ -1425,10 +1443,12 @@ exports[`Dropdown renders one value when given two values but only one matches a
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span>
           Bulbasaur
@@ -1549,10 +1569,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span>
           Bulbasaur
@@ -1677,10 +1699,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span>
           Bulbasaur
@@ -1805,10 +1829,12 @@ exports[`Dropdown selects options from values prop 1`] = `
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
+      id="choosePokemon-button-value"
       type="button"
     >
       <div
         class="sc-AxjAm c2"
+        id="choosePokemon-value-item"
       >
         <span>
           Bulbasaur

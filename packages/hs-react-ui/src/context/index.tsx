@@ -57,8 +57,8 @@ export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>
     }}
   `;
 
-  return (props: any) => {
+  return React.forwardRef((props: any, ref: any) => {
     const { globalStyles } = useContext(FoundryContext);
-    return <ComponentWithGlobalStyles globalStyles={globalStyles} {...props} />;
-  };
+    return <ComponentWithGlobalStyles globalStyles={globalStyles} {...props} ref={ref} />;
+  });
 };
