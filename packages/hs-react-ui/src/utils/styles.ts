@@ -38,16 +38,16 @@ export const calculateElevationValues = (elevation = 0) => {
     : calc() / 16;
   elevationValues.blur = isNegative ? (absVal * 2) / 16 : absVal * 0.25;
   elevationValues.opacity = /** isNegative ? 0.3 - 0.05 * absVal : */ 0.5 - logVal * 0.2;
-  console.log(`Elevation: ${elevation}`, elevationValues);
   return elevationValues;
 };
 
 /**
- * Returns the shadow style for a given elevation. If the elevation is negative, box-shadow is used and is inset.
+ * Returns the entire shadow style for a given elevation. If elevation is positive, a drop-shadow filter is returned.
+ * If the elevation is negative, a box-shadow is returned and is inset. If elevation is 0, emptystring is returned.
  * @param {number} elevation
  * @returns {string} The css style property and value
  */
-export const getElevationShadowStyle = (elevation = 0) => {
+export const getShadowStyle = (elevation = 0) => {
   if (elevation === 0) {
     return '';
   }

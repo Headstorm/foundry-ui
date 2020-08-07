@@ -7,7 +7,7 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { getElevationShadowStyle } from '../../utils/styles';
+import { getShadowStyle } from '../../utils/styles';
 import { useColors } from '../../context';
 
 export type ButtonContainerProps = {
@@ -103,7 +103,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         outline ${timings.slow},
         filter ${timings.slow};
       transition: box-shadow ${timings.slow}, filter ${timings.slow};
-      ${getElevationShadowStyle(elevation)}
+      ${getShadowStyle(elevation)}
       outline: 0 none;
       border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
       cursor: pointer;

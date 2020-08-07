@@ -4,7 +4,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { useColors } from '../../context';
-import { getElevationShadowStyle } from '../../utils/styles';
+import { getShadowStyle } from '../../utils/styles';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
@@ -16,7 +16,7 @@ export const CardContainer = styled(Div)`
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${grayXlight}` : '0px solid transparent'};
       transition: box-shadow ${timings.slow}, filter ${timings.slow}, border ${timings.slow};
-      ${getElevationShadowStyle(elevation)}
+      ${getShadowStyle(elevation)}
       background-color: ${background};
   `;
   }}

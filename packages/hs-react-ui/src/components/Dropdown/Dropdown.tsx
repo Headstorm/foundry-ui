@@ -7,14 +7,14 @@ import { readableColor } from 'polished';
 import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
-import { getElevationShadowStyle } from '../../utils/styles';
+import { getShadowStyle } from '../../utils/styles';
 import { useColors } from '../../context';
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => `
     width: fit-content;
     transition: box-shadow ${timings.slow}, filter ${timings.slow};
-    ${getElevationShadowStyle(elevation)}
+    ${getShadowStyle(elevation)}
     position: relative;
     z-index: ${isOpen ? '7' : '1'};
   `}
