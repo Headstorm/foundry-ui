@@ -2,12 +2,11 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
-import colors from '../../enums/colors';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
 import { useColors } from '../../context';
 
 export const DefaultStyledLabel = styled(LabelElement)`
-  ${({ color }: { color: colors | string }) => {
+  ${({ color }: { color: string }) => {
     const { grayLight } = useColors();
     const labelColor = color || grayLight;
     return `
@@ -30,10 +29,10 @@ const DefaultStyledIconContainer = styled(Span)`
 
 export interface LabelProps {
   labelText?: string;
-  color?: colors | string;
+  color?: string;
   isValid?: boolean;
-  colorValid?: colors | string;
-  colorInvalid?: colors | string;
+  colorValid?: string;
+  colorInvalid?: string;
   htmlFor?: string;
   isRequired?: boolean;
   children?: React.ReactNode;
@@ -58,7 +57,7 @@ const Label = ({
   children,
 }: LabelProps) => {
   const colors = useColors();
-  let shownColor: string | colors;
+  let shownColor: string;
   let shownIcon: string | JSX.Element;
 
   if (isValid === true) {
