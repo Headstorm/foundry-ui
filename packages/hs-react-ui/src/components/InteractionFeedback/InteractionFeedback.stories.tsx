@@ -88,7 +88,6 @@ storiesOf('InteractionFeedback', module).add(
       <InteractionFeedback
         interpolationFunctions={interpolationFunctions}
         transitionProps={transitionProps}
-        type={InteractionFeedback.feedbackTypes.splash}
       >
         <Button onClick={action('button-click')}>Click me</Button>
       </InteractionFeedback>

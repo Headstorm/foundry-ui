@@ -16,9 +16,6 @@ const Container = styled(animated.div)`
   position: relative;
 `;
 
-enum feedbackTypes {
-  splash = 'splash',
-}
 type Animation = { cx: string; cy: string; id: string };
 type Transition = { r: string } & Animation;
 type InteractionFeedbackProps = {
@@ -27,7 +24,6 @@ type InteractionFeedbackProps = {
   children: React.ReactNode;
   interpolationFunctions?: Record<string, (val: any) => any>;
   transitionProps: any;
-  type?: feedbackTypes;
 };
 
 const InteractionFeedback = ({
@@ -89,7 +85,5 @@ const InteractionFeedback = ({
     </StyledContainer>
   );
 };
-
-InteractionFeedback.feedbackTypes = feedbackTypes;
 
 export default InteractionFeedback;
