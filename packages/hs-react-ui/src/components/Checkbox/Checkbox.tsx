@@ -91,7 +91,6 @@ export const BaseIcon = styled(Icon)`
 const CheckIcon = styled(BaseIcon)`
   ${({ variant }) => {
     const { success, background } = useColors();
-    console.log({ variant });
     return `
       color: ${variant === variants.fill ? background : success};
     `;
@@ -108,11 +107,10 @@ const CrossIcon = styled(BaseIcon)`
 `;
 
 const DefaultIcon = styled(BaseIcon)`
-  ${({ variant }) => {
-    const { grayMedium, background } = useColors();
-
+  ${() => {
+    const { grayLight } = useColors();
     return `
-      color: ${variant === variants.fill ? background : grayMedium};
+      color: ${grayLight}
     `;
   }}
 `;
