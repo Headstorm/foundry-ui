@@ -39,6 +39,8 @@ export const Label = styled(LabelElement)`
       display: flex;
       align-items: center;
       cursor: pointer;
+      height: 2em;
+      font-size: 1em;
     
       ${Input}:focus + & {
         box-shadow: 0 0 0 3px ${grayXlight};
