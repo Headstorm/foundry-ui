@@ -1,3 +1,4 @@
+import { parseToRgb } from 'polished';
 // A constant factor that works well with base 10 logarithms
 const elevationFactor = 10 ** 0.1;
 
@@ -44,17 +45,18 @@ export const calculateElevationValues = (elevation = 0) => {
 /**
  * Returns the entire shadow style for a given elevation. If elevation is positive, a drop-shadow filter is returned.
  * If the elevation is negative, a box-shadow is returned and is inset. If elevation is 0, emptystring is returned.
- * @param {number} elevation
+ * @param {number} elevation - The elevation to get the shadow style for
+ * @param {string} shadowColor - The color to be used for the shadow in hex or rgba format
  * @returns {string} The css style property and value
  */
-export const getShadowStyle = (elevation = 0) => {
+export const getShadowStyle = (elevation = 0, shadowColor: string) => {
   if (elevation === 0) {
     return '';
   }
-
+  const { red, green, blue } = parseToRgb(shadowColor);
   const { xOffset, yOffset, blur, opacity } = calculateElevationValues(elevation);
 
   return elevation > 0
-    ? `filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(39, 47, 78,${opacity}));`
-    : `box-shadow: inset ${xOffset}rem ${yOffset}rem ${blur}rem rgba(39, 47, 78,${opacity});`;
+    ? `filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity}));`
+    : `box-shadow: inset ${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity});`;
 };

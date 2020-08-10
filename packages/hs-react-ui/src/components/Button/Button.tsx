@@ -88,7 +88,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { transparent, background, grayDark } = useColors();
+    const { transparent, background, grayDark, shadow } = useColors();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
 
@@ -103,7 +103,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         outline ${timings.slow},
         filter ${timings.slow};
       transition: box-shadow ${timings.slow}, filter ${timings.slow};
-      ${getShadowStyle(elevation)}
+      ${getShadowStyle(elevation, shadow)}
       outline: 0 none;
       border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
       cursor: pointer;

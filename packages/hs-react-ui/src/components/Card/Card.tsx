@@ -8,7 +8,7 @@ import { getShadowStyle } from '../../utils/styles';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
-    const { grayXlight, background } = useColors();
+    const { grayXlight, background, shadow } = useColors();
     return `
       display: inline-flex;
       flex-flow: column nowrap;
@@ -16,7 +16,7 @@ export const CardContainer = styled(Div)`
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${grayXlight}` : '0px solid transparent'};
       transition: box-shadow ${timings.slow}, filter ${timings.slow}, border ${timings.slow};
-      ${getShadowStyle(elevation)}
+      ${getShadowStyle(elevation, shadow)}
       background-color: ${background};
   `;
   }}

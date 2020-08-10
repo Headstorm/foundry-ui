@@ -11,10 +11,10 @@ import { getShadowStyle } from '../../utils/styles';
 import { useColors } from '../../context';
 
 const Container = styled(Div)`
-  ${({ elevation, isOpen }) => `
+  ${({ elevation, isOpen, shadowColor }) => `
     width: fit-content;
     transition: box-shadow ${timings.slow}, filter ${timings.slow};
-    ${getShadowStyle(elevation)}
+    ${getShadowStyle(elevation, shadowColor)}
     position: relative;
     z-index: ${isOpen ? '7' : '1'};
   `}
@@ -286,6 +286,7 @@ const Dropdown = ({
       elevation={elevation}
       isOpen={state.isOpen}
       id={`${state.id}-valueContainer`}
+      shadowColor={colors.shadow}
       name={name}
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {
