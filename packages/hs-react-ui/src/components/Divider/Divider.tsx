@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import { Div, HR } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 
 export const DefaultDivider = styled(HR)`
@@ -26,6 +27,9 @@ export const DefaultDividerContainer = styled(Div)`
 export interface DividerProps {
   StyledDivider?: StyledComponentBase<any, {}>;
   StyledDividerContainer?: StyledComponentBase<any, {}>;
+  dividerProps?: SubcomponentPropsType;
+  dividerContainerProps?: SubcomponentPropsType;
+
   width?: string;
   height?: string;
 }
@@ -33,11 +37,13 @@ export interface DividerProps {
 const Divider = ({
   StyledDivider = DefaultDivider,
   StyledDividerContainer = DefaultDividerContainer,
+  dividerProps = {},
+  dividerContainerProps = {},
   width = '90%',
   height = '1px',
 }: DividerProps) => (
-  <StyledDividerContainer data-test-id="hsui-Divider">
-    <StyledDivider width={width} height={height} />
+  <StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps}>
+    <StyledDivider width={width} height={height} {...dividerProps} />
   </StyledDividerContainer>
 );
 

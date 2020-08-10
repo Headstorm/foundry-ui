@@ -7,8 +7,8 @@ import { readableColor, darken } from 'polished';
 import timings from '../../enums/timings';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { getShadowStyle } from '../../utils/styles';
-import { useColors } from '../../context';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -31,7 +31,7 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  containerProps?: object;
+  containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
@@ -42,7 +42,10 @@ export type ButtonProps = {
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
+  onMouseDown?: (e: React.MouseEvent) => void;
+  onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
+  id?: string;
 };
 
 /**
@@ -160,7 +163,10 @@ const Button = ({
   type = ButtonTypes.button,
   color,
   onClick,
+  onMouseDown = () => {},
+  onMouseUp = () => {},
   LoadingBar = StyledProgress,
+  id,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { grayLight } = useColors();
@@ -169,7 +175,10 @@ const Button = ({
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
+      id={id}
       onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       elevation={elevation}
       color={containerColor}
       variant={variant}
@@ -181,7 +190,10 @@ const Button = ({
   ) : (
     <StyledContainer
       data-test-id="hsui-button"
+      id={id}
       onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       elevation={elevation}
       color={containerColor}
       variant={variant}

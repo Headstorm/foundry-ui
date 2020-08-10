@@ -3,6 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 
 export const DefaultStyledLabel = styled(LabelElement)`
@@ -28,6 +29,16 @@ const DefaultStyledIconContainer = styled(Span)`
 `;
 
 export interface LabelProps {
+  StyledLabelContainer?: string & StyledComponentBase<any, {}>;
+  StyledTextContainer?: string & StyledComponentBase<any, {}>;
+  StyledLabel?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+
+  labelContainerProps?: SubcomponentPropsType;
+  textContainerProps?: SubcomponentPropsType;
+  labelProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
+
   labelText?: string;
   color?: string;
   isValid?: boolean;
@@ -36,18 +47,19 @@ export interface LabelProps {
   htmlFor?: string;
   isRequired?: boolean;
   children?: React.ReactNode;
-  StyledLabelContainer?: string & StyledComponentBase<any, {}>;
-  StyledTextContainer?: string & StyledComponentBase<any, {}>;
-  StyledLabel?: string & StyledComponentBase<any, {}>;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
 }
 
 const Label = ({
-  labelText,
   StyledLabelContainer = DefaultStyledLabelContainer,
   StyledTextContainer = DefaultStyledTextContainer,
   StyledLabel = DefaultStyledLabel,
   StyledIconContainer = DefaultStyledIconContainer,
+  labelContainerProps = {},
+  textContainerProps = {},
+  labelProps = {},
+  iconContainerProps = {},
+
+  labelText,
   color,
   isValid,
   colorValid,
@@ -72,12 +84,12 @@ const Label = ({
   }
 
   return (
-    <StyledLabelContainer>
-      <StyledTextContainer>
-        <StyledLabel htmlFor={htmlFor} color={shownColor}>
+    <StyledLabelContainer {...labelContainerProps}>
+      <StyledTextContainer {...textContainerProps}>
+        <StyledLabel htmlFor={htmlFor} color={shownColor} {...labelProps}>
           {labelText}
         </StyledLabel>
-        <StyledIconContainer>
+        <StyledIconContainer {...iconContainerProps}>
           <Icon path={shownIcon} size=".75rem" color={shownColor} />
         </StyledIconContainer>
       </StyledTextContainer>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
@@ -6,9 +6,23 @@ import { readableColor } from 'polished';
 
 import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
-import { getShadowStyle } from '../../utils/styles';
-import { useColors } from '../../context';
+import { Div, Span } from '../../htmlElements';
+import Text from '../Text/Text';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
+
+export type OptionProps = {
+  id: number | string;
+  optionValue: ReactNode;
+  isSelected?: boolean;
+};
+
+type UsefulDropdownState = {
+  color: string;
+  multi?: boolean;
+  selected?: boolean;
+  variant?: variants;
+};
 
 const Container = styled(Div)`
   ${({ elevation, isOpen, shadowColor }) => `
@@ -84,15 +98,12 @@ const OptionItem = styled(Div)`
       padding: 0.5rem;
       display: flex;
       align-items: center;
+      justify-content: center;
 
-      &:hover {
-        background: ${grayDark50};
-        cursor: pointer;
-        outline: none;
-      }
-      &:focus {
-        outline: none;
-      }`;
+      color: ${getFontColorFromVariant('fill', tint(0.5, color || grayMedium))};
+      padding-right: 0.2rem;
+      width: 2rem;
+    `;
   }}
 `;
 const CheckContainer = styled(Div)`
@@ -110,6 +121,16 @@ export interface DropdownProps {
   StyledValueItem?: string & StyledComponentBase<any, {}>;
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
+  StyledCheckContainer?: string & StyledComponentBase<any, {}>;
+  StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
+
+  containerProps?: SubcomponentPropsType;
+  valueContainerProps?: SubcomponentPropsType;
+  valueItemProps?: SubcomponentPropsType;
+  optionsContainerProps?: SubcomponentPropsType;
+  optionItemProps?: SubcomponentPropsType;
+  checkContainerProps?: SubcomponentPropsType;
+  placeholderProps?: SubcomponentPropsType;
 
   clearable?: boolean;
   color?: string;
@@ -146,14 +167,20 @@ const Dropdown = ({
   type = Button.ButtonVariants.fill,
   values = [],
 }: DropdownProps): JSX.Element | null => {
-  const [state, setState] = useState<{
-    isOpen: boolean;
-    selectedValues: Array<string>;
-    id: string;
-  }>({
-    isOpen: false,
-    selectedValues: values,
-    id: name,
+  const colors = useColors();
+  const defaultedColor = color || colors.grayDark;
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Merge the default styled container prop and the placeholderProps object to get user styles
+  const placeholderMergedProps = {
+    StyledContainer: PlaceholderContainer,
+    ...placeholderProps,
+  };
+
+  const optionsHash: { [key: string]: OptionProps } = {};
+  options.forEach(option => {
+    optionsHash[option.id] = { ...option, isSelected: values.includes(option.id) };
   });
   const colors = useColors();
 
@@ -200,16 +227,28 @@ const Dropdown = ({
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
-      e.stopPropagation();
-      setState(curState => ({
-        ...curState,
-        selectedValues: [],
-      }));
+      e.nativeEvent.stopImmediatePropagation();
+      onSelect(multi ? [] : undefined);
       if (onClear) {
         onClear();
       }
     },
     [onClear],
+  );
+
+  // clickHandler will be used in onMouseDown to prevent the focus event
+  // opening the dropdown and the click closing it
+  const clickHandler = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+      setIsOpen(!isOpen);
+      if (containerRef && containerRef.current) {
+        // Focus the container even when clicking
+        containerRef.current.focus();
+      }
+    },
+    [containerRef, isOpen, setIsOpen],
   );
 
   const keyDownHandler = useCallback(
@@ -293,6 +332,7 @@ const Dropdown = ({
         e.preventDefault();
         setState(curState => ({ ...curState, isOpen: true }));
       }}
+      ref={containerRef}
       tabIndex={tabIndex}
     >
       <Button
@@ -300,12 +340,34 @@ const Dropdown = ({
         containerProps={{
           modalIsOpen: state.isOpen,
         }}
-        color={color}
+        id={`${name}-button-value`}
+        color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
-        variant={type}
+        onMouseDown={clickHandler}
+        variant={variant}
+        {...valueContainerProps}
       >
-        <StyledValueItem>
-          {((values.length && values) || state.selectedValues).join(', ')}
+        <StyledValueItem
+          {...valueItemProps}
+          onMouseDown={clickHandler}
+          onBlur={handleBlur}
+          id={`${name}-value-item`}
+        >
+          {values
+            .filter(val => val !== undefined && optionsHash[val] !== undefined)
+            .map((val, i) =>
+              optionsHash[val] !== undefined ? (
+                <span key={val}>
+                  {i !== 0 && ', '}
+                  {optionsHash[val].optionValue}
+                </span>
+              ) : (
+                undefined
+              ),
+            )}
+          {(!values || !values.length) && (
+            <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
+          )}
         </StyledValueItem>
         {closeIcons}
       </Button>

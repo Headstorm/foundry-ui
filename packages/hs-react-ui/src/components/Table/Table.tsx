@@ -1,78 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { mdiArrowDown, mdiChevronRight, mdiChevronDown, mdiChevronUp } from '@mdi/js';
+import { mdiArrowDown, mdiChevronDown, mdiChevronRight, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
 import { Span, Table as TableElement, TD, TH, TR } from '../../htmlElements';
+import {
+  CellOptions,
+  columnTypes,
+  InternalExpansionIconProps,
+  RowProps,
+  TableProps,
+} from './types';
 import { useColors } from '../../context';
 
-/* Types and Interfaces */
-export type CellOptions = {
-  RenderedCell: any;
-  headerColumnKey: string;
-  breakPointHit: boolean;
-  row: columnTypes;
-  index: number;
-  indexModifier?: number;
-  CollapseExpandedIcon?: any;
-  groupIndex?: number;
-  isCollapsed?: boolean;
-  groupLabelDataString?: string;
-};
-
-export type ExpansionIconProps = {
-  isCollapsed: boolean;
-  onClick: any;
-};
-
-type InternalExpansionIconProps = {
-  isCollapsed: boolean;
-  groupHeaderPosition: 'above' | 'below';
-  onClick: any;
-};
-
-export interface columnTypes {
-  [index: string]: {
-    name?: string;
-    width?: string;
-    minTableWidth?: number;
-    sortable?: boolean;
-    sortFunction?: Function;
-    isGroupLabel?: boolean;
-    cellComponent?: any;
-    rowComponent?: any;
-    headerCellComponent?: any;
-    groupCellComponent?: any;
-  };
-}
-
-export type TableProps = {
-  areGroupsCollapsible?: boolean;
-  columnGap?: string;
-  columns: columnTypes;
-  data?: columnTypes[] | Array<Array<columnTypes>>;
-  defaultSort?: [string, boolean]; // key, direction
-  groupHeaderPosition?: 'above' | 'below';
-  expansionIconComponent?: React.FunctionComponent<InternalExpansionIconProps>;
-  minWidthBreakpoint?: number;
-  sortGroups?: boolean;
-  StyledCell?: string & StyledComponentBase<any, {}>;
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledGroupLabelRow?: string & StyledComponentBase<any, {}>;
-  StyledHeader?: string & StyledComponentBase<any, {}>;
-  StyledHeaderCell?: string & StyledComponentBase<any, {}>;
-  StyledRow?: string & StyledComponentBase<any, {}>;
-};
-
-export type RowProps = {
-  columnGap: string;
-  columnWidths: string;
-  rowNum?: number;
-  reachedMinWidth?: boolean;
-  isCollapsed?: boolean;
-};
-
-type collapsedState = { [key: string]: string };
+type collapsedState = Record<string, string>;
 
 /** Start of styled components */
 
@@ -259,12 +200,19 @@ const Table = ({
   expansionIconComponent,
   minWidthBreakpoint = 640,
   sortGroups = false,
+
   StyledCell = Cell,
   StyledContainer = TableContainer,
   StyledGroupLabelRow = GroupRow,
   StyledHeader = Header,
   StyledHeaderCell = HeaderCell,
   StyledRow = Row,
+  cellProps = {},
+  containerProps = {},
+  groupLabelRowProps = {},
+  headerProps = {},
+  headerCellProps = {},
+  rowProps = {},
 }: TableProps) => {
   const [sortedData, sortData] = useState(data);
   const [sortMethod, setSortMethod] = useState(defaultSort);
@@ -386,7 +334,7 @@ const Table = ({
    * @param {number} options.groupIndex - The index of the group. Used only when creating cells as part of a group
    * @param {boolean} options.isCollapsed - Used when creating cells with a CollapseExpandedIcon
    * @param {string} options.groupLabelDataString - The stringified version of the group label row
-   *
+   * @param {any} options.cellProps - Props to pass through to RenderedCell
    */
   const createCell = ({
     RenderedCell,
@@ -399,6 +347,7 @@ const Table = ({
     groupIndex,
     isCollapsed = false,
     groupLabelDataString,
+    cellProps: cellPropsInput,
   }: CellOptions): JSX.Element | false => {
     return (
       (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) && (
@@ -409,13 +358,14 @@ const Table = ({
           groupIndex={groupIndex}
           reachedMinWidth={width < minWidthBreakpoint}
           key={`${headerColumnKey}${index + indexModifier}`}
+          {...cellPropsInput}
         >
           {width < minWidthBreakpoint && (
             <ResponsiveTitle
               onClick={() => {
                 onSort(headerColumnKey, headerColumnKey === sortMethod[0] ? !sortMethod[1] : true);
               }}
-              sortable={copiedColumns[headerColumnKey].sortable !== false}
+              sortable={copiedColumns[headerColumnKey].sortable}
             >
               {copiedColumns[headerColumnKey].name}
               <SortIcon
@@ -482,6 +432,7 @@ const Table = ({
               key={`row${JSON.stringify(row) + index}`}
               reachedMinWidth={width < minWidthBreakpoint}
               isCollapsed={areGroupsCollapsible && isCollapsed}
+              {...rowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = copiedColumns[headerColumnKey].cellComponent || StyledCell;
@@ -527,6 +478,7 @@ const Table = ({
               rowNum={index}
               key={`row${groupLabelDataString}`}
               reachedMinWidth={width < minWidthBreakpoint}
+              {...groupLabelRowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = usingGroups
@@ -547,6 +499,7 @@ const Table = ({
                   groupIndex: idx,
                   CollapseExpandedIcon,
                   isCollapsed,
+                  cellProps,
                 };
                 // Create each cell for the row
                 return (
@@ -611,10 +564,10 @@ const Table = ({
 
   // Table return
   return (
-    <StyledContainer ref={ref} reachedMinWidth={width < minWidthBreakpoint}>
+    <StyledContainer ref={ref} reachedMinWidth={width < minWidthBreakpoint} {...containerProps}>
       <thead>
         {width > minWidthBreakpoint && (
-          <StyledHeader columnGap={columnGap} columnWidths={columnWidths}>
+          <StyledHeader columnGap={columnGap} columnWidths={columnWidths} {...headerProps}>
             {Object.keys(copiedColumns).map((headerColumnKey: string) => {
               const RenderedHeaderCell =
                 copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
@@ -631,7 +584,8 @@ const Table = ({
                         headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
                       );
                     }}
-                    sortable={copiedColumns[headerColumnKey].sortable !== false}
+                    sortable={copiedColumns[headerColumnKey].sortable}
+                    {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}
                     <SortIcon

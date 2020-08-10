@@ -1,26 +1,28 @@
-export type valueProp = {
+import { SubcomponentPropsType } from '../commonTypes';
+
+export type ValueProp = {
   value: number;
   label?: string | number | Node;
   color?: string;
 };
 
-export type containerProps = {
+export type ContainerProps = {
   showDomainLabels?: boolean;
   hasHandleLabels?: boolean;
   disabled: boolean;
   beingDragged: boolean;
 };
 
-export type handleProps = {
+export type HandleProps = {
   beingDragged?: boolean;
   color: string;
 };
 
-export type handleLabelProps = { velocity?: number };
+export type HandleLabelProps = { velocity?: number };
 
-export type selectedRangeProps = { min: number; max: number; selectedRange: number[] };
+export type SelectedRangeProps = { min: number; max: number; selectedRange: number[] };
 
-export type domainLabelProps = { position: 'left' | 'right' };
+export type DomainLabelProps = { position: 'left' | 'right' };
 
 export type RangeSliderProps = {
   StyledContainer?: any;
@@ -29,6 +31,12 @@ export type RangeSliderProps = {
   StyledSlideRail?: any;
   StyledSelectedRangeRail?: any;
   StyledDomainLabel?: any;
+  containerProps?: SubcomponentPropsType;
+  dragHandleProps?: SubcomponentPropsType;
+  handleLabelProps?: SubcomponentPropsType;
+  slideRailProps?: SubcomponentPropsType;
+  selectedRangeRailProps?: SubcomponentPropsType;
+  domainLabelProps?: SubcomponentPropsType;
 
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;
@@ -41,6 +49,6 @@ export type RangeSliderProps = {
   disabled?: boolean;
   min: number;
   max: number;
-  values?: number[] | valueProp[];
+  values?: number[] | ValueProp[];
   testId?: string;
 };
