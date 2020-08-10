@@ -9,7 +9,11 @@ import { useColors } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import {
+  getFontColorFromVariant,
+  getBackgroundColorFromVariant,
+  disabledStyles,
+} from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 
 export type ButtonContainerProps = {
@@ -17,6 +21,7 @@ export type ButtonContainerProps = {
   color: string;
   variant: variants;
   type: string;
+  disabled: boolean;
 };
 
 export enum ButtonTypes {
@@ -37,6 +42,7 @@ export type ButtonProps = {
   variant?: variants;
   type?: ButtonTypes;
   color?: string;
+  disabled?: boolean;
   onClick: (...args: any[]) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
@@ -47,7 +53,7 @@ export type ButtonProps = {
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
   ButtonElement,
 )`
-  ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
+  ${({ disabled, elevation = 0, color, variant }: ButtonContainerProps) => {
     const { transparent, background, grayDark } = useColors();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
@@ -72,6 +78,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       background-color: ${backgroundColor};
       color: ${fontColor};
       align-items: center;
+      ${disabled ? disabledStyles() : ''}
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
@@ -121,6 +128,7 @@ const Button = ({
   variant = variants.fill,
   type = ButtonTypes.button,
   color,
+  disabled = false,
   onClick,
   onMouseDown = () => {},
   onMouseUp = () => {},
@@ -130,35 +138,25 @@ const Button = ({
   const hasContent = Boolean(children);
   const { grayLight } = useColors();
   const containerColor = color || grayLight;
+  const props = {
+    'data-test-id': 'hsui-button',
+    id,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    elevation,
+    color: containerColor,
+    variant,
+    type,
+    disabled,
+  };
 
   return isLoading ? (
-    <StyledContainer
-      data-test-id="hsui-button"
-      id={id}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      elevation={elevation}
-      color={containerColor}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    >
+    <StyledContainer {...props}>
       <LoadingBar />
     </StyledContainer>
   ) : (
-    <StyledContainer
-      data-test-id="hsui-button"
-      id={id}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      elevation={elevation}
-      color={containerColor}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    >
+    <StyledContainer {...props}>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (

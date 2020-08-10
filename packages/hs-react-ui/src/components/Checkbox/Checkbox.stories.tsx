@@ -19,6 +19,7 @@ storiesOf('Checkbox', module).add(
       <Checkbox
         checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
         checked={checked}
+        disabled={boolean('disabled', false)}
         onClick={() => setChecked(!checked)}
         variant={select('variant', variants, variants.outline)}
       >

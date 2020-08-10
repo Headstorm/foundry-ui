@@ -8,6 +8,7 @@ import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 import variants from '../../enums/variants';
 import { darken } from 'polished';
+import { disabledStyles } from '../../utils/color';
 
 export enum CheckboxTypes {
   fill = 'fill',
@@ -33,7 +34,7 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
 `;
 
 export const Label = styled(LabelElement)`
-  ${() => {
+  ${({ disabled }) => {
     const { grayXlight } = useColors();
     return `
       display: flex;
@@ -45,6 +46,7 @@ export const Label = styled(LabelElement)`
       ${Input}:focus + & {
         box-shadow: 0 0 0 3px ${grayXlight};
       }
+      ${disabled ? disabledStyles() : ''}
     `;
   }}
 `;
@@ -148,6 +150,7 @@ export interface CheckboxProps {
   variant?: variants;
   children?: React.ReactNode;
   checked?: boolean;
+  disabled?: boolean;
   onClick: (event: React.MouseEvent) => void;
 }
 
@@ -184,13 +187,13 @@ const Checkbox = ({
   variant = variants.fill,
   checked = false,
   children,
-
+  disabled = false,
   onClick,
 }: CheckboxProps) => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
   return (
-    <StyledLabel data-test-id="hsui-Checkbox" {...labelProps}>
+    <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" {...labelProps}>
       <StyledCheckboxContainer {...checkboxContainerProps}>
         <StyledBox checkboxType={checkboxType} checked={checked} variant={variant} {...boxProps}>
           {checked ? (
