@@ -21,12 +21,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org"
-      - name: Run Prepare
+      - name: Prepare
         run: npm install
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Run Lint React
+      - name: Lint React
         run: npm run lint-react
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -36,7 +36,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Run Build React
+      - name: Build React
         run: npm run build-react
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
