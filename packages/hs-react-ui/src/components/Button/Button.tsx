@@ -2,25 +2,22 @@ import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
-import { readableColor, darken } from 'polished';
+import { darken } from 'polished';
 
 import timings from '../../enums/timings';
+import { useColors } from '../../context';
+import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { useColors } from '../../context';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
-  variant: string;
+  variant: variants;
   type: string;
 };
-
-export enum ButtonVariants {
-  fill = 'fill',
-  text = 'text',
-  outline = 'outline',
-}
 
 export enum ButtonTypes {
   button = 'button',
@@ -30,57 +27,21 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  containerProps?: object;
+  containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
   isProcessing?: boolean;
   children?: ReactNode;
   elevation?: number;
-  variant?: ButtonVariants;
+  variant?: variants;
   type?: ButtonTypes;
   color?: string;
   onClick: (...args: any[]) => void;
+  onMouseDown?: (e: React.MouseEvent) => void;
+  onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
-};
-
-/**
- * Get the appropriate font color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- * @param {string} lightReturnColor - The color to return if the color is too dark
- * @param {string} darkReturnColor - The color to return if the color is too dark
- */
-export const getFontColorFromVariant = (
-  variant: string,
-  color: string,
-  lightReturnColor: string,
-  darkReturnColor: string,
-) => {
-  if (variant === 'fill') {
-    return readableColor(color, lightReturnColor, darkReturnColor, true);
-  }
-  return color;
-};
-
-/**
- * Get the appropriate background color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- * @param {string} [transparentColor] - The color to use for a transparent background
- */
-export const getBackgroundColorFromVariant = (
-  variant: string,
-  color: string,
-  transparentColor: string,
-) => {
-  switch (variant) {
-    case ButtonVariants.text:
-    case ButtonVariants.outline:
-      return transparentColor || 'transparent';
-    default:
-      return color;
-  }
+  id?: string;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -92,7 +53,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
     const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
     const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
+    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
 
     return `
       display: inline-flex;
@@ -106,7 +67,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         filter ${timings.slow};
       filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
       outline: 0 none;
-      border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
+      border: ${variant === variants.outline ? `1px solid ${color || grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -157,11 +118,14 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  variant = ButtonVariants.fill,
+  variant = variants.fill,
   type = ButtonTypes.button,
   color,
   onClick,
+  onMouseDown = () => {},
+  onMouseUp = () => {},
   LoadingBar = StyledProgress,
+  id,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { grayLight } = useColors();
@@ -170,7 +134,10 @@ const Button = ({
   return isLoading ? (
     <StyledContainer
       data-test-id="hsui-button"
+      id={id}
       onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       elevation={elevation}
       color={containerColor}
       variant={variant}
@@ -182,7 +149,10 @@ const Button = ({
   ) : (
     <StyledContainer
       data-test-id="hsui-button"
+      id={id}
       onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       elevation={elevation}
       color={containerColor}
       variant={variant}
@@ -218,7 +188,6 @@ const Button = ({
 };
 
 Button.Container = ButtonContainer;
-Button.ButtonVariants = ButtonVariants;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;

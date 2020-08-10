@@ -11,18 +11,18 @@ import fonts from '../../enums/fonts';
 import { clamp } from '../../utils/math';
 
 import {
-  valueProp,
-  containerProps,
-  handleProps,
-  handleLabelProps,
+  ValueProp,
+  ContainerProps,
+  HandleProps,
+  HandleLabelProps,
   RangeSliderProps,
-  selectedRangeProps,
-  domainLabelProps,
+  SelectedRangeProps,
+  DomainLabelProps,
 } from './types';
 import { useColors } from '../../context';
 
 export const Container = styled.div`
-  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: containerProps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
@@ -65,7 +65,7 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color }: handleProps) => {
+  ${({ beingDragged = false, color }: HandleProps) => {
     const { primary, background } = useColors();
     const handleColor = color || primary;
     return `
@@ -89,7 +89,7 @@ export const DragHandle = styled(a.div)`
 `;
 
 export const HandleLabel = styled.div`
-  ${({ velocity = 0 }: handleLabelProps) => {
+  ${({ velocity = 0 }: HandleLabelProps) => {
     const { background } = useColors();
     return `
       position: absolute;
@@ -127,7 +127,7 @@ export const SlideRail = styled.div`
 `;
 
 export const SelectedRangeRail = styled.div`
-  ${({ min, max, selectedRange }: selectedRangeProps) => {
+  ${({ min, max, selectedRange }: SelectedRangeProps) => {
     const { primary } = useColors();
     return `
       position: absolute;
@@ -144,7 +144,7 @@ export const SelectedRangeRail = styled.div`
 `;
 
 export const DomainLabel = styled.div`
-  ${({ position }: domainLabelProps) => {
+  ${({ position }: DomainLabelProps) => {
     const { grayMedium } = useColors();
     return `
       position: absolute;
@@ -163,6 +163,12 @@ export default ({
   StyledSlideRail = SlideRail,
   StyledSelectedRangeRail = SelectedRangeRail,
   StyledDomainLabel = DomainLabel,
+  containerProps = {},
+  dragHandleProps = {},
+  handleLabelProps = {},
+  slideRailProps = {},
+  selectedRangeRailProps = {},
+  domainLabelProps = {},
 
   showDomainLabels = true,
   showSelectedRange = true,
@@ -186,7 +192,7 @@ export default ({
   const processedValues = values
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore This expression is not callable.
-      values.map((val: number | valueProp) => {
+      values.map((val: number | ValueProp) => {
         if (typeof val === 'number') {
           return { value: val, label: null };
         }
@@ -198,10 +204,10 @@ export default ({
     : [];
   const selectedRange = [
     Math.min(
-      ...processedValues.map((val: valueProp) => val.value),
+      ...processedValues.map((val: ValueProp) => val.value),
       showSelectedRange && values && values.length === 1 ? min : Infinity,
     ),
-    Math.max(...processedValues.map((val: valueProp) => val.value)),
+    Math.max(...processedValues.map((val: ValueProp) => val.value)),
   ];
 
   const domain = max - min;
@@ -218,7 +224,7 @@ export default ({
   // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
   const pixelPositions = processedValues.map(
-    (val: valueProp) => (val.value / domain) * sliderBounds.width,
+    (val: ValueProp) => (val.value / domain) * sliderBounds.width,
   );
 
   // get the x offset and an animation setter function
@@ -283,26 +289,32 @@ export default ({
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
       showDomainLabels={showDomainLabels}
+      {...containerProps}
     >
-      <StyledSlideRail ref={ref}>
+      <StyledSlideRail ref={ref} {...slideRailProps}>
         {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
+            {...selectedRangeRailProps}
           />
         )}
       </StyledSlideRail>
 
       {showDomainLabels && (
         <>
-          <StyledDomainLabel position="left">{min}</StyledDomainLabel>
-          <StyledDomainLabel position="right">{max}</StyledDomainLabel>
+          <StyledDomainLabel position="left" {...domainLabelProps}>
+            {min}
+          </StyledDomainLabel>
+          <StyledDomainLabel position="right" {...domainLabelProps}>
+            {max}
+          </StyledDomainLabel>
         </>
       )}
 
-      {processedValues.map(({ value, label, color }: valueProp, i: number) => (
+      {processedValues.map(({ value, label, color }: ValueProp, i: number) => (
         <StyledDragHandle
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...bind()}
@@ -311,8 +323,11 @@ export default ({
           style={{ x, y }}
           color={color}
           key={`handle${i}`}
+          {...dragHandleProps}
         >
-          <StyledHandleLabel value={value}>{label}</StyledHandleLabel>
+          <StyledHandleLabel value={value} {...handleLabelProps}>
+            {label}
+          </StyledHandleLabel>
         </StyledDragHandle>
       ))}
 

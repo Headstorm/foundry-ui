@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 
 const Container = styled(Div)`
@@ -23,7 +24,7 @@ const Container = styled(Div)`
 
 const TextInputContainer = styled(InputElement)`
   ${() => {
-    const { background } = useColors();
+    const { transparent } = useColors();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -31,14 +32,14 @@ const TextInputContainer = styled(InputElement)`
       height: 2em;
       font-size: 1em;
       padding: 0.5rem;
-      background-color: ${background};
+      background-color: ${transparent};
   `;
   }}
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
   ${({ multiLineIsResizable }: TextInputProps) => {
-    const { background } = useColors();
+    const { transparent } = useColors();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -47,7 +48,7 @@ const TextAreaInputContainer = styled(TextArea)`
       min-height: 2em;
       min-width: 0px;
       padding: .5rem;
-      background-color: ${background};
+      background-color: ${transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
     `;
   }}
@@ -105,9 +106,15 @@ export type TextInputProps = {
   type?: string;
   debounceInterval?: number;
   multiLineIsResizable?: boolean;
+
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledErrorContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropsType;
+  inputProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
+  errorContainerProps?: SubcomponentPropsType;
 };
 
 const createIcon = (
@@ -150,11 +157,16 @@ const TextInput = ({
   errorMessage,
   ariaLabel,
   type = 'text',
+  debounceInterval = 8,
+  multiLineIsResizable,
   StyledContainer = Container,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
-  debounceInterval = 8,
-  multiLineIsResizable,
+  StyledErrorContainer = ErrorContainer,
+  containerProps = {},
+  inputProps = {},
+  iconContainerProps = {},
+  errorContainerProps = {},
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
@@ -169,7 +181,7 @@ const TextInput = ({
   }
 
   return (
-    <StyledContainer isValid={isValid}>
+    <StyledContainer isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       {/*
         // @ts-ignore */}
@@ -194,18 +206,22 @@ const TextInput = ({
         id={id}
         type={type}
         multiLineIsResizable={multiLineIsResizable}
+        {...inputProps}
       />
       {onClear && (
-        <StyledIconContainer onClick={onClear}>
+        <StyledIconContainer onClick={onClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
-      {isValid === false && errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+      {isValid === false && errorMessage && (
+        <StyledErrorContainer {...errorContainerProps}>{errorMessage}</StyledErrorContainer>
+      )}
     </StyledContainer>
   );
 };
 
 TextInput.Container = Container;
+TextInput.ErrorContainer = ErrorContainer;
 TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
 TextInput.TextArea = TextAreaInputContainer;

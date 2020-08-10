@@ -7,8 +7,9 @@ import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company, commerce } from 'faker';
 
-import Table, { RowProps, columnTypes, ExpansionIconProps, ExpansionIconColumnName } from './Table';
+import Table, { ExpansionIconColumnName } from './Table';
 import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
+import { columnTypes, ExpansionIconProps, RowProps } from './types';
 
 type SampleDataType = {
   name?: string;
