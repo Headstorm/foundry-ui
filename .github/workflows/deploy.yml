@@ -1,4 +1,4 @@
-# This workflow will build and package the nodejs service and deploy to AWS via Beanstalk
+# This workflow will build and package the nodejs service and deploy
 
 name: Foundry UI CI/CD
 
