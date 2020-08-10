@@ -40,20 +40,22 @@ For example, the Card component has 4 (at the time of writing) styled-components
 
 # Contributing
 
-Pick a ticket from the `Priority to do` swim-lane of the [project board](https://github.com/Headstorm/rasa-ui/projects/1). **Fork and clone** the repository and create a branch for your ticket, with the ticket number prefixing the name of the ticket (i.e. `4-publish-package-to-npm`). When making commits, be sure to prefix your commit messages with the ticket number, like so: `#4 Updating package.json to make the package public`. Once you've made a commit it should automatically be moved to the `In progress` swim-lane, and then moved to `Needs review` once a PR is made.
+Pick a ticket from the `Priority to do` swim-lane of the [project board](https://github.com/Headstorm/rasa-ui/projects/1). **Fork and clone** the repository and create a branch for your ticket, with the ticket number prefixing the name of the ticket (i.e. `4-publish-package-to-npm`). When making commits, be sure to prefix your commit messages with the ticket number, like so: `#4 Updating package.json to make the package public`. Once you've made a commit it should automatically be moved to the `In progress` swim-lane, and then moved to `Needs review` once a PR is made. For commits to be included in the changelog you muse use formatted commit messages. We've made this easier to do by adding a script for committing messages, simply use `npm run commit` or `yarn commit` to create your changelog commits.
 
 ## Notes on architecture
-We use custom HTML elements in place of the built in styled-components elements.
- These elements have a set of sensible default styles that we wish to apply to all elements. This means:
-```jsx
-    // don't do this    
-    import styled from 'styled-components';
-    const MyContainer = styled.div`styles`;
 
-    // do this
-    import styled from 'styled-components'
-    import { Div } from 'path/to/htmlElements';
-    const MyContainer = styled(Div)`styles here`;
+We use custom HTML elements in place of the built in styled-components elements.
+These elements have a set of sensible default styles that we wish to apply to all elements. This means:
+
+```jsx
+// don't do this
+import styled from 'styled-components';
+const MyContainer = styled.div`styles`;
+
+// do this
+import styled from 'styled-components';
+import { Div } from 'path/to/htmlElements';
+const MyContainer = styled(Div)`styles here`;
 ```
 
 ## Creating new components
@@ -61,4 +63,3 @@ We use custom HTML elements in place of the built in styled-components elements.
 ### Enabling Theming
 
 Theming is enabled through props of each component. When building a new component, or adding a styled-component to an existing component, ensure that there is a matching prop to accept an override, and that styled-component is a named export from the component. See the [Card component](https://github.com/Headstorm/rasa-ui/tree/master/packages/hs-react-ui/src/components/Card) as an example.
-

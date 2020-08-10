@@ -10,11 +10,15 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: npm install
+            - run: npm run lint-react
             - run: npm run test-react
             - run: npm run build-react
             - run: npm run build-docs
             - store_artifacts:
                 path: coverage
+            - store_artifacts:
+                path: ../../docs
 
 workflows:
   PR-Merge:

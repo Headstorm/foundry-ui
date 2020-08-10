@@ -110,9 +110,8 @@
     "styled-components": ">= 5.1.0"
   },
   "scripts": {
-    "build": "yarn run lint-ci && yarn run clean && yarn run webpack && yarn run dts",
-    "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build && yarn run build-storybook",
+    "bundle": "yarn run clean && yarn run webpack && yarn run dts",
+    "predeploy": "cd example && yarn install && yarn run bundle && yarn run build-storybook",
     "start": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -c .storybook -o ../../docs",
     "lint": "eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --fix",
@@ -124,7 +123,7 @@
     "webpack": "webpack --config webpack.config.js",
     "dts": "tsc --declaration --outDir dist/types/ --emitDeclarationOnly --declarationMap --allowJs false --checkJs false",
     "pre-push": "yarn run lint-ci && yarn run test && yarn run clean && yarn run webpack && yarn run dts",
-    "test": "jest --collectCoverage=true",
+    "test": "rm -rf ./coverage/* && jest --collectCoverage=true",
     "semver-dryrun": "npx semantic-release -d --debug",
     "semver-release": "npx semantic-release",
     "commit": "npx git-cz"
@@ -148,7 +147,8 @@
   "release": {
     "branches": [
       "master",
-      "v1-release"
+      "v1-release",
+      "next"
     ],
     "prepare": [
       "@semantic-release/changelog",
@@ -156,8 +156,8 @@
         "path": "@semantic-release/git",
         "assets": [
           "package.json",
-          "package-lock.json",
-          "docs/**",
+          "../../docs/**",
+          "./coverage/**",
           "CHANGELOG.md"
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]nn${nextRelease.notes}"
