@@ -4,7 +4,7 @@ name: Foundry UI CI/CD
 
 on:
   push:
-    branches: [master, v1-release, next, feature/CI]
+    branches: [master, v1-release, next]
 
 jobs:
   build:
