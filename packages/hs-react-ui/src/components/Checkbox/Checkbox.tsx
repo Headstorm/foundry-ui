@@ -178,7 +178,7 @@ const Checkbox = ({
   inputProps = {},
   iconProps = {},
 
-  checkboxType = CheckboxTypes.default,
+  checkboxType = CheckboxTypes.check,
   variant = variants.fill,
   checked = false,
   children,
