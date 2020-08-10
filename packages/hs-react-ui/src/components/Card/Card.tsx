@@ -4,19 +4,19 @@ import styled, { StyledComponentBase } from 'styled-components';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { useColors } from '../../context';
+import { getShadowStyle } from '../../utils/styles';
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
-    const { grayXlight, background } = useColors();
+    const { grayXlight, background, shadow } = useColors();
     return `
       display: inline-flex;
       flex-flow: column nowrap;
       font-size: 1rem;
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${grayXlight}` : '0px solid transparent'};
-      transition: box-shadow ${timings.slow}, border ${timings.normal};
-      box-shadow: 0rem ${elevation * 0.25}rem ${elevation * 0.75}rem ${elevation *
-      -0.25}rem rgba(0,0,0,${0.6 - elevation * 0.1});
+      transition: box-shadow ${timings.slow}, filter ${timings.slow}, border ${timings.slow};
+      ${getShadowStyle(elevation, shadow)}
       background-color: ${background};
   `;
   }}
@@ -56,11 +56,11 @@ export const Footer = styled(Div)`
       padding: 1rem 1.5rem;
       display: flex;
       flex-flow: row wrap;
-    
+
       justify-content: flex-end;
-    
+
       color: ${grayLight};
-    
+
       border-radius: 0rem 0rem 0.25rem 0.25rem;
     `;
   }}

@@ -7,22 +7,17 @@ import { readableColor } from 'polished';
 import Button, { ButtonVariants } from '../Button/Button';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
+import { getShadowStyle } from '../../utils/styles';
 import { useColors } from '../../context';
 
 const Container = styled(Div)`
-  ${({ elevation, isOpen }) => {
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = 0.5 - elevation * 0.075;
-
-    return `
-      width: fit-content;
-      transition: filter ${timings.slow};
-      filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
-      position: relative;
-      z-index: ${isOpen ? '7' : '1'};
-    `;
-  }}
+  ${({ elevation, isOpen, shadowColor }) => `
+    width: fit-content;
+    transition: box-shadow ${timings.slow}, filter ${timings.slow};
+    ${getShadowStyle(elevation, shadowColor)}
+    position: relative;
+    z-index: ${isOpen ? '7' : '1'};
+  `}
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
@@ -85,11 +80,11 @@ const OptionsContainer = styled(Div)`
 const OptionItem = styled(Div)`
   ${() => {
     const { grayDark50 } = useColors();
-    return `  
+    return `
       padding: 0.5rem;
       display: flex;
       align-items: center;
-    
+
       &:hover {
         background: ${grayDark50};
         cursor: pointer;
@@ -291,6 +286,7 @@ const Dropdown = ({
       elevation={elevation}
       isOpen={state.isOpen}
       id={`${state.id}-valueContainer`}
+      shadowColor={colors.shadow}
       name={name}
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {
