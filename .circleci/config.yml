@@ -23,4 +23,4 @@ jobs:
 workflows:
   PR-Merge:
     jobs:
-      - setup-and-test:
+      - setup-and-test
