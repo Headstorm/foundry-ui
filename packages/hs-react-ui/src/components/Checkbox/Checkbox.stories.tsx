@@ -3,6 +3,7 @@ import { select, text, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
 import Checkbox, { CheckboxTypes } from './Checkbox';
+import variants from '../../enums/variants';
 
 const design = {
   type: 'figma',
@@ -12,13 +13,14 @@ const design = {
 storiesOf('Checkbox', module).add(
   'Default',
   () => {
-    const [checked, setChecked] = useState(boolean('Checked', false));
+    const [checked, setChecked] = useState(boolean('Checked', true));
 
     return (
       <Checkbox
         checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
         checked={checked}
         onClick={() => setChecked(!checked)}
+        variant={select('variant', variants, variants.outline)}
       >
         {text('Children', 'The label for the checkbox')}
       </Checkbox>

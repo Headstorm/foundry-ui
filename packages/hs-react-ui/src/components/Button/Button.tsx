@@ -11,6 +11,7 @@ import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
+import { getShadowStyle } from '../../utils/styles';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -48,12 +49,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { transparent, background, grayDark } = useColors();
+    const { transparent, background, grayDark, shadow } = useColors();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
 
     return `
       display: inline-flex;
@@ -64,8 +62,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         background-color ${timings.fast},
         color ${timings.slow},
         outline ${timings.slow},
-        filter ${timings.slow};
-      filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
+        filter ${timings.slow},
+        box-shadow ${timings.slow};
+      ${getShadowStyle(elevation, shadow)}
       outline: 0 none;
       border: ${variant === variants.outline ? `1px solid ${color || grayDark}` : '0 none;'};
       cursor: pointer;

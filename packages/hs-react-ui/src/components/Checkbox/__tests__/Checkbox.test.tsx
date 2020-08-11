@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor, configure } from '@testing-library/react';
 
-import Checkbox, { CheckboxTypes } from '../Checkbox';
+import Checkbox from '../Checkbox';
 
 configure({ testIdAttribute: 'data-test-id' });
 

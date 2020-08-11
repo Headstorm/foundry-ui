@@ -12,6 +12,7 @@ import { Div, Span } from '../../htmlElements';
 import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
+import { getShadowStyle } from '../../utils/styles';
 
 export type OptionProps = {
   id: number | string;
@@ -28,14 +29,11 @@ type UsefulDropdownState = {
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
-
+    const { shadow } = useColors();
     return `
       width: fit-content;
-      transition: filter ${timings.slow};
-      filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
+      transition: filter ${timings.slow}, box-shadow ${timings.slow};
+      ${getShadowStyle(elevation, shadow)}
       position: relative;
       z-index: ${isOpen ? '7' : '1'};
     `;

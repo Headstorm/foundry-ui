@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1597165510667" clover="3.2.0">
+  <project timestamp="1597165510668" name="All files">
+    <metrics statements="560" coveredstatements="252" conditionals="591" coveredconditionals="219" methods="142" coveredmethods="51" elements="1293" coveredelements="522" complexity="0" loc="560" ncloc="560" packages="18" files="25" classes="25"/>
+    <package name="src">
+      <metrics statements="39" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <file name="serviceWorker.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/serviceWorker.ts">
+        <metrics statements="39" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="16" coveredmethods="0"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="76" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="107" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="128" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="commonTypes.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/commonTypes.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components.Button">
+      <metrics statements="19" coveredstatements="19" conditionals="38" coveredconditionals="34" methods="6" coveredmethods="4"/>
+      <file name="Button.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Button/Button.tsx">
+        <metrics statements="19" coveredstatements="19" conditionals="38" coveredconditionals="34" methods="6" coveredmethods="4"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="52" count="36" type="stmt"/>
+        <line num="53" count="36" type="stmt"/>
+        <line num="54" count="36" type="stmt"/>
+        <line num="56" count="36" type="stmt"/>
+        <line num="88" count="2" type="stmt"/>
+        <line num="95" count="2" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="100" count="3" type="stmt"/>
+        <line num="105" count="2" type="stmt"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="111" count="2" type="stmt"/>
+        <line num="129" count="36" type="stmt"/>
+        <line num="130" count="36" type="stmt"/>
+        <line num="131" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="133" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="189" count="2" type="stmt"/>
+        <line num="190" count="2" type="stmt"/>
+        <line num="191" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Card">
+      <metrics statements="20" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="Card.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Card/Card.tsx">
+        <metrics statements="20" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Checkbox">
+      <metrics statements="32" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="4"/>
+      <file name="Checkbox.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Checkbox/Checkbox.tsx">
+        <metrics statements="32" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="4"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="4" type="stmt"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="100" count="2" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="111" count="0" type="stmt"/>
+        <line num="140" count="1" type="stmt"/>
+        <line num="148" count="1" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
+        <line num="173" count="4" type="stmt"/>
+        <line num="174" count="4" type="stmt"/>
+        <line num="175" count="4" type="stmt"/>
+        <line num="193" count="1" type="stmt"/>
+        <line num="194" count="1" type="stmt"/>
+        <line num="195" count="1" type="stmt"/>
+        <line num="196" count="1" type="stmt"/>
+        <line num="197" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Divider">
+      <metrics statements="7" coveredstatements="7" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="2"/>
+      <file name="Divider.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Divider/Divider.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Dropdown">
+      <metrics statements="100" coveredstatements="85" conditionals="98" coveredconditionals="70" methods="23" coveredmethods="18"/>
+      <file name="Dropdown.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Dropdown/Dropdown.tsx">
+        <metrics statements="100" coveredstatements="85" conditionals="98" coveredconditionals="70" methods="23" coveredmethods="18"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="25" type="stmt"/>
+        <line num="33" count="25" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="25" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="6" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="101" count="18" type="cond" truecount="1" falsecount="1"/>
+        <line num="102" count="18" type="stmt"/>
+        <line num="103" count="18" type="stmt"/>
+        <line num="130" count="1" type="stmt"/>
+        <line num="132" count="6" type="stmt"/>
+        <line num="133" count="6" type="stmt"/>
+        <line num="145" count="1" type="stmt"/>
+        <line num="182" count="1" type="stmt"/>
+        <line num="212" count="26" type="stmt"/>
+        <line num="213" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="214" count="26" type="stmt"/>
+        <line num="215" count="26" type="stmt"/>
+        <line num="218" count="26" type="stmt"/>
+        <line num="223" count="26" type="stmt"/>
+        <line num="224" count="26" type="stmt"/>
+        <line num="225" count="78" type="stmt"/>
+        <line num="228" count="26" type="stmt"/>
+        <line num="230" count="10" type="stmt"/>
+        <line num="231" count="10" type="stmt"/>
+        <line num="233" count="10" type="cond" truecount="5" falsecount="0"/>
+        <line num="234" count="3" type="stmt"/>
+        <line num="235" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="236" count="0" type="stmt"/>
+        <line num="243" count="26" type="stmt"/>
+        <line num="245" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="246" count="2" type="stmt"/>
+        <line num="247" count="2" type="stmt"/>
+        <line num="249" count="4" type="stmt"/>
+        <line num="250" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="251" count="0" type="stmt"/>
+        <line num="253" count="4" type="stmt"/>
+        <line num="259" count="26" type="stmt"/>
+        <line num="261" count="0" type="stmt"/>
+        <line num="262" count="0" type="stmt"/>
+        <line num="263" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="264" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="265" count="0" type="stmt"/>
+        <line num="273" count="26" type="stmt"/>
+        <line num="275" count="0" type="stmt"/>
+        <line num="276" count="0" type="stmt"/>
+        <line num="277" count="0" type="stmt"/>
+        <line num="278" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="280" count="0" type="stmt"/>
+        <line num="286" count="26" type="stmt"/>
+        <line num="290" count="6" type="stmt"/>
+        <line num="291" count="6" type="stmt"/>
+        <line num="292" count="6" type="cond" truecount="3" falsecount="1"/>
+        <line num="294" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="295" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="296" count="1" type="stmt"/>
+        <line num="298" count="1" type="stmt"/>
+        <line num="300" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="301" count="1" type="stmt"/>
+        <line num="302" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="303" count="1" type="stmt"/>
+        <line num="306" count="1" type="stmt"/>
+        <line num="308" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="309" count="1" type="stmt"/>
+        <line num="310" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="311" count="1" type="stmt"/>
+        <line num="312" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="313" count="1" type="stmt"/>
+        <line num="316" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="317" count="3" type="stmt"/>
+        <line num="318" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="319" count="2" type="stmt"/>
+        <line num="322" count="4" type="stmt"/>
+        <line num="324" count="0" type="stmt"/>
+        <line num="331" count="26" type="stmt"/>
+        <line num="332" count="25" type="stmt"/>
+        <line num="333" count="25" type="stmt"/>
+        <line num="334" count="25" type="stmt"/>
+        <line num="335" count="25" type="stmt"/>
+        <line num="340" count="26" type="stmt"/>
+        <line num="344" count="0" type="stmt"/>
+        <line num="354" count="26" type="stmt"/>
+        <line num="363" count="10" type="stmt"/>
+        <line num="364" count="10" type="stmt"/>
+        <line num="377" count="0" type="stmt"/>
+        <line num="389" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="391" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="409" count="21" type="stmt"/>
+        <line num="413" count="5" type="stmt"/>
+        <line num="441" count="1" type="stmt"/>
+        <line num="442" count="1" type="stmt"/>
+        <line num="443" count="1" type="stmt"/>
+        <line num="444" count="1" type="stmt"/>
+        <line num="445" count="1" type="stmt"/>
+        <line num="446" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Label">
+      <metrics statements="22" coveredstatements="22" conditionals="26" coveredconditionals="22" methods="2" coveredmethods="2"/>
+      <file name="Label.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Label/Label.tsx">
+        <metrics statements="22" coveredstatements="22" conditionals="26" coveredconditionals="22" methods="2" coveredmethods="2"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="71" count="4" type="stmt"/>
+        <line num="75" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="76" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="80" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="82" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="83" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="86" count="4" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Modal">
+      <metrics statements="25" coveredstatements="0" conditionals="25" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="Modal.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Modal/Modal.tsx">
+        <metrics statements="25" coveredstatements="0" conditionals="25" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="111" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="157" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="159" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Progress">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Progress.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Progress/Progress.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.RangeSlider">
+      <metrics statements="55" coveredstatements="29" conditionals="70" coveredconditionals="34" methods="18" coveredmethods="7"/>
+      <file name="RangeSlider.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/RangeSlider.tsx">
+        <metrics statements="55" coveredstatements="29" conditionals="70" coveredconditionals="34" methods="18" coveredmethods="7"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="146" count="1" type="stmt"/>
+        <line num="148" count="2" type="stmt"/>
+        <line num="149" count="2" type="stmt"/>
+        <line num="182" count="0" type="stmt"/>
+        <line num="191" count="1" type="stmt"/>
+        <line num="192" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="196" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="197" count="0" type="stmt"/>
+        <line num="199" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="200" count="0" type="stmt"/>
+        <line num="202" count="0" type="stmt"/>
+        <line num="205" count="1" type="stmt"/>
+        <line num="207" count="0" type="stmt"/>
+        <line num="210" count="0" type="stmt"/>
+        <line num="213" count="1" type="stmt"/>
+        <line num="216" count="1" type="stmt"/>
+        <line num="217" count="1" type="stmt"/>
+        <line num="218" count="1" type="stmt"/>
+        <line num="221" count="1" type="stmt"/>
+        <line num="225" count="1" type="stmt"/>
+        <line num="226" count="1" type="stmt"/>
+        <line num="227" count="0" type="stmt"/>
+        <line num="231" count="1" type="stmt"/>
+        <line num="232" count="1" type="stmt"/>
+        <line num="236" count="1" type="stmt"/>
+        <line num="238" count="0" type="stmt"/>
+        <line num="239" count="0" type="stmt"/>
+        <line num="240" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="241" count="0" type="stmt"/>
+        <line num="242" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="243" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="244" count="0" type="stmt"/>
+        <line num="248" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="252" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="253" count="0" type="stmt"/>
+        <line num="254" count="0" type="stmt"/>
+        <line num="276" count="1" type="stmt"/>
+        <line num="277" count="1" type="stmt"/>
+        <line num="286" count="1" type="stmt"/>
+        <line num="318" count="0" type="stmt"/>
+      </file>
+      <file name="types.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/types.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components.Table">
+      <metrics statements="136" coveredstatements="0" conditionals="185" coveredconditionals="0" methods="32" coveredmethods="0"/>
+      <file name="Table.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Table/Table.tsx">
+        <metrics statements="136" coveredstatements="0" conditionals="185" coveredconditionals="0" methods="32" coveredmethods="0"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="127" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="166" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="167" count="0" type="stmt"/>
+        <line num="168" count="0" type="stmt"/>
+        <line num="173" count="0" type="stmt"/>
+        <line num="178" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="179" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="187" count="0" type="stmt"/>
+        <line num="193" count="0" type="stmt"/>
+        <line num="217" count="0" type="stmt"/>
+        <line num="218" count="0" type="stmt"/>
+        <line num="219" count="0" type="stmt"/>
+        <line num="220" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="222" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="224" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="225" count="0" type="stmt"/>
+        <line num="229" count="0" type="stmt"/>
+        <line num="231" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="232" count="0" type="stmt"/>
+        <line num="234" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="242" count="0" type="stmt"/>
+        <line num="243" count="0" type="stmt"/>
+        <line num="247" count="0" type="stmt"/>
+        <line num="248" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="249" count="0" type="stmt"/>
+        <line num="251" count="0" type="stmt"/>
+        <line num="254" count="0" type="stmt"/>
+        <line num="264" count="0" type="stmt"/>
+        <line num="266" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="267" count="0" type="stmt"/>
+        <line num="268" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="274" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="276" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="277" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="281" count="0" type="stmt"/>
+        <line num="282" count="0" type="stmt"/>
+        <line num="283" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="287" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="290" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="292" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="293" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="298" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="299" count="0" type="stmt"/>
+        <line num="300" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="304" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="307" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="309" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="310" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="315" count="0" type="stmt"/>
+        <line num="316" count="0" type="stmt"/>
+        <line num="317" count="0" type="stmt"/>
+        <line num="320" count="0" type="stmt"/>
+        <line num="321" count="0" type="stmt"/>
+        <line num="339" count="0" type="stmt"/>
+        <line num="352" count="0" type="stmt"/>
+        <line num="366" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="386" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="398" count="0" type="stmt"/>
+        <line num="401" count="0" type="stmt"/>
+        <line num="403" count="0" type="stmt"/>
+        <line num="404" count="0" type="stmt"/>
+        <line num="408" count="0" type="stmt"/>
+        <line num="411" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="414" count="0" type="stmt"/>
+        <line num="418" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="419" count="0" type="stmt"/>
+        <line num="422" count="0" type="stmt"/>
+        <line num="423" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="424" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="425" count="0" type="stmt"/>
+        <line num="438" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="440" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="442" count="0" type="stmt"/>
+        <line num="453" count="0" type="stmt"/>
+        <line num="463" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="464" count="0" type="stmt"/>
+        <line num="468" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="469" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="470" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="471" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="475" count="0" type="stmt"/>
+        <line num="484" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="490" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="492" count="0" type="stmt"/>
+        <line num="505" count="0" type="stmt"/>
+        <line num="514" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="515" count="0" type="stmt"/>
+        <line num="517" count="0" type="stmt"/>
+        <line num="521" count="0" type="stmt"/>
+        <line num="529" count="0" type="stmt"/>
+        <line num="531" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="532" count="0" type="stmt"/>
+        <line num="535" count="0" type="stmt"/>
+        <line num="539" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="541" count="0" type="stmt"/>
+        <line num="552" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="554" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="556" count="0" type="stmt"/>
+        <line num="566" count="0" type="stmt"/>
+        <line num="573" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="575" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="577" count="0" type="stmt"/>
+        <line num="582" count="0" type="stmt"/>
+        <line num="607" count="0" type="stmt"/>
+        <line num="608" count="0" type="stmt"/>
+        <line num="609" count="0" type="stmt"/>
+        <line num="610" count="0" type="stmt"/>
+        <line num="611" count="0" type="stmt"/>
+        <line num="612" count="0" type="stmt"/>
+        <line num="613" count="0" type="stmt"/>
+        <line num="614" count="0" type="stmt"/>
+      </file>
+      <file name="types.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Table/types.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components.Text">
+      <metrics statements="10" coveredstatements="10" conditionals="27" coveredconditionals="27" methods="4" coveredmethods="4"/>
+      <file name="Text.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Text/Text.tsx">
+        <metrics statements="10" coveredstatements="10" conditionals="27" coveredconditionals="27" methods="4" coveredmethods="4"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="24" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="67" count="24" type="stmt"/>
+        <line num="102" count="2" type="stmt"/>
+        <line num="103" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.TextInput">
+      <metrics statements="36" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="TextInput.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/TextInput/TextInput.tsx">
+        <metrics statements="36" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
+        <line num="124" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="177" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="178" count="0" type="stmt"/>
+        <line num="179" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="183" count="0" type="stmt"/>
+        <line num="194" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="196" count="0" type="stmt"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="224" count="0" type="stmt"/>
+        <line num="225" count="0" type="stmt"/>
+        <line num="226" count="0" type="stmt"/>
+        <line num="227" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.context">
+      <metrics statements="14" coveredstatements="11" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="4"/>
+      <file name="index.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/context/index.tsx">
+        <metrics statements="14" coveredstatements="11" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="4"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="22" count="7" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="49" count="171" type="stmt"/>
+        <line num="50" count="171" type="stmt"/>
+        <line num="53" count="7" type="stmt"/>
+        <line num="54" count="66" type="stmt"/>
+        <line num="56" count="228" type="stmt"/>
+        <line num="60" count="66" type="stmt"/>
+        <line num="61" count="228" type="stmt"/>
+        <line num="62" count="228" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.enums">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="colors.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/colors.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="fonts.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/fonts.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="timings.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/timings.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="variants.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/variants.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.htmlElements">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/htmlElements/index.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utils">
+      <metrics statements="30" coveredstatements="28" conditionals="20" coveredconditionals="13" methods="6" coveredmethods="5"/>
+      <file name="color.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/color.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="8" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="19" count="48" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="14" type="stmt"/>
+        <line num="22" count="34" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="36" count="36" type="cond" truecount="3" falsecount="0"/>
+        <line num="39" count="28" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+      </file>
+      <file name="math.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/math.ts">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/styles.ts">
+        <metrics statements="20" coveredstatements="19" conditionals="12" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="52" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="53" count="61" type="cond" truecount="2" falsecount="0"/>
+        <line num="54" count="60" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="cond" truecount="1" falsecount="1"/>
+      </file>
+    </package>
+  </project>
+</coverage>
