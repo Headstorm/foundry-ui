@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -72,17 +72,17 @@ export const DragHandle = styled(a.div)`
       position: absolute;
       bottom: -.125rem;
       left: -.5rem;
-  
+
       width: 1rem;
       height: 1rem;
-  
+
       background-color: ${handleColor};
       color: ${handleColor};
       border: .125rem solid ${colors.background};
       border-radius: 50%;
-  
+
       filter: url(#blur);
-  
+
       cursor: ${beingDragged ? 'grabbing' : 'grab'};
     `;
   }}
@@ -101,7 +101,7 @@ export const HandleLabel = styled.div`
       border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
-  
+
       pointer-events: none;
     `;
   }}
@@ -114,12 +114,12 @@ export const SlideRail = styled.div`
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-    
+
       width: 100%;
       height: 0.25rem;
-    
+
       overflow: hidden;
-    
+
       border-radius: 0.125rem;
       background-color: ${colors.grayXlight};
     `;
@@ -135,7 +135,7 @@ export const SelectedRangeRail = styled.div`
       height: 100%;
       left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
       right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
-  
+
       transition: left .3s, right .3s;
   
       background-color: ${colors.primary};
@@ -233,6 +233,27 @@ export default ({
     [values],
   );
 
+  const handleSlideRailClick = useCallback(
+    (e: React.MouseEvent) => {
+      const pixelPosition = e.clientX;
+      const clickedDeltaX = (pixelPosition - sliderBounds.left) / sliderBounds.width;
+      const clickedValue = clickedDeltaX * domain;
+      set({
+        x: pixelPosition - sliderBounds.left,
+        y: 0,
+
+        immediate: true,
+        config: { friction: 13, tension: 100 },
+      });
+      onDrag(clickedValue);
+      if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
+        e.persist();
+        slideRailProps.onMouseDown(e);
+      }
+    },
+    [slideRailProps, sliderBounds, set, onDrag, domain],
+  );
+
   const bind = useDrag(
     ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
@@ -291,7 +312,7 @@ export default ({
       showDomainLabels={showDomainLabels}
       {...containerProps}
     >
-      <StyledSlideRail ref={ref} {...slideRailProps}>
+      <StyledSlideRail ref={ref} {...slideRailProps} onMouseDown={handleSlideRailClick}>
         {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
