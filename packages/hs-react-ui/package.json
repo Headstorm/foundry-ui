@@ -147,8 +147,14 @@
   "release": {
     "branches": [
       "master",
-      "v1-release",
-      "next"
+      {
+        "name": "v1-release",
+        "prerelease": true
+      },
+      {
+        "name": "next",
+        "prerelease": true
+      }
     ],
     "prepare": [
       "@semantic-release/changelog",
