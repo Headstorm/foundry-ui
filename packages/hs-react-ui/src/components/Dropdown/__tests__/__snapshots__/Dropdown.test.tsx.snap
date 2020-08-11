@@ -183,6 +183,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -661,6 +664,9 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }

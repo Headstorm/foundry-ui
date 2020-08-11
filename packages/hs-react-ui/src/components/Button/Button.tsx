@@ -138,7 +138,8 @@ const Button = ({
   const hasContent = Boolean(children);
   const { grayLight } = useColors();
   const containerColor = color || grayLight;
-  const props = {
+  // get everything we expose + anything consumer wants to send to container
+  const mergedContainerProps = {
     'data-test-id': 'hsui-button',
     id,
     onClick,
@@ -149,14 +150,15 @@ const Button = ({
     variant,
     type,
     disabled,
+    ...containerProps
   };
 
   return isLoading ? (
-    <StyledContainer {...props}>
+    <StyledContainer {...mergedContainerProps}>
       <LoadingBar />
     </StyledContainer>
   ) : (
-    <StyledContainer {...props}>
+    <StyledContainer {...mergedContainerProps}>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
