@@ -89,6 +89,7 @@ const sampleData: any[] = generateSampleData(10);
 const sampleGroupData: any[] = generateSampleGroups();
 
 storiesOf('Table', module)
+  .addParameters({ component: Table })
   .add(
     'Default',
     () => {

@@ -60,6 +60,7 @@ const StyledSlideRail = styled(SlideRail)`
 `;
 
 storiesOf('RangeSlider', module)
+  .addParameters({ component: RangeSlider })
   .add(
     'Default',
     () => {
