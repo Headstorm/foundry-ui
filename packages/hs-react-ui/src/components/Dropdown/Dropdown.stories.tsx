@@ -83,7 +83,7 @@ storiesOf('Dropdown', module)
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore - I want to pass undefined to the prop. storybook may not like it but I do.
               color={color('color', undefined)}
-              elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
+              elevation={number('elevation', 0, { range: true, min: -5, max: 5, step: 1 })}
               multi={boolean('multi', false)}
               name="cities-list"
               placeholder={text('placeholder', 'Choose a city...')}
