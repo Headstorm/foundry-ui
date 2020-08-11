@@ -23,15 +23,41 @@ type InteractionFeedbackProps = {
 
   children: React.ReactNode;
   interpolationFunctions?: Record<string, (val: any) => any>;
-  transitionProps: any;
+  // TODO add proper type from react-sprint
+  transitionProps?: any;
 };
 
+const defaultInterpolationFunctions = {
+  r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val))}`),
+};
+const defaultTransitionProps = {
+  from: {
+    r: 0,
+    opacity: 0.25,
+    fill: colors.grayLight,
+  },
+  enter: {
+    r: 100,
+    opacity: 0.25,
+    fill: colors.grayLight,
+  },
+  leave: {
+    r: 0,
+    opacity: exitOpacity,
+    fill: colors.grayLight,
+  },
+  config: {
+    mass: 1,
+    tension: 750,
+    friction: 35,
+  },
+};
 const InteractionFeedback = ({
   StyledContainer = Container,
 
   children,
-  interpolationFunctions = {},
-  transitionProps,
+  interpolationFunctions = defaultInterpolationFunctions,
+  transitionProps = defaultTransitionProps,
 }: InteractionFeedbackProps) => {
   const { ref, width, height } = useResizeObserver();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
@@ -48,13 +74,7 @@ const InteractionFeedback = ({
         [key]: interpolationFunctions[key] ? interpolationFunctions[key](val) : val,
       };
     }, {});
-    return (
-      <animated.circle
-        cx={style.cx}
-        cy={style.cy}
-        {...circleProps}
-      />
-    );
+    return <animated.circle cx={style.cx} cy={style.cy} {...circleProps} />;
   });
 
   const mouseDownHandler = useCallback(
@@ -66,7 +86,10 @@ const InteractionFeedback = ({
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
 
-        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, fillColor: colors.primary, id: shortid() }]);
+        setAnimations(a => [
+          ...a,
+          { cx: `${percentX}%`, cy: `${percentY}%`, fillColor: colors.primary, id: shortid() },
+        ]);
       }
     },
     [ref],
@@ -75,15 +98,14 @@ const InteractionFeedback = ({
   return (
     <StyledContainer ref={ref} onMouseDown={mouseDownHandler}>
       {children}
-      <Circle
-        width={`${width}px`}
-        height={`${height}px`}
-        viewBox={`0 0 ${width} ${height}`}
-      >
+      <Circle width={`${width}px`} height={`${height}px`} viewBox={`0 0 ${width} ${height}`}>
         {fragment}
       </Circle>
     </StyledContainer>
   );
 };
+
+InteractionFeedback.defaultTransitionProps = defaultTransitionProps;
+InteractionFeedback.defaultInterpolationFunctions = defaultInterpolationFunctions;
 
 export default InteractionFeedback;
