@@ -43,7 +43,7 @@ const defaultTransitionProps = {
   },
   leave: {
     r: 0,
-    opacity: exitOpacity,
+    opacity: 0,
     fill: colors.grayLight,
   },
   config: {
