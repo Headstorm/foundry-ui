@@ -5,8 +5,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -19,12 +19,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -52,14 +50,14 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,38 +79,23 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
-.c2 {
-  width: 100%;
-  text-align: left;
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
 }
 
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -122,14 +105,17 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
         class="sc-AxjAm c2"
         id="choosePokemon-value-item"
       >
-        Charmander
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -149,8 +135,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 7;
 }
@@ -163,12 +149,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -191,6 +175,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
   width: 15rem;
@@ -198,14 +183,14 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -226,7 +211,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   text-align: left;
 }
 
-.c4 {
+.c5 {
   background: white;
   position: absolute;
   top: 100%;
@@ -234,12 +219,13 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   max-height: 10rem;
   overflow-y: scroll;
   width: 15rem;
-  border: 0.5px solid rgba(211,214,215,0.25);
+  border: 1px solid #252c35;
+  border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
 }
 
-.c5 {
+.c6 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -249,46 +235,38 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #252c35;
+  background-color: transparent;
 }
 
-.c5:hover {
-  background: rgba(211,214,215,0.5);
+.c6:hover {
+  background-color: #e5e5e5;
   cursor: pointer;
   outline: none;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
+  background-color: #e5e5e5;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 0.2rem;
-  width: 2rem;
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
 }
 
 <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -304,11 +282,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -319,41 +297,42 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c4"
+      class="sc-AxjAm c5"
+      color="#252c35"
     >
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Bulbasaur"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-bulbasaur"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Charmander"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-charmander"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Squirtle"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-squirtle"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Squirtle
         </span>
       </div>
@@ -368,8 +347,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -382,12 +361,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -415,14 +392,14 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -443,17 +420,23 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -469,11 +452,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
         />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -492,8 +475,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -506,12 +489,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -539,14 +520,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -567,18 +548,24 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -594,11 +581,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -617,8 +604,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 7;
 }
@@ -631,12 +618,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -659,6 +644,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
   width: 15rem;
@@ -666,14 +652,14 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -694,7 +680,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   text-align: left;
 }
 
-.c4 {
+.c5 {
   background: white;
   position: absolute;
   top: 100%;
@@ -702,12 +688,13 @@ exports[`Dropdown displays all options when focused 1`] = `
   max-height: 10rem;
   overflow-y: scroll;
   width: 15rem;
-  border: 0.5px solid rgba(211,214,215,0.25);
+  border: 1px solid #252c35;
+  border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
 }
 
-.c5 {
+.c6 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -717,47 +704,39 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #252c35;
+  background-color: transparent;
 }
 
-.c5:hover {
-  background: rgba(211,214,215,0.5);
+.c6:hover {
+  background-color: #e5e5e5;
   cursor: pointer;
   outline: none;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
+  background-color: #e5e5e5;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 0.2rem;
-  width: 2rem;
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
 }
 
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -773,11 +752,11 @@ exports[`Dropdown displays all options when focused 1`] = `
         />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -788,41 +767,42 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c4"
+      class="sc-AxjAm c5"
+      color="#252c35"
     >
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Bulbasaur"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-bulbasaur"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Charmander"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-charmander"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
-        id="choosePokemon-option-Squirtle"
+        class="sc-AxjAm c6"
+        color="#252c35"
+        id="choosePokemon-option-squirtle"
         tabindex="0"
       >
-        <div
-          class="sc-AxjAm c6"
-        />
-        <span>
+        <span
+          class="sc-AxiKw "
+        >
           Squirtle
         </span>
       </div>
@@ -831,13 +811,13 @@ exports[`Dropdown displays all options when focused 1`] = `
 </div>
 `;
 
-exports[`Dropdown does not display options on initial render 1`] = `
+exports[`Dropdown displays placeholder value on initial render 1`] = `
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -850,12 +830,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -883,14 +861,14 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -911,18 +889,24 @@ exports[`Dropdown does not display options on initial render 1`] = `
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -940,11 +924,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
         </span>
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -958,13 +942,13 @@ exports[`Dropdown does not display options on initial render 1`] = `
 </div>
 `;
 
-exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
+exports[`Dropdown does not display options on initial render 1`] = `
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -977,12 +961,10 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -1010,14 +992,14 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1038,18 +1020,24 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
   text-align: left;
 }
 
+.c3 {
+  font-size: 1rem;
+  color: undefined;
+  opacity: 0.8;
+}
+
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -1059,14 +1047,17 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
         class="sc-AxjAm c2"
         id="choosePokemon-value-item"
       >
-        Charmander, Squirtle
+        <span
+          class="sc-AxiKw sc-fzqNqU c3"
+          data-test-id="hsui-Text"
+        />
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="sc-AxjAm c4"
       >
         <svg
           role="presentation"
-          style="width: 1.125rem; height: 1.125rem;"
+          style="width: 1.25em; height: 1.25em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -1080,13 +1071,13 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 </div>
 `;
 
-exports[`Dropdown selects options from values prop 1`] = `
+exports[`Dropdown renders a value when given a matching option id through props 1`] = `
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -1099,12 +1090,10 @@ exports[`Dropdown selects options from values prop 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-transition: box-shadow .5s,filter .5s;
-  transition: box-shadow .5s,filter .5s;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid #252c35;
   cursor: pointer;
   background-color: transparent;
   color: #252c35;
@@ -1132,11 +1121,11 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c1:hover {
-  background-color: #707479;
+  background-color: rgba(0,0,0,0.05);
 }
 
 .c1:active {
-  background-color: #63686c;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {
@@ -1163,15 +1152,15 @@ exports[`Dropdown selects options from values prop 1`] = `
 <div>
   <div
     class="sc-AxjAm c0"
-    data-testid="choosePokemon-valueContainer"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-valueContainer"
+    id="choosePokemon-container"
     name="choosePokemon"
     tabindex="0"
   >
     <button
       class="sc-AxhUy sc-fznxsB c1"
-      color="#7c8186"
+      color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -1181,7 +1170,9 @@ exports[`Dropdown selects options from values prop 1`] = `
         class="sc-AxjAm c2"
         id="choosePokemon-value-item"
       >
-        Bulbasaur, Charmander
+        <span>
+          Bulbasaur
+        </span>
       </div>
       <div
         class="sc-AxjAm c3"
@@ -1207,10 +1198,8 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -1223,10 +1212,8 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1329,10 +1316,8 @@ exports[`Dropdown renders one value when given two values but only one matches a
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -1345,10 +1330,8 @@ exports[`Dropdown renders one value when given two values but only one matches a
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1455,10 +1438,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -1471,10 +1452,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1557,7 +1536,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
           Bulbasaur
         </span>
         <span>
-          ,
+          , 
           Charmander
         </span>
       </div>
@@ -1585,10 +1564,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -1601,10 +1578,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1687,7 +1662,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
           Bulbasaur
         </span>
         <span>
-          ,
+          , 
           Charmander
         </span>
       </div>
@@ -1715,10 +1690,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: filter .5s;
-  transition: filter .5s;
-  -webkit-filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
-  filter: drop-shadow(0rem 0rem 0rem rgba(0,0,0,0));
+  -webkit-transition: filter .5s,box-shadow .5s;
+  transition: filter .5s,box-shadow .5s;
   position: relative;
   z-index: 1;
 }
@@ -1731,10 +1704,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s;
-  -webkit-filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
-  filter: drop-shadow(0em 0em 0em rgba(0,0,0,0));
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1817,7 +1788,7 @@ exports[`Dropdown selects options from values prop 1`] = `
           Bulbasaur
         </span>
         <span>
-          ,
+          , 
           Charmander
         </span>
       </div>

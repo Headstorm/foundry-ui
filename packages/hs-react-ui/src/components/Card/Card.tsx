@@ -16,7 +16,7 @@ export const CardContainer = styled(Div)`
       font-size: 1rem;
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${grayXlight}` : '0px solid transparent'};
-      transition: box-shadow ${timings.slow}, filter ${timings.slow}, border ${timings.slow};
+      transition: filter ${timings.slow}, box-shadow ${timings.slow}, border ${timings.normal};
       ${getShadowStyle(elevation, shadow)}
       background-color: ${background};
   `;
