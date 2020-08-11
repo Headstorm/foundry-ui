@@ -16,6 +16,7 @@ const design = {
 };
 
 storiesOf('Card', module)
+  .addParameters({ component: Card })
   .add(
     'Default',
     () => (

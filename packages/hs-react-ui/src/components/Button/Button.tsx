@@ -30,18 +30,57 @@ export enum ButtonTypes {
 }
 
 export type ButtonProps = {
+    /**
+  ButtonContainer
+  */
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+    /**
+  ButtonContainer props
+  */
   containerProps?: object;
+    /**
+  Displays MDI icon on start side if available
+  */
   iconPrefix?: string | JSX.Element;
+    /**
+  Displays MDI icon on end side if available
+  */
   iconSuffix?: string | JSX.Element;
+    /**
+  Loading boolean status
+  */
   isLoading?: boolean;
+    /**
+  Processing boolean status
+  */
   isProcessing?: boolean;
+    /**
+  The display children components
+  */
   children?: ReactNode;
+    /**
+  Numeric elevation value
+  */
   elevation?: number;
+    /**
+  The button variant
+  */
   variant?: ButtonVariants;
+    /**
+  The button type
+  */
   type?: ButtonTypes;
+    /**
+  The button color
+  */
   color?: string;
+   /**
+  The click handling function
+  */
   onClick: (...args: any[]) => void;
+  /**
+  The display loading bar component
+  */
   LoadingBar?: string & StyledComponentBase<any, {}>;
 };
 

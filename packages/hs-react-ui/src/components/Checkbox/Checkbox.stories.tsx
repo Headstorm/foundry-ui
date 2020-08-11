@@ -9,20 +9,22 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A87',
 };
 
-storiesOf('Checkbox', module).add(
-  'Default',
-  () => {
-    const [checked, setChecked] = useState(boolean('Checked', false));
+storiesOf('Checkbox', module)
+  .addParameters({ component: Checkbox })
+  .add(
+    'Default',
+    () => {
+      const [checked, setChecked] = useState(boolean('Checked', false));
 
-    return (
-      <Checkbox
-        checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
-        checked={checked}
-        onClick={() => setChecked(!checked)}
-      >
-        {text('Children', 'The label for the checkbox')}
-      </Checkbox>
-    );
-  },
-  { design, centered: true },
-);
+      return (
+        <Checkbox
+          checkboxType={select('CheckboxType', CheckboxTypes, CheckboxTypes.check)}
+          checked={checked}
+          onClick={() => setChecked(!checked)}
+        >
+          {text('Children', 'The label for the checkbox')}
+        </Checkbox>
+      );
+    },
+    { design, centered: true },
+  );
