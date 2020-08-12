@@ -41,3 +41,19 @@ export const getBackgroundColorFromVariant = (
       return color;
   }
 };
+
+/**
+ * Returns a filter for grayscale with contrast and brightness parameters.
+ */
+export const disabledStyles = ({
+  grayscale = 1,
+  contrast = 0.5,
+  brightness = 1.2,
+}: {
+  grayscale?: number;
+  contrast?: number;
+  brightness?: number;
+} = {}) => `
+  filter: grayscale(${grayscale}) contrast(${contrast}) brightness(${brightness});
+  pointer-events: none;
+`;
