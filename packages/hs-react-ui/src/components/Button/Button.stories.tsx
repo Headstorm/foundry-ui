@@ -19,7 +19,9 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
 };
 
-storiesOf('Button', module).add(
+storiesOf("Button", module)
+  .addParameters({ component: Button })
+  .add(
   'Basic Button',
   () => {
     return (

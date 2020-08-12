@@ -72,6 +72,7 @@ const teaOptions = [
 ];
 
 storiesOf('Dropdown', module)
+  .addParameters({ component: Dropdown })
   .add(
     'Basic',
     () => {

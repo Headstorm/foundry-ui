@@ -27,17 +27,41 @@ export enum ButtonTypes {
 }
 
 export type ButtonProps = {
+    /**
+  ButtonContainer
+  */
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
   containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
+    /**
+  Displays MDI icon on end side if available
+  */
   iconSuffix?: string | JSX.Element;
+    /**
+  Loading boolean status
+  */
   isLoading?: boolean;
+    /**
+  Processing boolean status
+  */
   isProcessing?: boolean;
+    /**
+  The display children components
+  */
   children?: ReactNode;
+    /**
+  Numeric elevation value
+  */
   elevation?: number;
   variant?: variants;
   type?: ButtonTypes;
+    /**
+  The button color
+  */
   color?: string;
+   /**
+  The click handling function
+  */
   onClick: (...args: any[]) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
