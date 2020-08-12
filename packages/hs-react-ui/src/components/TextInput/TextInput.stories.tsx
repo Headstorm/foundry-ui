@@ -81,6 +81,14 @@ storiesOf('TextInput', module)
           onFocus={onFocusCallback}
           onBlur={onBlurCallback}
           multiLineIsResizable={boolean('multiLineIsResizable', false)}
+          showCharacterCount={boolean('showCharacterCount', true, 'Max length')}
+          maxLength={select(
+            'maxLength',
+            { 5: 5, 20: 20, 100: 100, none: undefined },
+            20,
+            'Max length',
+          )}
+          allowTextBeyondMaxLength={boolean('allowTextBeyondMaxLength', false, 'Max length')}
         />
       );
     },
@@ -106,8 +114,6 @@ storiesOf('TextInput', module)
       return (
         <TextInput
           onChange={event => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             const newValue = event.target.value;
             setInputValue(newValue);
             action('onChange')(newValue);

@@ -1,9 +1,9 @@
-import React, { ReactNode, SyntheticEvent, useCallback } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import React, { ChangeEvent, EventHandler, ReactNode, SyntheticEvent, useCallback } from 'react';
+import styled, { css, StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
-import { Div, TextArea, Input as InputElement } from '../../htmlElements';
+import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
 import { disabledStyles } from '../../utils/color';
@@ -71,12 +71,24 @@ const IconContainer = styled(Div)`
   }}
 `;
 
+const CharacterCounter = styled(Div)`
+  ${({ textIsTooLong }) => {
+    const { grayLight, destructive } = useColors();
+    return css`
+      position: absolute;
+      top: calc(100% + 0.25em);
+      right: 0.25em;
+      color: ${textIsTooLong ? destructive : grayLight};
+    `;
+  }};
+`;
+
 const ErrorContainer = styled(Div)`
-  ${() => {
+  ${({ showCharacterCount }) => {
     const { destructive } = useColors();
     return `
       position: absolute;
-      top: calc(100% + 0.25em);
+      top: calc(100% + ${showCharacterCount ? '1' : '0'}.25em);
       color: ${destructive};
       font-size: 0.75rem;
     `;
@@ -88,8 +100,8 @@ export type TextInputProps = {
   placeholder?: string;
   iconPrefix?: string | ReactNode;
   onClear?: (event: SyntheticEvent) => void;
-  onChange?: (event: SyntheticEvent) => void;
-  debouncedOnChange?: (event: SyntheticEvent) => void;
+  onChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
+  debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
   onKeyPress?: (event: SyntheticEvent) => void;
   onKeyDown?: (event: SyntheticEvent) => void;
   onKeyUp?: (event: SyntheticEvent) => void;
@@ -109,6 +121,9 @@ export type TextInputProps = {
   type?: string;
   debounceInterval?: number;
   multiLineIsResizable?: boolean;
+  maxLength?: number;
+  allowTextBeyondMaxLength?: boolean;
+  showCharacterCount?: boolean;
 
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
@@ -154,7 +169,7 @@ const TextInput = ({
   cols = 10,
   rows = 10,
   value,
-  defaultValue,
+  defaultValue = '',
   isValid,
   isMultiline,
   errorMessage,
@@ -163,6 +178,9 @@ const TextInput = ({
   disabled = false,
   debounceInterval = 8,
   multiLineIsResizable,
+  maxLength,
+  allowTextBeyondMaxLength = false,
+  showCharacterCount = false,
 
   StyledContainer = Container,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
@@ -174,7 +192,10 @@ const TextInput = ({
   errorContainerProps = {},
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
-  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
+  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), [
+    debouncedOnChange,
+    debounceInterval,
+  ]);
 
   // Determine the correct input type. Using a single input and the 'as' keyword
   // to display as a text area disables the ability to set cols/rows
@@ -184,6 +205,7 @@ const TextInput = ({
   } else if (isMultiline) {
     InputComponent = TextAreaInputContainer;
   }
+  const displayValue = value || defaultValue;
 
   return (
     <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
@@ -195,8 +217,13 @@ const TextInput = ({
         rows={rows}
         aria-label={ariaLabel}
         placeholder={placeholder}
-        onChange={(e: SyntheticEvent) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.persist();
+          if (maxLength && maxLength >= 0) {
+            e.target.value = allowTextBeyondMaxLength
+              ? e.target.value
+              : e.target.value.slice(0, maxLength);
+          }
           onChange(e);
           debouncedChange(e);
         }}
@@ -207,7 +234,7 @@ const TextInput = ({
         onBlur={onBlur}
         onReset={onReset}
         onInput={onInput}
-        value={value || defaultValue}
+        value={displayValue}
         id={id}
         type={type}
         multiLineIsResizable={multiLineIsResizable}
@@ -217,6 +244,11 @@ const TextInput = ({
         <StyledIconContainer onClick={onClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
+      )}
+      {showCharacterCount && maxLength && (
+        <CharacterCounter textIsTooLong={displayValue.length > maxLength}>
+          {displayValue.length} / {maxLength}
+        </CharacterCounter>
       )}
       {isValid === false && errorMessage && (
         <StyledErrorContainer {...errorContainerProps}>{errorMessage}</StyledErrorContainer>
