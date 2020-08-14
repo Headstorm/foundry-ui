@@ -264,8 +264,8 @@ export default ({
       }
 
       // Set the slider position - this causes issues with the story where the value is the rounded to the same
-      // previous value. Clicking on 2.3 when set to 2 will move the handle, but the value doesn't get updated
-      // The values prop is not updating properly from the
+      // previous value. Clicking on 2.3 when set to 2 will move the handle, but the value doesn't get updated via
+      // the values prop, seems like a deep compare of the properties is happening on render for the values prop
       set({
         x: positionOnRail,
         y: 0,
