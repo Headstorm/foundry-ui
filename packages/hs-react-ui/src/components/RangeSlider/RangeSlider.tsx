@@ -122,6 +122,7 @@ export const SlideRail = styled.div`
 
       border-radius: 0.125rem;
       background-color: ${grayXlight};
+
     `;
   }}
 `;
@@ -235,11 +236,38 @@ export default ({
 
   const handleSlideRailClick = useCallback(
     (e: React.MouseEvent) => {
+      // Avoiding using another ref here to reduce overhead
       const pixelPosition = e.clientX;
-      const clickedDeltaX = (pixelPosition - sliderBounds.left) / sliderBounds.width;
-      const clickedValue = clickedDeltaX * domain;
+      const positionOnRail = pixelPosition - sliderBounds.left;
+      const railPositionRatio = positionOnRail / sliderBounds.width;
+      const clickedValue = railPositionRatio * domain;
+
+      // variables to find the closest handle
+      let closestVal: ValueProp | undefined = undefined;
+      let smallestDifference: number;
+
+      // Find the closest handle
+      processedValues.forEach((val: ValueProp) => {
+        // Get the absolute value of the difference
+        const difference = Math.abs(clickedValue - val.value);
+        if (smallestDifference !== undefined && difference < smallestDifference) {
+          closestVal = val;
+          smallestDifference = difference;
+        } else if (smallestDifference === undefined) {
+          closestVal = val;
+          smallestDifference = difference;
+        }
+      });
+
+      if (closestVal) {
+        // TODO: use the closest val to find the handle to move and move it
+      }
+
+      // Set the slider position - this causes issues with the story where the value is the rounded to the same
+      // previous value. Clicking on 2.3 when set to 2 will move the handle, but the value doesn't get updated
+      // The values prop is not updating properly from the
       set({
-        x: pixelPosition - sliderBounds.left,
+        x: positionOnRail,
         y: 0,
 
         immediate: true,
@@ -251,7 +279,7 @@ export default ({
         slideRailProps.onMouseDown(e);
       }
     },
-    [slideRailProps, sliderBounds, set, onDrag, domain],
+    [slideRailProps, sliderBounds, set, onDrag, domain, processedValues],
   );
 
   const bind = useDrag(
