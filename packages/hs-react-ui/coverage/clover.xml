@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1597159558504" clover="3.2.0">
-  <project timestamp="1597159558504" name="All files">
+<coverage generated="1597676138150" clover="3.2.0">
+  <project timestamp="1597676138150" name="All files">
     <metrics statements="545" coveredstatements="241" conditionals="530" coveredconditionals="187" methods="139" coveredmethods="51" elements="1214" coveredelements="479" complexity="0" loc="545" ncloc="545" packages="17" files="21" classes="21"/>
     <package name="src">
       <metrics statements="39" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="16" coveredmethods="0"/>
-      <file name="serviceWorker.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/serviceWorker.ts">
+      <file name="serviceWorker.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/serviceWorker.ts">
         <metrics statements="39" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="16" coveredmethods="0"/>
         <line num="13" count="0" type="stmt"/>
         <line num="22" count="0" type="cond" truecount="0" falsecount="4"/>
@@ -49,7 +49,7 @@
     </package>
     <package name="src.components.Button">
       <metrics statements="28" coveredstatements="28" conditionals="41" coveredconditionals="37" methods="6" coveredmethods="6"/>
-      <file name="Button.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Button/Button.tsx">
+      <file name="Button.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Button/Button.tsx">
         <metrics statements="28" coveredstatements="28" conditionals="41" coveredconditionals="37" methods="6" coveredmethods="6"/>
         <line num="55" count="2" type="stmt"/>
         <line num="61" count="38" type="cond" truecount="2" falsecount="0"/>
@@ -83,7 +83,7 @@
     </package>
     <package name="src.components.Card">
       <metrics statements="20" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="Card.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Card/Card.tsx">
+      <file name="Card.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Card/Card.tsx">
         <metrics statements="20" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -109,7 +109,7 @@
     </package>
     <package name="src.components.Checkbox">
       <metrics statements="32" coveredstatements="26" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="4"/>
-      <file name="Checkbox.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Checkbox/Checkbox.tsx">
+      <file name="Checkbox.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Checkbox/Checkbox.tsx">
         <metrics statements="32" coveredstatements="26" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="4"/>
         <line num="19" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
@@ -147,7 +147,7 @@
     </package>
     <package name="src.components.Divider">
       <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
-      <file name="Divider.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Divider/Divider.tsx">
+      <file name="Divider.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Divider/Divider.tsx">
         <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
@@ -160,7 +160,7 @@
     </package>
     <package name="src.components.Dropdown">
       <metrics statements="84" coveredstatements="73" conditionals="71" coveredconditionals="57" methods="22" coveredmethods="18"/>
-      <file name="Dropdown.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Dropdown/Dropdown.tsx">
+      <file name="Dropdown.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Dropdown/Dropdown.tsx">
         <metrics statements="84" coveredstatements="73" conditionals="71" coveredconditionals="57" methods="22" coveredmethods="18"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="27" type="stmt"/>
@@ -250,7 +250,7 @@
     </package>
     <package name="src.components.Label">
       <metrics statements="22" coveredstatements="22" conditionals="22" coveredconditionals="18" methods="2" coveredmethods="2"/>
-      <file name="Label.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Label/Label.tsx">
+      <file name="Label.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Label/Label.tsx">
         <metrics statements="22" coveredstatements="22" conditionals="22" coveredconditionals="18" methods="2" coveredmethods="2"/>
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
@@ -278,7 +278,7 @@
     </package>
     <package name="src.components.Modal">
       <metrics statements="25" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="5" coveredmethods="0"/>
-      <file name="Modal.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Modal/Modal.tsx">
+      <file name="Modal.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Modal/Modal.tsx">
         <metrics statements="25" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -309,7 +309,7 @@
     </package>
     <package name="src.components.Progress">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="Progress.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Progress/Progress.tsx">
+      <file name="Progress.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Progress/Progress.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="3" type="stmt"/>
         <line num="11" count="3" type="stmt"/>
@@ -319,7 +319,7 @@
     </package>
     <package name="src.components.RangeSlider">
       <metrics statements="55" coveredstatements="29" conditionals="64" coveredconditionals="28" methods="18" coveredmethods="7"/>
-      <file name="RangeSlider.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/RangeSlider.tsx">
+      <file name="RangeSlider.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/RangeSlider.tsx">
         <metrics statements="55" coveredstatements="29" conditionals="64" coveredconditionals="28" methods="18" coveredmethods="7"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -377,13 +377,13 @@
         <line num="280" count="1" type="stmt"/>
         <line num="306" count="0" type="stmt"/>
       </file>
-      <file name="types.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/types.ts">
+      <file name="types.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.components.Table">
       <metrics statements="136" coveredstatements="0" conditionals="179" coveredconditionals="0" methods="32" coveredmethods="0"/>
-      <file name="Table.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Table/Table.tsx">
+      <file name="Table.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Table/Table.tsx">
         <metrics statements="136" coveredstatements="0" conditionals="179" coveredconditionals="0" methods="32" coveredmethods="0"/>
         <line num="79" count="0" type="stmt"/>
         <line num="83" count="0" type="stmt"/>
@@ -525,7 +525,7 @@
     </package>
     <package name="src.components.Text">
       <metrics statements="10" coveredstatements="10" conditionals="25" coveredconditionals="25" methods="4" coveredmethods="4"/>
-      <file name="Text.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Text/Text.tsx">
+      <file name="Text.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/Text/Text.tsx">
         <metrics statements="10" coveredstatements="10" conditionals="25" coveredconditionals="25" methods="4" coveredmethods="4"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
@@ -541,7 +541,7 @@
     </package>
     <package name="src.components.TextInput">
       <metrics statements="35" coveredstatements="0" conditionals="27" coveredconditionals="0" methods="9" coveredmethods="0"/>
-      <file name="TextInput.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/TextInput/TextInput.tsx">
+      <file name="TextInput.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/components/TextInput/TextInput.tsx">
         <metrics statements="35" coveredstatements="0" conditionals="27" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -582,7 +582,7 @@
     </package>
     <package name="src.context">
       <metrics statements="15" coveredstatements="11" conditionals="7" coveredconditionals="4" methods="5" coveredmethods="4"/>
-      <file name="index.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/context/index.tsx">
+      <file name="index.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/context/index.tsx">
         <metrics statements="15" coveredstatements="11" conditionals="7" coveredconditionals="4" methods="5" coveredmethods="4"/>
         <line num="6" count="7" type="stmt"/>
         <line num="23" count="7" type="stmt"/>
@@ -603,19 +603,19 @@
     </package>
     <package name="src.enums">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="colors.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/colors.ts">
+      <file name="colors.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/enums/colors.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="fonts.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/fonts.ts">
+      <file name="fonts.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/enums/fonts.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="timings.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/timings.ts">
+      <file name="timings.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/enums/timings.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.htmlElements">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/htmlElements/index.tsx">
+      <file name="index.tsx" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/htmlElements/index.tsx">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="6" type="stmt"/>
         <line num="7" count="6" type="stmt"/>
@@ -632,12 +632,12 @@
     </package>
     <package name="src.utils">
       <metrics statements="22" coveredstatements="20" conditionals="12" coveredconditionals="6" methods="4" coveredmethods="3"/>
-      <file name="math.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/math.ts">
+      <file name="math.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/utils/math.ts">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
       </file>
-      <file name="styles.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/styles.ts">
+      <file name="styles.ts" path="/Users/William/code/headstorm/rasa-ui/packages/hs-react-ui/src/utils/styles.ts">
         <metrics statements="20" coveredstatements="19" conditionals="12" coveredconditionals="6" methods="3" coveredmethods="3"/>
         <line num="3" count="2" type="stmt"/>
         <line num="17" count="2" type="cond" truecount="0" falsecount="1"/>
