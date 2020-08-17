@@ -149,7 +149,7 @@ const Button = ({
     variant,
     type,
     disabled,
-    ...containerProps
+    ...containerProps,
   };
 
   return isLoading ? (
