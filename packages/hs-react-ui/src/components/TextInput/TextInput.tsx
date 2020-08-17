@@ -155,6 +155,7 @@ const TextInput = ({
   StyledIconContainer = IconContainer,
   debounceInterval = 8,
   multiLineIsResizable,
+  ...rest
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
@@ -194,6 +195,7 @@ const TextInput = ({
         id={id}
         type={type}
         multiLineIsResizable={multiLineIsResizable}
+        {...rest}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear}>

@@ -80,6 +80,7 @@ storiesOf('TextInput', module)
           onFocus={onFocusCallback}
           onBlur={onBlurCallback}
           multiLineIsResizable={boolean('multiLineIsResizable', false)}
+          autoFocus={boolean('autoFocus', true)}
         />
       );
     },
