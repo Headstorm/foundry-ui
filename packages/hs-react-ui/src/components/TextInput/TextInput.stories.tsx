@@ -56,31 +56,45 @@ storiesOf('TextInput', module)
         action('onKeyUpCallback')(event.key);
       }, []);
 
+      const generalGroup = 'General';
+      const multilineGroup = 'Multiline';
+      const errorMessageGroup = 'Error messages';
+      const debounceGroup = 'Debounced';
+      const characterCountGroup = 'Character count';
+
       return (
         <TextInput
-          ariaLabel={text('ariaLabel', 'textInput')}
+          ariaLabel={text('ariaLabel', 'textInput', generalGroup)}
           onChange={onChangeCallback}
-          debounceInterval={number('debounceInterval', 150)}
+          debounceInterval={number('debounceInterval', 150, undefined, debounceGroup)}
           debouncedOnChange={onDebounceCallback}
-          disabled={boolean('disabled', false)}
+          disabled={boolean('disabled', false, generalGroup)}
           value={inputValue}
-          placeholder={text('placeholder', 'Placeholder')}
-          onClear={boolean('clearable', false) ? onClearCallback : undefined}
-          iconPrefix={select('iconPrefix', options, options.none)}
-          isMultiline={boolean('isMultiline?', false)}
-          rows={number('rows', 0)}
-          cols={number('cols', 0)}
-          isValid={boolean('isValid', true)}
-          errorMessage={text('errorMessage', '')}
-          defaultValue={text('defaultValue', '')}
-          type={text('type', '')}
+          placeholder={text('placeholder', 'Placeholder', generalGroup)}
+          onClear={boolean('clearable', false, generalGroup) ? onClearCallback : undefined}
+          iconPrefix={select('iconPrefix', options, options.none, generalGroup)}
+          isMultiline={boolean('isMultiline?', false, multilineGroup)}
+          rows={number('rows', 0, undefined, multilineGroup)}
+          cols={number('cols', 0, undefined, multilineGroup)}
+          isValid={boolean('isValid', true, errorMessageGroup)}
+          errorMessage={text('errorMessage', '', errorMessageGroup)}
+          defaultValue={text('defaultValue', '', generalGroup)}
+          type={text('type', '', generalGroup)}
           onInput={onInputCallback}
           onKeyPress={onKeyPressCallback}
           onKeyDown={onKeyDownCallback}
           onKeyUp={onKeyUpCallback}
           onFocus={onFocusCallback}
           onBlur={onBlurCallback}
-          multiLineIsResizable={boolean('multiLineIsResizable', false)}
+          multiLineIsResizable={boolean('multiLineIsResizable', false, multilineGroup)}
+          showCharacterCount={boolean('showCharacterCount', true, characterCountGroup)}
+          maxLength={select(
+            'maxLength',
+            { 5: 5, 20: 20, 100: 100, none: undefined },
+            20,
+            characterCountGroup,
+          )}
+          allowTextBeyondMaxLength={boolean('allowTextBeyondMaxLength', false, characterCountGroup)}
         />
       );
     },
@@ -106,8 +120,6 @@ storiesOf('TextInput', module)
       return (
         <TextInput
           onChange={event => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             const newValue = event.target.value;
             setInputValue(newValue);
             action('onChange')(newValue);
