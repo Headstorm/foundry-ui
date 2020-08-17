@@ -82,27 +82,14 @@ const ErrorContainer = styled(Div)`
 
 export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
-  placeholder?: string;
   iconPrefix?: string | ReactNode;
   onClear?: (event: SyntheticEvent) => void;
   onChange?: (event: SyntheticEvent) => void;
   debouncedOnChange?: (event: SyntheticEvent) => void;
-  onKeyPress?: (event: SyntheticEvent) => void;
-  onKeyDown?: (event: SyntheticEvent) => void;
-  onKeyUp?: (event: SyntheticEvent) => void;
-  onBlur?: (event: SyntheticEvent) => void;
-  onInput?: (event: SyntheticEvent) => void;
-  onFocus?: (event: SyntheticEvent) => void;
-  onReset?: (event: SyntheticEvent) => void;
-  cols?: number;
-  rows?: number;
-  value?: string;
   defaultValue?: string;
   isValid?: boolean;
   isMultiline?: boolean;
   errorMessage?: string;
-  ariaLabel?: string;
-  type?: string;
   debounceInterval?: number;
   multiLineIsResizable?: boolean;
   StyledContainer?: string & StyledComponentBase<any, {}>;
@@ -128,34 +115,24 @@ const createIcon = (
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
-  id,
-  placeholder,
-  iconPrefix,
-  onClear,
-  onChange = defaultCallback,
-  debouncedOnChange = defaultCallback,
-  onKeyPress,
-  onKeyDown,
-  onKeyUp,
-  onBlur,
-  onInput,
-  onFocus,
-  onReset,
   cols = 10,
-  rows = 10,
-  value,
-  defaultValue,
-  isValid,
-  isMultiline,
-  errorMessage,
-  ariaLabel,
-  type = 'text',
-  StyledContainer = Container,
-  StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
-  StyledIconContainer = IconContainer,
+  debouncedOnChange = defaultCallback,
   debounceInterval = 8,
+  defaultValue,
+  errorMessage,
+  iconPrefix,
+  id,
+  isMultiline,
+  isValid,
   multiLineIsResizable,
-  ...rest
+  onChange = defaultCallback,
+  onClear,
+  rows = 10,
+  StyledContainer = Container,
+  StyledIconContainer = IconContainer,
+  StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
+  value,
+  ...nativeInputHTMLAttributes
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
@@ -177,25 +154,15 @@ const TextInput = ({
       <InputComponent
         cols={cols}
         rows={rows}
-        aria-label={ariaLabel}
-        placeholder={placeholder}
         onChange={(e: SyntheticEvent) => {
           e.persist();
           onChange(e);
           debouncedChange(e);
         }}
-        onKeyPress={onKeyPress}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onReset={onReset}
-        onInput={onInput}
         value={value || defaultValue}
         id={id}
-        type={type}
         multiLineIsResizable={multiLineIsResizable}
-        {...rest}
+        {...nativeInputHTMLAttributes}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear}>
