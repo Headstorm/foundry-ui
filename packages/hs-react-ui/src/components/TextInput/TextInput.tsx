@@ -6,9 +6,10 @@ import debounce from 'lodash.debounce';
 import { Div, TextArea, Input as InputElement } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
 import { useColors } from '../../context';
+import { disabledStyles } from '../../utils/color';
 
 const Container = styled(Div)`
-  ${({ isValid }: { isValid?: boolean }) => {
+  ${({ disabled = false, isValid }: { disabled?: boolean; isValid?: boolean }) => {
     const { destructive, grayMedium, background } = useColors();
     return `
       border 2px solid ${isValid === false ? destructive : grayMedium};
@@ -18,6 +19,7 @@ const Container = styled(Div)`
       flex-flow: row;
       border-radius: 0.25em;
       background-color: ${background};
+      ${disabled ? disabledStyles() : ''}
   `;
   }}
 `;
@@ -98,6 +100,7 @@ export type TextInputProps = {
   cols?: number;
   rows?: number;
   value?: string;
+  disabled?: boolean;
   defaultValue?: string;
   isValid?: boolean;
   isMultiline?: boolean;
@@ -124,7 +127,7 @@ const createIcon = (
   if (typeof iconPrefix === 'string') {
     return (
       <StyledIconContainer>
-        <Icon size="16px" path={iconPrefix} />
+        <Icon size="1rem" path={iconPrefix} />
       </StyledIconContainer>
     );
   }
@@ -157,8 +160,10 @@ const TextInput = ({
   errorMessage,
   ariaLabel,
   type = 'text',
+  disabled = false,
   debounceInterval = 8,
   multiLineIsResizable,
+
   StyledContainer = Container,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
@@ -181,7 +186,7 @@ const TextInput = ({
   }
 
   return (
-    <StyledContainer isValid={isValid} {...containerProps}>
+    <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       {/*
         // @ts-ignore */}
