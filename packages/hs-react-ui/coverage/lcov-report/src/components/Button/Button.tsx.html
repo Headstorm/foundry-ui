@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">87.8% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>34/38</span>
+                <span class='fraction'>36/41</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -296,6 +296,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,6 +311,7 @@
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -377,11 +384,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -395,15 +403,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -452,7 +452,11 @@ import { useColors } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import {
+  getFontColorFromVariant,
+  getBackgroundColorFromVariant,
+  disabledStyles,
+} from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 &nbsp;
@@ -461,6 +465,7 @@ export type ButtonContainerProps = {
   color: string;
   variant: variants;
   type: string;
+  disabled: boolean;
 };
 &nbsp;
 export enum ButtonTypes {
@@ -481,6 +486,7 @@ export type ButtonProps = {
   variant?: variants;
   type?: ButtonTypes;
   color?: string;
+  disabled?: boolean;
   onClick: (...args: any[]) =&gt; void;
   onMouseDown?: (e: React.MouseEvent) =&gt; void;
   onMouseUp?: (e: React.MouseEvent) =&gt; void;
@@ -491,7 +497,7 @@ export type ButtonProps = {
 export const ButtonContainer: string &amp; StyledComponentBase&lt;any, {}, ButtonContainerProps&gt; = styled(
   ButtonElement,
 )`
-  ${({ elevation = <span class="branch-0 cbranch-no" title="branch not covered" >0,</span> color, variant }: ButtonContainerProps) =&gt; {
+  ${({ disabled, elevation = <span class="branch-0 cbranch-no" title="branch not covered" >0,</span> color, variant }: ButtonContainerProps) =&gt; {
     const { transparent, background, grayDark, shadow } = useColors();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
     const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
@@ -514,6 +520,7 @@ export const ButtonContainer: string &amp; StyledComponentBase&lt;any, {}, Butto
       background-color: ${backgroundColor};
       color: ${fontColor};
       align-items: center;
+      ${disabled ? <span class="branch-0 cbranch-no" title="branch not covered" >disabledStyles() </span>: ''}
       &amp;:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
@@ -563,6 +570,7 @@ const Button = ({
   variant = variants.fill,
   type = ButtonTypes.button,
   color,
+  disabled = false,
   onClick,
   onMouseDown = <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
   onMouseUp = <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
@@ -572,35 +580,27 @@ const Button = ({
   const hasContent = Boolean(children);
   const { grayLight } = useColors();
   const containerColor = color || grayLight;
+  // get everything we expose + anything consumer wants to send to container
+  const mergedContainerProps = {
+    'data-test-id': 'hsui-button',
+    id,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    elevation,
+    color: containerColor,
+    variant,
+    type,
+    disabled,
+    ...containerProps,
+  };
 &nbsp;
   return isLoading ? (
-    &lt;StyledContainer
-      data-test-id="hsui-button"
-      id={id}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      elevation={elevation}
-      color={containerColor}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    &gt;
+    &lt;StyledContainer {...mergedContainerProps}&gt;
       &lt;LoadingBar /&gt;
     &lt;/StyledContainer&gt;
   ) : (
-    &lt;StyledContainer
-      data-test-id="hsui-button"
-      id={id}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      elevation={elevation}
-      color={containerColor}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    &gt;
+    &lt;StyledContainer {...mergedContainerProps}&gt;
       {!isProcessing &amp;&amp;
         iconPrefix &amp;&amp;
         (typeof iconPrefix === 'string' &amp;&amp; iconPrefix !== '' ? (
@@ -640,7 +640,7 @@ export default Button;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Aug 11 2020 17:05:10 GMT+0000 (Coordinated Universal Time)
+                at Fri Aug 14 2020 12:26:16 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
