@@ -14,7 +14,7 @@
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@headstorm/hs-react-ui)
 ![NPM](https://img.shields.io/npm/l/@headstorm/hs-react-ui)
 
-
+![Foundry UI CI/CD](https://github.com/Headstorm/rasa-ui/workflows/Foundry%20UI%20CI/CD/badge.svg)
 [![Coverage Branch](./coverage/badge-branches.svg)](./coverage)
 [![Coverage Branch](./coverage/badge-functions.svg)](./coverage)
 [![Coverage Branch](./coverage/badge-lines.svg)](./coverage)
