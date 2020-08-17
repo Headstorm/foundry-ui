@@ -1,4 +1,4 @@
-import React, { ReactNode, SyntheticEvent, useCallback } from 'react';
+import React, { InputHTMLAttributes, ReactNode, SyntheticEvent, useCallback } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
@@ -80,7 +80,7 @@ const ErrorContainer = styled(Div)`
   }}
 `;
 
-export type TextInputProps = {
+export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   placeholder?: string;
   iconPrefix?: string | ReactNode;
