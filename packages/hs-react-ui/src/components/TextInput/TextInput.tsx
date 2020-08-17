@@ -72,23 +72,23 @@ const IconContainer = styled(Div)`
 `;
 
 const CharacterCounter = styled(Div)`
-  ${({ textIsTooLong }) => {
+  ${({ textIsTooLong, isValid, errorMessage }) => {
     const { grayLight, destructive } = useColors();
     return css`
       position: absolute;
-      top: calc(100% + 0.25em);
+      top: calc(100% + ${isValid && errorMessage ? '0.25em' : '2em'});
       right: 0.25em;
       color: ${textIsTooLong ? destructive : grayLight};
     `;
-  }};
+  }}
 `;
 
 const ErrorContainer = styled(Div)`
-  ${({ showCharacterCount }) => {
+  ${() => {
     const { destructive } = useColors();
-    return `
+    return css`
       position: absolute;
-      top: calc(100% + ${showCharacterCount ? '1' : '0'}.25em);
+      top: calc(100% + 0.25em);
       color: ${destructive};
       font-size: 0.75rem;
     `;
@@ -170,7 +170,7 @@ const TextInput = ({
   rows = 10,
   value,
   defaultValue = '',
-  isValid,
+  isValid = true,
   isMultiline,
   errorMessage,
   ariaLabel,
@@ -246,7 +246,11 @@ const TextInput = ({
         </StyledIconContainer>
       )}
       {showCharacterCount && maxLength && (
-        <CharacterCounter textIsTooLong={displayValue.length > maxLength}>
+        <CharacterCounter
+          errorMessage={errorMessage}
+          isValid={isValid}
+          textIsTooLong={displayValue.length > maxLength}
+        >
           {displayValue.length} / {maxLength}
         </CharacterCounter>
       )}
