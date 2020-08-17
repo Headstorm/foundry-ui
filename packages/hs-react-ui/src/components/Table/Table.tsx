@@ -11,7 +11,7 @@ import {
   RowProps,
   TableProps,
 } from './types';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 
 type collapsedState = Record<string, string>;
 
@@ -23,10 +23,10 @@ const StyledExpansionIconSpan = styled(Span)`
 
 export const TableContainer = styled(TableElement)`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => {
-    const { background } = useColors();
+    const { colors } = useTheme();
     return `
       width: ${reachedMinWidth ? '100%' : 'auto'};
-      background-color: ${background};
+      background-color: ${colors.background};
       border-collapse: collapse;
   
       border-radius: 8px;
@@ -37,7 +37,7 @@ export const TableContainer = styled(TableElement)`
 
 export const Header = styled(TR)`
   ${({ columnGap, columnWidths }: RowProps) => {
-    const { primary } = useColors();
+    const { colors } = useTheme();
     return `
       display: grid;
       grid-template-columns: ${columnWidths};
@@ -45,7 +45,7 @@ export const Header = styled(TR)`
       column-gap: ${columnGap};
       user-select: none;
   
-      background-color: ${primary};
+      background-color: ${colors.primary};
       color: white;
     `;
   }}
@@ -71,9 +71,9 @@ export const HeaderCell = styled(TH)`
 
 export const ResponsiveTitle = styled(Span)`
   ${({ sortable }: { sortable: boolean }) => {
-    const { primary } = useColors();
+    const { colors } = useTheme();
     return `
-      color: ${primary};
+      color: ${colors.primary};
       padding: 0.5rem;
       user-select: none;
       cursor: pointer;
@@ -87,7 +87,7 @@ export const ResponsiveTitle = styled(Span)`
 
 export const Row = styled(TR)`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => {
-    const { background } = useColors();
+    const { colors } = useTheme();
     return `
       display: grid;
       grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
@@ -95,7 +95,7 @@ export const Row = styled(TR)`
       row-gap: .5rem;
       column-gap: ${columnGap};
       position: relative;
-      background-color: ${background};
+      background-color: ${colors.background};
       height: ${isCollapsed ? '0px' : '100%'};
   
       &:not(:last-child) {
@@ -124,9 +124,9 @@ export const Row = styled(TR)`
 
 export const GroupRow = styled(Row)`
   ${() => {
-    const { grayXlight } = useColors();
+    const { colors } = useTheme();
     return `
-      background-color: ${grayXlight};
+      background-color: ${colors.grayXlight};
     `;
   }}
 `;
