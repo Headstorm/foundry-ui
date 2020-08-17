@@ -1,11 +1,25 @@
+# Rasa-UI for React
+
+<img src="./public/images/nodejs.svg" height="50" style="margin-right: 5em">
+<img src="./public/images/react.svg" height="50" style="margin-right: 5em">
+<img src="./public/images/typescript.svg" height="50" style="margin-right: 5em">
+<img src="./public/images/storybook.png" height="50">
+
+
+
+
+
 [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui) 
+![npm](https://img.shields.io/npm/dw/@headstorm/hs-react-ui)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@headstorm/hs-react-ui)
+![NPM](https://img.shields.io/npm/l/@headstorm/hs-react-ui)
+
 
 [![Coverage Branch](./coverage/badge-branches.svg)](./coverage)
 [![Coverage Branch](./coverage/badge-functions.svg)](./coverage)
 [![Coverage Branch](./coverage/badge-lines.svg)](./coverage)
 [![Coverage Branch](./coverage/badge-statements.svg)](./coverage)
 
-# Foundry-UI
 
 Rasa UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
 
@@ -28,9 +42,9 @@ Peer dependencies:
 
 If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). 
 
-###Install Foundry-UI into a React app
+###Install Rasa-UI into a React app
 
-Foundry for React is available as a scoped public Node package. You can use [npm](https://docs.npmjs.com/) or [yarn](https://classic.yarnpkg.com/en/docs) to add the Foundry package to your project. From you project's root directory, where the `package.json` file is located, run the command:
+Rasa for React is available as a scoped public Node package. You can use [npm](https://docs.npmjs.com/) or [yarn](https://classic.yarnpkg.com/en/docs) to add the Foundry package to your project. From you project's root directory, where the `package.json` file is located, run the command:
 
 ```
 npm install @headstorm/hs-react-ui
@@ -61,9 +75,9 @@ export default HelloWorld;
 ```
 Output:
 
-![hello world car](../../docs/images/hello-world.png)
+![hello world car](./public/Images/hello-world.png)
 
-In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Foundry componenets are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommened to check out the component's declaration source to see what styles are included.
+In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Rasa components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommened to check out the component's declaration source to see what styles are included.
 
 ```
 // /hs-react-ui/src/components/Card/Card.tsx
@@ -100,101 +114,75 @@ export const Body = styled(Div)`
 ###Override styles
 
 ```
-import { Card } from '@headstorm/hs-react-ui'; 
-
-const myTheme = {
-
-//
-const ThemedBody =
-
-function HelloWorld() {
-    return <Card>Hello World!</Card>;
-export default HelloWorld;
-```
-
-###Composing componoments
-
-```
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Card, colors } from '@headstorm/hs-react-ui'; 
 import styled from 'styled-components';
-import { mdiGlobeModel } from '@mdi/js';
-import { Button, Card, Text, colors } from '@headstorm/hs-react-ui'; 
 
-const getNewColor = () => {
-    var rand = Math.floor(Math.random() * Object.keys(colors).length);
-    return colors[Object.keys(colors)[rand]];
-};
-let newColor = getNewColor();
+// Foundry provides a basic set of colors, but feel free to add your own
+const myColors = {
+  ...colors,
+  blue: 'blue',
+  };
+
+// We recommend starting with the Foundry provided styling, in this case 'Card.Container', 
+// and then add you own overrides or new styles. 
+// If you were to set ThemedContainer = styled.div, you would lose all the Foundry preset styling.
 
 const ThemedContainer = styled(Card.Container)`
-  width: 50%;
-  margin: 25%;
-  border: 1px solid ${colors.grayMedium};
-  border-radius: 2rem;
+  border: 0 solid ${myColors.blue};
+  border-width: 0 0 1rem 0;
+  border-radius: 1rem;
   overflow: hidden;
+  margin: 2rem;
 `;
 
-const StyledBody = styled(Card.Body)`
-  font-family: Comic Sans MS, cursive, sans-serif;
+const StyledHeader = styled(Card.Header)`
+  background-color: ${myColors.blue};
+  color: white;
   font-size: 5rem;
-  col
+  padding: 1rem;
+`;
+
+const ThemedBody = styled(Card.Body)`
+  color: ${myColors.grayMedium};
+  font-family: Comic Sans MS, cursive, sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+  padding: 2rem 1rem;
+  text-align: center;
 `;
 
 const StyledFooter = styled(Card.Footer)`
-  display: flex;
-  align-items: right;
-  justify-content: end;
+  background-color: ${myColors.blue};
+  padding: 1rem;
+  min-height: 1rem;
 `;
 
 function HelloWorld() {
-    const [myColor, setMyColor] = useState('white');
-   
-    let StyledHeader = styled(Card.Header)`
-        font-family: Comic Sans MS, cursive, sans-serif;
-        background-color: blue;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: ${newColor};
-        `;
-
-    const Header = (
-        <Text key="headerText">
-         Hello, my name is:
-        </Text>
-    );
-
-    const Body = (
-        <Text key="bodyText">
-          World
-        </Text>
-    );
-
-    const Footer = (
-      <>
-        <Text key="bodyText" iconPrefix={mdiGlobeModel}></Text>
-        <Button onClick={() => { setMyColor(getNewColor()); console.log(myColor); }}>Colors</Button>
-      </>
-    );
-
     return (
-      <>
-        <Card
-          elevation={2}
-          header={Header}
-          footer={Footer}
-          StyledContainer={ThemedContainer}
-          StyledHeader={StyledHeader}
-          StyledFooter={StyledFooter}
-          StyledBody={StyledBody}
-        >
-            {Body}
-        </Card>
-      </>
-    );
-  };
+      <Card
+        StyledContainer={ThemedContainer} // Set your overrides for each element
+        StyledHeader={StyledHeader}
+        StyledBody={ThemedBody}
+        StyledFooter={StyledFooter}
+        header={'HELLO'} // Add your content
+      >
+        World
+    </Card>);
+};
 export default HelloWorld;
 ```
+Output:
+
+![hello world car](./public/images/hello-world-override.png)
+
+###Composing components
+
+See the [Form demo example] (https://headstorm.github.io/rasa-ui/?path=/story/form-example--controlled-form) and [source code](./src/components/Examples/Form.stories.tsx)
+
+###Global styling
+
+See the [Global source code](./src/components/Examples/GlobalStyles.stories.tsx)
 
 # Contributing
 
@@ -251,3 +239,30 @@ const MyContainer = styled(Div)`styles here`;
 ### Enabling Theming
 
 Theming is enabled through props of each component. When building a new component, or adding a styled-component to an existing component, ensure that there is a matching prop to accept an override, and that styled-component is a named export from the component. See the [Card component](https://github.com/Headstorm/rasa-ui/tree/master/packages/hs-react-ui/src/components/Card) as an example.
+
+## State of CICD workflow
+###What's working?
+- Pushes to master trigger a release build
+- Auto versioning
+- Pushes to v1-release trigger a pre-release build
+build checks on every PR to master and v1-release
+- Change logs are generated (see link below)
+- storybook docs are generated and checked in for releases
+- Test coverage
+
+###What isn't working yet?
+- Publishing to NPM isn't working yet due to the authentication token not having proper permissions - we have a ticket submitted to get this fixed and Bennett has been doing an excellent job tackling those types of tickets for us :clapping:
+- Releases like 1.0.0-alpha.# - we need to configure a new alpha branch to get releases like that. Currently we have them attempted to be created in this format: #.#.#-v1-release.#
+
+###How am I impacted as a developer?
+- Husky has been added for pre-commit and pre-push hooks. Please pull the latest and install dependencies in /rasa-ui to get the hooks working. (the root install will also update dependencies, but using npm instead of yarn - we can fix this in the future for consistency)
+- Commits that we want added to the Change log must use commitizen, when working inside of hs-react-ui using yarn commit will use commitizen. Alternatively you can use npx git-cz
+- Commits to be excluded from the change log (eg. "Fix typo that broke my pre commit linting") can continue to use normal git commits
+- Package.json is no longer the source of the version published, semantic-release uses git tags to determine the release version - this is only the case in our workflows. If we do a manual push we must update package.json before publishing
+- Auto versioning - No more package.json version bumps required :tada:
+(edited)
+
+## Known Issues
+Using with server-side rendering (SSR) apps, i.e. apps created with NextJS, don't have a window object and will require polyfilling.
+
+## [ChangeLog](./CHANGELOG.md)
