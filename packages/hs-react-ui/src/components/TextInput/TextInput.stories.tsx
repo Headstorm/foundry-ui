@@ -62,8 +62,9 @@ storiesOf('TextInput', module)
           onChange={onChangeCallback}
           debounceInterval={number('debounceInterval', 150)}
           debouncedOnChange={onDebounceCallback}
+          disabled={boolean('disabled', false)}
           value={inputValue}
-          placeholder={text('placeholder', 'Place Holder')}
+          placeholder={text('placeholder', 'Placeholder')}
           onClear={boolean('clearable', false) ? onClearCallback : undefined}
           iconPrefix={select('iconPrefix', options, options.none)}
           isMultiline={boolean('isMultiline?', false)}
@@ -112,7 +113,7 @@ storiesOf('TextInput', module)
             action('onChange')(newValue);
           }}
           value={inputValue}
-          placeholder={text('placeholder', 'Place Holder')}
+          placeholder={text('placeholder', 'Placeholder')}
           onClear={() => {
             setInputValue('');
             action('onClear')();
