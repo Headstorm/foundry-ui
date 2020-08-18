@@ -261,25 +261,14 @@ export default ({
 
       if (closestVal) {
         // TODO: use the closest val to find the handle to move and move it
-      }
-
-      // Set the slider position - this causes issues with the story where the value is the rounded to the same
-      // previous value. Clicking on 2.3 when set to 2 will move the handle, but the value doesn't get updated via
-      // the values prop, seems like a deep compare of the properties is happening on render for the values prop
-      set({
-        x: positionOnRail,
-        y: 0,
-
-        immediate: true,
-        config: { friction: 13, tension: 100 },
-      });
-      onDrag(clickedValue);
-      if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
-        e.persist();
-        slideRailProps.onMouseDown(e);
+        onDrag(clickedValue);
+        if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
+          e.persist();
+          slideRailProps.onMouseDown(e);
+        }
       }
     },
-    [slideRailProps, sliderBounds, set, onDrag, domain, processedValues],
+    [slideRailProps, sliderBounds, onDrag, domain, processedValues],
   );
 
   const bind = useDrag(
