@@ -11,7 +11,7 @@ import Table from './components/Table';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
-import { FoundryProvider, FoundryContext, useColors } from './context';
+import { FoundryProvider, FoundryContext, useTheme } from './context';
 
 import colors from './enums/colors';
 import timings from './enums/timings';
@@ -34,7 +34,7 @@ export {
   Progress,
   FoundryProvider,
   FoundryContext,
-  useColors,
+  useTheme,
   colors,
   timings,
   fonts,

@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance } from 'polished';
 
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
@@ -29,11 +29,11 @@ type UsefulDropdownState = {
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
-    const { shadow } = useColors();
+    const { colors } = useTheme();
     return `
       width: fit-content;
       transition: filter ${timings.slow}, box-shadow ${timings.slow};
-      ${getShadowStyle(elevation, shadow)}
+      ${getShadowStyle(elevation, colors.shadow)}
       position: relative;
       z-index: ${isOpen ? '7' : '1'};
     `;
@@ -99,12 +99,13 @@ const OptionsContainer = styled(Div)`
 const OptionItem = styled(Div)`
   ${({ selected, color }: UsefulDropdownState) => {
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
-    const { grayDark } = useColors();
+    const { colors } = useTheme();
+
     return `
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : grayDark};
+    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : colors.grayDark};
     background-color: ${
       selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'transparent'
     };
@@ -129,13 +130,14 @@ const OptionItem = styled(Div)`
 `;
 const CheckContainer = styled(Div)`
   ${({ color }: UsefulDropdownState) => {
-    const { grayMedium } = useColors();
+    const { colors } = useTheme();
+
     return `
       display: flex;
       align-items: center;
       justify-content: center;
 
-      color: ${getFontColorFromVariant('fill', tint(0.5, color || grayMedium))};
+      color: ${getFontColorFromVariant('fill', tint(0.5, color || colors.grayMedium))};
       padding-right: 0.2rem;
       width: 2rem;
     `;
@@ -209,7 +211,7 @@ const Dropdown = ({
   variant = variants.outline,
   values = [],
 }: DropdownProps): JSX.Element | null => {
-  const colors = useColors();
+  const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);

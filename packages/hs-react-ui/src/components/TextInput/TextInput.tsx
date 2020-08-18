@@ -5,20 +5,20 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 
 const Container = styled(Div)`
   ${({ disabled = false, isValid }: { disabled?: boolean; isValid?: boolean }) => {
-    const { destructive, grayMedium, background } = useColors();
+    const { colors } = useTheme();
     return `
-      border 2px solid ${isValid === false ? destructive : grayMedium};
+      border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
       min-width: 10rem;
       position: relative;
       display: flex;
       flex-flow: row;
       border-radius: 0.25em;
-      background-color: ${background};
+      background-color: ${colors.background};
       ${disabled ? disabledStyles() : ''}
   `;
   }}
@@ -26,7 +26,7 @@ const Container = styled(Div)`
 
 const TextInputContainer = styled(InputElement)`
   ${() => {
-    const { transparent } = useColors();
+    const { colors } = useTheme();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -34,14 +34,14 @@ const TextInputContainer = styled(InputElement)`
       height: 2em;
       font-size: 1em;
       padding: 0.5rem;
-      background-color: ${transparent};
+      background-color: ${colors.transparent};
   `;
   }}
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
   ${({ multiLineIsResizable }: TextInputProps) => {
-    const { transparent } = useColors();
+    const { colors } = useTheme();
     return `
       border: 0 none;
       flex-grow: 1;
@@ -50,7 +50,7 @@ const TextAreaInputContainer = styled(TextArea)`
       min-height: 2em;
       min-width: 0px;
       padding: .5rem;
-      background-color: ${transparent};
+      background-color: ${colors.transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
     `;
   }}
@@ -58,14 +58,15 @@ const TextAreaInputContainer = styled(TextArea)`
 
 const IconContainer = styled(Div)`
   ${() => {
-    const { grayMedium } = useColors();
+    const { colors } = useTheme();
+
     return `
       padding: 0.5em;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: ${grayMedium};
+      color: ${colors.grayMedium};
       cursor: pointer;
     `;
   }}
@@ -73,23 +74,23 @@ const IconContainer = styled(Div)`
 
 const CharacterCounter = styled(Div)`
   ${({ textIsTooLong, isValid, errorMessage }) => {
-    const { grayLight, destructive } = useColors();
+    const { colors } = useTheme();
     return css`
       position: absolute;
       top: calc(100% + ${isValid && errorMessage ? '0.25em' : '2em'});
       right: 0.25em;
-      color: ${textIsTooLong ? destructive : grayLight};
+      color: ${textIsTooLong ? colors.destructive : colors.grayLight};
     `;
   }}
 `;
 
 const ErrorContainer = styled(Div)`
   ${() => {
-    const { destructive } = useColors();
+    const { colors } = useTheme();
     return css`
       position: absolute;
       top: calc(100% + 0.25em);
-      color: ${destructive};
+      color: ${colors.destructive};
       font-size: 0.75rem;
     `;
   }}

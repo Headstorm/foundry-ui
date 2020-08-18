@@ -327,7 +327,8 @@
 <a name='L268'></a><a href='#L268'>268</a>
 <a name='L269'></a><a href='#L269'>269</a>
 <a name='L270'></a><a href='#L270'>270</a>
-<a name='L271'></a><a href='#L271'>271</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -388,6 +389,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -604,20 +606,20 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 &nbsp;
 const Container = <span class="cstat-no" title="statement not covered" >styled(Div)`</span>
   ${<span class="fstat-no" title="function not covered" >({</span> disabled = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> isValid }: { disabled?: boolean; isValid?: boolean }) =&gt; {
-    const { destructive, grayMedium, background } = <span class="cstat-no" title="statement not covered" >useColors();</span>
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return `</span>
-      border 2px solid ${isValid === false ? destructive : grayMedium};
+      border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
       min-width: 10rem;
       position: relative;
       display: flex;
       flex-flow: row;
       border-radius: 0.25em;
-      background-color: ${background};
+      background-color: ${colors.background};
       ${disabled ? disabledStyles() : ''}
   `;
   }}
@@ -625,7 +627,7 @@ const Container = <span class="cstat-no" title="statement not covered" >styled(D
 &nbsp;
 const TextInputContainer = <span class="cstat-no" title="statement not covered" >styled(InputElement)`</span>
   ${<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-    const { transparent } = <span class="cstat-no" title="statement not covered" >useColors();</span>
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return `</span>
       border: 0 none;
       flex-grow: 1;
@@ -633,14 +635,14 @@ const TextInputContainer = <span class="cstat-no" title="statement not covered" 
       height: 2em;
       font-size: 1em;
       padding: 0.5rem;
-      background-color: ${transparent};
+      background-color: ${colors.transparent};
   `;
   }}
 `;
 &nbsp;
 const TextAreaInputContainer = <span class="cstat-no" title="statement not covered" >styled(TextArea)`</span>
   ${<span class="fstat-no" title="function not covered" >({</span> multiLineIsResizable }: TextInputProps) =&gt; {
-    const { transparent } = <span class="cstat-no" title="statement not covered" >useColors();</span>
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return `</span>
       border: 0 none;
       flex-grow: 1;
@@ -649,7 +651,7 @@ const TextAreaInputContainer = <span class="cstat-no" title="statement not cover
       min-height: 2em;
       min-width: 0px;
       padding: .5rem;
-      background-color: ${transparent};
+      background-color: ${colors.transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
     `;
   }}
@@ -657,14 +659,15 @@ const TextAreaInputContainer = <span class="cstat-no" title="statement not cover
 &nbsp;
 const IconContainer = <span class="cstat-no" title="statement not covered" >styled(Div)`</span>
   ${<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-    const { grayMedium } = <span class="cstat-no" title="statement not covered" >useColors();</span>
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    return `</span>
       padding: 0.5em;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: ${grayMedium};
+      color: ${colors.grayMedium};
       cursor: pointer;
     `;
   }}
@@ -672,23 +675,23 @@ const IconContainer = <span class="cstat-no" title="statement not covered" >styl
 &nbsp;
 const CharacterCounter = <span class="cstat-no" title="statement not covered" >styled(Div)`</span>
   ${<span class="fstat-no" title="function not covered" >({</span> textIsTooLong, isValid, errorMessage }) =&gt; {
-    const { grayLight, destructive } = <span class="cstat-no" title="statement not covered" >useColors();</span>
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return css`</span>
       position: absolute;
       top: calc(100% + ${isValid &amp;&amp; errorMessage ? '0.25em' : '2em'});
       right: 0.25em;
-      color: ${textIsTooLong ? destructive : grayLight};
+      color: ${textIsTooLong ? colors.destructive : colors.grayLight};
     `;
   }}
 `;
 &nbsp;
 const ErrorContainer = <span class="cstat-no" title="statement not covered" >styled(Div)`</span>
   ${<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-    const { destructive } = <span class="cstat-no" title="statement not covered" >useColors();</span>
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return css`</span>
       position: absolute;
       top: calc(100% + 0.25em);
-      color: ${destructive};
+      color: ${colors.destructive};
       font-size: 0.75rem;
     `;
   }}
@@ -874,7 +877,7 @@ export default TextInput;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Aug 17 2020 20:07:05 GMT+0000 (Coordinated Universal Time)
+                at Tue Aug 18 2020 15:24:37 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
