@@ -77,7 +77,7 @@ const CharacterCounter = styled(Div)`
     const { colors } = useTheme();
     return css`
       position: absolute;
-      top: calc(100% + ${isValid && (!errorMessage || errorMessage != '') ? '0.25em' : '2em'});
+      top: calc(100% + ${isValid && (!errorMessage || errorMessage !== '') ? '0.25em' : '2em'});
       right: 0.25em;
       color: ${textIsTooLong ? colors.destructive : colors.grayLight};
     `;

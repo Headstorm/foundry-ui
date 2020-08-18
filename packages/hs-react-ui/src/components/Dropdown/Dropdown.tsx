@@ -1,8 +1,8 @@
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled, { css, StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
-import { shade, tint, getLuminance } from 'polished';
+import { shade, tint, getLuminance, darken } from 'polished';
 
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
@@ -24,7 +24,7 @@ type UsefulDropdownState = {
   color: string;
   multi?: boolean;
   selected?: boolean;
-  variant?: variants;
+  variant: variants;
 };
 
 const Container = styled(Div)`
@@ -81,7 +81,7 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => `
+  ${({ color, variant }: UsefulDropdownState) => `
     background: white;
     position: absolute;
     top: 100%;
@@ -89,7 +89,13 @@ const OptionsContainer = styled(Div)`
     max-height: 10rem;
     overflow-y: scroll;
     width: 15rem;
-    border: 1px solid ${getFontColorFromVariant('outline', color)};
+    ${
+      variant !== variants.text
+        ? `
+            border: 1px solid ${color};
+          `
+        : ''
+    }
     border-top: 0px solid transparent;
     border-radius: 0rem 0rem 0.25rem 0.25rem;
     z-index: 1000;
@@ -97,39 +103,37 @@ const OptionsContainer = styled(Div)`
 `;
 
 const OptionItem = styled(Div)`
-  ${({ selected, color }: UsefulDropdownState) => {
+  ${({ selected, color, variant }: UsefulDropdownState) => {
+    const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
-    const { colors } = useTheme();
+    const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
 
     return `
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : colors.grayDark};
-    background-color: ${
-      selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'transparent'
-    };
-
-    &:hover {
-      background-color: ${shade(
-        0.1,
-        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
-      )};
-      cursor: pointer;
-      outline: none;
-    }
-    &:focus {
-      outline: none;
-      background-color: ${shade(
-        0.1,
-        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
-      )};
-    }
-  `;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      color: ${getFontColorFromVariant(variant, color)};
+      background-color: ${backgroundColor};
+  
+      &:hover {
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
+        };
+    
+        cursor: pointer;
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
+        };
+      }
+    `;
   }}
 `;
 const CheckContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => {
+  ${({ color, variant }: UsefulDropdownState) => {
     const { colors } = useTheme();
 
     return `
@@ -137,7 +141,7 @@ const CheckContainer = styled(Div)`
       align-items: center;
       justify-content: center;
 
-      color: ${getFontColorFromVariant('fill', tint(0.5, color || colors.grayMedium))};
+      color: ${getFontColorFromVariant(variant, tint(0.5, color || colors.grayMedium))};
       padding-right: 0.2rem;
       width: 2rem;
     `;
@@ -407,8 +411,13 @@ const Dropdown = ({
         </StyledValueItem>
         {closeIcons}
       </Button>
-      {isOpen && (
-        <StyledOptionsContainer color={defaultedColor} variant={variant} {...optionsContainerProps}>
+      {true && (
+        // {isOpen && (
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          {...optionsContainerProps}
+        >
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
