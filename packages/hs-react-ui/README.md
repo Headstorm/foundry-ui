@@ -57,7 +57,7 @@ yarn add styled-components react-is react-spring
 
 ## Usage
 
-###Hello World
+### Hello World
 Get started with a simple hello world
 
 ```
