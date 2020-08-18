@@ -251,7 +251,7 @@ build checks on every PR to master and v1-release
 - Test coverage
 
 ###What isn't working yet?
-- Publishing to NPM isn't working yet due to the authentication token not having proper permissions - we have a ticket submitted to get this fixed and Bennett has been doing an excellent job tackling those types of tickets for us :clapping:
+
 - Releases like 1.0.0-alpha.# - we need to configure a new alpha branch to get releases like that. Currently we have them attempted to be created in this format: #.#.#-v1-release.#
 
 ###How am I impacted as a developer?
