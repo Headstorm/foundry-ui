@@ -150,7 +150,7 @@ storiesOf('Form Example', module).add(
       setTimeout(() => {
         setSavedState(newSavedState);
         setIsSaving(false);
-      }, 4000);
+      }, Math.random() * 1000);
     };
 
     const onReset = () => {
