@@ -31,6 +31,8 @@ export type RangeSliderProps = {
   StyledSlideRail?: any;
   StyledSelectedRangeRail?: any;
   StyledDomainLabel?: any;
+  StyledMarker?: any;
+  StyledMarkerLabel?: any;
   containerProps?: SubcomponentPropsType;
   dragHandleProps?: SubcomponentPropsType;
   handleLabelProps?: SubcomponentPropsType;
@@ -51,4 +53,5 @@ export type RangeSliderProps = {
   max: number;
   values?: number[] | ValueProp[];
   testId?: string;
+  markers?: number[] | ValueProp[];
 };
