@@ -1,14 +1,5 @@
 # Rasa-UI for React
 
-<img src="./public/images/nodejs.svg" height="50" style="margin-right: 5em">
-<img src="./public/images/react.svg" height="50" style="margin-right: 5em">
-<img src="./public/images/typescript.svg" height="50" style="margin-right: 5em">
-<img src="./public/images/storybook.png" height="50">
-
-
-
-
-
 [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui) 
 ![npm](https://img.shields.io/npm/dw/@headstorm/hs-react-ui)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@headstorm/hs-react-ui)
@@ -20,15 +11,19 @@
 [![Coverage Branch](./coverage/badge-lines.svg)](./coverage)
 [![Coverage Branch](./coverage/badge-statements.svg)](./coverage)
 
+### 🔥 [Live Demo](https://headstorm.github.io/rasa-ui/)
 
 Rasa UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
 
+<img src="./public/Images/nodejs.svg" height="50" style="margin-right: 5em">
+<img src="./public/Images/react.svg" height="50" style="margin-right: 5em">
+<img src="./public/Images/typescript.svg" height="50" style="margin-right: 5em">
+<img src="./public/Images/storybook.png" height="50">
 
-### 🔥 [Live Demo](https://headstorm.github.io/rasa-ui/)
 
-##Getting Started
+## Getting Started
 
-###Requirements
+### Requirements
 
  - Node >= 10.18
  
@@ -42,7 +37,7 @@ Peer dependencies:
 
 If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). 
 
-###Install Rasa-UI into a React app
+### Install Rasa-UI into a React app
 
 Rasa for React is available as a scoped public Node package. You can use [npm](https://docs.npmjs.com/) or [yarn](https://classic.yarnpkg.com/en/docs) to add the Foundry package to your project. From you project's root directory, where the `package.json` file is located, run the command:
 
@@ -60,7 +55,7 @@ npm install --save styled-components react-is react-spring
 yarn add styled-components react-is react-spring
 ```
 
-##Usage
+## Usage
 
 ###Hello World
 Get started with a simple hello world
@@ -77,7 +72,7 @@ Output:
 
 ![hello world car](./public/Images/hello-world.png)
 
-In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Rasa components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommened to check out the component's declaration source to see what styles are included.
+In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Rasa components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommended that you check out the component's source code to see what styles are included.
 
 ```
 // /hs-react-ui/src/components/Card/Card.tsx
@@ -111,7 +106,7 @@ export const Body = styled(Div)`
 `;
 ```
 
-###Override styles
+### Override styles
 
 ```
 import React from 'react';
@@ -174,13 +169,13 @@ export default HelloWorld;
 ```
 Output:
 
-![hello world car](./public/images/hello-world-override.png)
+![hello world overrides](./public/Images/hello-world-override.png)
 
-###Composing components
+### Composing components
 
-See the [Form demo example] (https://headstorm.github.io/rasa-ui/?path=/story/form-example--controlled-form) and [source code](./src/components/Examples/Form.stories.tsx)
+See the [Form demo example](https://headstorm.github.io/rasa-ui/?path=/story/form-example--controlled-form) and [source code](./src/components/Examples/Form.stories.tsx)
 
-###Global styling
+### Global styling
 
 See the [Global source code](./src/components/Examples/GlobalStyles.stories.tsx)
 
@@ -241,7 +236,7 @@ const MyContainer = styled(Div)`styles here`;
 Theming is enabled through props of each component. When building a new component, or adding a styled-component to an existing component, ensure that there is a matching prop to accept an override, and that styled-component is a named export from the component. See the [Card component](https://github.com/Headstorm/rasa-ui/tree/master/packages/hs-react-ui/src/components/Card) as an example.
 
 ## State of CICD workflow
-###What's working?
+### What's working?
 - Pushes to master trigger a release build
 - Auto versioning
 - Pushes to v1-release trigger a pre-release build
@@ -250,11 +245,11 @@ build checks on every PR to master and v1-release
 - storybook docs are generated and checked in for releases
 - Test coverage
 
-###What isn't working yet?
+### What isn't working yet?
 
 - Releases like 1.0.0-alpha.# - we need to configure a new alpha branch to get releases like that. Currently we have them attempted to be created in this format: #.#.#-v1-release.#
 
-###How am I impacted as a developer?
+### How am I impacted as a developer?
 - Husky has been added for pre-commit and pre-push hooks. Please pull the latest and install dependencies in /rasa-ui to get the hooks working. (the root install will also update dependencies, but using npm instead of yarn - we can fix this in the future for consistency)
 - Commits that we want added to the Change log must use commitizen, when working inside of hs-react-ui using yarn commit will use commitizen. Alternatively you can use npx git-cz
 - Commits to be excluded from the change log (eg. "Fix typo that broke my pre commit linting") can continue to use normal git commits
