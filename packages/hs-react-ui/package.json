@@ -49,6 +49,7 @@
     "@types/node": "^13.11.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@types/shortid": "^0.0.29",
     "@types/storybook__react": "^5.2.1",
     "@types/styled-components": "^5.1.0",
     "babel-loader": "^8.1.0",
@@ -100,6 +101,7 @@
     "@typescript-eslint/parser": "^3.0.0",
     "lodash.debounce": "^4.0.8",
     "polished": "^3.5.1",
+    "shortid": "^2.2.15",
     "src": "^1.1.2"
   },
   "peerDependencies": {

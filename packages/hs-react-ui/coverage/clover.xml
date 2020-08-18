@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1597407976097" clover="3.2.0">
-  <project timestamp="1597407976097" name="All files">
-    <metrics statements="572" coveredstatements="262" conditionals="631" coveredconditionals="241" methods="143" coveredmethods="51" elements="1346" coveredelements="554" complexity="0" loc="572" ncloc="572" packages="18" files="25" classes="25"/>
+<coverage generated="1597694825110" clover="3.2.0">
+  <project timestamp="1597694825110" name="All files">
+    <metrics statements="604" coveredstatements="262" conditionals="659" coveredconditionals="241" methods="155" coveredmethods="51" elements="1418" coveredelements="554" complexity="0" loc="604" ncloc="604" packages="19" files="26" classes="26"/>
     <package name="src">
       <metrics statements="39" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="16" coveredmethods="0"/>
       <file name="serviceWorker.ts" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/serviceWorker.ts">
@@ -269,6 +269,38 @@
         <line num="444" count="1" type="stmt"/>
         <line num="445" count="1" type="stmt"/>
         <line num="446" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.InteractionFeedback">
+      <metrics statements="26" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="11" coveredmethods="0"/>
+      <file name="InteractionFeedback.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/InteractionFeedback/InteractionFeedback.tsx">
+        <metrics statements="26" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="11" coveredmethods="0"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="82" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.Label">
@@ -566,9 +598,9 @@
       </file>
     </package>
     <package name="src.components.TextInput">
-      <metrics statements="36" coveredstatements="0" conditionals="36" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <metrics statements="42" coveredstatements="0" conditionals="55" coveredconditionals="0" methods="10" coveredmethods="0"/>
       <file name="TextInput.tsx" path="/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/TextInput/TextInput.tsx">
-        <metrics statements="36" coveredstatements="0" conditionals="36" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <metrics statements="42" coveredstatements="0" conditionals="55" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="11" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -584,27 +616,33 @@
         <line num="74" count="0" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
-        <line num="123" count="0" type="stmt"/>
-        <line num="127" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="128" count="0" type="stmt"/>
-        <line num="135" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
         <line num="138" count="0" type="stmt"/>
-        <line num="140" count="0" type="stmt"/>
-        <line num="177" count="0" type="stmt"/>
-        <line num="181" count="0" type="stmt"/>
-        <line num="182" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="183" count="0" type="stmt"/>
-        <line num="184" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="185" count="0" type="stmt"/>
-        <line num="188" count="0" type="stmt"/>
-        <line num="199" count="0" type="stmt"/>
-        <line num="200" count="0" type="stmt"/>
-        <line num="201" count="0" type="stmt"/>
+        <line num="142" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="202" count="0" type="stmt"/>
+        <line num="203" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="204" count="0" type="stmt"/>
+        <line num="205" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="206" count="0" type="stmt"/>
+        <line num="208" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="210" count="0" type="stmt"/>
+        <line num="221" count="0" type="stmt"/>
+        <line num="222" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="223" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="227" count="0" type="stmt"/>
         <line num="228" count="0" type="stmt"/>
-        <line num="229" count="0" type="stmt"/>
-        <line num="230" count="0" type="stmt"/>
-        <line num="231" count="0" type="stmt"/>
-        <line num="232" count="0" type="stmt"/>
+        <line num="264" count="0" type="stmt"/>
+        <line num="265" count="0" type="stmt"/>
+        <line num="266" count="0" type="stmt"/>
+        <line num="267" count="0" type="stmt"/>
+        <line num="268" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.context">
