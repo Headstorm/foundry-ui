@@ -1,4 +1,4 @@
-<div align="center"><img src="./docs/images/foundry-ui.png" width="600"></img></div>
+<div align="center">Foundry UI</div>
 
 <div align='center'>The only open-source UI library that's made to be remade</div>
 ##Intro
