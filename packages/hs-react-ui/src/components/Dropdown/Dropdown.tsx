@@ -179,6 +179,7 @@ export interface DropdownProps {
   options?: Array<OptionProps>;
   tabIndex?: number;
   variant?: variants;
+  optionsVariant?: variants;
 }
 
 const Dropdown = ({
@@ -209,6 +210,7 @@ const Dropdown = ({
   options = [],
   tabIndex = 0,
   variant = variants.outline,
+  optionsVariant = variant,
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
@@ -415,7 +417,7 @@ const Dropdown = ({
               onClick={() => handleSelect(option.id)}
               tabIndex={tabIndex}
               color={defaultedColor}
-              variant={variant}
+              variant={optionsVariant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
               {...optionItemProps}
@@ -424,7 +426,7 @@ const Dropdown = ({
                 <StyledCheckContainer
                   color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
-                  variant={variant}
+                  variant={optionsVariant}
                   multi={multi}
                   {...checkContainerProps}
                 >
