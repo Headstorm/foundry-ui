@@ -84,9 +84,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   iconPrefix?: string | ReactNode;
   onClear?: (event: SyntheticEvent) => void;
-  onChange?: (event: SyntheticEvent) => void;
   debouncedOnChange?: (event: SyntheticEvent) => void;
-  defaultValue?: string;
   isValid?: boolean;
   isMultiline?: boolean;
   errorMessage?: string;
@@ -118,7 +116,6 @@ const TextInput = ({
   cols = 10,
   debouncedOnChange = defaultCallback,
   debounceInterval = 8,
-  defaultValue,
   errorMessage,
   iconPrefix,
   id,
@@ -131,7 +128,6 @@ const TextInput = ({
   StyledContainer = Container,
   StyledIconContainer = IconContainer,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
-  value,
   ...nativeInputHTMLAttributes
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
@@ -156,10 +152,9 @@ const TextInput = ({
         rows={rows}
         onChange={(e: SyntheticEvent) => {
           e.persist();
-          onChange(e);
+          nativeInputHTMLAttributes.onChange(e);
           debouncedChange(e);
         }}
-        value={value || defaultValue}
         id={id}
         multiLineIsResizable={multiLineIsResizable}
         {...nativeInputHTMLAttributes}
