@@ -96,7 +96,7 @@ export const Row = styled(TR)`
       column-gap: ${columnGap};
       position: relative;
       background-color: ${colors.background};
-      height: ${isCollapsed ? '0px' : undefined};
+      ${isCollapsed ? 'height: 0px;' : ''}
 
       &:not(:last-child) {
         border-bottom: 1px solid rgb(211, 214, 215);
