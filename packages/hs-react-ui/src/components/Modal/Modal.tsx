@@ -6,7 +6,7 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { Div } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 
 const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${({ backgroundBlur, backgroundDarkness }) => `
@@ -108,7 +108,7 @@ const Modal = ({
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps) => {
-  const colors = useColors();
+  const { colors } = useTheme();
   return (
     <>
       {closeButtonAttachment === 'corner' && (

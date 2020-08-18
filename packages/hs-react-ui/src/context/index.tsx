@@ -19,35 +19,44 @@ export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
 };
-export const FoundryContext = React.createContext<FoundryContextType>({
+const defaultContextValue = {
   globalStyles: defaultGlobalStyles,
   colors: colorsEnum,
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
-});
+};
+export const FoundryContext = React.createContext<FoundryContextType>(defaultContextValue);
 
 export const FoundryProvider = ({
-  value,
+  value = defaultContextValue,
   children,
 }: {
-  value: { globalStyles?: string; colors: Partial<Record<keyof typeof colorsEnum, string>> };
+  value?: { globalStyles?: string; colors?: Partial<Record<keyof typeof colorsEnum, string>> };
   children: React.ReactNode;
 }) => {
   const { globalStyles = defaultGlobalStyles, colors = colorsEnum } = value;
 
+  // use the default set of styles, unless we've got something to override
+  const mergedStyles =
+    globalStyles === defaultGlobalStyles
+      ? globalStyles
+      : `
+    ${defaultGlobalStyles}
+    ${globalStyles}
+  `;
   const mergedColors = {
     ...colorsEnum,
     ...colors,
   };
   return (
-    <FoundryContext.Provider value={{ globalStyles, colors: mergedColors }}>
+    <FoundryContext.Provider value={{ globalStyles: mergedStyles, colors: mergedColors }}>
       {children}
     </FoundryContext.Provider>
   );
 };
 
-export function useColors(): FoundryColorsType {
-  const { colors } = useContext(FoundryContext);
-  return colors;
+export function useTheme(): FoundryContextType {
+  const theme = useContext(FoundryContext);
+  return theme;
 }
 
 export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => {

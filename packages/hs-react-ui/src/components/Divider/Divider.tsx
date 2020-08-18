@@ -3,16 +3,16 @@ import styled, { StyledComponentBase } from 'styled-components';
 
 import { Div, HR } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 
 export const DefaultDivider = styled(HR)`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => {
-    const { grayLight } = useColors();
+    const { colors } = useTheme();
     return `
       border: none;
       height: ${height};
       width: ${width};
-      background-color: ${grayLight};
+      background-color: ${colors.grayLight};
   `;
   }}
 `;

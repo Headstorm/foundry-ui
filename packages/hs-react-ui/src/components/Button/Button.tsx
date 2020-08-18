@@ -5,7 +5,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
@@ -55,9 +55,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   ButtonElement,
 )`
   ${({ disabled, elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { transparent, background, grayDark, shadow } = useColors();
-    const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
-    const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
+    const { colors } = useTheme();
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
+    const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
 
     return `
       display: inline-flex;
@@ -70,9 +70,9 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         outline ${timings.slow},
         filter ${timings.slow},
         box-shadow ${timings.slow};
-      ${getShadowStyle(elevation, shadow)}
+      ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
-      border: ${variant === variants.outline ? `1px solid ${color || grayDark}` : '0 none;'};
+      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
@@ -135,8 +135,8 @@ const Button = ({
   id,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
-  const { grayLight } = useColors();
-  const containerColor = color || grayLight;
+  const { colors } = useTheme();
+  const containerColor = color || colors.grayLight;
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     'data-test-id': 'hsui-button',

@@ -5,7 +5,7 @@ import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { darken } from 'polished';
 import { disabledStyles } from '../../utils/color';
@@ -35,7 +35,7 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
 
 export const Label = styled(LabelElement)`
   ${({ disabled }) => {
-    const { grayXlight } = useColors();
+    const { colors } = useTheme();
     return `
       display: flex;
       align-items: center;
@@ -44,7 +44,7 @@ export const Label = styled(LabelElement)`
       font-size: 1em;
     
       ${Input}:focus + & {
-        box-shadow: 0 0 0 3px ${grayXlight};
+        box-shadow: 0 0 0 3px ${colors.grayXlight};
       }
       ${disabled ? disabledStyles() : ''}
     `;
@@ -53,11 +53,11 @@ export const Label = styled(LabelElement)`
 
 export const Box = styled(Div)`
   ${({ variant, checked, checkboxType }) => {
-    const { grayLight, success, destructive, background } = useColors();
-    let color = grayLight;
-    if (checkboxType === CheckboxTypes.check && checked) color = success;
-    if (checkboxType === CheckboxTypes.cross && checked) color = destructive;
-    const backgroundColor = variant === variants.fill && checked ? color : background;
+    const { colors } = useTheme();
+    let color = colors.grayLight;
+    if (checkboxType === CheckboxTypes.check && checked) color = colors.success;
+    if (checkboxType === CheckboxTypes.cross && checked) color = colors.destructive;
+    const backgroundColor = variant === variants.fill && checked ? color : colors.background;
 
     return `
       ${
@@ -94,35 +94,35 @@ export const BaseIcon = styled(Icon)`
 
 const CheckIcon = styled(BaseIcon)`
   ${({ variant }) => {
-    const { success, background } = useColors();
+    const { colors } = useTheme();
     return `
-      color: ${variant === variants.fill ? background : success};
+      color: ${variant === variants.fill ? colors.background : colors.success};
     `;
   }}
 `;
 
 const CrossIcon = styled(BaseIcon)`
   ${({ variant }) => {
-    const { destructive, background } = useColors();
+    const { colors } = useTheme();
     return `
-      color: ${variant === variants.fill ? background : destructive};
+      color: ${variant === variants.fill ? colors.background : colors.destructive};
     `;
   }}
 `;
 
 const DefaultIcon = styled(BaseIcon)`
   ${() => {
-    const { grayLight } = useColors();
+    const { colors } = useTheme();
     return `
-      color: ${grayLight}
+      color: ${colors.grayLight}
     `;
   }}
 `;
 
 const NeutralIcon = styled(BaseIcon)`
   ${({ variant }) => {
-    const { grayMedium, background } = useColors();
-    const color = variant === variants.fill ? background : grayMedium;
+    const { colors } = useTheme();
+    const color = variant === variants.fill ? colors.background : colors.grayMedium;
     return `
       color: ${color};
       path {
