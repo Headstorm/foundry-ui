@@ -1,6 +1,7 @@
 <div align="center">Foundry UI</div>
 
 <div align='center'>The only open-source UI library that's made to be remade</div>
+
 ## Intro
 
 Foundry-UI (or Foundry for short) is a great choice for your next software project's __user interface (UI)__, because Foundry was created to:
