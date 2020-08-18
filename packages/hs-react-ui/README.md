@@ -52,13 +52,12 @@ npm install @headstorm/hs-react-ui
 yarn add @headstorm/hs-react-ui
 ```
 
-For the peer dependency [styled components](https://styled-components.com/) install from the same root directory, run the command:
+For the peer dependency [styled components](https://styled-components.com/),  [react-is](https://www.npmjs.com/package/react-is),  and [react-spring](https://www.npmjs.com/package/react-spring) install from the same root directory, run the command:
 
 ```
-npm install --save styled-components
+npm install --save styled-components react-is react-spring
 // or
-yarn add styled-components
-```
+yarn add styled-components react-is react-spring
 
 
 ##Usage
@@ -261,8 +260,5 @@ build checks on every PR to master and v1-release
 - Package.json is no longer the source of the version published, semantic-release uses git tags to determine the release version - this is only the case in our workflows. If we do a manual push we must update package.json before publishing
 - Auto versioning - No more package.json version bumps required :tada:
 (edited)
-
-## Known Issues
-Using with server-side rendering (SSR) apps, i.e. apps created with NextJS, don't have a window object and will require polyfilling.
 
 ## [ChangeLog](./CHANGELOG.md)
