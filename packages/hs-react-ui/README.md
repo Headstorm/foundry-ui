@@ -58,7 +58,7 @@ For the peer dependency [styled components](https://styled-components.com/),  [r
 npm install --save styled-components react-is react-spring
 // or
 yarn add styled-components react-is react-spring
-
+```
 
 ##Usage
 
@@ -70,6 +70,7 @@ import { Card } from '@headstorm/hs-react-ui';
 
 function HelloWorld() {
     return <Card>Hello World!</Card>;
+}
 export default HelloWorld;
 ```
 Output:
@@ -123,8 +124,8 @@ const myColors = {
   blue: 'blue',
   };
 
-// We recommend starting with the Foundry provided styling, in this case 'Card.Container', 
-// and then add you own overrides or new styles. 
+// We recommend starting with the Foundry provided subcomponent, in this case 'Card.Container', 
+// and then add your own overrides or new styles. 
 // If you were to set ThemedContainer = styled.div, you would lose all the Foundry preset styling.
 
 const ThemedContainer = styled(Card.Container)`
