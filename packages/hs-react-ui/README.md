@@ -26,7 +26,7 @@ At of the time this writing, Foundry is new and launching with a fully supported
 
 Rasa UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
 
-<img src="./public/Images/nodejs.svg" height="50" style="margin-right: 5rem"><img src="./public/Images/react.svg" height="50" style="margin-right: 5rem"><img src="./public/Images/typescript.svg" height="50" style="margin-right: 5rem"><img src="./public/Images/storybook.png" height="50">
+<img src="./public/Images/nodejs.svg" height="50" style="margin-right: 15px"><img src="./public/Images/react.svg" height="50" style="margin-right: 5rem"><img src="./public/Images/typescript.svg" height="50" style="margin-right: 5rem"><img src="./public/Images/storybook.png" height="50">
 
 
 ## Getting Started
