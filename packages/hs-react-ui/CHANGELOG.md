@@ -1,3 +1,15 @@
+# [1.0.0-v1-release.3](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.2...v1.0.0-v1-release.3) (2020-08-18)
+
+
+### Features
+
+* **foundryprovider:** replace useColor hook with generic useTheme hook ([7a13871](https://github.com/Headstorm/rasa-ui/commit/7a13871d65dfbe78e7057d9eb9efad2eb0b335a1))
+
+
+### BREAKING CHANGES
+
+* **foundryprovider:** Removed the useColors function
+
 # [1.0.0-v1-release.2](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.1...v1.0.0-v1-release.2) (2020-08-17)
 
 
