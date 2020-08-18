@@ -240,14 +240,14 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c6:hover {
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
 .c6:focus {
   outline: none;
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {
@@ -709,14 +709,14 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c6:hover {
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
 .c6:focus {
   outline: none;
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {

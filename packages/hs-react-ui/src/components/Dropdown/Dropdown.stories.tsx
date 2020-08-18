@@ -82,7 +82,7 @@ storiesOf('Dropdown', module)
           <Label labelText="City" htmlFor="cities-list">
             <Dropdown
               color={color('color', colors.grayDark)}
-              elevation={number('elevation', 0, { range: true, min: -5, max: 5, step: 1 })}
+              elevation={number('elevation', 1, { range: true, min: -5, max: 5, step: 1 })}
               multi={boolean('multi', false)}
               name="cities-list"
               placeholder={text('placeholder', 'Choose a city...')}

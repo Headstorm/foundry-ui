@@ -1,8 +1,8 @@
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
-import styled, { css, StyledComponentBase } from 'styled-components';
+import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
-import { shade, tint, getLuminance, darken } from 'polished';
+import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
@@ -104,6 +104,7 @@ const OptionsContainer = styled(Div)`
 
 const OptionItem = styled(Div)`
   ${({ selected, color, variant }: UsefulDropdownState) => {
+    const { colors } = useTheme();
     const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
     const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
@@ -112,7 +113,11 @@ const OptionItem = styled(Div)`
       padding: 0.5rem;
       display: flex;
       align-items: center;
-      color: ${getFontColorFromVariant(variant, color)};
+      color: ${
+        selected
+          ? readableColor(backgroundColor, colors.background, color, true)
+          : getFontColorFromVariant(variant, color)
+      };
       background-color: ${backgroundColor};
   
       &:hover {
@@ -411,8 +416,7 @@ const Dropdown = ({
         </StyledValueItem>
         {closeIcons}
       </Button>
-      {true && (
-        // {isOpen && (
+      {isOpen && (
         <StyledOptionsContainer
           color={defaultedColor}
           variant={optionsVariant}
