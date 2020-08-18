@@ -53,8 +53,8 @@
     "@types/styled-components": "^5.1.0",
     "babel-loader": "^8.1.0",
     "commitizen": "^4.1.2",
-    "cz-conventional-changelog": "3.2.0",
     "css-loader": "^3.5.3",
+    "cz-conventional-changelog": "3.2.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
@@ -98,6 +98,7 @@
     "@types/lodash.debounce": "^4.0.6",
     "@typescript-eslint/eslint-plugin": "^3.0.0",
     "@typescript-eslint/parser": "^3.0.0",
+    "jest-coverage-badges": "^1.1.2",
     "lodash.debounce": "^4.0.8",
     "polished": "^3.5.1",
     "src": "^1.1.2"
@@ -123,7 +124,9 @@
     "webpack": "webpack --config webpack.config.js",
     "dts": "tsc --declaration --outDir dist/types/ --emitDeclarationOnly --declarationMap --allowJs false --checkJs false",
     "pre-push": "yarn run lint-ci && yarn run test && yarn run clean && yarn run webpack && yarn run dts",
-    "test": "rm -rf ./coverage/* && jest --collectCoverage=true",
+    "test": "rm -rf ./coverage/* && jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:badges": "npm run test:coverage  && jest-coverage-badges",
     "semver-dryrun": "npx semantic-release -d --debug",
     "semver-release": "npx semantic-release",
     "commit": "npx git-cz"
