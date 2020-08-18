@@ -28,7 +28,7 @@ export const TableContainer = styled(TableElement)`
       width: ${reachedMinWidth ? '100%' : 'auto'};
       background-color: ${colors.background};
       border-collapse: collapse;
-  
+
       border-radius: 8px;
       overflow: hidden;
     `;
@@ -44,7 +44,7 @@ export const Header = styled(TR)`
       padding: 0rem 2rem;
       column-gap: ${columnGap};
       user-select: none;
-  
+
       background-color: ${colors.primary};
       color: white;
     `;
@@ -96,12 +96,12 @@ export const Row = styled(TR)`
       column-gap: ${columnGap};
       position: relative;
       background-color: ${colors.background};
-      height: ${isCollapsed ? '0px' : '100%'};
-  
+      height: ${isCollapsed ? '0px' : undefined};
+
       &:not(:last-child) {
         border-bottom: 1px solid rgb(211, 214, 215);
       }
-  
+
       &:before {
         content: '';
         z-index: 0;
@@ -112,7 +112,7 @@ export const Row = styled(TR)`
         background-color: rgba(0,0,0,0.2);
         opacity: 0;
         transition: opacity .3s;
-  
+
         pointer-events: none;
       }
       &:hover:before {
