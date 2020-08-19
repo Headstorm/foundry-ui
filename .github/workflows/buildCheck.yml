@@ -4,7 +4,7 @@ name: Foundry UI Build Check
 
 on:
   pull_request:
-    branches: [master, v1-release, next]
+    branches: [master, v1-release, next, alpha, beta]
 
 jobs:
   build:
@@ -22,27 +22,27 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org"
       - name: Prepare
-        run: npm install
+        run: yarn install
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Lint React
-        run: npm run lint-react
+        run: yarn run lint-react
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Test React
-        run: npm run test-react
+        run: yarn run test-react
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build React
-        run: npm run build-react
+        run: yarn run build-react
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build Storybook
-        run: npm run build-docs
+        run: yarn run build-docs
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

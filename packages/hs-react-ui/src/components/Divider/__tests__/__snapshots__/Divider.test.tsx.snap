@@ -23,11 +23,11 @@ exports[`Divider matches snapshot 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="hsui-Divider"
   >
     <hr
-      class="sc-fzoLsD c1"
+      class="c1"
       height="1px"
       width="90%"
     />
@@ -58,11 +58,11 @@ exports[`Divider matches snapshot with props 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="hsui-Divider"
   >
     <hr
-      class="sc-fzoLsD c1"
+      class="c1"
       height="2rem"
       width="50%"
     />
