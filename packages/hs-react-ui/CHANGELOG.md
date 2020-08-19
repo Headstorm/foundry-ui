@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.6](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.5...v1.0.0-v1-release.6) (2020-08-19)
+
+
+### Features
+
+* **rangeslider:** add functionality to support clicking the RangeSlider's rail to set the value ([beeb2e6](https://github.com/Headstorm/rasa-ui/commit/beeb2e625bd37b3f7d23dea10378adc695ebe3ba))
+
 # [1.0.0-v1-release.5](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.4...v1.0.0-v1-release.5) (2020-08-19)
 
 

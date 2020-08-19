@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -279,6 +279,43 @@ export const RangeSlider = ({
     [values],
   );
 
+  const handleSlideRailClick = useCallback(
+    (e: React.MouseEvent) => {
+      // Avoiding using another ref here to reduce overhead
+      const pixelPosition = e.clientX;
+      const positionOnRail = pixelPosition - sliderBounds.left;
+      const railPositionRatio = positionOnRail / sliderBounds.width;
+      const clickedValue = railPositionRatio * domain;
+
+      // variables to find the closest handle
+      let closestVal: ValueProp | undefined = undefined;
+      let smallestDifference: number;
+
+      // Find the closest handle
+      processedValues.forEach((val: ValueProp) => {
+        // Get the absolute value of the difference
+        const difference = Math.abs(clickedValue - val.value);
+        if (smallestDifference !== undefined && difference < smallestDifference) {
+          closestVal = val;
+          smallestDifference = difference;
+        } else if (smallestDifference === undefined) {
+          closestVal = val;
+          smallestDifference = difference;
+        }
+      });
+
+      if (closestVal) {
+        // TODO: use the closest val to find the handle to move and move it
+        onDrag(clickedValue);
+        if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
+          e.persist();
+          slideRailProps.onMouseDown(e);
+        }
+      }
+    },
+    [slideRailProps, sliderBounds, onDrag, domain, processedValues],
+  );
+
   const bind = useDrag(
     ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
@@ -337,7 +374,7 @@ export const RangeSlider = ({
       showDomainLabels={showDomainLabels}
       {...containerProps}
     >
-      <StyledSlideRail ref={ref} {...slideRailProps}>
+      <StyledSlideRail ref={ref} {...slideRailProps} onMouseDown={handleSlideRailClick}>
         {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
