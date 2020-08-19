@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.8](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.7...v1.0.0-v1-release.8) (2020-08-19)
+
+
+### Features
+
+* **rangeslider:** add markers API ([519f096](https://github.com/Headstorm/rasa-ui/commit/519f096712f300ac76ef1675a1dee1ab82b4f07d))
+
 # [1.0.0-v1-release.7](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.6...v1.0.0-v1-release.7) (2020-08-19)
 
 
