@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 import { text, select, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -58,7 +58,7 @@ storiesOf('TextInput', module)
 
       return (
         <TextInput
-          ariaLabel={text('ariaLabel', 'textInput')}
+          aria-label={text('ariaLabel', 'textInput')}
           onChange={onChangeCallback}
           debounceInterval={number('debounceInterval', 150)}
           debouncedOnChange={onDebounceCallback}
@@ -105,7 +105,7 @@ storiesOf('TextInput', module)
 
       return (
         <TextInput
-          onChange={event => {
+          onChange={(event: SyntheticEvent) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const newValue = event.target.value;
