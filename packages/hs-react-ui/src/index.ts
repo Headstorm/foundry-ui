@@ -3,6 +3,7 @@ import Card from './components/Card';
 import Checkbox from './components/Checkbox';
 import Divider from './components/Divider';
 import Dropdown from './components/Dropdown';
+import InteractionFeedback from './components/InteractionFeedback';
 import Label from './components/Label';
 import Modal from './components/Modal';
 import RangeSlider from './components/RangeSlider';
@@ -23,6 +24,7 @@ export {
   Checkbox,
   Divider,
   Dropdown,
+  InteractionFeedback,
   Label,
   Modal,
   RangeSlider,
