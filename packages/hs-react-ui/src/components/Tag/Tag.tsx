@@ -25,8 +25,6 @@ export type IconContainerProps = {
 };
 
 export type TagProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
@@ -35,12 +33,15 @@ export type TagProps = {
   elevation?: number;
   variant?: variants;
   color?: string;
-  StyledLoadingBar?: string & StyledComponentBase<any, {}>;
-  loadingBarProps?: SubcomponentPropsType;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  id?: string;
+
+  containerProps?: SubcomponentPropsType;
   iconPrefixContainerProps?: SubcomponentPropsType;
   iconSuffixContainerProps?: SubcomponentPropsType;
-  id?: string;
+  loadingBarProps?: SubcomponentPropsType;
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledLoadingBar?: string & StyledComponentBase<any, {}>;
 };
 
 export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Div)`
@@ -88,13 +89,6 @@ const IconContainer = styled(Div)`
 `;
 
 const Tag = ({
-  StyledContainer = Container,
-  containerProps = {},
-  StyledIconContainer = IconContainer,
-  iconPrefixContainerProps = {},
-  iconSuffixContainerProps = {},
-  StyledLoadingBar = StyledProgress,
-  loadingBarProps = {},
   iconPrefix,
   iconSuffix,
   isLoading,
@@ -104,6 +98,14 @@ const Tag = ({
   variant = variants.fill,
   color,
   id,
+
+  containerProps = {},
+  iconPrefixContainerProps = {},
+  iconSuffixContainerProps = {},
+  loadingBarProps = {},
+  StyledContainer = Container,
+  StyledIconContainer = IconContainer,
+  StyledLoadingBar = StyledProgress,
 }: TagProps): JSX.Element => {
   const hasContent = Boolean(children);
   const { colors } = useTheme();
