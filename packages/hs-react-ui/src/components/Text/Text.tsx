@@ -38,7 +38,7 @@ const IconContainer = styled(Span)`
   ${({ side }: { side: 'left' | 'right' }) => `
     margin-${side === 'left' ? 'right' : 'left'}: .5em;
     display: inline-flex;
-    vertical-align: text-bottom;
+    vertical-align: middle;
   `}
 `;
 

@@ -38,20 +38,20 @@ Object {
 
 <div>
       <div
-        class="sc-AxjAm sc-AxirZ c0"
+        class="c0"
       >
         <div
-          class="sc-AxjAm sc-AxirZ c1"
+          class="c1"
         >
           <label
-            class="sc-AxmLO sc-fzozJi c2"
+            class="c2"
             color="#7c8186"
             for="default"
           >
             Test text
           </label>
           <span
-            class="sc-AxiKw sc-AxhCb c3"
+            class="c3"
           >
             <svg
               role="presentation"
@@ -191,20 +191,20 @@ Object {
 <body>
     <div>
       <div
-        class="sc-AxjAm sc-AxirZ c0"
+        class="c0"
       >
         <div
-          class="sc-AxjAm sc-AxirZ c1"
+          class="c1"
         >
           <label
-            class="sc-AxmLO sc-fzozJi c2"
+            class="c2"
             color="#FF4500"
             for="default"
           >
             Test text
           </label>
           <span
-            class="sc-AxiKw sc-AxhCb c3"
+            class="c3"
           >
             <svg
               role="presentation"
@@ -341,20 +341,20 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="c0"
   >
     <div
-      class="sc-AxjAm sc-AxirZ c1"
+      class="c1"
     >
       <label
-        class="sc-AxmLO sc-fzozJi c2"
+        class="c2"
         color="#9400D3"
         for="default"
       >
         Test text
       </label>
       <span
-        class="sc-AxiKw sc-AxhCb c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -407,20 +407,20 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
 
 <div>
   <div
-    class="sc-AxjAm sc-AxirZ c0"
+    class="c0"
   >
     <div
-      class="sc-AxjAm sc-AxirZ c1"
+      class="c1"
     >
       <label
-        class="sc-AxmLO sc-fzozJi c2"
+        class="c2"
         color="#0000FF"
         for="default"
       >
         Test text
       </label>
       <span
-        class="sc-AxiKw sc-AxhCb c3"
+        class="c3"
       >
         <svg
           role="presentation"

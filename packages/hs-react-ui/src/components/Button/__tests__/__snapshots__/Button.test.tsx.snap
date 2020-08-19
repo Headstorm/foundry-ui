@@ -52,14 +52,14 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 <button
-  class="sc-AxhUy sc-AxgMl c0"
+  class="c0"
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
   type="button"
 >
   <div
-    class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
+    class="c1"
   />
 </button>
 `;
@@ -99,7 +99,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 <button
-  class="sc-AxhUy sc-AxgMl c0"
+  class="c0"
   color="#252c35"
   data-test-id="hsui-button"
   elevation="0"
@@ -145,7 +145,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -190,7 +190,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -235,7 +235,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
@@ -280,7 +280,7 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#000"
     data-test-id="hsui-button"
     elevation="2"
@@ -331,14 +331,14 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -415,14 +415,14 @@ exports[`Button shows icons 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -435,7 +435,7 @@ exports[`Button shows icons 1`] = `
       </svg>
     </div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c2"
+      class="c2"
     >
       <svg
         role="presentation"
@@ -499,14 +499,14 @@ exports[`Button shows icons with type string 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -520,7 +520,7 @@ exports[`Button shows icons with type string 1`] = `
       </svg>
     </div>
     <div
-      class="sc-AxjAm sc-AxirZ sc-fznWqX c2"
+      class="c2"
     >
       <svg
         role="presentation"
@@ -590,14 +590,14 @@ exports[`Button shows loading text when provided 1`] = `
 
 <div>
   <button
-    class="sc-AxhUy sc-AxgMl c0"
+    class="c0"
     color="#252c35"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="sc-AxjAm sc-AxirZ sc-fzpjYC c1"
+      class="c1"
     />
   </button>
 </div>
