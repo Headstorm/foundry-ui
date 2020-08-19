@@ -24,20 +24,20 @@ Object {
 
 <div>
       <div
-        class="sc-AxjAm "
+        class=""
       >
         <div
-          class="sc-AxjAm "
+          class=""
         >
           <label
-            class="sc-AxmLO c0"
+            class="c0"
             color="#7c8186"
             for="default"
           >
             Test text
           </label>
           <span
-            class="sc-AxiKw c1"
+            class="c1"
           >
             <svg
               role="presentation"
@@ -163,20 +163,20 @@ Object {
 <body>
     <div>
       <div
-        class="sc-AxjAm "
+        class=""
       >
         <div
-          class="sc-AxjAm "
+          class=""
         >
           <label
-            class="sc-AxmLO c0"
+            class="c0"
             color="#FF4500"
             for="default"
           >
             Test text
           </label>
           <span
-            class="sc-AxiKw c1"
+            class="c1"
           >
             <svg
               role="presentation"
@@ -299,20 +299,20 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
 
 <div>
   <div
-    class="sc-AxjAm "
+    class=""
   >
     <div
-      class="sc-AxjAm "
+      class=""
     >
       <label
-        class="sc-AxmLO c0"
+        class="c0"
         color="#9400D3"
         for="default"
       >
         Test text
       </label>
       <span
-        class="sc-AxiKw c1"
+        class="c1"
       >
         <svg
           role="presentation"
@@ -351,20 +351,20 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
 
 <div>
   <div
-    class="sc-AxjAm "
+    class=""
   >
     <div
-      class="sc-AxjAm "
+      class=""
     >
       <label
-        class="sc-AxmLO c0"
+        class="c0"
         color="#0000FF"
         for="default"
       >
         Test text
       </label>
       <span
-        class="sc-AxiKw c1"
+        class="c1"
       >
         <svg
           role="presentation"
