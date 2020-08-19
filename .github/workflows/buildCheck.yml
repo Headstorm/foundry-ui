@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: 8398a7/action-slack@v3
         with:
-          status: starting
+          status: ${{ job.status }}
           fields: message,commit,author,action,eventName,ref,workflow,job # selectable
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
