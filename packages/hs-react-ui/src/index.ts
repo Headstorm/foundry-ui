@@ -8,6 +8,7 @@ import Label from './components/Label';
 import Modal from './components/Modal';
 import RangeSlider from './components/RangeSlider';
 import Table from './components/Table';
+import Tag from './components/Tag';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
@@ -29,6 +30,7 @@ export {
   Modal,
   RangeSlider,
   Table,
+  Tag,
   Text,
   TextInput,
   Progress,
