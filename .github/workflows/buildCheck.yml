@@ -15,15 +15,6 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: message,commit,author,action,eventName,ref,workflow,job # selectable
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
-        if: ${{ always() }} # Pick up events even if the job fails or is canceled.
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
