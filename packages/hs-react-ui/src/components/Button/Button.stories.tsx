@@ -1,10 +1,10 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { select, text, boolean, number, color } from '@storybook/addon-knobs';
+import { boolean, color, number, select, text } from '@storybook/addon-knobs';
 import { mdiMessage, mdiSend } from '@mdi/js';
 import { storiesOf } from '@storybook/react';
 
-import Button from './Button';
+import Button, { FeedbackTypes } from './Button';
 import colors from '../../enums/colors';
 import variants from '../../enums/variants';
 
@@ -28,6 +28,7 @@ storiesOf('Button', module).add(
         color={color('color', colors.primaryDark)}
         onClick={action('button-click')}
         disabled={boolean('disabled', false)}
+        feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.simple)}
         isLoading={boolean('isLoading', false)}
         elevation={number('elevation', 1)}
         isProcessing={boolean('isProcessing', false)}
