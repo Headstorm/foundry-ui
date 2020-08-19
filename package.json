@@ -8,21 +8,26 @@
     "cz-conventional-changelog": "3.2.0"
   },
   "scripts": {
-    "build-react": "cd packages/hs-react-ui && npm run bundle",
-    "prepare": "cd packages/hs-react-ui && npm install",
-    "test-react": "cd packages/hs-react-ui && npm test",
-    "publish-react": "cd packages/hs-rect-ui && npm run semver-release",
-    "publish-react:dryrun": "cd packages/hs-rect-ui && npm run semver-dryrun",
-    "build-docs": "rm -rf ./docs/* && cd packages/hs-react-ui && npm run build-storybook",
-    "pre-push": "cd packages/hs-react-ui && npm run pre-push",
-    "lint-react": "cd packages/hs-react-ui && npm run lint-ci",
-    "semver-release": "cd packages/hs-react-ui && npm run semver-release",
+    "build-react": "cd packages/hs-react-ui && yarn run bundle",
+    "prepare": "cd packages/hs-react-ui && yarn install",
+    "test-react": "cd packages/hs-react-ui && yarn test",
+    "publish-react": "cd packages/hs-react-ui && yarn run semver-release",
+    "publish-react:dryrun": "cd packages/hs-react-ui && yarn run semver-dryrun",
+    "build-docs": "rm -rf ./docs/* && cd packages/hs-react-ui && yarn run build-storybook",
+    "pre-push": "cd packages/hs-react-ui && yarn run pre-push",
+    "lint-react": "cd packages/hs-react-ui && yarn run lint-ci",
+    "semver-release": "cd packages/hs-react-ui && yarn run semver-release",
     "commit": "npx git-cz"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run pre-push",
-      "pre-commit": "npm run lint-react"
+      "pre-push": "yarn run pre-push",
+      "pre-commit": "yarn run lint-react"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

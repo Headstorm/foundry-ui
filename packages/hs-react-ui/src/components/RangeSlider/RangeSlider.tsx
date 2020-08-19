@@ -19,7 +19,7 @@ import {
   SelectedRangeProps,
   DomainLabelProps,
 } from './types';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 
 export const Container = styled.div`
   ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
@@ -66,8 +66,8 @@ export const Container = styled.div`
 
 export const DragHandle = styled(a.div)`
   ${({ beingDragged = false, color }: HandleProps) => {
-    const { primary, background } = useColors();
-    const handleColor = color || primary;
+    const { colors } = useTheme();
+    const handleColor = color || colors.primary;
     return `
       position: absolute;
       bottom: -.125rem;
@@ -78,7 +78,7 @@ export const DragHandle = styled(a.div)`
 
       background-color: ${handleColor};
       color: ${handleColor};
-      border: .125rem solid ${background};
+      border: .125rem solid ${colors.background};
       border-radius: 50%;
 
       filter: url(#blur);
@@ -90,14 +90,14 @@ export const DragHandle = styled(a.div)`
 
 export const HandleLabel = styled.div`
   ${({ velocity = 0 }: HandleLabelProps) => {
-    const { background } = useColors();
+    const { colors } = useTheme();
     return `
       position: absolute;
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
 
-      background-color: ${background};
+      background-color: ${colors.background};
       border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
@@ -109,7 +109,7 @@ export const HandleLabel = styled.div`
 
 export const SlideRail = styled.div`
   ${() => {
-    const { grayXlight } = useColors();
+    const { colors } = useTheme();
     return `
       position: absolute;
       top: 50%;
@@ -121,15 +121,14 @@ export const SlideRail = styled.div`
       overflow: hidden;
 
       border-radius: 0.125rem;
-      background-color: ${grayXlight};
-
+      background-color: ${colors.grayXlight};
     `;
   }}
 `;
 
 export const SelectedRangeRail = styled.div`
   ${({ min, max, selectedRange }: SelectedRangeProps) => {
-    const { primary } = useColors();
+    const { colors } = useTheme();
     return `
       position: absolute;
       top: 0%;
@@ -139,19 +138,19 @@ export const SelectedRangeRail = styled.div`
 
       transition: left .3s, right .3s;
 
-      background-color: ${primary};
+      background-color: ${colors.primary};
     `;
   }}
 `;
 
 export const DomainLabel = styled.div`
   ${({ position }: DomainLabelProps) => {
-    const { grayMedium } = useColors();
+    const { colors } = useTheme();
     return `
       position: absolute;
       bottom: 100%;
       ${position}: 0rem;
-      color: ${grayMedium};
+      color: ${colors.grayMedium};
       font-size: .5rem;
     `;
   }}

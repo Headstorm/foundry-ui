@@ -2,22 +2,16 @@ import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
-import { darken } from 'polished';
-
 import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
-import { Div, Button as ButtonElement } from '../../htmlElements';
-import {
-  getFontColorFromVariant,
-  getBackgroundColorFromVariant,
-  disabledStyles,
-} from '../../utils/color';
+import { Div } from '../../htmlElements';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 
-export type ButtonContainerProps = {
+export type TagContainerProps = {
   elevation: number;
   color: string;
   variant: variants;
@@ -25,15 +19,12 @@ export type ButtonContainerProps = {
   disabled: boolean;
 };
 
-export enum ButtonTypes {
-  button = 'button',
-  reset = 'reset',
-  submit = 'submit',
-}
+export type IconContainerProps = {
+  hasContent: boolean;
+  position: 'right' | 'left';
+};
 
-export type ButtonProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  containerProps?: SubcomponentPropsType;
+export type TagProps = {
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
@@ -41,20 +32,20 @@ export type ButtonProps = {
   children?: ReactNode;
   elevation?: number;
   variant?: variants;
-  type?: ButtonTypes;
   color?: string;
-  disabled?: boolean;
-  onClick: (...args: any[]) => void;
-  onMouseDown?: (e: React.MouseEvent) => void;
-  onMouseUp?: (e: React.MouseEvent) => void;
-  LoadingBar?: string & StyledComponentBase<any, {}>;
   id?: string;
+
+  containerProps?: SubcomponentPropsType;
+  iconPrefixContainerProps?: SubcomponentPropsType;
+  iconSuffixContainerProps?: SubcomponentPropsType;
+  loadingBarProps?: SubcomponentPropsType;
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledLoadingBar?: string & StyledComponentBase<any, {}>;
 };
 
-export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
-  ButtonElement,
-)`
-  ${({ disabled, elevation = 0, color, variant }: ButtonContainerProps) => {
+export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Div)`
+  ${({ elevation = 0, color, variant }: TagContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
@@ -77,17 +68,6 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       background-color: ${backgroundColor};
       color: ${fontColor};
       align-items: center;
-      ${disabled ? disabledStyles() : ''}
-      &:hover {
-        background-color: ${
-          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
-        };
-      }
-      &:active {
-        background-color: ${
-          backgroundColor !== 'transparent' ? darken(0.1, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
-        };
-      }
     `;
   }}
 `;
@@ -100,24 +80,15 @@ const StyledProgress = styled(Progress)`
 `;
 
 const IconContainer = styled(Div)`
-  height: 1rem;
+  ${({ position, hasContent }: IconContainerProps) => {
+    return `
+    height: 1rem;
+    ${hasContent ? `margin-${position === 'right' ? 'left' : 'right'}: 1em;` : ''}
+  `;
+  }}
 `;
 
-const LeftIconContainer = styled(IconContainer)`
-  ${({ hasContent }: { hasContent: boolean }) => `
-    ${hasContent ? 'margin-right: 1em;' : ''}
-  `}
-`;
-
-const RightIconContainer = styled(IconContainer)`
-  ${({ hasContent }: { hasContent: boolean }) => `
-    ${hasContent ? 'margin-left: 1em;' : ''}
-  `}
-`;
-
-const Button = ({
-  StyledContainer = ButtonContainer,
-  containerProps = {},
+const Tag = ({
   iconPrefix,
   iconSuffix,
   isLoading,
@@ -125,68 +96,78 @@ const Button = ({
   children,
   elevation = 0,
   variant = variants.fill,
-  type = ButtonTypes.button,
   color,
-  disabled = false,
-  onClick,
-  onMouseDown = () => {},
-  onMouseUp = () => {},
-  LoadingBar = StyledProgress,
   id,
-}: ButtonProps): JSX.Element | null => {
+
+  containerProps = {},
+  iconPrefixContainerProps = {},
+  iconSuffixContainerProps = {},
+  loadingBarProps = {},
+  StyledContainer = Container,
+  StyledIconContainer = IconContainer,
+  StyledLoadingBar = StyledProgress,
+}: TagProps): JSX.Element => {
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    'data-test-id': 'hsui-button',
     id,
-    onClick,
-    onMouseDown,
-    onMouseUp,
     elevation,
     color: containerColor,
     variant,
-    type,
-    disabled,
     ...containerProps,
   };
 
   return isLoading ? (
     <StyledContainer {...mergedContainerProps}>
-      <LoadingBar />
+      <StyledLoadingBar {...loadingBarProps} />
     </StyledContainer>
   ) : (
     <StyledContainer {...mergedContainerProps}>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-          <LeftIconContainer hasContent={hasContent}>
+          <StyledIconContainer
+            hasContent={hasContent}
+            position="left"
+            {...iconPrefixContainerProps}
+          >
             <UnstyledIcon path={iconPrefix} size="1rem" />
-          </LeftIconContainer>
+          </StyledIconContainer>
         ) : (
-          <LeftIconContainer>{iconPrefix}</LeftIconContainer>
+          <StyledIconContainer>{iconPrefix}</StyledIconContainer>
         ))}
       {isProcessing && (
-        <LeftIconContainer hasContent={hasContent}>
+        <StyledIconContainer hasContent={hasContent} position="left" {...iconPrefixContainerProps}>
           <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
-        </LeftIconContainer>
+        </StyledIconContainer>
       )}
       {children}
 
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
-          <RightIconContainer hasContent={hasContent}>
+          <StyledIconContainer
+            hasContent={hasContent}
+            position="right"
+            {...iconSuffixContainerProps}
+          >
             <UnstyledIcon path={iconSuffix} size="1rem" />
-          </RightIconContainer>
+          </StyledIconContainer>
         ) : (
-          <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
+          <StyledIconContainer
+            hasContent={hasContent}
+            position="right"
+            {...iconSuffixContainerProps}
+          >
+            {iconSuffix}
+          </StyledIconContainer>
         ))}
     </StyledContainer>
   );
 };
 
-Button.Container = ButtonContainer;
-Button.ButtonTypes = ButtonTypes;
-Button.LoadingBar = StyledProgress;
-export default Button;
+Tag.Container = Container;
+Tag.LoadingBar = StyledProgress;
+Tag.IconContainer = IconContainer;
+export default Tag;

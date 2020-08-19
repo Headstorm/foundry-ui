@@ -4,12 +4,12 @@ import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
 
 export const DefaultStyledLabel = styled(LabelElement)`
   ${({ color }: { color: string }) => {
-    const { grayLight } = useColors();
-    const labelColor = color || grayLight;
+    const { colors } = useTheme();
+    const labelColor = color || colors.grayLight;
     return `
       display: inline-flex;
       color: ${labelColor};
@@ -68,7 +68,7 @@ const Label = ({
   isRequired = false,
   children,
 }: LabelProps) => {
-  const colors = useColors();
+  const { colors } = useTheme();
   let shownColor: string;
   let shownIcon: string | JSX.Element;
 
