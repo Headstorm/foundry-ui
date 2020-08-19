@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactNode, SyntheticEvent, useCallback } from 'react';
+import React, { InputHTMLAttributes, ReactNode, SyntheticEvent, TextareaHTMLAttributes, useCallback } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
@@ -80,10 +80,10 @@ const ErrorContainer = styled(Div)`
   }}
 `;
 
-export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
-  id?: string;
+export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement> & {
   iconPrefix?: string | ReactNode;
   onClear?: (event: SyntheticEvent) => void;
+  onChange?: (event: SyntheticEvent) => void;
   debouncedOnChange?: (event: SyntheticEvent) => void;
   isValid?: boolean;
   isMultiline?: boolean;
@@ -93,6 +93,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  nativeInputHTMLAttributes?: string;
 };
 
 const createIcon = (
@@ -113,18 +114,15 @@ const createIcon = (
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
-  cols = 10,
   debouncedOnChange = defaultCallback,
   debounceInterval = 8,
   errorMessage,
   iconPrefix,
-  id,
   isMultiline,
   isValid,
   multiLineIsResizable,
   onChange = defaultCallback,
   onClear,
-  rows = 10,
   StyledContainer = Container,
   StyledIconContainer = IconContainer,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
@@ -148,14 +146,12 @@ const TextInput = ({
       {/*
         // @ts-ignore */}
       <InputComponent
-        cols={cols}
-        rows={rows}
+        value={nativeInputHTMLAttributes.value || nativeInputHTMLAttributes.defaultValue}
         onChange={(e: SyntheticEvent) => {
           e.persist();
-          nativeInputHTMLAttributes.onChange(e);
+          onChange(e);
           debouncedChange(e);
         }}
-        id={id}
         multiLineIsResizable={multiLineIsResizable}
         {...nativeInputHTMLAttributes}
       />
