@@ -4,7 +4,7 @@ name: Foundry UI CI/CD
 
 on:
   push:
-    branches: [master, v1-release, next]
+    branches: [master, v1-release, next, alpha, beta]
 
 jobs:
   build:
@@ -15,6 +15,15 @@ jobs:
         node-version: [12.x]
 
     steps:
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: starting
+          fields: message,commit,author,action,eventName,ref,workflow,job # selectable
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+        if: ${{ always() }} # Pick up events even if the job fails or is canceled.
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_TOKEN }}
@@ -49,6 +58,13 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: react-artifact
+          path: |
+            docs/
+            packages/hs-react-ui/dist/
+            packages/hs-react-ui/coverage/
       - name: Update version
         run: npm run semver-release
         env:
@@ -56,3 +72,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: message,commit,author,action,eventName,ref,workflow,job,took # selectable
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+        if: ${{ always() }} # Pick up events even if the job fails or is canceled.
