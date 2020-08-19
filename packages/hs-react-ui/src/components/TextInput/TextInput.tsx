@@ -12,7 +12,7 @@ const Container = styled(Div)`
   ${({ disabled = false, isValid }: { disabled?: boolean; isValid?: boolean }) => {
     const { colors } = useTheme();
     return `
-      border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
+      border 1px solid ${isValid === false ? colors.destructive : colors.grayMedium};
       min-width: 10rem;
       position: relative;
       display: flex;
@@ -31,7 +31,6 @@ const TextInputContainer = styled(InputElement)`
       border: 0 none;
       flex-grow: 1;
       outline: 0 none;
-      height: 2em;
       font-size: 1em;
       padding: 0.5rem;
       background-color: ${colors.transparent};
@@ -47,7 +46,6 @@ const TextAreaInputContainer = styled(TextArea)`
       flex-grow: 1;
       outline: 0 none;
       font-size: 1em;
-      min-height: 2em;
       min-width: 0px;
       padding: .5rem;
       background-color: ${colors.transparent};
