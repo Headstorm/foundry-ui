@@ -1,3 +1,15 @@
+# [1.0.0-v1-release.7](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.6...v1.0.0-v1-release.7) (2020-08-19)
+
+
+### Bug Fixes
+
+* **textinput:** fix text input charCounter not appearing at the top w/ no error message ([4f31ea2](https://github.com/Headstorm/rasa-ui/commit/4f31ea2ed9b460ae406aee59138a7a36f2b77a5e))
+
+
+### Features
+
+* **dropdown:** add variants to dropdown ([0cc22b3](https://github.com/Headstorm/rasa-ui/commit/0cc22b3978ed9fb51e086adb64c75b44348578fa))
+
 # [1.0.0-v1-release.6](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.5...v1.0.0-v1-release.6) (2020-08-19)
 
 
