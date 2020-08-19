@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.5](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.4...v1.0.0-v1-release.5) (2020-08-19)
+
+
+### Features
+
+* **tag:** add new Tag component ([2fa81a4](https://github.com/Headstorm/rasa-ui/commit/2fa81a42e8f7ad9bdff609382e208e5020ab63b8))
+
 # [1.0.0-v1-release.4](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.3...v1.0.0-v1-release.4) (2020-08-19)
 
 
