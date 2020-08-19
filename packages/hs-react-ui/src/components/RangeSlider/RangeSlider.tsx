@@ -20,6 +20,7 @@ import {
   DomainLabelProps,
 } from './types';
 import { useTheme } from '../../context';
+import { Div } from '../../htmlElements';
 
 export const Container = styled.div`
   ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
@@ -84,6 +85,7 @@ export const DragHandle = styled(a.div)`
       filter: url(#blur);
 
       cursor: ${beingDragged ? 'grabbing' : 'grab'};
+      z-index: 2;
     `;
   }}
 `;
@@ -103,6 +105,7 @@ export const HandleLabel = styled.div`
       white-space: nowrap;
 
       pointer-events: none;
+      z-index: 2;
     `;
   }}
 `;
@@ -156,19 +159,51 @@ export const DomainLabel = styled.div`
   }}
 `;
 
-export default ({
+export const Marker = styled(Div)`
+  ${({ sliderPosition = 0 }) => {
+    const { colors } = useTheme();
+    return `
+      position: absolute;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      height: 1rem;
+      width: 2px;
+      left: ${sliderPosition}px;
+      background-color: ${colors.grayLight};
+    `;
+  }}
+`;
+export const MarkerLabel = styled(Div)`
+  ${({ color }) => {
+    const { colors } = useTheme();
+    return `
+    position: absolute;
+    bottom: 100%;
+    white-space: nowrap;
+    font-size: .375rem;
+    color: ${color || colors.grayLight};
+  `;
+  }}
+`;
+
+export const RangeSlider = ({
   StyledContainer = Container,
   StyledDragHandle = DragHandle,
   StyledHandleLabel = HandleLabel,
   StyledSlideRail = SlideRail,
   StyledSelectedRangeRail = SelectedRangeRail,
   StyledDomainLabel = DomainLabel,
+  StyledMarker = Marker,
+  StyledMarkerLabel = MarkerLabel,
   containerProps = {},
   dragHandleProps = {},
   handleLabelProps = {},
   slideRailProps = {},
   selectedRangeRailProps = {},
   domainLabelProps = {},
+  markerProps = {},
+  markerLabelProps = {},
 
   showDomainLabels = true,
   showSelectedRange = true,
@@ -185,7 +220,7 @@ export default ({
   min,
   max,
   values,
-
+  markers = [],
   testId,
 }: RangeSliderProps): JSX.Element | null => {
   let hasHandleLabels = false;
@@ -202,6 +237,17 @@ export default ({
         return val;
       })
     : [];
+  const processedMarkers = markers
+    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore This expression is not callable.
+      markers.map((val: number | ValueProp) => {
+        if (typeof val === 'number') {
+          return { value: val, label: null };
+        }
+        return val;
+      })
+    : [];
+
   const selectedRange = [
     Math.min(
       ...processedValues.map((val: ValueProp) => val.value),
@@ -377,6 +423,33 @@ export default ({
           </defs>
         </svg>
       )}
+
+      {processedMarkers.map(({ value, label, color }: ValueProp) => {
+        const position = (value / domain) * sliderBounds.width;
+        return (
+          <StyledMarker
+            key={`marker-${value}`}
+            id={`marker-${value}`}
+            sliderPosition={position}
+            {...markerProps}
+          >
+            <StyledMarkerLabel color={color} {...markerLabelProps}>
+              {label}
+            </StyledMarkerLabel>
+          </StyledMarker>
+        );
+      })}
     </StyledContainer>
   );
 };
+
+RangeSlider.Container = Container;
+RangeSlider.DragHandle = DragHandle;
+RangeSlider.HandleLabel = HandleLabel;
+RangeSlider.SlideRail = SlideRail;
+RangeSlider.SelectedRangeRail = SelectedRangeRail;
+RangeSlider.DomainLabel = DomainLabel;
+RangeSlider.Marker = Marker;
+RangeSlider.MarkerLabel = MarkerLabel;
+
+export default RangeSlider;
