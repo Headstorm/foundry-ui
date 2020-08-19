@@ -202,6 +202,8 @@ export const RangeSlider = ({
   slideRailProps = {},
   selectedRangeRailProps = {},
   domainLabelProps = {},
+  markerProps = {},
+  markerLabelProps = {},
 
   showDomainLabels = true,
   showSelectedRange = true,
@@ -388,8 +390,15 @@ export const RangeSlider = ({
       {processedMarkers.map(({ value, label, color }: ValueProp) => {
         const position = (value / domain) * sliderBounds.width;
         return (
-          <StyledMarker key={`marker-${value}`} id={`marker-${value}`} sliderPosition={position}>
-            <StyledMarkerLabel color={color}>{label}</StyledMarkerLabel>
+          <StyledMarker
+            key={`marker-${value}`}
+            id={`marker-${value}`}
+            sliderPosition={position}
+            {...markerProps}
+          >
+            <StyledMarkerLabel color={color} {...markerLabelProps}>
+              {label}
+            </StyledMarkerLabel>
           </StyledMarker>
         );
       })}

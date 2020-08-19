@@ -39,6 +39,8 @@ export type RangeSliderProps = {
   slideRailProps?: SubcomponentPropsType;
   selectedRangeRailProps?: SubcomponentPropsType;
   domainLabelProps?: SubcomponentPropsType;
+  markerProps?: SubcomponentPropsType;
+  markerLabelProps?: SubcomponentPropsType;
 
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;
