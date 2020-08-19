@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.4](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.3...v1.0.0-v1-release.4) (2020-08-19)
+
+
+### Bug Fixes
+
+* **table:** remove row height of 100% ([1d10f24](https://github.com/Headstorm/rasa-ui/commit/1d10f24294873fd6b9145efd198efe9cce527d1c))
+
 # [1.0.0-v1-release.3](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.2...v1.0.0-v1-release.3) (2020-08-18)
 
 
