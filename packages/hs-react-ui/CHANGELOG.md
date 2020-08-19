@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [1.0.0-v1-release.6](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.5...v1.0.0-v1-release.6) (2020-08-19)
 
 
@@ -13,10 +14,14 @@
 * **tag:** add new Tag component ([2fa81a4](https://github.com/Headstorm/rasa-ui/commit/2fa81a42e8f7ad9bdff609382e208e5020ab63b8))
 
 # [1.0.0-v1-release.4](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.3...v1.0.0-v1-release.4) (2020-08-19)
+=======
+## [0.1.14](https://github.com/Headstorm/rasa-ui/compare/v0.1.13...v0.1.14) (2020-08-18)
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
 
 
 ### Bug Fixes
 
+<<<<<<< HEAD
 * **table:** remove row height of 100% ([1d10f24](https://github.com/Headstorm/rasa-ui/commit/1d10f24294873fd6b9145efd198efe9cce527d1c))
 
 # [1.0.0-v1-release.3](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.2...v1.0.0-v1-release.3) (2020-08-18)
@@ -100,6 +105,9 @@
 
 * **cicd:** add cicd through github actions ([34a8fc0](https://github.com/Headstorm/rasa-ui/commit/34a8fc0245c335e4ca8fbf16291fc39fda963f64))
 * **utils/styles.ts:** move elevation shadow calculation to single function ([3e2332e](https://github.com/Headstorm/rasa-ui/commit/3e2332e64b50320681dded46e24562ff29b7bb49))
+=======
+* **table:** remove table row height 100% ([064c6ea](https://github.com/Headstorm/rasa-ui/commit/064c6ea1b69eec0c6a898e2a8771d6cd5ac28417))
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
 
 # [0.1.0](https://github.com/Headstorm/rasa-ui/compare/v0.0.8...v0.1.0) (2020-08-11)
 

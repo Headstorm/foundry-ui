@@ -45,7 +45,11 @@ export const Header = styled(TR)`
       column-gap: ${columnGap};
       user-select: none;
 
+<<<<<<< HEAD
       background-color: ${colors.primary};
+=======
+      background-color: ${primary};
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       color: white;
     `;
   }}
@@ -95,7 +99,11 @@ export const Row = styled(TR)`
       row-gap: .5rem;
       column-gap: ${columnGap};
       position: relative;
+<<<<<<< HEAD
       background-color: ${colors.background};
+=======
+      background-color: ${background};
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       ${isCollapsed ? 'height: 0px;' : ''}
 
       &:not(:last-child) {

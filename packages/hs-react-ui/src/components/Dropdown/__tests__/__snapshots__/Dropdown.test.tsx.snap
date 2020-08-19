@@ -78,6 +78,108 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   text-align: left;
 }
 
+<<<<<<< HEAD
+=======
+<div>
+  <div
+    class="c0"
+    data-testid="choosePokemon-valueContainer"
+    elevation="0"
+    id="choosePokemon-valueContainer"
+    name="choosePokemon"
+    tabindex="0"
+  >
+    <button
+      class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="c2"
+      >
+        Charmander
+      </div>
+      <div
+        class="c3"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.125rem; height: 1.125rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
+.c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: box-shadow .5s,filter .5s;
+  transition: box-shadow .5s,filter .5s;
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s;
+  -webkit-transition: box-shadow .5s,filter .5s;
+  transition: box-shadow .5s,filter .5s;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 15rem;
+  padding: .5rem 1rem;
+}
+
+.c1:hover {
+  background-color: #707479;
+}
+
+.c1:active {
+  background-color: #63686c;
+}
+
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
 .c3 {
   font-size: 1rem;
   color: undefined;
@@ -87,7 +189,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 <div>
   <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -95,7 +201,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -103,7 +213,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
+=======
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <span
           class="c3"
@@ -111,7 +224,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
         />
       </div>
       <div
+<<<<<<< HEAD
         class="c4"
+=======
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -258,7 +375,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -266,7 +387,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -274,6 +399,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
       >
         <span
@@ -283,6 +409,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
       <div
         class="c4"
+=======
+      />
+      <div
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -297,6 +428,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
+<<<<<<< HEAD
       class="c5"
       color="#252c35"
     >
@@ -309,10 +441,24 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         <span
           class=""
         >
+=======
+      class="c4"
+    >
+      <div
+        class="c5"
+        id="choosePokemon-option-Bulbasaur"
+        tabindex="0"
+      >
+        <div
+          class="c6"
+        />
+        <span>
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
           Bulbasaur
         </span>
       </div>
       <div
+<<<<<<< HEAD
         class="c6"
         color="#252c35"
         id="choosePokemon-option-charmander"
@@ -321,10 +467,21 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         <span
           class=""
         >
+=======
+        class="c5"
+        id="choosePokemon-option-Charmander"
+        tabindex="0"
+      >
+        <div
+          class="c6"
+        />
+        <span>
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
           Charmander
         </span>
       </div>
       <div
+<<<<<<< HEAD
         class="c6"
         color="#252c35"
         id="choosePokemon-option-squirtle"
@@ -333,6 +490,16 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         <span
           class=""
         >
+=======
+        class="c5"
+        id="choosePokemon-option-Squirtle"
+        tabindex="0"
+      >
+        <div
+          class="c6"
+        />
+        <span>
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
           Squirtle
         </span>
       </div>
@@ -428,7 +595,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 
 <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -436,7 +607,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -444,6 +619,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
       >
         <span
@@ -453,6 +629,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
       </div>
       <div
         class="c4"
+=======
+      />
+      <div
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -557,7 +738,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 <div>
   <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -565,7 +750,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -573,6 +762,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
       >
         <span
@@ -582,6 +772,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       </div>
       <div
         class="c4"
+=======
+      />
+      <div
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -728,7 +923,11 @@ exports[`Dropdown displays all options when focused 1`] = `
 <div>
   <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -736,7 +935,11 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -744,6 +947,7 @@ exports[`Dropdown displays all options when focused 1`] = `
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
       >
         <span
@@ -753,6 +957,11 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
       <div
         class="c4"
+=======
+      />
+      <div
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -767,6 +976,7 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </button>
     <div
+<<<<<<< HEAD
       class="c5"
       color="#252c35"
     >
@@ -779,10 +989,24 @@ exports[`Dropdown displays all options when focused 1`] = `
         <span
           class=""
         >
+=======
+      class="c4"
+    >
+      <div
+        class="c5"
+        id="choosePokemon-option-Bulbasaur"
+        tabindex="0"
+      >
+        <div
+          class="c6"
+        />
+        <span>
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
           Bulbasaur
         </span>
       </div>
       <div
+<<<<<<< HEAD
         class="c6"
         color="#252c35"
         id="choosePokemon-option-charmander"
@@ -791,10 +1015,21 @@ exports[`Dropdown displays all options when focused 1`] = `
         <span
           class=""
         >
+=======
+        class="c5"
+        id="choosePokemon-option-Charmander"
+        tabindex="0"
+      >
+        <div
+          class="c6"
+        />
+        <span>
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
           Charmander
         </span>
       </div>
       <div
+<<<<<<< HEAD
         class="c6"
         color="#252c35"
         id="choosePokemon-option-squirtle"
@@ -803,6 +1038,16 @@ exports[`Dropdown displays all options when focused 1`] = `
         <span
           class=""
         >
+=======
+        class="c5"
+        id="choosePokemon-option-Squirtle"
+        tabindex="0"
+      >
+        <div
+          class="c6"
+        />
+        <span>
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
           Squirtle
         </span>
       </div>
@@ -898,7 +1143,11 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 <div>
   <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -906,7 +1155,11 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -914,6 +1167,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
       >
         <span
@@ -925,6 +1179,11 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
       </div>
       <div
         class="c4"
+=======
+      />
+      <div
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -1029,7 +1288,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
 <div>
   <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -1037,7 +1300,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -1045,7 +1312,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
+=======
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <span
           class="c3"
@@ -1053,7 +1323,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
         />
       </div>
       <div
+<<<<<<< HEAD
         class="c4"
+=======
+        class="c3"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
@@ -1152,7 +1426,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
 <div>
   <div
     class="c0"
+<<<<<<< HEAD
     data-test-id="choosePokemon-container"
+=======
+    data-testid="choosePokemon-valueContainer"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
     elevation="0"
     id="choosePokemon-container"
     name="choosePokemon"
@@ -1160,7 +1438,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
   >
     <button
       class="c1"
+<<<<<<< HEAD
       color="#252c35"
+=======
+      color="#7c8186"
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
@@ -1168,6 +1450,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
     >
       <div
         class="c2"
+<<<<<<< HEAD
         id="choosePokemon-value-item"
       >
         <span>
@@ -1176,6 +1459,8 @@ exports[`Dropdown renders a value when given a matching option id through props 
       </div>
       <div
         class="c3"
+=======
+>>>>>>> FOUNDRYUI-143-TextInput-border-style
       >
         <svg
           role="presentation"
