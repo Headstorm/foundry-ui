@@ -24,5 +24,10 @@
       "pre-push": "npm run pre-push",
       "pre-commit": "npm run lint-react"
     }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

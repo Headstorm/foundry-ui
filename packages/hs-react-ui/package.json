@@ -154,6 +154,14 @@
         "prerelease": true
       },
       {
+        "name": "alpha",
+        "prerelease": true
+      },
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
         "name": "next",
         "prerelease": true
       }
@@ -165,7 +173,6 @@
         "assets": [
           "package.json",
           "../../docs/**",
-          "./coverage/**",
           "CHANGELOG.md"
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]nn${nextRelease.notes}"
