@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.9](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.8...v1.0.0-v1-release.9) (2020-08-20)
+
+
+### Features
+
+* **button, interactionfeedback:** add InteractionFeedback wrapper around Button ([26cf13d](https://github.com/Headstorm/rasa-ui/commit/26cf13da518827176d696842ea79e6e67a1d2447))
+
 # [1.0.0-v1-release.8](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.7...v1.0.0-v1-release.8) (2020-08-19)
 
 
