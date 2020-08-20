@@ -2,26 +2,32 @@ import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
-import { readableColor, darken } from 'polished';
+import { darken } from 'polished';
 
 import timings from '../../enums/timings';
+import { useTheme } from '../../context';
+import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
+import {
+  getFontColorFromVariant,
+  getBackgroundColorFromVariant,
+  disabledStyles,
+} from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
-import { useColors } from '../../context';
+import InteractionFeedback from '../InteractionFeedback';
+import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
+import FeedbackTypes from '../../enums/feedbackTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
-  variant: string;
+  variant: variants;
   type: string;
+  disabled: boolean;
+  feedbackType: FeedbackTypes;
 };
-
-export enum ButtonVariants {
-  fill = 'fill',
-  text = 'text',
-  outline = 'outline',
-}
 
 export enum ButtonTypes {
   button = 'button',
@@ -31,66 +37,33 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  containerProps?: object;
+  containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
   isProcessing?: boolean;
   children?: ReactNode;
   elevation?: number;
-  variant?: ButtonVariants;
+  variant?: variants;
   type?: ButtonTypes;
   color?: string;
+  feedbackType?: FeedbackTypes;
+  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
+  disabled?: boolean;
   onClick: (...args: any[]) => void;
+  onMouseDown?: (e: React.MouseEvent) => void;
+  onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
-};
-
-/**
- * Get the appropriate font color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- * @param {string} lightReturnColor - The color to return if the color is too dark
- * @param {string} darkReturnColor - The color to return if the color is too dark
- */
-export const getFontColorFromVariant = (
-  variant: string,
-  color: string,
-  lightReturnColor: string,
-  darkReturnColor: string,
-) => {
-  if (variant === 'fill') {
-    return readableColor(color, lightReturnColor, darkReturnColor, true);
-  }
-  return color;
-};
-
-/**
- * Get the appropriate background color for the button based on the variant of button
- * @param {string} variant - The variant of button
- * @param {string} color - The color prop passed into the button
- * @param {string} [transparentColor] - The color to use for a transparent background
- */
-export const getBackgroundColorFromVariant = (
-  variant: string,
-  color: string,
-  transparentColor: string,
-) => {
-  switch (variant) {
-    case ButtonVariants.text:
-    case ButtonVariants.outline:
-      return transparentColor || 'transparent';
-    default:
-      return color;
-  }
+  id?: string;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
   ButtonElement,
 )`
-  ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const { transparent, background, grayDark, shadow } = useColors();
-    const backgroundColor = getBackgroundColorFromVariant(variant, color, transparent);
-    const fontColor = getFontColorFromVariant(variant, color, background, grayDark);
+  ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
+    const { colors } = useTheme();
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
+    const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
 
     return `
       display: inline-flex;
@@ -101,24 +74,33 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         background-color ${timings.fast},
         color ${timings.slow},
         outline ${timings.slow},
-        filter ${timings.slow};
-      transition: box-shadow ${timings.slow}, filter ${timings.slow};
-      ${getShadowStyle(elevation, shadow)}
+        filter ${timings.slow},
+        box-shadow ${timings.slow};
+      ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
-      border: ${variant === ButtonVariants.outline ? `1px solid ${color}` : '0 none;'};
+      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
       align-items: center;
+      ${disabled ? disabledStyles() : ''}
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
       }
-      &:active {
-        background-color: ${
-          backgroundColor !== 'transparent' ? darken(0.1, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
-        };
+      ${
+        feedbackType === FeedbackTypes.simple
+          ? `
+            &:active {
+              background-color: ${
+                backgroundColor !== 'transparent'
+                  ? darken(0.1, backgroundColor)
+                  : 'rgba(0, 0, 0, 0.1)'
+              };
+            }
+          `
+          : ''
       }
     `;
   }}
@@ -156,38 +138,40 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  variant = ButtonVariants.fill,
+  feedbackType = FeedbackTypes.simple,
+  interactionFeedbackProps,
+  variant = variants.fill,
   type = ButtonTypes.button,
   color,
+  disabled = false,
   onClick,
+  onMouseDown = () => {},
+  onMouseUp = () => {},
   LoadingBar = StyledProgress,
+  id,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
-  const { grayLight } = useColors();
-  const containerColor = color || grayLight;
+  const { colors } = useTheme();
+  const containerColor = color || colors.grayLight;
+  // get everything we expose + anything consumer wants to send to container
+  const mergedContainerProps = {
+    'data-test-id': 'hsui-button',
+    id,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    elevation,
+    color: containerColor,
+    variant,
+    type,
+    disabled,
+    ...containerProps,
+  };
 
-  return isLoading ? (
-    <StyledContainer
-      data-test-id="hsui-button"
-      onClick={onClick}
-      elevation={elevation}
-      color={containerColor}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    >
-      <LoadingBar />
-    </StyledContainer>
+  const buttonContent = isLoading ? (
+    <LoadingBar />
   ) : (
-    <StyledContainer
-      data-test-id="hsui-button"
-      onClick={onClick}
-      elevation={elevation}
-      color={containerColor}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    >
+    <>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
@@ -212,12 +196,22 @@ const Button = ({
         ) : (
           <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
         ))}
-    </StyledContainer>
+    </>
+  );
+
+  return feedbackType === FeedbackTypes.ripple && !disabled ? (
+    <InteractionFeedback
+      color={getFontColorFromVariant(variant, containerColor)}
+      {...(interactionFeedbackProps || {})}
+    >
+      <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
+    </InteractionFeedback>
+  ) : (
+    <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
   );
 };
 
 Button.Container = ButtonContainer;
-Button.ButtonVariants = ButtonVariants;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
 export default Button;

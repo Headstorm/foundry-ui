@@ -1,23 +1,43 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
-import { readableColor } from 'polished';
+import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
-import Button, { ButtonVariants } from '../Button/Button';
+import { useTheme } from '../../context';
+import Button from '../Button/Button';
+import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
+import { Div, Span } from '../../htmlElements';
+import Text from '../Text/Text';
+import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
-import { useColors } from '../../context';
+
+export type OptionProps = {
+  id: number | string;
+  optionValue: ReactNode;
+  isSelected?: boolean;
+};
+
+type UsefulDropdownState = {
+  color: string;
+  multi?: boolean;
+  selected?: boolean;
+  variant: variants;
+};
 
 const Container = styled(Div)`
-  ${({ elevation, isOpen, shadowColor }) => `
-    width: fit-content;
-    transition: box-shadow ${timings.slow}, filter ${timings.slow};
-    ${getShadowStyle(elevation, shadowColor)}
-    position: relative;
-    z-index: ${isOpen ? '7' : '1'};
-  `}
+  ${({ elevation, isOpen }) => {
+    const { colors } = useTheme();
+    return `
+      width: fit-content;
+      transition: filter ${timings.slow}, box-shadow ${timings.slow};
+      ${getShadowStyle(elevation, colors.shadow)}
+      position: relative;
+      z-index: ${isOpen ? '7' : '1'};
+    `;
+  }}
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
@@ -30,9 +50,10 @@ export const ValueContainer = styled(Button.Container)`
     ${
       modalIsOpen
         ? `
-      border-bottom-right-radius: 0rem;
-      border-bottom-left-radius: 0rem;
-    `
+          border-bottom: 0px solid transparent;
+          border-bottom-right-radius: 0rem;
+          border-bottom-left-radius: 0rem;
+        `
         : ''
     }
 
@@ -60,48 +81,80 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${() => {
-    const { grayDark25 } = useColors();
-    return `
-      background: white;
-      position: absolute;
-      top: 100%;
-      left: 0px;
-      max-height: 10rem;
-      overflow-y: scroll;
-      width: 15rem;
-      border: 0.5px solid ${grayDark25};
-      border-radius: 0rem 0rem 0.25rem 0.25rem;
-      z-index: 1000;
-    `;
-  }}
+  ${({ color, variant }: UsefulDropdownState) => `
+    background: white;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    max-height: 10rem;
+    overflow-y: scroll;
+    width: 15rem;
+    ${
+      variant !== variants.text
+        ? `
+            border: 1px solid ${color};
+          `
+        : ''
+    }
+    border-top: 0px solid transparent;
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+    z-index: 1000;
+  `}
 `;
 
 const OptionItem = styled(Div)`
-  ${() => {
-    const { grayDark50 } = useColors();
+  ${({ selected, color, variant }: UsefulDropdownState) => {
+    const { colors } = useTheme();
+    const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
+    const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
+    const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
+
     return `
       padding: 0.5rem;
       display: flex;
       align-items: center;
-
+      color: ${
+        selected
+          ? readableColor(backgroundColor, colors.background, color, true)
+          : getFontColorFromVariant(variant, color)
+      };
+      background-color: ${backgroundColor};
+  
       &:hover {
-        background: ${grayDark50};
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
+        };
+    
         cursor: pointer;
         outline: none;
       }
       &:focus {
         outline: none;
-      }`;
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
+        };
+      }
+    `;
   }}
 `;
 const CheckContainer = styled(Div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${({ color, variant }: UsefulDropdownState) => {
+    const { colors } = useTheme();
 
-  padding-right: 0.2rem;
-  width: 2rem;
+    return `
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: ${getFontColorFromVariant(variant, tint(0.5, color || colors.grayMedium))};
+      padding-right: 0.2rem;
+      width: 2rem;
+    `;
+  }}
+`;
+
+const PlaceholderContainer = styled(Text.Container)`
+  opacity: 0.8;
 `;
 
 export interface DropdownProps {
@@ -110,106 +163,137 @@ export interface DropdownProps {
   StyledValueItem?: string & StyledComponentBase<any, {}>;
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
+  StyledCheckContainer?: string & StyledComponentBase<any, {}>;
+  StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
 
-  clearable?: boolean;
+  containerProps?: SubcomponentPropsType;
+  valueContainerProps?: SubcomponentPropsType;
+  valueItemProps?: SubcomponentPropsType;
+  optionsContainerProps?: SubcomponentPropsType;
+  optionItemProps?: SubcomponentPropsType;
+  checkContainerProps?: SubcomponentPropsType;
+  placeholderProps?: SubcomponentPropsType;
+
   color?: string;
   elevation?: number;
   multi?: boolean;
   name: string;
+  placeholder?: string;
+
   onBlur?: () => void;
   onClear?: () => void;
-  onSelect?: (selected: string | Array<string>) => void;
-  options: Array<string>;
+  onSelect: (selected?: Array<string | number>) => void;
+
+  values?: Array<string | number>;
+  options?: Array<OptionProps>;
   tabIndex?: number;
-  type?: ButtonVariants;
-  values?: Array<string>;
+  variant?: variants;
+  optionsVariant?: variants;
 }
 
-// TODO Placeholder text -- Wait until input is finalized
 const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
   StyledValueItem = ValueItem,
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
+  StyledCheckContainer = CheckContainer,
+  StyledPlaceholder = Text,
 
-  clearable = false,
+  containerProps,
+  valueContainerProps,
+  valueItemProps,
+  optionsContainerProps,
+  optionItemProps,
+  checkContainerProps,
+  placeholderProps,
+
   color,
   elevation = 0,
   multi = false,
   name,
+  placeholder,
   onBlur,
   onClear,
   onSelect,
-  options,
+  options = [],
   tabIndex = 0,
-  type = Button.ButtonVariants.fill,
+  variant = variants.outline,
+  optionsVariant = variant,
   values = [],
 }: DropdownProps): JSX.Element | null => {
-  const [state, setState] = useState<{
-    isOpen: boolean;
-    selectedValues: Array<string>;
-    id: string;
-  }>({
-    isOpen: false,
-    selectedValues: values,
-    id: name,
+  const { colors } = useTheme();
+  const defaultedColor = color || colors.grayDark;
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Merge the default styled container prop and the placeholderProps object to get user styles
+  const placeholderMergedProps = {
+    StyledContainer: PlaceholderContainer,
+    ...placeholderProps,
+  };
+
+  const optionsHash: { [key: string]: OptionProps } = {};
+  options.forEach(option => {
+    optionsHash[option.id] = { ...option, isSelected: values.includes(option.id) };
   });
-  const colors = useColors();
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
       e.preventDefault();
       const target = e.nativeEvent.relatedTarget as HTMLElement | null;
       // check if we're focusing on something we don't control
-      if (!target || (target.id && !target.id.startsWith(state.id))) {
-        setState(curState => ({ ...curState, isOpen: false }));
+      if (!target || (target.id && !target.id.startsWith(name))) {
+        setIsOpen(false);
         if (onBlur) {
           onBlur();
         }
       }
     },
-    [state.id, onBlur],
+    [name, onBlur],
   );
 
   const handleSelect = useCallback(
-    (selected: string) => {
-      setState(myState => {
-        if (multi) {
-          const selectedValues = myState.selectedValues.includes(selected)
-            ? myState.selectedValues.filter(val => val !== selected)
-            : [...myState.selectedValues, selected];
-          if (onSelect) {
-            onSelect(selectedValues);
-          }
-          return {
-            ...myState,
-            isOpen: true,
-            selectedValues,
-          };
-        }
-        if (onSelect) {
-          onSelect(selected);
-        }
-        return { ...myState, selectedValues: [selected], isOpen: false };
-      });
+    (clickedId: string | number) => {
+      if (!multi) {
+        setIsOpen(false);
+        onSelect([clickedId]);
+      } else {
+        const previouslySelected = optionsHash[clickedId].isSelected;
+        const newValues = previouslySelected
+          ? values.filter(val => val !== clickedId)
+          : [...values, clickedId];
+        onSelect(newValues);
+      }
     },
-    [onSelect, multi],
+    [onSelect, multi, values, optionsHash],
   );
 
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
-      e.stopPropagation();
-      setState(curState => ({
-        ...curState,
-        selectedValues: [],
-      }));
+      e.nativeEvent.stopImmediatePropagation();
+      onSelect(multi ? [] : undefined);
       if (onClear) {
         onClear();
       }
     },
-    [onClear],
+    [multi, onClear, onSelect],
+  );
+
+  // clickHandler will be used in onMouseDown to prevent the focus event
+  // opening the dropdown and the click closing it
+  const clickHandler = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+      setIsOpen(!isOpen);
+      if (containerRef && containerRef.current) {
+        // Focus the container even when clicking
+        containerRef.current.focus();
+      }
+    },
+    [containerRef, isOpen, setIsOpen],
   );
 
   const keyDownHandler = useCallback(
@@ -220,13 +304,13 @@ const Dropdown = ({
         const focusedElement = document.activeElement;
         switch (key) {
           case 'Enter':
-            const match = focusedElement && focusedElement.id.match(`${state.id}-option-(.*)`);
+            const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
             if (match) {
               handleSelect(match[1]);
             }
             break;
           case 'ArrowUp':
-            if (focusedElement && focusedElement.id.match(`${state.id}-option-.*`)) {
+            if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
               const sibling = focusedElement.previousElementSibling as HTMLElement | null;
               if (sibling) {
                 sibling.focus();
@@ -234,7 +318,7 @@ const Dropdown = ({
             }
             break;
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${state.id}-valueContainer`) {
+            if (focusedElement && focusedElement.id === `${name}-container`) {
               const optionsContainer = focusedElement.children[1];
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
@@ -242,7 +326,7 @@ const Dropdown = ({
                   toFocus.focus();
                 }
               }
-            } else if (focusedElement && focusedElement.id.match(`${state.id}-option-.*`)) {
+            } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
               const sibling = focusedElement.nextElementSibling as HTMLElement | null;
               if (sibling) {
                 sibling.focus();
@@ -254,7 +338,7 @@ const Dropdown = ({
         }
       }, 0);
     },
-    [handleSelect, state.id],
+    [handleSelect, name],
   );
 
   useEffect(() => {
@@ -267,68 +351,102 @@ const Dropdown = ({
 
   const closeIcons = (
     <ValueIconContainer>
-      {clearable && (
+      {onClear && values.length > 0 && (
         <CloseIconContainer
           onClick={handleClear}
           onFocus={(e: React.FocusEvent) => e.stopPropagation()}
           tabIndex={tabIndex}
         >
-          <Icon path={mdiClose} size={0.75} />
+          <Icon path={mdiClose} size="1em" />
         </CloseIconContainer>
       )}
-      <Icon path={state.isOpen ? mdiMenuUp : mdiMenuDown} size={0.75} />
+      <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
     </ValueIconContainer>
   );
 
   return (
     <StyledContainer
-      data-testid={`${state.id}-valueContainer`}
+      data-test-id={`${name}-container`}
+      id={`${name}-container`}
       elevation={elevation}
-      isOpen={state.isOpen}
-      id={`${state.id}-valueContainer`}
-      shadowColor={colors.shadow}
+      isOpen={isOpen}
       name={name}
       onBlur={handleBlur}
       onFocus={(e: React.FocusEvent) => {
         e.preventDefault();
-        setState(curState => ({ ...curState, isOpen: true }));
+        setIsOpen(true);
       }}
+      ref={containerRef}
       tabIndex={tabIndex}
+      {...containerProps}
     >
       <Button
         StyledContainer={StyledValueContainer}
         containerProps={{
-          modalIsOpen: state.isOpen,
+          modalIsOpen: isOpen,
         }}
-        color={color}
+        id={`${name}-button-value`}
+        color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
-        variant={type}
+        onMouseDown={clickHandler}
+        variant={variant}
+        {...valueContainerProps}
       >
-        <StyledValueItem>
-          {((values.length && values) || state.selectedValues).join(', ')}
+        <StyledValueItem
+          {...valueItemProps}
+          onMouseDown={clickHandler}
+          onBlur={handleBlur}
+          id={`${name}-value-item`}
+        >
+          {values
+            .filter(val => val !== undefined && optionsHash[val] !== undefined)
+            .map((val, i) =>
+              optionsHash[val] !== undefined ? (
+                <span key={val}>
+                  {i !== 0 && ', '}
+                  {optionsHash[val].optionValue}
+                </span>
+              ) : (
+                undefined
+              ),
+            )}
+          {(!values || !values.length) && (
+            <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
+          )}
         </StyledValueItem>
         {closeIcons}
       </Button>
-      {state.isOpen && (
-        <StyledOptionsContainer>
-          {options.map(opt => (
+      {isOpen && (
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          {...optionsContainerProps}
+        >
+          {options.map(option => (
             <StyledOptionItem
-              id={`${state.id}-option-${opt}`}
-              key={`${state.id}-option-${opt}`}
+              id={`${name}-option-${option.id}`}
+              key={`${name}-option-${option.id}`}
               onBlur={handleBlur}
-              onClick={() => handleSelect(opt)}
+              onClick={() => handleSelect(option.id)}
               tabIndex={tabIndex}
+              color={defaultedColor}
+              variant={optionsVariant}
+              multi={multi}
+              selected={optionsHash[option.id].isSelected}
+              {...optionItemProps}
             >
-              <CheckContainer>
-                {state.selectedValues.includes(opt) && (
-                  <Icon
-                    path={mdiCheck}
-                    size={0.75}
-                    color={readableColor(colors.grayDark50, colors.success)}
-                  />
-                )}
-              </CheckContainer>
-              <span>{opt}</span>
+              {multi && (
+                <StyledCheckContainer
+                  color={defaultedColor}
+                  selected={optionsHash[option.id].isSelected}
+                  variant={optionsVariant}
+                  multi={multi}
+                  {...checkContainerProps}
+                >
+                  {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
+                </StyledCheckContainer>
+              )}
+              <Span>{option.optionValue}</Span>
             </StyledOptionItem>
           ))}
         </StyledOptionsContainer>
@@ -342,5 +460,6 @@ Dropdown.OptionsContainer = OptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
+Dropdown.Placeholder = Text;
 
 export default Dropdown;

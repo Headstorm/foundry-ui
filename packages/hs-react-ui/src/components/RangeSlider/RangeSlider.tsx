@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -11,18 +11,19 @@ import fonts from '../../enums/fonts';
 import { clamp } from '../../utils/math';
 
 import {
-  valueProp,
-  containerProps,
-  handleProps,
-  handleLabelProps,
+  ValueProp,
+  ContainerProps,
+  HandleProps,
+  HandleLabelProps,
   RangeSliderProps,
-  selectedRangeProps,
-  domainLabelProps,
+  SelectedRangeProps,
+  DomainLabelProps,
 } from './types';
-import { useColors } from '../../context';
+import { useTheme } from '../../context';
+import { Div } from '../../htmlElements';
 
 export const Container = styled.div`
-  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: containerProps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
@@ -65,104 +66,144 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color }: handleProps) => {
-    const { primary, background } = useColors();
-    const handleColor = color || primary;
+  ${({ beingDragged = false, color }: HandleProps) => {
+    const { colors } = useTheme();
+    const handleColor = color || colors.primary;
     return `
       position: absolute;
       bottom: -.125rem;
       left: -.5rem;
-  
+
       width: 1rem;
       height: 1rem;
-  
+
       background-color: ${handleColor};
       color: ${handleColor};
-      border: .125rem solid ${background};
+      border: .125rem solid ${colors.background};
       border-radius: 50%;
-  
+
       filter: url(#blur);
-  
+
       cursor: ${beingDragged ? 'grabbing' : 'grab'};
+      z-index: 2;
     `;
   }}
 `;
 
 export const HandleLabel = styled.div`
-  ${({ velocity = 0 }: handleLabelProps) => {
-    const { background } = useColors();
+  ${({ velocity = 0 }: HandleLabelProps) => {
+    const { colors } = useTheme();
     return `
       position: absolute;
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
-  
-      background-color: ${background};
+
+      background-color: ${colors.background};
       border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
-  
+
       pointer-events: none;
+      z-index: 2;
     `;
   }}
 `;
 
 export const SlideRail = styled.div`
   ${() => {
-    const { grayXlight } = useColors();
+    const { colors } = useTheme();
     return `
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-    
+
       width: 100%;
       height: 0.25rem;
-    
+
       overflow: hidden;
-    
+
       border-radius: 0.125rem;
-      background-color: ${grayXlight};
+      background-color: ${colors.grayXlight};
     `;
   }}
 `;
 
 export const SelectedRangeRail = styled.div`
-  ${({ min, max, selectedRange }: selectedRangeProps) => {
-    const { primary } = useColors();
+  ${({ min, max, selectedRange }: SelectedRangeProps) => {
+    const { colors } = useTheme();
     return `
       position: absolute;
       top: 0%;
       height: 100%;
       left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
       right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
-  
+
       transition: left .3s, right .3s;
-  
-      background-color: ${primary};
+
+      background-color: ${colors.primary};
     `;
   }}
 `;
 
 export const DomainLabel = styled.div`
-  ${({ position }: domainLabelProps) => {
-    const { grayMedium } = useColors();
+  ${({ position }: DomainLabelProps) => {
+    const { colors } = useTheme();
     return `
       position: absolute;
       bottom: 100%;
       ${position}: 0rem;
-      color: ${grayMedium};
+      color: ${colors.grayMedium};
       font-size: .5rem;
     `;
   }}
 `;
 
-export default ({
+export const Marker = styled(Div)`
+  ${({ sliderPosition = 0 }) => {
+    const { colors } = useTheme();
+    return `
+      position: absolute;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      height: 1rem;
+      width: 2px;
+      left: ${sliderPosition}px;
+      background-color: ${colors.grayLight};
+    `;
+  }}
+`;
+export const MarkerLabel = styled(Div)`
+  ${({ color }) => {
+    const { colors } = useTheme();
+    return `
+    position: absolute;
+    bottom: 100%;
+    white-space: nowrap;
+    font-size: .375rem;
+    color: ${color || colors.grayLight};
+  `;
+  }}
+`;
+
+export const RangeSlider = ({
   StyledContainer = Container,
   StyledDragHandle = DragHandle,
   StyledHandleLabel = HandleLabel,
   StyledSlideRail = SlideRail,
   StyledSelectedRangeRail = SelectedRangeRail,
   StyledDomainLabel = DomainLabel,
+  StyledMarker = Marker,
+  StyledMarkerLabel = MarkerLabel,
+  containerProps = {},
+  dragHandleProps = {},
+  handleLabelProps = {},
+  slideRailProps = {},
+  selectedRangeRailProps = {},
+  domainLabelProps = {},
+  markerProps = {},
+  markerLabelProps = {},
 
   showDomainLabels = true,
   showSelectedRange = true,
@@ -179,14 +220,14 @@ export default ({
   min,
   max,
   values,
-
+  markers = [],
   testId,
 }: RangeSliderProps): JSX.Element | null => {
   let hasHandleLabels = false;
   const processedValues = values
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore This expression is not callable.
-      values.map((val: number | valueProp) => {
+      values.map((val: number | ValueProp) => {
         if (typeof val === 'number') {
           return { value: val, label: null };
         }
@@ -196,12 +237,23 @@ export default ({
         return val;
       })
     : [];
+  const processedMarkers = markers
+    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore This expression is not callable.
+      markers.map((val: number | ValueProp) => {
+        if (typeof val === 'number') {
+          return { value: val, label: null };
+        }
+        return val;
+      })
+    : [];
+
   const selectedRange = [
     Math.min(
-      ...processedValues.map((val: valueProp) => val.value),
+      ...processedValues.map((val: ValueProp) => val.value),
       showSelectedRange && values && values.length === 1 ? min : Infinity,
     ),
-    Math.max(...processedValues.map((val: valueProp) => val.value)),
+    Math.max(...processedValues.map((val: ValueProp) => val.value)),
   ];
 
   const domain = max - min;
@@ -218,13 +270,50 @@ export default ({
   // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
   const pixelPositions = processedValues.map(
-    (val: valueProp) => (val.value / domain) * sliderBounds.width,
+    (val: ValueProp) => (val.value / domain) * sliderBounds.width,
   );
 
   // get the x offset and an animation setter function
   const [{ x, y }, set] = useSpring(
     () => ({ to: { x: pixelPositions[0], y: 0 }, config: { friction: 13, tension: 100 } }),
     [values],
+  );
+
+  const handleSlideRailClick = useCallback(
+    (e: React.MouseEvent) => {
+      // Avoiding using another ref here to reduce overhead
+      const pixelPosition = e.clientX;
+      const positionOnRail = pixelPosition - sliderBounds.left;
+      const railPositionRatio = positionOnRail / sliderBounds.width;
+      const clickedValue = railPositionRatio * domain;
+
+      // variables to find the closest handle
+      let closestVal: ValueProp | undefined = undefined;
+      let smallestDifference: number;
+
+      // Find the closest handle
+      processedValues.forEach((val: ValueProp) => {
+        // Get the absolute value of the difference
+        const difference = Math.abs(clickedValue - val.value);
+        if (smallestDifference !== undefined && difference < smallestDifference) {
+          closestVal = val;
+          smallestDifference = difference;
+        } else if (smallestDifference === undefined) {
+          closestVal = val;
+          smallestDifference = difference;
+        }
+      });
+
+      if (closestVal) {
+        // TODO: use the closest val to find the handle to move and move it
+        onDrag(clickedValue);
+        if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
+          e.persist();
+          slideRailProps.onMouseDown(e);
+        }
+      }
+    },
+    [slideRailProps, sliderBounds, onDrag, domain, processedValues],
   );
 
   const bind = useDrag(
@@ -283,26 +372,32 @@ export default ({
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
       showDomainLabels={showDomainLabels}
+      {...containerProps}
     >
-      <StyledSlideRail ref={ref}>
+      <StyledSlideRail ref={ref} {...slideRailProps} onMouseDown={handleSlideRailClick}>
         {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
+            {...selectedRangeRailProps}
           />
         )}
       </StyledSlideRail>
 
       {showDomainLabels && (
         <>
-          <StyledDomainLabel position="left">{min}</StyledDomainLabel>
-          <StyledDomainLabel position="right">{max}</StyledDomainLabel>
+          <StyledDomainLabel position="left" {...domainLabelProps}>
+            {min}
+          </StyledDomainLabel>
+          <StyledDomainLabel position="right" {...domainLabelProps}>
+            {max}
+          </StyledDomainLabel>
         </>
       )}
 
-      {processedValues.map(({ value, label, color }: valueProp, i: number) => (
+      {processedValues.map(({ value, label, color }: ValueProp, i: number) => (
         <StyledDragHandle
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...bind()}
@@ -311,8 +406,11 @@ export default ({
           style={{ x, y }}
           color={color}
           key={`handle${i}`}
+          {...dragHandleProps}
         >
-          <StyledHandleLabel value={value}>{label}</StyledHandleLabel>
+          <StyledHandleLabel value={value} {...handleLabelProps}>
+            {label}
+          </StyledHandleLabel>
         </StyledDragHandle>
       ))}
 
@@ -325,6 +423,33 @@ export default ({
           </defs>
         </svg>
       )}
+
+      {processedMarkers.map(({ value, label, color }: ValueProp) => {
+        const position = (value / domain) * sliderBounds.width;
+        return (
+          <StyledMarker
+            key={`marker-${value}`}
+            id={`marker-${value}`}
+            sliderPosition={position}
+            {...markerProps}
+          >
+            <StyledMarkerLabel color={color} {...markerLabelProps}>
+              {label}
+            </StyledMarkerLabel>
+          </StyledMarker>
+        );
+      })}
     </StyledContainer>
   );
 };
+
+RangeSlider.Container = Container;
+RangeSlider.DragHandle = DragHandle;
+RangeSlider.HandleLabel = HandleLabel;
+RangeSlider.SlideRail = SlideRail;
+RangeSlider.SelectedRangeRail = SelectedRangeRail;
+RangeSlider.DomainLabel = DomainLabel;
+RangeSlider.Marker = Marker;
+RangeSlider.MarkerLabel = MarkerLabel;
+
+export default RangeSlider;
