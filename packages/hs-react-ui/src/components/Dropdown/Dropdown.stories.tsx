@@ -72,6 +72,11 @@ const teaOptions = [
   },
 ];
 
+const valueVariants = {
+  none: undefined,
+  ...variants,
+};
+
 storiesOf('Dropdown', module)
   .add(
     'Basic',
@@ -95,6 +100,7 @@ storiesOf('Dropdown', module)
               options={cities}
               variant={select('variant', variants, variants.outline)}
               optionsVariant={select('optionsVariant', variants, variants.outline)}
+              valueVariant={select('valueVariant', valueVariants, valueVariants.none)}
               values={values}
             />
           </Label>

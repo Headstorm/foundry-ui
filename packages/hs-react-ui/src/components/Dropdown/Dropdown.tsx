@@ -9,10 +9,11 @@ import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
+import Tag, { TagProps } from '../Tag/Tag';
 import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
-import { getShadowStyle } from '../../utils/styles';
+import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 
 export type OptionProps = {
   id: number | string;
@@ -119,12 +120,12 @@ const OptionItem = styled(Div)`
           : getFontColorFromVariant(variant, color)
       };
       background-color: ${backgroundColor};
-  
+
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
-    
+
         cursor: pointer;
         outline: none;
       }
@@ -157,6 +158,22 @@ const PlaceholderContainer = styled(Text.Container)`
   opacity: 0.8;
 `;
 
+const StyledTagContainer = styled(Tag.Container)`
+  ${({
+    dropdownVariant,
+    tagVariant,
+    dropdownColor,
+    transparentColor,
+  }: {
+    dropdownVariant: variants;
+    tagVariant: variants;
+    dropdownColor: string;
+    transparentColor: string;
+  }) => `
+    ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
+  `}
+`;
+
 export interface DropdownProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledValueContainer?: string & StyledComponentBase<any, {}>;
@@ -173,6 +190,7 @@ export interface DropdownProps {
   optionItemProps?: SubcomponentPropsType;
   checkContainerProps?: SubcomponentPropsType;
   placeholderProps?: SubcomponentPropsType;
+  valueItemTagProps?: TagProps;
 
   color?: string;
   elevation?: number;
@@ -189,6 +207,7 @@ export interface DropdownProps {
   tabIndex?: number;
   variant?: variants;
   optionsVariant?: variants;
+  valueVariant?: variants;
 }
 
 const Dropdown = ({
@@ -207,6 +226,7 @@ const Dropdown = ({
   optionItemProps,
   checkContainerProps,
   placeholderProps,
+  valueItemTagProps = {},
 
   color,
   elevation = 0,
@@ -219,7 +239,8 @@ const Dropdown = ({
   options = [],
   tabIndex = 0,
   variant = variants.outline,
-  optionsVariant = variant,
+  optionsVariant = variants.outline,
+  valueVariant,
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
@@ -232,6 +253,8 @@ const Dropdown = ({
     StyledContainer: PlaceholderContainer,
     ...placeholderProps,
   };
+
+  const tagContainerItemProps = valueItemTagProps.containerProps || {};
 
   const optionsHash: { [key: string]: OptionProps } = {};
   options.forEach(option => {
@@ -400,12 +423,31 @@ const Dropdown = ({
         >
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
-            .map((val, i) =>
+            .map((val, i, arr) =>
               optionsHash[val] !== undefined ? (
-                <span key={val}>
-                  {i !== 0 && ', '}
-                  {optionsHash[val].optionValue}
-                </span>
+                valueVariant ? (
+                  <Tag
+                    StyledContainer={StyledTagContainer}
+                    variant={valueVariant}
+                    {...valueItemTagProps}
+                    containerProps={{
+                      ...tagContainerItemProps,
+                      dropdownVariant: variant,
+                      tagVariant: valueVariant,
+                      dropdownColor: defaultedColor,
+                      transparentColor: colors.transparent,
+                    }}
+                    key={val}
+                  >
+                    {optionsHash[val].optionValue}
+                    {valueVariant === variants.text && i !== arr.length - 1 && ','}
+                  </Tag>
+                ) : (
+                  <span key={val}>
+                    {optionsHash[val].optionValue}
+                    {i !== arr.length - 1 && ', '}
+                  </span>
+                )
               ) : (
                 undefined
               ),

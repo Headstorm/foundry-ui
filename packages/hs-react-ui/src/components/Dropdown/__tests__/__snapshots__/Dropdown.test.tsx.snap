@@ -1490,9 +1490,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
       >
         <span>
           Bulbasaur
+          , 
         </span>
         <span>
-          , 
           Charmander
         </span>
       </div>
@@ -1612,9 +1612,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
       >
         <span>
           Bulbasaur
+          , 
         </span>
         <span>
-          , 
           Charmander
         </span>
       </div>
@@ -1734,9 +1734,9 @@ exports[`Dropdown selects options from values prop 1`] = `
       >
         <span>
           Bulbasaur
+          , 
         </span>
         <span>
-          , 
           Charmander
         </span>
       </div>

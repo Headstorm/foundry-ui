@@ -1,4 +1,6 @@
 import { parseToRgb } from 'polished';
+import variants from '../enums/variants';
+import { getFontColorFromVariant } from './color';
 // A constant factor that works well with base 10 logarithms
 const elevationFactor = 10 ** 0.1;
 
@@ -59,4 +61,70 @@ export const getShadowStyle = (elevation = 0, shadowColor: string) => {
   return elevation > 0
     ? `filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity}));`
     : `box-shadow: inset ${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity});`;
+};
+
+/**
+ * Determines the style of the of the tag component for the dropdown
+ * @param dropdownVariant - The dropdown variant
+ * @param tagVariant - The tag variant
+ * @param dropdownColor - The color prop passed into the dropdown
+ * @param transparentColor - The transparent color provided from the useTheme hook
+ */
+export const getDropdownTagStyle = (
+  dropdownVariant: variants,
+  tagVariant: variants,
+  dropdownColor: string,
+  transparentColor: string,
+) => {
+  let backgroundColor = '';
+  let fontColor = '';
+  switch (dropdownVariant) {
+    case variants.fill:
+      if (tagVariant === variants.text) {
+        backgroundColor = transparentColor;
+        fontColor = getFontColorFromVariant(dropdownVariant, dropdownColor);
+      } else if (tagVariant === variants.fill) {
+        backgroundColor = getFontColorFromVariant(dropdownVariant, dropdownColor);
+        fontColor = dropdownColor;
+      } else {
+        backgroundColor = transparentColor;
+        fontColor = getFontColorFromVariant(dropdownVariant, dropdownColor);
+      }
+      break;
+    case variants.outline:
+      if (tagVariant === variants.text) {
+        backgroundColor = transparentColor;
+        fontColor = dropdownColor;
+      } else if (tagVariant === variants.fill) {
+        backgroundColor = dropdownColor;
+        fontColor = getFontColorFromVariant(tagVariant, dropdownColor);
+      } else {
+        backgroundColor = transparentColor;
+        fontColor = dropdownColor;
+      }
+      break;
+    case variants.text:
+      if (tagVariant === variants.text) {
+        backgroundColor = transparentColor;
+        fontColor = dropdownColor;
+      } else if (tagVariant === variants.fill) {
+        backgroundColor = dropdownColor;
+        fontColor = getFontColorFromVariant(tagVariant, dropdownColor);
+      } else {
+        backgroundColor = transparentColor;
+        fontColor = dropdownColor;
+      }
+      break;
+    default:
+      backgroundColor = transparentColor;
+      fontColor = dropdownColor;
+  }
+
+  return `
+    border: ${tagVariant === variants.outline ? `1px solid ${fontColor};` : '0 none;'}
+    background-color: ${backgroundColor};
+    color: ${fontColor};
+    margin-right: .25rem;
+    margin-top: 1px;
+  `;
 };
