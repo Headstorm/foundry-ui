@@ -1,11 +1,5 @@
-import styled, { StyledComponentBase } from 'styled-components';
-import fonts from '../enums/fonts';
-
-const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => styled(Component)`
-  box-sizing: border-box;
-  ${process.env.NODE_ENV !== 'test' ? fonts.importFonts : ''}
-  ${fonts.body}
-`;
+import styled from 'styled-components';
+import { withGlobalStyle } from '../context';
 
 // Use these elements over native styled.xx elements, as they apply
 // sensible defaults for each element. If an element doesn't exist, add it to this block

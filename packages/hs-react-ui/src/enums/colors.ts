@@ -11,6 +11,7 @@ enum colors {
 
   success = '#698F00',
   destructive = '#d00',
+  shadow = '#272f4e',
 
   grayDark25 = 'rgba(211, 214, 215, 0.25)',
   grayDark50 = 'rgba(211, 214, 215, 0.5)',

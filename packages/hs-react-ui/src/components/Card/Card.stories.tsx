@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { text, number } from '@storybook/addon-knobs';
+import { text, number, boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { storiesOf } from '@storybook/react';
@@ -9,6 +9,7 @@ import Card, { Header, Footer } from './Card';
 import colors from '../../enums/colors';
 import timings from '../../enums/timings';
 import fonts from '../../enums/fonts';
+import feedbackTypes from '../../enums/feedbackTypes';
 
 const design = {
   type: 'figma',
@@ -18,19 +19,23 @@ const design = {
 storiesOf('Card', module)
   .add(
     'Default',
-    () => (
-      <Card
-        header={text('header', 'Card title')}
-        footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-        elevation={number('elevation', 2, { range: true, min: 0, max: 5, step: 1 })}
-        onClick={action('onClick')}
-      >
-        {text(
-          'children',
-          'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
-        )}
-      </Card>
-    ),
+    () => {
+      return (
+        <Card
+          header={text('header', 'Card title')}
+          footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
+          elevation={number('elevation', 2, { range: true, min: -5, max: 5, step: 1 })}
+          onClick={action('onClick')}
+          disableFeedback={boolean('disableFeedback', false)}
+          feedbackType={select('feedbackType', feedbackTypes, feedbackTypes.ripple)}
+        >
+          {text(
+            'children',
+            'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
+          )}
+        </Card>
+      );
+    },
     { design, centered: true },
   )
   .add('Themed', () => {
@@ -50,10 +55,10 @@ storiesOf('Card', module)
         border-radius: 1rem;
         width: fit-content;
         background-color: ${themeColors.background};
-    
+
         transition: transform ${themeTimings.xSlow};
         transform: scale(${elevation * 0.05 + 1});
-    
+
         ${fonts.body}
         font-size: 1rem;
         border: 1px solid ${themeColors.primary};
@@ -82,7 +87,9 @@ storiesOf('Card', module)
         StyledFooter={ThemedFooter}
         header={text('header', 'Card title')}
         footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
-        elevation={number('elevation', 0, { range: true, min: 0, max: 5, step: 1 })}
+        elevation={number('elevation', 0, { range: true, min: -5, max: 5, step: 1 })}
+        onClick={action('onClick')}
+        disableFeedback={boolean('disableFeedback', true)}
       >
         {text(
           'children',

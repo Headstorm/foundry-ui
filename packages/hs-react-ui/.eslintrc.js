@@ -46,6 +46,7 @@ module.exports = {
     'padded-blocks': 1,
     'react-hooks/exhaustive-deps': 1,
     'react-hooks/rules-of-hooks': 1,
+    'react/require-default-props': 1,
     'react/jsx-curly-newline': 0,
     'react/jsx-filename-extension': 0, // didn't like jsx in tsx lol
     'react/jsx-indent': 0,

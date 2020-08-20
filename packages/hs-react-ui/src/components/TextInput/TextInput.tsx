@@ -1,62 +1,99 @@
-import React, { ReactNode, SyntheticEvent, useCallback } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import React, { ChangeEvent, EventHandler, ReactNode, SyntheticEvent, useCallback } from 'react';
+import styled, { css, StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
-import colors from '../../enums/colors';
-import { Div, TextArea, Input as InputElement } from '../../htmlElements';
+import { Div, Input as InputElement, TextArea } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
+import { useTheme } from '../../context';
+import { disabledStyles } from '../../utils/color';
 
 const Container = styled(Div)`
-  ${({ isValid }: { isValid?: boolean }) => `
-    border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
-    min-width: 10rem;
-    position: relative;
-    display: flex;
-    flex-flow: row;
-    border-radius: 0.25em;
-    background-color: ${colors.background};
-  `}
+  ${({ disabled = false, isValid }: { disabled?: boolean; isValid?: boolean }) => {
+    const { colors } = useTheme();
+    return `
+      border 2px solid ${isValid === false ? colors.destructive : colors.grayMedium};
+      min-width: 10rem;
+      position: relative;
+      display: flex;
+      flex-flow: row;
+      border-radius: 0.25em;
+      background-color: ${colors.background};
+      ${disabled ? disabledStyles() : ''}
+  `;
+  }}
 `;
 
 const TextInputContainer = styled(InputElement)`
-  border: 0 none;
-  flex-grow: 1;
-  outline: 0 none;
-  height: 2em;
-  font-size: 1em;
-  padding: 0.5rem;
-  background-color: ${colors.background};
+  ${() => {
+    const { colors } = useTheme();
+    return `
+      border: 0 none;
+      flex-grow: 1;
+      outline: 0 none;
+      height: 2em;
+      font-size: 1em;
+      padding: 0.5rem;
+      background-color: ${colors.transparent};
+  `;
+  }}
 `;
 
 const TextAreaInputContainer = styled(TextArea)`
-  ${({ multiLineIsResizable }: TextInputProps) => `
-    border: 0 none;
-    flex-grow: 1;
-    outline: 0 none;
-    font-size: 1em;
-    min-height: 2em;
-    min-width: 0px;
-    padding: .5rem;
-    background-color: ${colors.background};
-    resize: ${multiLineIsResizable ? 'both' : 'none'};
-  `}
+  ${({ multiLineIsResizable }: TextInputProps) => {
+    const { colors } = useTheme();
+    return `
+      border: 0 none;
+      flex-grow: 1;
+      outline: 0 none;
+      font-size: 1em;
+      min-height: 2em;
+      min-width: 0px;
+      padding: .5rem;
+      background-color: ${colors.transparent};
+      resize: ${multiLineIsResizable ? 'both' : 'none'};
+    `;
+  }}
 `;
 
 const IconContainer = styled(Div)`
-  padding: 0.5em;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${colors.grayMedium};
-  cursor: pointer;
+  ${() => {
+    const { colors } = useTheme();
+
+    return `
+      padding: 0.5em;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: ${colors.grayMedium};
+      cursor: pointer;
+    `;
+  }}
+`;
+
+const CharacterCounter = styled(Div)`
+  ${({ textIsTooLong, isValid, errorMessage }) => {
+    const { colors } = useTheme();
+    return css`
+      position: absolute;
+      top: calc(100% + ${isValid && (!errorMessage || errorMessage !== '') ? '0.25em' : '2em'});
+      right: 0.25em;
+      color: ${textIsTooLong ? colors.destructive : colors.grayLight};
+    `;
+  }}
 `;
 
 const ErrorContainer = styled(Div)`
-  position: absolute;
-  top: calc(100% + 0.25em);
-  color: ${colors.destructive};
-  font-size: 0.75rem;
+  ${() => {
+    const { colors } = useTheme();
+    return css`
+      position: absolute;
+      top: calc(100% + 0.25em);
+      color: ${colors.destructive};
+      font-size: 0.75rem;
+    `;
+  }}
 `;
 
 export type TextInputProps = {
@@ -64,8 +101,8 @@ export type TextInputProps = {
   placeholder?: string;
   iconPrefix?: string | ReactNode;
   onClear?: (event: SyntheticEvent) => void;
-  onChange?: (event: SyntheticEvent) => void;
-  debouncedOnChange?: (event: SyntheticEvent) => void;
+  onChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
+  debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
   onKeyPress?: (event: SyntheticEvent) => void;
   onKeyDown?: (event: SyntheticEvent) => void;
   onKeyUp?: (event: SyntheticEvent) => void;
@@ -76,6 +113,7 @@ export type TextInputProps = {
   cols?: number;
   rows?: number;
   value?: string;
+  disabled?: boolean;
   defaultValue?: string;
   isValid?: boolean;
   isMultiline?: boolean;
@@ -84,9 +122,18 @@ export type TextInputProps = {
   type?: string;
   debounceInterval?: number;
   multiLineIsResizable?: boolean;
+  maxLength?: number;
+  allowTextBeyondMaxLength?: boolean;
+  showCharacterCount?: boolean;
+
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledInput?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledErrorContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropsType;
+  inputProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
+  errorContainerProps?: SubcomponentPropsType;
 };
 
 const createIcon = (
@@ -96,7 +143,7 @@ const createIcon = (
   if (typeof iconPrefix === 'string') {
     return (
       <StyledIconContainer>
-        <Icon size="16px" path={iconPrefix} />
+        <Icon size="1rem" path={iconPrefix} />
       </StyledIconContainer>
     );
   }
@@ -123,20 +170,33 @@ const TextInput = ({
   cols = 10,
   rows = 10,
   value,
-  defaultValue,
-  isValid,
+  defaultValue = '',
+  isValid = true,
   isMultiline,
   errorMessage,
   ariaLabel,
   type = 'text',
+  disabled = false,
+  debounceInterval = 8,
+  multiLineIsResizable,
+  maxLength,
+  allowTextBeyondMaxLength = false,
+  showCharacterCount = false,
+
   StyledContainer = Container,
   StyledInput, // Not defaulting here due to the issue with <input as="textarea" />
   StyledIconContainer = IconContainer,
-  debounceInterval = 8,
-  multiLineIsResizable,
+  StyledErrorContainer = ErrorContainer,
+  containerProps = {},
+  inputProps = {},
+  iconContainerProps = {},
+  errorContainerProps = {},
 }: TextInputProps) => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
-  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), []);
+  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), [
+    debouncedOnChange,
+    debounceInterval,
+  ]);
 
   // Determine the correct input type. Using a single input and the 'as' keyword
   // to display as a text area disables the ability to set cols/rows
@@ -146,9 +206,10 @@ const TextInput = ({
   } else if (isMultiline) {
     InputComponent = TextAreaInputContainer;
   }
+  const displayValue = value || defaultValue;
 
   return (
-    <StyledContainer isValid={isValid}>
+    <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       {/*
         // @ts-ignore */}
@@ -157,8 +218,13 @@ const TextInput = ({
         rows={rows}
         aria-label={ariaLabel}
         placeholder={placeholder}
-        onChange={(e: SyntheticEvent) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.persist();
+          if (maxLength && maxLength >= 0) {
+            e.target.value = allowTextBeyondMaxLength
+              ? e.target.value
+              : e.target.value.slice(0, maxLength);
+          }
           onChange(e);
           debouncedChange(e);
         }}
@@ -169,22 +235,35 @@ const TextInput = ({
         onBlur={onBlur}
         onReset={onReset}
         onInput={onInput}
-        value={value || defaultValue}
+        value={displayValue}
         id={id}
         type={type}
         multiLineIsResizable={multiLineIsResizable}
+        {...inputProps}
       />
       {onClear && (
-        <StyledIconContainer onClick={onClear}>
+        <StyledIconContainer onClick={onClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
-      {isValid === false && errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
+      {showCharacterCount && maxLength && (
+        <CharacterCounter
+          errorMessage={errorMessage}
+          isValid={isValid}
+          textIsTooLong={displayValue.length > maxLength}
+        >
+          {displayValue.length} / {maxLength}
+        </CharacterCounter>
+      )}
+      {isValid === false && errorMessage && (
+        <StyledErrorContainer {...errorContainerProps}>{errorMessage}</StyledErrorContainer>
+      )}
     </StyledContainer>
   );
 };
 
 TextInput.Container = Container;
+TextInput.ErrorContainer = ErrorContainer;
 TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
 TextInput.TextArea = TextAreaInputContainer;

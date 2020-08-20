@@ -2,8 +2,6 @@
 
 exports[`Text matches snapshot 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
   color: undefined;
 }
@@ -18,15 +16,11 @@ exports[`Text matches snapshot 1`] = `
 
 exports[`Text matches snapshot with icon strings 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
   color: undefined;
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-right: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -36,8 +30,6 @@ exports[`Text matches snapshot with icon strings 1`] = `
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-left: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -85,15 +77,11 @@ exports[`Text matches snapshot with icon strings 1`] = `
 
 exports[`Text matches snapshot with icons 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
   color: undefined;
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-right: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -103,8 +91,6 @@ exports[`Text matches snapshot with icons 1`] = `
 }
 
 .c2 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-left: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -150,15 +136,11 @@ exports[`Text matches snapshot with icons 1`] = `
 
 exports[`Text matches snapshot with isLoading 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
   color: undefined;
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -185,15 +167,11 @@ exports[`Text matches snapshot with isLoading 1`] = `
 
 exports[`Text matches snapshot with isProcessing 1`] = `
 .c0 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   font-size: 1rem;
   color: undefined;
 }
 
 .c1 {
-  box-sizing: border-box;
-  font-family: Montserrat,Roboto,sans-serif;
   margin-right: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

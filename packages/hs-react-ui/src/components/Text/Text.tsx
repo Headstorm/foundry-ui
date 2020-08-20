@@ -5,6 +5,7 @@ import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import Progress from '../Progress/Progress';
 import { Span } from '../../htmlElements';
+import { SubcomponentPropsType } from '../commonTypes';
 
 /* Default Styled Text Container */
 export const TextContainer = styled(Span)`
@@ -22,8 +23,11 @@ export interface TextProps {
   isLoading?: boolean;
   isProcessing?: boolean;
   size?: string;
+
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropsType;
+  iconContainerProps?: SubcomponentPropsType;
 }
 
 /* Styled div that represents the scroll bar */
@@ -54,25 +58,28 @@ const Text = ({
   isLoading,
   isProcessing,
   size = '1rem',
+
   StyledContainer = TextContainer,
   StyledIconContainer = IconContainer,
+  containerProps = {},
+  iconContainerProps = {},
 }: TextProps) => (
-  <StyledContainer data-test-id="hsui-Text" size={size} color={color}>
+  <StyledContainer data-test-id="hsui-Text" size={size} color={color} {...containerProps}>
     {isLoading && <StyledProgress size={size} />}
     {!isLoading &&
       !isProcessing &&
       iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-        <StyledIconContainer side="left">
+        <StyledIconContainer side="left" {...iconContainerProps}>
           <Icon path={iconPrefix} size={size} />
         </StyledIconContainer>
       ) : (
-        <StyledIconContainer side="left" size={size}>
+        <StyledIconContainer side="left" size={size} {...iconContainerProps}>
           {iconPrefix}
         </StyledIconContainer>
       ))}
     {!isLoading && isProcessing && (
-      <StyledIconContainer side="left">
+      <StyledIconContainer side="left" {...iconContainerProps}>
         <Icon path={mdiLoading} size={size} spin={1} />
       </StyledIconContainer>
     )}
@@ -81,11 +88,13 @@ const Text = ({
     {!isLoading &&
       iconSuffix &&
       (typeof iconSuffix === 'string' ? (
-        <StyledIconContainer side="right">
+        <StyledIconContainer side="right" {...iconContainerProps}>
           <Icon path={iconSuffix} size={size} />
         </StyledIconContainer>
       ) : (
-        <StyledIconContainer side="right">{iconSuffix}</StyledIconContainer>
+        <StyledIconContainer side="right" {...iconContainerProps}>
+          {iconSuffix}
+        </StyledIconContainer>
       ))}
   </StyledContainer>
 );

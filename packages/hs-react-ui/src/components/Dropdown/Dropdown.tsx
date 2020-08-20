@@ -1,15 +1,18 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
-import { shade, tint, getLuminance } from 'polished';
+import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
+import { useTheme } from '../../context';
 import Button from '../Button/Button';
-import colors from '../../enums/colors';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
+import { Div, Span } from '../../htmlElements';
+import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
+import { getShadowStyle } from '../../utils/styles';
 
 export type OptionProps = {
   id: number | string;
@@ -21,19 +24,16 @@ type UsefulDropdownState = {
   color: string;
   multi?: boolean;
   selected?: boolean;
-  variant?: variants;
+  variant: variants;
 };
 
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
-
+    const { colors } = useTheme();
     return `
       width: fit-content;
-      transition: filter ${timings.slow};
-      filter: drop-shadow(0rem ${shadowYOffset}rem ${shadowBlur}rem rgba(0,0,0,${shadowOpacity}));
+      transition: filter ${timings.slow}, box-shadow ${timings.slow};
+      ${getShadowStyle(elevation, colors.shadow)}
       position: relative;
       z-index: ${isOpen ? '7' : '1'};
     `;
@@ -81,7 +81,7 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => `
+  ${({ color, variant }: UsefulDropdownState) => `
     background: white;
     position: absolute;
     top: 100%;
@@ -89,7 +89,13 @@ const OptionsContainer = styled(Div)`
     max-height: 10rem;
     overflow-y: scroll;
     width: 15rem;
-    border: 1px solid ${getFontColorFromVariant('outline', color)};
+    ${
+      variant !== variants.text
+        ? `
+            border: 1px solid ${color};
+          `
+        : ''
+    }
     border-top: 0px solid transparent;
     border-radius: 0rem 0rem 0.25rem 0.25rem;
     z-index: 1000;
@@ -97,45 +103,58 @@ const OptionsContainer = styled(Div)`
 `;
 
 const OptionItem = styled(Div)`
-  ${({ selected, color }: UsefulDropdownState) => {
+  ${({ selected, color, variant }: UsefulDropdownState) => {
+    const { colors } = useTheme();
+    const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
-    return `
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : colors.grayDark};
-    background-color: ${
-      selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'transparent'
-    };
+    const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
 
-    &:hover {
-      background-color: ${shade(
-        0.1,
-        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
-      )};
-      cursor: pointer;
-      outline: none;
-    }
-    &:focus {
-      outline: none;
-      background-color: ${shade(
-        0.1,
-        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
-      )};
-    }
-  `;
+    return `
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      color: ${
+        selected
+          ? readableColor(backgroundColor, colors.background, color, true)
+          : getFontColorFromVariant(variant, color)
+      };
+      background-color: ${backgroundColor};
+  
+      &:hover {
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
+        };
+    
+        cursor: pointer;
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
+        };
+      }
+    `;
   }}
 `;
 const CheckContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => `
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  ${({ color, variant }: UsefulDropdownState) => {
+    const { colors } = useTheme();
 
-    color: ${getFontColorFromVariant('fill', tint(0.5, color || colors.grayMedium))};
-    padding-right: 0.2rem;
-    width: 2rem;
-  `}
+    return `
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: ${getFontColorFromVariant(variant, tint(0.5, color || colors.grayMedium))};
+      padding-right: 0.2rem;
+      width: 2rem;
+    `;
+  }}
+`;
+
+const PlaceholderContainer = styled(Text.Container)`
+  opacity: 0.8;
 `;
 
 export interface DropdownProps {
@@ -145,18 +164,21 @@ export interface DropdownProps {
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
+  StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
 
-  containerProps?: Record<string, unknown>;
-  valueContainerProps?: Record<string, unknown>;
-  valueItemProps?: Record<string, unknown>;
-  optionsContainerProps?: Record<string, unknown>;
-  optionItemProps?: Record<string, unknown>;
-  checkContainerProps?: Record<string, unknown>;
+  containerProps?: SubcomponentPropsType;
+  valueContainerProps?: SubcomponentPropsType;
+  valueItemProps?: SubcomponentPropsType;
+  optionsContainerProps?: SubcomponentPropsType;
+  optionItemProps?: SubcomponentPropsType;
+  checkContainerProps?: SubcomponentPropsType;
+  placeholderProps?: SubcomponentPropsType;
 
   color?: string;
   elevation?: number;
   multi?: boolean;
   name: string;
+  placeholder?: string;
 
   onBlur?: () => void;
   onClear?: () => void;
@@ -166,9 +188,9 @@ export interface DropdownProps {
   options?: Array<OptionProps>;
   tabIndex?: number;
   variant?: variants;
+  optionsVariant?: variants;
 }
 
-// TODO Placeholder text -- Wait until input is finalized
 const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
@@ -176,6 +198,7 @@ const Dropdown = ({
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
   StyledCheckContainer = CheckContainer,
+  StyledPlaceholder = Text,
 
   containerProps,
   valueContainerProps,
@@ -183,20 +206,32 @@ const Dropdown = ({
   optionsContainerProps,
   optionItemProps,
   checkContainerProps,
+  placeholderProps,
 
-  color = colors.grayDark,
+  color,
   elevation = 0,
   multi = false,
   name,
+  placeholder,
   onBlur,
   onClear,
   onSelect,
   options = [],
   tabIndex = 0,
   variant = variants.outline,
+  optionsVariant = variant,
   values = [],
 }: DropdownProps): JSX.Element | null => {
+  const { colors } = useTheme();
+  const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Merge the default styled container prop and the placeholderProps object to get user styles
+  const placeholderMergedProps = {
+    StyledContainer: PlaceholderContainer,
+    ...placeholderProps,
+  };
 
   const optionsHash: { [key: string]: OptionProps } = {};
   options.forEach(option => {
@@ -237,13 +272,28 @@ const Dropdown = ({
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
-      e.stopPropagation();
+      e.nativeEvent.stopImmediatePropagation();
       onSelect(multi ? [] : undefined);
       if (onClear) {
         onClear();
       }
     },
     [multi, onClear, onSelect],
+  );
+
+  // clickHandler will be used in onMouseDown to prevent the focus event
+  // opening the dropdown and the click closing it
+  const clickHandler = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+      setIsOpen(!isOpen);
+      if (containerRef && containerRef.current) {
+        // Focus the container even when clicking
+        containerRef.current.focus();
+      }
+    },
+    [containerRef, isOpen, setIsOpen],
   );
 
   const keyDownHandler = useCallback(
@@ -326,6 +376,7 @@ const Dropdown = ({
         e.preventDefault();
         setIsOpen(true);
       }}
+      ref={containerRef}
       tabIndex={tabIndex}
       {...containerProps}
     >
@@ -334,12 +385,19 @@ const Dropdown = ({
         containerProps={{
           modalIsOpen: isOpen,
         }}
-        color={color}
+        id={`${name}-button-value`}
+        color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
+        onMouseDown={clickHandler}
         variant={variant}
         {...valueContainerProps}
       >
-        <StyledValueItem {...valueItemProps}>
+        <StyledValueItem
+          {...valueItemProps}
+          onMouseDown={clickHandler}
+          onBlur={handleBlur}
+          id={`${name}-value-item`}
+        >
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i) =>
@@ -352,11 +410,18 @@ const Dropdown = ({
                 undefined
               ),
             )}
+          {(!values || !values.length) && (
+            <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
+          )}
         </StyledValueItem>
         {closeIcons}
       </Button>
       {isOpen && (
-        <StyledOptionsContainer color={color} variant={variant} {...optionsContainerProps}>
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          {...optionsContainerProps}
+        >
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
@@ -364,24 +429,24 @@ const Dropdown = ({
               onBlur={handleBlur}
               onClick={() => handleSelect(option.id)}
               tabIndex={tabIndex}
-              color={color}
-              variant={variant}
+              color={defaultedColor}
+              variant={optionsVariant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
               {...optionItemProps}
             >
               {multi && (
                 <StyledCheckContainer
-                  color={color}
+                  color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
-                  variant={variant}
+                  variant={optionsVariant}
                   multi={multi}
                   {...checkContainerProps}
                 >
                   {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                 </StyledCheckContainer>
               )}
-              <span>{option.optionValue}</span>
+              <Span>{option.optionValue}</Span>
             </StyledOptionItem>
           ))}
         </StyledOptionsContainer>
@@ -395,5 +460,6 @@ Dropdown.OptionsContainer = OptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
+Dropdown.Placeholder = Text;
 
 export default Dropdown;

@@ -5,9 +5,6 @@
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
 # production
 /build
 
@@ -18,6 +15,8 @@
 .env.test.local
 .env.production.local
 /.idea
+
+coverage
 
 package-lock.json
 npm-debug.log*
