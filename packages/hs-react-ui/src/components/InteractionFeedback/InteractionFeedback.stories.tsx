@@ -57,7 +57,12 @@ storiesOf('InteractionFeedback', module).add(
         opacity: entranceOpacity,
       },
       leave: {
-        r: `${number('Ending circle radius', 0, { range: true, min: 0, max: 100, step: 1}, 'Circle radius')}`,
+        r: `${number(
+          'Ending circle radius',
+          0,
+          { range: true, min: 0, max: 100, step: 1 },
+          'Circle radius',
+        )}`,
         opacity: exitOpacity,
       },
       config: {

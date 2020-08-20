@@ -18,6 +18,7 @@ import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
+import FeedbackTypes from '../../enums/feedbackTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -32,11 +33,6 @@ export enum ButtonTypes {
   button = 'button',
   reset = 'reset',
   submit = 'submit',
-}
-
-export enum FeedbackTypes {
-  simple = 'simple',
-  ripple = 'ripple',
 }
 
 export type ButtonProps = {
@@ -218,5 +214,4 @@ const Button = ({
 Button.Container = ButtonContainer;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
-Button.FeedbackTypes = FeedbackTypes;
 export default Button;
