@@ -26,10 +26,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #707479;
 }
 
-.c0:active {
-  background-color: #63686c;
-}
-
 .c1 {
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
@@ -84,10 +80,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #707479;
 }
 
-.c0:active {
-  background-color: #63686c;
-}
-
 <button
   class="c0"
   color="#7c8186"
@@ -123,10 +115,6 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 
 .c0:hover {
   background-color: #707479;
-}
-
-.c0:active {
-  background-color: #63686c;
 }
 
 <div>
@@ -166,10 +154,6 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c0:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 <div>
   <button
     class="c0"
@@ -205,10 +189,6 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 
 .c0:hover {
   background-color: rgba(0,0,0,0.05);
-}
-
-.c0:active {
-  background-color: rgba(0,0,0,0.1);
 }
 
 <div>
@@ -250,10 +230,6 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   background-color: rgba(0,0,0,0.05);
 }
 
-.c0:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 <div>
   <button
     class="c0"
@@ -289,10 +265,6 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 
 .c0:hover {
   background-color: #707479;
-}
-
-.c0:active {
-  background-color: #63686c;
 }
 
 .c1 {
@@ -361,10 +333,6 @@ exports[`Button shows icons 1`] = `
 
 .c0:hover {
   background-color: #707479;
-}
-
-.c0:active {
-  background-color: #63686c;
 }
 
 .c1 {
@@ -439,10 +407,6 @@ exports[`Button shows icons with type string 1`] = `
   background-color: #707479;
 }
 
-.c0:active {
-  background-color: #63686c;
-}
-
 .c1 {
   height: 1rem;
 }
@@ -515,10 +479,6 @@ exports[`Button shows loading text when provided 1`] = `
 
 .c0:hover {
   background-color: #707479;
-}
-
-.c0:active {
-  background-color: #63686c;
 }
 
 .c1 {

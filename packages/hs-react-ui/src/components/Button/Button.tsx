@@ -16,6 +16,8 @@ import {
 } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
+import InteractionFeedback from '../InteractionFeedback';
+import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -23,12 +25,18 @@ export type ButtonContainerProps = {
   variant: variants;
   type: string;
   disabled: boolean;
+  feedbackType: FeedbackTypes;
 };
 
 export enum ButtonTypes {
   button = 'button',
   reset = 'reset',
   submit = 'submit',
+}
+
+export enum FeedbackTypes {
+  simple = 'simple',
+  ripple = 'ripple',
 }
 
 export type ButtonProps = {
@@ -43,6 +51,8 @@ export type ButtonProps = {
   variant?: variants;
   type?: ButtonTypes;
   color?: string;
+  feedbackType?: FeedbackTypes;
+  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
   disabled?: boolean;
   onClick: (...args: any[]) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
@@ -54,7 +64,7 @@ export type ButtonProps = {
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
   ButtonElement,
 )`
-  ${({ disabled, elevation = 0, color, variant }: ButtonContainerProps) => {
+  ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
@@ -83,10 +93,18 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
       }
-      &:active {
-        background-color: ${
-          backgroundColor !== 'transparent' ? darken(0.1, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
-        };
+      ${
+        feedbackType === FeedbackTypes.simple
+          ? `
+            &:active {
+              background-color: ${
+                backgroundColor !== 'transparent'
+                  ? darken(0.1, backgroundColor)
+                  : 'rgba(0, 0, 0, 0.1)'
+              };
+            }
+          `
+          : ''
       }
     `;
   }}
@@ -124,6 +142,8 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
+  feedbackType = FeedbackTypes.simple,
+  interactionFeedbackProps,
   variant = variants.fill,
   type = ButtonTypes.button,
   color,
@@ -152,12 +172,10 @@ const Button = ({
     ...containerProps,
   };
 
-  return isLoading ? (
-    <StyledContainer {...mergedContainerProps}>
-      <LoadingBar />
-    </StyledContainer>
+  const buttonContent = isLoading ? (
+    <LoadingBar />
   ) : (
-    <StyledContainer {...mergedContainerProps}>
+    <>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
@@ -182,11 +200,23 @@ const Button = ({
         ) : (
           <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
         ))}
-    </StyledContainer>
+    </>
+  );
+
+  return feedbackType === FeedbackTypes.ripple && !disabled ? (
+    <InteractionFeedback
+      color={getFontColorFromVariant(variant, containerColor)}
+      {...(interactionFeedbackProps || {})}
+    >
+      <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
+    </InteractionFeedback>
+  ) : (
+    <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
   );
 };
 
 Button.Container = ButtonContainer;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
+Button.FeedbackTypes = FeedbackTypes;
 export default Button;
