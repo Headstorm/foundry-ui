@@ -4,9 +4,10 @@ import { boolean, color, number, select, text } from '@storybook/addon-knobs';
 import { mdiMessage, mdiSend } from '@mdi/js';
 import { storiesOf } from '@storybook/react';
 
-import Button, { FeedbackTypes } from './Button';
+import Button from './Button';
 import colors from '../../enums/colors';
 import variants from '../../enums/variants';
+import FeedbackTypes from '../../enums/feedbackTypes';
 
 const options = {
   none: '',
