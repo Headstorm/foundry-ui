@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.10](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.9...v1.0.0-v1-release.10) (2020-08-20)
+
+
+### Features
+
+* **card:** add interaction feedback ([946f907](https://github.com/Headstorm/rasa-ui/commit/946f9071f6837cb4b8ae4103a2e814e302b8d490))
+
 # [1.0.0-v1-release.9](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.8...v1.0.0-v1-release.9) (2020-08-20)
 
 
