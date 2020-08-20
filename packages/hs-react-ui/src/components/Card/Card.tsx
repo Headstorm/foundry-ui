@@ -12,7 +12,7 @@ import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback, {
   InteractionFeedbackProps,
 } from '../InteractionFeedback/InteractionFeedback';
-import FeedbackTypes from 'src/enums/feedbackTypes';
+import FeedbackTypes from '../../enums/feedbackTypes';
 
 export type CardContainerProps = {
   elevation: number;
