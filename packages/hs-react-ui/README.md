@@ -264,6 +264,5 @@ build checks on every PR to master and v1-release
 - Commits to be excluded from the change log (eg. "Fix typo that broke my pre commit linting") can continue to use normal git commits
 - Package.json is no longer the source of the version published, semantic-release uses git tags to determine the release version - this is only the case in our workflows. If we do a manual push we must update package.json before publishing
 - Auto versioning - No more package.json version bumps required :tada:
-(edited)
 
 ## [ChangeLog](./CHANGELOG.md)
