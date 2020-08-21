@@ -5,17 +5,28 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import colors from '../../enums/colors';
+import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
-import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import {
+  getFontColorFromVariant,
+  getBackgroundColorFromVariant,
+  disabledStyles,
+} from '../../utils/color';
+import { SubcomponentPropsType } from '../commonTypes';
+import { getShadowStyle } from '../../utils/styles';
+import InteractionFeedback from '../InteractionFeedback';
+import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
+import FeedbackTypes from '../../enums/feedbackTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
   color: string;
   variant: variants;
   type: string;
+  disabled: boolean;
+  feedbackType: FeedbackTypes;
 };
 
 export enum ButtonTypes {
@@ -26,7 +37,7 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  containerProps?: object;
+  containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
   isLoading?: boolean;
@@ -36,19 +47,23 @@ export type ButtonProps = {
   variant?: variants;
   type?: ButtonTypes;
   color?: string;
+  feedbackType?: FeedbackTypes;
+  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
+  disabled?: boolean;
   onClick: (...args: any[]) => void;
+  onMouseDown?: (e: React.MouseEvent) => void;
+  onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
+  id?: string;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
   ButtonElement,
 )`
-  ${({ elevation = 0, color, variant }: ButtonContainerProps) => {
-    const backgroundColor = getBackgroundColorFromVariant(variant, color);
-    const fontColor = getFontColorFromVariant(variant, color);
-    const shadowYOffset = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowBlur = elevation && elevation >= 1 ? (elevation - 1) * 0.5 + 0.1 : 0;
-    const shadowOpacity = elevation > 0 ? 0.5 - elevation * 0.075 : 0;
+  ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
+    const { colors } = useTheme();
+    const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
+    const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
 
     return `
       display: inline-flex;
@@ -59,23 +74,33 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         background-color ${timings.fast},
         color ${timings.slow},
         outline ${timings.slow},
-        filter ${timings.slow};
-      filter: drop-shadow(0em ${shadowYOffset}em ${shadowBlur}em rgba(0,0,0,${shadowOpacity}));
+        filter ${timings.slow},
+        box-shadow ${timings.slow};
+      ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
       border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
       align-items: center;
+      ${disabled ? disabledStyles() : ''}
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
       }
-      &:active {
-        background-color: ${
-          backgroundColor !== 'transparent' ? darken(0.1, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
-        };
+      ${
+        feedbackType === FeedbackTypes.simple
+          ? `
+            &:active {
+              background-color: ${
+                backgroundColor !== 'transparent'
+                  ? darken(0.1, backgroundColor)
+                  : 'rgba(0, 0, 0, 0.1)'
+              };
+            }
+          `
+          : ''
       }
     `;
   }}
@@ -113,36 +138,40 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
+  feedbackType = FeedbackTypes.simple,
+  interactionFeedbackProps,
   variant = variants.fill,
   type = ButtonTypes.button,
-  color = colors.grayDark,
+  color,
+  disabled = false,
   onClick,
+  onMouseDown = () => {},
+  onMouseUp = () => {},
   LoadingBar = StyledProgress,
+  id,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
+  const { colors } = useTheme();
+  const containerColor = color || colors.grayLight;
+  // get everything we expose + anything consumer wants to send to container
+  const mergedContainerProps = {
+    'data-test-id': 'hsui-button',
+    id,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    elevation,
+    color: containerColor,
+    variant,
+    type,
+    disabled,
+    ...containerProps,
+  };
 
-  return isLoading ? (
-    <StyledContainer
-      data-test-id="hsui-button"
-      onClick={onClick}
-      elevation={elevation}
-      color={color}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    >
-      <LoadingBar />
-    </StyledContainer>
+  const buttonContent = isLoading ? (
+    <LoadingBar />
   ) : (
-    <StyledContainer
-      data-test-id="hsui-button"
-      onClick={onClick}
-      elevation={elevation}
-      color={color}
-      variant={variant}
-      type={type}
-      {...containerProps}
-    >
+    <>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
@@ -167,7 +196,18 @@ const Button = ({
         ) : (
           <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
         ))}
-    </StyledContainer>
+    </>
+  );
+
+  return feedbackType === FeedbackTypes.ripple && !disabled ? (
+    <InteractionFeedback
+      color={getFontColorFromVariant(variant, containerColor)}
+      {...(interactionFeedbackProps || {})}
+    >
+      <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
+    </InteractionFeedback>
+  ) : (
+    <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
   );
 };
 
