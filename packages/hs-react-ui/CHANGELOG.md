@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.11](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.10...v1.0.0-v1-release.11) (2020-08-21)
+
+
+### Bug Fixes
+
+* **textinput:** spread the rest of the props onto the Input element ([856f6cb](https://github.com/Headstorm/rasa-ui/commit/856f6cb5804b1c265c790b8649a94ee1e2550fae))
+
 # [1.0.0-v1-release.10](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.9...v1.0.0-v1-release.10) (2020-08-20)
 
 
