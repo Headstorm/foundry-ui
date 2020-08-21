@@ -1,4 +1,12 @@
-import React, { ChangeEvent, EventHandler, ReactNode, SyntheticEvent, useCallback } from 'react';
+import React, {
+  ChangeEvent,
+  EventHandler,
+  ReactNode,
+  SyntheticEvent,
+  useCallback,
+  TextareaHTMLAttributes,
+  InputHTMLAttributes,
+} from 'react';
 import styled, { css, StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
@@ -96,41 +104,31 @@ const ErrorContainer = styled(Div)`
   }}
 `;
 
-export type TextInputProps = InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  iconPrefix?: string | ReactNode;
-  onClear?: (event: SyntheticEvent) => void;
-  onChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
-  debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
-  onKeyPress?: (event: SyntheticEvent) => void;
-  onKeyDown?: (event: SyntheticEvent) => void;
-  onKeyUp?: (event: SyntheticEvent) => void;
-  onBlur?: (event: SyntheticEvent) => void;
-  onInput?: (event: SyntheticEvent) => void;
-  onFocus?: (event: SyntheticEvent) => void;
-  onReset?: (event: SyntheticEvent) => void;
-  cols?: number;
-  rows?: number;
-  value?: string;
-  disabled?: boolean;
-  defaultValue?: string;
-  isValid?: boolean;
-  isMultiline?: boolean;
-  errorMessage?: string;
-  debounceInterval?: number;
-  multiLineIsResizable?: boolean;
-  maxLength?: number;
-  allowTextBeyondMaxLength?: boolean;
-  showCharacterCount?: boolean;
+export type TextInputProps =
+  InputHTMLAttributes<HTMLInputElement> &
+  TextareaHTMLAttributes<HTMLTextAreaElement> &
+{
+    iconPrefix?: string | ReactNode;
+    onClear?: (event: SyntheticEvent) => void;
+    debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
+    isValid?: boolean;
+    isMultiline?: boolean;
+    errorMessage?: string;
+    debounceInterval?: number;
+    multiLineIsResizable?: boolean;
+    maxLength?: number;
+    allowTextBeyondMaxLength?: boolean;
+    showCharacterCount?: boolean;
 
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledInput?: string & StyledComponentBase<any, {}>;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
-  StyledErrorContainer?: string & StyledComponentBase<any, {}>;
-  containerProps?: SubcomponentPropsType;
-  inputProps?: SubcomponentPropsType;
-  iconContainerProps?: SubcomponentPropsType;
-  errorContainerProps?: SubcomponentPropsType;
-};
+    StyledContainer?: string & StyledComponentBase<any, {}>;
+    StyledInput?: string & StyledComponentBase<any, {}>;
+    StyledIconContainer?: string & StyledComponentBase<any, {}>;
+    StyledErrorContainer?: string & StyledComponentBase<any, {}>;
+    containerProps?: SubcomponentPropsType;
+    inputProps?: SubcomponentPropsType;
+    iconContainerProps?: SubcomponentPropsType;
+    errorContainerProps?: SubcomponentPropsType;
+  };
 
 const createIcon = (
   StyledIconContainer: string & StyledComponentBase<any, {}>,
@@ -150,24 +148,19 @@ const createIcon = (
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
-  debouncedOnChange = defaultCallback,
-  onKeyPress,
-  onKeyDown,
-  onKeyUp,
-  onBlur,
-  onInput,
-  onFocus,
-  onReset,
+  // Destructure native HTML attributes to provide default values
+  defaultValue = '',
+  type = 'text',
+  disabled = false,
   cols = 10,
   rows = 10,
-  value,
-  defaultValue = '',
+
+  debouncedOnChange = defaultCallback,
+  onClear,
+  iconPrefix,
   isValid = true,
   isMultiline,
   errorMessage,
-  ariaLabel,
-  type = 'text',
-  disabled = false,
   debounceInterval = 8,
   multiLineIsResizable,
   maxLength,
@@ -175,13 +168,15 @@ const TextInput = ({
   showCharacterCount = false,
 
   StyledContainer = Container,
+  StyledInput,
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
   containerProps = {},
   inputProps = {},
   iconContainerProps = {},
   errorContainerProps = {},
-}: TextInputProps) => {
+  ...nativeHTMLAttributes
+}: TextInputProps): JSX.Element => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
   const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), [
     debouncedOnChange,
@@ -196,40 +191,30 @@ const TextInput = ({
   } else if (isMultiline) {
     InputComponent = TextAreaInputContainer;
   }
-  const displayValue = value || defaultValue;
+  const displayValue = nativeHTMLAttributes.value || defaultValue;
 
   return (
     <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
-      {/*
-        // @ts-ignore */}
       <InputComponent
+        value={displayValue}
+        type={type}
+        disabled={disabled}
         cols={cols}
         rows={rows}
-        aria-label={ariaLabel}
-        placeholder={placeholder}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
           e.persist();
           if (maxLength && maxLength >= 0) {
             e.target.value = allowTextBeyondMaxLength
               ? e.target.value
               : e.target.value.slice(0, maxLength);
           }
-          onChange(e);
+          if (nativeHTMLAttributes.onChange) { nativeHTMLAttributes.onChange(e); }
           debouncedChange(e);
         }}
-        onKeyPress={onKeyPress}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onReset={onReset}
-        onInput={onInput}
-        value={displayValue}
-        id={id}
-        type={type}
         multiLineIsResizable={multiLineIsResizable}
         {...inputProps}
+        {...nativeHTMLAttributes}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear} {...iconContainerProps}>
@@ -240,9 +225,9 @@ const TextInput = ({
         <CharacterCounter
           errorMessage={errorMessage}
           isValid={isValid}
-          textIsTooLong={displayValue.length > maxLength}
+          textIsTooLong={(displayValue as string).length > maxLength}
         >
-          {displayValue.length} / {maxLength}
+          {(displayValue as string).length} / {maxLength}
         </CharacterCounter>
       )}
       {isValid === false && errorMessage && (
