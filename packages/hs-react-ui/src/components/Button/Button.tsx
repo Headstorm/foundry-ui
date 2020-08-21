@@ -115,6 +115,7 @@ const StyledProgress = styled(Progress)`
 
 const IconContainer = styled(Div)`
   height: 1rem;
+  vertical-align: middle;
 `;
 
 const LeftIconContainer = styled(IconContainer)`
