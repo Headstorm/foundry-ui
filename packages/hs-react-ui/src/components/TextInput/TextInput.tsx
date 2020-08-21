@@ -104,10 +104,8 @@ const ErrorContainer = styled(Div)`
   }}
 `;
 
-export type TextInputProps =
-  InputHTMLAttributes<HTMLInputElement> &
-  TextareaHTMLAttributes<HTMLTextAreaElement> &
-{
+export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
+  TextareaHTMLAttributes<HTMLTextAreaElement> & {
     iconPrefix?: string | ReactNode;
     onClear?: (event: SyntheticEvent) => void;
     debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
@@ -209,7 +207,9 @@ const TextInput = ({
               ? e.target.value
               : e.target.value.slice(0, maxLength);
           }
-          if (nativeHTMLAttributes.onChange) { nativeHTMLAttributes.onChange(e); }
+          if (nativeHTMLAttributes.onChange) {
+            nativeHTMLAttributes.onChange(e);
+          }
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
