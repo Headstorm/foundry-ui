@@ -10,7 +10,9 @@ const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A29',
 };
-storiesOf('TextInput', module).add(
+storiesOf('TextInput', module)
+  .addParameters({ component: TextInput })
+  .add(
   'Basic Text Input',
   () => {
     const [inputValue, setInputValue] = useState('');

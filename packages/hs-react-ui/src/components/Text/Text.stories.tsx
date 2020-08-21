@@ -18,7 +18,9 @@ const options = {
   ...Icons,
 };
 
-storiesOf('Text', module).add(
+storiesOf('Text', module)
+  .addParameters({ component: Text })
+  .add(
   'Default',
   () => {
     const getIconPath = (path: string) =>

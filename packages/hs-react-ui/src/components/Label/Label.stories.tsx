@@ -11,7 +11,9 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A88',
 };
 
-storiesOf('Label', module).add(
+storiesOf('Label', module)
+  .addParameters({ component: Label })
+  .add(
   'Basic Label',
   () => (
     <>

@@ -14,7 +14,9 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14',
 };
 
-storiesOf('Modal', module).add(
+storiesOf('Modal', module)
+  .addParameters({ component: Modal })
+  .add(
   'Default',
   () => {
     const Background = styled.div`

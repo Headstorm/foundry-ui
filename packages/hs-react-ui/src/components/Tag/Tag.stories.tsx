@@ -21,7 +21,9 @@ const design = {
 const testId = `tag-${Math.floor(Math.random() * 100000)}`;
 const containerProps = { 'data-test-id': testId };
 
-storiesOf('Tag', module).add(
+storiesOf('Tag', module)
+  .addParameters({ component: Tag })
+  .add(
   'Basic Tag',
   () => {
     return (
