@@ -4,7 +4,7 @@
 
 ## Intro
 
-Foundry-UI (or Foundry for short) is a great choice for your next software project's __user interface (UI)__, because Foundry was created to:
+Foundry-UI (or Foundry for short) is a great choice for your next software project's user interface (UI), because Foundry was created to:
 
 * Support enterprise applications at any stage, from proof-of-concept to launch to enhancements
 * Allow custom styling and behavior of indvidual components with Foundry’s unique architecture
@@ -25,7 +25,7 @@ At of the time this writing, Foundry is new and launching with a fully supported
 
 ### 🔥 [Live Demo](https://headstorm.github.io/rasa-ui/)
 
-Rasa UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
+Foundry UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
 
 <img src="./public/Images/nodejs.svg" height="50"><img src="./public/Images/react.svg" height="50"><img src="./public/Images/typescript.svg" height="50"><img src="./public/Images/storybook.png" height="50">
 
@@ -46,9 +46,9 @@ Peer dependencies:
 
 If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). 
 
-### Install Rasa-UI into a React app
+### Install Foundry-UI into a React app
 
-Rasa for React is available as a scoped public Node package. You can use [npm](https://docs.npmjs.com/) or [yarn](https://classic.yarnpkg.com/en/docs) to add the Foundry package to your project. From you project's root directory, where the `package.json` file is located, run the command:
+Foundry for React is available as a scoped public Node package. You can use [npm](https://docs.npmjs.com/) or [yarn](https://classic.yarnpkg.com/en/docs) to add the Foundry package to your project. From you project's root directory, where the `package.json` file is located, run the command:
 
 ```
 npm install @headstorm/hs-react-ui
@@ -81,7 +81,7 @@ Output:
 
 ![hello world car](./public/Images/hello-world.png)
 
-In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Rasa components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommended that you check out the component's source code to see what styles are included.
+In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Foundry components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommended that you check out the component's source code to see what styles are included.
 
 ```
 // /hs-react-ui/src/components/Card/Card.tsx
