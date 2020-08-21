@@ -26,7 +26,7 @@ exports[`Text matches snapshot with icon strings 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 .c2 {
@@ -35,7 +35,7 @@ exports[`Text matches snapshot with icon strings 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 <div>
@@ -87,7 +87,7 @@ exports[`Text matches snapshot with icons 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 .c2 {
@@ -96,7 +96,7 @@ exports[`Text matches snapshot with icons 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 <div>
@@ -177,7 +177,7 @@ exports[`Text matches snapshot with isProcessing 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 <div>

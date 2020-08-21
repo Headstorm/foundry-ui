@@ -269,6 +269,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 
 .c1 {
   height: 1rem;
+  vertical-align: middle;
 }
 
 <div>
@@ -337,10 +338,12 @@ exports[`Button shows icons 1`] = `
 
 .c1 {
   height: 1rem;
+  vertical-align: middle;
 }
 
 .c2 {
   height: 1rem;
+  vertical-align: middle;
 }
 
 <div>
@@ -409,10 +412,12 @@ exports[`Button shows icons with type string 1`] = `
 
 .c1 {
   height: 1rem;
+  vertical-align: middle;
 }
 
 .c2 {
   height: 1rem;
+  vertical-align: middle;
 }
 
 <div>
