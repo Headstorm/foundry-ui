@@ -14,25 +14,25 @@ const design = {
 storiesOf('Label', module)
   .addParameters({ component: Label })
   .add(
-  'Basic Label',
-  () => (
-    <>
-      {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    'Basic Label',
+    () => (
+      <>
+        {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore */}
-      <Label
-        labelText={text('labelText', 'This is the label text')}
-        color={select('Color', colors, colors.grayDark)}
-        colorValid={select('colorValid', colors, colors.success)}
-        colorInvalid={select('colorInvalid', colors, colors.destructive)}
-        isRequired={boolean('isRequired', false)}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        isValid={select('isValid', { true: true, false: false, undefined }, undefined)}
-        htmlFor={text('htmlFor', 'default')}
-      >
-        <TextInput id={text('htmlFor', 'default')} placeholder="placeholder" />
-      </Label>
-    </>
-  ),
-  { design, centered: true },
-);
+        <Label
+          labelText={text('labelText', 'This is the label text')}
+          color={select('Color', colors, colors.grayDark)}
+          colorValid={select('colorValid', colors, colors.success)}
+          colorInvalid={select('colorInvalid', colors, colors.destructive)}
+          isRequired={boolean('isRequired', false)}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          isValid={select('isValid', { true: true, false: false, undefined }, undefined)}
+          htmlFor={text('htmlFor', 'default')}
+        >
+          <TextInput id={text('htmlFor', 'default')} placeholder="placeholder" />
+        </Label>
+      </>
+    ),
+    { design, centered: true },
+  );

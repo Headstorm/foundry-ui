@@ -17,77 +17,77 @@ const design = {
 storiesOf('Modal', module)
   .addParameters({ component: Modal })
   .add(
-  'Default',
-  () => {
-    const Background = styled.div`
-      background-image: url(https://source.unsplash.com/weekly?landscape);
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    'Default',
+    () => {
+      const Background = styled.div`
+        background-image: url(https://source.unsplash.com/weekly?landscape);
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-      height: 100vh;
-      width: 100vw;
-    `;
-    const [isOpen, setIsOpen] = useState(true);
+        height: 100vh;
+        width: 100vw;
+      `;
+      const [isOpen, setIsOpen] = useState(true);
 
-    const handleClose = () => {
-      setIsOpen(false);
-      action('close')();
-    };
+      const handleClose = () => {
+        setIsOpen(false);
+        action('close')();
+      };
 
-    const buttonAttachment = select(
-      'closeButtonAttachment',
-      ['inside', 'outside', 'corner'],
-      'inside',
-    );
+      const buttonAttachment = select(
+        'closeButtonAttachment',
+        ['inside', 'outside', 'corner'],
+        'inside',
+      );
 
-    return (
-      <Background>
-        {!isOpen && (
-          <Button
-            color={colors.primaryDark}
-            elevation={1}
-            StyledContainer={Button.Container}
-            onClick={() => setIsOpen(true)}
-          >
-            Toggle modal
-          </Button>
-        )}
-        {isOpen && (
-          <Modal
-            closeButtonAttachment={buttonAttachment}
-            backgroundDarkness={number('backgroundDarkness', 0.5, {
-              range: true,
-              min: 0,
-              max: 1,
-              step: 0.05,
-            })}
-            backgroundBlur={`${number('backgroundBlur', 0.5, {
-              range: true,
-              min: 0,
-              max: 5,
-              step: 0.1,
-            })}rem`}
-            onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
-            onClose={handleClose}
-          >
-            <Card
-              header="Hello world!"
-              footer={
-                <Button color={colors.primaryDark} onClick={handleClose}>
-                  Okay...
-                </Button>
-              }
+      return (
+        <Background>
+          {!isOpen && (
+            <Button
+              color={colors.primaryDark}
               elevation={1}
+              StyledContainer={Button.Container}
+              onClick={() => setIsOpen(true)}
             >
-              Welcome to the wonderful world of modals. Hope you have a great time, and please pick
-              up a t-shirt or mug from the giftshop on your way out!
-            </Card>
-          </Modal>
-        )}
-      </Background>
-    );
-  },
-  { design },
-);
+              Toggle modal
+            </Button>
+          )}
+          {isOpen && (
+            <Modal
+              closeButtonAttachment={buttonAttachment}
+              backgroundDarkness={number('backgroundDarkness', 0.5, {
+                range: true,
+                min: 0,
+                max: 1,
+                step: 0.05,
+              })}
+              backgroundBlur={`${number('backgroundBlur', 0.5, {
+                range: true,
+                min: 0,
+                max: 5,
+                step: 0.1,
+              })}rem`}
+              onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
+              onClose={handleClose}
+            >
+              <Card
+                header="Hello world!"
+                footer={
+                  <Button color={colors.primaryDark} onClick={handleClose}>
+                    Okay...
+                  </Button>
+                }
+                elevation={1}
+              >
+                Welcome to the wonderful world of modals. Hope you have a great time, and please
+                pick up a t-shirt or mug from the giftshop on your way out!
+              </Card>
+            </Modal>
+          )}
+        </Background>
+      );
+    },
+    { design },
+  );

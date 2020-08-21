@@ -12,7 +12,7 @@ import Progress from './Progress';
 storiesOf('Progress', module)
   .addParameters({ component: Progress })
   .add(
-  'Basic Progress',
-  () => <Progress />,
-  // { design }, Once we have a design for Progress we can link it here
-);
+    'Basic Progress',
+    () => <Progress />,
+    // { design }, Once we have a design for Progress we can link it here
+  );
