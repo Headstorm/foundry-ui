@@ -7,8 +7,8 @@
 Foundry-UI (or Foundry for short) is a great choice for your next software project's user interface (UI), because Foundry was created to:
 
 * Support enterprise applications at any stage, from proof-of-concept to launch to enhancements
-* Allow custom styling and behavior of indvidual components with Foundry’s unique architecture
-* Reach users on any device for any use case while maintaining full functionality and accessibilty
+* Allow custom styling and behavior of individual components with Foundry’s unique architecture
+* Reach users on any device for any use case while maintaining full functionality and accessibility
 
 At of the time this writing, Foundry is new and launching with a fully supported React version. The Angular version is a work in progress, but don't let that stop you from reaching out about contributing on the Angular version.
 
