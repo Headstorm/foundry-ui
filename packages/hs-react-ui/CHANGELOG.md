@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.12](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.11...v1.0.0-v1-release.12) (2020-08-24)
+
+
+### Features
+
+* **docspage props table:** add props table to docspage ([09b124f](https://github.com/Headstorm/rasa-ui/commit/09b124f428fe0971dd7a6dc999c494102f06d112))
+
 # [1.0.0-v1-release.11](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.10...v1.0.0-v1-release.11) (2020-08-21)
 
 
