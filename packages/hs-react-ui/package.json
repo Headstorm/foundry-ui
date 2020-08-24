@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/Headstorm/rasa-ui/issues"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "main": "dist/main.js",
   "module": "dist/main.js",
   "typings": "dist/types/index.d.ts",
