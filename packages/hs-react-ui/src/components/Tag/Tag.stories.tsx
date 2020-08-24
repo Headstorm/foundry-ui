@@ -21,23 +21,25 @@ const design = {
 const testId = `tag-${Math.floor(Math.random() * 100000)}`;
 const containerProps = { 'data-test-id': testId };
 
-storiesOf('Tag', module).add(
-  'Basic Tag',
-  () => {
-    return (
-      <Tag
-        variant={select('variant', variants, variants.fill)}
-        color={color('color', colors.primaryDark)}
-        isLoading={boolean('isLoading', false)}
-        elevation={number('elevation', 1)}
-        isProcessing={boolean('isProcessing', false)}
-        iconPrefix={select('iconPrefix', options, options.none)}
-        iconSuffix={select('iconSuffix', options, options.none)}
-        containerProps={containerProps}
-      >
-        {text('children', 'Default text')}
-      </Tag>
-    );
-  },
-  { design },
-);
+storiesOf('Tag', module)
+  .addParameters({ component: Tag })
+  .add(
+    'Basic Tag',
+    () => {
+      return (
+        <Tag
+          variant={select('variant', variants, variants.fill)}
+          color={color('color', colors.primaryDark)}
+          isLoading={boolean('isLoading', false)}
+          elevation={number('elevation', 1)}
+          isProcessing={boolean('isProcessing', false)}
+          iconPrefix={select('iconPrefix', options, options.none)}
+          iconSuffix={select('iconSuffix', options, options.none)}
+          containerProps={containerProps}
+        >
+          {text('children', 'Default text')}
+        </Tag>
+      );
+    },
+    { design },
+  );

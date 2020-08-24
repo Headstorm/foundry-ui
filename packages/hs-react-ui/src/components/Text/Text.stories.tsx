@@ -18,24 +18,26 @@ const options = {
   ...Icons,
 };
 
-storiesOf('Text', module).add(
-  'Default',
-  () => {
-    const getIconPath = (path: string) =>
-      path ? <Icon size={text('size', '1rem')} path={path} /> : undefined;
+storiesOf('Text', module)
+  .addParameters({ component: Text })
+  .add(
+    'Default',
+    () => {
+      const getIconPath = (path: string) =>
+        path ? <Icon size={text('size', '1rem')} path={path} /> : undefined;
 
-    return (
-      <Text
-        size={text('size', '1rem')}
-        color={color2('color', colors.grayDark)}
-        iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
-        iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
-        isProcessing={boolean('isProcessing', false)}
-        isLoading={boolean('isLoading', false)}
-      >
-        {text('children', 'Lorem ipsum dolor sit amet.')}
-      </Text>
-    );
-  },
-  { design },
-);
+      return (
+        <Text
+          size={text('size', '1rem')}
+          color={color2('color', colors.grayDark)}
+          iconPrefix={getIconPath(select('iconPrefix', options, options.mdiComment))}
+          iconSuffix={getIconPath(select('iconSuffix', options, options.mdiComment))}
+          isProcessing={boolean('isProcessing', false)}
+          isLoading={boolean('isLoading', false)}
+        >
+          {text('children', 'Lorem ipsum dolor sit amet.')}
+        </Text>
+      );
+    },
+    { design },
+  );
