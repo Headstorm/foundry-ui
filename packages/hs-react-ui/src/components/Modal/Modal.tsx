@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 import { useSpring } from 'react-spring';

@@ -96,11 +96,11 @@ storiesOf('RangeSlider', module)
       const markersArray: any[] = [];
       if (markersSelection === 'all values') {
         for (let i = min; i <= max; i++) {
-          markersArray.push(markerLabels ? { value: i, label: '' + i } : i);
+          markersArray.push(markerLabels ? { value: i, label: `${i}` } : i);
         }
       } else if (markersSelection === 'middle value') {
         const midpoint = (min + max) / 2;
-        markersArray.push(markerLabels ? { value: midpoint, label: '' + midpoint } : midpoint);
+        markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
       }
 
       return (

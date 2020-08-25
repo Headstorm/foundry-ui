@@ -288,7 +288,7 @@ export const RangeSlider = ({
       const clickedValue = railPositionRatio * domain;
 
       // variables to find the closest handle
-      let closestVal: ValueProp | undefined = undefined;
+      let closestVal: ValueProp | undefined;
       let smallestDifference: number;
 
       // Find the closest handle

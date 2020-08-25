@@ -8,7 +8,7 @@ exports[`Text matches snapshot 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     data-test-id="hsui-Text"
   />
 </div>
@@ -40,11 +40,11 @@ exports[`Text matches snapshot with icon strings 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     data-test-id="hsui-Text"
   >
     <span
-      class="sc-AxiKw c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -58,7 +58,7 @@ exports[`Text matches snapshot with icon strings 1`] = `
       </svg>
     </span>
     <span
-      class="sc-AxiKw c2"
+      class="c2"
     >
       <svg
         role="presentation"
@@ -101,11 +101,11 @@ exports[`Text matches snapshot with icons 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     data-test-id="hsui-Text"
   >
     <span
-      class="sc-AxiKw c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -118,7 +118,7 @@ exports[`Text matches snapshot with icons 1`] = `
       </svg>
     </span>
     <span
-      class="sc-AxiKw c2"
+      class="c2"
     >
       <svg
         role="presentation"
@@ -155,11 +155,11 @@ exports[`Text matches snapshot with isLoading 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     data-test-id="hsui-Text"
   >
     <div
-      class="sc-AxjAm sc-fzoiQi c1"
+      class="c1"
     />
   </span>
 </div>
@@ -182,11 +182,11 @@ exports[`Text matches snapshot with isProcessing 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     data-test-id="hsui-Text"
   >
     <span
-      class="sc-AxiKw c1"
+      class="c1"
     >
       <svg
         role="presentation"

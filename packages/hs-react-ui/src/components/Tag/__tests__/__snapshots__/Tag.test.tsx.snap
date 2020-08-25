@@ -37,13 +37,13 @@ exports[`Tag keeps the container the same when switching between isLoading and n
 }
 
 <span
-  class="sc-AxiKw c0"
+  class="c0"
   color="#7c8186"
   data-test-id="tag-9"
   elevation="0"
 >
   <div
-    class="sc-AxjAm sc-fzoiQi c1"
+    class="c1"
   />
 </span>
 `;
@@ -70,7 +70,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
 }
 
 <span
-  class="sc-AxiKw c0"
+  class="c0"
   color="#7c8186"
   data-test-id="tag-9"
   elevation="0"
@@ -107,13 +107,13 @@ exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-6"
     elevation="0"
   >
     <div
-      class="sc-AxjAm c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -166,7 +166,7 @@ exports[`Tag shows Tag with fill variant 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-4"
     elevation="0"
@@ -201,7 +201,7 @@ exports[`Tag shows Tag with non-default props variant and color 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#000"
     data-test-id="tag-2"
     elevation="2"
@@ -234,7 +234,7 @@ exports[`Tag shows Tag with outline variant 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-5"
     elevation="0"
@@ -267,7 +267,7 @@ exports[`Tag shows Tag with text variant 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-3"
     elevation="0"
@@ -309,13 +309,13 @@ exports[`Tag shows icons 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-8"
     elevation="0"
   >
     <div
-      class="sc-AxjAm c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -329,7 +329,7 @@ exports[`Tag shows icons 1`] = `
     </div>
     shows icons
     <div
-      class="sc-AxjAm c2"
+      class="c2"
     >
       <svg
         role="presentation"
@@ -378,13 +378,13 @@ exports[`Tag shows icons with type string 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-7"
     elevation="0"
   >
     <div
-      class="sc-AxjAm c1"
+      class="c1"
     >
       <svg
         role="presentation"
@@ -399,7 +399,7 @@ exports[`Tag shows icons with type string 1`] = `
     </div>
     string icon props
     <div
-      class="sc-AxjAm c2"
+      class="c2"
     >
       <svg
         role="presentation"
@@ -454,13 +454,13 @@ exports[`Tag shows loading text when provided 1`] = `
 
 <div>
   <span
-    class="sc-AxiKw c0"
+    class="c0"
     color="#7c8186"
     data-test-id="tag-1"
     elevation="0"
   >
     <div
-      class="sc-AxjAm sc-fzoiQi c1"
+      class="c1"
     />
   </span>
 </div>
