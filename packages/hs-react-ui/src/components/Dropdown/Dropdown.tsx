@@ -170,6 +170,7 @@ const StyledTagContainer = styled(Tag.Container)`
     dropdownColor: string;
     transparentColor: string;
   }) => `
+    ${tagVariant === variants.text ? 'padding: 0px;' : ''}
     ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
   `}
 `;
@@ -240,7 +241,7 @@ const Dropdown = ({
   tabIndex = 0,
   variant = variants.outline,
   optionsVariant = variants.outline,
-  valueVariant,
+  valueVariant = variants.text,
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
@@ -425,29 +426,22 @@ const Dropdown = ({
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i, arr) =>
               optionsHash[val] !== undefined ? (
-                valueVariant ? (
-                  <Tag
-                    StyledContainer={StyledTagContainer}
-                    variant={valueVariant}
-                    {...valueItemTagProps}
-                    containerProps={{
-                      ...tagContainerItemProps,
-                      dropdownVariant: variant,
-                      tagVariant: valueVariant,
-                      dropdownColor: defaultedColor,
-                      transparentColor: colors.transparent,
-                    }}
-                    key={val}
-                  >
-                    {optionsHash[val].optionValue}
-                    {valueVariant === variants.text && i !== arr.length - 1 && ','}
-                  </Tag>
-                ) : (
-                  <span key={val}>
-                    {optionsHash[val].optionValue}
-                    {i !== arr.length - 1 && ', '}
-                  </span>
-                )
+                <Tag
+                  StyledContainer={StyledTagContainer}
+                  variant={valueVariant}
+                  {...valueItemTagProps}
+                  containerProps={{
+                    ...tagContainerItemProps,
+                    dropdownVariant: variant,
+                    tagVariant: valueVariant,
+                    dropdownColor: defaultedColor,
+                    transparentColor: colors.transparent,
+                  }}
+                  key={val}
+                >
+                  {optionsHash[val].optionValue}
+                  {valueVariant === variants.text && i !== arr.length - 1 && ','}
+                </Tag>
               ) : (
                 undefined
               ),

@@ -72,11 +72,6 @@ const teaOptions = [
   },
 ];
 
-const valueVariants = {
-  none: undefined,
-  ...variants,
-};
-
 storiesOf('Dropdown', module)
   .addParameters({ component: Dropdown })
   .add(
@@ -101,7 +96,7 @@ storiesOf('Dropdown', module)
               options={cities}
               variant={select('variant', variants, variants.outline)}
               optionsVariant={select('optionsVariant', variants, variants.outline)}
-              valueVariant={select('valueVariant', valueVariants, valueVariants.none)}
+              valueVariant={select('valueVariant', variants, variants.text)}
               values={values}
             />
           </Label>
