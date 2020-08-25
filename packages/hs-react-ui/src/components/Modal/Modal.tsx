@@ -84,8 +84,6 @@ export interface ModalProps {
   onClickOutside?: () => void;
   onClose?: () => void;
 
-  isOpen: boolean;
-
   closeButtonAttachment?: string;
   backgroundBlur?: string;
   backgroundDarkness?: number;
@@ -108,8 +106,6 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 
-  isOpen = false,
-
   closeButtonAttachment = 'inside',
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
@@ -117,28 +113,22 @@ const Modal = ({
   const { colors } = useTheme();
   const { containerTransform, containerOpacity, underlayBackdropFilter } = useSpring({
     from: {
-      containerTransform: 'translate(-50%, 0%)',
+      containerTransform: 'translate(-50%, -25%)',
       containerOpacity: 0,
       underlayBackdropFilter: 'blur(0rem) brightness(1)',
     },
     to: {
-      containerTransform: isOpen ? 'translate(-50%, -50%)' : 'translate(-50%, 0%)',
-      containerOpacity: isOpen ? 1 : 0,
-      underlayBackdropFilter: isOpen
-        ? `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`
-        : 'blur(0rem) brightness(1)',
+      containerTransform: 'translate(-50%, -50%)',
+      containerOpacity: 1,
+      underlayBackdropFilter: `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`,
     },
     config: {
       friction: 75,
-      tension: 500,
+      tension: 550,
       mass: 5,
     },
     ...animationSpringConfig,
   });
-
-  if (!isOpen) {
-    return null;
-  }
 
   return (
     <>
