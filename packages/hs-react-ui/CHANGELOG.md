@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.14](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.13...v1.0.0-v1-release.14) (2020-08-25)
+
+
+### Features
+
+* 🎸 Added slick animation on modal mount ([54fd551](https://github.com/Headstorm/rasa-ui/commit/54fd5519703e49fb42a6b23ce1d1588f040fa894))
+
 # [1.0.0-v1-release.13](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.12...v1.0.0-v1-release.13) (2020-08-25)
 
 
