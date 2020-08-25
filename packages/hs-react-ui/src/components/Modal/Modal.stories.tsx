@@ -14,21 +14,22 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14',
 };
 
+const Background = styled.div`
+  background-image: url(https://source.unsplash.com/weekly?landscape);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+`;
+
 storiesOf('Modal', module)
   .addParameters({ component: Modal })
   .add(
     'Default',
     () => {
-      const Background = styled.div`
-        background-image: url(https://source.unsplash.com/weekly?landscape);
-        background-size: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        height: 100vh;
-        width: 100vw;
-      `;
       const [isOpen, setIsOpen] = useState(true);
 
       const handleClose = () => {
@@ -44,16 +45,15 @@ storiesOf('Modal', module)
 
       return (
         <Background>
-          {!isOpen && (
+          <Card elevation={1} header="Use this button to open the modal again">
             <Button
               color={colors.primaryDark}
-              elevation={1}
               StyledContainer={Button.Container}
               onClick={() => setIsOpen(true)}
             >
-              Toggle modal
+              Open modal
             </Button>
-          )}
+          </Card>
           {isOpen && (
             <Modal
               closeButtonAttachment={buttonAttachment}
@@ -81,8 +81,9 @@ storiesOf('Modal', module)
                 }
                 elevation={1}
               >
-                Welcome to the wonderful world of modals. Hope you have a great time, and please
-                pick up a t-shirt or mug from the giftshop on your way out!
+                The content of the modal (the card and everything inside it) is customizable. The
+                close &times; is built-in but can be easily overwritten. It is the very model of a
+                modern major React modal.
               </Card>
             </Modal>
           )}

@@ -2,8 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled, { StyledComponentBase } from 'styled-components';
 import shortid from 'shortid';
-import colors from '../../enums/colors';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import colors from '../../enums/colors';
 import { SubcomponentPropsType } from '../commonTypes';
 
 const Circle = styled.svg`

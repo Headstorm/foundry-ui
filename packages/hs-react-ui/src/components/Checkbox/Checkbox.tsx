@@ -3,11 +3,11 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
+import { darken } from 'polished';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
-import { darken } from 'polished';
 import { disabledStyles } from '../../utils/color';
 
 export enum CheckboxTypes {
