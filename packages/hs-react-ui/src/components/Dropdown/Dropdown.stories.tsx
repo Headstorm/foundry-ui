@@ -78,6 +78,7 @@ const valueVariants = {
 };
 
 storiesOf('Dropdown', module)
+  .addParameters({ component: Dropdown })
   .add(
     'Basic',
     () => {

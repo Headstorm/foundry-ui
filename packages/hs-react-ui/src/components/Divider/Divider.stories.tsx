@@ -8,6 +8,7 @@ import colors from '../../enums/colors';
 import Divider from './Divider';
 
 storiesOf('Divider', module)
+  .addParameters({ component: Divider })
   .add('Default', () => <Divider width={text('width', '10rem')} height={text('height', '1px')} />)
   .add('Themed', () => {
     const ThemedDivider = styled.hr`
