@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
+exports[`Tag keeps the container the same when switching between isLoading and not isLoading 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -13,17 +13,12 @@ exports[`Button keeps the container the same when switching between isLoading an
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c0:hover {
-  background-color: #707479;
 }
 
 .c1 {
@@ -41,20 +36,19 @@ exports[`Button keeps the container the same when switching between isLoading an
   margin-bottom: -5px;
 }
 
-<button
+<span
   class="c0"
   color="#7c8186"
-  data-test-id="hsui-button"
+  data-test-id="tag-9"
   elevation="0"
-  type="button"
 >
   <div
     class="c1"
   />
-</button>
+</span>
 `;
 
-exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
+exports[`Tag keeps the container the same when switching between isLoading and not isLoading 2`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -67,7 +61,6 @@ exports[`Button keeps the container the same when switching between isLoading an
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -76,22 +69,17 @@ exports[`Button keeps the container the same when switching between isLoading an
   align-items: center;
 }
 
-.c0:hover {
-  background-color: #707479;
-}
-
-<button
+<span
   class="c0"
   color="#7c8186"
-  data-test-id="hsui-button"
+  data-test-id="tag-9"
   elevation="0"
-  type="button"
 >
-  Submit
-</button>
+  Hello World!
+</span>
 `;
 
-exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
+exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -104,181 +92,25 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c0:hover {
-  background-color: #707479;
-}
-
-<div>
-  <button
-    class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
-  />
-</div>
-`;
-
-exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  outline: 0 none;
-  border: 1px solid #7c8186;
-  cursor: pointer;
-  background-color: transparent;
-  color: #7c8186;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c0:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-<div>
-  <button
-    class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
-  />
-</div>
-`;
-
-exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  outline: 0 none;
-  border: 0 none;
-  cursor: pointer;
-  background-color: transparent;
-  color: #7c8186;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c0:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-<div>
-  <button
-    class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
-  />
-</div>
-`;
-
-exports[`Button shows ButtonContainer with nondefault props variant and color 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  -webkit-filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
-  filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
-  outline: 0 none;
-  border: 1px solid #000;
-  cursor: pointer;
-  background-color: transparent;
-  color: #000;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c0:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-<div>
-  <button
-    class="c0"
-    color="#000"
-    data-test-id="hsui-button"
-    elevation="2"
-    type="button"
-  />
-</div>
-`;
-
-exports[`Button shows LeftIconContainer when isProcessing 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  outline: 0 none;
-  border: 0 none;
-  cursor: pointer;
-  background-color: #7c8186;
-  color: #000;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c0:hover {
-  background-color: #707479;
 }
 
 .c1 {
   height: 1rem;
-  vertical-align: middle;
+  margin-right: 1em;
 }
 
 <div>
-  <button
+  <span
     class="c0"
     color="#7c8186"
-    data-test-id="hsui-button"
+    data-test-id="tag-6"
     elevation="0"
-    type="button"
   >
     <div
       class="c1"
@@ -306,11 +138,12 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
         </g>
       </svg>
     </div>
-  </button>
+    processing
+  </span>
 </div>
 `;
 
-exports[`Button shows icons 1`] = `
+exports[`Tag shows Tag with fill variant 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -323,7 +156,6 @@ exports[`Button shows icons 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -332,27 +164,155 @@ exports[`Button shows icons 1`] = `
   align-items: center;
 }
 
-.c0:hover {
-  background-color: #707479;
+<div>
+  <span
+    class="c0"
+    color="#7c8186"
+    data-test-id="tag-4"
+    elevation="0"
+  >
+    fill variant
+  </span>
+</div>
+`;
+
+exports[`Tag shows Tag with non-default props variant and color 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  -webkit-filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
+  filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
+  outline: 0 none;
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+  <span
+    class="c0"
+    color="#000"
+    data-test-id="tag-2"
+    elevation="2"
+  >
+    Variant and color
+  </span>
+</div>
+`;
+
+exports[`Tag shows Tag with outline variant 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 1px solid #7c8186;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+  <span
+    class="c0"
+    color="#7c8186"
+    data-test-id="tag-5"
+    elevation="0"
+  >
+    outline variant
+  </span>
+</div>
+`;
+
+exports[`Tag shows Tag with text variant 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+  <span
+    class="c0"
+    color="#7c8186"
+    data-test-id="tag-3"
+    elevation="0"
+  >
+    text variant
+  </span>
+</div>
+`;
+
+exports[`Tag shows icons 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c1 {
   height: 1rem;
-  vertical-align: middle;
 }
 
 .c2 {
   height: 1rem;
-  vertical-align: middle;
+  margin-left: 1em;
 }
 
 <div>
-  <button
+  <span
     class="c0"
     color="#7c8186"
-    data-test-id="hsui-button"
+    data-test-id="tag-8"
     elevation="0"
-    type="button"
   >
     <div
       class="c1"
@@ -362,11 +322,12 @@ exports[`Button shows icons 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          d="mdiComment"
+          d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"
           style="fill: currentColor;"
         />
       </svg>
     </div>
+    shows icons
     <div
       class="c2"
     >
@@ -375,16 +336,16 @@ exports[`Button shows icons 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          d="mdiComment"
+          d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"
           style="fill: currentColor;"
         />
       </svg>
     </div>
-  </button>
+  </span>
 </div>
 `;
 
-exports[`Button shows icons with type string 1`] = `
+exports[`Tag shows icons with type string 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -397,7 +358,6 @@ exports[`Button shows icons with type string 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -406,27 +366,22 @@ exports[`Button shows icons with type string 1`] = `
   align-items: center;
 }
 
-.c0:hover {
-  background-color: #707479;
-}
-
 .c1 {
   height: 1rem;
-  vertical-align: middle;
+  margin-right: 1em;
 }
 
 .c2 {
   height: 1rem;
-  vertical-align: middle;
+  margin-left: 1em;
 }
 
 <div>
-  <button
+  <span
     class="c0"
     color="#7c8186"
-    data-test-id="hsui-button"
+    data-test-id="tag-7"
     elevation="0"
-    type="button"
   >
     <div
       class="c1"
@@ -437,11 +392,12 @@ exports[`Button shows icons with type string 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          d="mdiComment"
+          d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"
           style="fill: currentColor;"
         />
       </svg>
     </div>
+    string icon props
     <div
       class="c2"
     >
@@ -451,16 +407,16 @@ exports[`Button shows icons with type string 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          d="mdiComment"
+          d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"
           style="fill: currentColor;"
         />
       </svg>
     </div>
-  </button>
+  </span>
 </div>
 `;
 
-exports[`Button shows loading text when provided 1`] = `
+exports[`Tag shows loading text when provided 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -473,17 +429,12 @@ exports[`Button shows loading text when provided 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c0:hover {
-  background-color: #707479;
 }
 
 .c1 {
@@ -502,16 +453,15 @@ exports[`Button shows loading text when provided 1`] = `
 }
 
 <div>
-  <button
+  <span
     class="c0"
     color="#7c8186"
-    data-test-id="hsui-button"
+    data-test-id="tag-1"
     elevation="0"
-    type="button"
   >
     <div
       class="c1"
     />
-  </button>
+  </span>
 </div>
 `;

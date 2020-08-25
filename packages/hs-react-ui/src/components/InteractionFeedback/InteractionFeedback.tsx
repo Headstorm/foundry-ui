@@ -4,6 +4,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import shortid from 'shortid';
 import colors from '../../enums/colors';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import { SubcomponentPropsType } from '../commonTypes';
 
 const Circle = styled.svg`
   pointer-events: none;
@@ -18,12 +19,14 @@ const Container = styled(animated.div)`
 
 type Animation = { cx: string; cy: string; id: string };
 type Transition = { r: string } & Animation;
-type InteractionFeedbackProps = {
+export type InteractionFeedbackProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropsType;
 
   children: React.ReactNode;
+  color?: string;
   interpolationFunctions?: Record<string, (val: any) => any>;
-  // TODO add proper type from react-sprint
+  // TODO add proper type from react-spring
   transitionProps?: any;
 };
 
@@ -34,17 +37,14 @@ const defaultTransitionProps = {
   from: {
     r: 0,
     opacity: 0.25,
-    fill: colors.grayLight,
   },
   enter: {
     r: 100,
     opacity: 0.25,
-    fill: colors.grayLight,
   },
   leave: {
     r: 0,
     opacity: 0,
-    fill: colors.grayLight,
   },
   config: {
     mass: 1,
@@ -54,15 +54,17 @@ const defaultTransitionProps = {
 };
 const InteractionFeedback = ({
   StyledContainer = Container,
+  containerProps = {},
+  color = colors.primary,
 
   children,
   interpolationFunctions = defaultInterpolationFunctions,
-  transitionProps = defaultTransitionProps,
+  transitionProps = { ...defaultTransitionProps },
 }: InteractionFeedbackProps) => {
   const { ref, width, height } = useResizeObserver();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
-  const transitions = useTransition<Animation, Animation>(animations, {
+  const transitions = useTransition<Animation, Record<string, unknown>>(animations, {
     keys: (item: Animation) => item.id,
     onRest: (item: Transition) => setAnimations(a => a.filter(ani => ani.id === item.id)),
     ...transitionProps,
@@ -74,7 +76,7 @@ const InteractionFeedback = ({
         [key]: interpolationFunctions[key] ? interpolationFunctions[key](val) : val,
       };
     }, {});
-    return <animated.circle cx={style.cx} cy={style.cy} {...circleProps} />;
+    return <animated.circle cx={item.cx} cy={item.cy} fill={color} {...circleProps} />;
   });
 
   const mouseDownHandler = useCallback(
@@ -86,17 +88,14 @@ const InteractionFeedback = ({
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
 
-        setAnimations(a => [
-          ...a,
-          { cx: `${percentX}%`, cy: `${percentY}%`, fillColor: colors.primary, id: shortid() },
-        ]);
+        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: shortid() }]);
       }
     },
     [ref],
   );
 
   return (
-    <StyledContainer ref={ref} onMouseDown={mouseDownHandler}>
+    <StyledContainer ref={ref} onMouseDown={mouseDownHandler} {...containerProps}>
       {children}
       <Circle width={`${width}px`} height={`${height}px`} viewBox={`0 0 ${width} ${height}`}>
         {fragment}

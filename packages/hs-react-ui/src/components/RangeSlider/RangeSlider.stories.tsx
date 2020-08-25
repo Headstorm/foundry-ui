@@ -60,6 +60,7 @@ const StyledSlideRail = styled(SlideRail)`
 `;
 
 storiesOf('RangeSlider', module)
+  .addParameters({ component: RangeSlider })
   .add(
     'Default',
     () => {
@@ -76,6 +77,32 @@ storiesOf('RangeSlider', module)
         setVal(storyValue);
       }, [storyValue]);
 
+      const min = number('min', 0, {
+        range: true,
+        min: -10,
+        max: 10,
+        step: 1,
+      });
+
+      const max = number('max', 5, {
+        range: true,
+        min: -10,
+        max: 10,
+        step: 1,
+      });
+
+      const markersSelection = select('markers', ['none', 'all values', 'middle value'], 'none');
+      const markerLabels = boolean('use marker labels', false);
+      const markersArray: any[] = [];
+      if (markersSelection === 'all values') {
+        for (let i = min; i <= max; i++) {
+          markersArray.push(markerLabels ? { value: i, label: '' + i } : i);
+        }
+      } else if (markersSelection === 'middle value') {
+        const midpoint = (min + max) / 2;
+        markersArray.push(markerLabels ? { value: midpoint, label: '' + midpoint } : midpoint);
+      }
+
       return (
         <Row>
           <RangeSlider
@@ -84,18 +111,8 @@ storiesOf('RangeSlider', module)
             showSelectedRange={boolean('showSelectedRange', true)}
             motionBlur={boolean('motionBlur', false)}
             springOnRelease={boolean('springOnRelease', true)}
-            min={number('min', 0, {
-              range: true,
-              min: -10,
-              max: 10,
-              step: 1,
-            })}
-            max={number('max', 5, {
-              range: true,
-              min: -10,
-              max: 10,
-              step: 1,
-            })}
+            min={min}
+            max={max}
             debounceInterval={number('debounceInterval', 8, {
               range: true,
               min: 0,
@@ -113,6 +130,7 @@ storiesOf('RangeSlider', module)
                 label: val,
               },
             ]}
+            markers={markersArray}
           />
         </Row>
       );

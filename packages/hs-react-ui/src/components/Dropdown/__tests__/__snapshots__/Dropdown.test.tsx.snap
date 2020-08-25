@@ -53,10 +53,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -86,7 +82,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -94,7 +90,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -102,16 +98,16 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         />
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -186,10 +182,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -240,14 +232,14 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c6:hover {
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
 .c6:focus {
   outline: none;
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {
@@ -257,7 +249,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -265,7 +257,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -273,16 +265,16 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         />
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -297,41 +289,41 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c5"
+      class="c5"
       color="#252c35"
     >
       <div
-        class="sc-AxjAm c6"
+        class="c6"
         color="#252c35"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
       >
         <span
-          class="sc-AxiKw "
+          class=""
         >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c6"
+        class="c6"
         color="#252c35"
         id="choosePokemon-option-charmander"
         tabindex="0"
       >
         <span
-          class="sc-AxiKw "
+          class=""
         >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c6"
+        class="c6"
         color="#252c35"
         id="choosePokemon-option-squirtle"
         tabindex="0"
       >
         <span
-          class="sc-AxiKw "
+          class=""
         >
           Squirtle
         </span>
@@ -395,10 +387,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -427,7 +415,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -435,7 +423,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -443,16 +431,16 @@ exports[`Dropdown closes options when clicking outside 2`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         />
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -523,10 +511,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -556,7 +540,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -564,7 +548,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -572,16 +556,16 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         />
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -655,10 +639,6 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -709,14 +689,14 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c6:hover {
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
 .c6:focus {
   outline: none;
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c3 {
@@ -727,7 +707,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -735,7 +715,7 @@ exports[`Dropdown displays all options when focused 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -743,16 +723,16 @@ exports[`Dropdown displays all options when focused 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         />
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -767,41 +747,41 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c5"
+      class="c5"
       color="#252c35"
     >
       <div
-        class="sc-AxjAm c6"
+        class="c6"
         color="#252c35"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
       >
         <span
-          class="sc-AxiKw "
+          class=""
         >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c6"
+        class="c6"
         color="#252c35"
         id="choosePokemon-option-charmander"
         tabindex="0"
       >
         <span
-          class="sc-AxiKw "
+          class=""
         >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c6"
+        class="c6"
         color="#252c35"
         id="choosePokemon-option-squirtle"
         tabindex="0"
       >
         <span
-          class="sc-AxiKw "
+          class=""
         >
           Squirtle
         </span>
@@ -864,10 +844,6 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -897,7 +873,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -905,7 +881,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -913,18 +889,18 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         >
           Choose a pokemon
         </span>
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -995,10 +971,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1028,7 +1000,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1036,7 +1008,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1044,16 +1016,16 @@ exports[`Dropdown does not display options on initial render 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
         <span
-          class="sc-AxiKw sc-fzqNqU c3"
+          class="c3"
           data-test-id="hsui-Text"
         />
       </div>
       <div
-        class="sc-AxjAm c4"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -1124,11 +1096,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1149,9 +1117,35 @@ exports[`Dropdown renders a value when given a matching option id through props 
   text-align: left;
 }
 
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  border: 0 none;
+  background-color: transparent;
+  color: #252c35;
+  margin-right: .25rem;
+  margin-top: 1px;
+}
+
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1159,7 +1153,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1167,15 +1161,19 @@ exports[`Dropdown renders a value when given a matching option id through props 
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
-        <span>
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -1246,10 +1244,6 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1273,7 +1267,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1281,7 +1275,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1289,11 +1283,11 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       />
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -1364,11 +1358,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1389,9 +1379,35 @@ exports[`Dropdown renders one value when given two values but only one matches a
   text-align: left;
 }
 
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  border: 0 none;
+  background-color: transparent;
+  color: #252c35;
+  margin-right: .25rem;
+  margin-top: 1px;
+}
+
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1399,7 +1415,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1407,15 +1423,19 @@ exports[`Dropdown renders one value when given two values but only one matches a
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
-        <span>
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -1486,11 +1506,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1511,9 +1527,35 @@ exports[`Dropdown renders two values when given matching option ids through prop
   text-align: left;
 }
 
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  border: 0 none;
+  background-color: transparent;
+  color: #252c35;
+  margin-right: .25rem;
+  margin-top: 1px;
+}
+
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1521,7 +1563,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1529,19 +1571,27 @@ exports[`Dropdown renders two values when given matching option ids through prop
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
-        <span>
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Bulbasaur
+          ,
         </span>
-        <span>
-          , 
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -1612,11 +1662,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1637,9 +1683,35 @@ exports[`Dropdown renders two values when given matching option ids through prop
   text-align: left;
 }
 
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  border: 0 none;
+  background-color: transparent;
+  color: #252c35;
+  margin-right: .25rem;
+  margin-top: 1px;
+}
+
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1647,7 +1719,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1655,19 +1727,27 @@ exports[`Dropdown renders two values when given matching option ids through prop
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
-        <span>
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Bulbasaur
+          ,
         </span>
-        <span>
-          , 
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c4"
       >
         <svg
           role="presentation"
@@ -1738,11 +1818,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:active {
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1763,9 +1839,35 @@ exports[`Dropdown selects options from values prop 1`] = `
   text-align: left;
 }
 
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  background-color: transparent;
+  color: #7c8186;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  border: 0 none;
+  background-color: transparent;
+  color: #252c35;
+  margin-right: .25rem;
+  margin-top: 1px;
+}
+
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-test-id="choosePokemon-container"
     elevation="0"
     id="choosePokemon-container"
@@ -1773,7 +1875,7 @@ exports[`Dropdown selects options from values prop 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#252c35"
       data-test-id="hsui-button"
       elevation="0"
@@ -1781,19 +1883,27 @@ exports[`Dropdown selects options from values prop 1`] = `
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
         id="choosePokemon-value-item"
       >
-        <span>
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Bulbasaur
+          ,
         </span>
-        <span>
-          , 
+        <span
+          class="c3"
+          color="#7c8186"
+          elevation="0"
+        >
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c4"
       >
         <svg
           role="presentation"

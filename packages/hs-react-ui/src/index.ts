@@ -8,6 +8,7 @@ import Label from './components/Label';
 import Modal from './components/Modal';
 import RangeSlider from './components/RangeSlider';
 import Table from './components/Table';
+import Tag from './components/Tag';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
@@ -17,6 +18,7 @@ import colors from './enums/colors';
 import timings from './enums/timings';
 import fonts from './enums/fonts';
 import variants from './enums/variants';
+import feedbackTypes from './enums/feedbackTypes';
 
 export {
   Button,
@@ -29,6 +31,7 @@ export {
   Modal,
   RangeSlider,
   Table,
+  Tag,
   Text,
   TextInput,
   Progress,
@@ -39,4 +42,5 @@ export {
   timings,
   fonts,
   variants,
+  feedbackTypes,
 };

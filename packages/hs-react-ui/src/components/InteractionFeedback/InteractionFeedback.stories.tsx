@@ -37,7 +37,6 @@ storiesOf('InteractionFeedback', module).add(
       },
       'Circle fill',
     );
-    const fill = color('fillColor', colors.grayLight, 'Circle fill');
     const transitionProps = {
       enter: {
         r: `${number(
@@ -47,7 +46,6 @@ storiesOf('InteractionFeedback', module).add(
           'Circle radius',
         )}`,
         opacity: entranceOpacity,
-        fill,
       },
       from: {
         r: `${number(
@@ -57,12 +55,15 @@ storiesOf('InteractionFeedback', module).add(
           'Circle radius',
         )}`,
         opacity: entranceOpacity,
-        fill,
       },
       leave: {
-        r: '0',
+        r: `${number(
+          'Ending circle radius',
+          0,
+          { range: true, min: 0, max: 100, step: 1 },
+          'Circle radius',
+        )}`,
         opacity: exitOpacity,
-        fill,
       },
       config: {
         mass: number('mass', 1, { range: true, min: 1, max: 10, step: 1 }, 'Circle physics'),
@@ -86,6 +87,7 @@ storiesOf('InteractionFeedback', module).add(
     };
     return (
       <InteractionFeedback
+        color={color('color', colors.grayDark, 'Circle fill')}
         interpolationFunctions={interpolationFunctions}
         transitionProps={transitionProps}
       >

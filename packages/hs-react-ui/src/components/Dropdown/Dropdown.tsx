@@ -2,17 +2,18 @@ import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'reac
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
-import { shade, tint, getLuminance } from 'polished';
+import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
+import Tag, { TagProps } from '../Tag/Tag';
 import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
-import { getShadowStyle } from '../../utils/styles';
+import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 
 export type OptionProps = {
   id: number | string;
@@ -24,7 +25,7 @@ type UsefulDropdownState = {
   color: string;
   multi?: boolean;
   selected?: boolean;
-  variant?: variants;
+  variant: variants;
 };
 
 const Container = styled(Div)`
@@ -81,7 +82,7 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => `
+  ${({ color, variant }: UsefulDropdownState) => `
     background: white;
     position: absolute;
     top: 100%;
@@ -89,7 +90,13 @@ const OptionsContainer = styled(Div)`
     max-height: 10rem;
     overflow-y: scroll;
     width: 15rem;
-    border: 1px solid ${getFontColorFromVariant('outline', color)};
+    ${
+      variant !== variants.text
+        ? `
+            border: 1px solid ${color};
+          `
+        : ''
+    }
     border-top: 0px solid transparent;
     border-radius: 0rem 0rem 0.25rem 0.25rem;
     z-index: 1000;
@@ -97,39 +104,42 @@ const OptionsContainer = styled(Div)`
 `;
 
 const OptionItem = styled(Div)`
-  ${({ selected, color }: UsefulDropdownState) => {
-    const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
+  ${({ selected, color, variant }: UsefulDropdownState) => {
     const { colors } = useTheme();
+    const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
+    const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
+    const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
 
     return `
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    color: ${selected ? getFontColorFromVariant('fill', selectedBgColor) : colors.grayDark};
-    background-color: ${
-      selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'transparent'
-    };
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      color: ${
+        selected
+          ? readableColor(backgroundColor, colors.background, color, true)
+          : getFontColorFromVariant(variant, color)
+      };
+      background-color: ${backgroundColor};
 
-    &:hover {
-      background-color: ${shade(
-        0.1,
-        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
-      )};
-      cursor: pointer;
-      outline: none;
-    }
-    &:focus {
-      outline: none;
-      background-color: ${shade(
-        0.1,
-        selected ? getBackgroundColorFromVariant('fill', selectedBgColor) : 'white',
-      )};
-    }
-  `;
+      &:hover {
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
+        };
+
+        cursor: pointer;
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+        background-color: ${
+          backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.1)'
+        };
+      }
+    `;
   }}
 `;
 const CheckContainer = styled(Div)`
-  ${({ color }: UsefulDropdownState) => {
+  ${({ color, variant }: UsefulDropdownState) => {
     const { colors } = useTheme();
 
     return `
@@ -137,7 +147,7 @@ const CheckContainer = styled(Div)`
       align-items: center;
       justify-content: center;
 
-      color: ${getFontColorFromVariant('fill', tint(0.5, color || colors.grayMedium))};
+      color: ${getFontColorFromVariant(variant, tint(0.5, color || colors.grayMedium))};
       padding-right: 0.2rem;
       width: 2rem;
     `;
@@ -146,6 +156,23 @@ const CheckContainer = styled(Div)`
 
 const PlaceholderContainer = styled(Text.Container)`
   opacity: 0.8;
+`;
+
+const StyledTagContainer = styled(Tag.Container)`
+  ${({
+    dropdownVariant,
+    tagVariant,
+    dropdownColor,
+    transparentColor,
+  }: {
+    dropdownVariant: variants;
+    tagVariant: variants;
+    dropdownColor: string;
+    transparentColor: string;
+  }) => `
+    ${tagVariant === variants.text ? 'padding: 0px;' : ''}
+    ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
+  `}
 `;
 
 export interface DropdownProps {
@@ -164,6 +191,7 @@ export interface DropdownProps {
   optionItemProps?: SubcomponentPropsType;
   checkContainerProps?: SubcomponentPropsType;
   placeholderProps?: SubcomponentPropsType;
+  valueItemTagProps?: TagProps;
 
   color?: string;
   elevation?: number;
@@ -179,6 +207,8 @@ export interface DropdownProps {
   options?: Array<OptionProps>;
   tabIndex?: number;
   variant?: variants;
+  optionsVariant?: variants;
+  valueVariant?: variants;
 }
 
 const Dropdown = ({
@@ -197,6 +227,7 @@ const Dropdown = ({
   optionItemProps,
   checkContainerProps,
   placeholderProps,
+  valueItemTagProps = {},
 
   color,
   elevation = 0,
@@ -209,6 +240,8 @@ const Dropdown = ({
   options = [],
   tabIndex = 0,
   variant = variants.outline,
+  optionsVariant = variants.outline,
+  valueVariant = variants.text,
   values = [],
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
@@ -221,6 +254,8 @@ const Dropdown = ({
     StyledContainer: PlaceholderContainer,
     ...placeholderProps,
   };
+
+  const tagContainerItemProps = valueItemTagProps.containerProps || {};
 
   const optionsHash: { [key: string]: OptionProps } = {};
   options.forEach(option => {
@@ -389,12 +424,24 @@ const Dropdown = ({
         >
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
-            .map((val, i) =>
+            .map((val, i, arr) =>
               optionsHash[val] !== undefined ? (
-                <span key={val}>
-                  {i !== 0 && ', '}
+                <Tag
+                  StyledContainer={StyledTagContainer}
+                  variant={valueVariant}
+                  {...valueItemTagProps}
+                  containerProps={{
+                    ...tagContainerItemProps,
+                    dropdownVariant: variant,
+                    tagVariant: valueVariant,
+                    dropdownColor: defaultedColor,
+                    transparentColor: colors.transparent,
+                  }}
+                  key={val}
+                >
                   {optionsHash[val].optionValue}
-                </span>
+                  {valueVariant === variants.text && i !== arr.length - 1 && ','}
+                </Tag>
               ) : (
                 undefined
               ),
@@ -406,7 +453,11 @@ const Dropdown = ({
         {closeIcons}
       </Button>
       {isOpen && (
-        <StyledOptionsContainer color={defaultedColor} variant={variant} {...optionsContainerProps}>
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          {...optionsContainerProps}
+        >
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
@@ -415,7 +466,7 @@ const Dropdown = ({
               onClick={() => handleSelect(option.id)}
               tabIndex={tabIndex}
               color={defaultedColor}
-              variant={variant}
+              variant={optionsVariant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
               {...optionItemProps}
@@ -424,7 +475,7 @@ const Dropdown = ({
                 <StyledCheckContainer
                   color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
-                  variant={variant}
+                  variant={optionsVariant}
                   multi={multi}
                   {...checkContainerProps}
                 >
