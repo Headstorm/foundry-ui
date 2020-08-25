@@ -30,7 +30,7 @@ storiesOf('Modal', module)
   .add(
     'Default',
     () => {
-    const [isOpen, setIsOpen] = useState(true);
+      const [isOpen, setIsOpen] = useState(true);
 
       const handleClose = () => {
         setIsOpen(false);
@@ -43,49 +43,17 @@ storiesOf('Modal', module)
         'inside',
       );
 
-    return (
-      <Background>
-        <Card elevation={1} header="Use this button to open the modal again">
-          <Button
-            color={colors.primaryDark}
-            StyledContainer={Button.Container}
-            onClick={() => setIsOpen(true)}
-          >
-            Open modal
-          </Button>
-        </Card>
-        {isOpen && (
-          <Modal
-            closeButtonAttachment={buttonAttachment}
-            backgroundDarkness={number('backgroundDarkness', 0.5, {
-              range: true,
-              min: 0,
-              max: 1,
-              step: 0.05,
-            })}
-            backgroundBlur={`${number('backgroundBlur', 0.5, {
-              range: true,
-              min: 0,
-              max: 5,
-              step: 0.1,
-            })}rem`}
-            onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
-            onClose={handleClose}
-          >
-            <Card
-              header="Hello world!"
-              footer={
-                <Button color={colors.primaryDark} onClick={handleClose}>
-                  Okay...
-                </Button>
-              }
-              elevation={1}
+      return (
+        <Background>
+          <Card elevation={1} header="Use this button to open the modal again">
+            <Button
+              color={colors.primaryDark}
               StyledContainer={Button.Container}
               onClick={() => setIsOpen(true)}
             >
-              Toggle modal
+              Open modal
             </Button>
-          )}
+          </Card>
           {isOpen && (
             <Modal
               closeButtonAttachment={buttonAttachment}
