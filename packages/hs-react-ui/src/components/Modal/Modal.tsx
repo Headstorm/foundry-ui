@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 import { useSpring } from 'react-spring';
@@ -10,7 +10,7 @@ import { SubcomponentPropsType } from '../commonTypes';
 import { useTheme } from '../../context';
 
 const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
-  ${({ backgroundBlur, backgroundDarkness }) => `
+  ${() => `
     height: 100%;
     width: 100%;
 
@@ -19,9 +19,6 @@ const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarknes
     left: 0;
 
     z-index: 1000;
-
-    transition: backdrop-filter .2s;
-    backdrop-filter: blur(${backgroundBlur}) brightness(${1 - backgroundDarkness});
   `}
 `;
 
@@ -87,6 +84,8 @@ export interface ModalProps {
   onClickOutside?: () => void;
   onClose?: () => void;
 
+  isOpen: boolean;
+
   closeButtonAttachment?: string;
   backgroundBlur?: string;
   backgroundDarkness?: number;
@@ -105,8 +104,12 @@ const Modal = ({
   animationSpringConfig = {},
 
   children,
+
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+
+  isOpen = false,
+
   closeButtonAttachment = 'inside',
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
@@ -119,9 +122,11 @@ const Modal = ({
       underlayBackdropFilter: 'blur(0rem) brightness(1)',
     },
     to: {
-      containerTransform: 'translate(-50%, -50%)',
-      containerOpacity: 1,
-      underlayBackdropFilter: `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`,
+      containerTransform: isOpen ? 'translate(-50%, -50%)' : 'translate(-50%, 0%)',
+      containerOpacity: isOpen ? 1 : 0,
+      underlayBackdropFilter: isOpen
+        ? `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`
+        : 'blur(0rem) brightness(1)',
     },
     config: {
       friction: 75,
@@ -130,6 +135,11 @@ const Modal = ({
     },
     ...animationSpringConfig,
   });
+
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <>
       {closeButtonAttachment === 'corner' && (

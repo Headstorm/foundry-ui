@@ -14,20 +14,22 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A14',
 };
 
+const Background = styled.div`
+  background-image: url(https://source.unsplash.com/weekly?landscape);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+`;
+
 storiesOf('Modal', module).add(
   'Default',
   () => {
-    const Background = styled.div`
-      background-image: url(https://source.unsplash.com/weekly?landscape);
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      height: 100vh;
-      width: 100vw;
-    `;
     const [isOpen, setIsOpen] = useState(true);
+    const [count, setCount] = useState(0);
 
     const handleClose = () => {
       setIsOpen(false);
@@ -52,38 +54,40 @@ storiesOf('Modal', module).add(
             Toggle modal
           </Button>
         )}
-        {isOpen && (
-          <Modal
-            closeButtonAttachment={buttonAttachment}
-            backgroundDarkness={number('backgroundDarkness', 0.5, {
-              range: true,
-              min: 0,
-              max: 1,
-              step: 0.05,
-            })}
-            backgroundBlur={`${number('backgroundBlur', 0.5, {
-              range: true,
-              min: 0,
-              max: 5,
-              step: 0.1,
-            })}rem`}
-            onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
-            onClose={handleClose}
+        <Modal
+          closeButtonAttachment={buttonAttachment}
+          backgroundDarkness={number('backgroundDarkness', 0.5, {
+            range: true,
+            min: 0,
+            max: 1,
+            step: 0.05,
+          })}
+          backgroundBlur={`${number('backgroundBlur', 0.5, {
+            range: true,
+            min: 0,
+            max: 5,
+            step: 0.1,
+          })}rem`}
+          onClickOutside={boolean('onClickOutside function', true) ? handleClose : undefined}
+          onClose={handleClose}
+          isOpen={isOpen}
+        >
+          <Card
+            header="Hello world!"
+            footer={
+              <Button color={colors.primaryDark} onClick={handleClose}>
+                Okay...
+              </Button>
+            }
+            elevation={1}
           >
-            <Card
-              header="Hello world!"
-              footer={
-                <Button color={colors.primaryDark} onClick={handleClose}>
-                  Okay...
-                </Button>
-              }
-              elevation={1}
-            >
-              Welcome to the wonderful world of modals. Hope you have a great time, and please pick
-              up a t-shirt or mug from the giftshop on your way out!
-            </Card>
-          </Modal>
-        )}
+            Welcome to the wonderful world of modals. Hope you have a great time, and please pick up
+            a t-shirt or mug from the giftshop on your way out!
+            <br />
+            Clicks: {count}
+            <Button onClick={() => setCount(count + 1)}>Increment</Button>
+          </Card>
+        </Modal>
       </Background>
     );
   },
