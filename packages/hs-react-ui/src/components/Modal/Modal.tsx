@@ -78,6 +78,7 @@ export interface ModalProps {
   underlayProps?: SubcomponentPropsType;
   closeButtonProps?: SubcomponentPropsType;
   closeButtonContainerProps?: SubcomponentPropsType;
+  animationSpringConfig?: Record<string, unknown>;
 
   children: ReactNode;
 
@@ -111,6 +112,10 @@ const Modal = ({
   backgroundDarkness = 0.2,
 }: ModalProps) => {
   const { colors } = useTheme();
+
+  const { styles: containerStyles }: { styles?: Record<string, unknown> } = containerProps;
+  const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
+
   const { containerTransform, containerOpacity, underlayBackdropFilter } = useSpring({
     from: {
       containerTransform: 'translate(-50%, -25%)',
@@ -152,7 +157,7 @@ const Modal = ({
         style={{
           transform: containerTransform,
           opacity: containerOpacity,
-          ...containerProps.style,
+          ...containerStyles,
         }}
       >
         {children}
@@ -179,7 +184,7 @@ const Modal = ({
         {...underlayProps}
         style={{
           backdropFilter: underlayBackdropFilter,
-          ...underlayProps.style,
+          ...underlayStyles,
         }}
       />
     </>
