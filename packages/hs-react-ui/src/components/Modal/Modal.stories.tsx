@@ -81,8 +81,9 @@ storiesOf('Modal', module)
                 }
                 elevation={1}
               >
-                Welcome to the wonderful world of modals. Hope you have a great time, and please
-                pick up a t-shirt or mug from the giftshop on your way out!
+                The content of the modal (the card and everything inside it) is customizable. The
+                close &times; is built-in but can be easily overwritten. It is the very model of a
+                modern major React modal.
               </Card>
             </Modal>
           )}
