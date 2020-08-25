@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.13](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.12...v1.0.0-v1-release.13) (2020-08-25)
+
+
+### Features
+
+* **dropdown:** add value variants using tags ([1aae340](https://github.com/Headstorm/rasa-ui/commit/1aae340ebe8918986c55136ac5b207b84351f22e))
+
 # [1.0.0-v1-release.12](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.11...v1.0.0-v1-release.12) (2020-08-24)
 
 
