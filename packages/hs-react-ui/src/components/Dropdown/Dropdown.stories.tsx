@@ -96,6 +96,7 @@ storiesOf('Dropdown', module)
               options={cities}
               variant={select('variant', variants, variants.outline)}
               optionsVariant={select('optionsVariant', variants, variants.outline)}
+              valueVariant={select('valueVariant', variants, variants.text)}
               values={values}
             />
           </Label>

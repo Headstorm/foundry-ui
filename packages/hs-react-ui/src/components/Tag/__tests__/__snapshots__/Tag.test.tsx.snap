@@ -13,7 +13,6 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -37,7 +36,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   margin-bottom: -5px;
 }
 
-<div
+<span
   class="c0"
   color="#7c8186"
   data-test-id="tag-9"
@@ -46,7 +45,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   <div
     class="c1"
   />
-</div>
+</span>
 `;
 
 exports[`Tag keeps the container the same when switching between isLoading and not isLoading 2`] = `
@@ -62,7 +61,6 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -71,14 +69,14 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   align-items: center;
 }
 
-<div
+<span
   class="c0"
   color="#7c8186"
   data-test-id="tag-9"
   elevation="0"
 >
   Hello World!
-</div>
+</span>
 `;
 
 exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
@@ -94,7 +92,6 @@ exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -109,7 +106,7 @@ exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-6"
@@ -142,7 +139,7 @@ exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
       </svg>
     </div>
     processing
-  </div>
+  </span>
 </div>
 `;
 
@@ -159,7 +156,6 @@ exports[`Tag shows Tag with fill variant 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -169,14 +165,14 @@ exports[`Tag shows Tag with fill variant 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-4"
     elevation="0"
   >
     fill variant
-  </div>
+  </span>
 </div>
 `;
 
@@ -195,7 +191,6 @@ exports[`Tag shows Tag with non-default props variant and color 1`] = `
   filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
   outline: 0 none;
   border: 1px solid #000;
-  cursor: pointer;
   background-color: transparent;
   color: #000;
   -webkit-align-items: center;
@@ -205,14 +200,14 @@ exports[`Tag shows Tag with non-default props variant and color 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#000"
     data-test-id="tag-2"
     elevation="2"
   >
     Variant and color
-  </div>
+  </span>
 </div>
 `;
 
@@ -229,7 +224,6 @@ exports[`Tag shows Tag with outline variant 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 1px solid #7c8186;
-  cursor: pointer;
   background-color: transparent;
   color: #7c8186;
   -webkit-align-items: center;
@@ -239,14 +233,14 @@ exports[`Tag shows Tag with outline variant 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-5"
     elevation="0"
   >
     outline variant
-  </div>
+  </span>
 </div>
 `;
 
@@ -263,7 +257,6 @@ exports[`Tag shows Tag with text variant 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: transparent;
   color: #7c8186;
   -webkit-align-items: center;
@@ -273,14 +266,14 @@ exports[`Tag shows Tag with text variant 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-3"
     elevation="0"
   >
     text variant
-  </div>
+  </span>
 </div>
 `;
 
@@ -297,7 +290,6 @@ exports[`Tag shows icons 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -316,7 +308,7 @@ exports[`Tag shows icons 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-8"
@@ -349,7 +341,7 @@ exports[`Tag shows icons 1`] = `
         />
       </svg>
     </div>
-  </div>
+  </span>
 </div>
 `;
 
@@ -366,7 +358,6 @@ exports[`Tag shows icons with type string 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -386,7 +377,7 @@ exports[`Tag shows icons with type string 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-7"
@@ -421,7 +412,7 @@ exports[`Tag shows icons with type string 1`] = `
         />
       </svg>
     </div>
-  </div>
+  </span>
 </div>
 `;
 
@@ -438,7 +429,6 @@ exports[`Tag shows loading text when provided 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   outline: 0 none;
   border: 0 none;
-  cursor: pointer;
   background-color: #7c8186;
   color: #000;
   -webkit-align-items: center;
@@ -463,7 +453,7 @@ exports[`Tag shows loading text when provided 1`] = `
 }
 
 <div>
-  <div
+  <span
     class="c0"
     color="#7c8186"
     data-test-id="tag-1"
@@ -472,6 +462,6 @@ exports[`Tag shows loading text when provided 1`] = `
     <div
       class="c1"
     />
-  </div>
+  </span>
 </div>
 `;

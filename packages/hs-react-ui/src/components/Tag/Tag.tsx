@@ -6,7 +6,7 @@ import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
-import { Div } from '../../htmlElements';
+import { Div, Span } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
@@ -44,7 +44,7 @@ export type TagProps = {
   StyledLoadingBar?: string & StyledComponentBase<any, {}>;
 };
 
-export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Div)`
+export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Span)`
   ${({ elevation = 0, color, variant }: TagContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
@@ -63,8 +63,7 @@ export const Container: string & StyledComponentBase<any, {}, TagContainerProps>
         box-shadow ${timings.slow};
       ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
-      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
-      cursor: pointer;
+      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark};` : '0 none;'}
       background-color: ${backgroundColor};
       color: ${fontColor};
       align-items: center;
