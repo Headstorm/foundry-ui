@@ -104,6 +104,7 @@ const InteractionFeedback = ({
   );
 };
 
+InteractionFeedback.Container = Container;
 InteractionFeedback.defaultTransitionProps = defaultTransitionProps;
 InteractionFeedback.defaultInterpolationFunctions = defaultInterpolationFunctions;
 

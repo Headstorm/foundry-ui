@@ -118,6 +118,10 @@ const IconContainer = styled(Div)`
   vertical-align: middle;
 `;
 
+const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
+  display: inline-block;
+`;
+
 const LeftIconContainer = styled(IconContainer)`
   ${({ hasContent }: { hasContent: boolean }) => `
     ${hasContent ? 'margin-right: 1em;' : ''}
@@ -202,6 +206,7 @@ const Button = ({
 
   return feedbackType === FeedbackTypes.ripple && !disabled ? (
     <InteractionFeedback
+      StyledContainer={StyledFeedbackContainer}
       color={getFontColorFromVariant(variant, containerColor)}
       {...(interactionFeedbackProps || {})}
     >
