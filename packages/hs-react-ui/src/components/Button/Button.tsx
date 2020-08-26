@@ -119,7 +119,11 @@ const IconContainer = styled(Div)`
 `;
 
 const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
-  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 `;
 
 const StyledFeedbackSVGContainer = styled(InteractionFeedback.SVGContainer)`
@@ -208,17 +212,18 @@ const Button = ({
     </>
   );
 
-  return feedbackType === FeedbackTypes.ripple && !disabled ? (
-    <InteractionFeedback
-      StyledContainer={StyledFeedbackContainer}
-      StyledSVGContainer={StyledFeedbackSVGContainer}
-      color={getFontColorFromVariant(variant, containerColor)}
-      {...(interactionFeedbackProps || {})}
-    >
-      <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
-    </InteractionFeedback>
-  ) : (
-    <StyledContainer {...mergedContainerProps}>{buttonContent}</StyledContainer>
+  return (
+    <StyledContainer {...mergedContainerProps}>
+      {buttonContent}
+      {feedbackType === FeedbackTypes.ripple && !disabled && (
+        <InteractionFeedback
+          StyledContainer={StyledFeedbackContainer}
+          StyledSVGContainer={StyledFeedbackSVGContainer}
+          color={getFontColorFromVariant(variant, containerColor)}
+          {...(interactionFeedbackProps || {})}
+        />
+      )}
+    </StyledContainer>
   );
 };
 
