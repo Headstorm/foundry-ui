@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.18](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.17...v1.0.0-v1-release.18) (2020-08-26)
+
+
+### Bug Fixes
+
+* **button:** set position: relative to contain the feedbackinteraction ([c81f008](https://github.com/Headstorm/rasa-ui/commit/c81f008720726c8fd29d1aa65472d27e39facadd))
+
 # [1.0.0-v1-release.17](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.16...v1.0.0-v1-release.17) (2020-08-26)
 
 
