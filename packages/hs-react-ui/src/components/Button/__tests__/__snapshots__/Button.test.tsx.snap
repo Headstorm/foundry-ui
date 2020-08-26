@@ -6,6 +6,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -87,6 +88,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -151,6 +153,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -216,6 +219,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -281,6 +285,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -346,6 +351,7 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -413,6 +419,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -509,6 +516,7 @@ exports[`Button shows icons 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -610,6 +618,7 @@ exports[`Button shows icons with type string 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -713,6 +722,7 @@ exports[`Button shows loading text when provided 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;

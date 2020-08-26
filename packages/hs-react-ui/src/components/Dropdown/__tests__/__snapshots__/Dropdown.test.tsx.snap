@@ -33,6 +33,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -186,6 +187,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -421,6 +423,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -572,6 +575,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -724,6 +728,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -959,6 +964,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -1113,6 +1119,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -1265,6 +1272,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -1440,6 +1448,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -1581,6 +1590,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -1756,6 +1766,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -1939,6 +1950,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
@@ -2122,6 +2134,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
   font-size: 1em;
   padding: .75em 1em;
   border-radius: 0.25em;
