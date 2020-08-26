@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.15](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.14...v1.0.0-v1-release.15) (2020-08-26)
+
+
+### Bug Fixes
+
+* **button and interactionfeedback:** style the InteractionFeedback for the Button to inline-block ([acf5389](https://github.com/Headstorm/rasa-ui/commit/acf53897cb5ef2f7172ee6ff942c5bd970fd571a))
+
 # [1.0.0-v1-release.14](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.13...v1.0.0-v1-release.14) (2020-08-25)
 
 
