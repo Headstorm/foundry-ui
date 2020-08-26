@@ -31,7 +31,7 @@ storiesOf('Button', module)
           color={color('color', colors.primaryDark)}
           onClick={action('button-click')}
           disabled={boolean('disabled', false)}
-          feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.simple)}
+          feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.ripple)}
           isLoading={boolean('isLoading', false)}
           elevation={number('elevation', 1)}
           isProcessing={boolean('isProcessing', false)}

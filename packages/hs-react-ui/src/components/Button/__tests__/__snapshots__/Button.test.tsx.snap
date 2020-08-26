@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -22,11 +22,11 @@ exports[`Button keeps the container the same when switching between isLoading an
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: #707479;
 }
 
-.c1 {
+.c2 {
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -41,95 +41,164 @@ exports[`Button keeps the container the same when switching between isLoading an
   margin-bottom: -5px;
 }
 
-<button
-  class="c0"
-  color="#7c8186"
-  data-test-id="hsui-button"
-  elevation="0"
-  type="button"
->
-  <div
-    class="c1"
-  />
-</button>
-`;
-
-exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
 .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
+  position: relative;
+  display: inline-block;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  outline: 0 none;
-  border: 0 none;
-  cursor: pointer;
-  background-color: #7c8186;
-  color: #000;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
-.c0:hover {
-  background-color: #707479;
-}
-
-<button
+<div
   class="c0"
-  color="#7c8186"
-  data-test-id="hsui-button"
-  elevation="0"
-  type="button"
 >
-  Submit
-</button>
-`;
-
-exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  outline: 0 none;
-  border: 0 none;
-  cursor: pointer;
-  background-color: #7c8186;
-  color: #000;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c0:hover {
-  background-color: #707479;
-}
-
-<div>
   <button
-    class="c0"
+    class="c1"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
+  >
+    <div
+      class="c2"
+    />
+  </button>
+  <svg
+    class="c3"
+    height="0px"
+    viewBox="0 0 0 0"
+    width="0px"
   />
 </div>
 `;
 
-exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
+exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1:hover {
+  background-color: #707479;
+}
+
 .c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
+<div
+  class="c0"
+>
+  <button
+    class="c1"
+    color="#7c8186"
+    data-test-id="hsui-button"
+    elevation="0"
+    type="button"
+  >
+    Submit
+  </button>
+  <svg
+    class="c2"
+    height="0px"
+    viewBox="0 0 0 0"
+    width="0px"
+  />
+</div>
+`;
+
+exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1:hover {
+  background-color: #707479;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    />
+    <svg
+      class="c2"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
+</div>
+`;
+
+exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -150,23 +219,46 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
 <div>
-  <button
+  <div
     class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
-  />
+  >
+    <button
+      class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    />
+    <svg
+      class="c2"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
 </div>
 `;
 
 exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -187,23 +279,46 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
 <div>
-  <button
+  <div
     class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
-  />
+  >
+    <button
+      class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    />
+    <svg
+      class="c2"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
 </div>
 `;
 
 exports[`Button shows ButtonContainer with nondefault props variant and color 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -226,23 +341,46 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c2 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
 <div>
-  <button
+  <div
     class="c0"
-    color="#000"
-    data-test-id="hsui-button"
-    elevation="2"
-    type="button"
-  />
+  >
+    <button
+      class="c1"
+      color="#000"
+      data-test-id="hsui-button"
+      elevation="2"
+      type="button"
+    />
+    <svg
+      class="c2"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
 </div>
 `;
 
 exports[`Button shows LeftIconContainer when isProcessing 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -263,55 +401,78 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: #707479;
 }
 
-.c1 {
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
+.c2 {
   height: 1rem;
   vertical-align: middle;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
   >
-    <div
+    <button
       class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
     >
-      <svg
-        role="presentation"
-        style="width: 1rem; height: 1rem;"
-        viewBox="0 0 24 24"
+      <div
+        class="c2"
       >
-        <style>
-          @keyframes spin { to { transform: rotate(360deg) } }
-        </style>
-        <g
-          style="animation: spin linear 1s infinite; transform-origin: center;"
+        <svg
+          role="presentation"
+          style="width: 1rem; height: 1rem;"
+          viewBox="0 0 24 24"
         >
-          <path
-            d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"
-            style="fill: currentColor;"
-          />
-          <rect
-            fill="transparent"
-            height="24"
-            width="24"
-          />
-        </g>
-      </svg>
-    </div>
-  </button>
+          <style>
+            @keyframes spin { to { transform: rotate(360deg) } }
+          </style>
+          <g
+            style="animation: spin linear 1s infinite; transform-origin: center;"
+          >
+            <path
+              d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"
+              style="fill: currentColor;"
+            />
+            <rect
+              fill="transparent"
+              height="24"
+              width="24"
+            />
+          </g>
+        </svg>
+      </div>
+    </button>
+    <svg
+      class="c3"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
 </div>
 `;
 
 exports[`Button shows icons 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -332,13 +493,21 @@ exports[`Button shows icons 1`] = `
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: #707479;
 }
 
-.c1 {
-  height: 1rem;
-  vertical-align: middle;
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
 }
 
 .c2 {
@@ -346,46 +515,61 @@ exports[`Button shows icons 1`] = `
   vertical-align: middle;
 }
 
+.c3 {
+  height: 1rem;
+  vertical-align: middle;
+}
+
 <div>
-  <button
+  <div
     class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
   >
-    <div
+    <button
       class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
     >
-      <svg
-        role="presentation"
-        viewBox="0 0 24 24"
+      <div
+        class="c2"
       >
-        <path
-          d="mdiComment"
-          style="fill: currentColor;"
-        />
-      </svg>
-    </div>
-    <div
-      class="c2"
-    >
-      <svg
-        role="presentation"
-        viewBox="0 0 24 24"
+        <svg
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="mdiComment"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c3"
       >
-        <path
-          d="mdiComment"
-          style="fill: currentColor;"
-        />
-      </svg>
-    </div>
-  </button>
+        <svg
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="mdiComment"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+    <svg
+      class="c4"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
 </div>
 `;
 
 exports[`Button shows icons with type string 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -406,13 +590,21 @@ exports[`Button shows icons with type string 1`] = `
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: #707479;
 }
 
-.c1 {
-  height: 1rem;
-  vertical-align: middle;
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
 }
 
 .c2 {
@@ -420,48 +612,63 @@ exports[`Button shows icons with type string 1`] = `
   vertical-align: middle;
 }
 
+.c3 {
+  height: 1rem;
+  vertical-align: middle;
+}
+
 <div>
-  <button
+  <div
     class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
   >
-    <div
+    <button
       class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
     >
-      <svg
-        role="presentation"
-        style="width: 1rem; height: 1rem;"
-        viewBox="0 0 24 24"
+      <div
+        class="c2"
       >
-        <path
-          d="mdiComment"
-          style="fill: currentColor;"
-        />
-      </svg>
-    </div>
-    <div
-      class="c2"
-    >
-      <svg
-        role="presentation"
-        style="width: 1rem; height: 1rem;"
-        viewBox="0 0 24 24"
+        <svg
+          role="presentation"
+          style="width: 1rem; height: 1rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="mdiComment"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c3"
       >
-        <path
-          d="mdiComment"
-          style="fill: currentColor;"
-        />
-      </svg>
-    </div>
-  </button>
+        <svg
+          role="presentation"
+          style="width: 1rem; height: 1rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="mdiComment"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+    </button>
+    <svg
+      class="c4"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
+    />
+  </div>
 </div>
 `;
 
 exports[`Button shows loading text when provided 1`] = `
-.c0 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -482,11 +689,11 @@ exports[`Button shows loading text when provided 1`] = `
   align-items: center;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: #707479;
 }
 
-.c1 {
+.c2 {
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
   width: 6rem;
@@ -501,17 +708,40 @@ exports[`Button shows loading text when provided 1`] = `
   margin-bottom: -5px;
 }
 
+.c0 {
+  position: relative;
+  display: inline-block;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.25em;
+}
+
 <div>
-  <button
+  <div
     class="c0"
-    color="#7c8186"
-    data-test-id="hsui-button"
-    elevation="0"
-    type="button"
   >
-    <div
+    <button
       class="c1"
+      color="#7c8186"
+      data-test-id="hsui-button"
+      elevation="0"
+      type="button"
+    >
+      <div
+        class="c2"
+      />
+    </button>
+    <svg
+      class="c3"
+      height="0px"
+      viewBox="0 0 0 0"
+      width="0px"
     />
-  </button>
+  </div>
 </div>
 `;

@@ -6,7 +6,7 @@ import useResizeObserver from 'use-resize-observer/polyfilled';
 import colors from '../../enums/colors';
 import { SubcomponentPropsType } from '../commonTypes';
 
-const Circle = styled.svg`
+const SVGContainer = styled.svg`
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -21,7 +21,9 @@ type Animation = { cx: string; cy: string; id: string };
 type Transition = { r: string } & Animation;
 export type InteractionFeedbackProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledSVGContainer?: string & StyledComponentBase<any, {}>;
   containerProps?: SubcomponentPropsType;
+  svgContainerProps?: SubcomponentPropsType;
 
   children: React.ReactNode;
   color?: string;
@@ -36,32 +38,31 @@ const defaultInterpolationFunctions = {
 const defaultTransitionProps = {
   from: {
     r: 0,
-    opacity: 0.25,
+    opacity: 0.5,
   },
   enter: {
     r: 100,
-    opacity: 0.25,
-  },
-  leave: {
-    r: 0,
     opacity: 0,
   },
   config: {
-    mass: 1,
-    tension: 750,
+    mass: 10,
+    tension: 500,
     friction: 35,
+    clamp: true,
   },
 };
 const InteractionFeedback = ({
   StyledContainer = Container,
+  StyledSVGContainer = SVGContainer,
   containerProps = {},
+  svgContainerProps = {},
   color = colors.primary,
 
   children,
   interpolationFunctions = defaultInterpolationFunctions,
   transitionProps = { ...defaultTransitionProps },
 }: InteractionFeedbackProps) => {
-  const { ref, width, height } = useResizeObserver();
+  const { ref, width = 0, height = 0 } = useResizeObserver();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
   const transitions = useTransition<Animation, Record<string, unknown>>(animations, {
@@ -97,14 +98,20 @@ const InteractionFeedback = ({
   return (
     <StyledContainer ref={ref} onMouseDown={mouseDownHandler} {...containerProps}>
       {children}
-      <Circle width={`${width}px`} height={`${height}px`} viewBox={`0 0 ${width} ${height}`}>
+      <StyledSVGContainer
+        width={`${width}px`}
+        height={`${height}px`}
+        viewBox={`0 0 ${width} ${height}`}
+        {...svgContainerProps}
+      >
         {fragment}
-      </Circle>
+      </StyledSVGContainer>
     </StyledContainer>
   );
 };
 
 InteractionFeedback.Container = Container;
+InteractionFeedback.SVGContainer = SVGContainer;
 InteractionFeedback.defaultTransitionProps = defaultTransitionProps;
 InteractionFeedback.defaultInterpolationFunctions = defaultInterpolationFunctions;
 
