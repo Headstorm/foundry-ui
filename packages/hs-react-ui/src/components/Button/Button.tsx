@@ -67,6 +67,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
 
     return `
       display: inline-flex;
+      position: relative;
       font-size: 1em;
       padding: .75em 1em;
       border-radius: 0.25em;
