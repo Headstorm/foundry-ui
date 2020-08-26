@@ -1,15 +1,16 @@
 import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
+import { useSpring } from 'react-spring';
 
 import variants from '../../enums/variants';
 import Button from '../Button/Button';
-import { Div } from '../../htmlElements';
+import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
 import { useTheme } from '../../context';
 
-const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: number }>`
-  ${({ backgroundBlur, backgroundDarkness }) => `
+const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
+  ${() => `
     height: 100%;
     width: 100%;
 
@@ -18,13 +19,10 @@ const Underlay = styled(Div)<{ backgroundBlur: string; backgroundDarkness: numbe
     left: 0;
 
     z-index: 1000;
-
-    transition: backdrop-filter .2s;
-    backdrop-filter: blur(${backgroundBlur}) brightness(${1 - backgroundDarkness});
   `}
 `;
 
-const Container = styled(Div)`
+const Container = styled(AnimatedDiv)`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -80,6 +78,7 @@ export interface ModalProps {
   underlayProps?: SubcomponentPropsType;
   closeButtonProps?: SubcomponentPropsType;
   closeButtonContainerProps?: SubcomponentPropsType;
+  animationSpringConfig?: Record<string, unknown>;
 
   children: ReactNode;
 
@@ -89,6 +88,7 @@ export interface ModalProps {
   closeButtonAttachment?: string;
   backgroundBlur?: string;
   backgroundDarkness?: number;
+  style?: Record<string, unknown>;
 }
 
 const Modal = ({
@@ -100,15 +100,41 @@ const Modal = ({
   underlayProps = {},
   closeButtonProps = {},
   closeButtonContainerProps = {},
+  animationSpringConfig = {},
 
   children,
+
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+
   closeButtonAttachment = 'inside',
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps) => {
   const { colors } = useTheme();
+
+  const { styles: containerStyles }: { styles?: Record<string, unknown> } = containerProps;
+  const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
+
+  const { containerTransform, containerOpacity, underlayBackdropFilter } = useSpring({
+    from: {
+      containerTransform: 'translate(-50%, -25%)',
+      containerOpacity: 0,
+      underlayBackdropFilter: 'blur(0rem) brightness(1)',
+    },
+    to: {
+      containerTransform: 'translate(-50%, -50%)',
+      containerOpacity: 1,
+      underlayBackdropFilter: `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`,
+    },
+    config: {
+      friction: 75,
+      tension: 550,
+      mass: 5,
+    },
+    ...animationSpringConfig,
+  });
+
   return (
     <>
       {closeButtonAttachment === 'corner' && (
@@ -126,7 +152,14 @@ const Modal = ({
           {...closeButtonProps}
         />
       )}
-      <StyledContainer {...containerProps}>
+      <StyledContainer
+        {...containerProps}
+        style={{
+          transform: containerTransform,
+          opacity: containerOpacity,
+          ...containerStyles,
+        }}
+      >
         {children}
         {closeButtonAttachment !== 'corner' && (
           <StyledCloseButton
@@ -149,6 +182,10 @@ const Modal = ({
         backgroundDarkness={backgroundDarkness}
         onClick={onClickOutside}
         {...underlayProps}
+        style={{
+          backdropFilter: underlayBackdropFilter,
+          ...underlayStyles,
+        }}
       />
     </>
   );

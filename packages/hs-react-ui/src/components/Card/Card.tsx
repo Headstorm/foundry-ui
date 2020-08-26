@@ -173,7 +173,7 @@ const Card = ({
       },
       config: {
         mass: 1,
-        tension: tension,
+        tension,
         friction: 35,
       },
     };
