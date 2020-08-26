@@ -50,7 +50,7 @@ storiesOf('InteractionFeedback', module).add(
       enter: {
         r: `${number(
           'Ending circle radius',
-          75,
+          100,
           { range: true, min: 0, max: 100, step: 1 },
           'Circle radius',
         )}`,

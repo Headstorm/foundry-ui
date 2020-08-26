@@ -41,7 +41,7 @@ const defaultTransitionProps = {
     opacity: 0.5,
   },
   enter: {
-    r: 75,
+    r: 100,
     opacity: 0,
   },
   config: {
