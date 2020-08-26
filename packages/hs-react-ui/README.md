@@ -44,7 +44,7 @@ Peer dependencies:
  - react-spring ^8.0.27
  - styled-components >= 5.1.0
 
-If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). 
+If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). [Storybook](https://storybook.js.org/) is the open source tool we use to demonstrate and document the Foundry UI components. Click the Live Demo link above to view the Foundry components now or checkout the Contributing section below for information about how to run Storybook on your local machine.
 
 ### Install Foundry-UI into a React app
 
@@ -133,8 +133,7 @@ const myColors = {
 // If you were to set ThemedContainer = styled.div, you would lose all the Foundry preset styling.
 
 const ThemedContainer = styled(Card.Container)`
-  border: 0 solid ${myColors.blue};
-  border-width: 0 0 1rem 0;
+  border-bottom: 1rem solid ${myColors.blue};
   border-radius: 1rem;
   overflow: hidden;
   margin: 2rem;
@@ -156,19 +155,12 @@ const ThemedBody = styled(Card.Body)`
   text-align: center;
 `;
 
-const StyledFooter = styled(Card.Footer)`
-  background-color: ${myColors.blue};
-  padding: 1rem;
-  min-height: 1rem;
-`;
-
 function HelloWorld() {
     return (
       <Card
         StyledContainer={ThemedContainer} // Set your overrides for each element
         StyledHeader={StyledHeader}
         StyledBody={ThemedBody}
-        StyledFooter={StyledFooter}
         header={'HELLO'} // Add your content
       >
         World
@@ -186,7 +178,7 @@ See the [Form demo example](https://headstorm.github.io/rasa-ui/?path=/story/for
 
 ### Global styling
 
-See the [Global source code](./src/components/Examples/GlobalStyles.stories.tsx)
+See the [Global styling demo example](https://headstorm.github.io/rasa-ui/?path=/story/global-styles--example) and [Global styling source code](./src/components/Examples/GlobalStyles.stories.tsx)
 
 # Contributing
 
