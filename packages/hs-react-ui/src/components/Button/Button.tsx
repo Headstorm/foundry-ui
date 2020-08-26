@@ -122,6 +122,10 @@ const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
   display: inline-block;
 `;
 
+const StyledFeedbackSVGContainer = styled(InteractionFeedback.SVGContainer)`
+  border-radius: 0.25em;
+`;
+
 const LeftIconContainer = styled(IconContainer)`
   ${({ hasContent }: { hasContent: boolean }) => `
     ${hasContent ? 'margin-right: 1em;' : ''}
@@ -207,6 +211,7 @@ const Button = ({
   return feedbackType === FeedbackTypes.ripple && !disabled ? (
     <InteractionFeedback
       StyledContainer={StyledFeedbackContainer}
+      StyledSVGContainer={StyledFeedbackSVGContainer}
       color={getFontColorFromVariant(variant, containerColor)}
       {...(interactionFeedbackProps || {})}
     >

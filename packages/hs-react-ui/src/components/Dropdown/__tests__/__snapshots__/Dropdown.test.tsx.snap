@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -149,16 +150,17 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  .c6 {
+  .c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -379,16 +381,17 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  .c6 {
+  .c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -525,16 +528,17 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -672,16 +676,17 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -902,16 +907,17 @@ exports[`Dropdown displays all options when focused 1`] = `
 `;
 
 exports[`Dropdown displays placeholder value on initial render 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -1051,16 +1057,17 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 `;
 
 exports[`Dropdown does not display options on initial render 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -1198,16 +1205,17 @@ exports[`Dropdown does not display options on initial render 1`] = `
 `;
 
 exports[`Dropdown renders a value when given a matching option id through props 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -1368,16 +1376,17 @@ exports[`Dropdown renders a value when given a matching option id through props 
 `;
 
 exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c5 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -1504,16 +1513,17 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 `;
 
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -1674,16 +1684,17 @@ exports[`Dropdown renders one value when given two values but only one matches a
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -1852,16 +1863,17 @@ exports[`Dropdown renders two values when given matching option ids through prop
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
@@ -2030,16 +2042,17 @@ exports[`Dropdown renders two values when given matching option ids through prop
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
+  border-radius: 0.25em;
 }
 
 .c0 {
