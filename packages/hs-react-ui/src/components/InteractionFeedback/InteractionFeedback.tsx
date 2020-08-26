@@ -6,15 +6,15 @@ import useResizeObserver from 'use-resize-observer/polyfilled';
 import colors from '../../enums/colors';
 import { SubcomponentPropsType } from '../commonTypes';
 
+const Container = styled(animated.div)`
+  position: relative;
+`;
+
 const SVGContainer = styled.svg`
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
-`;
-
-const Container = styled(animated.div)`
-  position: relative;
 `;
 
 type Animation = { cx: string; cy: string; id: string };
@@ -25,7 +25,7 @@ export type InteractionFeedbackProps = {
   containerProps?: SubcomponentPropsType;
   svgContainerProps?: SubcomponentPropsType;
 
-  children: React.ReactNode;
+  children?: React.ReactNode;
   color?: string;
   interpolationFunctions?: Record<string, (val: any) => any>;
   // TODO add proper type from react-spring
