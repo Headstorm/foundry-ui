@@ -1,5 +1,5 @@
 import React from 'react';
-import { color, number } from '@storybook/addon-knobs';
+import { color, number, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
@@ -17,7 +17,7 @@ storiesOf('InteractionFeedback', module).add(
   () => {
     const entranceOpacity = number(
       'Circle entrance opacity',
-      0.25,
+      0.5,
       {
         range: true,
         min: 0,
@@ -38,15 +38,6 @@ storiesOf('InteractionFeedback', module).add(
       'Circle fill',
     );
     const transitionProps = {
-      enter: {
-        r: `${number(
-          'Maximum circle radius',
-          100,
-          { range: true, min: 0, max: 100, step: 1 },
-          'Circle radius',
-        )}`,
-        opacity: entranceOpacity,
-      },
       from: {
         r: `${number(
           'Starting circle radius',
@@ -56,20 +47,20 @@ storiesOf('InteractionFeedback', module).add(
         )}`,
         opacity: entranceOpacity,
       },
-      leave: {
+      enter: {
         r: `${number(
           'Ending circle radius',
-          0,
+          75,
           { range: true, min: 0, max: 100, step: 1 },
           'Circle radius',
         )}`,
         opacity: exitOpacity,
       },
       config: {
-        mass: number('mass', 1, { range: true, min: 1, max: 10, step: 1 }, 'Circle physics'),
+        mass: number('mass', 10, { range: true, min: 1, max: 100, step: 1 }, 'Circle physics'),
         tension: number(
           'tension',
-          750,
+          500,
           { range: true, min: 50, max: 1000, step: 50 },
           'Circle physics',
         ),
@@ -79,6 +70,7 @@ storiesOf('InteractionFeedback', module).add(
           { range: true, min: 1, max: 100, step: 5 },
           'Circle physics',
         ),
+        clamp: boolean('clamp', true, 'Circle physics'),
       },
     };
 

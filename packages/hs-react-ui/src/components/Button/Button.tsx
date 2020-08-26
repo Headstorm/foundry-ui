@@ -143,7 +143,7 @@ const Button = ({
   isProcessing,
   children,
   elevation = 0,
-  feedbackType = FeedbackTypes.simple,
+  feedbackType = FeedbackTypes.ripple,
   interactionFeedbackProps,
   variant = variants.fill,
   type = ButtonTypes.button,

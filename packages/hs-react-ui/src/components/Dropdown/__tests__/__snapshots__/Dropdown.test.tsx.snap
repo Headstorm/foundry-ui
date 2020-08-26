@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -11,7 +23,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -49,11 +61,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -69,12 +81,12 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -89,45 +101,67 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          data-test-id="hsui-Text"
-        />
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="choosePokemon-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
           />
-        </svg>
-      </div>
-    </button>
+        </div>
+        <div
+          class="c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  .c0 {
+  .c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -137,7 +171,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   z-index: 7;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -178,11 +212,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -198,12 +232,12 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c7 {
   background: white;
   position: absolute;
   top: 100%;
@@ -217,7 +251,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   z-index: 1000;
 }
 
-.c6 {
+.c8 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -231,18 +265,18 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-color: transparent;
 }
 
-.c6:hover {
+.c8:hover {
   background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
-.c6:focus {
+.c8:focus {
   outline: none;
   background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -256,44 +290,54 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
-      class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
-    >
-      <div
-        class="c2"
-        id="choosePokemon-value-item"
-      >
-        <span
-          class="c3"
-          data-test-id="hsui-Text"
-        />
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
     <div
-      class="c5"
+      class="c1"
+    >
+      <button
+        class="c2"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
+      >
+        <div
+          class="c3"
+          id="choosePokemon-value-item"
+        >
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
+          />
+        </div>
+        <div
+          class="c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,15L12,10L17,15H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
+    <div
+      class="c7"
       color="#252c35"
     >
       <div
-        class="c6"
+        class="c8"
         color="#252c35"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
@@ -305,7 +349,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class="c6"
+        class="c8"
         color="#252c35"
         id="choosePokemon-option-charmander"
         tabindex="0"
@@ -317,7 +361,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class="c6"
+        class="c8"
         color="#252c35"
         id="choosePokemon-option-squirtle"
         tabindex="0"
@@ -335,7 +379,19 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  .c0 {
+  .c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
+.c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -345,7 +401,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -383,11 +439,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -403,12 +459,12 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -422,43 +478,65 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          data-test-id="hsui-Text"
-        />
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="choosePokemon-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
           />
-        </svg>
-      </div>
-    </button>
+        </div>
+        <div
+          class="c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </DocumentFragment>
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -469,7 +547,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -507,11 +585,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -527,12 +605,12 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -547,43 +625,65 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          data-test-id="hsui-Text"
-        />
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="choosePokemon-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
           />
-        </svg>
-      </div>
-    </button>
+        </div>
+        <div
+          class="c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -594,7 +694,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   z-index: 7;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -635,11 +735,11 @@ exports[`Dropdown displays all options when focused 1`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -655,12 +755,12 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c7 {
   background: white;
   position: absolute;
   top: 100%;
@@ -674,7 +774,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   z-index: 1000;
 }
 
-.c6 {
+.c8 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -688,18 +788,18 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: transparent;
 }
 
-.c6:hover {
+.c8:hover {
   background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
-.c6:focus {
+.c8:focus {
   outline: none;
   background-color: rgba(0,0,0,0.1);
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -714,44 +814,54 @@ exports[`Dropdown displays all options when focused 1`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
-      class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
-    >
-      <div
-        class="c2"
-        id="choosePokemon-value-item"
-      >
-        <span
-          class="c3"
-          data-test-id="hsui-Text"
-        />
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
     <div
-      class="c5"
+      class="c1"
+    >
+      <button
+        class="c2"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
+      >
+        <div
+          class="c3"
+          id="choosePokemon-value-item"
+        >
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
+          />
+        </div>
+        <div
+          class="c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,15L12,10L17,15H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
+    <div
+      class="c7"
       color="#252c35"
     >
       <div
-        class="c6"
+        class="c8"
         color="#252c35"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
@@ -763,7 +873,7 @@ exports[`Dropdown displays all options when focused 1`] = `
         </span>
       </div>
       <div
-        class="c6"
+        class="c8"
         color="#252c35"
         id="choosePokemon-option-charmander"
         tabindex="0"
@@ -775,7 +885,7 @@ exports[`Dropdown displays all options when focused 1`] = `
         </span>
       </div>
       <div
-        class="c6"
+        class="c8"
         color="#252c35"
         id="choosePokemon-option-squirtle"
         tabindex="0"
@@ -792,6 +902,18 @@ exports[`Dropdown displays all options when focused 1`] = `
 `;
 
 exports[`Dropdown displays placeholder value on initial render 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -802,7 +924,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -840,11 +962,11 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -860,12 +982,12 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -880,45 +1002,67 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          data-test-id="hsui-Text"
+          id="choosePokemon-value-item"
         >
-          Choose a pokemon
-        </span>
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
+          >
+            Choose a pokemon
+          </span>
+        </div>
+        <div
+          class="c5"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown does not display options on initial render 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -929,7 +1073,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -967,11 +1111,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -987,12 +1131,12 @@ exports[`Dropdown does not display options on initial render 1`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   font-size: 1rem;
   color: undefined;
   opacity: 0.8;
@@ -1007,43 +1151,65 @@ exports[`Dropdown does not display options on initial render 1`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          data-test-id="hsui-Text"
-        />
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="choosePokemon-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class="c4"
+            data-test-id="hsui-Text"
           />
-        </svg>
-      </div>
-    </button>
+        </div>
+        <div
+          class="c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders a value when given a matching option id through props 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1054,7 +1220,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1092,11 +1258,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1112,12 +1278,12 @@ exports[`Dropdown renders a value when given a matching option id through props 
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1152,46 +1318,68 @@ exports[`Dropdown renders a value when given a matching option id through props 
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          color="#7c8186"
-          elevation="0"
+          id="choosePokemon-value-item"
         >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Bulbasaur
+          </span>
+        </div>
+        <div
+          class="c5"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
+.c5 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1202,7 +1390,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1240,11 +1428,11 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1260,7 +1448,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
@@ -1274,38 +1462,60 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
-      />
-      <div
-        class="c3"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+        <div
+          class="c3"
+          id="choosePokemon-value-item"
+        />
+        <div
+          class="c4"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c5"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1316,7 +1526,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1354,11 +1564,11 @@ exports[`Dropdown renders one value when given two values but only one matches a
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1374,12 +1584,12 @@ exports[`Dropdown renders one value when given two values but only one matches a
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1414,46 +1624,68 @@ exports[`Dropdown renders one value when given two values but only one matches a
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          color="#7c8186"
-          elevation="0"
+          id="choosePokemon-value-item"
         >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Bulbasaur
+          </span>
+        </div>
+        <div
+          class="c5"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1464,7 +1696,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1502,11 +1734,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1522,12 +1754,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1562,54 +1794,76 @@ exports[`Dropdown renders two values when given matching option ids through prop
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          color="#7c8186"
-          elevation="0"
+          id="choosePokemon-value-item"
         >
-          Bulbasaur
-          ,
-        </span>
-        <span
-          class="c3"
-          color="#7c8186"
-          elevation="0"
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Bulbasaur
+            ,
+          </span>
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Charmander
+          </span>
+        </div>
+        <div
+          class="c5"
         >
-          Charmander
-        </span>
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1620,7 +1874,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1658,11 +1912,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1678,12 +1932,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1718,54 +1972,76 @@ exports[`Dropdown renders two values when given matching option ids through prop
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          color="#7c8186"
-          elevation="0"
+          id="choosePokemon-value-item"
         >
-          Bulbasaur
-          ,
-        </span>
-        <span
-          class="c3"
-          color="#7c8186"
-          elevation="0"
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Bulbasaur
+            ,
+          </span>
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Charmander
+          </span>
+        </div>
+        <div
+          class="c5"
         >
-          Charmander
-        </span>
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
+.c6 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+}
+
 .c0 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1776,7 +2052,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   z-index: 1;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1814,11 +2090,11 @@ exports[`Dropdown selects options from values prop 1`] = `
   padding: .5rem 1rem;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1834,12 +2110,12 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: 3rem;
 }
 
-.c2 {
+.c3 {
   width: 100%;
   text-align: left;
 }
 
-.c3 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1874,49 +2150,59 @@ exports[`Dropdown selects options from values prop 1`] = `
     name="choosePokemon"
     tabindex="0"
   >
-    <button
+    <div
       class="c1"
-      color="#252c35"
-      data-test-id="hsui-button"
-      elevation="0"
-      id="choosePokemon-button-value"
-      type="button"
     >
-      <div
+      <button
         class="c2"
-        id="choosePokemon-value-item"
+        color="#252c35"
+        data-test-id="hsui-button"
+        elevation="0"
+        id="choosePokemon-button-value"
+        type="button"
       >
-        <span
+        <div
           class="c3"
-          color="#7c8186"
-          elevation="0"
+          id="choosePokemon-value-item"
         >
-          Bulbasaur
-          ,
-        </span>
-        <span
-          class="c3"
-          color="#7c8186"
-          elevation="0"
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Bulbasaur
+            ,
+          </span>
+          <span
+            class="c4"
+            color="#7c8186"
+            elevation="0"
+          >
+            Charmander
+          </span>
+        </div>
+        <div
+          class="c5"
         >
-          Charmander
-        </span>
-      </div>
-      <div
-        class="c4"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-    </button>
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+      </button>
+      <svg
+        class="c6"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
   </div>
 </div>
 `;
