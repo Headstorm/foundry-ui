@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.17](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.16...v1.0.0-v1-release.17) (2020-08-26)
+
+
+### Bug Fixes
+
+* **button:** fix feedback position/display superceding buttoncontainer's position/display ([66d3a8f](https://github.com/Headstorm/rasa-ui/commit/66d3a8fcf44a2729304a916cdeb75517db6108b2))
+
 # [1.0.0-v1-release.16](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.15...v1.0.0-v1-release.16) (2020-08-26)
 
 
