@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.16](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.15...v1.0.0-v1-release.16) (2020-08-26)
+
+
+### Features
+
+* **enable ripple on buttons by default:** improved the ripple animation and made it the defualt ([f467dbf](https://github.com/Headstorm/rasa-ui/commit/f467dbf400d7c32bbf730b7d2a5c626655986acb))
+
 # [1.0.0-v1-release.15](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.14...v1.0.0-v1-release.15) (2020-08-26)
 
 
