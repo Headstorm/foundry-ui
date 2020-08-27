@@ -119,15 +119,12 @@ describe('Button', () => {
     expect(loadingFragment.firstChild).toMatchSnapshot();
     expect(loadedFragment.firstChild).toMatchSnapshot();
   });
-
-  it('Should pass accessibility test', async () => {
-    const button = (
-      <Button onClick={() => {}} aria-label="aria-label-test">
-        Enter
-      </Button>
-    );
-    const { container } = render(button);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+  describe('Accessibility Tests', () => {
+    it('Should pass accessibility test with default props', async () => {
+      const component = <Button onClick={() => {}}>Enter</Button>;
+      const { container } = render(component);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
   });
 });
