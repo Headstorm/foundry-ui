@@ -4,6 +4,8 @@ import Icon from '@mdi/react';
 import colors from '../../../enums/colors';
 import variants from '../../../enums/variants';
 import Button from '../Button';
+import { axe, toHaveNoViolations } from 'jest-axe';
+expect.extend(toHaveNoViolations);
 
 configure({ testIdAttribute: 'data-test-id' });
 
@@ -116,5 +118,19 @@ describe('Button', () => {
     //  how to make it use the jest-styled-components plugin
     expect(loadingFragment.firstChild).toMatchSnapshot();
     expect(loadedFragment.firstChild).toMatchSnapshot();
+  });
+
+  it('Should pass accessibility test', async () => {
+    const button = (
+      <Button 
+        onClick={() => {}}
+        aria-label='aria-label-test'
+        >
+          Enter
+        </Button>
+    );
+    const { container } = render(button)
+    const results = await axe(container)
+    expect(results).toHaveNoViolations()
   });
 });
