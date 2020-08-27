@@ -122,15 +122,12 @@ describe('Button', () => {
 
   it('Should pass accessibility test', async () => {
     const button = (
-      <Button 
-        onClick={() => {}}
-        aria-label='aria-label-test'
-        >
-          Enter
-        </Button>
+      <Button onClick={() => {}} aria-label="aria-label-test">
+        Enter
+      </Button>
     );
-    const { container } = render(button)
-    const results = await axe(container)
-    expect(results).toHaveNoViolations()
+    const { container } = render(button);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
