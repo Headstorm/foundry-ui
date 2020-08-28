@@ -15,13 +15,14 @@ At of the time this writing, Foundry is new and launching with a fully supported
 [![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui) 
 ![npm](https://img.shields.io/npm/dw/@headstorm/hs-react-ui)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@headstorm/hs-react-ui)
-![NPM](https://img.shields.io/npm/l/@headstorm/hs-react-ui)
+![license](https://img.shields.io/npm/l/@headstorm/hs-react-ui)
+![a11y](https://img.shields.io/badge/a11y%20tested-%e2%99%bf-blue)
 
 ![Foundry UI CI/CD](https://github.com/Headstorm/rasa-ui/workflows/Foundry%20UI%20CI/CD/badge.svg)
-[![Coverage Branch](./coverage/badge-branches.svg)](./coverage)
-[![Coverage Branch](./coverage/badge-functions.svg)](./coverage)
-[![Coverage Branch](./coverage/badge-lines.svg)](./coverage)
-[![Coverage Branch](./coverage/badge-statements.svg)](./coverage)
+[![Coverage Branches](./coverage/badge-branches.svg)](./coverage)
+[![Coverage Functions](./coverage/badge-functions.svg)](./coverage)
+[![Coverage Lines](./coverage/badge-lines.svg)](./coverage)
+[![Coverage Statements](./coverage/badge-statements.svg)](./coverage)
 
 ### 🔥 [Live Demo](https://headstorm.github.io/rasa-ui/)
 
