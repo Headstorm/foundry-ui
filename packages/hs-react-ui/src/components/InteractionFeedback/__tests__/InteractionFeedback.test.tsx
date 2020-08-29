@@ -29,7 +29,11 @@ const transitionProps = {
 describe('InteractionFeedback', () => {
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
-      const component = <InteractionFeedback><div>test</div></InteractionFeedback>;
+      const component = (
+        <InteractionFeedback>
+          <div>test</div>
+        </InteractionFeedback>
+      );
       const { container } = render(component);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -38,7 +42,9 @@ describe('InteractionFeedback', () => {
 
   it('Shows InteractionFeedback with default props', async () => {
     const { container, getByTestId } = render(
-      <InteractionFeedback containerProps ={{ 'data-test-id': testId }} ><div>test</div></InteractionFeedback> 
+      <InteractionFeedback containerProps={{ 'data-test-id': testId }}>
+        <div>test</div>
+      </InteractionFeedback>,
     );
     await waitFor(() => getByTestId(testId));
     fireEvent.mouseDown(getByTestId(testId));
@@ -47,7 +53,14 @@ describe('InteractionFeedback', () => {
 
   it('onMousedown handler is called on click event ', async () => {
     const spy = jest.fn();
-    const { getByTestId } = render(<InteractionFeedback transitionProps={transitionProps} containerProps ={{ 'data-test-id': testId, onMouseDown: spy }} ><div>test</div></InteractionFeedback> );
+    const { getByTestId } = render(
+      <InteractionFeedback
+        transitionProps={transitionProps}
+        containerProps={{ 'data-test-id': testId, onMouseDown: spy }}
+      >
+        <div>test</div>
+      </InteractionFeedback>,
+    );
     await waitFor(() => getByTestId(testId));
     fireEvent.mouseDown(getByTestId(testId));
     expect(spy).toHaveBeenCalled();

@@ -22,7 +22,7 @@ describe('Card', () => {
 
   it('shows Card with default props', async () => {
     const { container, getByTestId } = render(
-      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} />,
+      <Card onClick={() => {}} containerProps={{ 'data-test-id': testId }} />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('Card', () => {
 
   it('shows Card with non-default elevation', async () => {
     const { container, getByTestId } = render(
-      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} elevation={3}/>,
+      <Card onClick={() => {}} containerProps={{ 'data-test-id': testId }} elevation={3} />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
@@ -38,7 +38,11 @@ describe('Card', () => {
 
   it('shows Card with default feedback', async () => {
     const { container, getByTestId } = render(
-      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} disableFeedback={true} />,
+      <Card
+        onClick={() => {}}
+        containerProps={{ 'data-test-id': testId }}
+        disableFeedback={true}
+      />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
@@ -46,7 +50,12 @@ describe('Card', () => {
 
   it('shows Card with non-default feedback', async () => {
     const { container, getByTestId } = render(
-      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} disableFeedback={true} feedbackType={FeedbackTypes.simple} />,
+      <Card
+        onClick={() => {}}
+        containerProps={{ 'data-test-id': testId }}
+        disableFeedback={true}
+        feedbackType={FeedbackTypes.simple}
+      />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
