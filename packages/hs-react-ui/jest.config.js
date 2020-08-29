@@ -25,6 +25,7 @@ module.exports = {
     '!src/**/*.stories.{js,jsx,ts,tsx}',
     '!src/**/index.{ts,js}',
     '!src/**/Examples/**',
+    '!src/serviceWorker.ts',
   ],
 
   // The directory where Jest should output its coverage files
@@ -38,6 +39,7 @@ module.exports = {
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: [
     'json-summary',
+     'html',
   //   'text',
   //   'lcov',
   //   'clover'

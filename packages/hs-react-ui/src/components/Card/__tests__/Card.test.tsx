@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { render, configure } from '@testing-library/react';
+import { render, waitFor, configure } from '@testing-library/react';
 import Card, { Body } from '../Card';
+import FeedbackTypes from '../../../enums/feedbackTypes';
 import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations);
 
@@ -12,10 +13,42 @@ const testId = 'foundry-card';
 describe('Card', () => {
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
-      const component = <Card onClick={() => {}} aria-label="aria-label-test"></Card>;
+      const component = <Card onClick={() => {}} aria-label="aria-label-test" />;
       const { container } = render(component);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
+  });
+
+  it('shows Card with default props', async () => {
+    const { container, getByTestId } = render(
+      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('shows Card with non-default elevation', async () => {
+    const { container, getByTestId } = render(
+      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} elevation={3}/>,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('shows Card with default feedback', async () => {
+    const { container, getByTestId } = render(
+      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} disableFeedback={true} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('shows Card with non-default feedback', async () => {
+    const { container, getByTestId } = render(
+      <Card onClick={() => {}} containerProps ={{ 'data-test-id': testId }} disableFeedback={true} feedbackType={FeedbackTypes.simple} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
   });
 });
