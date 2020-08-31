@@ -55,7 +55,7 @@ export const Header = styled(Div)`
     const { colors } = useTheme();
 
     return `
-      padding: 1.5rem 1.5rem ${(!hasContent && !hasFooter) ? '1.5rem' : '0rem'};
+      padding: 1.5rem 1.5rem ${!hasContent && !hasFooter ? '1.5rem' : '0rem'};
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${colors.grayDark};
