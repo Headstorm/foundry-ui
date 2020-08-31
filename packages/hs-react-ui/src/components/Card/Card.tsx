@@ -51,11 +51,11 @@ export const CardContainer = styled(Div)`
 `;
 
 export const Header = styled(Div)`
-  ${() => {
+  ${({ hasContent, hasFooter }) => {
     const { colors } = useTheme();
 
     return `
-      padding: 1.5rem 1.5rem 0rem;
+      padding: 1.5rem 1.5rem ${(!hasContent && !hasFooter) ? '1.5rem' : '0rem'};
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${colors.grayDark};
@@ -144,6 +144,10 @@ const Card = ({
   disableFeedback,
   feedbackType = FeedbackTypes.ripple,
 }: CardProps): JSX.Element | null => {
+  const hasContent = Boolean(children);
+  const hasFooter = Boolean(footer);
+  // eslint-disable-next-line no-param-reassign
+  headerProps = { ...headerProps, hasContent, hasFooter };
   const { colors } = useTheme();
   // get the bounding box of the card so that we can set it's width to r
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
