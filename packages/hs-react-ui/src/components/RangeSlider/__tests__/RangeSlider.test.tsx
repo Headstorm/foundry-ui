@@ -17,6 +17,25 @@ describe('RangeSlider', () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it('renders', async () => {
+    const { container, getByTestId } = render(
+      <RangeSlider values={[3]} markers={[3]} min={0} max={10} testId="unit-test" />,
+    );
+
+    await waitFor(() => getByTestId(testId));
+    fireEvent.mouseDown(getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  // it('Fire handler on click event ', async () => {
+  //   const spy = jest.fn();
+  //   const { getByTestId } = render(<RangeSlider slideRailProps={{onMouseDown: spy}} min={0} max={10} testId="unit-test" />);
+  //   await waitFor(() => getByTestId(testId));
+  //   fireEvent.mouseDown(getByTestId(testId));
+  //   expect(spy).toHaveBeenCalled();
+  // });
+
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
       const component = <RangeSlider min={0} max={10} testId={testId} />;
