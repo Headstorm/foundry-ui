@@ -190,9 +190,21 @@ const Card = ({
           disableFeedback={disableFeedback || onClick === defaultOnClick}
           {...containerProps}
         >
-          {header && <StyledHeader hasBody={hasBody} hasFooter={hasFooter} {...headerProps}>{header}</StyledHeader>}
-          {children && <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} {...bodyProps}>{children}</StyledBody>}
-          {footer && <StyledFooter hasHeader={hasHeader} hasBody={hasBody} {...footerProps}>{footer}</StyledFooter>}
+          {header && (
+            <StyledHeader hasBody={hasBody} hasFooter={hasFooter} {...headerProps}>
+              {header}
+            </StyledHeader>
+          )}
+          {children && (
+            <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} {...bodyProps}>
+              {children}
+            </StyledBody>
+          )}
+          {footer && (
+            <StyledFooter hasHeader={hasHeader} hasBody={hasBody} {...footerProps}>
+              {footer}
+            </StyledFooter>
+          )}
         </StyledContainer>
       </InteractionFeedback>
     );
