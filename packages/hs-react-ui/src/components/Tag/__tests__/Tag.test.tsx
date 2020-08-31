@@ -5,7 +5,9 @@ import colors from '../../../enums/colors';
 import variants from '../../../enums/variants';
 import Tag from '../Tag';
 import { mdiComment } from '@mdi/js';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
+expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
 
 describe('Tag', () => {
@@ -142,5 +144,13 @@ describe('Tag', () => {
     // how to make it use the jest-styled-components plugin
     expect(loadingFragment.firstChild).toMatchSnapshot();
     expect(loadedFragment.firstChild).toMatchSnapshot();
+  });
+  describe('Accessibility Tests', () => {
+    it('Should pass accessibility test with default props', async () => {
+      const component = <Tag></Tag>;
+      const { container } = render(component);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
   });
 });

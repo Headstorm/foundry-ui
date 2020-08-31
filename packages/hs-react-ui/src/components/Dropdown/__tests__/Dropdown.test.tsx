@@ -1,7 +1,9 @@
 import React from 'react';
 import { render, fireEvent, waitFor, act, configure } from '@testing-library/react';
 import Dropdown from '../Dropdown';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
+expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
 
 const pokeOptions = [
@@ -229,5 +231,19 @@ describe('Dropdown', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+  describe('Accessibility Tests', () => {
+    it('Should pass accessibility test with default props', async () => {
+      const component = (
+        <Dropdown
+          name="name"
+          onSelect={() => {}}
+          valueItemProps={{ 'aria-label': 'aria-label-test' }}
+        ></Dropdown>
+      );
+      const { container } = render(component);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
   });
 });

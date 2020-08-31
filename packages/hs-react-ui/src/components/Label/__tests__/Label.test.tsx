@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
 import Label from '../Label';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('Label', () => {
   it('should have text be colorInvalid if given a isValid prop of false', () => {
@@ -30,5 +32,13 @@ describe('Label', () => {
     const container = render(<Label labelText="Test text" isRequired={true} />);
 
     expect(container).toMatchSnapshot();
+  });
+  describe('Accessibility Tests', () => {
+    it('Should pass accessibility test with default props', async () => {
+      const component = <Label></Label>;
+      const { container } = render(component);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
   });
 });
