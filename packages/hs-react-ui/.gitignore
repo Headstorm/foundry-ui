@@ -16,11 +16,12 @@
 .env.production.local
 /.idea
 
-coverage/
-!coverage/badge-branches.svg
-!coverage/badge-functions.svg
-!coverage/badge-lines.svg
-!coverage/badge-statements.svg
+# Ignore most coverage files aside from badges and coverage summary
+coverage/**/*.html
+coverage/**/*.js
+coverage/**/*.css
+coverage/**/*.png
+!coverage/*badge*.svg
 
 package-lock.json
 npm-debug.log*
