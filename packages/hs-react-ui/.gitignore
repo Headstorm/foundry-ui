@@ -22,6 +22,7 @@ coverage/**/*.js
 coverage/**/*.css
 coverage/**/*.png
 !coverage/*badge*.svg
+!coverage/coverage-summary.json
 
 package-lock.json
 npm-debug.log*
