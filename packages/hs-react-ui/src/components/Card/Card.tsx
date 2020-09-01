@@ -1,7 +1,5 @@
 import React, { ReactNode, MouseEvent } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
-import useMeasure from 'react-use-measure';
-import { ResizeObserver } from '@juggle/resize-observer';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
@@ -14,36 +12,43 @@ import InteractionFeedback, {
 } from '../InteractionFeedback/InteractionFeedback';
 import FeedbackTypes from '../../enums/feedbackTypes';
 
+const defaultOnClick = () => {};
+
 export type CardContainerProps = {
   elevation: number;
   feedbackType: FeedbackTypes;
-  disableFeedback: boolean;
+  onClick: (evt: MouseEvent) => void;
 };
 
 export const CardContainer = styled(Div)`
-  ${({ elevation, feedbackType, disableFeedback }: CardContainerProps) => {
+  ${({ elevation, feedbackType, onClick }: CardContainerProps) => {
     const { colors } = useTheme();
 
     return `
+      ${onClick !== defaultOnClick ? 'cursor: pointer;' : ''}
       display: inline-flex;
       flex-flow: column nowrap;
       font-size: 1rem;
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
-      transition: filter ${timings.slow}, box-shadow ${timings.slow}, border ${timings.normal};
+      transition:
+        filter ${timings.slow},
+        box-shadow ${timings.slow},
+        border ${timings.normal},
+        background-color ${timings.normal};
       ${getShadowStyle(elevation, colors.shadow)}
       background-color: ${colors.background};
       ${
-        feedbackType === FeedbackTypes.simple && !disableFeedback
+        feedbackType === FeedbackTypes.simple && onClick !== defaultOnClick
           ? `
-      &:active {
-        background-color: ${
-          colors.background !== 'transparent'
-            ? darken(0.1, colors.background)
-            : 'rgba(0, 0, 0, 0.1)'
-        };
-      }
-    `
+            &:active {
+              background-color: ${
+                colors.background !== 'transparent'
+                  ? darken(0.1, colors.background)
+                  : 'rgba(0, 0, 0, 0.1)'
+              };
+            }
+          `
           : ''
       }
   `;
@@ -97,6 +102,14 @@ export const Footer = styled(Div)`
   }}
 `;
 
+const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+`;
+
 export interface CardProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
@@ -120,8 +133,6 @@ export interface CardProps {
   feedbackType?: FeedbackTypes;
 }
 
-const defaultOnClick = () => {};
-
 const Card = ({
   StyledContainer = CardContainer,
   StyledHeader = Header,
@@ -141,70 +152,34 @@ const Card = ({
   footer,
 
   elevation = 1,
-  disableFeedback,
   feedbackType = FeedbackTypes.ripple,
 }: CardProps): JSX.Element | null => {
-  const { colors } = useTheme();
-  // get the bounding box of the card so that we can set it's width to r
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const [ref, cardBounds] = useMeasure({ polyfill: ResizeObserver });
+  const transitionProps = {
+    ...InteractionFeedback.defaultTransitionProps,
+    enter: {
+      ...InteractionFeedback.defaultTransitionProps,
+      r: 300,
+    },
+  };
 
-  if (!disableFeedback && feedbackType !== FeedbackTypes.simple && onClick !== defaultOnClick) {
-    // 5% larger than the width to account for the circle to cover the entire card
-    const feedbackRadius = cardBounds.width * 1.05;
-    const feedbackRatio = feedbackRadius / 100; // 100 is the default r
-    const tension = (750 / feedbackRatio) * 2; // 750 is the default tension, x2 makes it look a little quicker over large cards
-    const transitionProps = {
-      from: {
-        r: 0,
-        opacity: 0.25,
-        fill: colors.grayLight,
-      },
-      enter: {
-        r: feedbackRadius,
-        opacity: 0.25,
-        fill: colors.grayLight,
-      },
-      leave: {
-        r: 0,
-        opacity: 0,
-        fill: colors.grayLight,
-      },
-      config: {
-        mass: 1,
-        tension,
-        friction: 35,
-      },
-    };
-    return (
-      <InteractionFeedback transitionProps={transitionProps} {...interactionFeedbackProps}>
-        <StyledContainer
-          ref={ref}
-          onClick={onClick}
-          elevation={elevation}
-          feedbackType={feedbackType}
-          disableFeedback={disableFeedback || onClick === defaultOnClick}
-          {...containerProps}
-        >
-          {header && <StyledHeader {...headerProps}>{header}</StyledHeader>}
-          {children && <StyledBody {...bodyProps}>{children}</StyledBody>}
-          {footer && <StyledFooter {...footerProps}>{footer}</StyledFooter>}
-        </StyledContainer>
-      </InteractionFeedback>
-    );
-  }
   return (
     <StyledContainer
       onClick={onClick}
       elevation={elevation}
       feedbackType={feedbackType}
-      disableFeedback={disableFeedback || onClick === defaultOnClick}
       {...containerProps}
     >
       {header && <StyledHeader {...headerProps}>{header}</StyledHeader>}
       {children && <StyledBody {...bodyProps}>{children}</StyledBody>}
       {footer && <StyledFooter {...footerProps}>{footer}</StyledFooter>}
+      {feedbackType !== FeedbackTypes.simple && onClick !== defaultOnClick && (
+        <InteractionFeedback
+          color="rgba(0,0,0,0.1)"
+          transitionProps={transitionProps}
+          StyledContainer={StyledFeedbackContainer}
+          {...interactionFeedbackProps}
+        />
+      )}
     </StyledContainer>
   );
 };
