@@ -16,7 +16,13 @@
 .env.production.local
 /.idea
 
-coverage
+# Ignore most coverage files aside from badges and coverage summary
+coverage/**/*.html
+coverage/**/*.js
+coverage/**/*.css
+coverage/**/*.png
+!coverage/*badge*.svg
+!coverage/coverage-summary.json
 
 package-lock.json
 npm-debug.log*

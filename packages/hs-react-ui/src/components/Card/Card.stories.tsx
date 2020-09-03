@@ -26,8 +26,7 @@ storiesOf('Card', module)
           header={text('header', 'Card title')}
           footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
           elevation={number('elevation', 2, { range: true, min: -5, max: 5, step: 1 })}
-          onClick={action('onClick')}
-          disableFeedback={boolean('disableFeedback', false)}
+          onClick={boolean('onClick', true) ? action('onClick') : undefined}
           feedbackType={select('feedbackType', feedbackTypes, feedbackTypes.ripple)}
         >
           {text(
@@ -90,7 +89,7 @@ storiesOf('Card', module)
         footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
         elevation={number('elevation', 0, { range: true, min: -5, max: 5, step: 1 })}
         onClick={action('onClick')}
-        disableFeedback={boolean('disableFeedback', true)}
+        feedbackType={select('feedbackType', feedbackTypes, feedbackTypes.ripple)}
       >
         {text(
           'children',

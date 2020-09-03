@@ -38,24 +38,83 @@ describe('Card', () => {
 
   it('shows Card with default feedback', async () => {
     const { container, getByTestId } = render(
+      <Card onClick={() => {}} containerProps={{ 'data-test-id': testId }} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('shows Card with simple feedback and no onClick', async () => {
+    const { container, getByTestId } = render(
+      <Card containerProps={{ 'data-test-id': testId }} feedbackType={FeedbackTypes.simple} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('shows Card with ripple feedback and no onClick', async () => {
+    const { container, getByTestId } = render(
+      <Card containerProps={{ 'data-test-id': testId }} feedbackType={FeedbackTypes.ripple} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('shows Card with simple feedback with onClick', async () => {
+    const { container, getByTestId } = render(
       <Card
-        onClick={() => {}}
+        onClick={() => null}
         containerProps={{ 'data-test-id': testId }}
-        disableFeedback={true}
+        feedbackType={FeedbackTypes.simple}
       />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
   });
 
-  it('shows Card with non-default feedback', async () => {
+  it('shows Card with ripple feedback with onClick', async () => {
     const { container, getByTestId } = render(
       <Card
-        onClick={() => {}}
+        onClick={() => null}
         containerProps={{ 'data-test-id': testId }}
-        disableFeedback={true}
-        feedbackType={FeedbackTypes.simple}
+        feedbackType={FeedbackTypes.ripple}
       />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+  it('header bottom padding should be 1.5rem without body and footer', async () => {
+    const { container, getByTestId } = render(
+      <Card
+        onClick={() => null}
+        containerProps={{ 'data-test-id': testId }}
+        header='Header'
+      />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+  it('header bottom padding should be 0rem when body is present', async () => {
+    const { container, getByTestId } = render(
+      <Card
+        onClick={() => null}
+        containerProps={{ 'data-test-id': testId }}
+        header='Header'
+      >
+        Body
+      </Card>,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(container).toMatchSnapshot();
+  });
+  it('header bottom padding should be 0rem when footer is present', async () => {
+    const { container, getByTestId } = render(
+      <Card
+        onClick={() => null}
+        containerProps={{ 'data-test-id': testId }}
+        header='Header'
+        footer='Footer'
+      />
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();

@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.19](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.18...v1.0.0-v1-release.19) (2020-09-01)
+
+
+### Features
+
+* **card:** streamline Card Feedback API and DOM structure ([dc7535b](https://github.com/Headstorm/rasa-ui/commit/dc7535bd1306f92e284e00d848677c07ceabdd89))
+
 # [1.0.0-v1-release.18](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.17...v1.0.0-v1-release.18) (2020-08-26)
 
 
