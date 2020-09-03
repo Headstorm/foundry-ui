@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card header bottom padding should be 0.0rem when body is present 1`] = `
+exports[`Card header bottom padding should be 0rem when body is present 1`] = `
 .c4 {
   pointer-events: none;
   position: absolute;
@@ -78,7 +78,7 @@ exports[`Card header bottom padding should be 0.0rem when body is present 1`] = 
 </div>
 `;
 
-exports[`Card header bottom padding should be 0.0rem when footer is present 1`] = `
+exports[`Card header bottom padding should be 0rem when footer is present 1`] = `
 .c4 {
   pointer-events: none;
   position: absolute;
@@ -168,7 +168,7 @@ exports[`Card header bottom padding should be 0.0rem when footer is present 1`] 
 </div>
 `;
 
-exports[`Card header bottom padding should be 1.25rem without body and footer 1`] = `
+exports[`Card header bottom padding should be 1.5rem without body and footer 1`] = `
 .c3 {
   pointer-events: none;
   position: absolute;
@@ -196,7 +196,7 @@ exports[`Card header bottom padding should be 1.25rem without body and footer 1`
 }
 
 .c1 {
-  padding: 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
   color: #252c35;

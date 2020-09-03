@@ -172,9 +172,21 @@ const Card = ({
       feedbackType={feedbackType}
       {...containerProps}
     >
-      {header && <StyledHeader hasBody={hasBody} hasFooter={hasFooter} {...headerProps}>{header}</StyledHeader>}
-      {children && <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} {...bodyProps}>{children}</StyledBody>}
-      {footer && <StyledFooter hasHeader={hasHeader} hasBody={hasBody} {...footerProps}>{footer}</StyledFooter>}
+      {header && (
+        <StyledHeader hasBody={hasBody} hasFooter={hasFooter} {...headerProps}>
+          {header}
+        </StyledHeader>
+      )}
+      {children && (
+        <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} {...bodyProps}>
+          {children}
+        </StyledBody>
+      )}
+      {footer && (
+        <StyledFooter hasHeader={hasHeader} hasBody={hasBody} {...footerProps}>
+          {footer}
+        </StyledFooter>
+      )}
       {feedbackType !== FeedbackTypes.simple && onClick !== defaultOnClick && (
         <InteractionFeedback
           color="rgba(0,0,0,0.1)"

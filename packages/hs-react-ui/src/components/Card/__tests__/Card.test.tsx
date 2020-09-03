@@ -85,22 +85,14 @@ describe('Card', () => {
   });
   it('header bottom padding should be 1.5rem without body and footer', async () => {
     const { container, getByTestId } = render(
-      <Card
-        onClick={() => null}
-        containerProps={{ 'data-test-id': testId }}
-        header='Header'
-      />,
+      <Card onClick={() => null} containerProps={{ 'data-test-id': testId }} header="Header" />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
   });
   it('header bottom padding should be 0rem when body is present', async () => {
     const { container, getByTestId } = render(
-      <Card
-        onClick={() => null}
-        containerProps={{ 'data-test-id': testId }}
-        header='Header'
-      >
+      <Card onClick={() => null} containerProps={{ 'data-test-id': testId }} header="Header">
         Body
       </Card>,
     );
@@ -112,9 +104,9 @@ describe('Card', () => {
       <Card
         onClick={() => null}
         containerProps={{ 'data-test-id': testId }}
-        header='Header'
-        footer='Footer'
-      />
+        header="Header"
+        footer="Footer"
+      />,
     );
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
