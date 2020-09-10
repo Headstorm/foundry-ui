@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating shows Rating with default props 1`] = `
+.c0 {
+  font-size: 1em;
+  border-radius: 0.25em;
+  outline: 0 none;
+  border: 0 none;
+  background-color: undefined;
+  color: undefined;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  font-size: 1em;
+  border-radius: 0.25em;
+  outline: 0 none;
+  border: 0 none;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  padding: 16px 8px;
+  background-color: undefined;
+  background-clip: text;
+  color: undefined;
+}
+
+.c2 {
+  padding: 16px 8px;
+  opacity: 50%;
+  -webkit-filter: saturate(0);
+  filter: saturate(0);
+}
+
+.c2:hover,
+.c2:hover ~ div {
+  mix-blend-mode: multiply;
+  color: undefined;
+  opacity: 100%;
+  -webkit-filter: saturate(1);
+  filter: saturate(1);
+}
+
+<div>
+  <span
+    class="c0"
+  >
+    <span
+      class="c1"
+      color="#7c8186"
+      data-test-id="foundry-rating"
+      id="rating-container"
+      value="1"
+    >
+      <div
+        class="c2"
+        id="5"
+      >
+        <svg
+          role="presentation"
+          style="width: 2rem; height: 2rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c2"
+        id="4"
+      >
+        <svg
+          role="presentation"
+          style="width: 2rem; height: 2rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c2"
+        id="3"
+      >
+        <svg
+          role="presentation"
+          style="width: 2rem; height: 2rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c2"
+        id="2"
+      >
+        <svg
+          role="presentation"
+          style="width: 2rem; height: 2rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <span
+        class="c3"
+        id="1"
+      >
+        <svg
+          role="presentation"
+          style="width: 2rem; height: 2rem;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </span>
+    </span>
+  </span>
+</div>
+`;
