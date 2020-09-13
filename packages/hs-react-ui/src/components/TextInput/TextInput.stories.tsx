@@ -95,7 +95,8 @@ storiesOf('TextInput', module)
       );
     },
     { design },
-  ).add(
+  )
+  .add(
     'Uncontrolled Text Input',
     () => {
       const options = {
@@ -109,10 +110,6 @@ storiesOf('TextInput', module)
       }, []);
       const onDebounceCallback = useCallback(event => {
         action('onDebounceCallback')(event.target.value);
-      }, []);
-      const onClearCallback = useCallback(() => {
-        setInputValue('');
-        action('onClear')();
       }, []);
       const onFocusCallback = useCallback(event => {
         action('onFocusCallback')(event.target.value);
@@ -147,7 +144,6 @@ storiesOf('TextInput', module)
           debouncedOnChange={onDebounceCallback}
           disabled={boolean('disabled', false, generalGroup)}
           placeholder={text('placeholder', 'Placeholder', generalGroup)}
-          onClear={boolean('clearable', false, generalGroup) ? onClearCallback : undefined}
           iconPrefix={select('iconPrefix', options, options.none, generalGroup)}
           isMultiline={boolean('isMultiline?', false, multilineGroup)}
           rows={number('rows', 0, undefined, multilineGroup)}
