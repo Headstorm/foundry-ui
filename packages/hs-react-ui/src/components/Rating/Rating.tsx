@@ -11,29 +11,22 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { Div, Span } from '../../htmlElements';
-import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
+import { getFontColorFromVariant, getBackgroundColorFromVariant, disabledStyles } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
-import { disabledStyles } from '../../utils/color';
 
 export type RatingContainerProps = {
   elevation: number;
   color: string;
   variant: variants;
-  type: string;
   disabled: boolean;
 };
 
-export type rankProps = {
-  hasContent: boolean;
-  position: number;
-};
 
 export type RatingProps = {
   value?: number;
   max?: number;
   onClick: (...args: any[]) => void;
-  children?: ReactNode;
   disabled?: boolean;
   elevation?: number;
   variant?: variants;
