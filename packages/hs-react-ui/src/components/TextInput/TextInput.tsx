@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   SyntheticEvent,
   useCallback,
+  useState,
   TextareaHTMLAttributes,
   InputHTMLAttributes,
 } from 'react';
@@ -144,7 +145,6 @@ const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-e
 
 const TextInput = ({
   // Destructure native HTML attributes to provide default values
-  defaultValue = '',
   type = 'text',
   disabled = false,
   cols = 10,
@@ -152,6 +152,7 @@ const TextInput = ({
 
   debouncedOnChange = defaultCallback,
   onClear,
+  onChange,
   iconPrefix,
   isValid = true,
   isMultiline,
@@ -186,13 +187,12 @@ const TextInput = ({
   } else if (isMultiline) {
     InputComponent = TextAreaInputContainer;
   }
-  const displayValue = nativeHTMLAttributes.value || defaultValue;
+  const [displayValue, setDisplayValue] = useState(nativeHTMLAttributes.value || '');
 
   return (
     <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
-        value={displayValue}
         type={type}
         disabled={disabled}
         cols={cols}
@@ -204,8 +204,9 @@ const TextInput = ({
               ? e.target.value
               : e.target.value.slice(0, maxLength);
           }
-          if (nativeHTMLAttributes.onChange) {
-            nativeHTMLAttributes.onChange(e);
+          setDisplayValue(e.target.value);
+          if (onChange) {
+            onChange(e);
           }
           debouncedChange(e);
         }}
