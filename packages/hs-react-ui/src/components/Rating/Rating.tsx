@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import UnstyledIcon from '@mdi/react';
 import {
   mdiStar,
@@ -11,7 +11,11 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { Div, Span } from '../../htmlElements';
-import { getFontColorFromVariant, getBackgroundColorFromVariant, disabledStyles } from '../../utils/color';
+import {
+  getFontColorFromVariant,
+  getBackgroundColorFromVariant,
+  disabledStyles,
+} from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 
@@ -21,7 +25,6 @@ export type RatingContainerProps = {
   variant: variants;
   disabled: boolean;
 };
-
 
 export type RatingProps = {
   value?: number;
