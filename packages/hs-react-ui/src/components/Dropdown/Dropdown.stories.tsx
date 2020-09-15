@@ -11,6 +11,7 @@ import Dropdown, { OptionProps } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
 import { colors } from '../../index';
+import styled from 'styled-components';
 
 const design = {
   type: 'figma',
@@ -72,12 +73,16 @@ const teaOptions = [
   },
 ];
 
+const StyledPlaceHolder = styled.span`
+  color: blue;
+`;
+
 storiesOf('Dropdown', module)
   .addParameters({ component: Dropdown })
   .add(
     'Basic',
     () => {
-      const [values, setValues] = useState<(string | number)[] | undefined>([cities[0].id]);
+      const [values, setValues] = useState<(string | number)[] | undefined>();
       return (
         <>
           <Label labelText="City" htmlFor="cities-list">
@@ -98,6 +103,7 @@ storiesOf('Dropdown', module)
               optionsVariant={select('optionsVariant', variants, variants.outline)}
               valueVariant={select('valueVariant', variants, variants.text)}
               values={values}
+              StyledPlaceholder={StyledPlaceHolder}
             />
           </Label>
         </>

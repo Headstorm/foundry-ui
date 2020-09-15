@@ -74,6 +74,7 @@ const ValueIconContainer = styled(Div)`
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
 const CloseIconContainer = styled(Div)`
   height: 1.125rem;
+  z-index: 1;
 `;
 
 const ValueItem = styled(Div)`
