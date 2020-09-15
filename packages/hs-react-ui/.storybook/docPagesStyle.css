@@ -1,0 +1,11 @@
+.docblock-propstable th:first-of-type {
+    width: 20%;
+}
+
+.docblock-propstable th:nth-of-type(2) {
+    width: 20%;
+}
+
+.docblock-propstable th:last-of-type {
+    width: 60% !important;
+}
