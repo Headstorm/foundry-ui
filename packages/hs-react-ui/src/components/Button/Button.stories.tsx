@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { boolean, color, number, select, text } from '@storybook/addon-knobs';
 import { mdiMessage, mdiSend } from '@mdi/js';
@@ -20,6 +21,15 @@ const design = {
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
 };
 
+const StyledIconContainer = styled.div`
+  z-index: 1;
+  margin-left: 1em;
+  transition: all 0.5s ease;
+  &:hover {
+    transform: rotate(180deg);
+  }
+`;
+
 storiesOf('Button', module)
   .addParameters({ component: Button })
   .add(
@@ -37,6 +47,7 @@ storiesOf('Button', module)
           isProcessing={boolean('isProcessing', false)}
           iconPrefix={select('iconPrefix', options, options.none)}
           iconSuffix={select('iconSuffix', options, options.none)}
+          StyledRightIconContainer={StyledIconContainer}
         >
           {text('children', 'Default text')}
         </Button>
