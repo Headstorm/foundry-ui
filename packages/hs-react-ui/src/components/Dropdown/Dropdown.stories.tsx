@@ -73,6 +73,10 @@ const teaOptions = [
   },
 ];
 
+const StyledPlaceholder = styled(Dropdown.Placeholder)`
+  color: ${colors.primary};
+`;
+
 storiesOf('Dropdown', module)
   .addParameters({ component: Dropdown })
   .add(
@@ -99,6 +103,7 @@ storiesOf('Dropdown', module)
               optionsVariant={select('optionsVariant', variants, variants.outline)}
               valueVariant={select('valueVariant', variants, variants.text)}
               values={values}
+              StyledPlaceholder={StyledPlaceholder}
             />
           </Label>
         </>

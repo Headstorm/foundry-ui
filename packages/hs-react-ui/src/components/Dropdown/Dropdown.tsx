@@ -497,6 +497,6 @@ Dropdown.OptionsContainer = OptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
-Dropdown.Placeholder = Text;
+Dropdown.Placeholder = PlaceholderContainer;
 
 export default Dropdown;
