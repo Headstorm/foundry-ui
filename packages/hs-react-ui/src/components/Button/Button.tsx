@@ -135,13 +135,13 @@ const StyledFeedbackSVGContainer = styled(InteractionFeedback.SVGContainer)`
 
 const LeftIconContainer = styled(IconContainer)`
   ${({ hasContent }: { hasContent: boolean }) => `
-    ${hasContent ? 'margin-right: 1em;' : ''}
+    ${hasContent ? 'margin-right: 0.75em;' : ''}
   `}
 `;
 
 const RightIconContainer = styled(IconContainer)`
   ${({ hasContent }: { hasContent: boolean }) => `
-    ${hasContent ? 'margin-left: 1em;' : ''}
+    ${hasContent ? 'margin-left: 0.75em;' : ''}
   `}
 `;
 
