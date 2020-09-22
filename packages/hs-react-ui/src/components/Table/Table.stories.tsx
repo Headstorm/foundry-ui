@@ -139,10 +139,11 @@ storiesOf('Table', module)
       const SelectionCell = ({
         index,
         selected,
-        reachedMinWidth,
+        reachedMinWidth = false,
       }: {
         index: number;
         selected: boolean;
+        // eslint-disable-next-line react/require-default-props
         reachedMinWidth?: boolean;
       }) => (
         <Table.Cell>
@@ -224,7 +225,7 @@ storiesOf('Table', module)
     () => {
       const [rows, setRows] = useState(sampleGroupData);
 
-      const onSelect = (index: number, groupIndex = 0, selected: boolean) => {
+      const onSelect = (index = 0, groupIndex = 0, selected: boolean) => {
         const newRows: Array<SampleSelectionCellType[]> = [];
         rows.forEach((grp: SampleSelectionCellType[]) => {
           newRows.push([...grp]);
@@ -276,14 +277,17 @@ storiesOf('Table', module)
       };
 
       const SelectionCell = ({
-        index,
+        index = 0,
         selected,
-        reachedMinWidth,
-        groupIndex,
+        reachedMinWidth = false,
+        groupIndex = 0,
       }: {
-        index: number;
+        // eslint-disable-next-line react/require-default-props
+        index?: number;
         selected: boolean;
+        // eslint-disable-next-line react/require-default-props
         reachedMinWidth?: boolean;
+        // eslint-disable-next-line react/require-default-props
         groupIndex?: number;
       }) => (
         <Table.Cell>

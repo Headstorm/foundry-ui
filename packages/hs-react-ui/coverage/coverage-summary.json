@@ -1,23 +1,574 @@
-{"total": {"lines":{"total":545,"covered":241,"skipped":0,"pct":44.22},"statements":{"total":553,"covered":244,"skipped":0,"pct":44.12},"functions":{"total":139,"covered":51,"skipped":0,"pct":36.69},"branches":{"total":530,"covered":187,"skipped":0,"pct":35.28}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/serviceWorker.ts": {"lines":{"total":39,"covered":0,"skipped":0,"pct":0},"functions":{"total":16,"covered":0,"skipped":0,"pct":0},"statements":{"total":39,"covered":0,"skipped":0,"pct":0},"branches":{"total":32,"covered":0,"skipped":0,"pct":0}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Button/Button.tsx": {"lines":{"total":28,"covered":28,"skipped":0,"pct":100},"functions":{"total":6,"covered":6,"skipped":0,"pct":100},"statements":{"total":28,"covered":28,"skipped":0,"pct":100},"branches":{"total":41,"covered":37,"skipped":0,"pct":90.24}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Card/Card.tsx": {"lines":{"total":20,"covered":0,"skipped":0,"pct":0},"functions":{"total":6,"covered":0,"skipped":0,"pct":0},"statements":{"total":20,"covered":0,"skipped":0,"pct":0},"branches":{"total":14,"covered":0,"skipped":0,"pct":0}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Checkbox/Checkbox.tsx": {"lines":{"total":32,"covered":26,"skipped":0,"pct":81.25},"functions":{"total":7,"covered":4,"skipped":0,"pct":57.14},"statements":{"total":32,"covered":26,"skipped":0,"pct":81.25},"branches":{"total":8,"covered":8,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Divider/Divider.tsx": {"lines":{"total":7,"covered":7,"skipped":0,"pct":100},"functions":{"total":2,"covered":2,"skipped":0,"pct":100},"statements":{"total":7,"covered":7,"skipped":0,"pct":100},"branches":{"total":6,"covered":4,"skipped":0,"pct":66.67}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Dropdown/Dropdown.tsx": {"lines":{"total":84,"covered":73,"skipped":0,"pct":86.9},"functions":{"total":22,"covered":18,"skipped":0,"pct":81.82},"statements":{"total":87,"covered":75,"skipped":0,"pct":86.21},"branches":{"total":71,"covered":57,"skipped":0,"pct":80.28}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Label/Label.tsx": {"lines":{"total":22,"covered":22,"skipped":0,"pct":100},"functions":{"total":2,"covered":2,"skipped":0,"pct":100},"statements":{"total":22,"covered":22,"skipped":0,"pct":100},"branches":{"total":22,"covered":18,"skipped":0,"pct":81.82}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Modal/Modal.tsx": {"lines":{"total":25,"covered":0,"skipped":0,"pct":0},"functions":{"total":5,"covered":0,"skipped":0,"pct":0},"statements":{"total":25,"covered":0,"skipped":0,"pct":0},"branches":{"total":22,"covered":0,"skipped":0,"pct":0}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Progress/Progress.tsx": {"lines":{"total":4,"covered":4,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":4,"covered":4,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/RangeSlider.tsx": {"lines":{"total":55,"covered":29,"skipped":0,"pct":52.73},"functions":{"total":18,"covered":7,"skipped":0,"pct":38.89},"statements":{"total":56,"covered":29,"skipped":0,"pct":51.79},"branches":{"total":64,"covered":28,"skipped":0,"pct":43.75}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/RangeSlider/types.ts": {"lines":{"total":0,"covered":0,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":0,"covered":0,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Table/Table.tsx": {"lines":{"total":136,"covered":0,"skipped":0,"pct":0},"functions":{"total":32,"covered":0,"skipped":0,"pct":0},"statements":{"total":139,"covered":0,"skipped":0,"pct":0},"branches":{"total":179,"covered":0,"skipped":0,"pct":0}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/Text/Text.tsx": {"lines":{"total":10,"covered":10,"skipped":0,"pct":100},"functions":{"total":4,"covered":4,"skipped":0,"pct":100},"statements":{"total":10,"covered":10,"skipped":0,"pct":100},"branches":{"total":25,"covered":25,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/components/TextInput/TextInput.tsx": {"lines":{"total":35,"covered":0,"skipped":0,"pct":0},"functions":{"total":9,"covered":0,"skipped":0,"pct":0},"statements":{"total":35,"covered":0,"skipped":0,"pct":0},"branches":{"total":27,"covered":0,"skipped":0,"pct":0}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/context/index.tsx": {"lines":{"total":15,"covered":11,"skipped":0,"pct":73.33},"functions":{"total":5,"covered":4,"skipped":0,"pct":80},"statements":{"total":15,"covered":11,"skipped":0,"pct":73.33},"branches":{"total":7,"covered":4,"skipped":0,"pct":57.14}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/colors.ts": {"lines":{"total":0,"covered":0,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":0,"covered":0,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/fonts.ts": {"lines":{"total":0,"covered":0,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":0,"covered":0,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/enums/timings.ts": {"lines":{"total":0,"covered":0,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":0,"covered":0,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/htmlElements/index.tsx": {"lines":{"total":11,"covered":11,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":11,"covered":11,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/math.ts": {"lines":{"total":2,"covered":1,"skipped":0,"pct":50},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":2,"covered":1,"skipped":0,"pct":50},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
-,"/home/runner/work/rasa-ui/rasa-ui/packages/hs-react-ui/src/utils/styles.ts": {"lines":{"total":20,"covered":19,"skipped":0,"pct":95},"functions":{"total":3,"covered":3,"skipped":0,"pct":100},"statements":{"total":21,"covered":20,"skipped":0,"pct":95.24},"branches":{"total":12,"covered":6,"skipped":0,"pct":50}}
+{
+  "total": {
+    "lines": {
+      "total": 545,
+      "covered": 241,
+      "skipped": 0,
+      "pct": 44.22
+    },
+    "statements": {
+      "total": 553,
+      "covered": 244,
+      "skipped": 0,
+      "pct": 44.12
+    },
+    "functions": {
+      "total": 139,
+      "covered": 51,
+      "skipped": 0,
+      "pct": 36.69
+    },
+    "branches": {
+      "total": 530,
+      "covered": 187,
+      "skipped": 0,
+      "pct": 35.28
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/serviceWorker.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 39,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 32,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Button/Button.tsx": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 41,
+      "covered": 37,
+      "skipped": 0,
+      "pct": 90.24
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Card/Card.tsx": {
+    "lines": {
+      "total": 20,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 6,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 20,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 14,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Checkbox/Checkbox.tsx": {
+    "lines": {
+      "total": 32,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 81.25
+    },
+    "functions": {
+      "total": 7,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 57.14
+    },
+    "statements": {
+      "total": 32,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 81.25
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Divider/Divider.tsx": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 66.67
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Dropdown/Dropdown.tsx": {
+    "lines": {
+      "total": 84,
+      "covered": 73,
+      "skipped": 0,
+      "pct": 86.9
+    },
+    "functions": {
+      "total": 22,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 81.82
+    },
+    "statements": {
+      "total": 87,
+      "covered": 75,
+      "skipped": 0,
+      "pct": 86.21
+    },
+    "branches": {
+      "total": 71,
+      "covered": 57,
+      "skipped": 0,
+      "pct": 80.28
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Label/Label.tsx": {
+    "lines": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 22,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 81.82
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Modal/Modal.tsx": {
+    "lines": {
+      "total": 25,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 5,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 25,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 22,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Progress/Progress.tsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/RangeSlider/RangeSlider.tsx": {
+    "lines": {
+      "total": 55,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 52.73
+    },
+    "functions": {
+      "total": 18,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 38.89
+    },
+    "statements": {
+      "total": 56,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 51.79
+    },
+    "branches": {
+      "total": 64,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 43.75
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/RangeSlider/types.ts": {
+    "lines": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Table/Table.tsx": {
+    "lines": {
+      "total": 136,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 32,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 139,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 179,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/Text/Text.tsx": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/components/TextInput/TextInput.tsx": {
+    "lines": {
+      "total": 35,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 9,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 35,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 27,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/context/index.tsx": {
+    "lines": {
+      "total": 15,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 73.33
+    },
+    "functions": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    },
+    "statements": {
+      "total": 15,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 73.33
+    },
+    "branches": {
+      "total": 7,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 57.14
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/enums/colors.ts": {
+    "lines": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/enums/fonts.ts": {
+    "lines": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/enums/timings.ts": {
+    "lines": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/htmlElements/index.tsx": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/utils/math.ts": {
+    "lines": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "/home/runner/work/foundry-ui/foundry-ui/packages/hs-react-ui/src/utils/styles.ts": {
+    "lines": {
+      "total": 20,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 95
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 21,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 95.24
+    },
+    "branches": {
+      "total": 12,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 50
+    }
+  }
 }
