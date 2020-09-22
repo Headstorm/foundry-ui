@@ -2,10 +2,10 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "husky": "^4.2.5",
-    "lerna": "^3.20.2",
     "commitizen": "^4.1.2",
-    "cz-conventional-changelog": "3.2.0"
+    "cz-conventional-changelog": "3.2.0",
+    "husky": "^4.2.5",
+    "lerna": "^3.20.2"
   },
   "scripts": {
     "build-react": "cd packages/hs-react-ui && yarn run bundle",
@@ -29,5 +29,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@types/react-portal": "^4.0.2"
   }
 }
