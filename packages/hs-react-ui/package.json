@@ -6,10 +6,10 @@
   "homepage": "http://headstorm.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Headstorm/rasa-ui.git"
+    "url": "https://github.com/Headstorm/foundry-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/Headstorm/rasa-ui/issues"
+    "url": "https://github.com/Headstorm/foundry-ui/issues"
   },
   "license": "Apache-2.0",
   "main": "dist/main.js",
