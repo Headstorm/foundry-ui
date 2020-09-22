@@ -37,6 +37,8 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+  StyledLeftIconContainer?: StyledComponentBase<any, {}>;
+  StyledRightIconContainer?: StyledComponentBase<any, {}>;
   containerProps?: SubcomponentPropsType;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
@@ -145,6 +147,8 @@ const RightIconContainer = styled(IconContainer)`
 
 const Button = ({
   StyledContainer = ButtonContainer,
+  StyledLeftIconContainer = LeftIconContainer,
+  StyledRightIconContainer = RightIconContainer,
   containerProps = {},
   iconPrefix,
   iconSuffix,
@@ -189,26 +193,26 @@ const Button = ({
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-          <LeftIconContainer hasContent={hasContent}>
+          <StyledLeftIconContainer hasContent={hasContent}>
             <UnstyledIcon path={iconPrefix} size="1rem" />
-          </LeftIconContainer>
+          </StyledLeftIconContainer>
         ) : (
-          <LeftIconContainer>{iconPrefix}</LeftIconContainer>
+          <StyledLeftIconContainer>{iconPrefix}</StyledLeftIconContainer>
         ))}
       {isProcessing && (
-        <LeftIconContainer hasContent={hasContent}>
+        <StyledLeftIconContainer hasContent={hasContent}>
           <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
-        </LeftIconContainer>
+        </StyledLeftIconContainer>
       )}
       {children}
 
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
-          <RightIconContainer hasContent={hasContent}>
+          <StyledRightIconContainer hasContent={hasContent}>
             <UnstyledIcon path={iconSuffix} size="1rem" />
-          </RightIconContainer>
+          </StyledRightIconContainer>
         ) : (
-          <RightIconContainer hasContent={hasContent}>{iconSuffix}</RightIconContainer>
+          <StyledRightIconContainer hasContent={hasContent}>{iconSuffix}</StyledRightIconContainer>
         ))}
     </>
   );
@@ -231,4 +235,7 @@ const Button = ({
 Button.Container = ButtonContainer;
 Button.ButtonTypes = ButtonTypes;
 Button.LoadingBar = StyledProgress;
+Button.LeftIconContainer = LeftIconContainer;
+Button.RightIconContainer = RightIconContainer;
+
 export default Button;
