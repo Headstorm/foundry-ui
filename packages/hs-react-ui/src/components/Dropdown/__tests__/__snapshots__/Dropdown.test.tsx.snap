@@ -82,7 +82,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -90,19 +90,19 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       >
         Charmander
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -202,7 +202,7 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -210,19 +210,19 @@ exports[`Dropdown can use arrow keys and enter to navigate options 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       >
         Charmander
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -376,7 +376,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -384,17 +384,17 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       />
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -409,39 +409,39 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c4"
+      class="c4"
     >
       <div
-        class="sc-AxjAm c5"
+        class="c5"
         id="choosePokemon-option-Bulbasaur"
         tabindex="0"
       >
         <div
-          class="sc-AxjAm c6"
+          class="c6"
         />
         <span>
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
+        class="c5"
         id="choosePokemon-option-Charmander"
         tabindex="0"
       >
         <div
-          class="sc-AxjAm c6"
+          class="c6"
         />
         <span>
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
+        class="c5"
         id="choosePokemon-option-Squirtle"
         tabindex="0"
       >
         <div
-          class="sc-AxjAm c6"
+          class="c6"
         />
         <span>
           Squirtle
@@ -534,7 +534,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -542,17 +542,17 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       />
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -652,7 +652,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -660,17 +660,17 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       />
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -824,7 +824,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -832,17 +832,17 @@ exports[`Dropdown displays all options when focused 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       />
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -857,39 +857,39 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </button>
     <div
-      class="sc-AxjAm c4"
+      class="c4"
     >
       <div
-        class="sc-AxjAm c5"
+        class="c5"
         id="choosePokemon-option-Bulbasaur"
         tabindex="0"
       >
         <div
-          class="sc-AxjAm c6"
+          class="c6"
         />
         <span>
           Bulbasaur
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
+        class="c5"
         id="choosePokemon-option-Charmander"
         tabindex="0"
       >
         <div
-          class="sc-AxjAm c6"
+          class="c6"
         />
         <span>
           Charmander
         </span>
       </div>
       <div
-        class="sc-AxjAm c5"
+        class="c5"
         id="choosePokemon-option-Squirtle"
         tabindex="0"
       >
         <div
-          class="sc-AxjAm c6"
+          class="c6"
         />
         <span>
           Squirtle
@@ -982,7 +982,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -990,17 +990,17 @@ exports[`Dropdown does not display options on initial render 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       />
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -1100,7 +1100,7 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -1108,19 +1108,19 @@ exports[`Dropdown selects multiple options when dropdown is multi 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       >
         Charmander, Squirtle
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
@@ -1220,7 +1220,7 @@ exports[`Dropdown selects options from values prop 1`] = `
 
 <div>
   <div
-    class="sc-AxjAm c0"
+    class="c0"
     data-testid="choosePokemon-valueContainer"
     elevation="0"
     id="choosePokemon-valueContainer"
@@ -1228,19 +1228,19 @@ exports[`Dropdown selects options from values prop 1`] = `
     tabindex="0"
   >
     <button
-      class="sc-AxhUy sc-fznxsB c1"
+      class="c1"
       color="#7c8186"
       data-test-id="hsui-button"
       elevation="0"
       type="button"
     >
       <div
-        class="sc-AxjAm c2"
+        class="c2"
       >
         Bulbasaur, Charmander
       </div>
       <div
-        class="sc-AxjAm c3"
+        class="c3"
       >
         <svg
           role="presentation"
