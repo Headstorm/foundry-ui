@@ -5,7 +5,7 @@ jobs:
   setup-and-test:
     executor:
       name: node/default
-    working_directory: ~/rasa-ui/packages/hs-react-ui
+    working_directory: ~/foundry-ui/packages/hs-react-ui
     steps:
       - checkout
       - node/with-cache:
