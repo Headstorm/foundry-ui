@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 import { useSpring } from 'react-spring';
+import { Portal } from 'react-portal';
 
 import variants from '../../enums/variants';
 import Button from '../Button/Button';
@@ -136,7 +137,7 @@ const Modal = ({
   });
 
   return (
-    <>
+    <Portal>
       {closeButtonAttachment === 'corner' && (
         <StyledCloseButton
           StyledContainer={StyledCloseButtonContainer}
@@ -187,7 +188,7 @@ const Modal = ({
           ...underlayStyles,
         }}
       />
-    </>
+    </Portal>
   );
 };
 
