@@ -24,7 +24,7 @@ const design = {
 const StyledIconContainer = styled.div`
   z-index: 1;
   margin-left: 1em;
-  transition: all 0.5s ease;
+  transition: transform 0.5s ease;
   &:hover {
     transform: rotate(180deg);
   }
