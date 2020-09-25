@@ -35,11 +35,20 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
+      // const buttonContainerRef = React.createRef<HTMLButtonElement>();
+      const buttonContainerRef = React.useRef<HTMLButtonElement>(null);
+      const onClick = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        action('onClick')(
+          `ref width x height: ${buttonContainerRef.current?.clientWidth} x ${buttonContainerRef.current?.clientHeight}`,
+        );
+      };
+
       return (
         <Button
           variant={select('variant', variants, variants.fill)}
           color={color('color', colors.primaryDark)}
-          onClick={action('button-click')}
+          onClick={onClick}
           disabled={boolean('disabled', false)}
           feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.ripple)}
           isLoading={boolean('isLoading', false)}
@@ -48,6 +57,7 @@ storiesOf('Button', module)
           iconPrefix={select('iconPrefix', options, options.none)}
           iconSuffix={select('iconSuffix', options, options.none)}
           StyledRightIconContainer={StyledIconContainer}
+          ref={buttonContainerRef}
         >
           {text('children', 'Default text')}
         </Button>
