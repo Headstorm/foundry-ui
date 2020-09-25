@@ -35,7 +35,6 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
-      // const buttonContainerRef = React.createRef<HTMLButtonElement>();
       const buttonContainerRef = React.useRef<HTMLButtonElement>(null);
       const onClick = (e: React.SyntheticEvent) => {
         e.preventDefault();
