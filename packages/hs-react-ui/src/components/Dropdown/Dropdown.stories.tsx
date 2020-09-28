@@ -11,6 +11,7 @@ import Dropdown, { OptionProps } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
 import { colors } from '../../index';
+import styled from 'styled-components';
 
 const design = {
   type: 'figma',
@@ -77,7 +78,7 @@ storiesOf('Dropdown', module)
   .add(
     'Basic',
     () => {
-      const [values, setValues] = useState<(string | number)[] | undefined>([cities[0].id]);
+      const [values, setValues] = useState<(string | number)[] | undefined>();
       return (
         <>
           <Label labelText="City" htmlFor="cities-list">
