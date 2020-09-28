@@ -42,14 +42,14 @@ const Container = styled(Div)`
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
-  ${({ modalIsOpen }) => `
+  ${({ isOpen }) => `
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
 
     ${
-      modalIsOpen
+      isOpen
         ? `
           border-bottom: 0px solid transparent;
           border-bottom-right-radius: 0rem;
@@ -407,7 +407,7 @@ const Dropdown = ({
       <Button
         StyledContainer={StyledValueContainer}
         containerProps={{
-          modalIsOpen: isOpen,
+          isOpen,
         }}
         id={`${name}-button-value`}
         color={defaultedColor}
