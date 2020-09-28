@@ -1,3 +1,10 @@
+# [1.0.0-v1-release.21](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.20...v1.0.0-v1-release.21) (2020-09-28)
+
+
+### Bug Fixes
+
+* **dropdown valuecontainer:** rename modalisopen prop to isopen ([89b98e8](https://github.com/Headstorm/foundry-ui/commit/89b98e8b81938ecefac518091a5c3b43867fc8ec))
+
 # [1.0.0-v1-release.20](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.19...v1.0.0-v1-release.20) (2020-09-22)
 
 
