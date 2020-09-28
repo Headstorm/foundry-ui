@@ -93,8 +93,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -121,7 +119,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         />
       </div>
       <div
@@ -289,8 +286,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -316,7 +311,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         />
       </div>
       <div
@@ -483,8 +477,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -510,7 +502,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         />
       </div>
       <div
@@ -635,8 +626,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -663,7 +652,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         />
       </div>
       <div
@@ -830,8 +818,6 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -858,7 +844,6 @@ exports[`Dropdown displays all options when focused 1`] = `
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         />
       </div>
       <div
@@ -1024,8 +1009,6 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -1052,7 +1035,6 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         >
           Choose a pokemon
         </span>
@@ -1179,8 +1161,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c3 {
-  font-size: 1rem;
-  color: undefined;
   opacity: 0.8;
 }
 
@@ -1207,7 +1187,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
       >
         <span
           class="c3"
-          data-test-id="hsui-Text"
         />
       </div>
       <div
