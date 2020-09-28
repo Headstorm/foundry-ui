@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.81% </span>
+                <span class="strong">56.41% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/43</span>
+                <span class='fraction'>22/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.37% </span>
+                <span class="strong">49.12% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>27/57</span>
+                <span class='fraction'>28/57</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.81% </span>
+                <span class="strong">56.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/43</span>
+                <span class='fraction'>22/39</span>
             </div>
         
             
@@ -296,11 +296,7 @@
 <a name='L237'></a><a href='#L237'>237</a>
 <a name='L238'></a><a href='#L238'>238</a>
 <a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a>
-<a name='L241'></a><a href='#L241'>241</a>
-<a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a>
-<a name='L244'></a><a href='#L244'>244</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L240'></a><a href='#L240'>240</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -427,6 +423,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -475,18 +472,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -662,6 +654,7 @@ export type TextInputProps = InputHTMLAttributes&lt;HTMLInputElement&gt; &amp;
 &nbsp;
     StyledContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
     StyledInput?: string &amp; StyledComponentBase&lt;any, {}&gt;;
+    StyledTextArea?: string &amp; StyledComponentBase&lt;any, {}&gt;;
     StyledIconContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
     StyledErrorContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
     containerProps?: SubcomponentPropsType;
@@ -708,7 +701,8 @@ const TextInput = ({
   showCharacterCount = false,
 &nbsp;
   StyledContainer = Container,
-  StyledInput,
+  StyledInput = TextInputContainer,
+  StyledTextArea = TextAreaInputContainer,
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
   containerProps = {},
@@ -722,15 +716,9 @@ const TextInput = ({
     debouncedOnChange,
     debounceInterval,
   ]);
-&nbsp;
-  // Determine the correct input type. Using a single input and the 'as' keyword
-  // to display as a text area disables the ability to set cols/rows
-  let InputComponent: string &amp; StyledComponentBase&lt;any, {}&gt; = TextInputContainer;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (StyledInput) {
-<span class="cstat-no" title="statement not covered" >    InputComponent = StyledInput;</span>
-  } else <span class="missing-if-branch" title="if path not taken" >I</span>if (isMultiline) {
-<span class="cstat-no" title="statement not covered" >    InputComponent = TextAreaInputContainer;</span>
-  }
+  const InputComponent: string &amp; StyledComponentBase&lt;any, {}&gt; = isMultiline
+    ? <span class="branch-0 cbranch-no" title="branch not covered" >StyledTextArea</span>
+    : StyledInput;
   const displayValue = nativeHTMLAttributes.value || defaultValue;
 &nbsp;
   return (
@@ -793,7 +781,7 @@ export default TextInput;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Sep 03 2020 11:41:22 GMT-0500 (Central Daylight Time)
+                at Mon Sep 28 2020 17:23:35 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

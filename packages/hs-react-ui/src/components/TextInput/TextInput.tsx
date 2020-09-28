@@ -117,6 +117,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
 
     StyledContainer?: string & StyledComponentBase<any, {}>;
     StyledInput?: string & StyledComponentBase<any, {}>;
+    StyledTextArea?: string & StyledComponentBase<any, {}>;
     StyledIconContainer?: string & StyledComponentBase<any, {}>;
     StyledErrorContainer?: string & StyledComponentBase<any, {}>;
     containerProps?: SubcomponentPropsType;
@@ -163,7 +164,8 @@ const TextInput = ({
   showCharacterCount = false,
 
   StyledContainer = Container,
-  StyledInput,
+  StyledInput = TextInputContainer,
+  StyledTextArea = TextAreaInputContainer,
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
   containerProps = {},
@@ -177,15 +179,9 @@ const TextInput = ({
     debouncedOnChange,
     debounceInterval,
   ]);
-
-  // Determine the correct input type. Using a single input and the 'as' keyword
-  // to display as a text area disables the ability to set cols/rows
-  let InputComponent: string & StyledComponentBase<any, {}> = TextInputContainer;
-  if (StyledInput) {
-    InputComponent = StyledInput;
-  } else if (isMultiline) {
-    InputComponent = TextAreaInputContainer;
-  }
+  const InputComponent: string & StyledComponentBase<any, {}> = isMultiline
+    ? StyledTextArea
+    : StyledInput;
   const displayValue = nativeHTMLAttributes.value || defaultValue;
 
   return (

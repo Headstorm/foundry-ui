@@ -1,3 +1,19 @@
+# [1.0.0-v1-release.21](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.20...v1.0.0-v1-release.21) (2020-09-28)
+
+
+### Bug Fixes
+
+* **dropdown valuecontainer:** rename modalisopen prop to isopen ([89b98e8](https://github.com/Headstorm/foundry-ui/commit/89b98e8b81938ecefac518091a5c3b43867fc8ec))
+
+# [1.0.0-v1-release.20](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.19...v1.0.0-v1-release.20) (2020-09-22)
+
+
+### Bug Fixes
+
+* **button:** tweak margin of icon containers ([7f85160](https://github.com/Headstorm/foundry-ui/commit/7f85160a815e052dd5f1ba0955f552fd3cf27a50))
+* **button icon container:** add ability to style icon containers ([5755755](https://github.com/Headstorm/foundry-ui/commit/57557554c88788e5044fde8b42e223604efd1a70))
+* **textinput accepts styledtextarea:** textinput accepts styledtextarea ([9b2d106](https://github.com/Headstorm/foundry-ui/commit/9b2d10632af10be2a8a0c509cee34c5bbfd72cdd))
+
 # [1.0.0-v1-release.19](https://github.com/Headstorm/rasa-ui/compare/v1.0.0-v1-release.18...v1.0.0-v1-release.19) (2020-09-01)
 
 
