@@ -99,7 +99,6 @@ storiesOf('Dropdown', module)
               optionsVariant={select('optionsVariant', variants, variants.outline)}
               valueVariant={select('valueVariant', variants, variants.text)}
               values={values}
-              StyledPlaceholder={StyledPlaceholder}
             />
           </Label>
         </>
