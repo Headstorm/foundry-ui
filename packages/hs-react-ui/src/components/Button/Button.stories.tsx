@@ -35,12 +35,9 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
-      const buttonContainerRef = React.useRef<HTMLButtonElement>(null);
       const onClick = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        action('onClick')(
-          `ref width x height: ${buttonContainerRef.current?.clientWidth} x ${buttonContainerRef.current?.clientHeight}`,
-        );
+        action('onClick')();
       };
 
       return (
@@ -56,7 +53,6 @@ storiesOf('Button', module)
           iconPrefix={select('iconPrefix', options, options.none)}
           iconSuffix={select('iconSuffix', options, options.none)}
           StyledRightIconContainer={StyledIconContainer}
-          ref={buttonContainerRef}
         >
           {text('children', 'Default text')}
         </Button>

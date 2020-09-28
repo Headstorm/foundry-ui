@@ -1,32 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  position: relative;
-  font-size: 1em;
-  padding: .75em 1em;
-  border-radius: 0.25em;
-  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
-  outline: 0 none;
-  border: 0 none;
-  cursor: pointer;
-  background-color: #7c8186;
-  color: #000;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c0:hover {
-  background-color: #707479;
-}
-
 .c1 {
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
@@ -36,14 +10,53 @@ exports[`Button keeps the container the same when switching between isLoading an
   -webkit-animation: ia-dwnO 8s linear infinite;
   animation: ia-dwnO 8s linear infinite;
   line-height: 0;
+}
+
+.c3 {
+  position: relative;
+}
+
+.c5 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  background-color: #7c8186;
+  color: #000;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0:hover {
+  background-color: #707479;
+}
+
+.c2 {
   width: 5rem;
   height: 10px;
   margin-top: -5px;
   margin-bottom: -5px;
 }
 
-.c2 {
-  position: relative;
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -51,29 +64,25 @@ exports[`Button keeps the container the same when switching between isLoading an
   top: 0;
 }
 
-.c3 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c6 {
   border-radius: 0.25em;
 }
 
 <button
-  class="c0"
+  class=" c0"
   color="#7c8186"
   data-test-id="hsui-button"
   elevation="0"
   type="button"
 >
   <div
-    class="c1"
+    class=" c1 c2"
   />
   <div
-    class="c2"
+    class="c3 c4"
   >
     <svg
-      class="c3"
+      class="c5 c6"
       height="0px"
       viewBox="0 0 0 0"
       width="0px"
@@ -83,6 +92,17 @@ exports[`Button keeps the container the same when switching between isLoading an
 `;
 
 exports[`Button keeps the container the same when switching between isLoading and not isLoading 2`] = `
+.c1 {
+  position: relative;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -109,8 +129,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #707479;
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -118,16 +137,12 @@ exports[`Button keeps the container the same when switching between isLoading an
   top: 0;
 }
 
-.c2 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c4 {
   border-radius: 0.25em;
 }
 
 <button
-  class="c0"
+  class=" c0"
   color="#7c8186"
   data-test-id="hsui-button"
   elevation="0"
@@ -135,10 +150,10 @@ exports[`Button keeps the container the same when switching between isLoading an
 >
   Submit
   <div
-    class="c1"
+    class="c1 c2"
   >
     <svg
-      class="c2"
+      class="c3 c4"
       height="0px"
       viewBox="0 0 0 0"
       width="0px"
@@ -148,6 +163,17 @@ exports[`Button keeps the container the same when switching between isLoading an
 `;
 
 exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
+.c1 {
+  position: relative;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -174,8 +200,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   background-color: #707479;
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -183,27 +208,23 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   top: 0;
 }
 
-.c2 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c4 {
   border-radius: 0.25em;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3 c4"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -214,6 +235,17 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 `;
 
 exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
+.c1 {
+  position: relative;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -240,8 +272,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -249,27 +280,23 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   top: 0;
 }
 
-.c2 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c4 {
   border-radius: 0.25em;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3 c4"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -280,6 +307,17 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 `;
 
 exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
+.c1 {
+  position: relative;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -306,8 +344,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -315,27 +352,23 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   top: 0;
 }
 
-.c2 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c4 {
   border-radius: 0.25em;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3 c4"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -346,6 +379,17 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 `;
 
 exports[`Button shows ButtonContainer with nondefault props variant and color 1`] = `
+.c1 {
+  position: relative;
+}
+
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -374,8 +418,7 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -383,27 +426,23 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   top: 0;
 }
 
-.c2 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c4 {
   border-radius: 0.25em;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#000"
     data-test-id="hsui-button"
     elevation="2"
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3 c4"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -414,6 +453,17 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
 `;
 
 exports[`Button shows LeftIconContainer when isProcessing 1`] = `
+.c2 {
+  position: relative;
+}
+
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -440,8 +490,12 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   background-color: #707479;
 }
 
-.c2 {
-  position: relative;
+.c1 {
+  height: 1rem;
+  vertical-align: middle;
+}
+
+.c3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -449,29 +503,20 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   top: 0;
 }
 
-.c3 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c5 {
   border-radius: 0.25em;
-}
-
-.c1 {
-  height: 1rem;
-  vertical-align: middle;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class=" c1 "
     >
       <svg
         role="presentation"
@@ -497,10 +542,10 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
       </svg>
     </div>
     <div
-      class="c2"
+      class="c2 c3"
     >
       <svg
-        class="c3"
+        class="c4 c5"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -511,6 +556,17 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 `;
 
 exports[`Button shows icons 1`] = `
+.c2 {
+  position: relative;
+}
+
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -537,8 +593,12 @@ exports[`Button shows icons 1`] = `
   background-color: #707479;
 }
 
+.c1 {
+  height: 1rem;
+  vertical-align: middle;
+}
+
 .c3 {
-  position: relative;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -546,34 +606,20 @@ exports[`Button shows icons 1`] = `
   top: 0;
 }
 
-.c4 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c5 {
   border-radius: 0.25em;
-}
-
-.c1 {
-  height: 1rem;
-  vertical-align: middle;
-}
-
-.c2 {
-  height: 1rem;
-  vertical-align: middle;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class=" c1 "
     >
       <svg
         role="presentation"
@@ -586,7 +632,7 @@ exports[`Button shows icons 1`] = `
       </svg>
     </div>
     <div
-      class="c2"
+      class=" c1 "
     >
       <svg
         role="presentation"
@@ -599,10 +645,10 @@ exports[`Button shows icons 1`] = `
       </svg>
     </div>
     <div
-      class="c3"
+      class="c2 c3"
     >
       <svg
-        class="c4"
+        class="c4 c5"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -613,6 +659,17 @@ exports[`Button shows icons 1`] = `
 `;
 
 exports[`Button shows icons with type string 1`] = `
+.c2 {
+  position: relative;
+}
+
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -639,8 +696,12 @@ exports[`Button shows icons with type string 1`] = `
   background-color: #707479;
 }
 
+.c1 {
+  height: 1rem;
+  vertical-align: middle;
+}
+
 .c3 {
-  position: relative;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -648,34 +709,20 @@ exports[`Button shows icons with type string 1`] = `
   top: 0;
 }
 
-.c4 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c5 {
   border-radius: 0.25em;
-}
-
-.c1 {
-  height: 1rem;
-  vertical-align: middle;
-}
-
-.c2 {
-  height: 1rem;
-  vertical-align: middle;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class=" c1 "
     >
       <svg
         role="presentation"
@@ -689,7 +736,7 @@ exports[`Button shows icons with type string 1`] = `
       </svg>
     </div>
     <div
-      class="c2"
+      class=" c1 "
     >
       <svg
         role="presentation"
@@ -703,10 +750,10 @@ exports[`Button shows icons with type string 1`] = `
       </svg>
     </div>
     <div
-      class="c3"
+      class="c2 c3"
     >
       <svg
-        class="c4"
+        class="c4 c5"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -717,6 +764,28 @@ exports[`Button shows icons with type string 1`] = `
 `;
 
 exports[`Button shows loading text when provided 1`] = `
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+}
+
+.c3 {
+  position: relative;
+}
+
+.c5 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -743,23 +812,14 @@ exports[`Button shows loading text when provided 1`] = `
   background-color: #707479;
 }
 
-.c1 {
-  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
-  background-size: 400% 100%;
-  width: 6rem;
-  height: 16px;
-  border-radius: 9999px;
-  -webkit-animation: ia-dwnO 8s linear infinite;
-  animation: ia-dwnO 8s linear infinite;
-  line-height: 0;
+.c2 {
   width: 5rem;
   height: 10px;
   margin-top: -5px;
   margin-bottom: -5px;
 }
 
-.c2 {
-  position: relative;
+.c4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -767,30 +827,26 @@ exports[`Button shows loading text when provided 1`] = `
   top: 0;
 }
 
-.c3 {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+.c6 {
   border-radius: 0.25em;
 }
 
 <div>
   <button
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="hsui-button"
     elevation="0"
     type="button"
   >
     <div
-      class="c1"
+      class=" c1 c2"
     />
     <div
-      class="c2"
+      class="c3 c4"
     >
       <svg
-        class="c3"
+        class="c5 c6"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"

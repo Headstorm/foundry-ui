@@ -83,4 +83,48 @@ describe('Card', () => {
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
   });
+  it('containerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Card containerRef={ref} containerProps={{ 'data-test-id': testId }} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
+  it('headerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Card
+        headerRef={ref}
+        header={<div>Test Header</div>}
+        containerProps={{ 'data-test-id': testId }}
+      />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
+  it('bodyRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Card
+        bodyRef={ref}
+        children={<div>Test body</div>}
+        containerProps={{ 'data-test-id': testId }}
+      />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
+  it('footerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Card
+        footerRef={ref}
+        footer={<div>Test footer</div>}
+        containerProps={{ 'data-test-id': testId }}
+      />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
 });

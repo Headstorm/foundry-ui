@@ -32,6 +32,9 @@ export interface DividerProps {
 
   width?: string;
   height?: string;
+
+  containerRef?: React.RefObject<HTMLDivElement>;
+  dividerRef?: React.RefObject<HTMLHRElement>;
 }
 
 const Divider = ({
@@ -41,9 +44,17 @@ const Divider = ({
   dividerContainerProps = {},
   width = '90%',
   height = '1px',
+  containerRef,
+  dividerRef,
+  ...rest
 }: DividerProps) => (
-  <StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps}>
-    <StyledDivider width={width} height={height} {...dividerProps} />
+  <StyledDividerContainer
+    data-test-id="hsui-Divider"
+    {...dividerContainerProps}
+    ref={containerRef}
+    {...rest}
+  >
+    <StyledDivider width={width} height={height} {...dividerProps} ref={dividerRef} />
   </StyledDividerContainer>
 );
 

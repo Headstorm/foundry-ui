@@ -42,6 +42,9 @@ export type TagProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
   StyledLoadingBar?: string & StyledComponentBase<any, {}>;
+  containerRef?: React.RefObject<HTMLDivElement>;
+  iconContainerRef?: React.RefObject<HTMLDivElement>;
+  loadingBarRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Span)`

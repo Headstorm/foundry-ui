@@ -57,7 +57,10 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
   id?: string;
-  ref?: React.RefObject<HTMLButtonElement>;
+  containerRef?: React.RefObject<HTMLButtonElement>;
+  leftIconContainerRef?: React.RefObject<HTMLDivElement>;
+  rightIconContainerRef?: React.RefObject<HTMLDivElement>;
+  loadingBarRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -146,109 +149,98 @@ const RightIconContainer = styled(IconContainer)`
   `}
 `;
 
-interface HasSubcomponents {
-  Container?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  ButtonTypes?: typeof ButtonTypes;
-  LoadingBar?: string & StyledComponentBase<any, {}>;
-  LeftIconContainer?: string & StyledComponentBase<any, {}>;
-  RightIconContainer?: string & StyledComponentBase<any, {}>;
-}
-const Button: React.ForwardRefExoticComponent<
-  React.PropsWithoutRef<ButtonProps> & React.RefAttributes<HTMLButtonElement>
-> &
-  HasSubcomponents = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      StyledContainer = ButtonContainer,
-      StyledLeftIconContainer = LeftIconContainer,
-      StyledRightIconContainer = RightIconContainer,
-      containerProps = {},
-      iconPrefix,
-      iconSuffix,
-      isLoading,
-      isProcessing,
-      children,
-      elevation = 0,
-      feedbackType = FeedbackTypes.ripple,
-      interactionFeedbackProps,
-      variant = variants.fill,
-      type = ButtonTypes.button,
-      color,
-      disabled = false,
-      onClick,
-      onMouseDown = () => {},
-      onMouseUp = () => {},
-      LoadingBar = StyledProgress,
-      id,
-    }: ButtonProps,
-    ref,
-  ): JSX.Element | null => {
-    const hasContent = Boolean(children);
-    const { colors } = useTheme();
-    const containerColor = color || colors.grayLight;
-    // get everything we expose + anything consumer wants to send to container
-    const mergedContainerProps = {
-      'data-test-id': 'hsui-button',
-      id,
-      onClick,
-      onMouseDown,
-      onMouseUp,
-      elevation,
-      color: containerColor,
-      variant,
-      type,
-      disabled,
-      ...containerProps,
-    };
+const Button = ({
+  StyledContainer = ButtonContainer,
+  StyledLeftIconContainer = LeftIconContainer,
+  StyledRightIconContainer = RightIconContainer,
+  containerProps = {},
+  iconPrefix,
+  iconSuffix,
+  isLoading,
+  isProcessing,
+  children,
+  elevation = 0,
+  feedbackType = FeedbackTypes.ripple,
+  interactionFeedbackProps,
+  variant = variants.fill,
+  type = ButtonTypes.button,
+  color,
+  disabled = false,
+  onClick,
+  onMouseDown = () => {},
+  onMouseUp = () => {},
+  LoadingBar = StyledProgress,
+  id,
+  containerRef,
+  leftIconContainerRef,
+  rightIconContainerRef,
+  loadingBarRef,
+}: ButtonProps): JSX.Element | null => {
+  const hasContent = Boolean(children);
+  const { colors } = useTheme();
+  const containerColor = color || colors.grayLight;
+  // get everything we expose + anything consumer wants to send to container
+  const mergedContainerProps = {
+    'data-test-id': 'hsui-button',
+    id,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    elevation,
+    color: containerColor,
+    variant,
+    type,
+    disabled,
+    ...containerProps,
+  };
 
-    const buttonContent = isLoading ? (
-      <LoadingBar />
-    ) : (
-      <>
-        {!isProcessing &&
-          iconPrefix &&
-          (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-            <StyledLeftIconContainer hasContent={hasContent}>
-              <UnstyledIcon path={iconPrefix} size="1rem" />
-            </StyledLeftIconContainer>
-          ) : (
-            <StyledLeftIconContainer>{iconPrefix}</StyledLeftIconContainer>
-          ))}
-        {isProcessing && (
-          <StyledLeftIconContainer hasContent={hasContent}>
-            <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+  const buttonContent = isLoading ? (
+    <LoadingBar ref={loadingBarRef} />
+  ) : (
+    <>
+      {!isProcessing &&
+        iconPrefix &&
+        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+          <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
+            <UnstyledIcon path={iconPrefix} size="1rem" />
           </StyledLeftIconContainer>
-        )}
-        {children}
+        ) : (
+          <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
+        ))}
+      {isProcessing && (
+        <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
+          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+        </StyledLeftIconContainer>
+      )}
+      {children}
 
-        {iconSuffix &&
-          (typeof iconSuffix === 'string' ? (
-            <StyledRightIconContainer hasContent={hasContent}>
-              <UnstyledIcon path={iconSuffix} size="1rem" />
-            </StyledRightIconContainer>
-          ) : (
-            <StyledRightIconContainer hasContent={hasContent}>
-              {iconSuffix}
-            </StyledRightIconContainer>
-          ))}
-      </>
-    );
+      {iconSuffix &&
+        (typeof iconSuffix === 'string' ? (
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            <UnstyledIcon path={iconSuffix} size="1rem" />
+          </StyledRightIconContainer>
+        ) : (
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            {iconSuffix}
+          </StyledRightIconContainer>
+        ))}
+    </>
+  );
 
-    return (
-      <StyledContainer {...mergedContainerProps} ref={ref}>
-        {buttonContent}
-        {feedbackType === FeedbackTypes.ripple && !disabled && (
-          <InteractionFeedback
-            StyledContainer={StyledFeedbackContainer}
-            StyledSVGContainer={StyledFeedbackSVGContainer}
-            color={getFontColorFromVariant(variant, containerColor)}
-            {...(interactionFeedbackProps || {})}
-          />
-        )}
-      </StyledContainer>
-    );
-  },
-);
+  return (
+    <StyledContainer ref={containerRef} {...mergedContainerProps}>
+      {buttonContent}
+      {feedbackType === FeedbackTypes.ripple && !disabled && (
+        <InteractionFeedback
+          StyledContainer={StyledFeedbackContainer}
+          StyledSVGContainer={StyledFeedbackSVGContainer}
+          color={getFontColorFromVariant(variant, containerColor)}
+          {...(interactionFeedbackProps || {})}
+        />
+      )}
+    </StyledContainer>
+  );
+};
 
 Button.Container = ButtonContainer;
 Button.ButtonTypes = ButtonTypes;

@@ -109,7 +109,6 @@ const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
   left: 0;
   top: 0;
 `;
-
 export interface CardProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
@@ -131,6 +130,12 @@ export interface CardProps {
   elevation?: number;
   disableFeedback?: boolean;
   feedbackType?: FeedbackTypes;
+
+  containerRef?: React.RefObject<HTMLDivElement>;
+  headerRef?: React.RefObject<HTMLDivElement>;
+  bodyRef?: React.RefObject<HTMLDivElement>;
+  footerRef?: React.RefObject<HTMLDivElement>;
+  interactiveFeedbackRef?: React.RefObject<HTMLDivElement>;
 }
 
 const Card = ({
@@ -144,6 +149,12 @@ const Card = ({
   bodyProps,
   footerProps,
   interactionFeedbackProps,
+
+  containerRef,
+  headerRef,
+  bodyRef,
+  footerRef,
+  interactiveFeedbackRef,
 
   onClick = defaultOnClick,
 
@@ -168,15 +179,29 @@ const Card = ({
       elevation={elevation}
       feedbackType={feedbackType}
       {...containerProps}
+      ref={containerRef}
     >
-      {header && <StyledHeader {...headerProps}>{header}</StyledHeader>}
-      {children && <StyledBody {...bodyProps}>{children}</StyledBody>}
-      {footer && <StyledFooter {...footerProps}>{footer}</StyledFooter>}
+      {header && (
+        <StyledHeader {...headerProps} ref={headerRef}>
+          {header}
+        </StyledHeader>
+      )}
+      {children && (
+        <StyledBody ref={bodyRef} {...bodyProps}>
+          {children}
+        </StyledBody>
+      )}
+      {footer && (
+        <StyledFooter ref={footerRef} {...footerProps}>
+          {footer}
+        </StyledFooter>
+      )}
       {feedbackType !== FeedbackTypes.simple && onClick !== defaultOnClick && (
         <InteractionFeedback
           color="rgba(0,0,0,0.1)"
           transitionProps={transitionProps}
           StyledContainer={StyledFeedbackContainer}
+          containerRef={interactiveFeedbackRef}
           {...interactionFeedbackProps}
         />
       )}

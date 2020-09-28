@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card shows Card with default feedback 1`] = `
-.c2 {
+.c1 {
+  position: relative;
+}
+
+.c3 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -27,8 +31,7 @@ exports[`Card shows Card with default feedback 1`] = `
   background-color: #fff;
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -38,15 +41,15 @@ exports[`Card shows Card with default feedback 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="1"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -57,7 +60,11 @@ exports[`Card shows Card with default feedback 1`] = `
 `;
 
 exports[`Card shows Card with default props 1`] = `
-.c2 {
+.c1 {
+  position: relative;
+}
+
+.c3 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -83,8 +90,7 @@ exports[`Card shows Card with default props 1`] = `
   background-color: #fff;
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -94,15 +100,15 @@ exports[`Card shows Card with default props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="1"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -113,7 +119,11 @@ exports[`Card shows Card with default props 1`] = `
 `;
 
 exports[`Card shows Card with non-default elevation 1`] = `
-.c2 {
+.c1 {
+  position: relative;
+}
+
+.c3 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -139,8 +149,7 @@ exports[`Card shows Card with non-default elevation 1`] = `
   background-color: #fff;
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -150,15 +159,15 @@ exports[`Card shows Card with non-default elevation 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="3"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -189,7 +198,7 @@ exports[`Card shows Card with ripple feedback and no onClick 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="1"
   />
@@ -197,7 +206,11 @@ exports[`Card shows Card with ripple feedback and no onClick 1`] = `
 `;
 
 exports[`Card shows Card with ripple feedback with onClick 1`] = `
-.c2 {
+.c1 {
+  position: relative;
+}
+
+.c3 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -223,8 +236,7 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
   background-color: #fff;
 }
 
-.c1 {
-  position: relative;
+.c2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -234,15 +246,15 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="1"
   >
     <div
-      class="c1"
+      class="c1 c2"
     >
       <svg
-        class="c2"
+        class="c3"
         height="0px"
         viewBox="0 0 0 0"
         width="0px"
@@ -273,7 +285,7 @@ exports[`Card shows Card with simple feedback and no onClick 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="1"
   />
@@ -306,7 +318,7 @@ exports[`Card shows Card with simple feedback with onClick 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=" c0"
     data-test-id="foundry-card"
     elevation="1"
   />
