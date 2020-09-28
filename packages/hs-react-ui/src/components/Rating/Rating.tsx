@@ -104,7 +104,7 @@ const FilledRank = styled(Span)`
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
     return `
-    padding: 16px 8px;
+    padding: 1rem 0.5rem;
     background-color: ${backgroundColor};
     background-clip: text;
     color: ${fontColor};
@@ -117,7 +117,7 @@ const HalfFilledRank = styled(Div)`
     const { colors } = useTheme();
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
     return `
-    padding: 16px 8px;
+    padding: 1rem 0.5rem;
     color: ${fontColor};
     ${hasHalfFilledRank || 'clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);'}
   `;
@@ -130,7 +130,7 @@ const EmptyRank = styled(Div)`
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
 
     return `
-    padding: 16px 8px;
+    padding: 1rem 0.5rem;
     ${
       hasStages
         ? `opacity: 50%;
