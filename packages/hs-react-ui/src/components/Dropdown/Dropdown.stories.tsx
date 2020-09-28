@@ -73,10 +73,6 @@ const teaOptions = [
   },
 ];
 
-const StyledPlaceholder = styled(Dropdown.Placeholder)`
-  color: ${colors.primary};
-`;
-
 storiesOf('Dropdown', module)
   .addParameters({ component: Dropdown })
   .add(
