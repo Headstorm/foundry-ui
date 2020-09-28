@@ -56,11 +56,11 @@ export const CardContainer = styled(Div)`
 `;
 
 export const Header = styled(Div)`
-  ${() => {
+  ${({ hasBody, hasFooter }) => {
     const { colors } = useTheme();
 
     return `
-      padding: 1.5rem 1.5rem 0rem;
+      padding: 1.5rem 1.5rem ${hasBody || hasFooter ? '0rem' : ''};
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${colors.grayDark};
@@ -161,6 +161,9 @@ const Card = ({
       r: 300,
     },
   };
+  const hasHeader = Boolean(header);
+  const hasBody = Boolean(children);
+  const hasFooter = Boolean(footer);
 
   return (
     <StyledContainer
@@ -169,9 +172,21 @@ const Card = ({
       feedbackType={feedbackType}
       {...containerProps}
     >
-      {header && <StyledHeader {...headerProps}>{header}</StyledHeader>}
-      {children && <StyledBody {...bodyProps}>{children}</StyledBody>}
-      {footer && <StyledFooter {...footerProps}>{footer}</StyledFooter>}
+      {header && (
+        <StyledHeader hasBody={hasBody} hasFooter={hasFooter} {...headerProps}>
+          {header}
+        </StyledHeader>
+      )}
+      {children && (
+        <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} {...bodyProps}>
+          {children}
+        </StyledBody>
+      )}
+      {footer && (
+        <StyledFooter hasHeader={hasHeader} hasBody={hasBody} {...footerProps}>
+          {footer}
+        </StyledFooter>
+      )}
       {feedbackType !== FeedbackTypes.simple && onClick !== defaultOnClick && (
         <InteractionFeedback
           color="rgba(0,0,0,0.1)"
