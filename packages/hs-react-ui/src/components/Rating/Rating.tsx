@@ -19,43 +19,6 @@ import {
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 
-export type RatingContainerProps = {
-  elevation: number;
-  color: string;
-  variant: variants;
-  disabled: boolean;
-};
-
-export type RatingProps = {
-  value?: number;
-  max?: number;
-  onClick: (...args: any[]) => void;
-  disabled?: boolean;
-  elevation?: number;
-  variant?: variants;
-  color?: string;
-  id?: string;
-  testId?: string;
-
-  stages?: Array<string> | Array<JSX.Element>;
-  fractionStep?: number;
-  filledRank?: string | JSX.Element;
-  halfFilledRank?: string | JSX.Element;
-  emptyRank?: string | JSX.Element;
-  showDisplay?: boolean;
-
-  containerProps?: SubcomponentPropsType;
-  filledRankProps?: SubcomponentPropsType;
-  halfFilledRankProps?: SubcomponentPropsType;
-  emptyRankProps?: SubcomponentPropsType;
-
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledFilledRankContainer?: string & StyledComponentBase<any, {}>;
-  StyledHalfFilledRankContainer?: string & StyledComponentBase<any, {}>;
-  StyledEmptyRankContainer?: string & StyledComponentBase<any, {}>;
-  StyledInfo?: string & StyledComponentBase<any, {}>;
-};
-
 export const Container: string & StyledComponentBase<any, {}, RatingContainerProps> = styled(Span)`
   ${({ elevation = 0, color, variant, disabled }: RatingContainerProps) => {
     const { colors } = useTheme();
@@ -172,6 +135,43 @@ const Info = styled(Div)`
   }}
 `;
 
+export type RatingContainerProps = {
+  elevation: number;
+  color: string;
+  variant: variants;
+  disabled: boolean;
+};
+
+export type RatingProps = {
+  value?: number;
+  max?: number;
+  onClick: (...args: any[]) => void;
+  disabled?: boolean;
+  elevation?: number;
+  variant?: variants;
+  color?: string;
+  id?: string;
+  testId?: string;
+
+  stages?: Array<JSX.Element | string>;
+  fractionStep?: number;
+  filledRank?: string | JSX.Element;
+  halfFilledRank?: string | JSX.Element;
+  emptyRank?: string | JSX.Element;
+  showDisplay?: boolean;
+
+  containerProps?: SubcomponentPropsType;
+  filledRankProps?: SubcomponentPropsType;
+  halfFilledRankProps?: SubcomponentPropsType;
+  emptyRankProps?: SubcomponentPropsType;
+
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledFilledRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledHalfFilledRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledEmptyRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledInfo?: string & StyledComponentBase<any, {}>;
+};
+
 const Rating = ({
   value = 1,
   max = 5,
@@ -219,10 +219,13 @@ const Rating = ({
     return newVal <= max ? newVal : max;
   };
 
-  const [initialValue, setInitialValue] = useState(value);
+  // ratingValue is the returned value of the Rating component
   const [ratingValue, setRatingValue] = useState(processRating(value));
+  // preHoverRatingValue is a temporary storage for the last selected ratingValue while the user hovers over the rating,
+  // if a rating is not selected before the hover ends, the Rating component's ratingValue is reset using the preHoverRatingValue.
   const [preHoverRatingValue, setPreHoverRatingValue] = useState(processRating(value));
 
+  // isRatingSelected is a boolean used by the styling to disable hovering if a rating is already selected or if the component is disabled
   const [isRatingSelected, _setRatingSelected] = useState(false);
   const isRatingSelectedRef = useRef(isRatingSelected);
   const setRatingSelected = (v: boolean) => {
@@ -270,33 +273,32 @@ const Rating = ({
       current.addEventListener('mousemove', ratingListener);
     }
 
-    if (value !== initialValue && !disabled) {
-      setRatingValue(processRating(value));
-      setPreHoverRatingValue(processRating(value));
-      setInitialValue(processRating(value));
-    }
-
     if (disabled) {
       setPreDisableRatingSelected(isRatingSelected);
       setRatingSelected(true);
     } else {
       setRatingSelected(preDisableRatingSelected);
+      setRatingValue(processRating(value));
+      setPreHoverRatingValue(processRating(value));
     }
     return () => {};
   }, [value, fractionStep, max, showDisplay, disabled]);
 
-  const ratings: Array<JSX.Element> = [];
+  function rankContent(item: JSX.Element | string): JSX.Element {
+    if (typeof item === 'string') {
+      return <UnstyledIcon path={item} size="2rem" />;
+    }
+    return item;
+  }
+
+  const ratings: JSX.Element[] = [];
 
   if (stages) {
     for (let x = stages.length; x > 0; x--) {
       if (x <= Math.floor(ratingValue)) {
         ratings.push(
           <StyledFilledRankContainer onClick={clickHandler} id={x} key={x} {...filledRankProps}>
-            {typeof stages[x] === 'string' && stages[x - 1] !== '' ? (
-              <UnstyledIcon path={stages[x - 1] as string} size="2rem" />
-            ) : (
-              stages[x - 1]
-            )}
+            {rankContent(stages[x - 1])}
           </StyledFilledRankContainer>,
         );
       } else {
@@ -309,11 +311,7 @@ const Rating = ({
             key={x}
             {...emptyRankProps}
           >
-            {typeof stages[x] === 'string' && stages[x - 1] !== '' ? (
-              <UnstyledIcon path={stages[x - 1] as string} size="2rem" />
-            ) : (
-              stages[x - 1]
-            )}
+            {rankContent(stages[x - 1])}
           </StyledEmptyRankContainer>,
         );
       }
@@ -324,11 +322,7 @@ const Rating = ({
       if (x <= Math.round(ratingValue - 0.01)) {
         ratings.push(
           <StyledFilledRankContainer onClick={clickHandler} id={x} key={x} {...filledRankProps}>
-            {typeof filledRankItem === 'string' && filledRankItem !== '' ? (
-              <UnstyledIcon path={filledRankItem} size="2rem" />
-            ) : (
-              filledRankItem
-            )}
+            {rankContent(filledRankItem)}
           </StyledFilledRankContainer>,
         );
       } else if (x - 1 === Math.floor(ratingValue) && x - 1 !== ratingValue) {
@@ -340,11 +334,7 @@ const Rating = ({
             key={x}
             {...halfFilledRankProps}
           >
-            {typeof halfFilledRankItem === 'string' && halfFilledRankItem !== '' ? (
-              <UnstyledIcon path={halfFilledRankItem} size="2rem" />
-            ) : (
-              halfFilledRankItem
-            )}
+            {rankContent(halfFilledRankItem)}
           </StyledHalfFilledRankContainer>,
         );
       } else {
@@ -356,11 +346,7 @@ const Rating = ({
             key={x}
             {...emptyRankProps}
           >
-            {typeof emptyRankItem === 'string' && emptyRankItem !== '' ? (
-              <UnstyledIcon path={emptyRankItem} size="2rem" />
-            ) : (
-              emptyRankItem
-            )}
+            {rankContent(emptyRankItem)}
           </StyledEmptyRankContainer>,
         );
       }
