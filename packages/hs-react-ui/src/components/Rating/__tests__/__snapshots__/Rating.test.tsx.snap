@@ -36,14 +36,14 @@ exports[`Rating shows Rating with default props 1`] = `
 }
 
 .c3 {
-  padding: 16px 8px;
+  padding: 1rem 0.5rem;
   background-color: undefined;
   background-clip: text;
   color: undefined;
 }
 
 .c2 {
-  padding: 16px 8px;
+  padding: 1rem 0.5rem;
   opacity: 50%;
   -webkit-filter: saturate(0);
   filter: saturate(0);
@@ -60,17 +60,17 @@ exports[`Rating shows Rating with default props 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
+    data-test-id="hs-ui-rating-"
   >
     <span
-      class="c1"
+      class=" c1"
       color="#7c8186"
       data-test-id="foundry-rating"
-      id="rating-container"
       value="1"
     >
       <div
-        class="c2"
+        class=" c2"
         id="5"
       >
         <svg
@@ -85,7 +85,7 @@ exports[`Rating shows Rating with default props 1`] = `
         </svg>
       </div>
       <div
-        class="c2"
+        class=" c2"
         id="4"
       >
         <svg
@@ -100,7 +100,7 @@ exports[`Rating shows Rating with default props 1`] = `
         </svg>
       </div>
       <div
-        class="c2"
+        class=" c2"
         id="3"
       >
         <svg
@@ -115,7 +115,7 @@ exports[`Rating shows Rating with default props 1`] = `
         </svg>
       </div>
       <div
-        class="c2"
+        class=" c2"
         id="2"
       >
         <svg
@@ -130,7 +130,7 @@ exports[`Rating shows Rating with default props 1`] = `
         </svg>
       </div>
       <span
-        class="c3"
+        class=" c3"
         id="1"
       >
         <svg

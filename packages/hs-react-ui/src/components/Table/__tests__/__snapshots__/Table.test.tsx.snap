@@ -103,15 +103,15 @@ exports[`Table Shows Table with default props 1`] = `
 
 <div>
   <table
-    class="c0"
+    class=" c0"
     data-test-id="foundry-table"
   >
     <thead>
       <tr
-        class="c1"
+        class=" c1"
       >
         <th
-          class="c2"
+          class=" c2"
         >
           <svg
             class="c3"
@@ -125,7 +125,7 @@ exports[`Table Shows Table with default props 1`] = `
           </svg>
         </th>
         <th
-          class="c2"
+          class=" c2"
         >
           <svg
             class="c3"
@@ -139,7 +139,7 @@ exports[`Table Shows Table with default props 1`] = `
           </svg>
         </th>
         <th
-          class="c2"
+          class=" c2"
         >
           <svg
             class="c3"
@@ -156,166 +156,166 @@ exports[`Table Shows Table with default props 1`] = `
     </thead>
     <tbody>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           A
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           p
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           p
         </td>
       </tr>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           R
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           e
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           d
         </td>
       </tr>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           1
         </td>
         <td
-          class="c5"
+          class=" c5"
         />
         <td
-          class="c5"
+          class=" c5"
         />
       </tr>
     </tbody>
     <tbody>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           K
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           i
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           w
         </td>
       </tr>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           B
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           r
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           o
         </td>
       </tr>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           2
         </td>
         <td
-          class="c5"
+          class=" c5"
         />
         <td
-          class="c5"
+          class=" c5"
         />
       </tr>
     </tbody>
     <tbody>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           B
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           a
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           n
         </td>
       </tr>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           Y
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           e
         </td>
         <td
-          class="c5"
+          class=" c5"
         >
           l
         </td>
       </tr>
       <tr
-        class="c4"
+        class=" c4"
       >
         <td
-          class="c5"
+          class=" c5"
         >
           3
         </td>
         <td
-          class="c5"
+          class=" c5"
         />
         <td
-          class="c5"
+          class=" c5"
         />
       </tr>
     </tbody>

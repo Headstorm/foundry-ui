@@ -8,7 +8,7 @@ exports[`Text matches snapshot 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     data-test-id="hsui-Text"
   />
 </div>
@@ -40,11 +40,11 @@ exports[`Text matches snapshot with icon strings 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     data-test-id="hsui-Text"
   >
     <span
-      class="c1"
+      class=" c1"
     >
       <svg
         role="presentation"
@@ -58,7 +58,7 @@ exports[`Text matches snapshot with icon strings 1`] = `
       </svg>
     </span>
     <span
-      class="c2"
+      class=" c2"
     >
       <svg
         role="presentation"
@@ -101,11 +101,11 @@ exports[`Text matches snapshot with icons 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     data-test-id="hsui-Text"
   >
     <span
-      class="c1"
+      class=" c1"
     >
       <svg
         role="presentation"
@@ -118,7 +118,7 @@ exports[`Text matches snapshot with icons 1`] = `
       </svg>
     </span>
     <span
-      class="c2"
+      class=" c2"
     >
       <svg
         role="presentation"
@@ -135,11 +135,6 @@ exports[`Text matches snapshot with icons 1`] = `
 `;
 
 exports[`Text matches snapshot with isLoading 1`] = `
-.c0 {
-  font-size: 1rem;
-  color: undefined;
-}
-
 .c1 {
   background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
   background-size: 400% 100%;
@@ -149,17 +144,25 @@ exports[`Text matches snapshot with isLoading 1`] = `
   -webkit-animation: ia-dwnO 8s linear infinite;
   animation: ia-dwnO 8s linear infinite;
   line-height: 0;
+}
+
+.c0 {
+  font-size: 1rem;
+  color: undefined;
+}
+
+.c2 {
   width: calc(1rem * 10);
   height: 1rem;
 }
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     data-test-id="hsui-Text"
   >
     <div
-      class="c1"
+      class=" c1 c2"
     />
   </span>
 </div>
@@ -182,11 +185,11 @@ exports[`Text matches snapshot with isProcessing 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     data-test-id="hsui-Text"
   >
     <span
-      class="c1"
+      class=" c1"
     >
       <svg
         role="presentation"

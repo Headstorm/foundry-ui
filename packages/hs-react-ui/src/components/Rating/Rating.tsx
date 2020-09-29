@@ -39,25 +39,15 @@ export const Container: string & StyledComponentBase<any, {}, RatingContainerPro
   }}
 `;
 
-export const RatingWrapper: string & StyledComponentBase<any, {}, RatingContainerProps> = styled(
-  Span,
-)`
-  ${({ elevation = 0, color, variant }: RatingContainerProps) => {
-    const { colors } = useTheme();
-    const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
-    const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
-
+export const RatingWrapper = styled(Span)`
+  ${() => {
     return `
       display: inline-flex;
       -webkit-flex-direction: row-reverse; 
       flex-direction: row-reverse;
       font-size: 1em;
       border-radius: 0.25em;
-      ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
-      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark};` : '0 none;'}
-      background-color: ${backgroundColor};
-      color: ${fontColor};
       align-items: center;
     `;
   }}
@@ -72,7 +62,15 @@ const FilledRank = styled(Span)`
     padding: 1rem 0.5rem;
     background-color: ${backgroundColor};
     background-clip: text;
-    color: ${fontColor};
+    // color: ${fontColor};
+  `;
+  }}
+`;
+
+const HalfRankContainer = styled(Span)`
+  ${() => {
+    return `
+    padding: 1rem 0.5rem;
   `;
   }}
 `;
@@ -82,15 +80,29 @@ const HalfFilledRank = styled(Div)`
     const { colors } = useTheme();
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
     return `
-    padding: 1rem 0.5rem;
+    position: absolute;
     color: ${fontColor};
     ${hasHalfFilledRank || 'clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);'}
   `;
   }}
 `;
 
+const HalfUnfilledRank = styled(Div)`
+  ${({ hasHalfFilledRank }) => {
+    return `
+    ${
+      hasHalfFilledRank
+        ? `content: none;`
+        : `opacity: 50%;
+        filter: saturate(0);
+        clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);`
+    }
+  `;
+  }}
+`;
+
 const EmptyRank = styled(Div)`
-  ${({ color, variant, hasStages, ratingSelected }) => {
+  ${({ color, variant, hasStages, ratingSelected, isHoverable = false }: EmptyRankProps) => {
     const { colors } = useTheme();
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
 
@@ -100,22 +112,28 @@ const EmptyRank = styled(Div)`
       hasStages
         ? `opacity: 50%;
        filter: saturate(0);
-       ${!ratingSelected &&
-         `&:hover,
+       ${
+         !ratingSelected
+           ? `&:hover,
        &:hover ~ div {
         opacity: 60%;
         filter: saturate(1);
-       }`}`
+       }`
+           : ''
+       }`
         : `opacity: 50%;
       filter: saturate(0);
-      ${!ratingSelected &&
-        `&:hover,
-      &:hover ~ div {
-        mix-blend-mode: multiply;
-       color: ${fontColor};
-       opacity: 100%;
-       filter: saturate(1);
-      }`}`
+      ${
+        !ratingSelected && isHoverable
+          ? `&:hover,
+        &:hover ~ div {
+          mix-blend-mode: multiply;
+          color: ${fontColor};
+          opacity: 100%;
+          filter: saturate(1);
+      }`
+          : ''
+      }`
     }
   `;
   }}
@@ -140,6 +158,14 @@ export type RatingContainerProps = {
   color: string;
   variant: variants;
   disabled: boolean;
+};
+
+export type EmptyRankProps = {
+  color: string;
+  variant: variants;
+  ratingSelected: boolean;
+  hasStages: boolean;
+  isHoverable: boolean;
 };
 
 export type RatingProps = {
@@ -167,7 +193,7 @@ export type RatingProps = {
 
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledFilledRankContainer?: string & StyledComponentBase<any, {}>;
-  StyledHalfFilledRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledHalfRankContainer?: string & StyledComponentBase<any, {}>;
   StyledEmptyRankContainer?: string & StyledComponentBase<any, {}>;
   StyledInfo?: string & StyledComponentBase<any, {}>;
 };
@@ -197,19 +223,36 @@ const Rating = ({
 
   StyledContainer = Container,
   StyledFilledRankContainer = FilledRank,
-  StyledHalfFilledRankContainer = HalfFilledRank,
+  StyledHalfRankContainer = HalfRankContainer,
   StyledEmptyRankContainer = EmptyRank,
   StyledInfo = Info,
 }: RatingProps): JSX.Element => {
-  const filledRankItem = filledRank || mdiStar;
-  const emptyRankItem = emptyRank || filledRank || mdiStarOutline;
-  const halfFilledRankItem = halfFilledRank || emptyRank || mdiStarHalfFull;
+  let filledRankItem = filledRank || mdiStar;
+  let halfFilledRankItem = halfFilledRank || mdiStarHalfFull;
+  let emptyRankItem = emptyRank || mdiStarOutline;
+  if (!filledRankItem) {
+    // If a filledRank is not provided use default items, regardless of halfFilledRank and emptyRank's existence.
+    filledRankItem = mdiStar;
+    halfFilledRankItem = mdiStarHalfFull;
+    emptyRankItem = mdiStarOutline;
+  } else if (filledRank && !emptyRank) {
+    // If filledRank is provided, but emptyRank is not, use the filledRank for all, disregarding existing halfFillRank.
+    filledRankItem = filledRank;
+    halfFilledRankItem = filledRank;
+    emptyRankItem = filledRank;
+  } else if (filledRank && !halfFilledRank && emptyRank) {
+    // Use emptyRank for missing halfFilledRank
+    filledRankItem = filledRank;
+    halfFilledRankItem = emptyRank;
+    emptyRankItem = emptyRank;
+  }
 
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
   const hasStages = Boolean(stages);
   const containerRef = useRef();
   const hasHalfFilledRank = Boolean((halfFilledRank && emptyRank) || !filledRank);
+  const [rawRating, setRawRating] = useState(0);
 
   const processRating = (rating: number) => {
     const step = fractionStep <= 1 && fractionStep > 0 ? fractionStep : 1;
@@ -225,7 +268,7 @@ const Rating = ({
   // if a rating is not selected before the hover ends, the Rating component's ratingValue is reset using the preHoverRatingValue.
   const [preHoverRatingValue, setPreHoverRatingValue] = useState(processRating(value));
 
-  // isRatingSelected is a boolean used by the styling to disable hovering if a rating is already selected or if the component is disabled
+  // isRatingSelected is used to disable hovering styles if a ratingValue is selected or if the component is disabled
   const [isRatingSelected, _setRatingSelected] = useState(false);
   const isRatingSelectedRef = useRef(isRatingSelected);
   const setRatingSelected = (v: boolean) => {
@@ -241,6 +284,7 @@ const Rating = ({
       const rect = node.getBoundingClientRect();
       if (!isRatingSelectedRef.current) {
         setRatingValue(processRating(((event.clientX - rect.left) / rect.width) * max));
+        setRawRating(((event.clientX - rect.left) / rect.width) * max);
       }
     }
   };
@@ -297,7 +341,7 @@ const Rating = ({
     for (let x = stages.length; x > 0; x--) {
       if (x <= Math.floor(ratingValue)) {
         ratings.push(
-          <StyledFilledRankContainer onClick={clickHandler} id={x} key={x} {...filledRankProps}>
+          <StyledFilledRankContainer onClick={clickHandler} key={x} {...filledRankProps}>
             {rankContent(stages[x - 1])}
           </StyledFilledRankContainer>,
         );
@@ -307,7 +351,6 @@ const Rating = ({
             hasStages={hasStages}
             ratingSelected={isRatingSelected}
             onClick={clickHandler}
-            id={x}
             key={x}
             {...emptyRankProps}
           >
@@ -327,23 +370,30 @@ const Rating = ({
         );
       } else if (x - 1 === Math.floor(ratingValue) && x - 1 !== ratingValue) {
         ratings.push(
-          <StyledHalfFilledRankContainer
-            onClick={clickHandler}
-            hasHalfFilledRank={hasHalfFilledRank}
-            id={x}
-            key={x}
-            {...halfFilledRankProps}
-          >
-            {rankContent(halfFilledRankItem)}
-          </StyledHalfFilledRankContainer>,
+          <StyledHalfRankContainer key={x}>
+            <HalfFilledRank
+              onClick={clickHandler}
+              hasHalfFilledRank={hasHalfFilledRank}
+              {...halfFilledRankProps}
+            >
+              {rankContent(halfFilledRankItem)}
+            </HalfFilledRank>
+            <HalfUnfilledRank
+              onClick={clickHandler}
+              hasHalfFilledRank={hasHalfFilledRank}
+              {...halfFilledRankProps}
+            >
+              {rankContent(halfFilledRankItem)}
+            </HalfUnfilledRank>
+          </StyledHalfRankContainer>,
         );
       } else {
         ratings.push(
           <StyledEmptyRankContainer
             onClick={clickHandler}
             ratingSelected={isRatingSelected}
-            id={x}
             key={x}
+            isHoverable={Boolean(rawRating - x > 0 && rawRating - x < fractionStep / 2)}
             {...emptyRankProps}
           >
             {rankContent(emptyRankItem)}
@@ -354,13 +404,12 @@ const Rating = ({
   }
 
   return (
-    <StyledContainer disabled={disabled} data-test-id={['hs-ui-rating', testId].join('-')}>
-      <RatingWrapper
-        onMouseLeave={mouseLeaveHandler}
-        value={ratingValue}
-        {...mergedContainerProps}
-        ref={containerRef}
-      >
+    <StyledContainer
+      disabled={disabled}
+      data-test-id={['hs-ui-rating', testId].join('-')}
+      {...mergedContainerProps}
+    >
+      <RatingWrapper onMouseLeave={mouseLeaveHandler} value={ratingValue} ref={containerRef}>
         {ratings.map(ratingItem => ratingItem)}
       </RatingWrapper>
       {showDisplay && (
@@ -385,7 +434,7 @@ const Rating = ({
 
 Rating.Container = Container;
 Rating.FilledRankContainer = FilledRank;
-Rating.HalfFilledRankContainer = HalfFilledRank;
+Rating.HalfRankContainer = HalfRankContainer;
 Rating.EmptyRankContainer = EmptyRank;
 Rating.Info = Info;
 export default Rating;
