@@ -49,9 +49,10 @@ export type RatingProps = {
   emptyRankProps?: SubcomponentPropsType;
 
   StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledFilledRank?: string & StyledComponentBase<any, {}>;
-  StyledHalfFilledRank?: string & StyledComponentBase<any, {}>;
-  StyledEmptyRank?: string & StyledComponentBase<any, {}>;
+  StyledFilledRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledHalfFilledRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledEmptyRankContainer?: string & StyledComponentBase<any, {}>;
+  StyledInfo?: string & StyledComponentBase<any, {}>;
 };
 
 export const Container: string & StyledComponentBase<any, {}, RatingContainerProps> = styled(Span)`
@@ -176,7 +177,8 @@ const Rating = ({
   onClick,
   disabled = false,
   color,
-  id = 'rating-container',
+  id,
+  testId,
   elevation,
   variant = variants.fill,
 
@@ -193,9 +195,10 @@ const Rating = ({
   emptyRankProps = {},
 
   StyledContainer = Container,
-  StyledFilledRank = FilledRank,
-  StyledHalfFilledRank = HalfFilledRank,
-  StyledEmptyRank = EmptyRank,
+  StyledFilledRankContainer = FilledRank,
+  StyledHalfFilledRankContainer = HalfFilledRank,
+  StyledEmptyRankContainer = EmptyRank,
+  StyledInfo = Info,
 }: RatingProps): JSX.Element => {
   let filledRankItem = filledRank;
   let halfFilledRankItem = halfFilledRank;
@@ -300,17 +303,17 @@ const Rating = ({
     for (let x = stages.length; x > 0; x--) {
       if (x <= Math.floor(ratingValue)) {
         ratings.push(
-          <StyledFilledRank onClick={clickHandler} id={x} key={x} {...filledRankProps}>
+          <StyledFilledRankContainer onClick={clickHandler} id={x} key={x} {...filledRankProps}>
             {typeof stages[x] === 'string' && stages[x - 1] !== '' ? (
               <UnstyledIcon path={stages[x - 1] as string} size="2rem" />
             ) : (
               stages[x - 1]
             )}
-          </StyledFilledRank>,
+          </StyledFilledRankContainer>,
         );
       } else {
         ratings.push(
-          <StyledEmptyRank
+          <StyledEmptyRankContainer
             hasStages={hasStages}
             ratingSelected={isRatingSelected}
             onClick={clickHandler}
@@ -323,7 +326,7 @@ const Rating = ({
             ) : (
               stages[x - 1]
             )}
-          </StyledEmptyRank>,
+          </StyledEmptyRankContainer>,
         );
       }
     }
@@ -332,17 +335,17 @@ const Rating = ({
     for (let x = max; x > 0; x--) {
       if (x <= Math.round(ratingValue - 0.01)) {
         ratings.push(
-          <StyledFilledRank onClick={clickHandler} id={x} key={x} {...filledRankProps}>
+          <StyledFilledRankContainer onClick={clickHandler} id={x} key={x} {...filledRankProps}>
             {typeof filledRankItem === 'string' && filledRankItem !== '' ? (
               <UnstyledIcon path={filledRankItem} size="2rem" />
             ) : (
               filledRankItem
             )}
-          </StyledFilledRank>,
+          </StyledFilledRankContainer>,
         );
       } else if (x - 1 === Math.floor(ratingValue) && x - 1 !== ratingValue) {
         ratings.push(
-          <StyledHalfFilledRank
+          <StyledHalfFilledRankContainer
             onClick={clickHandler}
             hasHalfFilledRank={hasHalfFilledRank}
             id={x}
@@ -354,11 +357,11 @@ const Rating = ({
             ) : (
               halfFilledRankItem
             )}
-          </StyledHalfFilledRank>,
+          </StyledHalfFilledRankContainer>,
         );
       } else {
         ratings.push(
-          <StyledEmptyRank
+          <StyledEmptyRankContainer
             onClick={clickHandler}
             ratingSelected={isRatingSelected}
             id={x}
@@ -370,14 +373,14 @@ const Rating = ({
             ) : (
               emptyRankItem
             )}
-          </StyledEmptyRank>,
+          </StyledEmptyRankContainer>,
         );
       }
     }
   }
 
   return (
-    <StyledContainer disabled={disabled}>
+    <StyledContainer disabled={disabled} data-test-id={['hs-ui-rating', testId].join('-')}>
       <RatingWrapper
         onMouseLeave={mouseLeaveHandler}
         value={ratingValue}
@@ -387,7 +390,7 @@ const Rating = ({
         {ratings.map(ratingItem => ratingItem)}
       </RatingWrapper>
       {showDisplay && (
-        <Info>
+        <StyledInfo>
           <span style={{ marginRight: '2px', verticalAlign: 'middle' }}>{ratingValue}</span>
           <span>
             {isRatingSelectedRef.current ? (
@@ -400,14 +403,15 @@ const Rating = ({
               />
             )}
           </span>{' '}
-        </Info>
+        </StyledInfo>
       )}
     </StyledContainer>
   );
 };
 
 Rating.Container = Container;
-Rating.FilledRank = FilledRank;
-Rating.HalfFilledRank = HalfFilledRank;
-Rating.EmptyRank = EmptyRank;
+Rating.FilledRankContainer = FilledRank;
+Rating.HalfFilledRankContainer = HalfFilledRank;
+Rating.EmptyRankContainer = EmptyRank;
+Rating.Info = Info;
 export default Rating;
