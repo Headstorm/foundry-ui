@@ -6,10 +6,10 @@
   "homepage": "http://headstorm.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Headstorm/rasa-ui.git"
+    "url": "https://github.com/Headstorm/foundry-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/Headstorm/rasa-ui/issues"
+    "url": "https://github.com/Headstorm/foundry-ui/issues"
   },
   "license": "Apache-2.0",
   "main": "dist/main.js",
@@ -104,6 +104,7 @@
     "@typescript-eslint/parser": "^3.0.0",
     "lodash.debounce": "^4.0.8",
     "polished": "^3.5.1",
+    "react-portal": "^4.2.1",
     "shortid": "^2.2.15",
     "src": "^1.1.2"
   },

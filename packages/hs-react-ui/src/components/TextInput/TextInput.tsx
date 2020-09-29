@@ -118,6 +118,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
 
     StyledContainer?: string & StyledComponentBase<any, {}>;
     StyledInput?: string & StyledComponentBase<any, {}>;
+    StyledTextArea?: string & StyledComponentBase<any, {}>;
     StyledIconContainer?: string & StyledComponentBase<any, {}>;
     StyledErrorContainer?: string & StyledComponentBase<any, {}>;
     containerProps?: SubcomponentPropsType;
@@ -144,12 +145,6 @@ const createIcon = (
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
-  // Destructure native HTML attributes to provide default values
-  type = 'text',
-  disabled = false,
-  cols = 10,
-  rows = 10,
-
   debouncedOnChange = defaultCallback,
   onClear,
   iconPrefix,
@@ -163,7 +158,8 @@ const TextInput = ({
   showCharacterCount = false,
 
   StyledContainer = Container,
-  StyledInput,
+  StyledInput = TextInputContainer,
+  StyledTextArea = TextAreaInputContainer,
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
   containerProps = {},
@@ -178,27 +174,24 @@ const TextInput = ({
     debounceInterval,
   ]);
 
-  // Determine the correct input type. Using a single input and the 'as' keyword
-  // to display as a text area disables the ability to set cols/rows
-  let InputComponent: string & StyledComponentBase<any, {}> = TextInputContainer;
-  if (StyledInput) {
-    InputComponent = StyledInput;
-  } else if (isMultiline) {
-    InputComponent = TextAreaInputContainer;
-  }
+  const InputComponent: string & StyledComponentBase<any, {}> = isMultiline
+    ? StyledTextArea
+    : StyledInput;
+
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
 
   return (
-    <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
+    <StyledContainer disabled={nativeHTMLAttributes.disabled} isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
+        // Set default values above nativeHTMLAttributes
+        type="text"
+        disable={false}
+        cols={10}
+        rows={10}
         {...nativeHTMLAttributes}
-        type={type}
-        disabled={disabled}
-        cols={cols}
-        rows={rows}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           e.persist();
           if (maxLength && maxLength >= 0) {
