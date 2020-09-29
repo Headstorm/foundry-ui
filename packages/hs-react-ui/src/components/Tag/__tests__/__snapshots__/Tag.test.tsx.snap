@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tag keeps the container the same when switching between isLoading and not isLoading 1`] = `
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -21,15 +32,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   align-items: center;
 }
 
-.c1 {
-  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
-  background-size: 400% 100%;
-  width: 6rem;
-  height: 16px;
-  border-radius: 9999px;
-  -webkit-animation: ia-dwnO 8s linear infinite;
-  animation: ia-dwnO 8s linear infinite;
-  line-height: 0;
+.c2 {
   width: 5rem;
   height: 10px;
   margin-top: -5px;
@@ -37,13 +40,13 @@ exports[`Tag keeps the container the same when switching between isLoading and n
 }
 
 <span
-  class="c0"
+  class=" c0"
   color="#7c8186"
   data-test-id="tag-9"
   elevation="0"
 >
   <div
-    class="c1"
+    class=" c1 c2"
   />
 </span>
 `;
@@ -70,7 +73,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
 }
 
 <span
-  class="c0"
+  class=" c0"
   color="#7c8186"
   data-test-id="tag-9"
   elevation="0"
@@ -107,13 +110,13 @@ exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-6"
     elevation="0"
   >
     <div
-      class="c1"
+      class=" c1"
     >
       <svg
         role="presentation"
@@ -166,7 +169,7 @@ exports[`Tag shows Tag with fill variant 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-4"
     elevation="0"
@@ -201,7 +204,7 @@ exports[`Tag shows Tag with non-default props variant and color 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#000"
     data-test-id="tag-2"
     elevation="2"
@@ -234,7 +237,7 @@ exports[`Tag shows Tag with outline variant 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-5"
     elevation="0"
@@ -267,7 +270,7 @@ exports[`Tag shows Tag with text variant 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-3"
     elevation="0"
@@ -309,13 +312,13 @@ exports[`Tag shows icons 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-8"
     elevation="0"
   >
     <div
-      class="c1"
+      class=" c1"
     >
       <svg
         role="presentation"
@@ -329,7 +332,7 @@ exports[`Tag shows icons 1`] = `
     </div>
     shows icons
     <div
-      class="c2"
+      class=" c2"
     >
       <svg
         role="presentation"
@@ -378,13 +381,13 @@ exports[`Tag shows icons with type string 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-7"
     elevation="0"
   >
     <div
-      class="c1"
+      class=" c1"
     >
       <svg
         role="presentation"
@@ -399,7 +402,7 @@ exports[`Tag shows icons with type string 1`] = `
     </div>
     string icon props
     <div
-      class="c2"
+      class=" c2"
     >
       <svg
         role="presentation"
@@ -417,6 +420,17 @@ exports[`Tag shows icons with type string 1`] = `
 `;
 
 exports[`Tag shows loading text when provided 1`] = `
+.c1 {
+  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
+  background-size: 400% 100%;
+  width: 6rem;
+  height: 16px;
+  border-radius: 9999px;
+  -webkit-animation: ia-dwnO 8s linear infinite;
+  animation: ia-dwnO 8s linear infinite;
+  line-height: 0;
+}
+
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -437,15 +451,7 @@ exports[`Tag shows loading text when provided 1`] = `
   align-items: center;
 }
 
-.c1 {
-  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
-  background-size: 400% 100%;
-  width: 6rem;
-  height: 16px;
-  border-radius: 9999px;
-  -webkit-animation: ia-dwnO 8s linear infinite;
-  animation: ia-dwnO 8s linear infinite;
-  line-height: 0;
+.c2 {
   width: 5rem;
   height: 10px;
   margin-top: -5px;
@@ -454,13 +460,13 @@ exports[`Tag shows loading text when provided 1`] = `
 
 <div>
   <span
-    class="c0"
+    class=" c0"
     color="#7c8186"
     data-test-id="tag-1"
     elevation="0"
   >
     <div
-      class="c1"
+      class=" c1 c2"
     />
   </span>
 </div>

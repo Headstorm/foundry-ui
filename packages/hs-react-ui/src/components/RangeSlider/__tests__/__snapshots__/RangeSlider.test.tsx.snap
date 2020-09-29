@@ -235,11 +235,11 @@ exports[`RangeSlider renders 2`] = `
       />
     </div>
     <div
-      class="c7"
+      class=" c7"
       id="marker-3"
     >
       <div
-        class="c8"
+        class=" c8"
       />
     </div>
   </div>

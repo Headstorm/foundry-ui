@@ -152,7 +152,6 @@ const TextInput = ({
 
   debouncedOnChange = defaultCallback,
   onClear,
-  onChange,
   iconPrefix,
   isValid = true,
   isMultiline,
@@ -187,12 +186,15 @@ const TextInput = ({
   } else if (isMultiline) {
     InputComponent = TextAreaInputContainer;
   }
-  const [displayValue, setDisplayValue] = useState(nativeHTMLAttributes.value || '');
+  const [internalValue, setInternalValue] = useState(
+    nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
+  );
 
   return (
     <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
+        {...nativeHTMLAttributes}
         type={type}
         disabled={disabled}
         cols={cols}
@@ -204,15 +206,14 @@ const TextInput = ({
               ? e.target.value
               : e.target.value.slice(0, maxLength);
           }
-          setDisplayValue(e.target.value);
-          if (onChange) {
-            onChange(e);
+          setInternalValue(e.target.value);
+          if (nativeHTMLAttributes.onChange) {
+            nativeHTMLAttributes.onChange(e);
           }
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
         {...inputProps}
-        {...nativeHTMLAttributes}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear} {...iconContainerProps}>
@@ -223,9 +224,9 @@ const TextInput = ({
         <CharacterCounter
           errorMessage={errorMessage}
           isValid={isValid}
-          textIsTooLong={(displayValue as string).length > maxLength}
+          textIsTooLong={(internalValue as string).length > maxLength}
         >
-          {(displayValue as string).length} / {maxLength}
+          {(internalValue as string).length} / {maxLength}
         </CharacterCounter>
       )}
       {isValid === false && errorMessage && (
