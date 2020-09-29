@@ -35,6 +35,7 @@ export type RatingProps = {
   variant?: variants;
   color?: string;
   id?: string;
+  testId?: string;
 
   stages?: Array<string> | Array<JSX.Element>;
   fractionStep?: number;
@@ -200,22 +201,9 @@ const Rating = ({
   StyledEmptyRankContainer = EmptyRank,
   StyledInfo = Info,
 }: RatingProps): JSX.Element => {
-  let filledRankItem = filledRank;
-  let halfFilledRankItem = halfFilledRank;
-  let emptyRankItem = emptyRank;
-  if (!filledRank) {
-    filledRankItem = mdiStar;
-    halfFilledRankItem = mdiStarHalfFull;
-    emptyRankItem = mdiStarOutline;
-  } else if (filledRank && !emptyRank) {
-    filledRankItem = filledRank;
-    halfFilledRankItem = filledRank;
-    emptyRankItem = filledRank;
-  } else if (filledRank && !halfFilledRank && emptyRank) {
-    filledRankItem = filledRank;
-    halfFilledRankItem = emptyRank;
-    emptyRankItem = emptyRank;
-  }
+  const filledRankItem = filledRank || mdiStar;
+  const emptyRankItem = emptyRank || filledRank || mdiStarOutline;
+  const halfFilledRankItem = halfFilledRank || emptyRank || mdiStarHalfFull;
 
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
