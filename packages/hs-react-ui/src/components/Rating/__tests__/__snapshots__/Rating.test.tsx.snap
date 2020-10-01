@@ -6,8 +6,8 @@ exports[`Rating shows Rating with default props 1`] = `
   border-radius: 0.25em;
   outline: 0 none;
   border: 0 none;
-  background-color: undefined;
-  color: undefined;
+  background-color: #7c8186;
+  color: #000;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -26,9 +26,6 @@ exports[`Rating shows Rating with default props 1`] = `
   font-size: 1em;
   border-radius: 0.25em;
   outline: 0 none;
-  border: 0 none;
-  background-color: #7c8186;
-  color: #000;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -39,7 +36,6 @@ exports[`Rating shows Rating with default props 1`] = `
   padding: 1rem 0.5rem;
   background-color: undefined;
   background-clip: text;
-  color: undefined;
 }
 
 .c2 {
@@ -49,29 +45,18 @@ exports[`Rating shows Rating with default props 1`] = `
   filter: saturate(0);
 }
 
-.c2:hover,
-.c2:hover ~ div {
-  mix-blend-mode: multiply;
-  color: undefined;
-  opacity: 100%;
-  -webkit-filter: saturate(1);
-  filter: saturate(1);
-}
-
 <div>
   <span
     class=" c0"
-    data-test-id="hs-ui-rating-"
+    color="#7c8186"
+    data-test-id="foundry-rating"
   >
     <span
       class=" c1"
-      color="#7c8186"
-      data-test-id="foundry-rating"
       value="1"
     >
       <div
         class=" c2"
-        id="5"
       >
         <svg
           role="presentation"
@@ -86,7 +71,6 @@ exports[`Rating shows Rating with default props 1`] = `
       </div>
       <div
         class=" c2"
-        id="4"
       >
         <svg
           role="presentation"
@@ -101,7 +85,6 @@ exports[`Rating shows Rating with default props 1`] = `
       </div>
       <div
         class=" c2"
-        id="3"
       >
         <svg
           role="presentation"
@@ -116,7 +99,6 @@ exports[`Rating shows Rating with default props 1`] = `
       </div>
       <div
         class=" c2"
-        id="2"
       >
         <svg
           role="presentation"
