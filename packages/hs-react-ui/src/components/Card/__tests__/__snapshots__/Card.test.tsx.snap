@@ -1,5 +1,241 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Card header bottom padding should be 0rem when body is present 1`] = `
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c0 {
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: 0px solid transparent;
+  -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
+  transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  background-color: #fff;
+}
+
+.c1 {
+  padding: 1.5rem 1.5rem 0rem;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+  font-weight: bold;
+  color: #252c35;
+}
+
+.c2 {
+  padding: 1.5rem 1.5rem;
+  color: #51575d;
+}
+
+.c3 {
+  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    data-test-id="foundry-card"
+    elevation="1"
+  >
+    <div
+      class="c1"
+    >
+      Header
+    </div>
+    <div
+      class="c2"
+    >
+      Body
+    </div>
+    <div
+      class="c3"
+    >
+      <svg
+        class="c4"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card header bottom padding should be 0rem when footer is present 1`] = `
+.c4 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c0 {
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: 0px solid transparent;
+  -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
+  transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  background-color: #fff;
+}
+
+.c1 {
+  padding: 1.5rem 1.5rem 0rem;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+  font-weight: bold;
+  color: #252c35;
+}
+
+.c2 {
+  padding: 1rem 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  color: #7c8186;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+
+.c3 {
+  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    data-test-id="foundry-card"
+    elevation="1"
+  >
+    <div
+      class="c1"
+    >
+      Header
+    </div>
+    <div
+      class="c2"
+    >
+      Footer
+    </div>
+    <div
+      class="c3"
+    >
+      <svg
+        class="c4"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card header bottom padding should be 1.5rem without body and footer 1`] = `
+.c3 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c0 {
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: 0px solid transparent;
+  -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
+  transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  background-color: #fff;
+}
+
+.c1 {
+  padding: 1.5rem 1.5rem;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+  font-weight: bold;
+  color: #252c35;
+}
+
+.c2 {
+  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    data-test-id="foundry-card"
+    elevation="1"
+  >
+    <div
+      class="c1"
+    >
+      Header
+    </div>
+    <div
+      class="c2"
+    >
+      <svg
+        class="c3"
+        height="0px"
+        viewBox="0 0 0 0"
+        width="0px"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Card shows Card with default feedback 1`] = `
 .c1 {
   position: relative;
