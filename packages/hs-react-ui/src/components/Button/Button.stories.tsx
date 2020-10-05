@@ -35,16 +35,11 @@ storiesOf('Button', module)
   .add(
     'Basic Button',
     () => {
-      const onClick = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        action('onClick')();
-      };
-
       return (
         <Button
           variant={select('variant', variants, variants.fill)}
           color={color('color', colors.primaryDark)}
-          onClick={onClick}
+          onClick={action('button-click')()}
           disabled={boolean('disabled', false)}
           feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.ripple)}
           isLoading={boolean('isLoading', false)}
