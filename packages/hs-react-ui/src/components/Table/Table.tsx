@@ -12,6 +12,7 @@ import {
   TableProps,
 } from './types';
 import { useTheme } from '../../context';
+import { mergeRefs } from '../../utils/refs';
 
 type collapsedState = Record<string, string>;
 
@@ -213,6 +214,11 @@ const Table = ({
   headerProps = {},
   headerCellProps = {},
   rowProps = {},
+
+  containerRef,
+  groupLabelRowRef,
+  headerRef,
+  headerCellRef,
 }: TableProps) => {
   const [sortedData, sortData] = useState(data);
   const [sortMethod, setSortMethod] = useState(defaultSort);
@@ -478,6 +484,7 @@ const Table = ({
               rowNum={index}
               key={`row${groupLabelDataString}`}
               reachedMinWidth={width < minWidthBreakpoint}
+              ref={groupLabelRowRef}
               {...groupLabelRowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
@@ -564,10 +571,19 @@ const Table = ({
 
   // Table return
   return (
-    <StyledContainer ref={ref} reachedMinWidth={width < minWidthBreakpoint} {...containerProps}>
+    <StyledContainer
+      ref={mergeRefs([ref, containerRef])}
+      reachedMinWidth={width < minWidthBreakpoint}
+      {...containerProps}
+    >
       <thead>
         {width > minWidthBreakpoint && (
-          <StyledHeader columnGap={columnGap} columnWidths={columnWidths} {...headerProps}>
+          <StyledHeader
+            columnGap={columnGap}
+            columnWidths={columnWidths}
+            ref={headerRef}
+            {...headerProps}
+          >
             {Object.keys(copiedColumns).map((headerColumnKey: string) => {
               const RenderedHeaderCell =
                 copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
@@ -585,6 +601,7 @@ const Table = ({
                       );
                     }}
                     sortable={copiedColumns[headerColumnKey].sortable}
+                    ref={headerCellRef}
                     {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}

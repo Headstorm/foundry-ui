@@ -44,12 +44,18 @@ export type TableProps = {
   StyledHeader?: string & StyledComponentBase<any, {}>;
   StyledHeaderCell?: string & StyledComponentBase<any, {}>;
   StyledRow?: string & StyledComponentBase<any, {}>;
+
   cellProps?: SubcomponentPropsType;
   containerProps?: SubcomponentPropsType;
   groupLabelRowProps?: SubcomponentPropsType;
   headerProps?: SubcomponentPropsType;
   headerCellProps?: SubcomponentPropsType;
   rowProps?: SubcomponentPropsType;
+
+  containerRef?: React.RefObject<HTMLTableElement>;
+  groupLabelRowRef?: React.RefObject<HTMLElement>;
+  headerRef?: React.RefObject<HTMLTableRowElement>;
+  headerCellRef?: React.RefObject<HTMLTableHeaderCellElement>;
 };
 export type RowProps = {
   columnGap: string;

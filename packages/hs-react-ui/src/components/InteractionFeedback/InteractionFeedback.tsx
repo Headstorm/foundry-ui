@@ -102,7 +102,7 @@ const InteractionFeedback = ({
 
   return (
     <StyledContainer
-      ref={mergeRefs(ref, containerRef)}
+      ref={mergeRefs([ref, containerRef])}
       onMouseDown={mouseDownHandler}
       {...containerProps}
     >

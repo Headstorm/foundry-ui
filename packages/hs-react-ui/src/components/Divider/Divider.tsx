@@ -54,7 +54,7 @@ const Divider = ({
     ref={containerRef}
     {...rest}
   >
-    <StyledDivider width={width} height={height} {...dividerProps} ref={dividerRef} />
+    <StyledDivider width={width} height={height} ref={dividerRef} {...dividerProps} />
   </StyledDividerContainer>
 );
 

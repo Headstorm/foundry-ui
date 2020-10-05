@@ -39,7 +39,7 @@ storiesOf('Button', module)
         <Button
           variant={select('variant', variants, variants.fill)}
           color={color('color', colors.primaryDark)}
-          onClick={action('button-click')()}
+          onClick={() => action('button-click')()}
           disabled={boolean('disabled', false)}
           feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.ripple)}
           isLoading={boolean('isLoading', false)}
