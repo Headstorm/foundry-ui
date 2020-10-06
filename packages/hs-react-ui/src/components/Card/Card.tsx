@@ -56,11 +56,11 @@ export const CardContainer = styled(Div)`
 `;
 
 export const Header = styled(Div)`
-  ${() => {
+  ${({ hasBody, hasFooter }) => {
     const { colors } = useTheme();
 
     return `
-      padding: 1.5rem 1.5rem 0rem;
+      padding: 1.5rem 1.5rem ${hasBody || hasFooter ? '0rem' : ''};
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${colors.grayDark};
@@ -172,6 +172,9 @@ const Card = ({
       r: 300,
     },
   };
+  const hasHeader = Boolean(header);
+  const hasBody = Boolean(children);
+  const hasFooter = Boolean(footer);
 
   return (
     <StyledContainer
@@ -182,17 +185,17 @@ const Card = ({
       ref={containerRef}
     >
       {header && (
-        <StyledHeader {...headerProps} ref={headerRef}>
+        <StyledHeader hasBody={hasBody} hasFooter={hasFooter} ref={headerRef} {...headerProps}>
           {header}
         </StyledHeader>
       )}
       {children && (
-        <StyledBody ref={bodyRef} {...bodyProps}>
+        <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} ref={bodyRef} {...bodyProps}>
           {children}
         </StyledBody>
       )}
       {footer && (
-        <StyledFooter ref={footerRef} {...footerProps}>
+        <StyledFooter hasHeader={hasHeader} hasBody={hasBody} ref={footerRef} {...footerProps}>
           {footer}
         </StyledFooter>
       )}

@@ -10,7 +10,6 @@ import variants from '../../enums/variants';
 import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
-import Text from '../Text/Text';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
@@ -43,14 +42,14 @@ const Container = styled(Div)`
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
-  ${({ modalIsOpen }) => `
+  ${({ isOpen }) => `
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
 
     ${
-      modalIsOpen
+      isOpen
         ? `
           border-bottom: 0px solid transparent;
           border-bottom-right-radius: 0rem;
@@ -75,6 +74,7 @@ const ValueIconContainer = styled(Div)`
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
 const CloseIconContainer = styled(Div)`
   height: 1.125rem;
+  z-index: 1;
 `;
 
 const ValueItem = styled(Div)`
@@ -155,7 +155,7 @@ const CheckContainer = styled(Div)`
   }}
 `;
 
-const PlaceholderContainer = styled(Text.Container)`
+const PlaceholderContainer = styled(Span)`
   opacity: 0.8;
 `;
 
@@ -183,7 +183,7 @@ export interface DropdownProps {
   StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
-  StyledPlaceholder?: (string & StyledComponentBase<any, {}>) | typeof Text;
+  StyledPlaceholder?: string & StyledComponentBase<any, {}>;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -227,7 +227,7 @@ const Dropdown = ({
   StyledOptionsContainer = OptionsContainer,
   StyledOptionItem = OptionItem,
   StyledCheckContainer = CheckContainer,
-  StyledPlaceholder = Text,
+  StyledPlaceholder = PlaceholderContainer,
 
   containerProps,
   valueContainerProps,
@@ -424,7 +424,7 @@ const Dropdown = ({
       <Button
         StyledContainer={StyledValueContainer}
         containerProps={{
-          modalIsOpen: isOpen,
+          isOpen,
         }}
         id={`${name}-button-value`}
         color={defaultedColor}
@@ -520,6 +520,6 @@ Dropdown.OptionsContainer = OptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
-Dropdown.Placeholder = Text;
+Dropdown.Placeholder = PlaceholderContainer;
 
 export default Dropdown;

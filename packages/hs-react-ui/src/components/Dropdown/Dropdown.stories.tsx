@@ -77,7 +77,7 @@ storiesOf('Dropdown', module)
   .add(
     'Basic',
     () => {
-      const [values, setValues] = useState<(string | number)[] | undefined>([cities[0].id]);
+      const [values, setValues] = useState<(string | number)[] | undefined>();
       return (
         <>
           <Label labelText="City" htmlFor="cities-list">

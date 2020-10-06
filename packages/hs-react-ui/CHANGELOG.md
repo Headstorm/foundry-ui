@@ -1,3 +1,18 @@
+# [1.0.0-v1-release.22](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.21...v1.0.0-v1-release.22) (2020-09-28)
+
+
+### Bug Fixes
+
+* **card:** header padding equal on all side if body and footer not present ([64e0c0b](https://github.com/Headstorm/foundry-ui/commit/64e0c0bbd46ef6732f375755b41ab9934f801757))
+* **dropdown placeholder and onclear:** demostrate styledplaceholder and fix onclear ([ce237c5](https://github.com/Headstorm/foundry-ui/commit/ce237c5d7a78121d526527ad2d8b6350ceac43a3))
+
+# [1.0.0-v1-release.21](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.20...v1.0.0-v1-release.21) (2020-09-28)
+
+
+### Bug Fixes
+
+* **dropdown valuecontainer:** rename modalisopen prop to isopen ([89b98e8](https://github.com/Headstorm/foundry-ui/commit/89b98e8b81938ecefac518091a5c3b43867fc8ec))
+
 # [1.0.0-v1-release.20](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.19...v1.0.0-v1-release.20) (2020-09-22)
 
 
