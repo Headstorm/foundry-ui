@@ -18,6 +18,7 @@ import {
 } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
+import { mergeRefs } from '../../utils/refs';
 
 export const Container: string & StyledComponentBase<any, {}, RatingContainerProps> = styled(Span)`
   ${({ elevation = 0, color, variant, disabled }: RatingContainerProps) => {
@@ -191,6 +192,8 @@ export type RatingProps = {
   halfFilledRankProps?: SubcomponentPropsType;
   emptyRankProps?: SubcomponentPropsType;
 
+  containerRef?: React.RefObject<HTMLDivElement>;
+
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledFilledRankContainer?: string & StyledComponentBase<any, {}>;
   StyledHalfRankContainer?: string & StyledComponentBase<any, {}>;
@@ -221,6 +224,8 @@ const Rating = ({
   halfFilledRankProps = {},
   emptyRankProps = {},
 
+  containerRef,
+
   StyledContainer = Container,
   StyledFilledRankContainer = FilledRank,
   StyledHalfRankContainer = HalfRankContainer,
@@ -250,7 +255,7 @@ const Rating = ({
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
   const hasStages = Boolean(stages);
-  const containerRef = useRef();
+  const containerInternalRef = useRef();
   const hasHalfFilledRank = Boolean((halfFilledRank && emptyRank) || !filledRank);
   const [rawRating, setRawRating] = useState(0);
 
@@ -310,8 +315,8 @@ const Rating = ({
   };
 
   useEffect(() => {
-    const current: HTMLElement | null = containerRef
-      ? ((containerRef.current as unknown) as HTMLElement)
+    const current: HTMLElement | null = containerInternalRef
+      ? ((containerInternalRef.current as unknown) as HTMLElement)
       : null;
     if (current) {
       current.addEventListener('mousemove', ratingListener);
@@ -409,7 +414,11 @@ const Rating = ({
       data-test-id={['hs-ui-rating', testId].join('-')}
       {...mergedContainerProps}
     >
-      <RatingWrapper onMouseLeave={mouseLeaveHandler} value={ratingValue} ref={containerRef}>
+      <RatingWrapper
+        onMouseLeave={mouseLeaveHandler}
+        value={ratingValue}
+        ref={mergeRefs([containerRef, containerInternalRef])}
+      >
         {ratings.map(ratingItem => ratingItem)}
       </RatingWrapper>
       {showDisplay && (

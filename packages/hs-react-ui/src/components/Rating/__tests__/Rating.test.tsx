@@ -27,4 +27,12 @@ describe('Rating', () => {
     await waitFor(() => getByTestId(testId));
     expect(container).toMatchSnapshot();
   });
+  it('containerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Rating onClick={() => {}} containerProps={{ 'data-test-id': testId }} containerRef={ref} />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+  });
 });
