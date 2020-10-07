@@ -29,7 +29,8 @@ export interface TextProps {
   containerProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
   containerRef?: React.RefObject<HTMLDivElement>;
-  iconContainerRef?: React.RefObject<HTMLDivElement>;
+  iconPrefixContainerRef?: React.RefObject<HTMLElement>;
+  iconSuffixContainerRef?: React.RefObject<HTMLElement>;
 }
 
 /* Styled div that represents the scroll bar */
@@ -64,9 +65,10 @@ const Text = ({
   StyledContainer = TextContainer,
   StyledIconContainer = IconContainer,
   containerProps = {},
-  containerRef,
-  iconContainerRef,
   iconContainerProps = {},
+  containerRef,
+  iconPrefixContainerRef,
+  iconSuffixContainerRef,
 }: TextProps) => (
   <StyledContainer
     data-test-id="hsui-Text"
@@ -80,16 +82,21 @@ const Text = ({
       !isProcessing &&
       iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-        <StyledIconContainer side="left" ref={iconContainerRef} {...iconContainerProps}>
+        <StyledIconContainer side="left" ref={iconPrefixContainerRef} {...iconContainerProps}>
           <Icon path={iconPrefix} size={size} />
         </StyledIconContainer>
       ) : (
-        <StyledIconContainer side="left" size={size} ref={iconContainerRef} {...iconContainerProps}>
+        <StyledIconContainer
+          side="left"
+          size={size}
+          ref={iconPrefixContainerRef}
+          {...iconContainerProps}
+        >
           {iconPrefix}
         </StyledIconContainer>
       ))}
     {!isLoading && isProcessing && (
-      <StyledIconContainer side="left" ref={iconContainerRef} {...iconContainerProps}>
+      <StyledIconContainer side="left" ref={iconPrefixContainerRef} {...iconContainerProps}>
         <Icon path={mdiLoading} size={size} spin={1} />
       </StyledIconContainer>
     )}
@@ -98,11 +105,11 @@ const Text = ({
     {!isLoading &&
       iconSuffix &&
       (typeof iconSuffix === 'string' ? (
-        <StyledIconContainer side="right" ref={iconContainerRef} {...iconContainerProps}>
+        <StyledIconContainer side="right" ref={iconSuffixContainerRef} {...iconContainerProps}>
           <Icon path={iconSuffix} size={size} />
         </StyledIconContainer>
       ) : (
-        <StyledIconContainer side="right" ref={iconContainerRef} {...iconContainerProps}>
+        <StyledIconContainer side="right" ref={iconSuffixContainerRef} {...iconContainerProps}>
           {iconSuffix}
         </StyledIconContainer>
       ))}

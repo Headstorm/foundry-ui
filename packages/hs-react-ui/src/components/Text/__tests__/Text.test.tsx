@@ -51,4 +51,46 @@ describe('Text', () => {
       expect(results).toHaveNoViolations();
     });
   });
+  describe('Ref tests', () => {
+    it('containerRef.current should exist', async () => {
+      const testId = 'hsui-Text';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLSpanElement>();
+      const { getByTestId } = render(
+        <Text containerRef={ref} containerProps={containerProps}>
+          test
+        </Text>,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLSpanElement).toBeTruthy();
+    });
+    it('iconPrefixContainerRef.current should exist', async () => {
+      const testId = 'hsui-Text';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Text
+          iconPrefixContainerRef={ref}
+          iconPrefix={<div>prefix</div>}
+          containerProps={containerProps}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('iconSuffixContainerRef.current should exist', async () => {
+      const testId = 'hsui-Text';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Text
+          iconSuffixContainerRef={ref}
+          iconSuffix={<div>prefix</div>}
+          containerProps={containerProps}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+  });
 });

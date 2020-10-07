@@ -42,10 +42,10 @@ export type TagProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
   StyledLoadingBar?: string & StyledComponentBase<any, {}>;
-  containerRef?: React.RefObject<HTMLDivElement>;
-  iconPrefixContainerRef?: React.RefObject<HTMLDivElement>;
-  iconSuffixContainerRef?: React.RefObject<HTMLDivElement>;
-  loadingBarRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLSpanElement>;
+  iconPrefixContainerRef?: React.RefObject<HTMLElement>;
+  iconSuffixContainerRef?: React.RefObject<HTMLElement>;
+  loadingBarRef?: React.RefObject<HTMLElement>;
 };
 
 export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Span)`
@@ -130,7 +130,7 @@ const Tag = ({
 
   return isLoading ? (
     <StyledContainer ref={containerRef} {...mergedContainerProps}>
-      <StyledLoadingBar {...loadingBarProps} />
+      <StyledLoadingBar ref={loadingBarRef} {...loadingBarProps} />
     </StyledContainer>
   ) : (
     <StyledContainer ref={containerRef} {...mergedContainerProps}>

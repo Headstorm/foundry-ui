@@ -116,21 +116,18 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     showCharacterCount?: boolean;
 
     StyledContainer?: string & StyledComponentBase<any, {}>;
-    containerProps?: SubcomponentPropsType;
-    containerRef?: React.RefObject<HTMLDivElement>;
-
     StyledInput?: string & StyledComponentBase<any, {}>;
-    inputProps?: SubcomponentPropsType;
-    inputRef?: React.RefObject<HTMLInputElement>;
-
+    StyledIconContainer?: string & StyledComponentBase<any, {}>;
+    StyledErrorContainer?: string & StyledComponentBase<any, {}>;
     StyledTextArea?: string & StyledComponentBase<any, {}>;
 
-    StyledIconContainer?: string & StyledComponentBase<any, {}>;
+    containerProps?: SubcomponentPropsType;
+    inputProps?: SubcomponentPropsType;
     iconContainerProps?: SubcomponentPropsType;
-    iconContainerRef?: React.RefObject<HTMLDivElement>;
-
-    StyledErrorContainer?: string & StyledComponentBase<any, {}>;
     errorContainerProps?: SubcomponentPropsType;
+
+    containerRef?: React.RefObject<HTMLDivElement>;
+    inputRef?: React.RefObject<HTMLInputElement>;
     errorContainerRef?: React.RefObject<HTMLDivElement>;
   };
 
@@ -172,19 +169,18 @@ const TextInput = ({
   showCharacterCount = false,
 
   StyledContainer = Container,
-  containerProps = {},
-  containerRef,
-
   StyledInput = TextInputContainer,
-  inputProps = {},
-  inputRef,
-  StyledTextArea = TextAreaInputContainer,
   StyledIconContainer = IconContainer,
-  iconContainerProps = {},
-  iconContainerRef,
-
   StyledErrorContainer = ErrorContainer,
+  StyledTextArea = TextAreaInputContainer,
+
+  containerProps = {},
+  inputProps = {},
+  iconContainerProps = {},
   errorContainerProps = {},
+
+  containerRef,
+  inputRef,
   errorContainerRef,
 
   ...nativeHTMLAttributes
@@ -200,12 +196,7 @@ const TextInput = ({
   const displayValue = nativeHTMLAttributes.value || defaultValue;
 
   return (
-    <StyledContainer
-      disabled={disabled}
-      isValid={isValid}
-      containerRef={containerRef}
-      {...containerProps}
-    >
+    <StyledContainer disabled={disabled} isValid={isValid} ref={containerRef} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
         value={displayValue}
@@ -226,16 +217,12 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        inputRef={inputRef}
+        ref={inputRef}
         {...inputProps}
         {...nativeHTMLAttributes}
       />
       {onClear && (
-        <StyledIconContainer
-          onClick={onClear}
-          iconContainerRef={iconContainerRef}
-          {...iconContainerProps}
-        >
+        <StyledIconContainer onClick={onClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
