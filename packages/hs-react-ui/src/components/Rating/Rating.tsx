@@ -192,7 +192,7 @@ export type RatingProps = {
   halfFilledRankProps?: SubcomponentPropsType;
   emptyRankProps?: SubcomponentPropsType;
 
-  containerRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLSpanElement>;
 
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledFilledRankContainer?: string & StyledComponentBase<any, {}>;
@@ -219,6 +219,12 @@ const Rating = ({
   emptyRank,
   showDisplay = false,
 
+  StyledContainer = Container,
+  StyledFilledRankContainer = FilledRank,
+  StyledHalfRankContainer = HalfRankContainer,
+  StyledEmptyRankContainer = EmptyRank,
+  StyledInfo = Info,
+
   containerProps = {},
   filledRankProps = {},
   halfFilledRankProps = {},
@@ -226,11 +232,7 @@ const Rating = ({
 
   containerRef,
 
-  StyledContainer = Container,
-  StyledFilledRankContainer = FilledRank,
-  StyledHalfRankContainer = HalfRankContainer,
-  StyledEmptyRankContainer = EmptyRank,
-  StyledInfo = Info,
+  ...nativeHTMLAttributes
 }: RatingProps): JSX.Element => {
   let filledRankItem = filledRank || mdiStar;
   let halfFilledRankItem = halfFilledRank || mdiStarHalfFull;
@@ -413,6 +415,7 @@ const Rating = ({
       disabled={disabled}
       data-test-id={['hs-ui-rating', testId].join('-')}
       {...mergedContainerProps}
+      {...nativeHTMLAttributes}
     >
       <RatingWrapper
         onMouseLeave={mouseLeaveHandler}
