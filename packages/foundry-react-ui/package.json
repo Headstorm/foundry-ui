@@ -1,5 +1,5 @@
 {
-  "name": "@headstorm/hs-react-ui",
+  "name": "@headstorm/foundry-react-ui",
   "version": "1.0.0-alpha.6",
   "description": "Robust UI library written in React. It's DRY, with CSS in JS; stirred, not shaken.",
   "author": "Headstorm LLC",

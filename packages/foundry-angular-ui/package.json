@@ -1,5 +1,5 @@
 {
-  "name": "@headstorm/hs-angular-ui",
+  "name": "@headstorm/foundry-angular-ui",
   "version": "0.1.2",
   "description": "Robust UI library written in Angular. It's DRY, with CSS in JS; stirred, not shaken.",
   "author": "Headstorm LLC",

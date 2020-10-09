@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
       - name: Prepare
         run: yarn install
         env:
@@ -54,8 +54,8 @@ jobs:
           name: react-artifact
           path: |
             docs/
-            packages/hs-react-ui/dist/
-            packages/hs-react-ui/coverage/
+            packages/foundry-react-ui/dist/
+            packages/foundry-react-ui/coverage/
       - name: Update version
         run: npm run semver-release
         env:

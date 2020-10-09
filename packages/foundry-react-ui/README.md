@@ -12,10 +12,10 @@ Foundry-UI (or Foundry for short) is a great choice for your next software proje
 
 At of the time this writing, Foundry is new and launching with a fully supported React version. The Angular version is a work in progress, but don't let that stop you from reaching out about contributing on the Angular version.
 
-[![NPM](https://img.shields.io/npm/v/@headstorm/hs-react-ui.svg)](https://www.npmjs.com/package/@headstorm/hs-react-ui)
-![npm](https://img.shields.io/npm/dw/@headstorm/hs-react-ui)
-![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@headstorm/hs-react-ui)
-![license](https://img.shields.io/npm/l/@headstorm/hs-react-ui)
+[![NPM](https://img.shields.io/npm/v/@headstorm/foundry-react-ui.svg)](https://www.npmjs.com/package/@headstorm/foundry-react-ui)
+![npm](https://img.shields.io/npm/dw/@headstorm/foundry-react-ui)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@headstorm/foundry-react-ui)
+![license](https://img.shields.io/npm/l/@headstorm/foundry-react-ui)
 ![a11y](https://img.shields.io/badge/a11y%20tested-%e2%99%bf-blue)
 
 ![Foundry UI CI/CD](https://github.com/Headstorm/foundry-ui/workflows/Foundry%20UI%20CI/CD/badge.svg)
@@ -51,9 +51,9 @@ If you're new to React or web development, no problem! There are other great ope
 Foundry for React is available as a scoped public Node package. You can use [npm](https://docs.npmjs.com/) or [yarn](https://classic.yarnpkg.com/en/docs) to add the Foundry package to your project. From you project's root directory, where the `package.json` file is located, run the command:
 
 ```
-npm install @headstorm/hs-react-ui
+npm install @headstorm/foundry-react-ui
 // or
-yarn add @headstorm/hs-react-ui
+yarn add @headstorm/foundry-react-ui
 ```
 
 For the peer dependency [styled components](https://styled-components.com/), [react-is](https://www.npmjs.com/package/react-is), and [react-spring](https://www.npmjs.com/package/react-spring) install from the same root directory, run the command:
@@ -71,7 +71,7 @@ yarn add styled-components react-is react-spring
 Get started with a simple hello world
 
 ```
-import { Card } from '@headstorm/hs-react-ui';
+import { Card } from '@headstorm/foundry-react-ui';
 
 function HelloWorld() {
     return <Card>Hello World!</Card>;
@@ -86,7 +86,7 @@ Output:
 In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Foundry components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommended that you check out the component's source code to see what styles are included.
 
 ```
-// /hs-react-ui/src/components/Card/Card.tsx
+// /foundry-react-ui/src/components/Card/Card.tsx
 
 export const CardContainer = styled(Div)`
   ${({ elevation }: { elevation: number }) => {
@@ -121,7 +121,7 @@ export const Body = styled(Div)`
 
 ```
 import React from 'react';
-import { Card, colors } from '@headstorm/hs-react-ui';
+import { Card, colors } from '@headstorm/foundry-react-ui';
 import styled from 'styled-components';
 
 // Foundry provides a basic set of colors, but feel free to add your own
@@ -214,7 +214,7 @@ For example, the Card component has 4 (at the time of writing) styled-components
   - While the `Card` `Header` is a `styled.div` with `text-transform: uppercase`, you can pass in any styled component to replace the header entirely, it could even be a `styled.span` if you want! Create your styled-component and then pass it to the StyledHeader prop of the `Card` and voilà! It doesn't use any of the previous styles that were originally created for the Card Header.
   - You'll have access to all the props which are passed to the styled-component as well. In the case of Card, the `elevation` prop is passed directly into the Container, so while a Material Design theme may use it to programatically control the `box-shadow` and `border` property, you can use it for anything you wish.
 - Add CSS/SASS overrides to a portion of a base component
-  - This almost the same as the previous method, except that you'll first import the piece you're overriding from the original base component. In the case of the Card Header, you'll `import Card, { Header } from 'hs-react-ui/Card;`, and then use that as your base as so: `` styled(Header)`styles go here` ``. You'll have the full power of styled-components, and you can include your constants files as you like.
+  - This almost the same as the previous method, except that you'll first import the piece you're overriding from the original base component. In the case of the Card Header, you'll `import Card, { Header } from 'foundry-react-ui/Card;`, and then use that as your base as so: `` styled(Header)`styles go here` ``. You'll have the full power of styled-components, and you can include your constants files as you like.
   - Again, the `styled(Header)` will receive the same props that the original did, giving you full control of how to handle the props in the style.
 
 ## Notes on architecture
@@ -237,7 +237,7 @@ const MyContainer = styled(Div)`styles here`;
 
 ### Enabling Theming
 
-Theming is enabled through props of each component. When building a new component, or adding a styled-component to an existing component, ensure that there is a matching prop to accept an override, and that styled-component is a named export from the component. See the [Card component](https://github.com/Headstorm/foundry-ui/tree/master/packages/hs-react-ui/src/components/Card) as an example.
+Theming is enabled through props of each component. When building a new component, or adding a styled-component to an existing component, ensure that there is a matching prop to accept an override, and that styled-component is a named export from the component. See the [Card component](https://github.com/Headstorm/foundry-ui/tree/master/packages/foundry-react-ui/src/components/Card) as an example.
 
 ## State of CICD workflow
 
@@ -258,7 +258,7 @@ Theming is enabled through props of each component. When building a new componen
 ### How am I impacted as a developer?
 
 - Husky has been added for pre-commit and pre-push hooks. Please pull the latest and install dependencies in /foundry-ui to get the hooks working. (the root install will also update dependencies, but using npm instead of yarn - we can fix this in the future for consistency)
-- Commits that we want added to the Change log must use commitizen, when working inside of hs-react-ui using yarn commit will use commitizen. Alternatively you can use npx git-cz
+- Commits that we want added to the Change log must use commitizen, when working inside of foundry-react-ui using yarn commit will use commitizen. Alternatively you can use npx git-cz
 - Commits to be excluded from the change log (eg. "Fix typo that broke my pre commit linting") can continue to use normal git commits
 - Package.json is no longer the source of the version published, semantic-release uses git tags to determine the release version - this is only the case in our workflows. If we do a manual push we must update package.json before publishing
 - Auto versioning - No more package.json version bumps required :tada:
