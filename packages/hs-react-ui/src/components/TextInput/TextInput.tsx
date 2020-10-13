@@ -204,7 +204,7 @@ const TextInput = ({
       <InputComponent
         // Set default values above nativeHTMLAttributes
         type="text"
-        disable={false}
+        disabled={false}
         cols={10}
         rows={10}
         {...nativeHTMLAttributes}
