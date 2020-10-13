@@ -119,6 +119,42 @@ describe('Button', () => {
     expect(loadingFragment.firstChild).toMatchSnapshot();
     expect(loadedFragment.firstChild).toMatchSnapshot();
   });
+  it('containerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const { getByTestId } = render(<Button containerRef={ref} onClick={() => {}} />);
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
+  it('leftIconCntainerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Button
+        leftIconContainerRef={ref}
+        iconPrefix={<Icon path={'mdiComment'} />}
+        onClick={() => {}}
+      />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
+  it('rightIconContainerRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Button
+        rightIconContainerRef={ref}
+        iconSuffix={<Icon path={'mdiComment'} />}
+        onClick={() => {}}
+      />,
+    );
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
+  it('loadingBarRef.current should exist', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(<Button loadingBarRef={ref} isLoading onClick={() => {}} />);
+    await waitFor(() => getByTestId(testId));
+    expect(ref.current).toBeTruthy();
+  });
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
       const component = <Button onClick={() => {}}>Enter</Button>;

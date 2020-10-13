@@ -57,6 +57,10 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
   id?: string;
+  containerRef?: React.RefObject<HTMLButtonElement>;
+  leftIconContainerRef?: React.RefObject<HTMLDivElement>;
+  rightIconContainerRef?: React.RefObject<HTMLDivElement>;
+  loadingBarRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -167,6 +171,10 @@ const Button = ({
   onMouseUp = () => {},
   LoadingBar = StyledProgress,
   id,
+  containerRef,
+  leftIconContainerRef,
+  rightIconContainerRef,
+  loadingBarRef,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { colors } = useTheme();
@@ -187,20 +195,20 @@ const Button = ({
   };
 
   const buttonContent = isLoading ? (
-    <LoadingBar />
+    <LoadingBar ref={loadingBarRef} />
   ) : (
     <>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-          <StyledLeftIconContainer hasContent={hasContent}>
+          <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
             <UnstyledIcon path={iconPrefix} size="1rem" />
           </StyledLeftIconContainer>
         ) : (
-          <StyledLeftIconContainer>{iconPrefix}</StyledLeftIconContainer>
+          <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
         ))}
       {isProcessing && (
-        <StyledLeftIconContainer hasContent={hasContent}>
+        <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
           <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
         </StyledLeftIconContainer>
       )}
@@ -208,17 +216,19 @@ const Button = ({
 
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
-          <StyledRightIconContainer hasContent={hasContent}>
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
             <UnstyledIcon path={iconSuffix} size="1rem" />
           </StyledRightIconContainer>
         ) : (
-          <StyledRightIconContainer hasContent={hasContent}>{iconSuffix}</StyledRightIconContainer>
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            {iconSuffix}
+          </StyledRightIconContainer>
         ))}
     </>
   );
 
   return (
-    <StyledContainer {...mergedContainerProps}>
+    <StyledContainer ref={containerRef} {...mergedContainerProps}>
       {buttonContent}
       {feedbackType === FeedbackTypes.ripple && !disabled && (
         <InteractionFeedback

@@ -5,6 +5,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
+const testId = 'hsui-Dropdown';
 
 const pokeOptions = [
   { id: 'bulbasaur', optionValue: 'Bulbasaur' },
@@ -244,6 +245,90 @@ describe('Dropdown', () => {
       const { container } = render(component);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
+    });
+  });
+  describe('Ref tests', () => {
+    it('containerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Dropdown
+          name="test"
+          onSelect={() => {}}
+          containerRef={ref}
+          containerProps={{ 'data-test-id': testId }}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('optionsContainerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Dropdown
+          name="choosePokemon"
+          options={pokeOptions}
+          onSelect={() => {}}
+          optionsContainerRef={ref}
+        />,
+      );
+      act(() => {
+        fireEvent.focus(getByTestId('choosePokemon-container'));
+      });
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('optionItemRef.current should exist', async () => {
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Dropdown
+          name="choosePokemon"
+          options={pokeOptions}
+          onSelect={() => {}}
+          optionItemRef={ref}
+        />,
+      );
+      act(() => {
+        fireEvent.focus(getByTestId('choosePokemon-container'));
+      });
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('valueContainerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLButtonElement>();
+      const { getByTestId } = render(
+        <Dropdown
+          name="test"
+          onSelect={() => {}}
+          valueContainerRef={ref}
+          containerProps={{ 'data-test-id': testId }}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLButtonElement).toBeTruthy();
+    });
+    it('valueItemRef.current should exist', async () => {
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Dropdown
+          name="test"
+          onSelect={() => {}}
+          valueItemRef={ref}
+          containerProps={{ 'data-test-id': testId }}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('placeholderRef.current should exist', async () => {
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Dropdown
+          name="test"
+          onSelect={() => {}}
+          placeholderRef={ref}
+          containerProps={{ 'data-test-id': testId }}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
   });
 });

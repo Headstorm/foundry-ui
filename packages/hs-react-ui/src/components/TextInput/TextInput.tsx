@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   SyntheticEvent,
   useCallback,
+  useState,
   TextareaHTMLAttributes,
   InputHTMLAttributes,
 } from 'react';
@@ -117,13 +118,18 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
 
     StyledContainer?: string & StyledComponentBase<any, {}>;
     StyledInput?: string & StyledComponentBase<any, {}>;
-    StyledTextArea?: string & StyledComponentBase<any, {}>;
     StyledIconContainer?: string & StyledComponentBase<any, {}>;
     StyledErrorContainer?: string & StyledComponentBase<any, {}>;
+    StyledTextArea?: string & StyledComponentBase<any, {}>;
+
     containerProps?: SubcomponentPropsType;
     inputProps?: SubcomponentPropsType;
     iconContainerProps?: SubcomponentPropsType;
     errorContainerProps?: SubcomponentPropsType;
+
+    containerRef?: React.RefObject<HTMLDivElement>;
+    inputRef?: React.RefObject<HTMLInputElement>;
+    errorContainerRef?: React.RefObject<HTMLDivElement>;
   };
 
 const createIcon = (
@@ -144,13 +150,6 @@ const createIcon = (
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const TextInput = ({
-  // Destructure native HTML attributes to provide default values
-  defaultValue = '',
-  type = 'text',
-  disabled = false,
-  cols = 10,
-  rows = 10,
-
   debouncedOnChange = defaultCallback,
   onClear,
   iconPrefix,
@@ -165,13 +164,19 @@ const TextInput = ({
 
   StyledContainer = Container,
   StyledInput = TextInputContainer,
-  StyledTextArea = TextAreaInputContainer,
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
+  StyledTextArea = TextAreaInputContainer,
+
   containerProps = {},
   inputProps = {},
   iconContainerProps = {},
   errorContainerProps = {},
+
+  containerRef,
+  inputRef,
+  errorContainerRef,
+
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
@@ -179,20 +184,30 @@ const TextInput = ({
     debouncedOnChange,
     debounceInterval,
   ]);
+
   const InputComponent: string & StyledComponentBase<any, {}> = isMultiline
     ? StyledTextArea
     : StyledInput;
-  const displayValue = nativeHTMLAttributes.value || defaultValue;
+
+  const [internalValue, setInternalValue] = useState(
+    nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
+  );
 
   return (
-    <StyledContainer disabled={disabled} isValid={isValid} {...containerProps}>
+    <StyledContainer
+      disabled={nativeHTMLAttributes.disabled}
+      isValid={isValid}
+      ref={containerRef}
+      {...containerProps}
+    >
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
-        value={displayValue}
-        type={type}
-        disabled={disabled}
-        cols={cols}
-        rows={rows}
+        // Set default values above nativeHTMLAttributes
+        type="text"
+        disabled={false}
+        cols={10}
+        rows={10}
+        {...nativeHTMLAttributes}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           e.persist();
           if (maxLength && maxLength >= 0) {
@@ -200,14 +215,15 @@ const TextInput = ({
               ? e.target.value
               : e.target.value.slice(0, maxLength);
           }
+          setInternalValue(e.target.value);
           if (nativeHTMLAttributes.onChange) {
             nativeHTMLAttributes.onChange(e);
           }
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
+        ref={inputRef}
         {...inputProps}
-        {...nativeHTMLAttributes}
       />
       {onClear && (
         <StyledIconContainer onClick={onClear} {...iconContainerProps}>
@@ -218,13 +234,15 @@ const TextInput = ({
         <CharacterCounter
           errorMessage={errorMessage}
           isValid={isValid}
-          textIsTooLong={(displayValue as string).length > maxLength}
+          textIsTooLong={(internalValue as string).length > maxLength}
         >
-          {(displayValue as string).length} / {maxLength}
+          {(internalValue as string).length} / {maxLength}
         </CharacterCounter>
       )}
       {isValid === false && errorMessage && (
-        <StyledErrorContainer {...errorContainerProps}>{errorMessage}</StyledErrorContainer>
+        <StyledErrorContainer ref={errorContainerRef} {...errorContainerProps}>
+          {errorMessage}
+        </StyledErrorContainer>
       )}
     </StyledContainer>
   );

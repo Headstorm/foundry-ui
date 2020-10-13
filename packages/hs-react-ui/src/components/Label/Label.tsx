@@ -39,6 +39,11 @@ export interface LabelProps {
   labelProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
 
+  labelContainerRef?: React.RefObject<HTMLDivElement>;
+  textContainerRef?: React.RefObject<HTMLDivElement>;
+  iconContainerRef?: React.RefObject<HTMLSpanElement>;
+  labelRef?: React.RefObject<HTMLLabelElement>;
+
   labelText?: string;
   color?: string;
   isValid?: boolean;
@@ -58,6 +63,10 @@ const Label = ({
   textContainerProps = {},
   labelProps = {},
   iconContainerProps = {},
+  labelContainerRef,
+  textContainerRef,
+  iconContainerRef,
+  labelRef,
 
   labelText,
   color,
@@ -84,12 +93,12 @@ const Label = ({
   }
 
   return (
-    <StyledLabelContainer {...labelContainerProps}>
-      <StyledTextContainer {...textContainerProps}>
-        <StyledLabel htmlFor={htmlFor} color={shownColor} {...labelProps}>
+    <StyledLabelContainer ref={labelContainerRef} {...labelContainerProps}>
+      <StyledTextContainer ref={textContainerRef} {...textContainerProps}>
+        <StyledLabel htmlFor={htmlFor} color={shownColor} ref={labelRef} {...labelProps}>
           {labelText}
         </StyledLabel>
-        <StyledIconContainer {...iconContainerProps}>
+        <StyledIconContainer ref={iconContainerRef} {...iconContainerProps}>
           <Icon path={shownIcon} size=".75rem" color={shownColor} />
         </StyledIconContainer>
       </StyledTextContainer>

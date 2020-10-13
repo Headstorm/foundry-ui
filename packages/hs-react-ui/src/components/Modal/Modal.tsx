@@ -75,10 +75,16 @@ export interface ModalProps {
   StyledUnderlay?: string & StyledComponentBase<any, {}>;
   StyledCloseButton?: string & StyledComponentBase<any, {}>;
   StyledCloseButtonContainer?: string & StyledComponentBase<any, {}>;
+
   containerProps?: SubcomponentPropsType;
   underlayProps?: SubcomponentPropsType;
   closeButtonProps?: SubcomponentPropsType;
   closeButtonContainerProps?: SubcomponentPropsType;
+
+  containerRef?: React.RefObject<HTMLDivElement>;
+  closeButtonContainerRef?: React.RefObject<HTMLDivElement>;
+  underlayRef?: React.RefObject<HTMLDivElement>;
+
   animationSpringConfig?: Record<string, unknown>;
 
   children: ReactNode;
@@ -97,10 +103,16 @@ const Modal = ({
   StyledUnderlay = Underlay,
   StyledCloseButton = CloseButton,
   StyledCloseButtonContainer = CloseButtonContainer,
+
   containerProps = {},
   underlayProps = {},
   closeButtonProps = {},
   closeButtonContainerProps = {},
+
+  containerRef,
+  closeButtonContainerRef,
+  underlayRef,
+
   animationSpringConfig = {},
 
   children,
@@ -154,6 +166,7 @@ const Modal = ({
         />
       )}
       <StyledContainer
+        ref={containerRef}
         {...containerProps}
         style={{
           transform: containerTransform,
@@ -165,6 +178,7 @@ const Modal = ({
         {closeButtonAttachment !== 'corner' && (
           <StyledCloseButton
             StyledContainer={StyledCloseButtonContainer}
+            ref={closeButtonContainerRef}
             containerProps={{
               closeButtonAttachment,
               ...closeButtonContainerProps,
@@ -182,6 +196,7 @@ const Modal = ({
         backgroundBlur={backgroundBlur}
         backgroundDarkness={backgroundDarkness}
         onClick={onClickOutside}
+        ref={underlayRef}
         {...underlayProps}
         style={{
           backdropFilter: underlayBackdropFilter,

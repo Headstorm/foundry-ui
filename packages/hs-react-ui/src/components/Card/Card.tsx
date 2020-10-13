@@ -109,7 +109,6 @@ const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
   left: 0;
   top: 0;
 `;
-
 export interface CardProps {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
@@ -131,6 +130,12 @@ export interface CardProps {
   elevation?: number;
   disableFeedback?: boolean;
   feedbackType?: FeedbackTypes;
+
+  containerRef?: React.RefObject<HTMLDivElement>;
+  headerRef?: React.RefObject<HTMLDivElement>;
+  bodyRef?: React.RefObject<HTMLDivElement>;
+  footerRef?: React.RefObject<HTMLDivElement>;
+  interactiveFeedbackRef?: React.RefObject<HTMLDivElement>;
 }
 
 const Card = ({
@@ -144,6 +149,12 @@ const Card = ({
   bodyProps,
   footerProps,
   interactionFeedbackProps,
+
+  containerRef,
+  headerRef,
+  bodyRef,
+  footerRef,
+  interactiveFeedbackRef,
 
   onClick = defaultOnClick,
 
@@ -171,19 +182,20 @@ const Card = ({
       elevation={elevation}
       feedbackType={feedbackType}
       {...containerProps}
+      ref={containerRef}
     >
       {header && (
-        <StyledHeader hasBody={hasBody} hasFooter={hasFooter} {...headerProps}>
+        <StyledHeader hasBody={hasBody} hasFooter={hasFooter} ref={headerRef} {...headerProps}>
           {header}
         </StyledHeader>
       )}
       {children && (
-        <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} {...bodyProps}>
+        <StyledBody hasHeader={hasHeader} hasFooter={hasFooter} ref={bodyRef} {...bodyProps}>
           {children}
         </StyledBody>
       )}
       {footer && (
-        <StyledFooter hasHeader={hasHeader} hasBody={hasBody} {...footerProps}>
+        <StyledFooter hasHeader={hasHeader} hasBody={hasBody} ref={footerRef} {...footerProps}>
           {footer}
         </StyledFooter>
       )}
@@ -192,6 +204,7 @@ const Card = ({
           color="rgba(0,0,0,0.1)"
           transitionProps={transitionProps}
           StyledContainer={StyledFeedbackContainer}
+          containerRef={interactiveFeedbackRef}
           {...interactionFeedbackProps}
         />
       )}

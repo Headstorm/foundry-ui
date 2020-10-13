@@ -152,6 +152,11 @@ export interface CheckboxProps {
   checked?: boolean;
   disabled?: boolean;
   onClick: (event: React.MouseEvent) => void;
+
+  containerRef?: React.RefObject<HTMLDivElement>;
+  boxRef?: React.RefObject<HTMLDivElement>;
+  labelRef?: React.RefObject<HTMLLabelElement>;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 const iconPaths = {
@@ -189,13 +194,23 @@ const Checkbox = ({
   children,
   disabled = false,
   onClick,
-}: CheckboxProps) => {
+  containerRef,
+  boxRef,
+  labelRef,
+  inputRef,
+}: CheckboxProps): JSX.Element => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
   return (
-    <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" {...labelProps}>
-      <StyledCheckboxContainer {...checkboxContainerProps}>
-        <StyledBox checkboxType={checkboxType} checked={checked} variant={variant} {...boxProps}>
+    <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" ref={labelRef} {...labelProps}>
+      <StyledCheckboxContainer ref={containerRef} {...checkboxContainerProps}>
+        <StyledBox
+          checkboxType={checkboxType}
+          checked={checked}
+          variant={variant}
+          {...boxProps}
+          ref={boxRef}
+        >
           {checked ? (
             <IconComponent
               data-test-id="hsui-Checkbox-Icon"
@@ -209,6 +224,7 @@ const Checkbox = ({
           data-test-id="hsui-Checkbox-Input"
           onClick={onClick}
           checked={checked}
+          ref={inputRef}
           {...inputProps}
         />
       </StyledCheckboxContainer>
