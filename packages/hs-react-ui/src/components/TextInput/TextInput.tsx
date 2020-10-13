@@ -194,7 +194,12 @@ const TextInput = ({
   );
 
   return (
-    <StyledContainer disabled={nativeHTMLAttributes.disabled} isValid={isValid} ref={containerRef} {...containerProps}>
+    <StyledContainer
+      disabled={nativeHTMLAttributes.disabled}
+      isValid={isValid}
+      ref={containerRef}
+      {...containerProps}
+    >
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
         // Set default values above nativeHTMLAttributes
