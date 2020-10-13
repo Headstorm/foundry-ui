@@ -119,7 +119,10 @@ storiesOf('Card', module)
       return (
         <Card
           header={text('header', 'View the Actions tab below')}
-          footer={text('footer', 'Try adjusting the width of the viewport. New clicks will return the updated dimensions for each element.')}
+          footer={text(
+            'footer',
+            'Try adjusting the width of the viewport. New clicks will return the updated dimensions for each element.',
+          )}
           elevation={number('elevation', 2, { range: true, min: -5, max: 5, step: 1 })}
           onClick={boolean('onClick', true) ? e => onClick(e) : undefined}
           feedbackType={select('feedbackType', feedbackTypes, feedbackTypes.ripple)}
@@ -131,7 +134,7 @@ storiesOf('Card', module)
         >
           {text(
             'children',
-            "Then click anywhere on the Card to see the width/height of the child elements calculated via the Ref props!",
+            'Then click anywhere on the Card to see the width/height of the child elements calculated via the Ref props!',
           )}
         </Card>
       );
