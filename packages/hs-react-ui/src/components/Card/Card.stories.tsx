@@ -103,28 +103,35 @@ storiesOf('Card', module)
     () => {
       const cardContainerRef = React.createRef<HTMLDivElement>();
       const cardHeaderRef = React.createRef<HTMLDivElement>();
+      const cardBodyRef = React.createRef<HTMLDivElement>();
+      const cardFooterRef = React.createRef<HTMLDivElement>();
       const interactiveFeedbackRef = React.createRef<HTMLDivElement>();
       const onClick = (e: React.SyntheticEvent) => {
         e.preventDefault();
         action('onClick')(
-          `ref width x height: ${cardContainerRef.current?.clientWidth} x ${cardContainerRef.current?.clientHeight}
-          interactive ${interactiveFeedbackRef.current?.clientWidth} x ${interactiveFeedbackRef.current?.clientHeight}`,
+          `container width x height: ${cardContainerRef.current?.clientWidth} x ${cardContainerRef.current?.clientHeight}
+          header width x height: ${cardHeaderRef.current?.clientWidth} x ${cardHeaderRef.current?.clientHeight}
+          body width x height: ${cardBodyRef.current?.clientWidth} x ${cardBodyRef.current?.clientHeight}
+          footer width x height: ${cardFooterRef.current?.clientWidth} x ${cardFooterRef.current?.clientHeight}
+          interactive width x height: ${interactiveFeedbackRef.current?.clientWidth} x ${interactiveFeedbackRef.current?.clientHeight}`,
         );
       };
       return (
         <Card
-          header={text('header', 'Card title')}
-          footer={text('footer', 'Actionable buttons, whatever other stuff you want to pass in!')}
+          header={text('header', 'View the Actions tab below')}
+          footer={text('footer', 'Try adjusting the width of the viewport. New clicks will return the updated dimensions for each element.')}
           elevation={number('elevation', 2, { range: true, min: -5, max: 5, step: 1 })}
           onClick={boolean('onClick', true) ? e => onClick(e) : undefined}
           feedbackType={select('feedbackType', feedbackTypes, feedbackTypes.ripple)}
           containerRef={cardContainerRef}
           headerRef={cardHeaderRef}
+          bodyRef={cardBodyRef}
+          footerRef={cardFooterRef}
           interactiveFeedbackRef={interactiveFeedbackRef}
         >
           {text(
             'children',
-            'A Hello, World! program generally is a computer program that outputs or displays the message Hello, World!.',
+            "Then click anywhere on the Card to see the width/height of the child elements calculated via the Ref props!",
           )}
         </Card>
       );
