@@ -1,3 +1,4 @@
+import React from 'react';
 import { SubcomponentPropsType } from '../commonTypes';
 
 export type ValueProp = {
@@ -41,6 +42,15 @@ export type RangeSliderProps = {
   domainLabelProps?: SubcomponentPropsType;
   markerProps?: SubcomponentPropsType;
   markerLabelProps?: SubcomponentPropsType;
+
+  containerRef?: React.RefObject<HTMLDivElement>;
+  dragHandleRef?: React.RefObject<HTMLDivElement>;
+  handleLabelRef?: React.RefObject<HTMLDivElement>;
+  slideRailRef?: React.RefObject<HTMLDivElement>;
+  selectedRangeRailRef?: React.RefObject<HTMLDivElement>;
+  domainLabelRef?: React.RefObject<HTMLDivElement>;
+  markerRef?: React.RefObject<HTMLDivElement>;
+  markerLabelRef?: React.RefObject<HTMLDivElement>;
 
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;

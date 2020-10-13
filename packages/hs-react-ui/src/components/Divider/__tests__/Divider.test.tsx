@@ -28,4 +28,18 @@ describe('Divider', () => {
       expect(results).toHaveNoViolations();
     });
   });
+  describe('Ref Tests', () => {
+    it('containerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(<Divider containerRef={ref} testId={testId} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+    });
+    it('dividerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLHRElement>();
+      const { getByTestId } = render(<Divider dividerRef={ref} testId={testId} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLHRElement).toBeTruthy();
+    });
+  });
 });

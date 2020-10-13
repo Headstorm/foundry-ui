@@ -44,4 +44,14 @@ describe('RangeSlider', () => {
       expect(results).toHaveNoViolations();
     });
   });
+  describe('Ref tests', () => {
+    it('containerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(
+        <RangeSlider min={0} max={10} containerRef={ref} testId="unit-test" />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+    });
+  });
 });

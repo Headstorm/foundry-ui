@@ -42,6 +42,10 @@ export type TagProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
   StyledLoadingBar?: string & StyledComponentBase<any, {}>;
+  containerRef?: React.RefObject<HTMLSpanElement>;
+  iconPrefixContainerRef?: React.RefObject<HTMLElement>;
+  iconSuffixContainerRef?: React.RefObject<HTMLElement>;
+  loadingBarRef?: React.RefObject<HTMLElement>;
 };
 
 export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Span)`
@@ -102,6 +106,12 @@ const Tag = ({
   iconPrefixContainerProps = {},
   iconSuffixContainerProps = {},
   loadingBarProps = {},
+
+  containerRef,
+  iconPrefixContainerRef,
+  iconSuffixContainerRef,
+  loadingBarRef,
+
   StyledContainer = Container,
   StyledIconContainer = IconContainer,
   StyledLoadingBar = StyledProgress,
@@ -119,26 +129,32 @@ const Tag = ({
   };
 
   return isLoading ? (
-    <StyledContainer {...mergedContainerProps}>
-      <StyledLoadingBar {...loadingBarProps} />
+    <StyledContainer ref={containerRef} {...mergedContainerProps}>
+      <StyledLoadingBar ref={loadingBarRef} {...loadingBarProps} />
     </StyledContainer>
   ) : (
-    <StyledContainer {...mergedContainerProps}>
+    <StyledContainer ref={containerRef} {...mergedContainerProps}>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <StyledIconContainer
             hasContent={hasContent}
             position="left"
+            ref={iconPrefixContainerRef}
             {...iconPrefixContainerProps}
           >
             <UnstyledIcon path={iconPrefix} size="1rem" />
           </StyledIconContainer>
         ) : (
-          <StyledIconContainer>{iconPrefix}</StyledIconContainer>
+          <StyledIconContainer ref={iconPrefixContainerRef}>{iconPrefix}</StyledIconContainer>
         ))}
       {isProcessing && (
-        <StyledIconContainer hasContent={hasContent} position="left" {...iconPrefixContainerProps}>
+        <StyledIconContainer
+          hasContent={hasContent}
+          position="left"
+          ref={iconPrefixContainerRef}
+          {...iconPrefixContainerProps}
+        >
           <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
         </StyledIconContainer>
       )}
@@ -149,6 +165,7 @@ const Tag = ({
           <StyledIconContainer
             hasContent={hasContent}
             position="right"
+            ref={iconSuffixContainerRef}
             {...iconSuffixContainerProps}
           >
             <UnstyledIcon path={iconSuffix} size="1rem" />
@@ -157,6 +174,7 @@ const Tag = ({
           <StyledIconContainer
             hasContent={hasContent}
             position="right"
+            ref={iconSuffixContainerRef}
             {...iconSuffixContainerProps}
           >
             {iconSuffix}

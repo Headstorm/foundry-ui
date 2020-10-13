@@ -51,4 +51,30 @@ describe('Checkbox', () => {
       expect(results).toHaveNoViolations();
     });
   });
+  describe('Ref Tests', () => {
+    it('containerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(<Checkbox containerRef={ref} onClick={() => {}} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+    });
+    it('boxRef.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(<Checkbox boxRef={ref} onClick={() => {}} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+    });
+    it('labelRef.current should exist', async () => {
+      const ref = React.createRef<HTMLLabelElement>();
+      const { getByTestId } = render(<Checkbox labelRef={ref} onClick={() => {}} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLLabelElement).toBeTruthy();
+    });
+    it('inputRef.current should exist', async () => {
+      const ref = React.createRef<HTMLInputElement>();
+      const { getByTestId } = render(<Checkbox inputRef={ref} onClick={() => {}} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLInputElement).toBeTruthy();
+    });
+  });
 });

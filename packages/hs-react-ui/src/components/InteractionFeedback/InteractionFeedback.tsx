@@ -5,6 +5,7 @@ import shortid from 'shortid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import colors from '../../enums/colors';
 import { SubcomponentPropsType } from '../commonTypes';
+import { mergeRefs } from '../../utils/refs';
 
 const Container = styled(animated.div)`
   position: relative;
@@ -30,6 +31,8 @@ export type InteractionFeedbackProps = {
   interpolationFunctions?: Record<string, (val: any) => any>;
   // TODO add proper type from react-spring
   transitionProps?: any;
+  containerRef?: React.RefObject<HTMLDivElement>;
+  SVGContainerRef?: React.RefObject<SVGElement>;
 };
 
 const defaultInterpolationFunctions = {
@@ -54,6 +57,8 @@ const defaultTransitionProps = {
 const InteractionFeedback = ({
   StyledContainer = Container,
   StyledSVGContainer = SVGContainer,
+  containerRef,
+  SVGContainerRef,
   containerProps = {},
   svgContainerProps = {},
   color = colors.primary,
@@ -96,12 +101,17 @@ const InteractionFeedback = ({
   );
 
   return (
-    <StyledContainer ref={ref} onMouseDown={mouseDownHandler} {...containerProps}>
+    <StyledContainer
+      ref={mergeRefs([ref, containerRef])}
+      onMouseDown={mouseDownHandler}
+      {...containerProps}
+    >
       {children}
       <StyledSVGContainer
         width={`${width}px`}
         height={`${height}px`}
         viewBox={`0 0 ${width} ${height}`}
+        ref={SVGContainerRef}
         {...svgContainerProps}
       >
         {fragment}
