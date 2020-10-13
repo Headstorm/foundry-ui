@@ -118,13 +118,18 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
 
     StyledContainer?: string & StyledComponentBase<any, {}>;
     StyledInput?: string & StyledComponentBase<any, {}>;
-    StyledTextArea?: string & StyledComponentBase<any, {}>;
     StyledIconContainer?: string & StyledComponentBase<any, {}>;
     StyledErrorContainer?: string & StyledComponentBase<any, {}>;
+    StyledTextArea?: string & StyledComponentBase<any, {}>;
+
     containerProps?: SubcomponentPropsType;
     inputProps?: SubcomponentPropsType;
     iconContainerProps?: SubcomponentPropsType;
     errorContainerProps?: SubcomponentPropsType;
+
+    containerRef?: React.RefObject<HTMLDivElement>;
+    inputRef?: React.RefObject<HTMLInputElement>;
+    errorContainerRef?: React.RefObject<HTMLDivElement>;
   };
 
 const createIcon = (
@@ -159,13 +164,19 @@ const TextInput = ({
 
   StyledContainer = Container,
   StyledInput = TextInputContainer,
-  StyledTextArea = TextAreaInputContainer,
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
+  StyledTextArea = TextAreaInputContainer,
+
   containerProps = {},
   inputProps = {},
   iconContainerProps = {},
   errorContainerProps = {},
+
+  containerRef,
+  inputRef,
+  errorContainerRef,
+
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
@@ -183,7 +194,7 @@ const TextInput = ({
   );
 
   return (
-    <StyledContainer disabled={nativeHTMLAttributes.disabled} isValid={isValid} {...containerProps}>
+    <StyledContainer disabled={nativeHTMLAttributes.disabled} isValid={isValid} ref={containerRef} {...containerProps}>
       {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
       <InputComponent
         // Set default values above nativeHTMLAttributes
@@ -206,6 +217,7 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
+        ref={inputRef}
         {...inputProps}
       />
       {onClear && (
@@ -223,7 +235,9 @@ const TextInput = ({
         </CharacterCounter>
       )}
       {isValid === false && errorMessage && (
-        <StyledErrorContainer {...errorContainerProps}>{errorMessage}</StyledErrorContainer>
+        <StyledErrorContainer ref={errorContainerRef} {...errorContainerProps}>
+          {errorMessage}
+        </StyledErrorContainer>
       )}
     </StyledContainer>
   );

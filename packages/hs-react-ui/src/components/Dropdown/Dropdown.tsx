@@ -13,6 +13,7 @@ import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
+import { mergeRefs } from '../../utils/refs';
 
 export type OptionProps = {
   id: number | string;
@@ -193,6 +194,14 @@ export interface DropdownProps {
   placeholderProps?: SubcomponentPropsType;
   valueItemTagProps?: TagProps;
 
+  containerRef?: React.RefObject<HTMLElement>;
+  optionsContainerRef?: React.RefObject<HTMLElement>;
+  optionItemRef?: React.RefObject<HTMLElement>;
+  valueContainerRef?: React.RefObject<HTMLButtonElement>;
+  valueItemRef?: React.RefObject<HTMLElement>;
+  checkContainerRef?: React.RefObject<HTMLElement>;
+  placeholderRef?: React.RefObject<HTMLElement>;
+
   color?: string;
   elevation?: number;
   multi?: boolean;
@@ -229,6 +238,14 @@ const Dropdown = ({
   placeholderProps,
   valueItemTagProps = {},
 
+  containerRef,
+  optionsContainerRef,
+  optionItemRef,
+  valueContainerRef,
+  valueItemRef,
+  checkContainerRef,
+  placeholderRef,
+
   color,
   elevation = 0,
   multi = false,
@@ -247,7 +264,7 @@ const Dropdown = ({
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerInternalRef = useRef<HTMLDivElement>(null);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -312,12 +329,12 @@ const Dropdown = ({
       e.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
       setIsOpen(!isOpen);
-      if (containerRef && containerRef.current) {
+      if (containerInternalRef && containerInternalRef.current) {
         // Focus the container even when clicking
-        containerRef.current.focus();
+        containerInternalRef.current.focus();
       }
     },
-    [containerRef, isOpen, setIsOpen],
+    [containerInternalRef, isOpen, setIsOpen],
   );
 
   const keyDownHandler = useCallback(
@@ -400,7 +417,7 @@ const Dropdown = ({
         e.preventDefault();
         setIsOpen(true);
       }}
-      ref={containerRef}
+      ref={mergeRefs([containerRef, containerInternalRef])}
       tabIndex={tabIndex}
       {...containerProps}
     >
@@ -414,6 +431,7 @@ const Dropdown = ({
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         onMouseDown={clickHandler}
         variant={variant}
+        containerRef={valueContainerRef}
         {...valueContainerProps}
       >
         <StyledValueItem
@@ -421,6 +439,7 @@ const Dropdown = ({
           onMouseDown={clickHandler}
           onBlur={handleBlur}
           id={`${name}-value-item`}
+          ref={valueItemRef}
         >
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
@@ -447,7 +466,9 @@ const Dropdown = ({
               ),
             )}
           {(!values || !values.length) && (
-            <StyledPlaceholder {...placeholderMergedProps}>{placeholder}</StyledPlaceholder>
+            <StyledPlaceholder ref={placeholderRef} {...placeholderMergedProps}>
+              {placeholder}
+            </StyledPlaceholder>
           )}
         </StyledValueItem>
         {closeIcons}
@@ -456,6 +477,7 @@ const Dropdown = ({
         <StyledOptionsContainer
           color={defaultedColor}
           variant={optionsVariant}
+          ref={optionsContainerRef}
           {...optionsContainerProps}
         >
           {options.map(option => (
@@ -469,6 +491,7 @@ const Dropdown = ({
               variant={optionsVariant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
+              ref={optionItemRef}
               {...optionItemProps}
             >
               {multi && (
@@ -477,6 +500,7 @@ const Dropdown = ({
                   selected={optionsHash[option.id].isSelected}
                   variant={optionsVariant}
                   multi={multi}
+                  ref={checkContainerRef}
                   {...checkContainerProps}
                 >
                   {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}

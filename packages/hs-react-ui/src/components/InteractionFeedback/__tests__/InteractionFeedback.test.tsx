@@ -65,4 +65,22 @@ describe('InteractionFeedback', () => {
     fireEvent.mouseDown(getByTestId(testId));
     expect(spy).toHaveBeenCalled();
   });
+  describe('Ref tests', () => {
+    it('containerRef.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(
+        <InteractionFeedback containerRef={ref} containerProps={{ 'data-test-id': testId }} />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+    });
+    it('SVGcontainerRef.current should exist', async () => {
+      const ref = React.createRef<SVGElement>();
+      const { getByTestId } = render(
+        <InteractionFeedback SVGContainerRef={ref} containerProps={{ 'data-test-id': testId }} />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof SVGElement).toBeTruthy();
+    });
+  });
 });
