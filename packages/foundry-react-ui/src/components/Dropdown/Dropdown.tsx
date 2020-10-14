@@ -461,7 +461,9 @@ const Dropdown = ({
                   {optionsHash[val].optionValue}
                   {valueVariant === variants.text && i !== arr.length - 1 && ','}
                 </Tag>
-              ) : undefined,
+              ) : (
+                undefined
+              ),
             )}
           {(!values || !values.length) && (
             <StyledPlaceholder ref={placeholderRef} {...placeholderMergedProps}>
