@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table Shows Table with default props 1`] = `
+.c0 {
+  width: auto;
+  background-color: #fff;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.c1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0rem 2rem;
+  -webkit-column-gap: 1rem;
+  column-gap: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #e75b27;
+  color: white;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  cursor: pointer;
+  padding: 1rem 0rem 1rem 1rem;
+  margin-left: -1rem;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  pointer-events: none;
+}
+
+.c2:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.c4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0rem 2rem;
+  row-gap: .5rem;
+  -webkit-column-gap: 1rem;
+  column-gap: 1rem;
+  position: relative;
+  background-color: #fff;
+}
+
+.c4:not(:last-child) {
+  border-bottom: 1px solid rgb(211,214,215);
+}
+
+.c4:before {
+  content: '';
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+
+.c4:hover:before {
+  opacity: .3;
+}
+
+.c5 {
+  display: block;
+  padding: 1rem 0;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  width: unset;
+}
+
+.c3 {
+  margin-left: 1rem;
+  fill: white;
+  width: 1rem;
+  -webkit-transition: -webkit-transform .2s,opacity .5s;
+  -webkit-transition: transform .2s,opacity .5s;
+  transition: transform .2s,opacity .5s;
+  opacity: 0;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+<div>
+  <table
+    class=" c0"
+    data-test-id="foundry-table"
+  >
+    <thead>
+      <tr
+        class=" c1"
+      >
+        <th
+          class=" c2"
+        >
+          <svg
+            class="c3"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </th>
+        <th
+          class=" c2"
+        >
+          <svg
+            class="c3"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </th>
+        <th
+          class=" c2"
+        >
+          <svg
+            class="c3"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          A
+        </td>
+        <td
+          class=" c5"
+        >
+          p
+        </td>
+        <td
+          class=" c5"
+        >
+          p
+        </td>
+      </tr>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          R
+        </td>
+        <td
+          class=" c5"
+        >
+          e
+        </td>
+        <td
+          class=" c5"
+        >
+          d
+        </td>
+      </tr>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          1
+        </td>
+        <td
+          class=" c5"
+        />
+        <td
+          class=" c5"
+        />
+      </tr>
+    </tbody>
+    <tbody>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          K
+        </td>
+        <td
+          class=" c5"
+        >
+          i
+        </td>
+        <td
+          class=" c5"
+        >
+          w
+        </td>
+      </tr>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          B
+        </td>
+        <td
+          class=" c5"
+        >
+          r
+        </td>
+        <td
+          class=" c5"
+        >
+          o
+        </td>
+      </tr>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          2
+        </td>
+        <td
+          class=" c5"
+        />
+        <td
+          class=" c5"
+        />
+      </tr>
+    </tbody>
+    <tbody>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          B
+        </td>
+        <td
+          class=" c5"
+        >
+          a
+        </td>
+        <td
+          class=" c5"
+        >
+          n
+        </td>
+      </tr>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          Y
+        </td>
+        <td
+          class=" c5"
+        >
+          e
+        </td>
+        <td
+          class=" c5"
+        >
+          l
+        </td>
+      </tr>
+      <tr
+        class=" c4"
+      >
+        <td
+          class=" c5"
+        >
+          3
+        </td>
+        <td
+          class=" c5"
+        />
+        <td
+          class=" c5"
+        />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider matches snapshot 1`] = `
+.c1 {
+  border: none;
+  height: 1px;
+  width: 90%;
+  background-color: #7c8186;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+<div>
+  <div
+<<<<<<< HEAD:packages/hs-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
+    class="c0"
+    data-test-id="hsui-Divider"
+  >
+    <hr
+      class="c1"
+=======
+    class=" c0"
+    data-test-id="hsui-Divider"
+  >
+    <hr
+      class=" c1"
+>>>>>>> v1-release:packages/foundry-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
+      height="1px"
+      width="90%"
+    />
+  </div>
+</div>
+`;
+
+exports[`Divider matches snapshot with props 1`] = `
+.c1 {
+  border: none;
+  height: 2rem;
+  width: 50%;
+  background-color: #7c8186;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+<div>
+  <div
+<<<<<<< HEAD:packages/hs-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
+    class="c0"
+    data-test-id="hsui-Divider"
+  >
+    <hr
+      class="c1"
+=======
+    class=" c0"
+    data-test-id="hsui-Divider"
+  >
+    <hr
+      class=" c1"
+>>>>>>> v1-release:packages/foundry-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
+      height="2rem"
+      width="50%"
+    />
+  </div>
+</div>
+`;

@@ -1,8 +1,12 @@
 .idea/
 lerna-debug.log
 node_modules
-packages/hs-react-ui/.cache/
+packages/foundry-react-ui/.cache/
 
-packages/hs-react-ui/dist/
+packages/foundry-react-ui/dist/
 
 .vscode/
+
+packages/.DS_Store
+
+.DS_Store
