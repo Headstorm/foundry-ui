@@ -23,19 +23,11 @@ exports[`Divider matches snapshot 1`] = `
 
 <div>
   <div
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
-    class="c0"
-    data-test-id="hsui-Divider"
-  >
-    <hr
-      class="c1"
-=======
     class=" c0"
     data-test-id="hsui-Divider"
   >
     <hr
       class=" c1"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
       height="1px"
       width="90%"
     />
@@ -66,19 +58,11 @@ exports[`Divider matches snapshot with props 1`] = `
 
 <div>
   <div
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
-    class="c0"
-    data-test-id="hsui-Divider"
-  >
-    <hr
-      class="c1"
-=======
     class=" c0"
     data-test-id="hsui-Divider"
   >
     <hr
       class=" c1"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Divider/__tests__/__snapshots__/Divider.test.tsx.snap
       height="2rem"
       width="50%"
     />

@@ -24,15 +24,6 @@ Object {
 
 <div>
       <div
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-        class=""
-      >
-        <div
-          class=""
-        >
-          <label
-            class="c0"
-=======
         class=" "
       >
         <div
@@ -40,18 +31,13 @@ Object {
         >
           <label
             class=" c0"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
             color="#7c8186"
             for="default"
           >
             Test text
           </label>
           <span
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-            class="c1"
-=======
             class=" c1"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
           >
             <svg
               role="presentation"
@@ -177,15 +163,6 @@ Object {
 <body>
     <div>
       <div
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-        class=""
-      >
-        <div
-          class=""
-        >
-          <label
-            class="c0"
-=======
         class=" "
       >
         <div
@@ -193,18 +170,13 @@ Object {
         >
           <label
             class=" c0"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
             color="#FF4500"
             for="default"
           >
             Test text
           </label>
           <span
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-            class="c1"
-=======
             class=" c1"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
           >
             <svg
               role="presentation"
@@ -327,15 +299,6 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
 
 <div>
   <div
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-    class=""
-  >
-    <div
-      class=""
-    >
-      <label
-        class="c0"
-=======
     class=" "
   >
     <div
@@ -343,18 +306,13 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
     >
       <label
         class=" c0"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
         color="#9400D3"
         for="default"
       >
         Test text
       </label>
       <span
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-        class="c1"
-=======
         class=" c1"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
       >
         <svg
           role="presentation"
@@ -393,15 +351,6 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
 
 <div>
   <div
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-    class=""
-  >
-    <div
-      class=""
-    >
-      <label
-        class="c0"
-=======
     class=" "
   >
     <div
@@ -409,18 +358,13 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
     >
       <label
         class=" c0"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
         color="#0000FF"
         for="default"
       >
         Test text
       </label>
       <span
-<<<<<<< HEAD:packages/hs-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
-        class="c1"
-=======
         class=" c1"
->>>>>>> v1-release:packages/foundry-react-ui/src/components/Label/__tests__/__snapshots__/Label.test.tsx.snap
       >
         <svg
           role="presentation"
