@@ -261,10 +261,6 @@ Theming is enabled through props of each component. When building a new componen
 - storybook docs are generated and checked in for releases
 - Test coverage
 
-### What isn't working yet?
-
-- Releases like 1.0.0-alpha.# - we need to configure a new alpha branch to get releases like that. Currently we have them attempted to be created in this format: #.#.#-v1-release.#
-
 ### How am I impacted as a developer?
 
 - Husky has been added for pre-commit and pre-push hooks. Please pull the latest and install dependencies in /foundry-ui to get the hooks working. (the root install will also update dependencies, but using npm instead of yarn - we can fix this in the future for consistency)
