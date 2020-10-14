@@ -1,3 +1,16 @@
+# [1.0.0-v1-release.23](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.22...v1.0.0-v1-release.23) (2020-10-14)
+
+
+### Bug Fixes
+
+* **uncontrolled ability:** allows component to be uncontrolled as well controlled ([8afbd40](https://github.com/Headstorm/foundry-ui/commit/8afbd407174ecb49e72550171e8656661916a160))
+
+
+### Features
+
+* **forwardref:** add reference to pass through to component container ([e47f473](https://github.com/Headstorm/foundry-ui/commit/e47f4735b60cde1e41aeaccb74da00a6a592cebe))
+* **rename package:** rename package name from hs-react-ui to foundry-react-ui, same for angular ([ad21895](https://github.com/Headstorm/foundry-ui/commit/ad2189579e62fef02fa297b0fcce22bacb7fcfce))
+
 # [1.0.0-v1-release.22](https://github.com/Headstorm/foundry-ui/compare/v1.0.0-v1-release.21...v1.0.0-v1-release.22) (2020-09-28)
 
 
