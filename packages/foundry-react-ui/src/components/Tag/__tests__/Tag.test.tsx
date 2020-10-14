@@ -153,4 +153,52 @@ describe('Tag', () => {
       expect(results).toHaveNoViolations();
     });
   });
+  describe('Ref tests', () => {
+    it('containerRef.current should exist', async () => {
+      const testId = 'tag-10';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLSpanElement>();
+      const { getByTestId } = render(<Tag containerRef={ref} containerProps={containerProps} />);
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLSpanElement).toBeTruthy();
+    });
+    it('iconPrefixContainerRef.current should exist', async () => {
+      const testId = 'tag-11';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Tag
+          iconPrefixContainerRef={ref}
+          iconPrefix={<div>prefix</div>}
+          containerProps={containerProps}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('iconSuffixContainerRef.current should exist', async () => {
+      const testId = 'tag-12';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Tag
+          iconSuffixContainerRef={ref}
+          iconSuffix={<div>suffix</div>}
+          containerProps={containerProps}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+    it('loadingBarRef.current should exist', async () => {
+      const testId = 'tag-13';
+      const containerProps = { 'data-test-id': testId };
+      const ref = React.createRef<HTMLElement>();
+      const { getByTestId } = render(
+        <Tag loadingBarRef={ref} isLoading containerProps={containerProps} />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLElement).toBeTruthy();
+    });
+  });
 });

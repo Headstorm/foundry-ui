@@ -9,6 +9,7 @@ import { ResizeObserver } from '@juggle/resize-observer';
 
 import fonts from '../../enums/fonts';
 import { clamp } from '../../utils/math';
+import { mergeRefs } from '../../utils/refs';
 
 import {
   ValueProp,
@@ -196,6 +197,7 @@ export const RangeSlider = ({
   StyledDomainLabel = DomainLabel,
   StyledMarker = Marker,
   StyledMarkerLabel = MarkerLabel,
+
   containerProps = {},
   dragHandleProps = {},
   handleLabelProps = {},
@@ -204,6 +206,15 @@ export const RangeSlider = ({
   domainLabelProps = {},
   markerProps = {},
   markerLabelProps = {},
+
+  containerRef,
+  dragHandleRef,
+  slideRailRef,
+  handleLabelRef,
+  selectedRangeRailRef,
+  domainLabelRef,
+  markerRef,
+  markerLabelRef,
 
   showDomainLabels = true,
   showSelectedRange = true,
@@ -372,15 +383,21 @@ export const RangeSlider = ({
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
       showDomainLabels={showDomainLabels}
+      ref={containerRef}
       {...containerProps}
     >
-      <StyledSlideRail ref={ref} {...slideRailProps} onMouseDown={handleSlideRailClick}>
+      <StyledSlideRail
+        ref={mergeRefs([slideRailRef, ref])}
+        {...slideRailProps}
+        onMouseDown={handleSlideRailClick}
+      >
         {showSelectedRange && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
+            ref={selectedRangeRailRef}
             {...selectedRangeRailProps}
           />
         )}
@@ -388,7 +405,7 @@ export const RangeSlider = ({
 
       {showDomainLabels && (
         <>
-          <StyledDomainLabel position="left" {...domainLabelProps}>
+          <StyledDomainLabel position="left" ref={domainLabelRef} {...domainLabelProps}>
             {min}
           </StyledDomainLabel>
           <StyledDomainLabel position="right" {...domainLabelProps}>
@@ -406,9 +423,10 @@ export const RangeSlider = ({
           style={{ x, y }}
           color={color}
           key={`handle${i}`}
+          ref={dragHandleRef}
           {...dragHandleProps}
         >
-          <StyledHandleLabel value={value} {...handleLabelProps}>
+          <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
             {label}
           </StyledHandleLabel>
         </StyledDragHandle>
@@ -431,9 +449,10 @@ export const RangeSlider = ({
             key={`marker-${value}`}
             id={`marker-${value}`}
             sliderPosition={position}
+            ref={markerRef}
             {...markerProps}
           >
-            <StyledMarkerLabel color={color} {...markerLabelProps}>
+            <StyledMarkerLabel color={color} ref={markerLabelRef} {...markerLabelProps}>
               {label}
             </StyledMarkerLabel>
           </StyledMarker>

@@ -233,6 +233,16 @@ import { Div } from 'path/to/htmlElements';
 const MyContainer = styled(Div)`styles here`;
 ```
 
+### Passing Refs to Children Elements
+
+Each Foundry component is made up of numerous child components and DOM elements. Most of the time, awareness of this internal structure is not necessary, but there are a few occasions when it is necessary to reference these DOM nodes directly outside of the typical dataflow. [See the React Docs for more info](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)
+
+Although, each Foundry component is a little different, you will find that most have a container element that holds all additional DOM elements. The convention you will notice is there is an API to customize each major sub-component, their props, and access to their ref. For example, Card accepts props for StyledContainer, containerProps, and containerRef; StyledHeader, headerProps, and headerRef; StyledBody, bodyProps, and bodyRef; and StyledFooter, footerProps, and footerRef; among others.
+
+You might be wondering, 'Why don't I just pass a "ref" property along with the sub-component's Props?" And, this in fact would work...most of the time. However, there are some internal "ref"-ing that goes on behind the scenes and at those occurrences passing the ref inside the sub-component props would not work. For example, if you want to reference the Card's container element, create a ref, perhaps with React.createRef<HTMLDivElement>(), and pass that ref to the _containerRef_ prop, **not** through the _containerProps_ as {ref: myRef}.
+
+Since all the Foundry components are functional components, it was determined that refForwarding wasn't necessary and wouldn't be supported. So, don't pass a "ref" prop to a Foundry component because it won't be forwarded. Instead, simply create a ref and explicitly pass it to the sub-component you want to target using the supported API props.
+
 ## Creating new components
 
 ### Enabling Theming
