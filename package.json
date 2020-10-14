@@ -8,15 +8,15 @@
     "lerna": "^3.20.2"
   },
   "scripts": {
-    "build-react": "cd packages/hs-react-ui && yarn run bundle",
-    "prepare": "cd packages/hs-react-ui && yarn install",
-    "test-react": "cd packages/hs-react-ui && yarn test",
-    "publish-react": "cd packages/hs-react-ui && yarn run semver-release",
-    "publish-react:dryrun": "cd packages/hs-react-ui && yarn run semver-dryrun",
-    "build-docs": "rm -rf ./docs/* && cd packages/hs-react-ui && yarn run build-storybook",
-    "pre-push": "cd packages/hs-react-ui && yarn run pre-push",
-    "lint-react": "cd packages/hs-react-ui && yarn run lint-ci",
-    "semver-release": "cd packages/hs-react-ui && yarn run semver-release",
+    "build-react": "cd packages/foundry-react-ui && yarn run bundle",
+    "prepare": "cd packages/foundry-react-ui && yarn install",
+    "test-react": "cd packages/foundry-react-ui && yarn test",
+    "publish-react": "cd packages/foundry-react-ui && yarn run semver-release",
+    "publish-react:dryrun": "cd packages/foundry-react-ui && yarn run semver-dryrun",
+    "build-docs": "rm -rf ./docs/* && cd packages/foundry-react-ui && yarn run build-storybook",
+    "pre-push": "cd packages/foundry-react-ui && yarn run pre-push",
+    "lint-react": "cd packages/foundry-react-ui && yarn run lint-ci",
+    "semver-release": "cd packages/foundry-react-ui && yarn run semver-release",
     "commit": "npx git-cz"
   },
   "husky": {
