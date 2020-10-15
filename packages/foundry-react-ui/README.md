@@ -19,16 +19,16 @@ At of the time this writing, Foundry is new and launching with a fully supported
 ![a11y](https://img.shields.io/badge/a11y%20tested-%e2%99%bf-blue)
 
 ![Foundry UI CI/CD](https://github.com/Headstorm/foundry-ui/workflows/Foundry%20UI%20CI/CD/badge.svg)
-[![Coverage Branches](./coverage/badge-branches.svg)](./coverage)
-[![Coverage Functions](./coverage/badge-functions.svg)](./coverage)
-[![Coverage Lines](./coverage/badge-lines.svg)](./coverage)
-[![Coverage Statements](./coverage/badge-statements.svg)](./coverage)
+[![Coverage Branches](https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/coverage/badge-branches.svg)](./coverage)
+[![Coverage Functions](https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/coverage/badge-functions.svg)](./coverage)
+[![Coverage Lines](https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/coverage/badge-lines.svg)](./coverage)
+[![Coverage Statements](https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/coverage/badge-statements.svg)](./coverage)
 
 ### 🔥 [Live Demo](https://headstorm.github.io/foundry-ui/)
 
 Foundry UI is lovingly developed by Headstorm's Open Source group. Please reach out to us at: opensource@headstorm.com
 
-<img src="./public/Images/nodejs.svg" height="50"><img src="./public/Images/react.svg" height="50"><img src="./public/Images/typescript.svg" height="50"><img src="./public/Images/storybook.png" height="50">
+<img src="https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/public/Images/nodejs.svg" height="50"><img src="https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/public/Images/react.svg" height="50"><img src=".https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/public/Images/typescript.svg" height="50"><img src="https://github.com/Headstorm/foundry-ui/blob/master/packages/foundry-react-ui/public/Images/storybook.png" height="50">
 
 ## Getting Started
 
