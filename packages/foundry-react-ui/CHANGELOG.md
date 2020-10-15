@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Headstorm/foundry-ui/compare/v1.0.0...v1.0.1) (2020-10-15)
+
+
+### Bug Fixes
+
+* **image paths:** use absolute paths to github for images and files that are not part of bundle ([80834f3](https://github.com/Headstorm/foundry-ui/commit/80834f3b5ab4c568c9c9b3a61b3a9eca69d59b1a))
+
 # [1.0.0](https://github.com/Headstorm/foundry-ui/compare/v0.1.14...v1.0.0) (2020-10-14)
 
 
