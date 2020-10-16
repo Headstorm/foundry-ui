@@ -64,11 +64,18 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Deploy docs
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+      - name: Deploy github pages
+        uses: crazy-max/ghaction-github-pages@v2
         with:
+          target_branch: gh-pages
+          build_dir: docs
+        env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          BRANCH: gh-pages # Branch to deploy to
-          FOLDER: docs # Folder to deploy
-          CLEAN: true # Remove deleted files from deploy branch
-
+      - name: Deploy github pages
+        if: github.ref == 'master' # Only do this for pushes to master
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
