@@ -59,18 +59,12 @@ jobs:
             packages/foundry-react-ui/dist/
             packages/foundry-react-ui/coverage/
       - name: Update version
-        run: yarn run semver-release # Uses the configuration from packages/foundry-react-ui/package.json
+        run: npm run semver-release # Uses the configuration from packages/foundry-react-ui/package.json
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Deploy github pages
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: docs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Deploy github pages
         if: github.ref == 'master' # Only do this for pushes to master
         uses: crazy-max/ghaction-github-pages@v2
