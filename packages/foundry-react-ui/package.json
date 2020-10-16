@@ -177,7 +177,6 @@
         "path": "@semantic-release/git",
         "assets": [
           "package.json",
-          "../../docs/**",
           "CHANGELOG.md",
           "coverage"
         ],
