@@ -59,7 +59,7 @@ jobs:
             packages/foundry-react-ui/dist/
             packages/foundry-react-ui/coverage/
       - name: Update version
-        run: yarn run semver-release # Uses the configuration from packages/foundry-react-ui/package.json
+        run: npm run semver-release # Uses the configuration from packages/foundry-react-ui/package.json
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
