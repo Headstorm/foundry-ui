@@ -423,9 +423,6 @@ const Dropdown = ({
     >
       <Button
         StyledContainer={StyledValueContainer}
-        containerProps={{
-          isOpen,
-        }}
         id={`${name}-button-value`}
         color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
@@ -433,6 +430,12 @@ const Dropdown = ({
         variant={variant}
         containerRef={valueContainerRef}
         {...valueContainerProps}
+        containerProps={{
+          isOpen,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          ...(valueContainerProps ? valueContainerProps.containerProps : {}),
+        }}
       >
         <StyledValueItem
           {...valueItemProps}
