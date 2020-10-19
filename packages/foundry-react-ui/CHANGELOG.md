@@ -1,3 +1,15 @@
+## [1.0.2](https://github.com/Headstorm/foundry-ui/compare/v1.0.1...v1.0.2) (2020-10-19)
+
+
+### Bug Fixes
+
+* **dropdown:** merge valueItemContainerProps more intelligently ([74625e7](https://github.com/Headstorm/foundry-ui/commit/74625e7fb531532f320e1ff0a48760926d4ddef7)), closes [#202](https://github.com/Headstorm/foundry-ui/issues/202)
+
+
+### Performance Improvements
+
+* move more dependencies to devDependencies to improve experience while using Foundry UI ([91c3ac6](https://github.com/Headstorm/foundry-ui/commit/91c3ac603b6f326d57231f93d2ac68d7e691cc32))
+
 ## [1.0.1](https://github.com/Headstorm/foundry-ui/compare/v1.0.0...v1.0.1) (2020-10-15)
 
 
