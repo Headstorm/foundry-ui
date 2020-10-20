@@ -5,7 +5,9 @@ name: Foundry React UI CI/CD
 on:
   push:
     branches: [master, v1-release, next, alpha, beta]
-    paths: "packages/foundry-react-ui/**"
+    paths:
+      - "packages/foundry-react-ui/**"
+      - "!packages/foundry-react-ui/coverage/**"
 
 jobs:
   build:
