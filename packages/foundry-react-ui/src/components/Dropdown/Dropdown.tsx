@@ -28,6 +28,10 @@ type UsefulDropdownState = {
   variant: variants;
 };
 
+export const objectOrArrayToDropdownOptions = (
+  obj: { [key in string | number]: string },
+): OptionProps[] => Object.entries(obj).map(([key, entry]) => ({ optionValue: entry, id: key }));
+
 const Container = styled(Div)`
   ${({ elevation, isOpen }) => {
     const { colors } = useTheme();
@@ -205,7 +209,7 @@ export interface DropdownProps {
   color?: string;
   elevation?: number;
   multi?: boolean;
-  name: string;
+  name?: string;
   placeholder?: string;
 
   onBlur?: () => void;
@@ -274,7 +278,7 @@ const Dropdown = ({
 
   const tagContainerItemProps = valueItemTagProps.containerProps || {};
 
-  const optionsHash: { [key: string]: OptionProps } = {};
+  const optionsHash: { [key: string | number]: OptionProps } = {};
   options.forEach(option => {
     optionsHash[option.id] = { ...option, isSelected: values.includes(option.id) };
   });

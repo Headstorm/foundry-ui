@@ -2,7 +2,7 @@ import Button from './components/Button';
 import Card from './components/Card';
 import Checkbox from './components/Checkbox';
 import Divider from './components/Divider';
-import Dropdown from './components/Dropdown';
+import Dropdown, { objectOrArrayToDropdownOptions } from './components/Dropdown';
 import InteractionFeedback from './components/InteractionFeedback';
 import Label from './components/Label';
 import Modal from './components/Modal';
@@ -38,6 +38,7 @@ export {
   FoundryProvider,
   FoundryContext,
   useTheme,
+  objectOrArrayToDropdownOptions,
   colors,
   timings,
   fonts,
