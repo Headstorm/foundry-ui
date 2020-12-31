@@ -93,7 +93,7 @@ const DatePicker = ({
   const [yearView, setYearView] = useState(initialYearView);
 
   const dateNumbers = [];
-  for (let i = 1; i <= 31; i++) {
+  for (let i = 1; i <= daysByMonth[monthView]; i++) {
     dateNumbers.push(i);
   }
 
