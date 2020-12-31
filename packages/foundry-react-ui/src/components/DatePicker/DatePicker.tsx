@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
+import { Div } from '../../htmlElements';
 import variants from '../../enums/variants';
 import Dropdown, { objectOrArrayToDropdownOptions } from '../Dropdown';
 import Card from '../Card';
@@ -41,6 +43,33 @@ const longMonthNames = [
 const monthOptions = objectOrArrayToDropdownOptions(longMonthNames);
 const today = new Date();
 
+const HeaderRow = styled(Div)`
+  display: flex;
+  flex-flow: row nowrap;
+`;
+
+const DatesContainer = styled(Div)`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+`;
+
+const DateItem = styled(Div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+`;
+
+const StyledValueContainer = styled(Dropdown.ValueContainer)`
+  width: fit-content !important;
+`;
+
+const StyledOptionsContainer = styled(Dropdown.OptionsContainer)`
+  width: fit-content !important;
+`;
+
 export const isLeapYear = (date: Date): boolean => {
   const year = date.getFullYear();
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -63,19 +92,36 @@ const DatePicker = ({
   const [monthView, setMonthView] = useState(`${initialMonthView}`);
   const [yearView, setYearView] = useState(initialYearView);
 
+  const dateNumbers = [];
+  for (let i = 1; i <= 31; i++) {
+    dateNumbers.push(i);
+  }
+
+  // TODO accept styled subcomponents and export them
   return (
     <Card>
-      <Dropdown
-        variant={variants.text}
-        options={monthOptions}
-        values={[monthView]}
-        onSelect={months => setMonthView(months[0])}
-      />
-      <Dropdown
-        variant={variants.text}
-        placeholder={`${yearView}`}
-        onSelect={year => setYearView(year)}
-      />
+      <HeaderRow>
+        <Dropdown
+          variant={variants.text}
+          options={monthOptions}
+          values={[monthView]}
+          onSelect={months => setMonthView(months[0])}
+          StyledValueContainer={StyledValueContainer}
+          StyledOptionsContainer={StyledOptionsContainer}
+        />
+        <Dropdown
+          variant={variants.text}
+          placeholder={`${yearView}`}
+          onSelect={year => setYearView(year)}
+          StyledValueContainer={StyledValueContainer}
+          StyledOptionsContainer={StyledOptionsContainer}
+        />
+      </HeaderRow>
+      <DatesContainer>
+        {dateNumbers.map(num => (
+          <DateItem>{num}</DateItem>
+        ))}
+      </DatesContainer>
     </Card>
   );
 };
