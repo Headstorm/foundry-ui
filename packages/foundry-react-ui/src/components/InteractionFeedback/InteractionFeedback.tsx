@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled, { StyledComponentBase } from 'styled-components';
 import shortid from 'shortid';
@@ -67,7 +67,8 @@ const InteractionFeedback = ({
   interpolationFunctions = defaultInterpolationFunctions,
   transitionProps = { ...defaultTransitionProps },
 }: InteractionFeedbackProps) => {
-  const { ref, width = 0, height = 0 } = useResizeObserver();
+  const internalRef = useRef<HTMLDivElement>();
+  const { ref, width = 0, height = 0 } = useResizeObserver<HTMLDivElement>();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
   const transitions = useTransition<Animation, Record<string, unknown>>(animations, {
@@ -87,9 +88,9 @@ const InteractionFeedback = ({
 
   const mouseDownHandler = useCallback(
     (e: React.MouseEvent) => {
-      if (ref && ref.current) {
+      if (internalRef && internalRef.current) {
         e.persist();
-        const boundingRect = ref.current.getBoundingClientRect();
+        const boundingRect = internalRef.current.getBoundingClientRect();
         const { clientX, clientY } = e;
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
@@ -97,12 +98,12 @@ const InteractionFeedback = ({
         setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: shortid() }]);
       }
     },
-    [ref],
+    [internalRef],
   );
 
   return (
     <StyledContainer
-      ref={mergeRefs([ref, containerRef])}
+      ref={mergeRefs([ref, internalRef, containerRef])}
       onMouseDown={mouseDownHandler}
       {...containerProps}
     >
