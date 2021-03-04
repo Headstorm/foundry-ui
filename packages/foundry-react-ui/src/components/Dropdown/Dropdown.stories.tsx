@@ -94,6 +94,7 @@ storiesOf('Dropdown', module)
                 setValues(selected);
               }}
               options={cities}
+              rememberScrollPosition={boolean('rememberScrollPosition', true)}
               variant={select('variant', variants, variants.outline)}
               optionsVariant={select('optionsVariant', variants, variants.outline)}
               valueVariant={select('valueVariant', variants, variants.text)}
