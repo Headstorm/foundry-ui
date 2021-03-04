@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Headstorm/foundry-ui/compare/v1.0.2...v1.0.3) (2021-03-04)
+
+
+### Bug Fixes
+
+* 🐛 Scroll position now persists when open/closing options ([5cc4e85](https://github.com/Headstorm/foundry-ui/commit/5cc4e8547aa0c82094ace8167b0b0a6f851e1a87)), closes [#214](https://github.com/Headstorm/foundry-ui/issues/214)
+
 ## [1.0.2](https://github.com/Headstorm/foundry-ui/compare/v1.0.1...v1.0.2) (2020-10-19)
 
 
