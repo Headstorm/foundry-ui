@@ -212,6 +212,8 @@ export interface DropdownProps {
   onClear?: () => void;
   onSelect: (selected?: Array<string | number>) => void;
 
+  rememberScrollPosition?: boolean;
+
   values?: Array<string | number>;
   options?: Array<OptionProps>;
   tabIndex?: number;
@@ -258,6 +260,7 @@ const Dropdown = ({
   tabIndex = 0,
   variant = variants.outline,
   optionsVariant = variants.outline,
+  rememberScrollPosition = true,
   valueVariant = variants.text,
   values = [],
 }: DropdownProps): JSX.Element | null => {
@@ -265,6 +268,9 @@ const Dropdown = ({
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerInternalRef = useRef<HTMLDivElement>(null);
+  const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
+
+  const scrollPos = useRef<number>(0);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -278,6 +284,10 @@ const Dropdown = ({
   options.forEach(option => {
     optionsHash[option.id] = { ...option, isSelected: values.includes(option.id) };
   });
+
+  const scrollListener = () => {
+    scrollPos.current = optionsContainerInternalRef.current?.scrollTop || 0;
+  };
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
@@ -390,6 +400,19 @@ const Dropdown = ({
     };
   }, [keyDownHandler]);
 
+  const optionsScrollListenerCallbackRef = useCallback(
+    node => {
+      if (node && rememberScrollPosition) {
+        node.addEventListener('scroll', scrollListener, true);
+
+        if (scrollPos.current) {
+          node.scrollTop = scrollPos.current;
+        }
+      }
+    },
+    [rememberScrollPosition],
+  );
+
   const closeIcons = (
     <ValueIconContainer>
       {onClear && values.length > 0 && (
@@ -480,7 +503,11 @@ const Dropdown = ({
         <StyledOptionsContainer
           color={defaultedColor}
           variant={optionsVariant}
-          ref={optionsContainerRef}
+          ref={mergeRefs([
+            optionsContainerRef,
+            optionsContainerInternalRef,
+            optionsScrollListenerCallbackRef,
+          ])}
           {...optionsContainerProps}
         >
           {options.map(option => (
