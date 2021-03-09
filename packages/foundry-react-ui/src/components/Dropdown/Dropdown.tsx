@@ -286,7 +286,9 @@ const Dropdown = ({
   });
 
   const scrollListener = () => {
-    scrollPos.current = optionsContainerInternalRef.current?.scrollTop || 0;
+    scrollPos.current = optionsContainerInternalRef.current
+      ? optionsContainerInternalRef.current.scrollTop
+      : 0;
   };
 
   const handleBlur = useCallback(
