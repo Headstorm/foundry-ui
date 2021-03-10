@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useMemo, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -82,6 +82,8 @@ export const DragHandle = styled(a.div)`
       color: ${handleColor};
       border: .125rem solid ${colors.background};
       border-radius: 50%;
+      
+      touch-action: none;
 
       filter: url(#blur);
 
@@ -235,21 +237,27 @@ export const RangeSlider = ({
   testId,
 }: RangeSliderProps): JSX.Element | null => {
   const { colors } = useTheme();
+  const hasHandleLabels = useRef(false);
+  const initializing = useRef(true);
 
-  let hasHandleLabels = false;
-  const processedValues = values
-    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore This expression is not callable.
-      values.map((val: number | ValueProp) => {
-        if (typeof val === 'number') {
-          return { value: val, label: null };
-        }
-        if (Object.prototype.hasOwnProperty.call(val, 'label')) {
-          hasHandleLabels = true;
-        }
-        return val;
-      })
-    : [];
+  const processedValues = useMemo(
+    () =>
+      values
+        ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore This expression is not callable.
+          values.map((val: number | ValueProp) => {
+            if (typeof val === 'number') {
+              return { value: val, label: null };
+            }
+            if (Object.prototype.hasOwnProperty.call(val, 'label')) {
+              hasHandleLabels.current = true;
+            }
+            return val;
+          })
+        : [],
+    [values],
+  );
+
   const processedMarkers = markers
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore This expression is not callable.
@@ -382,10 +390,16 @@ export const RangeSlider = ({
       x: pixelPositions[0],
       y: 0,
 
-      immediate: true,
+      // always snap to position on initial render
+      // then leave snapping up to springOnRelease
+      immediate: !springOnRelease || initializing.current,
       config: { friction: 13, tension: 100 },
+      onRest: () => {
+        // wait for the first "set" to finish before turning off immediate mode
+        initializing.current = false;
+      },
     });
-  }, [pixelPositions, set]);
+  }, [pixelPositions, set, springOnRelease]);
 
   return (
     <StyledContainer
@@ -442,6 +456,7 @@ export const RangeSlider = ({
             beingDragged={i === draggedHandle}
             style={{ x, y }}
             color={color}
+            // eslint-disable-next-line react/no-array-index-key
             key={`handle${i}`}
             ref={dragHandleRef}
             {...dragHandleProps}
