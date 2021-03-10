@@ -14,6 +14,8 @@ exports[`RangeSlider renders 1`] = `
   transition: filter .1s;
   top: -.5rem;
   margin-top: 1rem;
+  top: -.75rem;
+  margin-top: 1.5rem;
 }
 
 .c1 {
@@ -99,6 +101,8 @@ exports[`RangeSlider renders 2`] = `
   transition: filter .1s;
   top: -.5rem;
   margin-top: 1rem;
+  top: -.75rem;
+  margin-top: 1.5rem;
 }
 
 .c5 {
@@ -111,6 +115,7 @@ exports[`RangeSlider renders 2`] = `
   color: #e75b27;
   border: .125rem solid #fff;
   border-radius: 50%;
+  touch-action: none;
   -webkit-filter: url(#blur);
   filter: url(#blur);
   cursor: -webkit-grab;
