@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
@@ -280,10 +280,14 @@ const Dropdown = ({
 
   const tagContainerItemProps = valueItemTagProps.containerProps || {};
 
-  const optionsHash: { [key: string]: OptionProps } = {};
-  options.forEach(option => {
-    optionsHash[option.id] = { ...option, isSelected: values.includes(option.id) };
-  });
+  const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
+    const hash: { [key: string]: OptionProps } = {};
+    options.forEach(option => {
+      hash[option.id] = { ...option, isSelected: values.includes(option.id) };
+    });
+
+    return hash;
+  }, [options, values]);
 
   const scrollListener = () => {
     scrollPos.current = optionsContainerInternalRef.current
