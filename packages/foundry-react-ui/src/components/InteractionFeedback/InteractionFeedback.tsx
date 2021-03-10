@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled, { StyledComponentBase } from 'styled-components';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import colors from '../../enums/colors';
 import { SubcomponentPropsType } from '../commonTypes';
@@ -95,7 +95,7 @@ const InteractionFeedback = ({
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
 
-        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: shortid() }]);
+        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: nanoid() }]);
       }
     },
     [internalRef],
