@@ -66,7 +66,7 @@ const InteractionFeedback = ({
   children,
   interpolationFunctions = defaultInterpolationFunctions,
   transitionProps = { ...defaultTransitionProps },
-}: InteractionFeedbackProps) => {
+}: InteractionFeedbackProps): JSX.Element => {
   const internalRef = useRef<HTMLDivElement>();
   const { ref, width = 0, height = 0 } = useResizeObserver<HTMLDivElement>();
   const [animations, setAnimations] = useState<Array<Animation>>([]);

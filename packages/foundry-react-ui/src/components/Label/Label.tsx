@@ -76,7 +76,7 @@ const Label = ({
   htmlFor = 'default',
   isRequired = false,
   children,
-}: LabelProps) => {
+}: LabelProps): JSX.Element => {
   const { colors } = useTheme();
   let shownColor: string;
   let shownIcon: string | JSX.Element;

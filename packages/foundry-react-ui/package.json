@@ -96,7 +96,7 @@
     "styled-components": "^5.2.1",
     "ts-loader": "^7.0.4",
     "typescript": "^3.8.3",
-    "use-resize-observer": "^6.1.0",
+    "use-resize-observer": "^7.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },

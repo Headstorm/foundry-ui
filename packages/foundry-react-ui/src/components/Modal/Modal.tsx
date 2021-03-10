@@ -123,7 +123,7 @@ const Modal = ({
   closeButtonAttachment = 'inside',
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
-}: ModalProps) => {
+}: ModalProps): JSX.Element => {
   const { colors } = useTheme();
 
   const { styles: containerStyles }: { styles?: Record<string, unknown> } = containerProps;
