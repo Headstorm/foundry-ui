@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Headstorm/foundry-ui/compare/v1.0.3...v1.0.4) (2021-03-12)
+
+
+### Bug Fixes
+
+* **interactionfeedback.tsx:** update useResizeObserver in accordance with breaking change ([417598e](https://github.com/Headstorm/foundry-ui/commit/417598eb90f06292a78612052bbbcc74a4283f9c))
+
 ## [1.0.3](https://github.com/Headstorm/foundry-ui/compare/v1.0.2...v1.0.3) (2021-03-04)
 
 
