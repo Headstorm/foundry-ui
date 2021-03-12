@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useMemo, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -82,6 +82,8 @@ export const DragHandle = styled(a.div)`
       color: ${handleColor};
       border: .125rem solid ${colors.background};
       border-radius: 50%;
+      
+      touch-action: none;
 
       filter: url(#blur);
 
@@ -132,7 +134,7 @@ export const SlideRail = styled.div`
 
 export const SelectedRangeRail = styled.div`
   ${({ min, max, selectedRange }: SelectedRangeProps) => {
-    const { colors } = useTheme();
+    const { colors } = useTheme(); // TODO: don't force the color to be primary
     return `
       position: absolute;
       top: 0%;
@@ -234,20 +236,28 @@ export const RangeSlider = ({
   markers = [],
   testId,
 }: RangeSliderProps): JSX.Element | null => {
-  let hasHandleLabels = false;
-  const processedValues = values
-    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore This expression is not callable.
-      values.map((val: number | ValueProp) => {
-        if (typeof val === 'number') {
-          return { value: val, label: null };
-        }
-        if (Object.prototype.hasOwnProperty.call(val, 'label')) {
-          hasHandleLabels = true;
-        }
-        return val;
-      })
-    : [];
+  const { colors } = useTheme();
+  const hasHandleLabels = useRef(false);
+  const initializing = useRef(true);
+
+  const processedValues = useMemo(
+    () =>
+      values
+        ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore This expression is not callable.
+          values.map((val: number | ValueProp) => {
+            if (typeof val === 'number') {
+              return { value: val, label: null };
+            }
+            if (Object.prototype.hasOwnProperty.call(val, 'label')) {
+              hasHandleLabels.current = true;
+            }
+            return val;
+          })
+        : [],
+    [values],
+  );
+
   const processedMarkers = markers
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore This expression is not callable.
@@ -261,10 +271,16 @@ export const RangeSlider = ({
 
   const selectedRange = [
     Math.min(
-      ...processedValues.map((val: ValueProp) => val.value),
+      ...processedValues.map((val: number | ValueProp) =>
+        typeof val === 'number' ? val : val.value,
+      ),
       showSelectedRange && values && values.length === 1 ? min : Infinity,
     ),
-    Math.max(...processedValues.map((val: ValueProp) => val.value)),
+    Math.max(
+      ...processedValues.map((val: number | ValueProp) =>
+        typeof val === 'number' ? val : val.value,
+      ),
+    ),
   ];
 
   const domain = max - min;
@@ -280,9 +296,10 @@ export const RangeSlider = ({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
-  const pixelPositions = processedValues.map(
-    (val: ValueProp) => (val.value / domain) * sliderBounds.width,
-  );
+  const pixelPositions = processedValues.map((val: number | ValueProp) => {
+    const finalVal = typeof val === 'number' ? val : val.value;
+    return (finalVal / domain) * sliderBounds.width;
+  });
 
   // get the x offset and an animation setter function
   const [{ x, y }, set] = useSpring(
@@ -299,13 +316,14 @@ export const RangeSlider = ({
       const clickedValue = railPositionRatio * domain;
 
       // variables to find the closest handle
-      let closestVal: ValueProp | undefined;
+      let closestVal: number | ValueProp | undefined;
       let smallestDifference: number;
 
       // Find the closest handle
-      processedValues.forEach((val: ValueProp) => {
+      processedValues.forEach((val: number | ValueProp) => {
+        const finalVal = typeof val === 'number' ? val : val.value;
         // Get the absolute value of the difference
-        const difference = Math.abs(clickedValue - val.value);
+        const difference = Math.abs(clickedValue - finalVal);
         if (smallestDifference !== undefined && difference < smallestDifference) {
           closestVal = val;
           smallestDifference = difference;
@@ -372,10 +390,16 @@ export const RangeSlider = ({
       x: pixelPositions[0],
       y: 0,
 
-      immediate: true,
+      // always snap to position on initial render
+      // then leave snapping up to springOnRelease
+      immediate: !springOnRelease || initializing.current,
       config: { friction: 13, tension: 100 },
+      onRest: () => {
+        // wait for the first "set" to finish before turning off immediate mode
+        initializing.current = false;
+      },
     });
-  }, [pixelPositions, set]);
+  }, [pixelPositions, set, springOnRelease]);
 
   return (
     <StyledContainer
@@ -414,23 +438,35 @@ export const RangeSlider = ({
         </>
       )}
 
-      {processedValues.map(({ value, label, color }: ValueProp, i: number) => (
-        <StyledDragHandle
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...bind()}
-          draggable={false}
-          beingDragged={i === draggedHandle}
-          style={{ x, y }}
-          color={color}
-          key={`handle${i}`}
-          ref={dragHandleRef}
-          {...dragHandleProps}
-        >
-          <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
-            {label}
-          </StyledHandleLabel>
-        </StyledDragHandle>
-      ))}
+      {processedValues.map((val: number | ValueProp, i: number) => {
+        const { value, color, label } =
+          typeof val === 'number'
+            ? {
+                value: val,
+                color: colors.primary,
+                label: val,
+              }
+            : val;
+
+        return (
+          <StyledDragHandle
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...bind()}
+            draggable={false}
+            beingDragged={i === draggedHandle}
+            style={{ x, y }}
+            color={color}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`handle${i}`}
+            ref={dragHandleRef}
+            {...dragHandleProps}
+          >
+            <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
+              {label}
+            </StyledHandleLabel>
+          </StyledDragHandle>
+        );
+      })}
 
       {motionBlur && (
         <svg viewBox="-200 -100 200 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -442,8 +478,17 @@ export const RangeSlider = ({
         </svg>
       )}
 
-      {processedMarkers.map(({ value, label, color }: ValueProp) => {
+      {processedMarkers.map((val: number | ValueProp) => {
+        const { value, color, label } =
+          typeof val === 'number'
+            ? {
+                value: val,
+                color: colors.primary,
+                label: val,
+              }
+            : val;
         const position = (value / domain) * sliderBounds.width;
+
         return (
           <StyledMarker
             key={`marker-${value}`}

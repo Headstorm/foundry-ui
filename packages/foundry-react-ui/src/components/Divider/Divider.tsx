@@ -47,7 +47,7 @@ const Divider = ({
   containerRef,
   dividerRef,
   ...rest
-}: DividerProps) => (
+}: DividerProps): JSX.Element => (
   <StyledDividerContainer
     data-test-id="hsui-Divider"
     {...dividerContainerProps}

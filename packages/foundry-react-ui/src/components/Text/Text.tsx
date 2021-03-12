@@ -69,7 +69,7 @@ const Text = ({
   containerRef,
   iconPrefixContainerRef,
   iconSuffixContainerRef,
-}: TextProps) => (
+}: TextProps): JSX.Element => (
   <StyledContainer
     data-test-id="hsui-Text"
     size={size}

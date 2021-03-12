@@ -11,3 +11,5 @@ packages/.DS_Store
 
 .DS_Store
 docs/
+
+packages/foundry-react-ui/coverage/

@@ -41,6 +41,7 @@ module.exports = {
     'no-empty-function': 1,
     'no-multi-spaces': 0,
     'no-plusplus': 0,
+    'no-param-reassign': 0,
     'object-curly-newline': 0,
     'operator-linebreak': 0,
     'padded-blocks': 1,
