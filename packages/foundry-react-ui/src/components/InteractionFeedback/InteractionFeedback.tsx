@@ -36,8 +36,8 @@ export type InteractionFeedbackProps = {
 };
 
 const defaultInterpolationFunctions = {
-  r: (r: any) => r.to((val: string) => `${parseFloat(Math.abs(val)).toFixed(1)}`),
-  opacity: (opacity: any) => opacity.to((val: number) => parseFloat(val).toFixed(2)),
+  r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val)).toFixed(1)}`),
+  opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
 };
 const defaultTransitionProps = {
   from: {
