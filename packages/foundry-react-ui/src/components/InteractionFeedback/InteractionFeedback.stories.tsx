@@ -86,10 +86,9 @@ storiesOf('InteractionFeedback', module).add(
         clamp: boolean('clamp', true, 'Circle physics'),
       },
     };
-
     const interpolationFunctions = {
-      r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val).toFixed(1))}%`),
-      opacity: (opacity: any) => opacity.to((val: string) => `${parseFloat(val).toFixed(1)}`),
+      r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val).toFixed(2))}%`),
+      opacity: (opacity: any) => opacity.to((val: string) => `${parseFloat(val).toFixed(2)}`),
     };
     return (
       
