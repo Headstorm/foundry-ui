@@ -6,11 +6,21 @@ import { action } from '@storybook/addon-actions';
 import InteractionFeedback from './InteractionFeedback';
 import Button from '../Button';
 import colors from '../../enums/colors';
+import styled from 'styled-components';
+import Text from '../Text';
 
 const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A88',
 };
+
+const InteractionInnerContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 storiesOf('InteractionFeedback', module).add(
   'Splash',
@@ -57,16 +67,19 @@ storiesOf('InteractionFeedback', module).add(
         opacity: exitOpacity,
       },
       config: {
-        mass: number('mass', 10, { range: true, min: 1, max: 100, step: 1 }, 'Circle physics'),
+        mass: number(
+          'mass', 90, 
+          { range: true, min: 1, max: 100, step: 1 }, 
+          'Circle physics'),
         tension: number(
           'tension',
-          500,
+          1000,
           { range: true, min: 50, max: 1000, step: 50 },
           'Circle physics',
         ),
         friction: number(
           'friction',
-          35,
+          20,
           { range: true, min: 1, max: 100, step: 5 },
           'Circle physics',
         ),
@@ -75,16 +88,23 @@ storiesOf('InteractionFeedback', module).add(
     };
 
     const interpolationFunctions = {
-      r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val))}`),
+      r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val).toFixed(1))}%`),
+      opacity: (opacity: any) => opacity.to((val: string) => `${parseFloat(val).toFixed(1)}`),
     };
     return (
-      <InteractionFeedback
-        color={color('color', colors.grayDark, 'Circle fill')}
-        interpolationFunctions={interpolationFunctions}
-        transitionProps={transitionProps}
-      >
-        <Button onClick={action('button-click')}>Click me</Button>
-      </InteractionFeedback>
+      
+        <InteractionFeedback
+          color={color('color', colors.grayDark, 'Circle fill')}
+          interpolationFunctions={interpolationFunctions}
+          transitionProps={transitionProps}
+          >
+          <InteractionInnerContainer onClick={action('button-click')}>
+            <Text>
+              Click Anywhere!
+            </Text>
+          </InteractionInnerContainer>
+        </InteractionFeedback>
+      
     );
   },
   { design },
