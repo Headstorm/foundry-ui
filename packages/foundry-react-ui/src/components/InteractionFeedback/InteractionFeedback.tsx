@@ -36,7 +36,8 @@ export type InteractionFeedbackProps = {
 };
 
 const defaultInterpolationFunctions = {
-  r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val))}`),
+  r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val)).toFixed(1)}`),
+  opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
 };
 const defaultTransitionProps = {
   from: {
@@ -48,9 +49,9 @@ const defaultTransitionProps = {
     opacity: 0,
   },
   config: {
-    mass: 10,
-    tension: 500,
-    friction: 35,
+    mass: 90,
+    tension: 1000,
+    friction: 20,
     clamp: true,
   },
 };
