@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import InteractionFeedback from './InteractionFeedback';
-import Button from '../Button';
 import colors from '../../enums/colors';
 import styled from 'styled-components';
 import Text from '../Text';
@@ -80,7 +79,7 @@ storiesOf('InteractionFeedback', module).add(
         friction: number(
           'friction',
           20,
-          { range: true, min: 1, max: 100, step: 5 },
+          { range: true, min: 1, max: 100, step: 1 },
           'Circle physics',
         ),
         clamp: boolean('clamp', true, 'Circle physics'),
@@ -88,7 +87,7 @@ storiesOf('InteractionFeedback', module).add(
     };
     const interpolationFunctions = {
       r: (r: any) => r.to((val: string) => `${parseFloat(Math.abs(val)).toFixed(1)}%`),
-      opacity: (opacity: any) => opacity.to((val: string) => parseFloat(val).toFixed(2)),
+      opacity: (opacity: any) => opacity.to((val: number) => parseFloat(val).toFixed(2)),
     };
     return (
       
