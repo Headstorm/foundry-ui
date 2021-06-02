@@ -6,8 +6,8 @@ on:
   push:
     branches: [master, v1-release, next, alpha, beta]
     paths:
-      - "packages/foundry-react-ui/**"
-      - "!packages/foundry-react-ui/coverage/**"
+      - "**"
+      - "!coverage/**"
 
 jobs:
   build:
@@ -58,10 +58,10 @@ jobs:
           name: react-artifact
           path: |
             docs/
-            packages/foundry-react-ui/dist/
-            packages/foundry-react-ui/coverage/
+            dist/
+            coverage/
       - name: Update version
-        run: npm run semver-release # Uses the configuration from packages/foundry-react-ui/package.json
+        run: npm run semver-release # Uses the configuration from package.json
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
