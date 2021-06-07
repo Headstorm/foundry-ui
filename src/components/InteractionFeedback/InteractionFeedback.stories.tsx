@@ -1,11 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import { color, number, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import InteractionFeedback from './InteractionFeedback';
 import colors from '../../enums/colors';
-import styled from 'styled-components';
 import Text from '../Text';
 
 const design = {
@@ -66,10 +66,7 @@ storiesOf('InteractionFeedback', module).add(
         opacity: exitOpacity,
       },
       config: {
-        mass: number(
-          'mass', 90, 
-          { range: true, min: 1, max: 100, step: 1 }, 
-          'Circle physics'),
+        mass: number('mass', 90, { range: true, min: 1, max: 100, step: 1 }, 'Circle physics'),
         tension: number(
           'tension',
           1000,
@@ -90,19 +87,15 @@ storiesOf('InteractionFeedback', module).add(
       opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
     };
     return (
-      
-        <InteractionFeedback
-          color={color('color', colors.grayDark, 'Circle fill')}
-          interpolationFunctions={interpolationFunctions}
-          transitionProps={transitionProps}
-          >
-          <InteractionInnerContainer onClick={action('button-click')}>
-            <Text>
-              Click Anywhere!
-            </Text>
-          </InteractionInnerContainer>
-        </InteractionFeedback>
-      
+      <InteractionFeedback
+        color={color('color', colors.grayDark, 'Circle fill')}
+        interpolationFunctions={interpolationFunctions}
+        transitionProps={transitionProps}
+      >
+        <InteractionInnerContainer onClick={action('button-click')}>
+          <Text>Click Anywhere!</Text>
+        </InteractionInnerContainer>
+      </InteractionFeedback>
     );
   },
   { design },

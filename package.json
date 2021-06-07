@@ -70,13 +70,13 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.2",
     "faker": "^4.1.0",
+    "husky": "^4.2.5",
     "jest": "^26.0.1",
     "jest-axe": "^3.5.0",
     "jest-coverage-badges": "^1.1.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-styled-components": "^7.0.2",
     "lodash": "^4.17.15",
-    "polished": "^3.5.1",
     "pre-commit": "^1.2.2",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",
@@ -120,7 +120,7 @@
     "bundle": "yarn run clean && yarn run webpack && yarn run dts",
     "predeploy": "cd example && yarn install && yarn run bundle && yarn run build-storybook",
     "start": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -c .storybook -o ../../docs",
+    "build-storybook": "build-storybook -c .storybook -o docs",
     "lint": "eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --fix",
     "lint-ci": "yarn run prettier:write && eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --quiet",
     "prettier:base": "prettier --parser typescript --single-quote",
@@ -134,6 +134,12 @@
     "semver-dryrun": "npx semantic-release -d --debug",
     "semver-release": "npx semantic-release",
     "commit": "npx git-cz"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn run pre-push",
+      "pre-commit": "yarn run lint"
+    }
   },
   "plugins": [
     "@semantic-release/commit-analyzer",
