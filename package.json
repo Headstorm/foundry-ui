@@ -76,7 +76,6 @@
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-styled-components": "^7.0.2",
     "lodash": "^4.17.15",
-    "polished": "^3.5.1",
     "pre-commit": "^1.2.2",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",
