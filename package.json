@@ -120,7 +120,7 @@
     "bundle": "yarn run clean && yarn run webpack && yarn run dts",
     "predeploy": "cd example && yarn install && yarn run bundle && yarn run build-storybook",
     "start": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -c .storybook -o ../../docs",
+    "build-storybook": "build-storybook -c .storybook -o docs",
     "lint": "eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --fix",
     "lint-ci": "yarn run prettier:write && eslint src/**/*.tsx src/**/*.ts --ignore-pattern *.css --quiet",
     "prettier:base": "prettier --parser typescript --single-quote",
