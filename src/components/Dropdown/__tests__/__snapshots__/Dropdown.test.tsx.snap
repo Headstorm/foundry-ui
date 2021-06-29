@@ -23,6 +23,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -56,6 +57,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -183,6 +185,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -216,6 +219,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 7;
 }
@@ -425,6 +429,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -458,6 +463,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -583,6 +589,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -616,6 +623,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -742,6 +750,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -775,6 +784,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 7;
 }
@@ -984,6 +994,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1017,6 +1028,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -1145,6 +1157,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1178,6 +1191,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -1304,6 +1318,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1341,6 +1356,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
@@ -1357,6 +1373,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -1492,6 +1509,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1525,6 +1543,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -1643,6 +1662,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1680,6 +1700,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
@@ -1696,6 +1717,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -1831,6 +1853,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -1868,6 +1891,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
@@ -1884,6 +1908,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -2027,6 +2052,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -2064,6 +2090,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
@@ -2080,6 +2107,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }
@@ -2223,6 +2251,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #252c35;
   cursor: pointer;
@@ -2260,6 +2289,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
@@ -2276,6 +2306,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   width: fit-content;
   -webkit-transition: filter .5s,box-shadow .5s;
   transition: filter .5s,box-shadow .5s;
+  contain: layout;
   position: relative;
   z-index: 1;
 }

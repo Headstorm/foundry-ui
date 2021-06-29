@@ -52,15 +52,22 @@ export const calculateElevationValues = (elevation = 0) => {
  * @returns {string} The css style property and value
  */
 export const getShadowStyle = (elevation = 0, shadowColor: string) => {
+  const shadowStyle = 'contain: layout;';
   if (elevation === 0) {
-    return '';
+    return shadowStyle;
   }
+  
   const { red, green, blue } = parseToRgb(shadowColor);
   const { xOffset, yOffset, blur, opacity } = calculateElevationValues(elevation);
 
-  return elevation > 0
-    ? `filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity}));`
-    : `box-shadow: inset ${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity});`;
+  return `
+    ${shadowStyle}
+    ${
+      elevation > 0
+        ? `filter: drop-shadow(${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity}));`
+        : `box-shadow: inset ${xOffset}rem ${yOffset}rem ${blur}rem rgba(${red}, ${green}, ${blue},${opacity});`
+    }
+  `;
 };
 
 /**
