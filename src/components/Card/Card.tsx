@@ -25,6 +25,7 @@ export const CardContainer = styled(Div)`
     const { colors } = useTheme();
 
     return `
+      contain: layout;
       ${onClick !== defaultOnClick ? 'cursor: pointer;' : ''}
       display: inline-flex;
       flex-flow: column nowrap;

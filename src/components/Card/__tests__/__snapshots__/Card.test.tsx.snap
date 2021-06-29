@@ -13,6 +13,7 @@ exports[`Card header bottom padding should be 0rem when body is present 1`] = `
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -94,6 +95,7 @@ exports[`Card header bottom padding should be 0rem when footer is present 1`] = 
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -187,6 +189,7 @@ exports[`Card header bottom padding should be 1.5rem without body and footer 1`]
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -258,6 +261,7 @@ exports[`Card shows Card with default feedback 1`] = `
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -317,6 +321,7 @@ exports[`Card shows Card with default props 1`] = `
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -376,6 +381,7 @@ exports[`Card shows Card with non-default elevation 1`] = `
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -424,6 +430,7 @@ exports[`Card shows Card with non-default elevation 1`] = `
 
 exports[`Card shows Card with ripple feedback and no onClick 1`] = `
 .c0 {
+  contain: layout;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -463,6 +470,7 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
 }
 
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -511,6 +519,7 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
 
 exports[`Card shows Card with simple feedback and no onClick 1`] = `
 .c0 {
+  contain: layout;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -539,6 +548,7 @@ exports[`Card shows Card with simple feedback and no onClick 1`] = `
 
 exports[`Card shows Card with simple feedback with onClick 1`] = `
 .c0 {
+  contain: layout;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
