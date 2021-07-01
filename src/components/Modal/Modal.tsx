@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useCallback } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 import { useSpring } from 'react-spring';
@@ -147,6 +147,20 @@ const Modal = ({
     },
     ...animationSpringConfig,
   });
+
+  const escFunction = useCallback((event) => {
+    if(event.keyCode === 27) {
+      onClickOutside();
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, []);
 
   return (
     <Portal>
