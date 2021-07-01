@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Headstorm/foundry-ui/compare/v1.0.4...v1.0.5) (2021-06-29)
+
+
+### Bug Fixes
+
+* fix interaction animation bounds when elevation <= 0 ([8fe84ef](https://github.com/Headstorm/foundry-ui/commit/8fe84efd4575fa3b750e60ee6a4b2738f6152f71)), closes [#233](https://github.com/Headstorm/foundry-ui/issues/233)
+
 ## [1.0.4](https://github.com/Headstorm/foundry-ui/compare/v1.0.3...v1.0.4) (2021-03-12)
 
 

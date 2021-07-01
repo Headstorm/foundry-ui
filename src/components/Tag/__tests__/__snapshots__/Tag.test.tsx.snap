@@ -22,6 +22,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
@@ -62,6 +63,7 @@ exports[`Tag keeps the container the same when switching between isLoading and n
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
@@ -93,6 +95,7 @@ exports[`Tag shows LeftIconContainer when isProcessing 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
@@ -157,6 +160,7 @@ exports[`Tag shows Tag with fill variant 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
@@ -190,6 +194,7 @@ exports[`Tag shows Tag with non-default props variant and color 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   -webkit-filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
   filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(39,47,78,0.39738511585523156));
   outline: 0 none;
@@ -225,6 +230,7 @@ exports[`Tag shows Tag with outline variant 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 1px solid #7c8186;
   background-color: transparent;
@@ -258,6 +264,7 @@ exports[`Tag shows Tag with text variant 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
@@ -291,6 +298,7 @@ exports[`Tag shows icons 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
@@ -359,6 +367,7 @@ exports[`Tag shows icons with type string 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
@@ -441,6 +450,7 @@ exports[`Tag shows loading text when provided 1`] = `
   border-radius: 0.25em;
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
   outline: 0 none;
   border: 0 none;
   background-color: #7c8186;
