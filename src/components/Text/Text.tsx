@@ -16,7 +16,7 @@ export const TextContainer = styled(Span)`
 `;
 
 export interface TextProps {
-  children?: string | Node;
+  children?: React.ReactNode;
   color?: string;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
