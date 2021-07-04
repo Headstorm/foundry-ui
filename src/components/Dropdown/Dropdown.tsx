@@ -375,8 +375,8 @@ const Dropdown = ({
             }
             break;
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-container`) {
-              const optionsContainer = focusedElement.children[1];
+            if (focusedElement && focusedElement.id === `${name}-button-value`) {
+              const optionsContainer = focusedElement.nextElementSibling;
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
                 if (toFocus) {
@@ -447,7 +447,6 @@ const Dropdown = ({
         setIsOpen(true);
       }}
       ref={mergeRefs([containerRef, containerInternalRef])}
-      tabIndex={tabIndex}
       {...containerProps}
     >
       <Button
@@ -522,7 +521,7 @@ const Dropdown = ({
               key={`${name}-option-${option.id}`}
               onBlur={handleBlur}
               onClick={() => handleSelect(option.id)}
-              tabIndex={tabIndex}
+              tabIndex={-1}
               color={defaultedColor}
               variant={optionsVariant}
               multi={multi}
