@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode, RefObject } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';
@@ -16,7 +16,7 @@ export const TextContainer = styled(Span)`
 `;
 
 export interface TextProps {
-  children?: string | Node;
+  children?: ReactNode;
   color?: string;
   iconPrefix?: string | JSX.Element;
   iconSuffix?: string | JSX.Element;
@@ -28,9 +28,9 @@ export interface TextProps {
   StyledIconContainer?: string & StyledComponentBase<any, {}>;
   containerProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
-  containerRef?: React.RefObject<HTMLDivElement>;
-  iconPrefixContainerRef?: React.RefObject<HTMLElement>;
-  iconSuffixContainerRef?: React.RefObject<HTMLElement>;
+  containerRef?: RefObject<HTMLDivElement>;
+  iconPrefixContainerRef?: RefObject<HTMLElement>;
+  iconSuffixContainerRef?: RefObject<HTMLElement>;
 }
 
 /* Styled div that represents the scroll bar */
