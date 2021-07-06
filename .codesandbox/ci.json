@@ -1,4 +1,3 @@
 {
-  "buildCommand": "build-storybook",
-  "publishDirectory": "docs"
+  "buildCommand": "predeploy"
 }
