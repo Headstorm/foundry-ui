@@ -1,6 +1,7 @@
 {
   "buildCommand": "predeploy",
   "publishDirectory": {
-    "storybook": "docs"
+    "foundry-react-ui": "dist",
+    "docs": "docs"
   }
 }
