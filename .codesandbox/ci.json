@@ -1,7 +1,7 @@
 {
   "buildCommand": "predeploy",
   "publishDirectory": {
-    "foundry-react-ui": "dist"
+    "foundry-react-ui": "/dist"
   },
   "sandboxes": ["new", "/docs"],
   "node": "14"
