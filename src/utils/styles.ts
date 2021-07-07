@@ -56,7 +56,7 @@ export const getShadowStyle = (elevation = 0, shadowColor: string) => {
   if (elevation === 0) {
     return shadowStyle;
   }
-  
+
   const { red, green, blue } = parseToRgb(shadowColor);
   const { xOffset, yOffset, blur, opacity } = calculateElevationValues(elevation);
 
