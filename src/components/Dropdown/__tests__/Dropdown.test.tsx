@@ -135,7 +135,7 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} multi name="choosePokemon" options={pokeOptions} />,
     );
 
-    getByTestId('choosePokemon-container').focus();
+    getByTestId('hsui-button').focus();
     act(() => {
       fireEvent.click(getByText('Charmander'));
       fireEvent.click(getByText('Squirtle'));
@@ -169,13 +169,13 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} name="choosePokemon" options={pokeOptions} />,
     );
 
-    getByTestId('choosePokemon-container').focus();
+    getByTestId('hsui-button').focus();
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
     expect(optionsOutFrag).toMatchSnapshot();
 
     act(() => {
-      fireEvent.blur(getByTestId('choosePokemon-container'));
+      fireEvent.blur(getByTestId('hsui-button'));
     });
     await waitFor(() => queryByText('Squirtle') === null);
     expect(queryByText('Squirtle')).toBeNull();
@@ -190,7 +190,7 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} name="choosePokemon" options={pokeOptions} />,
     );
     act(() => {
-      getByTestId('choosePokemon-container').focus();
+      getByTestId('hsui-button').focus();
     });
     await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
     act(() => {
