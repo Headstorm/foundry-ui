@@ -140,15 +140,16 @@ const OptionItem = styled(Div)`
   }}
 `;
 const CheckContainer = styled(Div)`
-  ${({ color, variant }: UsefulDropdownState) => {
+  ${({ color }: UsefulDropdownState) => {
     const { colors } = useTheme();
+    const backgroundColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
 
     return `
       display: flex;
       align-items: center;
       justify-content: center;
 
-      color: ${getFontColorFromVariant(variant, tint(0.5, color || colors.grayMedium))};
+      color: ${readableColor(backgroundColor, colors.background, color, true)};
       padding-right: 0.2rem;
       width: 2rem;
     `;
