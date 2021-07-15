@@ -161,14 +161,18 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          1
+          A
         </td>
         <td
           class=" c5"
-        />
+        >
+          p
+        </td>
         <td
           class=" c5"
-        />
+        >
+          p
+        </td>
       </tr>
       <tr
         class=" c4"
@@ -195,18 +199,14 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          A
+          1
         </td>
         <td
           class=" c5"
-        >
-          p
-        </td>
+        />
         <td
           class=" c5"
-        >
-          p
-        </td>
+        />
       </tr>
     </tbody>
     <tbody>
@@ -216,14 +216,18 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          2
+          K
         </td>
         <td
           class=" c5"
-        />
+        >
+          i
+        </td>
         <td
           class=" c5"
-        />
+        >
+          w
+        </td>
       </tr>
       <tr
         class=" c4"
@@ -250,18 +254,14 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          K
+          2
         </td>
         <td
           class=" c5"
-        >
-          i
-        </td>
+        />
         <td
           class=" c5"
-        >
-          w
-        </td>
+        />
       </tr>
     </tbody>
     <tbody>
@@ -271,14 +271,18 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          3
+          B
         </td>
         <td
           class=" c5"
-        />
+        >
+          a
+        </td>
         <td
           class=" c5"
-        />
+        >
+          n
+        </td>
       </tr>
       <tr
         class=" c4"
@@ -305,18 +309,14 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          B
+          3
         </td>
         <td
           class=" c5"
-        >
-          a
-        </td>
+        />
         <td
           class=" c5"
-        >
-          n
-        </td>
+        />
       </tr>
     </tbody>
   </table>

@@ -27,8 +27,8 @@ exports[`Card header bottom padding should be 0rem when body is present 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -109,8 +109,8 @@ exports[`Card header bottom padding should be 0rem when footer is present 1`] = 
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -203,8 +203,8 @@ exports[`Card header bottom padding should be 1.5rem without body and footer 1`]
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -275,8 +275,8 @@ exports[`Card shows Card with default feedback 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -335,8 +335,8 @@ exports[`Card shows Card with default props 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -443,8 +443,8 @@ exports[`Card shows Card with ripple feedback and no onClick 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -484,8 +484,8 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -532,8 +532,8 @@ exports[`Card shows Card with simple feedback and no onClick 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 
@@ -562,8 +562,8 @@ exports[`Card shows Card with simple feedback with onClick 1`] = `
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
-  filter: drop-shadow(0rem 0.06653090368236621rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  -webkit-filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
+  filter: drop-shadow(0rem 0.06653090368236622rem 0.25rem rgba(39,47,78,0.4292196217912265));
   background-color: #fff;
 }
 

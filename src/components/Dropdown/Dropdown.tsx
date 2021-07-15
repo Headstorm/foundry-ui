@@ -89,7 +89,7 @@ const OptionsContainer = styled(Div)`
     top: 100%;
     left: 0px;
     max-height: 10rem;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 15rem;
     ${
       variant !== variants.text
