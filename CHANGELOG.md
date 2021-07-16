@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/Headstorm/foundry-ui/compare/v1.0.5...v1.0.6) (2021-07-15)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** don't show scrollbars on dropdowns if they don't need to scroll ([20c2a12](https://github.com/Headstorm/foundry-ui/commit/20c2a12a317575efab8f7cbe4d482bc9685c2f1d))
+* **dropdown.tsx:** set color of selected option's checkmark to match its text color ([aa78d66](https://github.com/Headstorm/foundry-ui/commit/aa78d662bce85c38792ddde0f63b46d757332025)), closes [#242](https://github.com/Headstorm/foundry-ui/issues/242)
+
 ## [1.0.5](https://github.com/Headstorm/foundry-ui/compare/v1.0.4...v1.0.5) (2021-06-29)
 
 
