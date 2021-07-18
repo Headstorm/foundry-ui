@@ -24,9 +24,6 @@ describe('Table', () => {
           { fruit: 'Kiwi', colors: 'Brown', numbers: '2' },
           { fruit: 'Banana', colors: 'Yellow', numbers: '3' },
         ]}
-        sortGroups={false}
-        groupHeaderPosition="above"
-        areGroupsCollapsible={false}
       />,
     );
     await waitFor(() => getByTestId(testId));
