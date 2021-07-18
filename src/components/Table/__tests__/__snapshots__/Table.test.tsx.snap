@@ -113,6 +113,7 @@ exports[`Table Shows Table with default props 1`] = `
         <th
           class=" c2"
         >
+          Fruit
           <svg
             class="c3"
             role="presentation"
@@ -127,6 +128,7 @@ exports[`Table Shows Table with default props 1`] = `
         <th
           class=" c2"
         >
+          Colors
           <svg
             class="c3"
             role="presentation"
@@ -141,6 +143,7 @@ exports[`Table Shows Table with default props 1`] = `
         <th
           class=" c2"
         >
+          Numbers
           <svg
             class="c3"
             role="presentation"
@@ -161,124 +164,18 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          1
-        </td>
-        <td
-          class=" c5"
-        />
-        <td
-          class=" c5"
-        />
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          R
+          Banana
         </td>
         <td
           class=" c5"
         >
-          e
+          Yellow
         </td>
-        <td
-          class=" c5"
-        >
-          d
-        </td>
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          A
-        </td>
-        <td
-          class=" c5"
-        >
-          p
-        </td>
-        <td
-          class=" c5"
-        >
-          p
-        </td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          2
-        </td>
-        <td
-          class=" c5"
-        />
-        <td
-          class=" c5"
-        />
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          B
-        </td>
-        <td
-          class=" c5"
-        >
-          r
-        </td>
-        <td
-          class=" c5"
-        >
-          o
-        </td>
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          K
-        </td>
-        <td
-          class=" c5"
-        >
-          i
-        </td>
-        <td
-          class=" c5"
-        >
-          w
-        </td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr
-        class=" c4"
-      >
         <td
           class=" c5"
         >
           3
         </td>
-        <td
-          class=" c5"
-        />
-        <td
-          class=" c5"
-        />
       </tr>
       <tr
         class=" c4"
@@ -286,17 +183,17 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          Y
+          Kiwi
         </td>
         <td
           class=" c5"
         >
-          e
+          Brown
         </td>
         <td
           class=" c5"
         >
-          l
+          2
         </td>
       </tr>
       <tr
@@ -305,17 +202,17 @@ exports[`Table Shows Table with default props 1`] = `
         <td
           class=" c5"
         >
-          B
+          Apple
         </td>
         <td
           class=" c5"
         >
-          a
+          Red
         </td>
         <td
           class=" c5"
         >
-          n
+          1
         </td>
       </tr>
     </tbody>

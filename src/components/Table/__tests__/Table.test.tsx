@@ -14,11 +14,15 @@ describe('Table', () => {
     const { container, getByTestId } = render(
       <Table
         containerProps={{ 'data-test-id': testId }}
-        columns={['Fruit', 'Colors', 'Numbers']}
+        columns={{
+          fruit: { name: 'Fruit' },
+          colors: { name: 'Colors' },
+          numbers: { name: 'Numbers' },
+        }}
         data={[
-          ['Apple', 'Red', '1'],
-          ['Kiwi', 'Brown', '2'],
-          ['Banana', 'Yellow', '3'],
+          { fruit: 'Apple', colors: 'Red', numbers: '1' },
+          { fruit: 'Kiwi', colors: 'Brown', numbers: '2' },
+          { fruit: 'Banana', colors: 'Yellow', numbers: '3' },
         ]}
         sortGroups={false}
         groupHeaderPosition="above"
