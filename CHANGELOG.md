@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Headstorm/foundry-ui/compare/v1.0.6...v1.1.0) (2021-07-21)
+
+
+### Features
+
+* **globalstyles:** reduce load times by using Arial instead of Montserrat ([9e7ffff](https://github.com/Headstorm/foundry-ui/commit/9e7ffff6c755040bd81cb4bda686cee314721c60)), closes [#250](https://github.com/Headstorm/foundry-ui/issues/250)
+
 ## [1.0.6](https://github.com/Headstorm/foundry-ui/compare/v1.0.5...v1.0.6) (2021-07-15)
 
 
