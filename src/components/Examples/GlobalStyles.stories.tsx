@@ -16,7 +16,7 @@ const StyledCardContainer = styled(Card.Container)`
   margin-bottom: 1rem;
 `;
 const fontFamilyOptions = {
-  Montserrat: 'Montserrat,Roboto,sans-serif',
+  Arial: 'Arial,Roboto,sans-serif',
   'Times New Roman': '"Times New Roman",Times,serif',
   Monospace: '"Lucida Console",Courier,monospace',
   unset: 'unset',
@@ -25,8 +25,8 @@ const fontFamilyOptions = {
 storiesOf('Global styles', module).add('Example', () => {
   const fontFamily = select(
     'font-family',
-    ['Montserrat', 'Times New Roman', 'Monospace', 'unset'],
-    'Montserrat',
+    ['Arial', 'Times New Roman', 'Monospace', 'unset'],
+    'Arial',
   );
   const primary = color('primary', colorsEnum.primary);
   const grayDark = color('grayDark', colorsEnum.grayDark);
