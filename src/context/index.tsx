@@ -9,7 +9,6 @@ export const defaultGlobalStyles = `
       ? ''
       : `
           box-sizing: border-box;
-          ${fonts.importFonts}
           ${fonts.body}
         `
   }
