@@ -470,6 +470,7 @@ const Dropdown = ({
         containerRef={valueContainerRef}
         {...valueContainerProps}
         containerProps={{
+          'data-test-id': `${name}-dropdown-button`,
           isOpen,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error

@@ -110,7 +110,7 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} name="choosePokemon" options={pokeOptions} />,
     );
     act(() => {
-      fireEvent.focus(getByTestId('choosePokemon-container'));
+      fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
     });
     expect(container).toMatchSnapshot();
   });
@@ -121,7 +121,7 @@ describe('Dropdown', () => {
     );
 
     // TODO - Don't use data-test-id, see if we can use a more semantically meaningful element
-    fireEvent.focus(getByTestId('choosePokemon-container'));
+    fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
     await waitFor(() => getByText('Charmander'));
     act(() => {
       fireEvent.click(getByText('Charmander'));
@@ -135,11 +135,11 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} multi name="choosePokemon" options={pokeOptions} />,
     );
 
-    getByTestId('hsui-button').focus();
+    getByTestId('choosePokemon-dropdown-button').focus();
     act(() => {
       fireEvent.click(getByText('Charmander'));
       fireEvent.click(getByText('Squirtle'));
-      fireEvent.blur(getByTestId('choosePokemon-container'));
+      fireEvent.blur(getByTestId('choosePokemon-dropdown-button'));
     });
     await waitFor(() => queryByText(/Bulbasaur/) === null);
 
@@ -152,13 +152,13 @@ describe('Dropdown', () => {
     );
 
     act(() => {
-      fireEvent.focus(getByTestId('choosePokemon-container'));
+      fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
     });
     const charOption = getByText('Charmander');
     act(() => {
       fireEvent.click(charOption);
       fireEvent.click(charOption);
-      fireEvent.blur(getByTestId('choosePokemon-container'));
+      fireEvent.blur(getByTestId('choosePokemon-dropdown-button'));
     });
     expect(container).toMatchSnapshot();
     expect(mockedSelectHandler).toHaveBeenCalledTimes(2);
@@ -169,13 +169,13 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} name="choosePokemon" options={pokeOptions} />,
     );
 
-    getByTestId('hsui-button').focus();
+    getByTestId('choosePokemon-dropdown-button').focus();
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
     expect(optionsOutFrag).toMatchSnapshot();
 
     act(() => {
-      fireEvent.blur(getByTestId('hsui-button'));
+      fireEvent.blur(getByTestId('choosePokemon-dropdown-button'));
     });
     await waitFor(() => queryByText('Squirtle') === null);
     expect(queryByText('Squirtle')).toBeNull();
@@ -190,7 +190,7 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} name="choosePokemon" options={pokeOptions} />,
     );
     act(() => {
-      getByTestId('hsui-button').focus();
+      getByTestId('choosePokemon-dropdown-button').focus();
     });
     await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
     act(() => {
@@ -272,7 +272,7 @@ describe('Dropdown', () => {
         />,
       );
       act(() => {
-        fireEvent.focus(getByTestId('choosePokemon-container'));
+        fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
       });
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
@@ -287,7 +287,7 @@ describe('Dropdown', () => {
         />,
       );
       act(() => {
-        fireEvent.focus(getByTestId('choosePokemon-button-value'));
+        fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
       });
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });

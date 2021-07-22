@@ -118,7 +118,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -320,7 +320,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -521,7 +521,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -681,7 +681,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -883,7 +883,7 @@ exports[`Dropdown displays all options when focused 1`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1084,7 +1084,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1246,7 +1246,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1432,7 +1432,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1592,7 +1592,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1774,7 +1774,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1964,7 +1964,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -2162,7 +2162,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -2360,7 +2360,7 @@ exports[`Dropdown selects options from values prop 1`] = `
     <button
       class=" c1 c2"
       color="#252c35"
-      data-test-id="hsui-button"
+      data-test-id="choosePokemon-dropdown-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
