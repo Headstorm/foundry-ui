@@ -320,8 +320,8 @@ const Dropdown = ({
       if (onFocus) {
         onFocus();
       }
-      },
-      [onFocus],
+    },
+    [onFocus],
   );
 
   const handleSelect = useCallback(
@@ -455,11 +455,6 @@ const Dropdown = ({
       elevation={elevation}
       isOpen={isOpen}
       name={name}
-      // onBlur={handleBlur}
-      // onFocus={(e: React.FocusEvent) => {
-      //   e.preventDefault();
-      //   setIsOpen(true);
-      // }}
       ref={mergeRefs([containerRef, containerInternalRef])}
       {...containerProps}
     >

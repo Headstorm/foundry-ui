@@ -53,8 +53,8 @@ export type ButtonProps = {
   interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
   disabled?: boolean;
   onClick: (...args: any[]) => void;
-  onBlur?: (e: React.MouseEvent) => void;
-  onFocus?: (e: React.MouseEvent) => void;
+  onBlur?: (e: React.FocusEvent) => void;
+  onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
