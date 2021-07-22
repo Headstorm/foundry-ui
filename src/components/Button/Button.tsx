@@ -53,6 +53,8 @@ export type ButtonProps = {
   interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
   disabled?: boolean;
   onClick: (...args: any[]) => void;
+  onBlur?: (e: React.MouseEvent) => void;
+  onFocus?: (e: React.MouseEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
@@ -167,6 +169,8 @@ const Button = ({
   color,
   disabled = false,
   onClick,
+  onBlur = () => {},
+  onFocus = () => {},
   onMouseDown = () => {},
   onMouseUp = () => {},
   LoadingBar = StyledProgress,
@@ -184,6 +188,8 @@ const Button = ({
     'data-test-id': 'hsui-button',
     id,
     onClick,
+    onBlur,
+    onFocus,
     onMouseDown,
     onMouseUp,
     elevation,

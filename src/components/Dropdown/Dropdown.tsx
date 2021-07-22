@@ -211,6 +211,7 @@ export interface DropdownProps {
 
   onBlur?: () => void;
   onClear?: () => void;
+  onFocus?: () => void;
   onSelect: (selected?: Array<string | number>) => void;
 
   rememberScrollPosition?: boolean;
@@ -255,6 +256,7 @@ const Dropdown = ({
   name,
   placeholder,
   onBlur,
+  onFocus,
   onClear,
   onSelect,
   options = [],
@@ -309,6 +311,17 @@ const Dropdown = ({
       }
     },
     [name, onBlur],
+  );
+
+  const handleFocus = useCallback(
+    (e: React.FocusEvent) => {
+      e.preventDefault();
+      setIsOpen(true);
+      if (onFocus) {
+        onFocus();
+      }
+      },
+      [onFocus],
   );
 
   const handleSelect = useCallback(
@@ -442,11 +455,11 @@ const Dropdown = ({
       elevation={elevation}
       isOpen={isOpen}
       name={name}
-      onBlur={handleBlur}
-      onFocus={(e: React.FocusEvent) => {
-        e.preventDefault();
-        setIsOpen(true);
-      }}
+      // onBlur={handleBlur}
+      // onFocus={(e: React.FocusEvent) => {
+      //   e.preventDefault();
+      //   setIsOpen(true);
+      // }}
       ref={mergeRefs([containerRef, containerInternalRef])}
       {...containerProps}
     >
@@ -455,6 +468,8 @@ const Dropdown = ({
         id={`${name}-button-value`}
         color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         onMouseDown={clickHandler}
         variant={variant}
         containerRef={valueContainerRef}
