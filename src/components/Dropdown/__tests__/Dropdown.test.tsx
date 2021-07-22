@@ -287,7 +287,7 @@ describe('Dropdown', () => {
         />,
       );
       act(() => {
-        fireEvent.focus(getByTestId('choosePokemon-container'));
+        fireEvent.focus(getByTestId('choosePokemon-button-value'));
       });
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
