@@ -40,7 +40,7 @@ const CloseButtonContainer = styled(Button.Container)`
     let distance;
     let position;
     let display_type = 'flex'; //what is the desired default for the close button's display-type??
-    
+
     switch (closeButtonAttachment) {
       case 'inside':
         distance = '.5rem';
