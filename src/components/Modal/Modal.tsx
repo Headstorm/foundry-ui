@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useCallback } from 'react';
+import React, { ReactNode, useEffect, useCallback, Children } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 import { mdiClose } from '@mdi/js';
 import { useSpring } from 'react-spring';
@@ -39,6 +39,8 @@ const CloseButtonContainer = styled(Button.Container)`
   ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
     let distance;
     let position;
+    let display_type = 'flex'; //what is the desired default for the close button's display-type??
+    
     switch (closeButtonAttachment) {
       case 'inside':
         distance = '.5rem';
@@ -52,6 +54,8 @@ const CloseButtonContainer = styled(Button.Container)`
         distance = '1rem';
         position = 'fixed';
         break;
+      case 'none':
+        display_type = 'none';
       default:
         distance = '0rem';
         position = 'absolute';
@@ -65,6 +69,7 @@ const CloseButtonContainer = styled(Button.Container)`
       z-index: 1011;
       border-radius: 50%;
       padding: .5rem;
+      display: ${display_type};
     `;
   }}
 `;
@@ -189,7 +194,7 @@ const Modal = ({
         }}
       >
         {children}
-        {closeButtonAttachment !== 'corner' && (
+        {closeButtonAttachment !== 'none' && (
           <StyledCloseButton
             StyledContainer={StyledCloseButtonContainer}
             ref={closeButtonContainerRef}
