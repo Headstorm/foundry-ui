@@ -2619,6 +2619,26 @@
   resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-2.0.0.tgz#c40bbe91bacd3f795963dc1ee6ff86be87deeda9"
   integrity sha512-ZhdT++cX+L9LwjhGYggvYUUVQH/MGn2rwbrAwCMzA/f2QTFvkjxzX8nDgMxIhaLCDC+gHIxfJG2wrWN0jkBr3g==
 
+"@storybook/addon-storysource@^6.3.5":
+  version "6.3.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.3.5.tgz#fe988e2bec5004e1aa58aa926081cca8a8b62dc9"
+  integrity sha512-N7lmiPdMU12lKJqnckAQKXHKroxSyD9UKI5SZLdCaDxmOUwH6D82x4CWB/yUQYFrhhlhxYFFVSmbq/XkokmuIw==
+  dependencies:
+    "@storybook/addons" "6.3.5"
+    "@storybook/api" "6.3.5"
+    "@storybook/client-logger" "6.3.5"
+    "@storybook/components" "6.3.5"
+    "@storybook/router" "6.3.5"
+    "@storybook/source-loader" "6.3.5"
+    "@storybook/theming" "6.3.5"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    loader-utils "^2.0.0"
+    prettier "~2.2.1"
+    prop-types "^15.7.2"
+    react-syntax-highlighter "^13.5.3"
+    regenerator-runtime "^0.13.7"
+
 "@storybook/addon-toolbars@6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.3.5.tgz#a88b476795d1ecf32ad08e69d5188ec10868d24e"
