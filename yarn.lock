@@ -1505,6 +1505,21 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@figspec/components@^0.1.1":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@figspec/components/-/components-0.1.9.tgz#78e6bf65ca4f546d162960d3bb2d4e0f58545aec"
+  integrity sha512-u6nKNCwRNFKlVofX91PmRyDj35bB7raRFWHOgoXiJNS4hR5qsJiz7tKXg8tx4W/qQsI/CmJTRZBdn6auGG3DWA==
+  dependencies:
+    copy-to-clipboard "^3.0.0"
+    lit-element "^2.4.0"
+
+"@figspec/react@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@figspec/react/-/react-0.1.6.tgz#b5868d87f48270a901031aae847cfc76458ed5b6"
+  integrity sha512-oi0JL8uIXgJ+PWRl4LDxJ7WWa80E3jdYmi6wsHAFDq1vT0rKuyhqimEJzCezIrHHz4fXKpNRO98TO7ccma6hjw==
+  dependencies:
+    "@figspec/components" "^0.1.1"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -2471,6 +2486,28 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@storybook/addon-a11y@^6.3.5":
+  version "6.3.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.3.5.tgz#f1819b2c756bef3d69c9978e7ccac908490890fe"
+  integrity sha512-iczDyensBVAUkXEuHcMDe14N797EHc85IQkG894jhCTOorKde4RhTbdExk0wVcCM/psk346CECk8HHMgO9CBGQ==
+  dependencies:
+    "@storybook/addons" "6.3.5"
+    "@storybook/api" "6.3.5"
+    "@storybook/channels" "6.3.5"
+    "@storybook/client-api" "6.3.5"
+    "@storybook/client-logger" "6.3.5"
+    "@storybook/components" "6.3.5"
+    "@storybook/core-events" "6.3.5"
+    "@storybook/theming" "6.3.5"
+    axe-core "^4.2.0"
+    core-js "^3.8.2"
+    global "^4.4.0"
+    lodash "^4.17.20"
+    react-sizeme "^3.0.1"
+    regenerator-runtime "^0.13.7"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
 "@storybook/addon-actions@6.3.5", "@storybook/addon-actions@^6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.3.5.tgz#3fe0e4f76e1d88c16f0c68977b081c624137c15f"
@@ -2618,26 +2655,6 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-2.0.0.tgz#c40bbe91bacd3f795963dc1ee6ff86be87deeda9"
   integrity sha512-ZhdT++cX+L9LwjhGYggvYUUVQH/MGn2rwbrAwCMzA/f2QTFvkjxzX8nDgMxIhaLCDC+gHIxfJG2wrWN0jkBr3g==
-
-"@storybook/addon-storysource@^6.3.5":
-  version "6.3.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.3.5.tgz#fe988e2bec5004e1aa58aa926081cca8a8b62dc9"
-  integrity sha512-N7lmiPdMU12lKJqnckAQKXHKroxSyD9UKI5SZLdCaDxmOUwH6D82x4CWB/yUQYFrhhlhxYFFVSmbq/XkokmuIw==
-  dependencies:
-    "@storybook/addons" "6.3.5"
-    "@storybook/api" "6.3.5"
-    "@storybook/client-logger" "6.3.5"
-    "@storybook/components" "6.3.5"
-    "@storybook/router" "6.3.5"
-    "@storybook/source-loader" "6.3.5"
-    "@storybook/theming" "6.3.5"
-    core-js "^3.8.2"
-    estraverse "^5.2.0"
-    loader-utils "^2.0.0"
-    prettier "~2.2.1"
-    prop-types "^15.7.2"
-    react-syntax-highlighter "^13.5.3"
-    regenerator-runtime "^0.13.7"
 
 "@storybook/addon-toolbars@6.3.5":
   version "6.3.5"
@@ -4803,7 +4820,7 @@ axe-core@^3.5.5:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.6.tgz#e762a90d7f6dbd244ceacb4e72760ff8aad521b5"
   integrity sha512-LEUDjgmdJoA3LqklSTwKYqkjcZ4HKc4ddIYGSAiSkr46NTjzg2L9RNB+lekO9P7Dlpa87+hBtzc2Fzn/+GUWMQ==
 
-axe-core@^4.0.2:
+axe-core@^4.0.2, axe-core@^4.2.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.1.tgz#0c6a076e4a1c3e0544ba6a9479158f9be7a7928e"
   integrity sha512-3WVgVPs/7OnKU3s+lqMtkv3wQlg3WxK1YifmpJSDO0E1aPBrZWlrrTO6cxRqCXLuX2aYgCljqXIQd0VnRidV0g==
@@ -6378,7 +6395,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-to-clipboard@^3.3.1:
+copy-to-clipboard@^3.0.0, copy-to-clipboard@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
   integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
@@ -12034,6 +12051,18 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
+lit-element@^2.4.0:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.5.1.tgz#3fa74b121a6cd22902409ae3859b7847d01aa6b6"
+  integrity sha512-ogu7PiJTA33bEK0xGu1dmaX5vhcRjBXCFexPja0e7P7jqLhTpNKYRPmE+GmiCaRVAbiQKGkUgkh/i6+bh++dPQ==
+  dependencies:
+    lit-html "^1.1.1"
+
+lit-html@^1.1.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.4.1.tgz#0c6f3ee4ad4eb610a49831787f0478ad8e9ae5e0"
+  integrity sha512-B9btcSgPYb1q4oSOb/PrOT6Z/H+r6xuNzfH4lFli/AWhYwdtrgQkQWBbIc6mdnf6E2IL3gDXdkkqNktpU0OZQA==
+
 load-json-file@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
@@ -17010,6 +17039,13 @@ store2@^2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
+
+storybook-addon-designs@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/storybook-addon-designs/-/storybook-addon-designs-6.0.1.tgz#e87fadf688ecb2dc03d22564232c7476eb3af5a9"
+  integrity sha512-BVoh8a1UoXz3xUuUeP5F+V95xGqmHlGR+K9vgZfwnpFLB7IWkRFUmW9a+bF+tl94b3PvcncI33qUnQeBn5KlqA==
+  dependencies:
+    "@figspec/react" "^0.1.6"
 
 storybook-addon-outline@^1.4.1:
   version "1.4.1"
