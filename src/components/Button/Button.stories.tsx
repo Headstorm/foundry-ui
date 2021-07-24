@@ -1,24 +1,26 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
-import { action } from '@storybook/addon-actions';
-import { boolean, color, number, select, text } from '@storybook/addon-knobs';
+
+import { Story, Meta } from '@storybook/react';
+
 import { mdiMessage, mdiSend } from '@mdi/js';
-import { storiesOf } from '@storybook/react';
 
-import Button from './Button';
-import colors from '../../enums/colors';
-import variants from '../../enums/variants';
-import FeedbackTypes from '../../enums/feedbackTypes';
+import Button, { ButtonProps } from './Button';
 
-const options = {
-  none: '',
-  mdiMessage,
-  mdiSend,
-};
+import variants from 'src/enums/variants';
+import colors from 'src/enums/colors';
+import FeedbackTypes from 'src/enums/feedbackTypes';
 
-const design = {
-  type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+const iconOptions = {
+  options: ['none', 'mdiMessage', 'mdiSend'],
+  mapping: {
+    none: '',
+    mdiMessage,
+    mdiSend,
+  },
+  control: {
+    type: 'radio',
+  },
 };
 
 const StyledIconContainer = styled.div`
@@ -30,28 +32,32 @@ const StyledIconContainer = styled.div`
   }
 `;
 
-storiesOf('Button', module)
-  .addParameters({ component: Button })
-  .add(
-    'Basic Button',
-    () => {
-      return (
-        <Button
-          variant={select('variant', variants, variants.fill)}
-          color={color('color', colors.primaryDark)}
-          onClick={action('button-click')}
-          disabled={boolean('disabled', false)}
-          feedbackType={select('feedbackType', FeedbackTypes, FeedbackTypes.ripple)}
-          isLoading={boolean('isLoading', false)}
-          elevation={number('elevation', 1)}
-          isProcessing={boolean('isProcessing', false)}
-          iconPrefix={select('iconPrefix', options, options.none)}
-          iconSuffix={select('iconSuffix', options, options.none)}
-          StyledRightIconContainer={StyledIconContainer}
-        >
-          {text('children', 'Default text')}
-        </Button>
-      );
-    },
-    { design },
-  );
+export const BasicButton: Story<ButtonProps> = args => <Button {...args} />;
+BasicButton.args = {
+  variant: variants.fill,
+  color: colors.primaryDark,
+  disabled: false,
+  feedbackType: FeedbackTypes.ripple,
+  isLoading: false,
+  elevation: 1,
+  isProcessing: false,
+  iconPrefix: 'none',
+  iconSuffix: 'none',
+  children: 'Default text',
+  StyledRightIconContainer: StyledIconContainer,
+};
+BasicButton.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+  },
+};
+
+export default {
+  title: 'Button',
+  component: Button,
+  argTypes: {
+    iconPrefix: iconOptions,
+    iconSuffix: iconOptions,
+  },
+} as Meta;
