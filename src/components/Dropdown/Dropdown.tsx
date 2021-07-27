@@ -321,7 +321,7 @@ const Dropdown = ({
       if (
         !target ||
         !target.getAttribute('data-test-id') ||
-        !target.getAttribute('data-test-id')?.startsWith(internalId.current)
+        !(target.getAttribute('data-test-id') || '').startsWith(internalId.current)
       ) {
         setIsOpen(false);
         if (onBlur) {
@@ -510,7 +510,9 @@ const Dropdown = ({
                   {optionsHash[val].optionValue}
                   {valueVariant === variants.text && i !== arr.length - 1 && ','}
                 </Tag>
-              ) : undefined,
+              ) : (
+                undefined
+              ),
             )}
           {(!values || !values.length) && (
             <StyledPlaceholder
