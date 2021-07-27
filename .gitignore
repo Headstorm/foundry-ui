@@ -30,8 +30,6 @@ packages/.DS_Store
 .DS_Store
 docs/
 
-coverage/
-
 # Ignore most coverage files aside from badges and coverage summary
 coverage/**/*.html
 coverage/**/*.js

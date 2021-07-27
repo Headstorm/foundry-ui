@@ -39,7 +39,7 @@ const CloseButtonContainer = styled(Button.Container)`
   ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
     let distance;
     let position;
-    let display = 'inline-flex'; //default display type
+    let display = 'inline-flex'; // default display type
 
     switch (closeButtonAttachment) {
       case 'inside':
