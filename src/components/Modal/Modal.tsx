@@ -196,7 +196,7 @@ const Modal = ({
         }}
       >
         {children}
-        {closeButtonAttachment !== 'none' && (
+        {closeButtonAttachment !== 'corner' && (
           <StyledCloseButton
             StyledContainer={StyledCloseButtonContainer}
             ref={closeButtonContainerRef}
