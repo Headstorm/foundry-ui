@@ -25,10 +25,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -117,8 +117,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -186,10 +186,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -275,7 +275,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   max-height: 10rem;
   overflow-y: auto;
   width: 15rem;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
@@ -291,7 +291,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #252c35;
+  color: #252D34;
   background-color: transparent;
 }
 
@@ -319,8 +319,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -360,11 +360,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     </button>
     <div
       class=" c10"
-      color="#252c35"
+      color="#252D34"
     >
       <div
         class=" c11"
-        color="#252c35"
+        color="#252D34"
         id="choosePokemon-option-bulbasaur"
         tabindex="-1"
       >
@@ -376,7 +376,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
       <div
         class=" c11"
-        color="#252c35"
+        color="#252D34"
         id="choosePokemon-option-charmander"
         tabindex="-1"
       >
@@ -388,7 +388,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
       <div
         class=" c11"
-        color="#252c35"
+        color="#252D34"
         id="choosePokemon-option-squirtle"
         tabindex="-1"
       >
@@ -429,10 +429,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -520,8 +520,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -588,10 +588,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -680,8 +680,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -748,10 +748,10 @@ exports[`Dropdown displays all options when focused 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -837,7 +837,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   max-height: 10rem;
   overflow-y: auto;
   width: 15rem;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
@@ -853,7 +853,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #252c35;
+  color: #252D34;
   background-color: transparent;
 }
 
@@ -882,8 +882,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -923,11 +923,11 @@ exports[`Dropdown displays all options when focused 1`] = `
     </button>
     <div
       class=" c10"
-      color="#252c35"
+      color="#252D34"
     >
       <div
         class=" c11"
-        color="#252c35"
+        color="#252D34"
         id="choosePokemon-option-bulbasaur"
         tabindex="-1"
       >
@@ -939,7 +939,7 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
       <div
         class=" c11"
-        color="#252c35"
+        color="#252D34"
         id="choosePokemon-option-charmander"
         tabindex="-1"
       >
@@ -951,7 +951,7 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
       <div
         class=" c11"
-        color="#252c35"
+        color="#252D34"
         id="choosePokemon-option-squirtle"
         tabindex="-1"
       >
@@ -991,10 +991,10 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1083,8 +1083,8 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1153,10 +1153,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1245,8 +1245,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1313,10 +1313,10 @@ exports[`Dropdown renders a value when given a matching option id through props 
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1353,7 +1353,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
-  color: #7c8186;
+  color: #9FA2A5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1416,7 +1416,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   padding: 0px;
   border: 0 none;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   margin-right: .25rem;
   margin-top: 1px;
 }
@@ -1431,8 +1431,8 @@ exports[`Dropdown renders a value when given a matching option id through props 
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1443,7 +1443,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
       >
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Bulbasaur
@@ -1503,10 +1503,10 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1591,8 +1591,8 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1655,10 +1655,10 @@ exports[`Dropdown renders one value when given two values but only one matches a
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1695,7 +1695,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
-  color: #7c8186;
+  color: #9FA2A5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1758,7 +1758,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   padding: 0px;
   border: 0 none;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   margin-right: .25rem;
   margin-top: 1px;
 }
@@ -1773,8 +1773,8 @@ exports[`Dropdown renders one value when given two values but only one matches a
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1785,7 +1785,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
       >
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Bulbasaur
@@ -1845,10 +1845,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1885,7 +1885,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
-  color: #7c8186;
+  color: #9FA2A5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1948,7 +1948,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: 0px;
   border: 0 none;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   margin-right: .25rem;
   margin-top: 1px;
 }
@@ -1963,8 +1963,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -1975,7 +1975,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
       >
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Bulbasaur
@@ -1983,7 +1983,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
         </span>
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Charmander
@@ -2043,10 +2043,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2083,7 +2083,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
-  color: #7c8186;
+  color: #9FA2A5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2146,7 +2146,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: 0px;
   border: 0 none;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   margin-right: .25rem;
   margin-top: 1px;
 }
@@ -2161,8 +2161,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -2173,7 +2173,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
       >
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Bulbasaur
@@ -2181,7 +2181,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
         </span>
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Charmander
@@ -2241,10 +2241,10 @@ exports[`Dropdown selects options from values prop 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #252c35;
+  border: 1px solid #252D34;
   cursor: pointer;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2281,7 +2281,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   outline: 0 none;
   border: 0 none;
   background-color: transparent;
-  color: #7c8186;
+  color: #9FA2A5;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2344,7 +2344,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   padding: 0px;
   border: 0 none;
   background-color: transparent;
-  color: #252c35;
+  color: #252D34;
   margin-right: .25rem;
   margin-top: 1px;
 }
@@ -2359,8 +2359,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   >
     <button
       class=" c1 c2"
-      color="#252c35"
-      data-test-id="choosePokemon-dropdown-button"
+      color="#252D34"
+      data-test-id="hsui-button"
       elevation="0"
       id="choosePokemon-button-value"
       type="button"
@@ -2371,7 +2371,7 @@ exports[`Dropdown selects options from values prop 1`] = `
       >
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Bulbasaur
@@ -2379,7 +2379,7 @@ exports[`Dropdown selects options from values prop 1`] = `
         </span>
         <span
           class=" c4 c5"
-          color="#7c8186"
+          color="#9FA2A5"
           elevation="0"
         >
           Charmander

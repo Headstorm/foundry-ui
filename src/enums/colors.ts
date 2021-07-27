@@ -1,17 +1,22 @@
 enum colors {
   background = '#fff',
-  primary = '#e75b27',
-  primaryDark = '#c54516',
+
+  primary = '#DA4200',
+  primaryDark = '#BF3A00',
+  secondary = '#7349AC',
+  secondaryDark = '#512888',
+  tertiary = '#64ACC5',
+  tertiaryDark = '#338BAA',
 
   black = '#000',
-  grayDark = '#252c35',
-  grayMedium = '#51575d',
-  grayLight = '#7c8186',
-  grayXlight = '#d3d6d7',
+  grayDark = '#252D34',
+  grayMedium = '#51575D',
+  grayLight = '#9FA2A5',
+  grayXlight = '#D5D5D5',
 
   success = '#698F00',
   destructive = '#d00',
-  shadow = '#272f4e',
+  shadow = '#14161F',
 
   grayDark25 = 'rgba(211, 214, 215, 0.25)',
   grayDark50 = 'rgba(211, 214, 215, 0.5)',
