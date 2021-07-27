@@ -131,7 +131,7 @@ describe('Dropdown', () => {
   });
 
   it('selects multiple options when dropdown is multi', async () => {
-    const { container, getByTestId, getByText, queryByText } = render(
+    const { getByTestId, getByText, queryByText } = render(
       <Dropdown onSelect={mockedSelectHandler} multi name="choosePokemon" options={pokeOptions} />,
     );
 

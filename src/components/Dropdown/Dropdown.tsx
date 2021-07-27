@@ -3,6 +3,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
+import { nanoid } from 'nanoid';
 
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
@@ -206,7 +207,7 @@ export interface DropdownProps {
   color?: string;
   elevation?: number;
   multi?: boolean;
-  name: string;
+  name?: string;
   placeholder?: string;
 
   onBlur?: () => void;
@@ -270,6 +271,7 @@ const Dropdown = ({
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const internalName = useRef<string>(name ?? nanoid(5));
   const containerInternalRef = useRef<HTMLDivElement>(null);
   const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
 
@@ -303,14 +305,22 @@ const Dropdown = ({
       e.preventDefault();
       const target = e.nativeEvent.relatedTarget as HTMLElement | null;
       // check if we're focusing on something we don't control
-      if (!target || (target.id && !target.id.startsWith(name))) {
+
+      console.log(
+        target,
+        target?.id,
+        target?.id.startsWith(internalName.current),
+        internalName.current,
+      );
+
+      if (!target || (target.id && !target.id.startsWith(internalName.current))) {
         setIsOpen(false);
         if (onBlur) {
           onBlur();
         }
       }
     },
-    [name, onBlur],
+    [internalName, onBlur],
   );
 
   const handleFocus = useCallback(
@@ -375,13 +385,14 @@ const Dropdown = ({
         const focusedElement = document.activeElement;
         switch (key) {
           case 'Enter':
-            const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
+            const match =
+              focusedElement && focusedElement.id.match(`${internalName.current}-option-(.*)`);
             if (match) {
               handleSelect(match[1]);
             }
             break;
           case 'ArrowUp':
-            if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
+            if (focusedElement && focusedElement.id.match(`${internalName.current}-option-.*`)) {
               const sibling = focusedElement.previousElementSibling as HTMLElement | null;
               if (sibling) {
                 sibling.focus();
@@ -389,7 +400,7 @@ const Dropdown = ({
             }
             break;
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-button-value`) {
+            if (focusedElement && focusedElement.id === `${internalName.current}-button-value`) {
               const optionsContainer = focusedElement.nextElementSibling;
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
@@ -397,7 +408,10 @@ const Dropdown = ({
                   toFocus.focus();
                 }
               }
-            } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
+            } else if (
+              focusedElement &&
+              focusedElement.id.match(`${internalName.current}-option-.*`)
+            ) {
               const sibling = focusedElement.nextElementSibling as HTMLElement | null;
               if (sibling) {
                 sibling.focus();
@@ -409,7 +423,7 @@ const Dropdown = ({
         }
       }, 0);
     },
-    [handleSelect, name],
+    [handleSelect, internalName],
   );
 
   useEffect(() => {
@@ -450,17 +464,17 @@ const Dropdown = ({
 
   return (
     <StyledContainer
-      data-test-id={`${name}-container`}
-      id={`${name}-container`}
+      data-test-id={`${internalName.current}-container`}
+      id={`${internalName.current}-container`}
       elevation={elevation}
       isOpen={isOpen}
-      name={name}
+      name={internalName.current}
       ref={mergeRefs([containerRef, containerInternalRef])}
       {...containerProps}
     >
       <Button
         StyledContainer={StyledValueContainer}
-        id={`${name}-button-value`}
+        id={`${internalName.current}-button-value`}
         color={defaultedColor}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         onBlur={handleBlur}
@@ -470,7 +484,7 @@ const Dropdown = ({
         containerRef={valueContainerRef}
         {...valueContainerProps}
         containerProps={{
-          'data-test-id': `${name}-dropdown-button`,
+          'data-test-id': `${internalName.current}-dropdown-button`,
           isOpen,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error
@@ -481,7 +495,8 @@ const Dropdown = ({
           {...valueItemProps}
           onMouseDown={clickHandler}
           onBlur={handleBlur}
-          id={`${name}-value-item`}
+          id={`${internalName.current}-value-item`}
+          data-test-id={`${internalName.current}-value-item`}
           ref={valueItemRef}
         >
           {values
@@ -529,8 +544,8 @@ const Dropdown = ({
         >
           {options.map(option => (
             <StyledOptionItem
-              id={`${name}-option-${option.id}`}
-              key={`${name}-option-${option.id}`}
+              id={`${internalName.current}-option-${option.id}`}
+              key={`${internalName.current}-option-${option.id}`}
               onBlur={handleBlur}
               onClick={() => handleSelect(option.id)}
               tabIndex={-1}
