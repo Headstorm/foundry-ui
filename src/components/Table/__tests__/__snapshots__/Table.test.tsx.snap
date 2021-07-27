@@ -19,7 +19,7 @@ exports[`Table Shows Table with default props 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: #e75b27;
+  background-color: #DA4200;
   color: white;
 }
 
@@ -43,7 +43,7 @@ exports[`Table Shows Table with default props 1`] = `
   background-color: rgba(255,255,255,0.2);
 }
 
-.c4 {
+.c5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0rem 2rem;
@@ -54,11 +54,11 @@ exports[`Table Shows Table with default props 1`] = `
   background-color: #fff;
 }
 
-.c4:not(:last-child) {
+.c5:not(:last-child) {
   border-bottom: 1px solid rgb(211,214,215);
 }
 
-.c4:before {
+.c5:before {
   content: '';
   z-index: 0;
   position: absolute;
@@ -73,11 +73,11 @@ exports[`Table Shows Table with default props 1`] = `
   pointer-events: none;
 }
 
-.c4:hover:before {
+.c5:hover:before {
   opacity: .3;
 }
 
-.c5 {
+.c6 {
   display: block;
   padding: 1rem 0;
   word-break: break-word;
@@ -101,6 +101,19 @@ exports[`Table Shows Table with default props 1`] = `
   transform: rotate(180deg);
 }
 
+.c4 {
+  margin-left: 1rem;
+  fill: white;
+  width: 1rem;
+  -webkit-transition: -webkit-transform .2s,opacity .5s;
+  -webkit-transition: transform .2s,opacity .5s;
+  transition: transform .2s,opacity .5s;
+  opacity: 1;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
 <div>
   <table
     class=" c0"
@@ -113,6 +126,7 @@ exports[`Table Shows Table with default props 1`] = `
         <th
           class=" c2"
         >
+          Fruit
           <svg
             class="c3"
             role="presentation"
@@ -127,6 +141,7 @@ exports[`Table Shows Table with default props 1`] = `
         <th
           class=" c2"
         >
+          Colors
           <svg
             class="c3"
             role="presentation"
@@ -141,8 +156,9 @@ exports[`Table Shows Table with default props 1`] = `
         <th
           class=" c2"
         >
+          Numbers
           <svg
-            class="c3"
+            class="c4"
             role="presentation"
             viewBox="0 0 24 24"
           >
@@ -156,167 +172,61 @@ exports[`Table Shows Table with default props 1`] = `
     </thead>
     <tbody>
       <tr
-        class=" c4"
+        class=" c5"
       >
         <td
-          class=" c5"
+          class=" c6"
         >
-          A
+          Apple
         </td>
         <td
-          class=" c5"
+          class=" c6"
         >
-          p
+          Red
         </td>
         <td
-          class=" c5"
-        >
-          p
-        </td>
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          R
-        </td>
-        <td
-          class=" c5"
-        >
-          e
-        </td>
-        <td
-          class=" c5"
-        >
-          d
-        </td>
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
+          class=" c6"
         >
           1
         </td>
-        <td
-          class=" c5"
-        />
-        <td
-          class=" c5"
-        />
-      </tr>
-    </tbody>
-    <tbody>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          K
-        </td>
-        <td
-          class=" c5"
-        >
-          i
-        </td>
-        <td
-          class=" c5"
-        >
-          w
-        </td>
       </tr>
       <tr
-        class=" c4"
+        class=" c5"
       >
         <td
-          class=" c5"
+          class=" c6"
         >
-          B
+          Kiwi
         </td>
         <td
-          class=" c5"
+          class=" c6"
         >
-          r
+          Brown
         </td>
         <td
-          class=" c5"
-        >
-          o
-        </td>
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
+          class=" c6"
         >
           2
         </td>
-        <td
-          class=" c5"
-        />
-        <td
-          class=" c5"
-        />
-      </tr>
-    </tbody>
-    <tbody>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
-        >
-          B
-        </td>
-        <td
-          class=" c5"
-        >
-          a
-        </td>
-        <td
-          class=" c5"
-        >
-          n
-        </td>
       </tr>
       <tr
-        class=" c4"
+        class=" c5"
       >
         <td
-          class=" c5"
+          class=" c6"
         >
-          Y
+          Banana
         </td>
         <td
-          class=" c5"
+          class=" c6"
         >
-          e
+          Yellow
         </td>
         <td
-          class=" c5"
-        >
-          l
-        </td>
-      </tr>
-      <tr
-        class=" c4"
-      >
-        <td
-          class=" c5"
+          class=" c6"
         >
           3
         </td>
-        <td
-          class=" c5"
-        />
-        <td
-          class=" c5"
-        />
       </tr>
     </tbody>
   </table>

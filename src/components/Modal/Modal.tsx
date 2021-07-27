@@ -155,11 +155,14 @@ const Modal = ({
     ...animationSpringConfig,
   });
 
-  const escFunction = useCallback(event => {
-    if (event.keyCode === 27) {
-      onClickOutside();
-    }
-  }, []);
+  const escFunction = useCallback(
+    event => {
+      if (event.keyCode === 27) {
+        onClickOutside();
+      }
+    },
+    [onClickOutside],
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
@@ -167,7 +170,7 @@ const Modal = ({
     return () => {
       document.removeEventListener('keydown', escFunction, false);
     };
-  }, []);
+  }, [escFunction]);
 
   return (
     <Portal>

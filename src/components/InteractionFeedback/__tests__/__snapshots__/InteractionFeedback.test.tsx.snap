@@ -29,7 +29,7 @@ exports[`InteractionFeedback Shows InteractionFeedback with default props 1`] = 
       <circle
         cx="NaN%"
         cy="NaN%"
-        fill="#e75b27"
+        fill="#DA4200"
         opacity="0.50"
         r="0.0"
       />

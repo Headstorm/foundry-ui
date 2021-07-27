@@ -33,14 +33,14 @@ export const calculateElevationValues = (elevation = 0) => {
   const calc = () => Math.E ** (absVal / 16);
   // Using abs will return the same values for negative and positive elevations
   const logVal = Math.log10(absVal + elevationFactor);
+  const preciseOffsetY = isNegative ? Math.round(Math.E ** (absVal / 10) + 0.1) / 16 : calc() / 16;
+  const preciseOpacity = 0.5 - logVal * 0.2;
 
   // Set the updated values for the elevation
   elevationValues.xOffset = 0;
-  elevationValues.yOffset = isNegative
-    ? Math.round(Math.E ** (absVal / 10) + 0.1) / 16
-    : calc() / 16;
+  elevationValues.yOffset = Math.round(preciseOffsetY * 1000) / 1000; // 4 significant digits
   elevationValues.blur = isNegative ? (absVal * 2) / 16 : absVal * 0.25;
-  elevationValues.opacity = /** isNegative ? 0.3 - 0.05 * absVal : */ 0.5 - logVal * 0.2;
+  elevationValues.opacity = Math.round(preciseOpacity * 1000) / 1000; // 4 significant digits
   return elevationValues;
 };
 
@@ -51,7 +51,7 @@ export const calculateElevationValues = (elevation = 0) => {
  * @param {string} shadowColor - The color to be used for the shadow in hex or rgba format
  * @returns {string} The css style property and value
  */
-export const getShadowStyle = (elevation = 0, shadowColor: string) => {
+export const getShadowStyle = (elevation = 0, shadowColor: string): string => {
   const shadowStyle = 'contain: layout;';
   if (elevation === 0) {
     return shadowStyle;
