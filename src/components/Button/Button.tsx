@@ -59,6 +59,7 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
   id?: string;
+  dataTestId?: string;
   containerRef?: React.RefObject<HTMLButtonElement>;
   leftIconContainerRef?: React.RefObject<HTMLDivElement>;
   rightIconContainerRef?: React.RefObject<HTMLDivElement>;
@@ -155,7 +156,16 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
+  LoadingBar = StyledProgress,
+
   containerProps = {},
+  interactionFeedbackProps,
+
+  containerRef,
+  leftIconContainerRef,
+  rightIconContainerRef,
+  loadingBarRef,
+
   iconPrefix,
   iconSuffix,
   isLoading,
@@ -163,7 +173,6 @@ const Button = ({
   children,
   elevation = 0,
   feedbackType = FeedbackTypes.ripple,
-  interactionFeedbackProps,
   variant = variants.fill,
   type = ButtonTypes.button,
   color,
@@ -173,19 +182,15 @@ const Button = ({
   onFocus = () => {},
   onMouseDown = () => {},
   onMouseUp = () => {},
-  LoadingBar = StyledProgress,
   id,
-  containerRef,
-  leftIconContainerRef,
-  rightIconContainerRef,
-  loadingBarRef,
+  dataTestId,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    'data-test-id': 'hsui-button',
+    'data-test-id': dataTestId,
     id,
     onClick,
     onBlur,

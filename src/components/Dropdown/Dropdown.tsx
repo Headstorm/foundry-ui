@@ -44,6 +44,7 @@ const Container = styled(Div)`
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ isOpen }) => `
+    user-select: none;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -113,6 +114,7 @@ const OptionItem = styled(Div)`
     const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
 
     return `
+      user-select: none;
       padding: 0.5rem;
       display: flex;
       align-items: center;
@@ -173,7 +175,15 @@ const StyledTagContainer = styled(Tag.Container)`
     dropdownColor: string;
     transparentColor: string;
   }) => `
-    ${tagVariant === variants.text ? 'padding: 0px;' : ''}
+    ${
+      tagVariant === variants.text
+        ? `
+          padding: 0;
+          line-height: 1;
+          margin-top: 0 !important;
+        `
+        : ''
+    }
     ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
   `}
 `;
@@ -208,6 +218,7 @@ export interface DropdownProps {
   elevation?: number;
   multi?: boolean;
   name?: string;
+  dataTestId?: string;
   placeholder?: string;
 
   onBlur?: () => void;
@@ -254,7 +265,8 @@ const Dropdown = ({
   color,
   elevation = 0,
   multi = false,
-  name,
+  name = 'dropdown',
+  dataTestId,
   placeholder,
   onBlur,
   onFocus,
@@ -271,7 +283,7 @@ const Dropdown = ({
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const internalName = useRef<string>(name ?? nanoid(5));
+  const internalId = useRef<string>(dataTestId || nanoid(5));
   const containerInternalRef = useRef<HTMLDivElement>(null);
   const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
 
@@ -304,35 +316,28 @@ const Dropdown = ({
     (e: React.FocusEvent) => {
       e.preventDefault();
       const target = e.nativeEvent.relatedTarget as HTMLElement | null;
+
       // check if we're focusing on something we don't control
-
-      console.log(
-        target,
-        target?.id,
-        target?.id.startsWith(internalName.current),
-        internalName.current,
-      );
-
-      if (!target || (target.id && !target.id.startsWith(internalName.current))) {
+      if (
+        !target ||
+        !target.getAttribute('data-test-id') ||
+        !target.getAttribute('data-test-id')?.startsWith(internalId.current)
+      ) {
         setIsOpen(false);
         if (onBlur) {
           onBlur();
         }
       }
     },
-    [internalName, onBlur],
+    [internalId, onBlur],
   );
 
-  const handleFocus = useCallback(
-    (e: React.FocusEvent) => {
-      e.preventDefault();
-      setIsOpen(true);
-      if (onFocus) {
-        onFocus();
-      }
-    },
-    [onFocus],
-  );
+  const handleFocus = useCallback(() => {
+    setIsOpen(true);
+    if (onFocus) {
+      onFocus();
+    }
+  }, [onFocus]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -362,20 +367,12 @@ const Dropdown = ({
     [multi, onClear, onSelect],
   );
 
-  // clickHandler will be used in onMouseDown to prevent the focus event
-  // opening the dropdown and the click closing it
-  const clickHandler = useCallback(
-    (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.nativeEvent.stopImmediatePropagation();
-      setIsOpen(!isOpen);
-      if (containerInternalRef && containerInternalRef.current) {
-        // Focus the container even when clicking
-        containerInternalRef.current.focus();
-      }
-    },
-    [containerInternalRef, isOpen, setIsOpen],
-  );
+  const clickHandler = useCallback(() => {
+    if (containerInternalRef && containerInternalRef.current) {
+      // Focus the container even when clicking
+      containerInternalRef.current.focus();
+    }
+  }, [containerInternalRef]);
 
   const keyDownHandler = useCallback(
     ({ key }) => {
@@ -385,14 +382,13 @@ const Dropdown = ({
         const focusedElement = document.activeElement;
         switch (key) {
           case 'Enter':
-            const match =
-              focusedElement && focusedElement.id.match(`${internalName.current}-option-(.*)`);
+            const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
             if (match) {
               handleSelect(match[1]);
             }
             break;
           case 'ArrowUp':
-            if (focusedElement && focusedElement.id.match(`${internalName.current}-option-.*`)) {
+            if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
               const sibling = focusedElement.previousElementSibling as HTMLElement | null;
               if (sibling) {
                 sibling.focus();
@@ -400,7 +396,7 @@ const Dropdown = ({
             }
             break;
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${internalName.current}-button-value`) {
+            if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
               const optionsContainer = focusedElement.nextElementSibling;
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
@@ -408,10 +404,7 @@ const Dropdown = ({
                   toFocus.focus();
                 }
               }
-            } else if (
-              focusedElement &&
-              focusedElement.id.match(`${internalName.current}-option-.*`)
-            ) {
+            } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
               const sibling = focusedElement.nextElementSibling as HTMLElement | null;
               if (sibling) {
                 sibling.focus();
@@ -423,7 +416,7 @@ const Dropdown = ({
         }
       }, 0);
     },
-    [handleSelect, internalName],
+    [handleSelect, name],
   );
 
   useEffect(() => {
@@ -464,27 +457,26 @@ const Dropdown = ({
 
   return (
     <StyledContainer
-      data-test-id={`${internalName.current}-container`}
-      id={`${internalName.current}-container`}
+      id={`${name}-dropdown-container`}
+      data-test-id={`${internalId.current}-dropdown-container`}
       elevation={elevation}
       isOpen={isOpen}
-      name={internalName.current}
+      onBlur={handleBlur}
+      onFocus={handleFocus}
+      name={name}
       ref={mergeRefs([containerRef, containerInternalRef])}
       {...containerProps}
     >
       <Button
         StyledContainer={StyledValueContainer}
-        id={`${internalName.current}-button-value`}
+        id={`${name}-dropdown-button`}
         color={defaultedColor}
-        onClick={(e: React.MouseEvent) => e.preventDefault()}
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-        onMouseDown={clickHandler}
+        onClick={clickHandler}
         variant={variant}
         containerRef={valueContainerRef}
         {...valueContainerProps}
         containerProps={{
-          'data-test-id': `${internalName.current}-dropdown-button`,
+          'data-test-id': `${internalId.current}-dropdown-button`,
           isOpen,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error
@@ -492,12 +484,10 @@ const Dropdown = ({
         }}
       >
         <StyledValueItem
-          {...valueItemProps}
-          onMouseDown={clickHandler}
-          onBlur={handleBlur}
-          id={`${internalName.current}-value-item`}
-          data-test-id={`${internalName.current}-value-item`}
+          id={`${name}-value-item`}
+          data-test-id={`${internalId.current}-value-item`}
           ref={valueItemRef}
+          {...valueItemProps}
         >
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
@@ -506,13 +496,14 @@ const Dropdown = ({
                 <Tag
                   StyledContainer={StyledTagContainer}
                   variant={valueVariant}
+                  dataTestId={`${internalId.current}-tag`}
                   {...valueItemTagProps}
                   containerProps={{
-                    ...tagContainerItemProps,
                     dropdownVariant: variant,
                     tagVariant: valueVariant,
                     dropdownColor: defaultedColor,
                     transparentColor: colors.transparent,
+                    ...tagContainerItemProps,
                   }}
                   key={val}
                 >
@@ -524,7 +515,11 @@ const Dropdown = ({
               ),
             )}
           {(!values || !values.length) && (
-            <StyledPlaceholder ref={placeholderRef} {...placeholderMergedProps}>
+            <StyledPlaceholder
+              ref={placeholderRef}
+              data-test-id={`${internalId.current}-placeholder`}
+              {...placeholderMergedProps}
+            >
               {placeholder}
             </StyledPlaceholder>
           )}
@@ -534,6 +529,7 @@ const Dropdown = ({
       {isOpen && (
         <StyledOptionsContainer
           color={defaultedColor}
+          data-test-id={`${internalId.current}-options-container`}
           variant={optionsVariant}
           ref={mergeRefs([
             optionsContainerRef,
@@ -544,9 +540,9 @@ const Dropdown = ({
         >
           {options.map(option => (
             <StyledOptionItem
-              id={`${internalName.current}-option-${option.id}`}
-              key={`${internalName.current}-option-${option.id}`}
-              onBlur={handleBlur}
+              id={`${name}-option-${option.id}`}
+              data-test-id={`${internalId.current}-option-${option.id}`}
+              key={`${name}-option-${option.id}`}
               onClick={() => handleSelect(option.id)}
               tabIndex={-1}
               color={defaultedColor}
@@ -560,6 +556,7 @@ const Dropdown = ({
                 <StyledCheckContainer
                   color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
+                  data-test-id={`${internalId.current}-check-container-${option.id}`}
                   variant={optionsVariant}
                   multi={multi}
                   ref={checkContainerRef}

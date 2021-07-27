@@ -63,6 +63,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,25 +114,27 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         />
       </div>
       <div
@@ -224,6 +230,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -282,6 +292,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -312,25 +326,27 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         />
       </div>
       <div
@@ -361,11 +377,13 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     <div
       class=" c10"
       color="#252D34"
+      data-test-id="choosePokemon-options-container"
     >
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-bulbasaur"
+        data-test-id="choosePokemon-option-bulbasaur"
+        id="dropdown-option-bulbasaur"
         tabindex="-1"
       >
         <span
@@ -377,7 +395,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-charmander"
+        data-test-id="choosePokemon-option-charmander"
+        id="dropdown-option-charmander"
         tabindex="-1"
       >
         <span
@@ -389,7 +408,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-squirtle"
+        data-test-id="choosePokemon-option-squirtle"
+        id="dropdown-option-squirtle"
         tabindex="-1"
       >
         <span
@@ -467,6 +487,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -513,25 +537,27 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 
 <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         />
       </div>
       <div
@@ -626,6 +652,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -673,25 +703,27 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         />
       </div>
       <div
@@ -786,6 +818,10 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -844,6 +880,10 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -875,25 +915,27 @@ exports[`Dropdown displays all options when focused 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         />
       </div>
       <div
@@ -924,11 +966,13 @@ exports[`Dropdown displays all options when focused 1`] = `
     <div
       class=" c10"
       color="#252D34"
+      data-test-id="choosePokemon-options-container"
     >
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-bulbasaur"
+        data-test-id="choosePokemon-option-bulbasaur"
+        id="dropdown-option-bulbasaur"
         tabindex="-1"
       >
         <span
@@ -940,7 +984,8 @@ exports[`Dropdown displays all options when focused 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-charmander"
+        data-test-id="choosePokemon-option-charmander"
+        id="dropdown-option-charmander"
         tabindex="-1"
       >
         <span
@@ -952,7 +997,8 @@ exports[`Dropdown displays all options when focused 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-squirtle"
+        data-test-id="choosePokemon-option-squirtle"
+        id="dropdown-option-squirtle"
         tabindex="-1"
       >
         <span
@@ -1029,6 +1075,10 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1076,28 +1126,30 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         >
           Choose a pokemon
-        </span>
+        </div>
       </div>
       <div
         class=" c5"
@@ -1191,6 +1243,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1238,25 +1294,27 @@ exports[`Dropdown does not display options on initial render 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
-        <span
+        <div
           class=" c4"
+          data-test-id="choosePokemon-placeholder"
         />
       </div>
       <div
@@ -1372,6 +1430,10 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1424,26 +1486,28 @@ exports[`Dropdown renders a value when given a matching option id through props 
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Bulbasaur
@@ -1541,6 +1605,10 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1584,22 +1652,23 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       />
       <div
         class=" c4"
@@ -1714,6 +1783,10 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1766,26 +1839,28 @@ exports[`Dropdown renders one value when given two values but only one matches a
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Bulbasaur
@@ -1904,6 +1979,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1956,26 +2035,28 @@ exports[`Dropdown renders two values when given matching option ids through prop
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Bulbasaur
@@ -1984,6 +2065,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Charmander
@@ -2102,6 +2184,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2154,26 +2240,28 @@ exports[`Dropdown renders two values when given matching option ids through prop
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Bulbasaur
@@ -2182,6 +2270,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Charmander
@@ -2300,6 +2389,10 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2352,26 +2445,28 @@ exports[`Dropdown selects options from values prop 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
+    data-test-id="choosePokemon-dropdown-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
+    id="dropdown-dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
       data-test-id="choosePokemon-dropdown-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        data-test-id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Bulbasaur
@@ -2380,6 +2475,7 @@ exports[`Dropdown selects options from values prop 1`] = `
         <span
           class=" c4 c5"
           color="#9FA2A5"
+          data-test-id="choosePokemon-tag"
           elevation="0"
         >
           Charmander
