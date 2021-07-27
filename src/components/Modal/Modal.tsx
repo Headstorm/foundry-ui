@@ -58,6 +58,7 @@ const CloseButtonContainer = styled(Button.Container)`
         distance = '0rem';
         position = 'absolute';
         display = 'none';
+        break;
       default:
         distance = '0rem';
         position = 'absolute';
