@@ -39,7 +39,7 @@ const CloseButtonContainer = styled(Button.Container)`
   ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
     let distance;
     let position;
-    let display_type = 'flex'; //what is the desired default for the close button's display-type??
+    let display = 'in-line flex'; //default display type
 
     switch (closeButtonAttachment) {
       case 'inside':
@@ -55,7 +55,9 @@ const CloseButtonContainer = styled(Button.Container)`
         position = 'fixed';
         break;
       case 'none':
-        display_type = 'none';
+        distance = '0rem';
+        position = 'absolute';
+        display = 'none';
       default:
         distance = '0rem';
         position = 'absolute';
@@ -69,7 +71,7 @@ const CloseButtonContainer = styled(Button.Container)`
       z-index: 1011;
       border-radius: 50%;
       padding: .5rem;
-      display: ${display_type};
+      display: ${display};
     `;
   }}
 `;
