@@ -39,7 +39,7 @@ storiesOf('Modal', module)
 
       const buttonAttachment = select(
         'closeButtonAttachment',
-        ['inside', 'outside', 'corner'],
+        ['inside', 'outside', 'corner', 'none'],
         'inside',
       );
 
