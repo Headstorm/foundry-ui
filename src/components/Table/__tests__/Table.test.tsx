@@ -19,6 +19,7 @@ describe('Table', () => {
           colors: { name: 'Colors' },
           numbers: { name: 'Numbers' },
         }}
+        defaultSort={['numbers', true]}
         data={[
           { fruit: 'Apple', colors: 'Red', numbers: '1' },
           { fruit: 'Kiwi', colors: 'Brown', numbers: '2' },
