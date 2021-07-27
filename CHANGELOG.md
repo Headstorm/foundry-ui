@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/Headstorm/foundry-ui/compare/v1.1.0...v1.2.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* **shadowstyles:** round offsetY and opacity values for consistent testing ([d33ee94](https://github.com/Headstorm/foundry-ui/commit/d33ee9496a9946297a53871af7688c0c7f16cd43))
+
+
+### Features
+
+* **colors.ts:** added secondary and tertiary colors ([778c9a5](https://github.com/Headstorm/foundry-ui/commit/778c9a5226c68765cff5149d3480baf7fbf80f1d))
+
 # [1.1.0](https://github.com/Headstorm/foundry-ui/compare/v1.0.6...v1.1.0) (2021-07-21)
 
 
