@@ -5,7 +5,7 @@ exports[`Divider matches snapshot 1`] = `
   border: none;
   height: 1px;
   width: 90%;
-  background-color: #7c8186;
+  background-color: #9FA2A5;
 }
 
 .c0 {
@@ -40,7 +40,7 @@ exports[`Divider matches snapshot with props 1`] = `
   border: none;
   height: 2rem;
   width: 50%;
-  background-color: #7c8186;
+  background-color: #9FA2A5;
 }
 
 .c0 {
