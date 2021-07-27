@@ -152,7 +152,7 @@ const Modal = ({
     if (event.keyCode === 27) {
       onClickOutside();
     }
-  }, []);
+  }, [onClickOutside]);
 
   useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
@@ -160,7 +160,7 @@ const Modal = ({
     return () => {
       document.removeEventListener('keydown', escFunction, false);
     };
-  }, []);
+  }, [escFunction]);
 
   return (
     <Portal>

@@ -407,8 +407,8 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
-  -webkit-filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(20,22,31,0.39738511585523156));
-  filter: drop-shadow(0rem 0.07082177831667665rem 0.5rem rgba(20,22,31,0.39738511585523156));
+  -webkit-filter: drop-shadow(0rem 0.071rem 0.5rem rgba(20,22,31,0.397));
+  filter: drop-shadow(0rem 0.071rem 0.5rem rgba(20,22,31,0.397));
   outline: 0 none;
   border: 1px solid #000;
   cursor: pointer;
