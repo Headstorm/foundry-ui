@@ -69,6 +69,11 @@ export const CloseIconContainer = styled(Div)`
   z-index: 1;
 `;
 
+export const ArrowIconContainer = styled(Div)`
+  height: 1.125rem;
+  z-index: 1;
+`;
+
 const ValueItem = styled(Div)`
   width: 100%;
   text-align: left;
@@ -178,7 +183,7 @@ export interface DropdownProps {
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
   StyledPlaceholder?: string & StyledComponentBase<any, {}>;
   StyledCloseIconContainer?: string & StyledComponentBase<any, {}>;
-  Styled
+  StyledArrowIconContainer?: string & StyledComponentBase<any, {}>;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -188,6 +193,7 @@ export interface DropdownProps {
   checkContainerProps?: SubcomponentPropsType;
   placeholderProps?: SubcomponentPropsType;
   closeIconProps?: SubcomponentPropsType;
+  arrowIconProps?: SubcomponentPropsType;
   valueItemTagProps?: TagProps;
 
   containerRef?: React.RefObject<HTMLElement>;
@@ -198,6 +204,7 @@ export interface DropdownProps {
   checkContainerRef?: React.RefObject<HTMLElement>;
   placeholderRef?: React.RefObject<HTMLElement>;
   closeIconRef?: React.RefObject<HTMLElement>;
+  arrowIconRef?: React.RefObject<HTMLElement>;
 
   color?: string;
   elevation?: number;
@@ -228,6 +235,7 @@ const Dropdown = ({
   StyledCheckContainer = CheckContainer,
   StyledPlaceholder = PlaceholderContainer,
   StyledCloseIconContainer = CloseIconContainer,
+  StyledArrowIconContainer = ArrowIconContainer,
 
   containerProps,
   valueContainerProps,
@@ -237,6 +245,7 @@ const Dropdown = ({
   checkContainerProps,
   placeholderProps,
   closeIconProps,
+  arrowIconProps,
   valueItemTagProps = {},
 
   containerRef,
@@ -247,6 +256,7 @@ const Dropdown = ({
   checkContainerRef,
   placeholderRef,
   closeIconRef,
+  arrowIconRef,
 
   color,
   elevation = 0,
@@ -432,7 +442,9 @@ const Dropdown = ({
           <Icon path={mdiClose} size="1em" />
         </StyledCloseIconContainer>
       )}
-      <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
+      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps}>
+        <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
+      </StyledArrowIconContainer>
     </>
   );
 
