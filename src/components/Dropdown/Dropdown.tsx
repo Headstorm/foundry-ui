@@ -367,12 +367,18 @@ const Dropdown = ({
     [multi, onClear, onSelect],
   );
 
-  const clickHandler = useCallback(() => {
-    if (containerInternalRef && containerInternalRef.current) {
-      // Focus the container even when clicking
-      containerInternalRef.current.focus();
-    }
-  }, []);
+  const handleMouseDownOnButton = useCallback(
+    (e: React.MouseEvent) => {
+      if (isOpen) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore - It's okay if target is null in this case as we want it to close regardless
+        handleBlur(e);
+      } else {
+        handleFocus();
+      }
+    },
+    [isOpen, handleBlur, handleFocus],
+  );
 
   const keyDownHandler = useCallback(
     ({ key }) => {
@@ -471,7 +477,7 @@ const Dropdown = ({
         StyledContainer={StyledValueContainer}
         id={`${name}-dropdown-button`}
         color={defaultedColor}
-        onClick={clickHandler}
+        onMouseDown={handleMouseDownOnButton}
         variant={variant}
         containerRef={valueContainerRef}
         {...valueContainerProps}

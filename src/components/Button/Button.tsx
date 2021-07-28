@@ -52,7 +52,7 @@ export type ButtonProps = {
   feedbackType?: FeedbackTypes;
   interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
   disabled?: boolean;
-  onClick: (...args: any[]) => void;
+  onClick?: (...args: any[]) => void;
   onBlur?: (e: React.FocusEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
