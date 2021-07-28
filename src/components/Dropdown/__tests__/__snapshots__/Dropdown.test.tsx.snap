@@ -114,9 +114,9 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -326,9 +326,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -537,9 +537,9 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 
 <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -703,9 +703,9 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -915,9 +915,9 @@ exports[`Dropdown displays all options when focused 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -1126,9 +1126,9 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -1294,9 +1294,9 @@ exports[`Dropdown does not display options on initial render 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -1488,9 +1488,9 @@ exports[`Dropdown renders a value when given a matching option id through props 
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -1654,9 +1654,9 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -1843,9 +1843,9 @@ exports[`Dropdown renders one value when given two values but only one matches a
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -2041,9 +2041,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -2248,9 +2248,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button
@@ -2455,9 +2455,9 @@ exports[`Dropdown selects options from values prop 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-dropdown-container"
+    data-test-id="choosePokemon-container"
     elevation="0"
-    id="dropdown-dropdown-container"
+    id="dropdown-container"
     name="dropdown"
   >
     <button

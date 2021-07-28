@@ -372,7 +372,7 @@ const Dropdown = ({
       // Focus the container even when clicking
       containerInternalRef.current.focus();
     }
-  }, [containerInternalRef]);
+  }, []);
 
   const keyDownHandler = useCallback(
     ({ key }) => {
@@ -457,8 +457,8 @@ const Dropdown = ({
 
   return (
     <StyledContainer
-      id={`${name}-dropdown-container`}
-      data-test-id={`${internalId.current}-dropdown-container`}
+      id={`${name}-container`}
+      data-test-id={`${internalId.current}-container`}
       elevation={elevation}
       isOpen={isOpen}
       onBlur={handleBlur}

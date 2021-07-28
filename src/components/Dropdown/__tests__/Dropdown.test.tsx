@@ -262,7 +262,7 @@ describe('Dropdown', () => {
       const { getByTestId } = render(
         <Dropdown dataTestId={testId} onSelect={() => {}} containerRef={ref} />,
       );
-      await waitFor(() => getByTestId(`${testId}-dropdown-container`));
+      await waitFor(() => getByTestId(`${testId}-container`));
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
     it('optionsContainerRef.current should exist', async () => {
