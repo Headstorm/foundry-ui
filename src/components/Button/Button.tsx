@@ -59,7 +59,6 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
   id?: string;
-  dataTestId?: string;
   containerRef?: React.RefObject<HTMLButtonElement>;
   leftIconContainerRef?: React.RefObject<HTMLDivElement>;
   rightIconContainerRef?: React.RefObject<HTMLDivElement>;
@@ -183,14 +182,12 @@ const Button = ({
   onMouseDown = () => {},
   onMouseUp = () => {},
   id,
-  dataTestId,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    'data-test-id': dataTestId,
     id,
     onClick,
     onBlur,

@@ -34,7 +34,6 @@ export type TagProps = {
   variant?: variants;
   color?: string;
   id?: string;
-  dataTestId?: string;
 
   containerProps?: SubcomponentPropsType;
   iconPrefixContainerProps?: SubcomponentPropsType;
@@ -102,7 +101,6 @@ const Tag = ({
   variant = variants.fill,
   color,
   id,
-  dataTestId,
 
   containerProps = {},
   iconPrefixContainerProps = {},
@@ -124,7 +122,6 @@ const Tag = ({
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     id,
-    'data-test-id': dataTestId,
     elevation,
     color: containerColor,
     variant,

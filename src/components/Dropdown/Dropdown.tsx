@@ -218,7 +218,6 @@ export interface DropdownProps {
   elevation?: number;
   multi?: boolean;
   name?: string;
-  dataTestId?: string;
   placeholder?: string;
 
   onBlur?: () => void;
@@ -266,7 +265,6 @@ const Dropdown = ({
   elevation = 0,
   multi = false,
   name = 'dropdown',
-  dataTestId,
   placeholder,
   onBlur,
   onFocus,
@@ -283,7 +281,7 @@ const Dropdown = ({
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const internalId = useRef<string>(dataTestId || nanoid(5));
+  const internalId = useRef<string>(nanoid(5));
   const containerInternalRef = useRef<HTMLDivElement>(null);
   const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
 
@@ -320,8 +318,8 @@ const Dropdown = ({
       // check if we're focusing on something we don't control
       if (
         !target ||
-        !target.getAttribute('data-test-id') ||
-        !(target.getAttribute('data-test-id') || '').startsWith(internalId.current)
+        !target.getAttribute('data-foundry-id') ||
+        !(target.getAttribute('data-foundry-id') || '').startsWith(internalId.current)
       ) {
         setIsOpen(false);
         if (onBlur) {
@@ -464,7 +462,7 @@ const Dropdown = ({
   return (
     <StyledContainer
       id={`${name}-container`}
-      data-test-id={`${internalId.current}-container`}
+      data-foundry-id={`${internalId.current}-container`}
       elevation={elevation}
       isOpen={isOpen}
       onBlur={handleBlur}
@@ -482,7 +480,7 @@ const Dropdown = ({
         containerRef={valueContainerRef}
         {...valueContainerProps}
         containerProps={{
-          'data-test-id': `${internalId.current}-dropdown-button`,
+          'data-foundry-id': `${internalId.current}-dropdown-button`,
           isOpen,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error
@@ -491,7 +489,7 @@ const Dropdown = ({
       >
         <StyledValueItem
           id={`${name}-value-item`}
-          data-test-id={`${internalId.current}-value-item`}
+          data-foundry-id={`${internalId.current}-value-item`}
           ref={valueItemRef}
           {...valueItemProps}
         >
@@ -502,7 +500,6 @@ const Dropdown = ({
                 <Tag
                   StyledContainer={StyledTagContainer}
                   variant={valueVariant}
-                  dataTestId={`${internalId.current}-tag`}
                   {...valueItemTagProps}
                   containerProps={{
                     dropdownVariant: variant,
@@ -523,7 +520,7 @@ const Dropdown = ({
           {(!values || !values.length) && (
             <StyledPlaceholder
               ref={placeholderRef}
-              data-test-id={`${internalId.current}-placeholder`}
+              data-foundry-id={`${internalId.current}-placeholder`}
               {...placeholderMergedProps}
             >
               {placeholder}
@@ -535,7 +532,7 @@ const Dropdown = ({
       {isOpen && (
         <StyledOptionsContainer
           color={defaultedColor}
-          data-test-id={`${internalId.current}-options-container`}
+          data-foundry-id={`${internalId.current}-options-container`}
           variant={optionsVariant}
           ref={mergeRefs([
             optionsContainerRef,
@@ -547,7 +544,7 @@ const Dropdown = ({
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
-              data-test-id={`${internalId.current}-option-${option.id}`}
+              data-foundry-id={`${internalId.current}-option-${option.id}`}
               key={`${name}-option-${option.id}`}
               onClick={() => handleSelect(option.id)}
               tabIndex={-1}
@@ -562,7 +559,7 @@ const Dropdown = ({
                 <StyledCheckContainer
                   color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
-                  data-test-id={`${internalId.current}-check-container-${option.id}`}
+                  data-foundry-id={`${internalId.current}-check-container-${option.id}`}
                   variant={optionsVariant}
                   multi={multi}
                   ref={checkContainerRef}
