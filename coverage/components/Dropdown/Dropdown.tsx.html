@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.34% </span>
+                <span class="strong">85.47% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>99/116</span>
+                <span class='fraction'>100/117</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.5% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>87/120</span>
+                <span class='fraction'>88/121</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.34% </span>
+                <span class="strong">85.47% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>99/116</span>
+                <span class='fraction'>100/117</span>
             </div>
         
             
@@ -620,7 +620,19 @@
 <a name='L561'></a><a href='#L561'>561</a>
 <a name='L562'></a><a href='#L562'>562</a>
 <a name='L563'></a><a href='#L563'>563</a>
-<a name='L564'></a><a href='#L564'>564</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L564'></a><a href='#L564'>564</a>
+<a name='L565'></a><a href='#L565'>565</a>
+<a name='L566'></a><a href='#L566'>566</a>
+<a name='L567'></a><a href='#L567'>567</a>
+<a name='L568'></a><a href='#L568'>568</a>
+<a name='L569'></a><a href='#L569'>569</a>
+<a name='L570'></a><a href='#L570'>570</a>
+<a name='L571'></a><a href='#L571'>571</a>
+<a name='L572'></a><a href='#L572'>572</a>
+<a name='L573'></a><a href='#L573'>573</a>
+<a name='L574'></a><a href='#L574'>574</a>
+<a name='L575'></a><a href='#L575'>575</a>
+<a name='L576'></a><a href='#L576'>576</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -682,6 +694,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -841,7 +858,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1058,6 +1080,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1254,6 +1278,11 @@ export const CloseIconContainer = styled(Div)`
   z-index: 1;
 `;
 &nbsp;
+export const ArrowIconContainer = styled(Div)`
+  height: 1.125rem;
+  z-index: 1;
+`;
+&nbsp;
 const ValueItem = styled(Div)`
   width: 100%;
   text-align: left;
@@ -1363,7 +1392,7 @@ export interface DropdownProps {
   StyledCheckContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
   StyledPlaceholder?: string &amp; StyledComponentBase&lt;any, {}&gt;;
   StyledCloseIconContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  Styled;
+  StyledArrowIconContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
 &nbsp;
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -1373,6 +1402,7 @@ export interface DropdownProps {
   checkContainerProps?: SubcomponentPropsType;
   placeholderProps?: SubcomponentPropsType;
   closeIconProps?: SubcomponentPropsType;
+  arrowIconProps?: SubcomponentPropsType;
   valueItemTagProps?: TagProps;
 &nbsp;
   containerRef?: React.RefObject&lt;HTMLElement&gt;;
@@ -1383,6 +1413,7 @@ export interface DropdownProps {
   checkContainerRef?: React.RefObject&lt;HTMLElement&gt;;
   placeholderRef?: React.RefObject&lt;HTMLElement&gt;;
   closeIconRef?: React.RefObject&lt;HTMLElement&gt;;
+  arrowIconRef?: React.RefObject&lt;HTMLElement&gt;;
 &nbsp;
   color?: string;
   elevation?: number;
@@ -1413,6 +1444,7 @@ const Dropdown = ({
   StyledCheckContainer = CheckContainer,
   StyledPlaceholder = PlaceholderContainer,
   StyledCloseIconContainer = CloseIconContainer,
+  StyledArrowIconContainer = ArrowIconContainer,
 &nbsp;
   containerProps,
   valueContainerProps,
@@ -1422,6 +1454,7 @@ const Dropdown = ({
   checkContainerProps,
   placeholderProps,
   closeIconProps,
+  arrowIconProps,
   valueItemTagProps = {},
 &nbsp;
   containerRef,
@@ -1432,6 +1465,7 @@ const Dropdown = ({
   checkContainerRef,
   placeholderRef,
   closeIconRef,
+  arrowIconRef,
 &nbsp;
   color,
   elevation = 0,
@@ -1617,7 +1651,9 @@ const Dropdown = ({
           &lt;Icon path={mdiClose} size="1em" /&gt;
         &lt;/StyledCloseIconContainer&gt;
       )}
-      &lt;Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" /&gt;
+      &lt;StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps}&gt;
+        &lt;Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" /&gt;
+      &lt;/StyledArrowIconContainer&gt;
     &lt;/&gt;
   );
 &nbsp;
@@ -1753,7 +1789,7 @@ export default Dropdown;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jul 28 2021 16:14:06 GMT-0500 (Central Daylight Time)
+                at Wed Jul 28 2021 16:27:05 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
