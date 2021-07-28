@@ -7,15 +7,20 @@ import { address } from 'faker';
 import Icon from '@mdi/react';
 import { mdiLeaf } from '@mdi/js';
 
-import Dropdown, { OptionProps } from './Dropdown';
+import Dropdown, { OptionProps, CloseIconContainer } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
 import { colors } from '../../index';
+import styled from 'styled-components';
 
 const design = {
   type: 'figma',
   url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',
 };
+
+const StyledCloseIconContainer = styled(CloseIconContainer)`
+  background-color: blue;
+`;
 
 const generateCityList = (amount: number): OptionProps[] => {
   const finalData = [];
@@ -99,6 +104,7 @@ storiesOf('Dropdown', module)
               optionsVariant={select('optionsVariant', variants, variants.outline)}
               valueVariant={select('valueVariant', variants, variants.text)}
               values={values}
+              StyledCloseIconContainer = {StyledCloseIconContainer}
             />
           </Label>
         </>

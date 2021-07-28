@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -39,7 +39,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -47,7 +47,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -80,22 +80,6 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   align-items: center;
   width: 15rem;
   padding: .5rem 1rem;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
 }
 
 .c3 {
@@ -132,25 +116,21 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
           class=" c4"
         />
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -163,11 +143,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  .c6 {
+  .c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -201,7 +181,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -209,7 +189,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -247,28 +227,12 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
 }
 
-.c10 {
+.c9 {
   background: white;
   position: absolute;
   top: 100%;
@@ -282,7 +246,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   z-index: 1000;
 }
 
-.c11 {
+.c10 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -296,13 +260,13 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-color: transparent;
 }
 
-.c11:hover {
+.c10:hover {
   background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
   background-color: rgba(0,0,0,0.1);
 }
@@ -335,25 +299,21 @@ exports[`Dropdown closes options when clicking outside 1`] = `
           class=" c4"
         />
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,15L12,10L17,15H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -361,11 +321,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </button>
     <div
-      class=" c10"
+      class=" c9"
       color="#252D34"
     >
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
@@ -377,7 +337,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
         id="choosePokemon-option-charmander"
         tabindex="0"
@@ -389,7 +349,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </span>
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
         id="choosePokemon-option-squirtle"
         tabindex="0"
@@ -407,11 +367,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  .c6 {
+  .c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -445,7 +405,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -453,7 +413,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -486,22 +446,6 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   align-items: center;
   width: 15rem;
   padding: .5rem 1rem;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
 }
 
 .c3 {
@@ -537,25 +481,21 @@ exports[`Dropdown closes options when clicking outside 2`] = `
           class=" c4"
         />
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -567,11 +507,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -605,7 +545,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -613,7 +553,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -646,22 +586,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   align-items: center;
   width: 15rem;
   padding: .5rem 1rem;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
 }
 
 .c3 {
@@ -698,25 +622,21 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
           class=" c4"
         />
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -728,11 +648,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -766,7 +686,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -774,7 +694,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -812,28 +732,12 @@ exports[`Dropdown displays all options when focused 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
 }
 
-.c10 {
+.c9 {
   background: white;
   position: absolute;
   top: 100%;
@@ -847,7 +751,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   z-index: 1000;
 }
 
-.c11 {
+.c10 {
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -861,13 +765,13 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: transparent;
 }
 
-.c11:hover {
+.c10:hover {
   background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
   background-color: rgba(0,0,0,0.1);
 }
@@ -901,25 +805,21 @@ exports[`Dropdown displays all options when focused 1`] = `
           class=" c4"
         />
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,15L12,10L17,15H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -927,11 +827,11 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </button>
     <div
-      class=" c10"
+      class=" c9"
       color="#252D34"
     >
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
         id="choosePokemon-option-bulbasaur"
         tabindex="0"
@@ -943,7 +843,7 @@ exports[`Dropdown displays all options when focused 1`] = `
         </span>
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
         id="choosePokemon-option-charmander"
         tabindex="0"
@@ -955,7 +855,7 @@ exports[`Dropdown displays all options when focused 1`] = `
         </span>
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
         id="choosePokemon-option-squirtle"
         tabindex="0"
@@ -972,11 +872,11 @@ exports[`Dropdown displays all options when focused 1`] = `
 `;
 
 exports[`Dropdown displays placeholder value on initial render 1`] = `
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1010,7 +910,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1018,7 +918,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -1051,22 +951,6 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   align-items: center;
   width: 15rem;
   padding: .5rem 1rem;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
 }
 
 .c3 {
@@ -1105,25 +989,21 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
           Choose a pokemon
         </span>
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -1135,11 +1015,11 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 `;
 
 exports[`Dropdown does not display options on initial render 1`] = `
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1173,7 +1053,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c7 {
+.c6 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1181,7 +1061,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   top: 0;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25em;
 }
 
@@ -1214,22 +1094,6 @@ exports[`Dropdown does not display options on initial render 1`] = `
   align-items: center;
   width: 15rem;
   padding: .5rem 1rem;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
 }
 
 .c3 {
@@ -1266,25 +1130,21 @@ exports[`Dropdown does not display options on initial render 1`] = `
           class=" c4"
         />
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c5"
+        class="c5 c6"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
+          class="c7 c8"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -1296,11 +1156,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
 `;
 
 exports[`Dropdown renders a value when given a matching option id through props 1`] = `
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1334,7 +1194,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   background-color: rgba(0,0,0,0.05);
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1342,7 +1202,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1398,22 +1258,6 @@ exports[`Dropdown renders a value when given a matching option id through props 
   padding: .5rem 1rem;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
@@ -1457,25 +1301,21 @@ exports[`Dropdown renders a value when given a matching option id through props 
           Bulbasaur
         </span>
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c6"
+        class="c6 c7"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -1487,11 +1327,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
 `;
 
 exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
-.c5 {
+.c4 {
   position: relative;
 }
 
-.c7 {
+.c6 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1525,7 +1365,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   background-color: rgba(0,0,0,0.05);
 }
 
-.c6 {
+.c5 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1533,7 +1373,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   top: 0;
 }
 
-.c8 {
+.c7 {
   border-radius: 0.25em;
 }
 
@@ -1566,22 +1406,6 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   align-items: center;
   width: 15rem;
   padding: .5rem 1rem;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
 }
 
 .c3 {
@@ -1610,25 +1434,21 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
         class=" c3"
         id="choosePokemon-value-item"
       />
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c4"
+        class="c4 c5"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c5 c6"
-      >
-        <svg
-          class="c7 c8"
+          class="c6 c7"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -1640,11 +1460,11 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 `;
 
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1678,7 +1498,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   background-color: rgba(0,0,0,0.05);
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1686,7 +1506,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1742,22 +1562,6 @@ exports[`Dropdown renders one value when given two values but only one matches a
   padding: .5rem 1rem;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
@@ -1801,25 +1605,21 @@ exports[`Dropdown renders one value when given two values but only one matches a
           Bulbasaur
         </span>
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c6"
+        class="c6 c7"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -1831,11 +1631,11 @@ exports[`Dropdown renders one value when given two values but only one matches a
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props 1`] = `
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1869,7 +1669,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1877,7 +1677,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1933,22 +1733,6 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
@@ -2000,25 +1784,21 @@ exports[`Dropdown renders two values when given matching option ids through prop
           Charmander
         </span>
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c6"
+        class="c6 c7"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -2030,11 +1810,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -2068,7 +1848,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2076,7 +1856,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -2132,22 +1912,6 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
@@ -2199,25 +1963,21 @@ exports[`Dropdown renders two values when given matching option ids through prop
           Charmander
         </span>
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c6"
+        class="c6 c7"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
@@ -2229,11 +1989,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -2267,7 +2027,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2275,7 +2035,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -2331,22 +2091,6 @@ exports[`Dropdown selects options from values prop 1`] = `
   padding: .5rem 1rem;
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 3rem;
-}
-
 .c3 {
   width: 100%;
   text-align: left;
@@ -2398,25 +2142,21 @@ exports[`Dropdown selects options from values prop 1`] = `
           Charmander
         </span>
       </div>
+      <svg
+        role="presentation"
+        style="width: 1.25em; height: 1.25em;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7,10L12,15L17,10H7Z"
+          style="fill: currentColor;"
+        />
+      </svg>
       <div
-        class=" c6"
+        class="c6 c7"
       >
         <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
