@@ -11,7 +11,6 @@ import Dropdown, { OptionProps } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
 import { colors } from '../../index';
-import styled from 'styled-components';
 
 const design = {
   type: 'figma',
