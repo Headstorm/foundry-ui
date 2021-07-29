@@ -113,7 +113,7 @@ describe('Dropdown', () => {
   });
 
   it('selects multiple options when dropdown is multi', async () => {
-    const { getByTestId, getByText, queryByText } = render(
+    const { getByText, queryByText } = render(
       <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
 
@@ -129,7 +129,7 @@ describe('Dropdown', () => {
   });
 
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
-    const { container, getByTestId, getByText, getAllByText } = render(
+    const { container, getByText } = render(
       <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
 

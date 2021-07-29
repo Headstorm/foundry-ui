@@ -296,7 +296,7 @@ const Dropdown = ({
   const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
 
   const [focusWithin, setFocusWithin] = useState<boolean>(false);
-  const [focusTimeoutId, setFocusTimeoutId] = useState<Timeout>();
+  const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
 
   const scrollPos = useRef<number>(0);
 
