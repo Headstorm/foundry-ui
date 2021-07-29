@@ -236,7 +236,7 @@ const Button = ({
   );
 
   return (
-    <StyledContainer ref={containerRef} {...mergedContainerProps}>
+    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
       {buttonContent}
       {feedbackType === FeedbackTypes.ripple && !disabled && (
         <InteractionFeedback

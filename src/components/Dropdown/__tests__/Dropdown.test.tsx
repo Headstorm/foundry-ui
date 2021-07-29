@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, fireEvent, waitFor, act, configure } from '@testing-library/react';
+import { render, fireEvent, waitFor, act, configure, screen } from '@testing-library/react';
 import Dropdown from '../Dropdown';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
-configure({ testIdAttribute: 'data-test-id' });
+configure({ testIdAttribute: 'id' });
 const testId = 'foundry-test';
 
 const pokeOptions = [
@@ -17,9 +17,7 @@ const mockedSelectHandler = jest.fn();
 
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
-    const { container } = render(
-      <Dropdown onSelect={mockedSelectHandler} dataTestId="choosePokemon" options={pokeOptions} />,
-    );
+    const { container } = render(<Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -28,7 +26,6 @@ describe('Dropdown', () => {
     const { container, getByText } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
-        dataTestId="choosePokemon"
         options={pokeOptions}
         placeholder="Choose a pokemon"
       />,
@@ -40,12 +37,7 @@ describe('Dropdown', () => {
 
   it('renders a value when given a matching option id through props', () => {
     const { container } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        dataTestId="choosePokemon"
-        options={pokeOptions}
-        values={['bulbasaur']}
-      />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} values={['bulbasaur']} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -56,7 +48,6 @@ describe('Dropdown', () => {
     const { container } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
-        dataTestId="choosePokemon"
         options={pokeOptions}
         values={['bulbasaur', 'charmander']}
       />,
@@ -69,7 +60,6 @@ describe('Dropdown', () => {
     const { container } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
-        dataTestId="choosePokemon"
         options={pokeOptions}
         multi
         values={['bulbasaur', 'charmander']}
@@ -81,12 +71,7 @@ describe('Dropdown', () => {
 
   it("renders no value when given a value that doesn't match any option id", () => {
     const { container } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        dataTestId="choosePokemon"
-        options={pokeOptions}
-        values={['pickandchew']}
-      />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} values={['pickandchew']} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -96,7 +81,6 @@ describe('Dropdown', () => {
     const { container } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
-        dataTestId="choosePokemon"
         options={pokeOptions}
         values={['pickandchew', 'bulbasaur']}
       />,
@@ -106,22 +90,20 @@ describe('Dropdown', () => {
   });
 
   it('displays all options when focused', () => {
-    const { container, getByTestId, getByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} dataTestId="choosePokemon" options={pokeOptions} />,
-    );
+    const { container } = render(<Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />);
     act(() => {
-      fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
+      fireEvent.focus(screen.getByRole('button'));
     });
     expect(container).toMatchSnapshot();
   });
 
   it('can focus dropdown and select option', async () => {
-    const { container, getByTestId, getByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} dataTestId="choosePokemon" options={pokeOptions} />,
+    const { container, getByText } = render(
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
 
     // TODO - Don't use id, see if we can use a more semantically meaningful element
-    fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
+    fireEvent.focus(screen.getByRole('button'));
     await waitFor(() => getByText('Charmander'));
     act(() => {
       fireEvent.click(getByText('Charmander'));
@@ -132,19 +114,14 @@ describe('Dropdown', () => {
 
   it('selects multiple options when dropdown is multi', async () => {
     const { getByTestId, getByText, queryByText } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        multi
-        dataTestId="choosePokemon"
-        options={pokeOptions}
-      />,
+      <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
 
-    getByTestId('choosePokemon-dropdown-button').focus();
+    screen.getByRole('button').focus();
     act(() => {
       fireEvent.click(getByText('Charmander'));
       fireEvent.click(getByText('Squirtle'));
-      fireEvent.blur(getByTestId('choosePokemon-dropdown-button'));
+      fireEvent.blur(screen.getByRole('button'));
     });
     await waitFor(() => queryByText(/Bulbasaur/) === null);
 
@@ -153,39 +130,34 @@ describe('Dropdown', () => {
 
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
     const { container, getByTestId, getByText, getAllByText } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        multi
-        dataTestId="choosePokemon"
-        options={pokeOptions}
-      />,
+      <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
 
     act(() => {
-      fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
+      fireEvent.focus(screen.getByRole('button'));
     });
     const charOption = getByText('Charmander');
     act(() => {
       fireEvent.click(charOption);
       fireEvent.click(charOption);
-      fireEvent.blur(getByTestId('choosePokemon-dropdown-button'));
+      fireEvent.blur(screen.getByRole('button'));
     });
     expect(container).toMatchSnapshot();
     expect(mockedSelectHandler).toHaveBeenCalledTimes(2);
   });
 
   it('closes options when clicking outside', async () => {
-    const { container, getByTestId, getByText, queryByText, asFragment } = render(
-      <Dropdown onSelect={mockedSelectHandler} dataTestId="choosePokemon" options={pokeOptions} />,
+    const { queryByText, asFragment } = render(
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
 
-    getByTestId('choosePokemon-dropdown-button').focus();
+    screen.getByRole('button').focus();
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
     expect(optionsOutFrag).toMatchSnapshot();
 
     act(() => {
-      fireEvent.blur(getByTestId('choosePokemon-dropdown-button'));
+      fireEvent.blur(screen.getByRole('button'));
     });
     await waitFor(() => queryByText('Squirtle') === null);
     expect(queryByText('Squirtle')).toBeNull();
@@ -195,11 +167,11 @@ describe('Dropdown', () => {
   });
 
   it('can use arrow keys and enter to navigate options', async () => {
-    const { container, getByTestId, getByText, queryByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} dataTestId="choosePokemon" options={pokeOptions} />,
+    const { queryByText } = render(
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
     act(() => {
-      getByTestId('choosePokemon-dropdown-button').focus();
+      screen.getByRole('button').focus();
     });
     await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
     act(() => {
@@ -233,7 +205,6 @@ describe('Dropdown', () => {
     const { container } = render(
       <Dropdown
         multi
-        dataTestId="choosePokemon"
         options={pokeOptions}
         values={['bulbasaur', 'charmander']}
         onSelect={mockedSelectHandler}
@@ -245,11 +216,7 @@ describe('Dropdown', () => {
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
       const component = (
-        <Dropdown
-          dataTestId="name"
-          onSelect={() => {}}
-          valueItemProps={{ 'aria-label': 'aria-label-test' }}
-        ></Dropdown>
+        <Dropdown onSelect={() => {}} placeholder="hello" options={pokeOptions}></Dropdown>
       );
       const { container } = render(component);
       const results = await axe(container);
@@ -259,54 +226,36 @@ describe('Dropdown', () => {
   describe('Ref tests', () => {
     it('containerRef.current should exist', async () => {
       const ref = React.createRef<HTMLElement>();
-      const { getByTestId } = render(
-        <Dropdown dataTestId={testId} onSelect={() => {}} containerRef={ref} />,
-      );
-      await waitFor(() => getByTestId(`${testId}-container`));
+      const { container } = render(<Dropdown onSelect={() => {}} containerRef={ref} />);
+      await waitFor(() => container);
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
     it('optionsContainerRef.current should exist', async () => {
       const ref = React.createRef<HTMLElement>();
-      const { getByTestId } = render(
-        <Dropdown
-          dataTestId="choosePokemon"
-          options={pokeOptions}
-          onSelect={() => {}}
-          optionsContainerRef={ref}
-        />,
-      );
+      render(<Dropdown options={pokeOptions} onSelect={() => {}} optionsContainerRef={ref} />);
       act(() => {
-        fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
+        fireEvent.focus(screen.getByRole('button'));
       });
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
     it('optionItemRef.current should exist', async () => {
       const ref = React.createRef<HTMLElement>();
-      const { getByTestId } = render(
-        <Dropdown
-          dataTestId="choosePokemon"
-          options={pokeOptions}
-          onSelect={() => {}}
-          optionItemRef={ref}
-        />,
-      );
+      render(<Dropdown options={pokeOptions} onSelect={() => {}} optionItemRef={ref} />);
       act(() => {
-        fireEvent.focus(getByTestId('choosePokemon-dropdown-button'));
+        fireEvent.focus(screen.getByRole('button'));
       });
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
     it('valueContainerRef.current should exist', async () => {
       const ref = React.createRef<HTMLButtonElement>();
-      const { getByTestId } = render(
-        <Dropdown dataTestId={testId} onSelect={() => {}} valueContainerRef={ref} />,
-      );
-      await waitFor(() => getByTestId(`${testId}-dropdown-button`));
+      render(<Dropdown onSelect={() => {}} valueContainerRef={ref} />);
+      await waitFor(() => screen.getByRole(`button`));
       expect(ref.current instanceof HTMLButtonElement).toBeTruthy();
     });
     it('valueItemRef.current should exist', async () => {
       const ref = React.createRef<HTMLElement>();
       const { getByTestId } = render(
-        <Dropdown dataTestId={testId} onSelect={() => {}} valueItemRef={ref} />,
+        <Dropdown name={testId} onSelect={() => {}} valueItemRef={ref} />,
       );
       await waitFor(() => getByTestId(`${testId}-value-item`));
       expect(ref.current instanceof HTMLElement).toBeTruthy();
@@ -314,7 +263,7 @@ describe('Dropdown', () => {
     it('placeholderRef.current should exist', async () => {
       const ref = React.createRef<HTMLElement>();
       const { getByTestId } = render(
-        <Dropdown dataTestId={testId} onSelect={() => {}} placeholderRef={ref} />,
+        <Dropdown name={testId} onSelect={() => {}} placeholderRef={ref} />,
       );
       await waitFor(() => getByTestId(`${testId}-placeholder`));
       expect(ref.current instanceof HTMLElement).toBeTruthy();

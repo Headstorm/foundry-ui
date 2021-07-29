@@ -3,7 +3,6 @@ import styled, { StyledComponentBase } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
-import { nanoid } from 'nanoid';
 
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
@@ -220,6 +219,8 @@ export interface DropdownProps {
   name?: string;
   placeholder?: string;
 
+  componentUUID?: string;
+
   onBlur?: () => void;
   onClear?: () => void;
   onFocus?: () => void;
@@ -266,6 +267,7 @@ const Dropdown = ({
   multi = false,
   name = 'dropdown',
   placeholder,
+
   onBlur,
   onFocus,
   onClear,
@@ -281,9 +283,11 @@ const Dropdown = ({
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const internalId = useRef<string>(nanoid(5));
   const containerInternalRef = useRef<HTMLDivElement>(null);
   const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
+
+  const [focusWithin, setFocusWithin] = useState<boolean>(false);
+  const [focusTimeoutId, setFocusTimeoutId] = useState<Timeout>();
 
   const scrollPos = useRef<number>(0);
 
@@ -313,29 +317,34 @@ const Dropdown = ({
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
       e.preventDefault();
-      const target = e.nativeEvent.relatedTarget as HTMLElement | null;
 
-      // check if we're focusing on something we don't control
-      if (
-        !target ||
-        !target.getAttribute('data-foundry-id') ||
-        !(target.getAttribute('data-foundry-id') || '').startsWith(internalId.current)
-      ) {
-        setIsOpen(false);
-        if (onBlur) {
-          onBlur();
-        }
-      }
+      setFocusTimeoutId(
+        window.setTimeout(() => {
+          if (focusWithin) {
+            setFocusWithin(false);
+            setIsOpen(false);
+            if (onBlur) {
+              onBlur();
+            }
+          }
+        }, 0),
+      );
     },
-    [internalId, onBlur],
+    [onBlur, focusWithin],
   );
 
   const handleFocus = useCallback(() => {
+    clearTimeout(focusTimeoutId);
+
+    if (!focusWithin) {
+      setFocusWithin(true);
+    }
+
     setIsOpen(true);
     if (onFocus) {
       onFocus();
     }
-  }, [onFocus]);
+  }, [onFocus, focusWithin, focusTimeoutId]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -462,12 +471,12 @@ const Dropdown = ({
   return (
     <StyledContainer
       id={`${name}-container`}
-      data-foundry-id={`${internalId.current}-container`}
       elevation={elevation}
       isOpen={isOpen}
       onBlur={handleBlur}
       onFocus={handleFocus}
       name={name}
+      aria-label={placeholder}
       ref={mergeRefs([containerRef, containerInternalRef])}
       {...containerProps}
     >
@@ -480,19 +489,13 @@ const Dropdown = ({
         containerRef={valueContainerRef}
         {...valueContainerProps}
         containerProps={{
-          'data-foundry-id': `${internalId.current}-dropdown-button`,
           isOpen,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        <StyledValueItem
-          id={`${name}-value-item`}
-          data-foundry-id={`${internalId.current}-value-item`}
-          ref={valueItemRef}
-          {...valueItemProps}
-        >
+        <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i, arr) =>
@@ -520,7 +523,7 @@ const Dropdown = ({
           {(!values || !values.length) && (
             <StyledPlaceholder
               ref={placeholderRef}
-              data-foundry-id={`${internalId.current}-placeholder`}
+              id={`${name}-placeholder`}
               {...placeholderMergedProps}
             >
               {placeholder}
@@ -532,8 +535,8 @@ const Dropdown = ({
       {isOpen && (
         <StyledOptionsContainer
           color={defaultedColor}
-          data-foundry-id={`${internalId.current}-options-container`}
           variant={optionsVariant}
+          role="listbox"
           ref={mergeRefs([
             optionsContainerRef,
             optionsContainerInternalRef,
@@ -544,7 +547,6 @@ const Dropdown = ({
           {options.map(option => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
-              data-foundry-id={`${internalId.current}-option-${option.id}`}
               key={`${name}-option-${option.id}`}
               onClick={() => handleSelect(option.id)}
               tabIndex={-1}
@@ -553,13 +555,13 @@ const Dropdown = ({
               multi={multi}
               selected={optionsHash[option.id].isSelected}
               ref={optionItemRef}
+              role="option"
               {...optionItemProps}
             >
               {multi && (
                 <StyledCheckContainer
                   color={defaultedColor}
                   selected={optionsHash[option.id].isSelected}
-                  data-foundry-id={`${internalId.current}-check-container-${option.id}`}
                   variant={optionsVariant}
                   multi={multi}
                   ref={checkContainerRef}

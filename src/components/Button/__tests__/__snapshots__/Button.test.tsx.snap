@@ -72,8 +72,8 @@ exports[`Button keeps the container the same when switching between isLoading an
 <button
   class=" c0"
   color="#9FA2A5"
-  data-test-id="foundry-test"
   elevation="0"
+  role="button"
   type="button"
 >
   <div
@@ -146,8 +146,8 @@ exports[`Button keeps the container the same when switching between isLoading an
 <button
   class=" c0"
   color="#9FA2A5"
-  data-test-id="foundry-test"
   elevation="0"
+  role="button"
   type="button"
 >
   Submit
@@ -219,8 +219,8 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
@@ -292,8 +292,8 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
@@ -365,8 +365,8 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
@@ -440,8 +440,8 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   <button
     class=" c0"
     color="#000"
-    data-test-id="foundry-test"
     elevation="2"
+    role="button"
     type="button"
   >
     <div
@@ -518,8 +518,8 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
@@ -622,8 +622,8 @@ exports[`Button shows icons 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
@@ -726,8 +726,8 @@ exports[`Button shows icons with type string 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
@@ -845,8 +845,8 @@ exports[`Button shows loading text when provided 1`] = `
   <button
     class=" c0"
     color="#9FA2A5"
-    data-test-id="foundry-test"
     elevation="0"
+    role="button"
     type="button"
   >
     <div
