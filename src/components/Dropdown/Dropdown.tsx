@@ -65,16 +65,13 @@ export const ValueContainer = styled(Button.Container)`
   `}
 `;
 
-const ValueIconContainer = styled(Div)`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  width: 3rem;
+// TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
+export const CloseIconContainer = styled(Div)`
+  height: 1.125rem;
+  z-index: 1;
 `;
 
-// TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
-const CloseIconContainer = styled(Div)`
+export const ArrowIconContainer = styled(Div)`
   height: 1.125rem;
   z-index: 1;
 `;
@@ -196,6 +193,8 @@ export interface DropdownProps {
   StyledOptionItem?: string & StyledComponentBase<any, {}>;
   StyledCheckContainer?: string & StyledComponentBase<any, {}>;
   StyledPlaceholder?: string & StyledComponentBase<any, {}>;
+  StyledCloseIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledArrowIconContainer?: string & StyledComponentBase<any, {}>;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -204,6 +203,8 @@ export interface DropdownProps {
   optionItemProps?: SubcomponentPropsType;
   checkContainerProps?: SubcomponentPropsType;
   placeholderProps?: SubcomponentPropsType;
+  closeIconProps?: SubcomponentPropsType;
+  arrowIconProps?: SubcomponentPropsType;
   valueItemTagProps?: TagProps;
 
   containerRef?: React.RefObject<HTMLElement>;
@@ -213,6 +214,8 @@ export interface DropdownProps {
   valueItemRef?: React.RefObject<HTMLElement>;
   checkContainerRef?: React.RefObject<HTMLElement>;
   placeholderRef?: React.RefObject<HTMLElement>;
+  closeIconRef?: React.RefObject<HTMLElement>;
+  arrowIconRef?: React.RefObject<HTMLElement>;
 
   color?: string;
   elevation?: number;
@@ -244,6 +247,8 @@ const Dropdown = ({
   StyledOptionItem = OptionItem,
   StyledCheckContainer = CheckContainer,
   StyledPlaceholder = PlaceholderContainer,
+  StyledCloseIconContainer = CloseIconContainer,
+  StyledArrowIconContainer = ArrowIconContainer,
 
   containerProps,
   valueContainerProps,
@@ -252,6 +257,8 @@ const Dropdown = ({
   optionItemProps,
   checkContainerProps,
   placeholderProps,
+  closeIconProps,
+  arrowIconProps,
   valueItemTagProps = {},
 
   containerRef,
@@ -261,6 +268,8 @@ const Dropdown = ({
   valueItemRef,
   checkContainerRef,
   placeholderRef,
+  closeIconRef,
+  arrowIconRef,
 
   color,
   elevation = 0,
@@ -447,18 +456,22 @@ const Dropdown = ({
   );
 
   const closeIcons = (
-    <ValueIconContainer>
+    <>
       {onClear && values.length > 0 && (
-        <CloseIconContainer
+        <StyledCloseIconContainer
           onClick={handleClear}
           onFocus={(e: React.FocusEvent) => e.stopPropagation()}
           tabIndex={tabIndex}
+          ref={closeIconRef}
+          {...closeIconProps}
         >
           <Icon path={mdiClose} size="1em" />
-        </CloseIconContainer>
+        </StyledCloseIconContainer>
       )}
-      <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
-    </ValueIconContainer>
+      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps}>
+        <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
+      </StyledArrowIconContainer>
+    </>
   );
 
   return (
