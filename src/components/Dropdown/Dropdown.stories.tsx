@@ -88,6 +88,7 @@ storiesOf('Dropdown', module)
               name="cities-list"
               placeholder={text('placeholder', 'Choose a city...')}
               onBlur={action('onBlur')}
+              onFocus={action('onFocus')}
               onClear={boolean('clearable', false) ? action('onClear') : undefined}
               onSelect={(selected?: Array<string | number>) => {
                 action('onSelect')();

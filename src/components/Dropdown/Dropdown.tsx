@@ -43,6 +43,7 @@ const Container = styled(Div)`
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ isOpen }) => `
+    user-select: none;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -109,6 +110,7 @@ const OptionItem = styled(Div)`
     const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
 
     return `
+      user-select: none;
       padding: 0.5rem;
       display: flex;
       align-items: center;
@@ -169,7 +171,15 @@ const StyledTagContainer = styled(Tag.Container)`
     dropdownColor: string;
     transparentColor: string;
   }) => `
-    ${tagVariant === variants.text ? 'padding: 0px;' : ''}
+    ${
+      tagVariant === variants.text
+        ? `
+          padding: 0;
+          line-height: 1;
+          margin-top: 0 !important;
+        `
+        : ''
+    }
     ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
   `}
 `;
@@ -209,11 +219,14 @@ export interface DropdownProps {
   color?: string;
   elevation?: number;
   multi?: boolean;
-  name: string;
+  name?: string;
   placeholder?: string;
+
+  componentUUID?: string;
 
   onBlur?: () => void;
   onClear?: () => void;
+  onFocus?: () => void;
   onSelect: (selected?: Array<string | number>) => void;
 
   rememberScrollPosition?: boolean;
@@ -261,9 +274,11 @@ const Dropdown = ({
   color,
   elevation = 0,
   multi = false,
-  name,
+  name = 'dropdown',
   placeholder,
+
   onBlur,
+  onFocus,
   onClear,
   onSelect,
   options = [],
@@ -279,6 +294,9 @@ const Dropdown = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerInternalRef = useRef<HTMLDivElement>(null);
   const optionsContainerInternalRef = useRef<HTMLDivElement>(null);
+
+  const [focusWithin, setFocusWithin] = useState<boolean>(false);
+  const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
 
   const scrollPos = useRef<number>(0);
 
@@ -308,17 +326,34 @@ const Dropdown = ({
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
       e.preventDefault();
-      const target = e.nativeEvent.relatedTarget as HTMLElement | null;
-      // check if we're focusing on something we don't control
-      if (!target || (target.id && !target.id.startsWith(name))) {
-        setIsOpen(false);
-        if (onBlur) {
-          onBlur();
-        }
-      }
+
+      setFocusTimeoutId(
+        window.setTimeout(() => {
+          if (focusWithin) {
+            setFocusWithin(false);
+            setIsOpen(false);
+            if (onBlur) {
+              onBlur();
+            }
+          }
+        }, 0),
+      );
     },
-    [name, onBlur],
+    [onBlur, focusWithin],
   );
+
+  const handleFocus = useCallback(() => {
+    clearTimeout(focusTimeoutId);
+
+    if (!focusWithin) {
+      setFocusWithin(true);
+    }
+
+    setIsOpen(true);
+    if (onFocus) {
+      onFocus();
+    }
+  }, [onFocus, focusWithin, focusTimeoutId]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -348,19 +383,17 @@ const Dropdown = ({
     [multi, onClear, onSelect],
   );
 
-  // clickHandler will be used in onMouseDown to prevent the focus event
-  // opening the dropdown and the click closing it
-  const clickHandler = useCallback(
+  const handleMouseDownOnButton = useCallback(
     (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.nativeEvent.stopImmediatePropagation();
-      setIsOpen(!isOpen);
-      if (containerInternalRef && containerInternalRef.current) {
-        // Focus the container even when clicking
-        containerInternalRef.current.focus();
+      if (isOpen) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore - It's okay if target is null in this case as we want it to close regardless
+        handleBlur(e);
+      } else {
+        handleFocus();
       }
     },
-    [containerInternalRef, isOpen, setIsOpen],
+    [isOpen, handleBlur, handleFocus],
   );
 
   const keyDownHandler = useCallback(
@@ -385,8 +418,8 @@ const Dropdown = ({
             }
             break;
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-container`) {
-              const optionsContainer = focusedElement.children[1];
+            if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
+              const optionsContainer = focusedElement.nextElementSibling;
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
                 if (toFocus) {
@@ -450,26 +483,21 @@ const Dropdown = ({
 
   return (
     <StyledContainer
-      data-test-id={`${name}-container`}
       id={`${name}-container`}
       elevation={elevation}
       isOpen={isOpen}
-      name={name}
       onBlur={handleBlur}
-      onFocus={(e: React.FocusEvent) => {
-        e.preventDefault();
-        setIsOpen(true);
-      }}
+      onFocus={handleFocus}
+      name={name}
+      aria-label={placeholder}
       ref={mergeRefs([containerRef, containerInternalRef])}
-      tabIndex={tabIndex}
       {...containerProps}
     >
       <Button
         StyledContainer={StyledValueContainer}
-        id={`${name}-button-value`}
+        id={`${name}-dropdown-button`}
         color={defaultedColor}
-        onClick={(e: React.MouseEvent) => e.preventDefault()}
-        onMouseDown={clickHandler}
+        onMouseDown={handleMouseDownOnButton}
         variant={variant}
         containerRef={valueContainerRef}
         {...valueContainerProps}
@@ -480,13 +508,7 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        <StyledValueItem
-          {...valueItemProps}
-          onMouseDown={clickHandler}
-          onBlur={handleBlur}
-          id={`${name}-value-item`}
-          ref={valueItemRef}
-        >
+        <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
             .map((val, i, arr) =>
@@ -496,11 +518,11 @@ const Dropdown = ({
                   variant={valueVariant}
                   {...valueItemTagProps}
                   containerProps={{
-                    ...tagContainerItemProps,
                     dropdownVariant: variant,
                     tagVariant: valueVariant,
                     dropdownColor: defaultedColor,
                     transparentColor: colors.transparent,
+                    ...tagContainerItemProps,
                   }}
                   key={val}
                 >
@@ -512,7 +534,11 @@ const Dropdown = ({
               ),
             )}
           {(!values || !values.length) && (
-            <StyledPlaceholder ref={placeholderRef} {...placeholderMergedProps}>
+            <StyledPlaceholder
+              ref={placeholderRef}
+              id={`${name}-placeholder`}
+              {...placeholderMergedProps}
+            >
               {placeholder}
             </StyledPlaceholder>
           )}
@@ -523,6 +549,7 @@ const Dropdown = ({
         <StyledOptionsContainer
           color={defaultedColor}
           variant={optionsVariant}
+          role="listbox"
           ref={mergeRefs([
             optionsContainerRef,
             optionsContainerInternalRef,
@@ -534,14 +561,14 @@ const Dropdown = ({
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
               key={`${name}-option-${option.id}`}
-              onBlur={handleBlur}
               onClick={() => handleSelect(option.id)}
-              tabIndex={tabIndex}
+              tabIndex={-1}
               color={defaultedColor}
               variant={optionsVariant}
               multi={multi}
               selected={optionsHash[option.id].isSelected}
               ref={optionItemRef}
+              role="option"
               {...optionItemProps}
             >
               {multi && (

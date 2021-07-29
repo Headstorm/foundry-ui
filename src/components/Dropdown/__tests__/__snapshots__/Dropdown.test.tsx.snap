@@ -63,6 +63,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -99,26 +103,25 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         />
       </div>
       <div
@@ -214,6 +217,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -261,6 +268,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -291,26 +302,25 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         />
       </div>
       <div
@@ -341,12 +351,14 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     <div
       class=" c10"
       color="#252D34"
+      role="listbox"
     >
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-bulbasaur"
-        tabindex="0"
+        id="dropdown-option-bulbasaur"
+        role="option"
+        tabindex="-1"
       >
         <span
           class=" "
@@ -357,8 +369,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-charmander"
-        tabindex="0"
+        id="dropdown-option-charmander"
+        role="option"
+        tabindex="-1"
       >
         <span
           class=" "
@@ -369,8 +382,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-squirtle"
-        tabindex="0"
+        id="dropdown-option-squirtle"
+        role="option"
+        tabindex="-1"
       >
         <span
           class=" "
@@ -447,6 +461,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -482,26 +500,25 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 
 <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         />
       </div>
       <div
@@ -592,10 +609,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   transition: filter .5s,box-shadow .5s;
   contain: layout;
   position: relative;
-  z-index: 1;
+  z-index: 7;
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -611,6 +632,9 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -625,6 +649,67 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   text-align: left;
 }
 
+.c10 {
+  background: white;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid #252D34;
+  border-top: 0px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+  z-index: 1000;
+}
+
+.c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #252D34;
+  background-color: transparent;
+}
+
+.c11:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+  outline: none;
+}
+
+.c11:focus {
+  outline: none;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #000;
+  padding-right: 0.2rem;
+  width: 2rem;
+}
+
 .c4 {
   opacity: 0.8;
 }
@@ -632,26 +717,25 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         />
       </div>
       <div
@@ -663,7 +747,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
           viewBox="0 0 24 24"
         >
           <path
-            d="M7,10L12,15L17,10H7Z"
+            d="M7,15L12,10L17,15H7Z"
             style="fill: currentColor;"
           />
         </svg>
@@ -679,6 +763,63 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         />
       </div>
     </button>
+    <div
+      class=" c10"
+      color="#252D34"
+      role="listbox"
+    >
+      <div
+        class=" c11"
+        color="#252D34"
+        id="dropdown-option-bulbasaur"
+        role="option"
+        tabindex="-1"
+      >
+        <div
+          class=" c12"
+          color="#252D34"
+        />
+        <span
+          class=" "
+        >
+          Bulbasaur
+        </span>
+      </div>
+      <div
+        class=" c11"
+        color="#252D34"
+        id="dropdown-option-charmander"
+        role="option"
+        tabindex="-1"
+      >
+        <div
+          class=" c12"
+          color="#252D34"
+        />
+        <span
+          class=" "
+        >
+          Charmander
+        </span>
+      </div>
+      <div
+        class=" c11"
+        color="#252D34"
+        id="dropdown-option-squirtle"
+        role="option"
+        tabindex="-1"
+      >
+        <div
+          class=" c12"
+          color="#252D34"
+        />
+        <span
+          class=" "
+        >
+          Squirtle
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -746,6 +887,10 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -793,6 +938,10 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -824,26 +973,25 @@ exports[`Dropdown displays all options when focused 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         />
       </div>
       <div
@@ -874,12 +1022,14 @@ exports[`Dropdown displays all options when focused 1`] = `
     <div
       class=" c10"
       color="#252D34"
+      role="listbox"
     >
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-bulbasaur"
-        tabindex="0"
+        id="dropdown-option-bulbasaur"
+        role="option"
+        tabindex="-1"
       >
         <span
           class=" "
@@ -890,8 +1040,9 @@ exports[`Dropdown displays all options when focused 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-charmander"
-        tabindex="0"
+        id="dropdown-option-charmander"
+        role="option"
+        tabindex="-1"
       >
         <span
           class=" "
@@ -902,8 +1053,9 @@ exports[`Dropdown displays all options when focused 1`] = `
       <div
         class=" c11"
         color="#252D34"
-        id="choosePokemon-option-squirtle"
-        tabindex="0"
+        id="dropdown-option-squirtle"
+        role="option"
+        tabindex="-1"
       >
         <span
           class=" "
@@ -979,6 +1131,10 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1014,27 +1170,27 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 
 <div>
   <div
+    aria-label="Choose a pokemon"
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         >
           Choose a pokemon
         </span>
@@ -1131,6 +1287,10 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1167,26 +1327,25 @@ exports[`Dropdown does not display options on initial render 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4"
+          id="dropdown-placeholder"
         />
       </div>
       <div
@@ -1302,6 +1461,10 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1332,7 +1495,9 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c5 {
-  padding: 0px;
+  padding: 0;
+  line-height: 1;
+  margin-top: 0 !important;
   border: 0 none;
   background-color: transparent;
   color: #252D34;
@@ -1343,23 +1508,21 @@ exports[`Dropdown renders a value when given a matching option id through props 
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
@@ -1461,6 +1624,10 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1493,23 +1660,21 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       />
       <div
         class=" c4"
@@ -1624,6 +1789,10 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1654,7 +1823,9 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c5 {
-  padding: 0px;
+  padding: 0;
+  line-height: 1;
+  margin-top: 0 !important;
   border: 0 none;
   background-color: transparent;
   color: #252D34;
@@ -1665,23 +1836,21 @@ exports[`Dropdown renders one value when given two values but only one matches a
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
@@ -1804,6 +1973,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1834,7 +2007,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c5 {
-  padding: 0px;
+  padding: 0;
+  line-height: 1;
+  margin-top: 0 !important;
   border: 0 none;
   background-color: transparent;
   color: #252D34;
@@ -1845,23 +2020,21 @@ exports[`Dropdown renders two values when given matching option ids through prop
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
@@ -1992,6 +2165,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2022,7 +2199,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c5 {
-  padding: 0px;
+  padding: 0;
+  line-height: 1;
+  margin-top: 0 !important;
   border: 0 none;
   background-color: transparent;
   color: #252D34;
@@ -2033,23 +2212,21 @@ exports[`Dropdown renders two values when given matching option ids through prop
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
@@ -2180,6 +2357,10 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c2 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2210,7 +2391,9 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c5 {
-  padding: 0px;
+  padding: 0;
+  line-height: 1;
+  margin-top: 0 !important;
   border: 0 none;
   background-color: transparent;
   color: #252D34;
@@ -2221,23 +2404,21 @@ exports[`Dropdown selects options from values prop 1`] = `
 <div>
   <div
     class=" c0"
-    data-test-id="choosePokemon-container"
     elevation="0"
-    id="choosePokemon-container"
-    name="choosePokemon"
-    tabindex="0"
+    id="dropdown-container"
+    name="dropdown"
   >
     <button
       class=" c1 c2"
       color="#252D34"
-      data-test-id="hsui-button"
       elevation="0"
-      id="choosePokemon-button-value"
+      id="dropdown-dropdown-button"
+      role="button"
       type="button"
     >
       <div
         class=" c3"
-        id="choosePokemon-value-item"
+        id="dropdown-value-item"
       >
         <span
           class=" c4 c5"
