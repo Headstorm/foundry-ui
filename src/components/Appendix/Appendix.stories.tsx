@@ -28,8 +28,8 @@ storiesOf('Appendix', module).add('Appendix', () => {
         The components you used in the hackathon will be the same ones you use when you're a fortune
         500 megacorp.
       </p>
-      <FullWidthImage src="/images/ThemingExample.png" alt="Theming Example" />
-      <FullWidthImage src="/images/ThemeExampleCode.png" alt="Theming Example Code" />
+      <FullWidthImage src="%PUBLIC_URL%/images/ThemingExample.png" alt="Theming Example" />
+      <FullWidthImage src="%PUBLIC_URL%/images/ThemeExampleCode.png" alt="Theming Example Code" />
     </DocContainer>
   );
 });
