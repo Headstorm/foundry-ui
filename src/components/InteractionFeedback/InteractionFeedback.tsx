@@ -72,7 +72,7 @@ const InteractionFeedback = ({
   const { ref, width = 0, height = 0 } = useResizeObserver<HTMLDivElement>();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
-  const transitions = useTransition<Animation, Record<string, unknown>>(animations, {
+  const transitions = useTransition(animations, {
     keys: (item: Animation) => item.id,
     onRest: (item: Transition) => setAnimations(a => a.filter(ani => ani.id === item.id)),
     ...transitionProps,
