@@ -31,10 +31,7 @@ packages/.DS_Store
 docs/
 
 # Ignore most coverage files aside from badges and coverage summary
-coverage/**/*.html
-coverage/**/*.js
-coverage/**/*.css
-coverage/**/*.png
+coverage/
 !coverage/*badge*.svg
 !coverage/coverage-summary.json
 

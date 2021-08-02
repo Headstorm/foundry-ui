@@ -9,7 +9,7 @@ Object {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #7c8186;
+  color: #9FA2A5;
   margin-bottom: .25em;
   font-size: .75em;
 }
@@ -31,7 +31,7 @@ Object {
         >
           <label
             class=" c0"
-            color="#7c8186"
+            color="#9FA2A5"
             for="default"
           >
             Test text
@@ -46,7 +46,7 @@ Object {
             >
               <path
                 d="M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z"
-                style="fill: #7c8186;"
+                style="fill: #9FA2A5;"
               />
             </svg>
           </span>
@@ -62,8 +62,8 @@ Object {
         class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-bCwfaz"
       >
         <label
-          class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI fzyFWy"
-          color="#7c8186"
+          class="sc-fubCfw sc-pFZIQ  fvvDbL sc-fKFyDc gEbwRt"
+          color="#9FA2A5"
           for="default"
         >
           Test text
@@ -78,7 +78,7 @@ Object {
           >
             <path
               d="M10,2H14L13.21,9.91L19.66,5.27L21.66,8.73L14.42,12L21.66,15.27L19.66,18.73L13.21,14.09L14,22H10L10.79,14.09L4.34,18.73L2.34,15.27L9.58,12L2.34,8.73L4.34,5.27L10.79,9.91L10,2Z"
-              style="fill: #7c8186;"
+              style="fill: #9FA2A5;"
             />
           </svg>
         </span>

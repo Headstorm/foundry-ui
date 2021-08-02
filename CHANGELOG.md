@@ -1,3 +1,25 @@
+## [1.2.1](https://github.com/Headstorm/foundry-ui/compare/v1.2.0...v1.2.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **dropdown:** fix keyboard and mouse focus/blur issues ([bfff5f7](https://github.com/Headstorm/foundry-ui/commit/bfff5f7b745600139a8aba4b0af1b7b172f3c45f)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+* **dropdown:** improve accessibility keyboard navigation of dropdown ([4b17920](https://github.com/Headstorm/foundry-ui/commit/4b1792089e9d3694978e2f705280938396b536f3)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+* **dropdown:** improve accessibility keyboard navigation of dropdown ([d18fc68](https://github.com/Headstorm/foundry-ui/commit/d18fc68eab32979c99d52cc88e97ec61b7b532c5)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+* **dropdown & button:** add ability to click on the "button" part of the modal to close it when open ([b5c7bd0](https://github.com/Headstorm/foundry-ui/commit/b5c7bd03139b402dcb574893f5ae897c48882a33)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+
+# [1.2.0](https://github.com/Headstorm/foundry-ui/compare/v1.1.0...v1.2.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* **shadowstyles:** round offsetY and opacity values for consistent testing ([d33ee94](https://github.com/Headstorm/foundry-ui/commit/d33ee9496a9946297a53871af7688c0c7f16cd43))
+
+
+### Features
+
+* **colors.ts:** added secondary and tertiary colors ([778c9a5](https://github.com/Headstorm/foundry-ui/commit/778c9a5226c68765cff5149d3480baf7fbf80f1d))
+
 # [1.1.0](https://github.com/Headstorm/foundry-ui/compare/v1.0.6...v1.1.0) (2021-07-21)
 
 
