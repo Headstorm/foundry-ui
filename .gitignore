@@ -31,9 +31,9 @@ packages/.DS_Store
 docs/
 
 # Ignore most coverage files aside from badges and coverage summary
-coverage
-# !coverage/*badge*.svg
-# !coverage/coverage-summary.json
+coverage/**
+!coverage/*badge*.svg
+!coverage/coverage-summary.json
 
 package-lock.json
 npm-debug.log*
