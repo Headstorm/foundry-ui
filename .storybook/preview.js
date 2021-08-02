@@ -1,5 +1,4 @@
 import { withDesign } from 'storybook-addon-designs';
-import { withA11y } from '@storybook/addon-a11y';
 
 import colors from 'src/enums/colors';
 
@@ -21,6 +20,11 @@ export const parameters = {
       { name: 'background', value: colors.background, default: true },
     ],
   },
+  a11y: {
+    element: '#root',
+    config: {},
+    options: {},
+  },
 };
 
-export const decorators = [withDesign, withA11y];
+export const decorators = [withDesign];
