@@ -1,6 +1,6 @@
 import { withDesign } from 'storybook-addon-designs';
 
-import colors from 'src/enums/colors';
+import colors from '../src/enums/colors';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -14,10 +14,11 @@ export const parameters = {
   },
   layout: 'centered',
   backgrounds: {
+    default: 'background',
     values: [
+      { name: 'background', value: colors.background },
       { name: 'grayDark', value: colors.grayDark },
       { name: 'grayLight', value: colors.grayLight },
-      { name: 'background', value: colors.background, default: true },
     ],
   },
   a11y: {
