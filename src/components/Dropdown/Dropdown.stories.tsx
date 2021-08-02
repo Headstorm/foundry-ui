@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { boolean, color, number, select, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { Story, Meta } from '@storybook/react';
 import { address } from 'faker';
 import Icon from '@mdi/react';
 import { mdiLeaf } from '@mdi/js';
@@ -11,11 +9,6 @@ import Dropdown, { OptionProps } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
 import { colors } from '../../index';
-
-const design = {
-  type: 'figma',
-  url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',
-};
 
 const generateCityList = (amount: number): OptionProps[] => {
   const finalData = [];
@@ -31,6 +24,37 @@ const generateCityList = (amount: number): OptionProps[] => {
   return finalData;
 };
 const cities = generateCityList(50);
+
+export const Basic: Story = args => {
+  const [values, setValues] = useState<(string | number)[] | undefined>();
+  return (
+    <Label labelText="City" htmlFor="cities-list">
+      <Dropdown
+        {...args}
+        name="cities-list"
+        onClear={args.clearable ? args.onClear : undefined}
+        onSelect={(selected?: Array<string | number>) => {
+          setValues(selected);
+          return args.onSelect();
+        }}
+        options={cities}
+        values={values}
+      />
+    </Label>
+  );
+};
+Basic.args = {
+  color: colors.primaryDark,
+  elevation: 0,
+  multi: false,
+  placeholder: 'Choose a city...',
+  clearable: false,
+  rememberScrollPosition: true,
+  variant: variants.fill,
+  optionsVariant: variants.outline,
+  valueVariant: variants.text,
+};
+
 const teaOptions = [
   {
     id: 0,
@@ -72,64 +96,39 @@ const teaOptions = [
   },
 ];
 
-storiesOf('Dropdown', module)
-  .addParameters({ component: Dropdown })
-  .add(
-    'Basic',
-    () => {
-      const [values, setValues] = useState<(string | number)[] | undefined>();
-      return (
-        <>
-          <Label labelText="City" htmlFor="cities-list">
-            <Dropdown
-              color={color('color', colors.primaryDark)}
-              elevation={number('elevation', 0, { range: true, min: -5, max: 5, step: 1 })}
-              multi={boolean('multi', false)}
-              name="cities-list"
-              placeholder={text('placeholder', 'Choose a city...')}
-              onBlur={action('onBlur')}
-              onFocus={action('onFocus')}
-              onClear={boolean('clearable', false) ? action('onClear') : undefined}
-              onSelect={(selected?: Array<string | number>) => {
-                action('onSelect')();
-                setValues(selected);
-              }}
-              options={cities}
-              rememberScrollPosition={boolean('rememberScrollPosition', true)}
-              variant={select('variant', variants, variants.fill)}
-              optionsVariant={select('optionsVariant', variants, variants.outline)}
-              valueVariant={select('valueVariant', variants, variants.text)}
-              values={values}
-            />
-          </Label>
-        </>
-      );
-    },
-    { design },
-  )
-  .add(
-    'Icons',
-    () => {
-      const [values, setValues] = useState<(string | number)[] | undefined>();
-      return (
-        <>
-          <Label labelText="How strong do you like your tea?" htmlFor="tea-rank">
-            <Dropdown
-              color="#0A7700"
-              elevation={number('elevation', 1, { range: true, min: 0, max: 5, step: 1 })}
-              multi={boolean('multi', false)}
-              name="tea-rank"
-              onSelect={(selected?: (string | number)[]) => {
-                action('onSelect')();
-                setValues(selected);
-              }}
-              options={teaOptions}
-              variant={select('variant', variants, variants.fill)}
-              values={values}
-            />
-          </Label>
-        </>
-      );
-    },
-    { design },
+export const Icons: Story = args => {
+  const [values, setValues] = useState<(string | number)[] | undefined>();
+  return (
+    <Label labelText="How strong do you like your tea?" htmlFor="tea-rank">
+      <Dropdown
+        {...args}
+        name="tea-rank"
+        onSelect={(selected?: Array<string | number>) => {
+          setValues(selected);
+          return args.onSelect();
+        }}
+        options={teaOptions}
+        values={values}
+      />
+    </Label>
   );
+};
+Icons.args = {
+  ...Basic.args,
+  color: '#0A7700',
+  elevation: 1,
+};
+
+export default {
+  title: 'Dropdown',
+  component: Dropdown,
+  argTypes: {
+    elevation: { control: { type: 'range', min: -5, max: 5, step: 1 } },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=102%3A28',
+    },
+  },
+} as Meta;

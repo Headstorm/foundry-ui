@@ -1,7 +1,8 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-
 import styled from 'styled-components';
+
+import { Story, Meta } from '@storybook/react';
+
 import { Div } from 'src/htmlElements';
 
 const DocContainer = styled(Div)`
@@ -14,7 +15,7 @@ const FullWidthImage = styled.img`
 `;
 
 // TODO: Turn these images into html
-storiesOf('Appendix', module).add('Appendix', () => {
+export const Appendix: Story = () => {
   return (
     <DocContainer>
       <h1>Welcome to Headstorm UI</h1>
@@ -38,4 +39,9 @@ storiesOf('Appendix', module).add('Appendix', () => {
       />
     </DocContainer>
   );
-});
+};
+
+export default {
+  title: 'Appendix',
+  parameters: { controls: { hideNoControlsWarning: true } },
+} as Meta;

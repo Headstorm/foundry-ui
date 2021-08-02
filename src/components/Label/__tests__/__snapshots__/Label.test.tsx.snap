@@ -56,20 +56,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-bdfBwQ sc-gsTCUz  iFGzzn sc-iwyYcG"
+      class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-iwajpm"
     >
       <div
-        class="sc-bdfBwQ sc-gsTCUz  iFGzzn sc-bBXqnf"
+        class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-bCwfaz"
       >
         <label
-          class="sc-fubCfw sc-pFZIQ  fvvDbL sc-fKFyDc gEbwRt"
+          class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI KHjYR"
           color="#9FA2A5"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-dlfnbm sc-hKgILt  xrpnu sc-cxFLnm lgCTG"
+          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
         >
           <svg
             role="presentation"
@@ -195,20 +195,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-bdfBwQ sc-gsTCUz  iFGzzn sc-iwyYcG"
+      class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-iwajpm"
     >
       <div
-        class="sc-bdfBwQ sc-gsTCUz  iFGzzn sc-bBXqnf"
+        class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-bCwfaz"
       >
         <label
-          class="sc-fubCfw sc-pFZIQ  fvvDbL sc-fKFyDc fXnQaw"
+          class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI cPoeDw"
           color="#FF4500"
           for="default"
         >
           Test text
         </label>
         <span
-          class="sc-dlfnbm sc-hKgILt  xrpnu sc-cxFLnm lgCTG"
+          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
         >
           <svg
             role="presentation"
