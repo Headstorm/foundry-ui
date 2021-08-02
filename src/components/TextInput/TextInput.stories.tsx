@@ -34,14 +34,17 @@ const callbacks: {
 export const BasicTextInput: Story = args => {
   const [inputValue, setInputValue] = useState('');
 
-  const onChangeCallback = useCallback(event => {
-    setInputValue(event.target.value);
-    args.onChange(event);
-  }, []);
+  const onChangeCallback = useCallback(
+    event => {
+      setInputValue(event.target.value);
+      args.onChange(event);
+    },
+    [args],
+  );
   const onClearCallback = useCallback(() => {
     setInputValue('');
     args.onClear();
-  }, []);
+  }, [args]);
 
   return (
     <TextInput
