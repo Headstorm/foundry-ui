@@ -11,7 +11,7 @@ export const parameters = {
       date: /Date$/,
     },
     sort: 'requiredFirst',
-    exclude: /\w+Props|\w+Ref|Styled\w+|on\w+$/,
+    exclude: /\w+Props|\w+Ref|Styled\w+$/,
   },
   layout: 'centered',
   backgrounds: {
