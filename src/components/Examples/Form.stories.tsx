@@ -328,6 +328,7 @@ export const ControlledForm: Story = () => {
             }}
             checked={state.notifications}
             checkboxType={Checkbox.Types.check}
+            inputProps={{ onChange: () => {} }}
           >
             {state.notifications ? 'Enabled' : 'Disabled'}
           </Checkbox>

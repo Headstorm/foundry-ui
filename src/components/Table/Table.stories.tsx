@@ -27,7 +27,12 @@ type SampleSelectionCellType = {
 
 // Custom icon used for overriding the default collapse/expand icons
 const expansionIconOverride = ({ isCollapsed, onClick }: ExpansionIconProps) => (
-  <Checkbox checked={!isCollapsed} onClick={onClick} checkboxType={CheckboxTypes.check} />
+  <Checkbox
+    checked={!isCollapsed}
+    onClick={onClick}
+    checkboxType={CheckboxTypes.check}
+    inputProps={{ onChange: () => {} }}
+  />
 );
 
 const ActionCellContainer = styled(Table.Cell)`
@@ -118,6 +123,7 @@ export const Default: Story = args => {
           }
           checked={Boolean(rows.filter((row: columnTypes) => checkRowForSelection(row)).length)}
           onClick={selectAll}
+          inputProps={{ onChange: () => {} }}
         />
       </Table.HeaderCell>
     );
@@ -138,6 +144,7 @@ export const Default: Story = args => {
         onClick={() => onSelect(index, selected)}
         checkboxType={CheckboxTypes.check}
         checked={selected}
+        inputProps={{ onChange: () => {} }}
       >
         {reachedMinWidth ? 'Select for download' : ''}
       </Checkbox>
@@ -257,6 +264,7 @@ export const Groups: Story = args => {
           checkboxType={allChecked ? CheckboxTypes.check : CheckboxTypes.neutral}
           checked={Boolean(totalSelected)}
           onClick={selectAll}
+          inputProps={{ onChange: () => {} }}
         />
       </Table.HeaderCell>
     );
@@ -281,6 +289,7 @@ export const Groups: Story = args => {
         onClick={() => onSelect(index, groupIndex, selected)}
         checkboxType={CheckboxTypes.check}
         checked={selected}
+        inputProps={{ onChange: () => {} }}
       >
         {reachedMinWidth ? 'Select for download' : ''}
       </Checkbox>
