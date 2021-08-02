@@ -45,5 +45,5 @@ export default create({
 
   brandTitle: 'Headstorm UI',
   brandUrl: 'https://headstorm.com',
-  brandImage: '/headstorm-logo.png',
+  brandImage: `${process.env.PUBLIC_URL}/Wordmark-Full-transparent.svg`,
 });
