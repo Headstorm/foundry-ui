@@ -29,8 +29,14 @@ export const Appendix: Story = () => {
         The components you used in the hackathon will be the same ones you use when you're a fortune
         500 megacorp.
       </p>
-      <FullWidthImage src="/images/ThemingExample.png" alt="Theming Example" />
-      <FullWidthImage src="/images/ThemeExampleCode.png" alt="Theming Example Code" />
+      <FullWidthImage
+        src={`${process.env.PUBLIC_URL}/images/ThemingExample.png`}
+        alt="Theming Example"
+      />
+      <FullWidthImage
+        src={`${process.env.PUBLIC_URL}/images/ThemeExampleCode.png`}
+        alt="Theming Example Code"
+      />
     </DocContainer>
   );
 };
