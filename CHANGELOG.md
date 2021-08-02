@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/Headstorm/foundry-ui/compare/v1.2.1...v1.2.2) (2021-08-02)
+
+
+### Bug Fixes
+
+* **appendix.stories:** update the appendix images and update the path to work on deployed envs ([cd33d52](https://github.com/Headstorm/foundry-ui/commit/cd33d5268b6022238f2cfe5428ac3d97d9469b80)), closes [#259](https://github.com/Headstorm/foundry-ui/issues/259)
+
 ## [1.2.1](https://github.com/Headstorm/foundry-ui/compare/v1.2.0...v1.2.1) (2021-07-29)
 
 
