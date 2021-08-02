@@ -21,7 +21,7 @@ const callbacks: {
   [i: string]: (event: React.ChangeEvent<HTMLTextAreaElement> & React.KeyboardEvent) => void;
 } = {
   onChange: event => action('onChange')(event.target.value),
-  onDebounce: event => action('onDebounce')(event.target.value),
+  debouncedOnChange: event => action('debouncedOnChange')(event.target.value),
   onClear: () => action('onClear')(),
   onFocus: () => action('onFocus')(),
   onBlur: () => action('onBlur')(),
