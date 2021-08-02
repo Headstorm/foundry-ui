@@ -11,18 +11,6 @@ import variants from 'src/enums/variants';
 import colors from 'src/enums/colors';
 import FeedbackTypes from 'src/enums/feedbackTypes';
 
-const iconOptions = {
-  options: ['none', 'mdiMessage', 'mdiSend'],
-  mapping: {
-    none: '',
-    mdiMessage,
-    mdiSend,
-  },
-  control: {
-    type: 'radio',
-  },
-};
-
 const StyledIconContainer = styled.div`
   z-index: 1;
   margin-left: 1em;
@@ -46,10 +34,16 @@ BasicButton.args = {
   children: 'Default text',
   StyledRightIconContainer: StyledIconContainer,
 };
-BasicButton.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+
+const iconOptions = {
+  options: ['none', 'mdiMessage', 'mdiSend'],
+  mapping: {
+    none: '',
+    mdiMessage,
+    mdiSend,
+  },
+  control: {
+    type: 'radio',
   },
 };
 
@@ -57,7 +51,14 @@ export default {
   title: 'Button',
   component: Button,
   argTypes: {
+    elevation: { control: { type: 'range', min: -5, max: 5, step: 1 } },
     iconPrefix: iconOptions,
     iconSuffix: iconOptions,
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/3r2G00brulOwr9j7F6JF59/Generic-UI-Style?node-id=83%3A2',
+    },
   },
 } as Meta;
