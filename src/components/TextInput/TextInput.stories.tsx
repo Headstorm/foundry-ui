@@ -66,7 +66,7 @@ BasicTextInput.args = {
   type: '',
   multiLineIsResizable: false,
   showCharacterCount: true,
-  maxLength: 20,
+  maxLength: '20',
   allowTextBeyondMaxLength: false,
   clearable: false,
   ...callbacks,
