@@ -23,6 +23,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -149,6 +150,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -258,6 +260,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -368,6 +371,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -478,6 +482,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -588,6 +593,7 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -700,6 +706,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -841,6 +848,7 @@ exports[`Button shows icons 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -982,6 +990,7 @@ exports[`Button shows icons with type string 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
@@ -1125,6 +1134,7 @@ exports[`Button shows loading text when provided 1`] = `
 }
 
 .c0 {
+  display: inline-block;
   position: relative;
 }
 
