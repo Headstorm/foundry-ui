@@ -1,52 +1,107 @@
-import { parseToRgb, readableColor } from 'polished';
+import { parseToRgb } from 'polished';
 import React from 'react';
-import { useTheme } from 'src/context';
 import styled, { keyframes, css } from 'styled-components';
+
+import { useTheme } from '../../context';
+import { SubcomponentPropsType } from '../commonTypes';
 import { Div } from '../../htmlElements';
 
-/* Keyframes for the loading bar gradient */
 export const movingGradient = keyframes`
   0% { background-position: 0vw bottom; }
   100% { background-position: 100vw bottom; }
 `;
 
-/* Animation to scroll the gradient toward the right */
 export const animation = css`
-  ${movingGradient} 8s linear infinite;
+  ${movingGradient} 2s linear infinite;
 `;
 
-/* Styled div that represents the scroll bar
-   Note: The border-radius 9999px is used to create a pill shape */
-const SkeletonContainer = styled(Div)`
-  ${({ finalColor }) => {
+const SkeletonShimmer = styled(Div)`
+  ${({ isLoading, finalColor }) => {
     const rgb = parseToRgb(finalColor);
+
     return css`
+      opacity: ${isLoading ? 1 : 0};
+
       background: linear-gradient(
-          45deg,
+          90deg,
           rgba(${Object.values(rgb).join(', ')}, 0.75),
-          rgba(${Object.values(rgb).join(', ')}, 0),
-          rgba(${Object.values(rgb).join(', ')}, 0.75),
-          rgba(${Object.values(rgb).join(', ')}, 0),
+          rgba(${Object.values(rgb).join(', ')}, 0.25),
           rgba(${Object.values(rgb).join(', ')}, 0.75)
         )
         repeat;
+
+      color: transparent;
+      user-select: none;
+      pointer-events: none;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
       background-size: 100vw 100vh;
       background-attachment: fixed;
-      min-width: 6rem;
-      min-height: 1rem;
-      border-radius: 9999px;
+      border-radius: 0.25rem;
       animation: ${animation};
-      line-height: 0;
     `;
   }}
 `;
 
-const Skeleton = ({ children, color, StyledContainer = SkeletonContainer }): JSX.Element | null => {
+const SkeletonContainer = styled(Div)`
+  ${({ isLoading }: { isLoading: boolean }) => `
+    display: inline-block;
+
+    position: relative;
+      & > * {
+        transition: opacity .2s;
+      }
+
+    ${
+      isLoading
+        ? `
+          & > *:not(${SkeletonShimmer}) {
+            opacity: 0 !important;
+            user-select: none;
+            pointer-events: none;
+          }
+      `
+        : ''
+    }
+  `}
+`;
+
+type SkeletonProps = {
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledShimmer?: string & StyledComponentBase<any, {}>;
+  containerProps?: SubcomponentPropsType;
+  shimmerProps?: SubcomponentPropsType;
+
+  children?: React.ReactNode;
+  color?: string;
+  isLoading?: boolean;
+};
+
+const Skeleton = ({
+  children,
+  color,
+  StyledContainer = SkeletonContainer,
+  StyledShimmer = SkeletonShimmer,
+  isLoading = false,
+  containerProps,
+  shimmerProps,
+}: SkeletonProps): JSX.Element | null => {
   const { colors } = useTheme();
   const finalColor = color ?? colors.grayLight;
-  return <StyledContainer finalColor={finalColor}>{children}</StyledContainer>;
+  return (
+    <StyledContainer isLoading={isLoading} {...containerProps}>
+      {children}
+      <StyledShimmer isLoading={isLoading} finalColor={finalColor} {...shimmerProps} />
+    </StyledContainer>
+  );
 };
 
 Skeleton.Container = SkeletonContainer;
+Skeleton.Shimmer = SkeletonShimmer;
 
 export default Skeleton;
