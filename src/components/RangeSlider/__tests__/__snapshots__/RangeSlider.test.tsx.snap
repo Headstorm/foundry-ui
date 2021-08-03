@@ -5,7 +5,7 @@ exports[`RangeSlider renders 1`] = `
   position: relative;
   height: 1rem;
   width: 100%;
-  font-family: Montserrat,Roboto,sans-serif;
+  font-family: Arial,Roboto,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -28,7 +28,7 @@ exports[`RangeSlider renders 1`] = `
   height: 0.25rem;
   overflow: hidden;
   border-radius: 0.125rem;
-  background-color: #d3d6d7;
+  background-color: #D5D5D5;
 }
 
 .c2 {
@@ -39,14 +39,14 @@ exports[`RangeSlider renders 1`] = `
   right: Infinity%;
   -webkit-transition: left .3s,right .3s;
   transition: left .3s,right .3s;
-  background-color: #e75b27;
+  background-color: #DA4200;
 }
 
 .c3 {
   position: absolute;
   bottom: 100%;
   left: 0rem;
-  color: #51575d;
+  color: #51575D;
   font-size: .5rem;
 }
 
@@ -54,7 +54,7 @@ exports[`RangeSlider renders 1`] = `
   position: absolute;
   bottom: 100%;
   right: 0rem;
-  color: #51575d;
+  color: #51575D;
   font-size: .5rem;
 }
 
@@ -92,7 +92,7 @@ exports[`RangeSlider renders 2`] = `
   position: relative;
   height: 1rem;
   width: 100%;
-  font-family: Montserrat,Roboto,sans-serif;
+  font-family: Arial,Roboto,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -111,8 +111,8 @@ exports[`RangeSlider renders 2`] = `
   left: -.5rem;
   width: 1rem;
   height: 1rem;
-  background-color: #e75b27;
-  color: #e75b27;
+  background-color: #DA4200;
+  color: #DA4200;
   border: .125rem solid #fff;
   border-radius: 50%;
   touch-action: none;
@@ -149,7 +149,7 @@ exports[`RangeSlider renders 2`] = `
   height: 0.25rem;
   overflow: hidden;
   border-radius: 0.125rem;
-  background-color: #d3d6d7;
+  background-color: #D5D5D5;
 }
 
 .c2 {
@@ -160,14 +160,14 @@ exports[`RangeSlider renders 2`] = `
   right: 70%;
   -webkit-transition: left .3s,right .3s;
   transition: left .3s,right .3s;
-  background-color: #e75b27;
+  background-color: #DA4200;
 }
 
 .c3 {
   position: absolute;
   bottom: 100%;
   left: 0rem;
-  color: #51575d;
+  color: #51575D;
   font-size: .5rem;
 }
 
@@ -175,7 +175,7 @@ exports[`RangeSlider renders 2`] = `
   position: absolute;
   bottom: 100%;
   right: 0rem;
-  color: #51575d;
+  color: #51575D;
   font-size: .5rem;
 }
 
@@ -193,7 +193,7 @@ exports[`RangeSlider renders 2`] = `
   height: 1rem;
   width: 2px;
   left: 0px;
-  background-color: #7c8186;
+  background-color: #9FA2A5;
 }
 
 .c8 {
@@ -201,7 +201,7 @@ exports[`RangeSlider renders 2`] = `
   bottom: 100%;
   white-space: nowrap;
   font-size: .375rem;
-  color: #7c8186;
+  color: #9FA2A5;
 }
 
 <div>
