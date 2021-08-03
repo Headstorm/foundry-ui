@@ -149,12 +149,6 @@ describe('Button', () => {
     await waitFor(() => screen.getByRole('button'));
     expect(ref.current).toBeTruthy();
   });
-  it('loadingBarRef.current should exist', async () => {
-    const ref = React.createRef<HTMLDivElement>();
-    const { getByTestId } = render(<Button loadingBarRef={ref} isLoading onClick={() => {}} />);
-    await waitFor(() => screen.getByRole('button'));
-    expect(ref.current).toBeTruthy();
-  });
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
       const component = <Button onClick={() => {}}>Enter</Button>;

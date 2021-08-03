@@ -50,24 +50,24 @@ const SkeletonShimmer = styled(Div)`
 
 const SkeletonContainer = styled(Div)`
   ${({ isLoading }: { isLoading: boolean }) => `
-    display: inline-block;
+  display: inline-block;
 
-    position: relative;
-      & > * {
-        transition: opacity .2s;
-      }
-
-    ${
-      isLoading
-        ? `
-          & > *:not(${SkeletonShimmer}) {
-            opacity: 0 !important;
-            user-select: none;
-            pointer-events: none;
-          }
-      `
-        : ''
+  position: relative;
+    & > * {
+      transition: opacity .2s;
     }
+
+  ${
+    isLoading
+      ? `
+        & > *:not(${SkeletonShimmer}) {
+          opacity: 0 !important;
+          user-select: none;
+          pointer-events: none;
+        }
+    `
+      : ''
+  }
   `}
 `;
 
