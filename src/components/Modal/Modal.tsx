@@ -5,6 +5,7 @@ import { useSpring } from 'react-spring';
 import { Portal } from 'react-portal';
 
 import variants from '../../enums/variants';
+import closeButtonAttachProp from '../../enums/closeButtonAttachProp';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
@@ -92,7 +93,7 @@ export interface ModalProps {
   onClickOutside?: () => void;
   onClose?: () => void;
 
-  closeButtonAttachment?: string;
+  closeButtonAttachment?: closeButtonAttachProp;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   style?: Record<string, unknown>;
