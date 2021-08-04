@@ -129,7 +129,6 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 
-  closeButtonAttachment = 'inside',
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps): JSX.Element => {

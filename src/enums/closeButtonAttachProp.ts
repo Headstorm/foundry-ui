@@ -1,8 +1,8 @@
-export enum closeButtonAttachProp {
+enum closeButtonAttachProp {
     inside = 'inside',
     outside = 'outside',
     corner = 'corner',
-    none = 'none'
+    none = 'none',
 }
 
 export default closeButtonAttachProp;
