@@ -24,7 +24,7 @@ import { useTheme } from '../../context';
 import { Div } from '../../htmlElements';
 
 export const Container = styled.div`
-  ${({ showDomainLabels ,hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
@@ -94,7 +94,7 @@ export const DragHandle = styled(a.div)`
 `;
 
 export const HandleLabel = styled.div`
-  ${({ velocity = 0, }: HandleLabelProps) => {
+  ${({ velocity = 0 }: HandleLabelProps) => {
     const { colors } = useTheme();
     return `
       position: absolute;
@@ -407,7 +407,7 @@ export const RangeSlider = ({
       data-test-id={['hs-ui-range-slider', testId].join('-')}
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
-      showHandleLabels = {showHandleLabels}
+      showHandleLabels={showHandleLabels}
       showDomainLabels={showDomainLabels}
       ref={containerRef}
       {...containerProps}
@@ -464,8 +464,8 @@ export const RangeSlider = ({
             {...dragHandleProps}
           >
             {showHandleLabels && (
-              <StyledHandleLabel value={value} ref={handleLabelRef}  {...handleLabelProps}>
-                  {label}
+              <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
+                {label}
               </StyledHandleLabel>
             )}
           </StyledDragHandle>

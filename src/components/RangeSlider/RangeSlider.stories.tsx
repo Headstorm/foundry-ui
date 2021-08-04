@@ -77,7 +77,7 @@ export const Default: Story = args => {
       <RangeSlider
         disabled={args.disabled}
         showDomainLabels={args.showDomainLabels}
-        showHandleLabels = {args.showHandleLabels}
+        showHandleLabels={args.showHandleLabels}
         showSelectedRange={args.showSelectedRange}
         motionBlur={args.motionBlur}
         springOnRelease={args.springOnRelease}

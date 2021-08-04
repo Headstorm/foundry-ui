@@ -2,7 +2,6 @@ import React from 'react';
 import { StyledComponentBase } from 'styled-components';
 import { SubcomponentPropsType } from '../commonTypes';
 
-
 export type ValueProp = {
   value: number;
   label?: string | number | Node;
@@ -22,7 +21,7 @@ export type HandleProps = {
   color: string;
 };
 
-export type HandleLabelProps = { velocity?: number , showHandleLabels ?: boolean};
+export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean };
 
 export type SelectedRangeProps = { min: number; max: number; selectedRange: number[] };
 
