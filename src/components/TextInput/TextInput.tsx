@@ -78,7 +78,7 @@ const IconContainer = styled(Div)`
   }}
 `;
 
-const CharacterCounter = styled(Div)`
+const CharacterCount = styled(Div)`
   ${({ textIsTooLong, isValid, errorMessage }) => {
     const { colors } = useTheme();
     return css`
@@ -121,15 +121,18 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     StyledIconContainer?: string & StyledComponentBase<any, {}>;
     StyledErrorContainer?: string & StyledComponentBase<any, {}>;
     StyledTextArea?: string & StyledComponentBase<any, {}>;
+    StyledCharacterCount?: string & StyledComponentBase<any, {}>;
 
     containerProps?: SubcomponentPropsType;
     inputProps?: SubcomponentPropsType;
     iconContainerProps?: SubcomponentPropsType;
     errorContainerProps?: SubcomponentPropsType;
+    characterCountProps?: SubcomponentPropsType;
 
     containerRef?: React.RefObject<HTMLDivElement>;
     inputRef?: React.RefObject<HTMLInputElement>;
     errorContainerRef?: React.RefObject<HTMLDivElement>;
+    characterCountRef?: React.RefObject<HTMLDivElement>;
   };
 
 const createIcon = (
@@ -167,15 +170,18 @@ const TextInput = ({
   StyledIconContainer = IconContainer,
   StyledErrorContainer = ErrorContainer,
   StyledTextArea = TextAreaInputContainer,
+  StyledCharacterCount = CharacterCount,
 
   containerProps = {},
   inputProps = {},
   iconContainerProps = {},
   errorContainerProps = {},
+  characterCountProps = {},
 
   containerRef,
   inputRef,
   errorContainerRef,
+  characterCountRef,
 
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
@@ -231,13 +237,15 @@ const TextInput = ({
         </StyledIconContainer>
       )}
       {showCharacterCount && maxLength && (
-        <CharacterCounter
+        <StyledCharacterCount
+          ref={characterCountRef}
           errorMessage={errorMessage}
           isValid={isValid}
           textIsTooLong={(internalValue as string).length > maxLength}
+          {...characterCountProps}
         >
           {(internalValue as string).length} / {maxLength}
-        </CharacterCounter>
+        </StyledCharacterCount>
       )}
       {isValid === false && errorMessage && (
         <StyledErrorContainer ref={errorContainerRef} {...errorContainerProps}>
@@ -253,5 +261,6 @@ TextInput.ErrorContainer = ErrorContainer;
 TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
 TextInput.TextArea = TextAreaInputContainer;
+TextInput.CharacterCount = CharacterCount;
 
 export default TextInput;

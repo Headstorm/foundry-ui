@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Headstorm/foundry-ui/compare/v1.2.2...v1.3.0) (2021-08-03)
+
+
+### Features
+
+* **textinput:** add CharacterCount ref and prop to TextInput ([daf250e](https://github.com/Headstorm/foundry-ui/commit/daf250ee3616d4de08f11777cbf51e0dcfe1d19f))
+
 ## [1.2.2](https://github.com/Headstorm/foundry-ui/compare/v1.2.1...v1.2.2) (2021-08-02)
 
 
