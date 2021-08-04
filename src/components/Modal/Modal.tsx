@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
 import { useTheme } from '../../context';
+import closeButtonAttachments from '../../enums/closeButtonAttachments';
 
 const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${() => `
@@ -36,19 +37,19 @@ const Container = styled(AnimatedDiv)`
 const CloseButton = styled(Button)``;
 
 const CloseButtonContainer = styled(Button.Container)`
-  ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
+  ${({ closeButtonAttachment }: { closeButtonAttachment: closeButtonAttachments }) => {
     let distance;
     let position;
     switch (closeButtonAttachment) {
-      case 'inside':
+      case closeButtonAttachments.inside:
         distance = '.5rem';
         position = 'absolute';
         break;
-      case 'outside':
+      case closeButtonAttachments.outside:
         distance = '-2rem';
         position = 'absolute';
         break;
-      case 'corner':
+      case closeButtonAttachments.corner:
         distance = '1rem';
         position = 'fixed';
         break;
@@ -92,7 +93,7 @@ export interface ModalProps {
   onClickOutside?: () => void;
   onClose?: () => void;
 
-  closeButtonAttachment?: string;
+  closeButtonAttachment?: closeButtonAttachments;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   style?: Record<string, unknown>;
@@ -120,7 +121,7 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 
-  closeButtonAttachment = 'inside',
+  closeButtonAttachment = closeButtonAttachments.inside,
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps): JSX.Element => {

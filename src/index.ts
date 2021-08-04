@@ -19,6 +19,7 @@ import timings from './enums/timings';
 import fonts from './enums/fonts';
 import variants from './enums/variants';
 import feedbackTypes from './enums/feedbackTypes';
+import closeButtonAttachments from './enums/closeButtonAttachments';
 
 export {
   Button,
@@ -43,4 +44,5 @@ export {
   fonts,
   variants,
   feedbackTypes,
+  closeButtonAttachments,
 };

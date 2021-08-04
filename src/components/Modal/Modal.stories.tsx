@@ -8,6 +8,7 @@ import colors from '../../enums/colors';
 import Modal from './Modal';
 import Button from '../Button/Button';
 import Card from '../Card';
+import closeButtonAttachments from '../../enums/closeButtonAttachments';
 
 const design = {
   type: 'figma',
@@ -39,8 +40,8 @@ storiesOf('Modal', module)
 
       const buttonAttachment = select(
         'closeButtonAttachment',
-        ['inside', 'outside', 'corner'],
-        'inside',
+        closeButtonAttachments,
+        closeButtonAttachments.inside,
       );
 
       return (
