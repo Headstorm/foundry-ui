@@ -37,19 +37,19 @@ const Container = styled(AnimatedDiv)`
 const CloseButton = styled(Button)``;
 
 const CloseButtonContainer = styled(Button.Container)`
-  ${({ closeButtonAttachment }: { closeButtonAttachment: closeButtonAttachProp }) => {
+  ${({ closeButtonAttachment }: { closeButtonAttachment: closeButtonAttachments }) => {
     let distance;
     let position;
     switch (closeButtonAttachment) {
-      case closeButtonAttachProp.inside:
+      case closeButtonAttachments.inside:
         distance = '.5rem';
         position = 'absolute';
         break;
-      case closeButtonAttachProp.outside:
+      case closeButtonAttachments.outside:
         distance = '-2rem';
         position = 'absolute';
         break;
-      case closeButtonAttachProp.corner:
+      case closeButtonAttachments.corner:
         distance = '1rem';
         position = 'fixed';
         break;
@@ -93,7 +93,7 @@ export interface ModalProps {
   onClickOutside?: () => void;
   onClose?: () => void;
 
-  closeButtonAttachment?: closeButtonAttachProp;
+  closeButtonAttachment?: closeButtonAttachments;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   style?: Record<string, unknown>;
@@ -121,7 +121,7 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 
-  closeButtonAttachment = closeButtonAttachProp.inside,
+  closeButtonAttachment = closeButtonAttachments.inside,
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps): JSX.Element => {
@@ -165,7 +165,7 @@ const Modal = ({
 
   return (
     <Portal>
-      {closeButtonAttachment === closeButtonAttachProp.corner && (
+      {closeButtonAttachment === closeButtonAttachments.corner && (
         <StyledCloseButton
           StyledContainer={StyledCloseButtonContainer}
           containerProps={{
@@ -190,7 +190,7 @@ const Modal = ({
         }}
       >
         {children}
-        {closeButtonAttachment !== closeButtonAttachProp.corner && (
+        {closeButtonAttachment !== closeButtonAttachments.corner && (
           <StyledCloseButton
             StyledContainer={StyledCloseButtonContainer}
             ref={closeButtonContainerRef}
@@ -199,8 +199,8 @@ const Modal = ({
               ...closeButtonContainerProps,
             }}
             iconPrefix={mdiClose}
-            color={closeButtonAttachment === closeButtonAttachProp.inside ? colors.grayDark : colors.background}
-            elevation={closeButtonAttachment === closeButtonAttachProp.inside ? 0 : 1}
+            color={closeButtonAttachment === closeButtonAttachments.inside ? colors.grayDark : colors.background}
+            elevation={closeButtonAttachment === closeButtonAttachments.inside ? 0 : 1}
             variant={variants.text}
             onClick={onClose}
             {...closeButtonProps}
