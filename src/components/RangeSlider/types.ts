@@ -31,7 +31,7 @@ export type RangeSliderProps = {
   StyledContainer?: string & StyledComponentBase<any, {}>;
   StyledDragHandle?: string & StyledComponentBase<any, {}>;
   StyledHandleLabel?: string & StyledComponentBase<any, {}>;
-  StyledSlideRail?: string & StyledComponentBase<any, {}>;
+  StyledSlideRail?: any;
   StyledSelectedRangeRail?: string & StyledComponentBase<any, {}>;
   StyledDomainLabel?: string & StyledComponentBase<any, {}>;
   StyledMarker?: string & StyledComponentBase<any, {}>;
