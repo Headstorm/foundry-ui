@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, configure } from '@testing-library/react';
+import { render, fireEvent, waitFor, configure, screen } from '@testing-library/react';
 import Icon from '@mdi/react';
 import colors from '../../../enums/colors';
 import variants from '../../../enums/variants';
@@ -9,14 +9,14 @@ expect.extend(toHaveNoViolations);
 
 configure({ testIdAttribute: 'data-test-id' });
 
-const testId = 'hsui-button';
+const testId = 'foundry-test';
 
 describe('Button', () => {
   it('fires click handler when clicked', () => {
     const clickSpy = jest.fn();
     const { getByTestId } = render(<Button onClick={clickSpy}>Click me</Button>);
 
-    fireEvent.click(getByTestId(testId));
+    fireEvent.click(screen.getByRole('button'));
 
     expect(clickSpy).toHaveBeenCalled();
   });
@@ -24,7 +24,7 @@ describe('Button', () => {
   it('shows loading text when provided', async () => {
     const { container, getByTestId } = render(<Button isLoading={true} onClick={() => {}} />);
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -34,7 +34,7 @@ describe('Button', () => {
       <Button color={colors.black} elevation={2} variant={variants.outline} onClick={() => {}} />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe('Button', () => {
       <Button variant={variants.text} onClick={() => {}} />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -54,7 +54,7 @@ describe('Button', () => {
       <Button variant={variants.fill} onClick={() => {}} />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -64,7 +64,7 @@ describe('Button', () => {
       <Button variant={variants.outline} onClick={() => {}} />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -72,7 +72,7 @@ describe('Button', () => {
   it('shows LeftIconContainer when isProcessing', async () => {
     const { container, getByTestId } = render(<Button isProcessing onClick={() => {}} />);
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -82,7 +82,7 @@ describe('Button', () => {
       <Button iconSuffix="mdiComment" iconPrefix="mdiComment" onClick={() => {}} />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -96,7 +96,7 @@ describe('Button', () => {
       />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
 
     expect(container).toMatchSnapshot();
   });
@@ -107,11 +107,11 @@ describe('Button', () => {
       <Button isLoading={true} onClick={onClick} />,
     );
 
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
     const loadingFragment = asFragment();
 
     rerender(<Button onClick={onClick}>Submit</Button>);
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
     const loadedFragment = asFragment();
 
     // TODO: Use toMatchDiffSnapshot() between the fragments once we can figure out
@@ -122,7 +122,7 @@ describe('Button', () => {
   it('containerRef.current should exist', async () => {
     const ref = React.createRef<HTMLButtonElement>();
     const { getByTestId } = render(<Button containerRef={ref} onClick={() => {}} />);
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
     expect(ref.current).toBeTruthy();
   });
   it('leftIconCntainerRef.current should exist', async () => {
@@ -134,7 +134,7 @@ describe('Button', () => {
         onClick={() => {}}
       />,
     );
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
     expect(ref.current).toBeTruthy();
   });
   it('rightIconContainerRef.current should exist', async () => {
@@ -146,13 +146,13 @@ describe('Button', () => {
         onClick={() => {}}
       />,
     );
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
     expect(ref.current).toBeTruthy();
   });
   it('loadingBarRef.current should exist', async () => {
     const ref = React.createRef<HTMLDivElement>();
     const { getByTestId } = render(<Button loadingBarRef={ref} isLoading onClick={() => {}} />);
-    await waitFor(() => getByTestId(testId));
+    await waitFor(() => screen.getByRole('button'));
     expect(ref.current).toBeTruthy();
   });
   describe('Accessibility Tests', () => {

@@ -40,6 +40,8 @@ const CloseButtonContainer = styled(Button.Container)`
   ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
     let distance;
     let position;
+    let display = 'inline-flex'; // default display type
+
     switch (closeButtonAttachment) {
       case 'inside':
         distance = '.5rem';
@@ -52,6 +54,11 @@ const CloseButtonContainer = styled(Button.Container)`
       case 'corner':
         distance = '1rem';
         position = 'fixed';
+        break;
+      case 'none':
+        distance = '0rem';
+        position = 'absolute';
+        display = 'none';
         break;
       default:
         distance = '0rem';
@@ -66,6 +73,7 @@ const CloseButtonContainer = styled(Button.Container)`
       z-index: 1011;
       border-radius: 50%;
       padding: .5rem;
+      display: ${display};
     `;
   }}
 `;
@@ -149,19 +157,22 @@ const Modal = ({
     ...animationSpringConfig,
   });
 
-  const escFunction = useCallback((event) => {
-    if(event.keyCode === 27) {
-      onClickOutside();
-    }
-  }, []);
+  const escFunction = useCallback(
+    event => {
+      if (event.keyCode === 27) {
+        onClickOutside();
+      }
+    },
+    [onClickOutside],
+  );
 
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    document.addEventListener('keydown', escFunction, false);
 
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
+      document.removeEventListener('keydown', escFunction, false);
     };
-  }, []);
+  }, [escFunction]);
 
   return (
     <Portal>

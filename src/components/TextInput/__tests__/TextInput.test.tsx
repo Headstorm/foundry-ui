@@ -46,6 +46,19 @@ describe('TextInput', () => {
       );
       await waitFor(() => getByTestId(testId));
       expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+    });      
+    it('characterCountRef.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(
+        <TextInput
+        showCharacterCount
+        maxLength={20}
+        characterCountRef={ref}
+        containerProps={containerProps}
+        />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(ref.current instanceof HTMLDivElement).toBeTruthy();
     });
   });
 });

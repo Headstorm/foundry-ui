@@ -1,4 +1,4 @@
-import React, {ReactNode, RefObject } from 'react';
+import React, { ReactNode, RefObject } from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import Icon from '@mdi/react';

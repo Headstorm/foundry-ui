@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
 import Progress from './Progress';
 
@@ -9,10 +9,12 @@ import Progress from './Progress';
 //   url: '',
 // };
 
-storiesOf('Progress', module)
-  .addParameters({ component: Progress })
-  .add(
-    'Basic Progress',
-    () => <Progress />,
+export const BasicProgress: Story = args => <Progress {...args} />;
+
+export default {
+  title: 'Progress',
+  component: Progress,
+  parameters: {
     // { design }, Once we have a design for Progress we can link it here
-  );
+  },
+} as Meta;

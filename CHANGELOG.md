@@ -1,3 +1,54 @@
+# [1.3.0](https://github.com/Headstorm/foundry-ui/compare/v1.2.2...v1.3.0) (2021-08-03)
+
+
+### Features
+
+* **textinput:** add CharacterCount ref and prop to TextInput ([daf250e](https://github.com/Headstorm/foundry-ui/commit/daf250ee3616d4de08f11777cbf51e0dcfe1d19f))
+
+## [1.2.2](https://github.com/Headstorm/foundry-ui/compare/v1.2.1...v1.2.2) (2021-08-02)
+
+
+### Bug Fixes
+
+* **appendix.stories:** update the appendix images and update the path to work on deployed envs ([cd33d52](https://github.com/Headstorm/foundry-ui/commit/cd33d5268b6022238f2cfe5428ac3d97d9469b80)), closes [#259](https://github.com/Headstorm/foundry-ui/issues/259)
+
+## [1.2.1](https://github.com/Headstorm/foundry-ui/compare/v1.2.0...v1.2.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **dropdown:** fix keyboard and mouse focus/blur issues ([bfff5f7](https://github.com/Headstorm/foundry-ui/commit/bfff5f7b745600139a8aba4b0af1b7b172f3c45f)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+* **dropdown:** improve accessibility keyboard navigation of dropdown ([4b17920](https://github.com/Headstorm/foundry-ui/commit/4b1792089e9d3694978e2f705280938396b536f3)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+* **dropdown:** improve accessibility keyboard navigation of dropdown ([d18fc68](https://github.com/Headstorm/foundry-ui/commit/d18fc68eab32979c99d52cc88e97ec61b7b532c5)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+* **dropdown & button:** add ability to click on the "button" part of the modal to close it when open ([b5c7bd0](https://github.com/Headstorm/foundry-ui/commit/b5c7bd03139b402dcb574893f5ae897c48882a33)), closes [#210](https://github.com/Headstorm/foundry-ui/issues/210)
+
+# [1.2.0](https://github.com/Headstorm/foundry-ui/compare/v1.1.0...v1.2.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* **shadowstyles:** round offsetY and opacity values for consistent testing ([d33ee94](https://github.com/Headstorm/foundry-ui/commit/d33ee9496a9946297a53871af7688c0c7f16cd43))
+
+
+### Features
+
+* **colors.ts:** added secondary and tertiary colors ([778c9a5](https://github.com/Headstorm/foundry-ui/commit/778c9a5226c68765cff5149d3480baf7fbf80f1d))
+
+# [1.1.0](https://github.com/Headstorm/foundry-ui/compare/v1.0.6...v1.1.0) (2021-07-21)
+
+
+### Features
+
+* **globalstyles:** reduce load times by using Arial instead of Montserrat ([9e7ffff](https://github.com/Headstorm/foundry-ui/commit/9e7ffff6c755040bd81cb4bda686cee314721c60)), closes [#250](https://github.com/Headstorm/foundry-ui/issues/250)
+
+## [1.0.6](https://github.com/Headstorm/foundry-ui/compare/v1.0.5...v1.0.6) (2021-07-15)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** don't show scrollbars on dropdowns if they don't need to scroll ([20c2a12](https://github.com/Headstorm/foundry-ui/commit/20c2a12a317575efab8f7cbe4d482bc9685c2f1d))
+* **dropdown.tsx:** set color of selected option's checkmark to match its text color ([aa78d66](https://github.com/Headstorm/foundry-ui/commit/aa78d662bce85c38792ddde0f63b46d757332025)), closes [#242](https://github.com/Headstorm/foundry-ui/issues/242)
+
 ## [1.0.5](https://github.com/Headstorm/foundry-ui/compare/v1.0.4...v1.0.5) (2021-06-29)
 
 

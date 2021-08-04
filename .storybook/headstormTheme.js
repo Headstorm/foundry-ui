@@ -25,7 +25,7 @@ export default create({
   appBorderRadius: 4,
 
   // Typography
-  fontBase: '"Montserrat", "Open Sans", sans-serif',
+  fontBase: '"Arial", "Open Sans", sans-serif',
   fontCode: 'monospace',
 
   // Text colors
@@ -45,5 +45,5 @@ export default create({
 
   brandTitle: 'Headstorm UI',
   brandUrl: 'https://headstorm.com',
-  brandImage: '/headstorm-logo.png',
+  brandImage: `${process.env.PUBLIC_URL}/Wordmark-Full-transparent.svg`,
 });

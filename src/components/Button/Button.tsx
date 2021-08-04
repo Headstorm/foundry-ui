@@ -52,7 +52,9 @@ export type ButtonProps = {
   feedbackType?: FeedbackTypes;
   interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
   disabled?: boolean;
-  onClick: (...args: any[]) => void;
+  onClick?: (...args: any[]) => void;
+  onBlur?: (e: React.FocusEvent) => void;
+  onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
   LoadingBar?: string & StyledComponentBase<any, {}>;
@@ -153,7 +155,16 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
+  LoadingBar = StyledProgress,
+
   containerProps = {},
+  interactionFeedbackProps,
+
+  containerRef,
+  leftIconContainerRef,
+  rightIconContainerRef,
+  loadingBarRef,
+
   iconPrefix,
   iconSuffix,
   isLoading,
@@ -161,29 +172,26 @@ const Button = ({
   children,
   elevation = 0,
   feedbackType = FeedbackTypes.ripple,
-  interactionFeedbackProps,
   variant = variants.fill,
   type = ButtonTypes.button,
   color,
   disabled = false,
   onClick,
+  onBlur = () => {},
+  onFocus = () => {},
   onMouseDown = () => {},
   onMouseUp = () => {},
-  LoadingBar = StyledProgress,
   id,
-  containerRef,
-  leftIconContainerRef,
-  rightIconContainerRef,
-  loadingBarRef,
 }: ButtonProps): JSX.Element | null => {
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    'data-test-id': 'hsui-button',
     id,
     onClick,
+    onBlur,
+    onFocus,
     onMouseDown,
     onMouseUp,
     elevation,
@@ -228,7 +236,7 @@ const Button = ({
   );
 
   return (
-    <StyledContainer ref={containerRef} {...mergedContainerProps}>
+    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
       {buttonContent}
       {feedbackType === FeedbackTypes.ripple && !disabled && (
         <InteractionFeedback
