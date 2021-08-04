@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { render, configure, waitFor } from '@testing-library/react';
 import Modal from '../Modal';
-import closeButtonAttachProp from '../../../enums/closeButtonAttachProp';
+import closeButtonAttachments from '../../../enums/closeButtonAttachments';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);

@@ -6,6 +6,7 @@ import colors from '../../enums/colors';
 import Modal from './Modal';
 import Button from '../Button/Button';
 import Card from '../Card';
+import closeButtonAttachments from '../../enums/closeButtonAttachments';
 
 const Background = styled.div`
   background-image: url(https://source.unsplash.com/weekly?landscape);
@@ -63,7 +64,7 @@ export const Default: Story = args => {
   );
 };
 Default.args = {
-  closeButtonAttachment: 'inside',
+  closeButtonAttachment: closeButtonAttachments.inside,
   backgroundDarkness: 0.5,
   backgroundBlur: 0.5,
   'onClickOutside function': true,
@@ -74,7 +75,7 @@ export default {
   component: Modal,
   argTypes: {
     closeButtonAttachment: {
-      options: ['inside', 'outside', 'corner'],
+      options: closeButtonAttachments,
       control: {
         type: 'select',
       },

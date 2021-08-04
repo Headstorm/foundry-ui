@@ -5,7 +5,7 @@ import { useSpring } from 'react-spring';
 import { Portal } from 'react-portal';
 
 import variants from '../../enums/variants';
-import closeButtonAttachProp from '../../enums/closeButtonAttachProp';
+import closeButtonAttachments from '../../enums/closeButtonAttachments';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType } from '../commonTypes';
@@ -37,28 +37,21 @@ const Container = styled(AnimatedDiv)`
 const CloseButton = styled(Button)``;
 
 const CloseButtonContainer = styled(Button.Container)`
-  ${({ closeButtonAttachment }: { closeButtonAttachment: string }) => {
+  ${({ closeButtonAttachment }: { closeButtonAttachment: closeButtonAttachProp }) => {
     let distance;
     let position;
-    let display = 'inline-flex'; // default display type
-
     switch (closeButtonAttachment) {
-      case 'inside':
+      case closeButtonAttachProp.inside:
         distance = '.5rem';
         position = 'absolute';
         break;
-      case 'outside':
+      case closeButtonAttachProp.outside:
         distance = '-2rem';
         position = 'absolute';
         break;
-      case 'corner':
+      case closeButtonAttachProp.corner:
         distance = '1rem';
         position = 'fixed';
-        break;
-      case 'none':
-        distance = '0rem';
-        position = 'absolute';
-        display = 'none';
         break;
       default:
         distance = '0rem';
@@ -70,10 +63,9 @@ const CloseButtonContainer = styled(Button.Container)`
       position: ${position};
       top: ${distance};
       right: ${distance};
-      z-index: 1011;
+      z-index: 1011;F
       border-radius: 50%;
       padding: .5rem;
-      display: ${display};
     `;
   }}
 `;
@@ -129,6 +121,7 @@ const Modal = ({
   onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 
+  closeButtonAttachment = closeButtonAttachProp.inside,
   backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
 }: ModalProps): JSX.Element => {
@@ -156,26 +149,23 @@ const Modal = ({
     ...animationSpringConfig,
   });
 
-  const escFunction = useCallback(
-    event => {
-      if (event.keyCode === 27) {
-        onClickOutside();
-      }
-    },
-    [onClickOutside],
-  );
+  const escFunction = useCallback((event) => {
+    if(event.keyCode === 27) {
+      onClickOutside();
+    }
+  }, []);
 
   useEffect(() => {
-    document.addEventListener('keydown', escFunction, false);
+    document.addEventListener("keydown", escFunction, false);
 
     return () => {
-      document.removeEventListener('keydown', escFunction, false);
+      document.removeEventListener("keydown", escFunction, false);
     };
-  }, [escFunction]);
+  }, []);
 
   return (
     <Portal>
-      {closeButtonAttachment === 'corner' && (
+      {closeButtonAttachment === closeButtonAttachProp.corner && (
         <StyledCloseButton
           StyledContainer={StyledCloseButtonContainer}
           containerProps={{
@@ -200,7 +190,7 @@ const Modal = ({
         }}
       >
         {children}
-        {closeButtonAttachment !== 'corner' && (
+        {closeButtonAttachment !== closeButtonAttachProp.corner && (
           <StyledCloseButton
             StyledContainer={StyledCloseButtonContainer}
             ref={closeButtonContainerRef}
@@ -209,8 +199,8 @@ const Modal = ({
               ...closeButtonContainerProps,
             }}
             iconPrefix={mdiClose}
-            color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
-            elevation={closeButtonAttachment === 'inside' ? 0 : 1}
+            color={closeButtonAttachment === closeButtonAttachProp.inside ? colors.grayDark : colors.background}
+            elevation={closeButtonAttachment === closeButtonAttachProp.inside ? 0 : 1}
             variant={variants.text}
             onClick={onClose}
             {...closeButtonProps}
