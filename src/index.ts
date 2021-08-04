@@ -18,6 +18,7 @@ import colors from './enums/colors';
 import timings from './enums/timings';
 import fonts from './enums/fonts';
 import variants from './enums/variants';
+import closeButtonAttachments from './enums/closeButtonAttachments';
 import feedbackTypes from './enums/feedbackTypes';
 
 export {
