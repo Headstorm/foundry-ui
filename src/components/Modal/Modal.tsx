@@ -149,17 +149,17 @@ const Modal = ({
     ...animationSpringConfig,
   });
 
-  const escFunction = useCallback((event) => {
-    if(event.keyCode === 27) {
+  const escFunction = useCallback(event => {
+    if (event.keyCode === 27) {
       onClickOutside();
     }
   }, []);
 
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    document.addEventListener('keydown', escFunction, false);
 
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
+      document.removeEventListener('keydown', escFunction, false);
     };
   }, []);
 
@@ -199,7 +199,11 @@ const Modal = ({
               ...closeButtonContainerProps,
             }}
             iconPrefix={mdiClose}
-            color={closeButtonAttachment === closeButtonAttachments.inside ? colors.grayDark : colors.background}
+            color={
+              closeButtonAttachment === closeButtonAttachments.inside
+                ? colors.grayDark
+                : colors.background
+            }
             elevation={closeButtonAttachment === closeButtonAttachments.inside ? 0 : 1}
             variant={variants.text}
             onClick={onClose}
