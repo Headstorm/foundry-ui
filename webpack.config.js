@@ -42,4 +42,5 @@ module.exports = {
       },
     ],
   },
+  target: 'node',
 };
