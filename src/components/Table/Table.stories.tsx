@@ -84,6 +84,15 @@ const sampleData: any[] = generateSampleData(10);
 const sampleGroupData: any[] = generateSampleGroups();
 
 export const Default: Story = args => {
+  const {
+    'Selection width': selectionWidth,
+    'Name width': nameWidth,
+    'Title width': titleWidth,
+    'Address width': addressWidth,
+    'Notes width': notesWidth,
+    'Action width': actionWidth,
+  } = args;
+
   const [rows, setRows] = useState(sampleData);
 
   const onDelete = (index: number) => {
@@ -153,7 +162,7 @@ export const Default: Story = args => {
 
   const NotesCell = ({ notes }: { notes: string }) => (
     <Table.Cell>
-      <NoteField onChange={() => console.log()} rows={3} value={notes} />
+      <NoteField onChange={() => {}} rows={3} value={notes} />
     </Table.Cell>
   );
 
@@ -173,25 +182,25 @@ export const Default: Story = args => {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
-      width: args['Selection width'],
+      width: selectionWidth,
       cellComponent: SelectionCell,
       sortable: false,
     },
     name: {
       name: 'Name',
-      width: args['Name width'],
+      width: nameWidth,
     },
     title: {
       name: 'Title',
-      width: args['Title width'],
+      width: titleWidth,
     },
     address: {
       name: 'Address',
-      width: args['Address width'],
+      width: addressWidth,
     },
     notes: {
       name: 'Notes',
-      width: args['Notes width'],
+      width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
@@ -199,7 +208,7 @@ export const Default: Story = args => {
     action: {
       name: '',
       sortable: false,
-      width: args['Action width'],
+      width: actionWidth,
       cellComponent: ActionCell,
     },
   };
@@ -216,6 +225,18 @@ Default.args = {
 };
 
 export const Groups: Story = args => {
+  const {
+    'Selection width': selectionWidth,
+    'Name width': nameWidth,
+    'Title width': titleWidth,
+    'Address width': addressWidth,
+    'Notes width': notesWidth,
+    'Use default expansion column': useDefaultExpansionColumn,
+    groupLabelPosition,
+    sortGroups,
+    areGroupsCollapsible,
+  } = args;
+
   const [rows, setRows] = useState(sampleGroupData);
 
   const onSelect = (index = 0, groupIndex = 0, selected: boolean) => {
@@ -300,7 +321,7 @@ export const Groups: Story = args => {
 
   const NotesCell = ({ notes }: { notes: string }) => (
     <Table.Cell>
-      <NoteField onChange={() => console.log()} rows={3} value={notes} />
+      <NoteField onChange={() => {}} rows={3} value={notes} />
     </Table.Cell>
   );
 
@@ -308,26 +329,26 @@ export const Groups: Story = args => {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
-      width: args['Selection width'],
+      width: selectionWidth,
       cellComponent: SelectionCell,
       sortable: false,
       groupCellComponent: EmptyCell,
     },
     name: {
       name: 'Name',
-      width: args['Name width'],
+      width: nameWidth,
     },
     title: {
       name: 'Title',
-      width: args['Title width'],
+      width: titleWidth,
     },
     address: {
       name: 'Address',
-      width: args['Address width'],
+      width: addressWidth,
     },
     notes: {
       name: 'Notes',
-      width: args['Notes width'],
+      width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
@@ -335,7 +356,7 @@ export const Groups: Story = args => {
     },
   };
 
-  if (!args['Use default expansion column']) {
+  if (!useDefaultExpansionColumn) {
     sampleColumns[ExpansionIconColumnName] = {
       name: '',
       sortable: false,
@@ -343,16 +364,16 @@ export const Groups: Story = args => {
     };
   }
 
-  const position = args['groupLabelPosition'];
+  const position = groupLabelPosition;
 
-  const useCustomLabel = args['useCustomLabel'];
+  const { useCustomLabel } = args;
   return (
     <Table
       columns={sampleColumns}
       data={rows}
-      sortGroups={args['sortGroups']}
+      sortGroups={sortGroups}
       groupHeaderPosition={position}
-      areGroupsCollapsible={args['areGroupsCollapsible']}
+      areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
     />
   );

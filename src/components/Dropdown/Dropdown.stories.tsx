@@ -27,15 +27,18 @@ const cities = generateCityList(50);
 
 export const Basic: Story = args => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
+
+  const { clearable, onClear, onSelect } = args;
+
   return (
     <Label labelText="City" htmlFor="cities-list">
       <Dropdown
         {...args}
         name="cities-list"
-        onClear={args.clearable ? args.onClear : undefined}
+        onClear={clearable ? onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect();
+          return onSelect();
         }}
         options={cities}
         values={values}

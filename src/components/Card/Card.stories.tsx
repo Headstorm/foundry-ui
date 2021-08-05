@@ -11,7 +11,7 @@ import fonts from '../../enums/fonts';
 import feedbackTypes from '../../enums/feedbackTypes';
 
 const Template: Story = args => {
-  return <Card {...args} disableFeedback={true} />;
+  return <Card {...args} disableFeedback />;
 };
 
 export const Default = Template.bind({});
@@ -97,12 +97,12 @@ Ref.args = {
   header: 'View the Actions tab below',
   footer:
     'Try adjusting the width of the viewport. New clicks will return the updated dimensions for each element.',
-  onClick: onClick,
+  onClick,
   containerRef: cardContainerRef,
   headerRef: cardHeaderRef,
   bodyRef: cardBodyRef,
   footerRef: cardFooterRef,
-  interactiveFeedbackRef: interactiveFeedbackRef,
+  interactiveFeedbackRef,
   children:
     'Then click anywhere on the Card to see the width/height of the child elements calculated via the Ref props!',
 };

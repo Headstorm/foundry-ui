@@ -19,6 +19,8 @@ const Background = styled.div`
 `;
 
 export const Default: Story = args => {
+  const { backgroundBlur, 'onClickOutside function': onClickOutside } = args;
+
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
@@ -40,8 +42,8 @@ export const Default: Story = args => {
       {isOpen && (
         <Modal
           {...args}
-          backgroundBlur={`${args.backgroundBlur}rem`}
-          onClickOutside={args['onClickOutside function'] ? handleClose : undefined}
+          backgroundBlur={`${backgroundBlur}rem`}
+          onClickOutside={onClickOutside ? handleClose : undefined}
           onClose={handleClose}
         >
           <Card

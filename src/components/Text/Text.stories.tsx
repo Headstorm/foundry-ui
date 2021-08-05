@@ -13,14 +13,12 @@ const options = {
 };
 
 export const Default: Story = args => {
+  const { iconPrefix, iconSuffix } = args;
+
   const getIconPath = (path: string) => (path ? <Icon size={args.size} path={path} /> : undefined);
 
   return (
-    <Text
-      {...args}
-      iconPrefix={getIconPath(args.iconPrefix)}
-      iconSuffix={getIconPath(args.iconSuffix)}
-    ></Text>
+    <Text {...args} iconPrefix={getIconPath(iconPrefix)} iconSuffix={getIconPath(iconSuffix)} />
   );
 };
 Default.args = {

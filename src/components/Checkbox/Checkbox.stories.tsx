@@ -7,12 +7,13 @@ import Checkbox, { CheckboxTypes } from './Checkbox';
 import variants from '../../enums/variants';
 
 const Template: Story = args => {
-  const [checked, setChecked] = React.useState(args.checked);
+  const { checked } = args;
+  const [isChecked, setChecked] = React.useState(checked);
   return (
     <Checkbox
       {...args}
-      checked={checked}
-      inputProps={{ onChange: () => setChecked(!checked) }}
+      checked={isChecked}
+      inputProps={{ onChange: () => setChecked(!isChecked) }}
       onClick={e => {
         return args.onClick(e);
       }}

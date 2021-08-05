@@ -32,6 +32,8 @@ const callbacks: {
 };
 
 export const BasicTextInput: Story = args => {
+  const { clearable } = args;
+
   const [inputValue, setInputValue] = useState('');
 
   const onChangeCallback = useCallback(
@@ -51,7 +53,7 @@ export const BasicTextInput: Story = args => {
       {...args}
       value={inputValue}
       onChange={onChangeCallback}
-      onClear={args.clearable ? onClearCallback : undefined}
+      onClear={clearable ? onClearCallback : undefined}
     />
   );
 };

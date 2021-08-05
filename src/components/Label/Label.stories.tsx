@@ -5,11 +5,15 @@ import colors from '../../enums/colors';
 import Label from './Label';
 import TextInput from '../TextInput';
 
-export const BasicLabel: Story = args => (
-  <Label {...args}>
-    <TextInput id={args.htmlFor} placeholder="placeholder" />
-  </Label>
-);
+export const BasicLabel: Story = args => {
+  const { htmlFor } = args;
+
+  return (
+    <Label {...args}>
+      <TextInput id={htmlFor} placeholder="placeholder" />
+    </Label>
+  );
+};
 BasicLabel.args = {
   labelText: 'This is the label text',
   color: 'grayDark',
