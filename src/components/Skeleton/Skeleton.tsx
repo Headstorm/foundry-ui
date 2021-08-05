@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
 import { useTheme } from '../../context';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { Div } from '../../htmlElements';
 
 export const movingGradient = keyframes`
@@ -50,7 +50,7 @@ const SkeletonShimmer = styled(Div)`
 
 const SkeletonContainer = styled(Div)`
   ${({ isLoading }: { isLoading: boolean }) => `
-  display: inline-block;
+  display: block;
 
   position: relative;
     & > * {
@@ -72,8 +72,9 @@ const SkeletonContainer = styled(Div)`
 `;
 
 type SkeletonProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledShimmer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledShimmer?: StyledSubcomponentType;
+
   containerProps?: SubcomponentPropsType;
   shimmerProps?: SubcomponentPropsType;
 
@@ -83,13 +84,14 @@ type SkeletonProps = {
 };
 
 const Skeleton = ({
-  children,
-  color,
   StyledContainer = SkeletonContainer,
   StyledShimmer = SkeletonShimmer,
-  isLoading = false,
   containerProps,
   shimmerProps,
+
+  children,
+  color,
+  isLoading = false,
 }: SkeletonProps): JSX.Element | null => {
   const { colors } = useTheme();
   const finalColor = color ?? colors.grayLight;

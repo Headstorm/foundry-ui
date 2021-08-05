@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { StyledComponentBase } from 'styled-components';
 
 import { Div, HR } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 
 export const DefaultDivider = styled(HR)`

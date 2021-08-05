@@ -28,6 +28,11 @@ const ProfilePhoto = styled.div`
   background-repeat: no-repeat;
 `;
 
+const Name = styled(Text.Container)`
+  font-weight: bold;
+  font-size: 1.125rem;
+`;
+
 export const BasicSkeleton: Story = args => (
   <Card StyledBody={HorizontalFlexBody} elevation={0}>
     <PhotoContainer>
@@ -36,11 +41,14 @@ export const BasicSkeleton: Story = args => (
       </Skeleton>
     </PhotoContainer>
     <div>
-      <Skeleton {...args} containerProps={{ as: 'span' }}>
-        <Text>Jane Doe</Text>
+      <Skeleton
+        {...args}
+        containerProps={{ style: { display: 'inline-block', marginBottom: '.5rem' } }}
+      >
+        <Text StyledContainer={Name}>Jane Doe</Text>
       </Skeleton>
       <br />
-      <Skeleton {...args} containerProps={{ as: 'span' }}>
+      <Skeleton {...args} containerProps={{ style: { display: 'inline-block' } }}>
         <Text>Master of Ceremonies</Text>
       </Skeleton>
     </div>

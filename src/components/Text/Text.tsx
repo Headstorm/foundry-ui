@@ -1,11 +1,11 @@
 import React, { ReactNode, RefObject } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import Progress from '../Progress/Progress';
 import { Span } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 /* Default Styled Text Container */
 export const TextContainer = styled(Span)`
@@ -24,8 +24,8 @@ export interface TextProps {
   isProcessing?: boolean;
   size?: string;
 
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledIconContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
   containerRef?: RefObject<HTMLDivElement>;

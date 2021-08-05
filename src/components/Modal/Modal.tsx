@@ -7,7 +7,7 @@ import { Portal } from 'react-portal';
 import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 
 const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
@@ -79,10 +79,10 @@ const CloseButtonContainer = styled(Button.Container)`
 
 export interface ModalProps {
   // TODO: Make string & StyledComponentBase<> its own type, also see about not using `any`
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledUnderlay?: string & StyledComponentBase<any, {}>;
-  StyledCloseButton?: string & StyledComponentBase<any, {}>;
-  StyledCloseButtonContainer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledUnderlay?: StyledSubcomponentType;
+  StyledCloseButton?: StyledSubcomponentType;
+  StyledCloseButtonContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   underlayProps?: SubcomponentPropsType;

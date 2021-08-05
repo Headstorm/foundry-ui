@@ -14,7 +14,7 @@ import {
   getBackgroundColorFromVariant,
   disabledStyles,
 } from '../../utils/color';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
@@ -37,8 +37,8 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  StyledLeftIconContainer?: StyledComponentBase<any, {}>;
-  StyledRightIconContainer?: StyledComponentBase<any, {}>;
+  StyledLeftIconContainer?: StyledSubcomponentType;
+  StyledRightIconContainer?: StyledSubcomponentType;
 
   StyledSkeleton?: JSX.Element | null;
   ProgressBar?: JSX.Element | null;

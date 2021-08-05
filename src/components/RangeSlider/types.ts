@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledComponentBase } from 'styled-components';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ValueProp = {
   value: number;
@@ -28,14 +28,14 @@ export type SelectedRangeProps = { min: number; max: number; selectedRange: numb
 export type DomainLabelProps = { position: 'left' | 'right' };
 
 export type RangeSliderProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledDragHandle?: string & StyledComponentBase<any, {}>;
-  StyledHandleLabel?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledDragHandle?: StyledSubcomponentType;
+  StyledHandleLabel?: StyledSubcomponentType;
   StyledSlideRail?: any;
-  StyledSelectedRangeRail?: string & StyledComponentBase<any, {}>;
-  StyledDomainLabel?: string & StyledComponentBase<any, {}>;
-  StyledMarker?: string & StyledComponentBase<any, {}>;
-  StyledMarkerLabel?: string & StyledComponentBase<any, {}>;
+  StyledSelectedRangeRail?: StyledSubcomponentType;
+  StyledDomainLabel?: StyledSubcomponentType;
+  StyledMarker?: StyledSubcomponentType;
+  StyledMarkerLabel?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   dragHandleProps?: SubcomponentPropsType;
   handleLabelProps?: SubcomponentPropsType;

@@ -58,7 +58,7 @@ export function useTheme(): FoundryContextType {
   return theme;
 }
 
-export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => {
+export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   const ComponentWithGlobalStyles = styled(Component)`
     ${props => {
       return props.globalStyles;

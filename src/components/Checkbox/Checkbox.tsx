@@ -5,7 +5,7 @@ import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import { darken } from 'polished';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { disabledStyles } from '../../utils/color';
@@ -90,7 +90,7 @@ export const BaseIcon = styled(Icon)`
   overflow: visible;
   height: 1rem;
   width: 1rem;
-` as string & StyledComponentBase<any, {}>;
+` as StyledSubcomponentType;
 
 const CheckIcon = styled(BaseIcon)`
   ${({ variant }) => {
@@ -134,11 +134,11 @@ const NeutralIcon = styled(BaseIcon)`
 `;
 
 export interface CheckboxProps {
-  StyledLabel?: string & StyledComponentBase<any, {}>;
-  StyledCheckboxContainer?: string & StyledComponentBase<any, {}>;
-  StyledBox?: string & StyledComponentBase<any, {}>;
-  StyledInput?: string & StyledComponentBase<any, {}>;
-  StyledIcon?: string & StyledComponentBase<any, {}>;
+  StyledLabel?: StyledSubcomponentType;
+  StyledCheckboxContainer?: StyledSubcomponentType;
+  StyledBox?: StyledSubcomponentType;
+  StyledInput?: StyledSubcomponentType;
+  StyledIcon?: StyledSubcomponentType;
 
   labelProps?: SubcomponentPropsType;
   checkboxContainerProps?: SubcomponentPropsType;

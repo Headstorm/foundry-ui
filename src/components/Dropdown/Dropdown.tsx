@@ -11,7 +11,7 @@ import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 import { mergeRefs } from '../../utils/refs';
 
@@ -185,15 +185,15 @@ const StyledTagContainer = styled(Tag.Container)`
 `;
 
 export interface DropdownProps {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledValueContainer?: string & StyledComponentBase<any, {}>;
-  StyledValueItem?: string & StyledComponentBase<any, {}>;
-  StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
-  StyledOptionItem?: string & StyledComponentBase<any, {}>;
-  StyledCheckContainer?: string & StyledComponentBase<any, {}>;
-  StyledPlaceholder?: string & StyledComponentBase<any, {}>;
-  StyledCloseIconContainer?: string & StyledComponentBase<any, {}>;
-  StyledArrowIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledValueContainer?: StyledSubcomponentType;
+  StyledValueItem?: StyledSubcomponentType;
+  StyledOptionsContainer?: StyledSubcomponentType;
+  StyledOptionItem?: StyledSubcomponentType;
+  StyledCheckContainer?: StyledSubcomponentType;
+  StyledPlaceholder?: StyledSubcomponentType;
+  StyledCloseIconContainer?: StyledSubcomponentType;
+  StyledArrowIconContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -529,7 +529,9 @@ const Dropdown = ({
                   {optionsHash[val].optionValue}
                   {valueVariant === variants.text && i !== arr.length - 1 && ','}
                 </Tag>
-              ) : undefined,
+              ) : (
+                undefined
+              ),
             )}
           {(!values || !values.length) && (
             <StyledPlaceholder
