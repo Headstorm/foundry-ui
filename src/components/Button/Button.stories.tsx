@@ -5,11 +5,10 @@ import { Story, Meta } from '@storybook/react';
 
 import { mdiMessage, mdiSend } from '@mdi/js';
 
-import Button, { ButtonProps } from './Button';
-
 import variants from 'src/enums/variants';
 import colors from 'src/enums/colors';
 import FeedbackTypes from 'src/enums/feedbackTypes';
+import Button, { ButtonProps } from './Button';
 
 const StyledIconContainer = styled.div`
   z-index: 1;

@@ -77,6 +77,7 @@ export const Default: Story = args => {
       <RangeSlider
         disabled={args.disabled}
         showDomainLabels={args.showDomainLabels}
+        showHandleLabels={args.showHandleLabels}
         showSelectedRange={args.showSelectedRange}
         motionBlur={args.motionBlur}
         springOnRelease={args.springOnRelease}
@@ -107,6 +108,7 @@ Default.args = {
   'use marker labels': false,
   disabled: false,
   showDomainLabels: false,
+  showHandleLabels: true,
   showSelectedRange: true,
   motionBlur: false,
   springOnRelease: true,

@@ -20,7 +20,7 @@ export const Default: Story = args => {
       {...args}
       iconPrefix={getIconPath(args.iconPrefix)}
       iconSuffix={getIconPath(args.iconSuffix)}
-    ></Text>
+    />
   );
 };
 Default.args = {

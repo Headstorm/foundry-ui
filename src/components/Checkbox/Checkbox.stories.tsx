@@ -6,15 +6,15 @@ import { action } from '@storybook/addon-actions';
 import Checkbox, { CheckboxTypes } from './Checkbox';
 import variants from '../../enums/variants';
 
-const Template: Story = args => {
-  const [checked, setChecked] = React.useState(args.checked);
+const Template: Story = ({ checked: storyChecked, onClick, ...rest }) => {
+  const [checked, setChecked] = React.useState(storyChecked);
   return (
     <Checkbox
-      {...args}
+      {...rest}
       checked={checked}
       inputProps={{ onChange: () => setChecked(!checked) }}
       onClick={e => {
-        return args.onClick(e);
+        return onClick(e);
       }}
     />
   );

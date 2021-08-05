@@ -343,16 +343,16 @@ export const Groups: Story = args => {
     };
   }
 
-  const position = args['groupLabelPosition'];
+  const position = args.groupLabelPosition;
 
-  const useCustomLabel = args['useCustomLabel'];
+  const { useCustomLabel } = args;
   return (
     <Table
       columns={sampleColumns}
       data={rows}
-      sortGroups={args['sortGroups']}
+      sortGroups={args.sortGroups}
       groupHeaderPosition={position}
-      areGroupsCollapsible={args['areGroupsCollapsible']}
+      areGroupsCollapsible={args.areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
     />
   );

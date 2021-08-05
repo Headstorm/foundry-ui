@@ -25,17 +25,17 @@ const generateCityList = (amount: number): OptionProps[] => {
 };
 const cities = generateCityList(50);
 
-export const Basic: Story = args => {
+export const Basic: Story = ({ clearable, onClear, onSelect, ...rest }) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
   return (
     <Label labelText="City" htmlFor="cities-list">
       <Dropdown
-        {...args}
+        {...rest}
         name="cities-list"
-        onClear={args.clearable ? args.onClear : undefined}
+        onClear={clearable ? onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect();
+          return onSelect();
         }}
         options={cities}
         values={values}

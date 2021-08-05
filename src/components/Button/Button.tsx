@@ -39,28 +39,36 @@ export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
   StyledLeftIconContainer?: StyledComponentBase<any, {}>;
   StyledRightIconContainer?: StyledComponentBase<any, {}>;
+
+  StyledSkeleton?: JSX.Element | null;
+  ProgressBar?: JSX.Element | null;
+
+  containerRef?: React.RefObject<HTMLButtonElement>;
+  leftIconContainerRef?: React.RefObject<HTMLDivElement>;
+  rightIconContainerRef?: React.RefObject<HTMLDivElement>;
+
   containerProps?: SubcomponentPropsType;
-  iconPrefix?: string | JSX.Element;
-  iconSuffix?: string | JSX.Element;
-  isLoading?: boolean;
-  isProcessing?: boolean;
+  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
+
   children?: ReactNode;
+
+  id?: string;
+  disabled?: boolean;
   elevation?: number;
   variant?: variants;
   type?: ButtonTypes;
   color?: string;
   feedbackType?: FeedbackTypes;
-  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
-  disabled?: boolean;
+  iconPrefix?: string | JSX.Element;
+  iconSuffix?: string | JSX.Element;
+  isLoading?: boolean;
+  isProcessing?: boolean;
+
   onClick?: (...args: any[]) => void;
   onBlur?: (e: React.FocusEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
-  id?: string;
-  containerRef?: React.RefObject<HTMLButtonElement>;
-  leftIconContainerRef?: React.RefObject<HTMLDivElement>;
-  rightIconContainerRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -146,7 +154,7 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
-  ProgressBar = Skeleton, // Deprecated
+  ProgressBar, // Deprecated
   StyledSkeleton = Skeleton,
 
   containerProps = {},
@@ -194,7 +202,7 @@ const Button = ({
   };
 
   return (
-    <Skeleton isLoading={isLoading}>
+    <StyledSkeleton isLoading={isLoading}>
       <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
         {!isProcessing &&
           iconPrefix &&
@@ -212,7 +220,7 @@ const Button = ({
             <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
           </StyledLeftIconContainer>
         )}
-        {children}
+        {isLoading && ProgressBar ? <ProgressBar /> : children}
         {iconSuffix &&
           (typeof iconSuffix === 'string' ? (
             <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
@@ -232,7 +240,7 @@ const Button = ({
           />
         )}
       </StyledContainer>
-    </Skeleton>
+    </StyledSkeleton>
   );
 };
 
