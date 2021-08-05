@@ -121,6 +121,7 @@ Default.args = {
   'use marker labels': false,
   disabled: false,
   showDomainLabels: false,
+  showHandleLabels: true,
   showSelectedRange: true,
   motionBlur: false,
   springOnRelease: true,

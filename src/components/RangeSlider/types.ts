@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledComponentBase } from 'styled-components';
 import { SubcomponentPropsType } from '../commonTypes';
 
 export type ValueProp = {
@@ -9,6 +10,7 @@ export type ValueProp = {
 
 export type ContainerProps = {
   showDomainLabels?: boolean;
+  showHandleLabels?: boolean;
   hasHandleLabels?: boolean;
   disabled: boolean;
   beingDragged: boolean;
@@ -19,21 +21,21 @@ export type HandleProps = {
   color: string;
 };
 
-export type HandleLabelProps = { velocity?: number };
+export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean };
 
 export type SelectedRangeProps = { min: number; max: number; selectedRange: number[] };
 
 export type DomainLabelProps = { position: 'left' | 'right' };
 
 export type RangeSliderProps = {
-  StyledContainer?: any;
-  StyledDragHandle?: any;
-  StyledHandleLabel?: any;
+  StyledContainer?: string & StyledComponentBase<any, {}>;
+  StyledDragHandle?: string & StyledComponentBase<any, {}>;
+  StyledHandleLabel?: string & StyledComponentBase<any, {}>;
   StyledSlideRail?: any;
-  StyledSelectedRangeRail?: any;
-  StyledDomainLabel?: any;
-  StyledMarker?: any;
-  StyledMarkerLabel?: any;
+  StyledSelectedRangeRail?: string & StyledComponentBase<any, {}>;
+  StyledDomainLabel?: string & StyledComponentBase<any, {}>;
+  StyledMarker?: string & StyledComponentBase<any, {}>;
+  StyledMarkerLabel?: string & StyledComponentBase<any, {}>;
   containerProps?: SubcomponentPropsType;
   dragHandleProps?: SubcomponentPropsType;
   handleLabelProps?: SubcomponentPropsType;
@@ -54,6 +56,7 @@ export type RangeSliderProps = {
 
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;
+  showHandleLabels?: boolean;
 
   motionBlur?: boolean;
   springOnRelease?: boolean;

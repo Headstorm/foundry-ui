@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Headstorm/foundry-ui/compare/v1.3.0...v1.4.0) (2021-08-05)
+
+
+### Features
+
+* **#188:** added toggle and boolean property for showHandleLabels on the rangeSlider ([c52e562](https://github.com/Headstorm/foundry-ui/commit/c52e562025cc963a9be5fc9a0b98dce52ff40f60)), closes [#188](https://github.com/Headstorm/foundry-ui/issues/188)
+
 # [1.3.0](https://github.com/Headstorm/foundry-ui/compare/v1.2.2...v1.3.0) (2021-08-03)
 
 
