@@ -95,7 +95,7 @@ const Text = ({
       </StyledIconContainer>
     )}
     <Skeleton color={color} StyledContainer={SkeletonContainer} isLoading={isLoading}>
-      <span>{children}</span>
+      <Span>{children}</Span>
     </Skeleton>
 
     {iconSuffix &&
