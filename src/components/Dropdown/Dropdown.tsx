@@ -26,6 +26,7 @@ type UsefulDropdownState = {
   multi?: boolean;
   selected?: boolean;
   variant: variants;
+  isDropDown?: boolean;
 };
 
 const Container = styled(Div)`
@@ -42,7 +43,7 @@ const Container = styled(Div)`
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
-  ${({ isOpen }) => `
+  ${({ isOpen, isDropDown }) => `
     user-select: none;
     display: flex;
     justify-content: space-between;
@@ -51,11 +52,17 @@ export const ValueContainer = styled(Button.Container)`
 
     ${
       isOpen
-        ? `
-          border-bottom: 0px solid transparent;
-          border-bottom-right-radius: 0rem;
-          border-bottom-left-radius: 0rem;
-        `
+        ? isDropDown
+          ? `
+            border-bottom: 0px solid transparent;
+            border-bottom-right-radius: 0rem;
+            border-bottom-left-radius: 0rem;
+          `
+          : `
+            border-top: 0px solid transparent;
+            border-top-right-radius: 0rem;
+            border-top-left-radius: 0rem;
+          `
         : ''
     }
 
@@ -81,10 +88,9 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color, variant }: UsefulDropdownState) => `
+  ${({ color, variant, isDropDown }: UsefulDropdownState) => `
     background: white;
     position: absolute;
-    top: 100%;
     left: 0px;
     max-height: 10rem;
     overflow-y: auto;
@@ -96,9 +102,21 @@ const OptionsContainer = styled(Div)`
           `
         : ''
     }
-    border-top: 0px solid transparent;
-    border-radius: 0rem 0rem 0.25rem 0.25rem;
     z-index: 1000;
+    ${
+      isDropDown
+        ? `
+          top: 100%;
+          border-top: 0px solid transparent;
+          border-radius: 0rem 0rem 0.25rem 0.25rem;
+        `
+        : `
+          top: auto;
+          bottom: 100%;
+          border-bottom: 0px solid transparent;
+          border-radius: 0.25rem 0.25rem 0rem 0rem;
+        `
+    }
   `}
 `;
 
@@ -300,6 +318,9 @@ const Dropdown = ({
 
   const scrollPos = useRef<number>(0);
 
+  const [isDropDown, setIsDropDown] = useState<boolean>(true);
+  const [prevIntersectRatio, setPrevIntersectRatio] = useState<Number>(0.0);
+
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
     StyledContainer: PlaceholderContainer,
@@ -307,6 +328,40 @@ const Dropdown = ({
   };
 
   const tagContainerItemProps = valueItemTagProps.containerProps || {};
+
+  const intersectionCallback = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [entry] = entries;
+      console.log(`New intersection ${entry.intersectionRatio}`);
+      console.log(`Old intersection ${prevIntersectRatio}`);
+      if (!entry.isIntersecting) {
+        setIsDropDown(val => !val);
+      }
+      setPrevIntersectRatio(entry.intersectionRatio);
+    },
+    [prevIntersectRatio],
+  );
+
+  const intersectOptions = useMemo(() => {
+    return {
+      root: null,
+      rootMargin: '0%',
+      threshold: 0.9,
+    };
+  }, []);
+
+  const intersectObserver = useMemo(() => {
+    const observer = new IntersectionObserver(intersectionCallback, intersectOptions);
+    return observer;
+  }, [intersectOptions, intersectionCallback]);
+
+  useEffect(() => {
+    const observer = intersectObserver;
+    if (optionsContainerInternalRef.current) {
+      observer.observe(optionsContainerInternalRef.current);
+    }
+    return () => observer.disconnect();
+  }, [optionsContainerInternalRef, intersectObserver, isOpen]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
@@ -503,6 +558,7 @@ const Dropdown = ({
         {...valueContainerProps}
         containerProps={{
           isOpen,
+          isDropDown,
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
@@ -553,6 +609,7 @@ const Dropdown = ({
             optionsContainerInternalRef,
             optionsScrollListenerCallbackRef,
           ])}
+          isDropDown={isDropDown}
           {...optionsContainerProps}
         >
           {options.map(option => (
