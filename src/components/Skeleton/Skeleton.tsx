@@ -71,7 +71,7 @@ const SkeletonContainer = styled(Div)`
   `}
 `;
 
-type SkeletonProps = {
+export type SkeletonProps = {
   StyledContainer?: StyledSubcomponentType;
   StyledShimmer?: StyledSubcomponentType;
 

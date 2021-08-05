@@ -1,17 +1,19 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
+import { mdiPhone } from '@mdi/js';
 
 import colors from '../../enums/colors';
 
-import Skeleton from './Skeleton';
+import Skeleton, { SkeletonProps } from './Skeleton';
+import Divider from '../Divider';
 import Card from '../Card';
 import Text from '../Text';
 
 const HorizontalFlexBody = styled(Card.Body)`
   display: flex;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-start;
   flex-flow: row nowrap;
 `;
 
@@ -28,33 +30,39 @@ const ProfilePhoto = styled.div`
   background-repeat: no-repeat;
 `;
 
+const ProfileLine = styled(Skeleton.Container)`
+  margin-bottom: 0.5rem;
+  display: inline-block;
+`;
+
 const Name = styled(Text.Container)`
   font-weight: bold;
   font-size: 1.125rem;
 `;
 
-export const BasicSkeleton: Story = args => (
+export const LoadingProfileExample: Story = ({ isLoading, color }: SkeletonProps) => (
   <Card StyledBody={HorizontalFlexBody} elevation={0}>
     <PhotoContainer>
-      <Skeleton {...args}>
+      <Skeleton isLoading={isLoading} color={color}>
         <ProfilePhoto />
       </Skeleton>
     </PhotoContainer>
     <div>
-      <Skeleton
-        {...args}
-        containerProps={{ style: { display: 'inline-block', marginBottom: '.5rem' } }}
-      >
+      <Skeleton isLoading={isLoading} color={color} StyledContainer={ProfileLine}>
         <Text StyledContainer={Name}>Jane Doe</Text>
       </Skeleton>
       <br />
-      <Skeleton {...args} containerProps={{ style: { display: 'inline-block' } }}>
+      <Skeleton isLoading={isLoading} color={color} StyledContainer={ProfileLine}>
         <Text>Master of Ceremonies</Text>
       </Skeleton>
+      <Divider />
+      <Text color={colors.success} isLoading={isLoading} iconPrefix={mdiPhone}>
+        214-555-1234
+      </Text>
     </div>
   </Card>
 );
-BasicSkeleton.args = {
+LoadingProfileExample.args = {
   // variant: variants.fill,
   color: colors.grayLight,
   children: 'Default text',
