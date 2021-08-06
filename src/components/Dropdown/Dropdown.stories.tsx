@@ -5,7 +5,7 @@ import { address } from 'faker';
 import Icon from '@mdi/react';
 import { mdiLeaf } from '@mdi/js';
 
-import Dropdown, { OptionProps } from './Dropdown';
+import Dropdown, { DropdownProps, OptionProps } from './Dropdown';
 import variants from '../../enums/variants';
 import Label from '../Label';
 import { colors } from '../../index';
@@ -25,17 +25,20 @@ const generateCityList = (amount: number): OptionProps[] => {
 };
 const cities = generateCityList(50);
 
-export const Basic: Story = args => {
+type BasicProps = DropdownProps & { clearable: boolean };
+
+export const Basic: Story<BasicProps> = ({ clearable, onClear, onSelect, ...args }: BasicProps) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
+
   return (
     <Label labelText="City" htmlFor="cities-list">
       <Dropdown
         {...args}
         name="cities-list"
-        onClear={args.clearable ? args.onClear : undefined}
+        onClear={clearable ? onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect();
+          return onSelect();
         }}
         options={cities}
         values={values}

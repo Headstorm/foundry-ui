@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
 
 import colors from '../../enums/colors';
-import Modal from './Modal';
+import Modal, { ModalProps } from './Modal';
 import Button from '../Button/Button';
 import Card from '../Card';
 
@@ -18,12 +18,23 @@ const Background = styled.div`
   width: 100vw;
 `;
 
-export const Default: Story = args => {
+type DefaultProps = Omit<ModalProps, 'backgroundBlur'> & {
+  backgroundBlur: number;
+  'onClickOutside function': boolean;
+  onClose: () => void;
+};
+
+export const Default: Story<DefaultProps> = ({
+  backgroundBlur,
+  'onClickOutside function': onClickOutside,
+  onClose,
+  ...args
+}: DefaultProps) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
     setIsOpen(false);
-    args.onClose();
+    onClose();
   };
 
   return (
@@ -40,8 +51,8 @@ export const Default: Story = args => {
       {isOpen && (
         <Modal
           {...args}
-          backgroundBlur={`${args.backgroundBlur}rem`}
-          onClickOutside={args['onClickOutside function'] ? handleClose : undefined}
+          backgroundBlur={`${backgroundBlur}rem`}
+          onClickOutside={onClickOutside ? handleClose : undefined}
           onClose={handleClose}
         >
           <Card
