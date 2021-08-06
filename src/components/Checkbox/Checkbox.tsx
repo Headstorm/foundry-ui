@@ -30,12 +30,11 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
   padding: 0;
   position: absolute;
   white-space: nowrap;
-  width: 1px; 
+  width: 1px;
 `;
 
 export const Label = styled(LabelElement)`
   ${({ disabled }) => {
-    const { colors } = useTheme();
     return `
       display: flex;
       align-items: center;
@@ -78,7 +77,7 @@ export const Box = styled(Div)`
 `;
 
 export const CheckboxContainer = styled.div`
-${() => {
+  ${() => {
     const { colors } = useTheme();
     return `
   display: inline-block;
@@ -86,7 +85,7 @@ ${() => {
   &:focus-within {
     ${Box} {
       box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
-    }}`
+    }}`;
   }}
 `;
 
