@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Story, Meta } from '@storybook/react';
 
-import { Div } from 'src/htmlElements';
+import { Div } from '../../htmlElements';
 
 const DocContainer = styled(Div)`
   justify-self: flex-start;

@@ -1,4 +1,4 @@
-import { FunctionComponent, MouseEventHandler } from 'react';
+import React, { FunctionComponent, MouseEventHandler } from 'react';
 import { StyledComponentBase } from 'styled-components';
 import { SubcomponentPropsType } from '../commonTypes';
 

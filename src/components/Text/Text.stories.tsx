@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import Icon from '@mdi/react';
 import * as Icons from '@mdi/js';
 
-import Text from './Text';
+import Text, { TextProps } from './Text';
 import colors from '../../enums/colors';
 
 const options = {
@@ -12,15 +12,16 @@ const options = {
   ...Icons,
 };
 
-export const Default: Story = args => {
+type DefaultProps = TextProps & {
+  iconPrefix: string;
+  iconSuffix: string;
+};
+
+export const Default: Story<DefaultProps> = ({ iconPrefix, iconSuffix, ...args }: DefaultProps) => {
   const getIconPath = (path: string) => (path ? <Icon size={args.size} path={path} /> : undefined);
 
   return (
-    <Text
-      {...args}
-      iconPrefix={getIconPath(args.iconPrefix)}
-      iconSuffix={getIconPath(args.iconSuffix)}
-    ></Text>
+    <Text {...args} iconPrefix={getIconPath(iconPrefix)} iconSuffix={getIconPath(iconSuffix)} />
   );
 };
 Default.args = {

@@ -220,6 +220,7 @@ export const RangeSlider = ({
 
   showDomainLabels = true,
   showSelectedRange = true,
+  showHandleLabels = true,
 
   motionBlur = false,
   springOnRelease = true,
@@ -406,6 +407,7 @@ export const RangeSlider = ({
       data-test-id={['hs-ui-range-slider', testId].join('-')}
       disabled={disabled}
       hasHandleLabels={hasHandleLabels}
+      showHandleLabels={showHandleLabels}
       showDomainLabels={showDomainLabels}
       ref={containerRef}
       {...containerProps}
@@ -461,9 +463,11 @@ export const RangeSlider = ({
             ref={dragHandleRef}
             {...dragHandleProps}
           >
-            <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
-              {label}
-            </StyledHandleLabel>
+            {showHandleLabels && (
+              <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
+                {label}
+              </StyledHandleLabel>
+            )}
           </StyledDragHandle>
         );
       })}

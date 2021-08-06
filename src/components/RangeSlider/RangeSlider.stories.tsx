@@ -7,6 +7,7 @@ import { readableColor, toColorString } from 'polished';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
+import { RangeSliderProps } from './types';
 import Card from '../Card';
 
 const Row = styled.div`
@@ -53,48 +54,66 @@ const StyledSlideRail = styled(SlideRail)`
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;
 
-export const Default: Story = args => {
-  const [val, setVal] = useState(args.value);
+type DefaultProps = Omit<RangeSliderProps, 'markers'> & {
+  value: number;
+  'use marker labels': boolean;
+  markers: string;
+};
+
+export const Default: Story<DefaultProps> = ({
+  value,
+  markers,
+  'use marker labels': markerLabels,
+  disabled,
+  showDomainLabels,
+  showSelectedRange,
+  motionBlur,
+  springOnRelease,
+  min,
+  max,
+  debounceInterval,
+  axisLock,
+}: DefaultProps) => {
+  const [val, setVal] = useState(value);
 
   useEffect(() => {
-    setVal(args.value);
-  }, [args.value]);
+    setVal(value);
+  }, [value]);
 
-  const markersSelection = args.markers;
-  const markerLabels = args['use marker labels'];
-  const markersArray: any[] = [];
+  const markersSelection = markers;
+  const markersArray = [];
   if (markersSelection === 'all values') {
-    for (let i = args.min; i <= args.max; i++) {
+    for (let i = min; i <= max; i++) {
       markersArray.push(markerLabels ? { value: i, label: `${i}` } : i);
     }
   } else if (markersSelection === 'middle value') {
-    const midpoint = (args.min + args.max) / 2;
+    const midpoint = (min + max) / 2;
     markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
   }
 
   return (
     <Row>
       <RangeSlider
-        disabled={args.disabled}
-        showDomainLabels={args.showDomainLabels}
-        showSelectedRange={args.showSelectedRange}
-        motionBlur={args.motionBlur}
-        springOnRelease={args.springOnRelease}
-        min={args.min}
-        max={args.max}
-        debounceInterval={args.debounceInterval}
+        disabled={disabled}
+        showDomainLabels={showDomainLabels}
+        showSelectedRange={showSelectedRange}
+        motionBlur={motionBlur}
+        springOnRelease={springOnRelease}
+        min={min}
+        max={max}
+        debounceInterval={debounceInterval}
         onDrag={(newVal: number) => {
           setVal(Math.round(newVal));
           action('onDrag')(newVal);
         }}
-        axisLock={args.axisLock}
+        axisLock={axisLock}
         values={[
           {
             value: val,
             label: val,
           },
         ]}
-        markers={markersArray}
+        markers={markersArray as RangeSliderProps['markers']}
       />
     </Row>
   );
@@ -107,6 +126,7 @@ Default.args = {
   'use marker labels': false,
   disabled: false,
   showDomainLabels: false,
+  showHandleLabels: true,
   showSelectedRange: true,
   motionBlur: false,
   springOnRelease: true,
@@ -114,31 +134,46 @@ Default.args = {
   axisLock: 'x',
 };
 
-export const Rating: Story = args => {
-  const [val, setVal] = useState(args.value);
+type RatingProps = Omit<RangeSliderProps, 'markers'> & {
+  value: number;
+};
+
+export const Rating: Story<RatingProps> = ({
+  value,
+  disabled,
+  showDomainLabels,
+  showSelectedRange,
+  motionBlur,
+  springOnRelease,
+  min,
+  max,
+  debounceInterval,
+  axisLock,
+}: RatingProps) => {
+  const [val, setVal] = useState(value);
 
   useEffect(() => {
-    setVal(args.value);
-  }, [args.value]);
+    setVal(value);
+  }, [value]);
 
   return (
     <Row>
       <span>ReactJS:&nbsp;&nbsp;&nbsp;&nbsp;</span>
       <RangeSlider
         StyledSlideRail={StyledSlideRail}
-        disabled={args.disabled}
-        showDomainLabels={args.showDomainLabels}
-        showSelectedRange={args.showSelectedRange}
-        motionBlur={args.motionBlur}
-        springOnRelease={args.springOnRelease}
-        min={args.min}
-        max={args.max}
-        debounceInterval={args.debounceInterval}
+        disabled={disabled}
+        showDomainLabels={showDomainLabels}
+        showSelectedRange={showSelectedRange}
+        motionBlur={motionBlur}
+        springOnRelease={springOnRelease}
+        min={min}
+        max={max}
+        debounceInterval={debounceInterval}
         onDrag={(newVal: number) => {
           setVal(Math.round(newVal));
           action('onDrag')(newVal);
         }}
-        axisLock={args.axisLock}
+        axisLock={axisLock}
         values={[
           {
             value: val,
@@ -163,28 +198,42 @@ Rating.args = {
   axisLock: 'x',
 };
 
-export const ColorPicker: Story = args => {
-  const [hue, setHue] = useState(args.hue);
-  const [sat, setSat] = useState(args.saturation);
-  const [light, setLight] = useState(args.lightness);
+interface ColorPickerProps {
+  hue: number;
+  lightness: number;
+  saturation: number;
+  disabled: boolean;
+  showDomainLabels: boolean;
+}
+
+export const ColorPicker: Story<ColorPickerProps> = ({
+  hue,
+  lightness,
+  saturation,
+  disabled,
+  showDomainLabels,
+}: ColorPickerProps) => {
+  const [hue_, setHue] = useState(hue);
+  const [sat, setSat] = useState(saturation);
+  const [light, setLight] = useState(lightness);
 
   useEffect(() => {
-    setHue(args.hue);
-  }, [args.hue]);
+    setHue(hue_);
+  }, [hue_]);
 
   useEffect(() => {
-    setSat(args.saturation);
-  }, [args.saturation]);
+    setSat(saturation);
+  }, [saturation]);
 
   useEffect(() => {
-    setLight(args.lightness);
-  }, [args.lightness]);
+    setLight(lightness);
+  }, [lightness]);
 
   const allHues = Array.from({ length: 360 }, (_, i) => i).map(
     num => `hsl(${num}, ${sat}%, ${light}%)`,
   );
-  const allSats = [`hsl(${hue}, 0%, ${light}%)`, `hsl(${hue}, 100%, ${light}%`];
-  const allLights = [`hsl(${hue}, ${sat}%, 10%)`, `hsl(${hue}, ${sat}%, 90%)`];
+  const allSats = [`hsl(${hue_}, 0%, ${light}%)`, `hsl(${hue_}, 100%, ${light}%`];
+  const allLights = [`hsl(${hue_}, ${sat}%, 10%)`, `hsl(${hue_}, ${sat}%, 90%)`];
 
   return (
     <Card
@@ -193,12 +242,12 @@ export const ColorPicker: Story = args => {
       header={
         <ColorPreview
           style={{
-            backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
-            color: readableColor(`hsl(${hue},${sat}%,${light}%)`),
+            backgroundColor: `hsl(${hue_},${sat}%,${light}%)`,
+            color: readableColor(`hsl(${hue_},${sat}%,${light}%)`),
           }}
         >
           {toColorString({
-            hue,
+            hue: hue_,
             saturation: sat / 100,
             lightness: light / 100,
           })}
@@ -217,8 +266,8 @@ export const ColorPicker: Story = args => {
               }}
             />
           ))}
-          disabled={args.disabled}
-          showDomainLabels={args.showDomainLabels}
+          disabled={disabled}
+          showDomainLabels={showDomainLabels}
           showSelectedRange={false}
           min={0}
           max={360}
@@ -228,8 +277,8 @@ export const ColorPicker: Story = args => {
           }}
           values={[
             {
-              value: hue,
-              label: hue,
+              value: hue_,
+              label: hue_,
               color: colors.grayLight,
             },
           ]}
