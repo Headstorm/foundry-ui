@@ -50,6 +50,11 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #929599;
 }
 
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c2 {
   width: 5rem;
   height: 10px;
@@ -131,6 +136,11 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-color: #929599;
 }
 
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c2 {
   position: absolute;
   width: 100%;
@@ -201,6 +211,11 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 
 .c0:hover {
   background-color: #929599;
+}
+
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c2 {
@@ -276,6 +291,11 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c2 {
   position: absolute;
   width: 100%;
@@ -347,6 +367,11 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 
 .c0:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c2 {
@@ -424,6 +449,11 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   background-color: rgba(0,0,0,0.05);
 }
 
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c2 {
   position: absolute;
   width: 100%;
@@ -495,6 +525,11 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 
 .c0:hover {
   background-color: #929599;
+}
+
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c1 {
@@ -601,6 +636,11 @@ exports[`Button shows icons 1`] = `
   background-color: #929599;
 }
 
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c1 {
   height: 1rem;
   vertical-align: middle;
@@ -703,6 +743,11 @@ exports[`Button shows icons with type string 1`] = `
 
 .c0:hover {
   background-color: #929599;
+}
+
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c1 {
@@ -820,6 +865,11 @@ exports[`Button shows loading text when provided 1`] = `
 
 .c0:hover {
   background-color: #929599;
+}
+
+.c0:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c2 {

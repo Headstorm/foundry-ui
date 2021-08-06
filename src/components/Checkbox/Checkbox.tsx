@@ -30,7 +30,7 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
   padding: 0;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  width: 1px; 
 `;
 
 export const Label = styled(LabelElement)`
@@ -42,10 +42,7 @@ export const Label = styled(LabelElement)`
       cursor: pointer;
       height: 2em;
       font-size: 1em;
-    
-      ${Input}:focus + & {
-        box-shadow: 0 0 0 3px ${colors.grayXlight};
-      }
+      
       ${disabled ? disabledStyles() : ''}
     `;
   }}
@@ -60,10 +57,9 @@ export const Box = styled(Div)`
     const backgroundColor = variant === variants.fill && checked ? color : colors.background;
 
     return `
-      ${
-        variant === variants.outline || variant === variants.fill
-          ? `border: 1px solid ${color};`
-          : ''
+      ${variant === variants.outline || variant === variants.fill
+        ? `border: 1px solid ${color};`
+        : ''
       } 
       background-color: ${backgroundColor};
       border-radius: 2px;
@@ -82,8 +78,16 @@ export const Box = styled(Div)`
 `;
 
 export const CheckboxContainer = styled.div`
+${() => {
+    const { colors } = useTheme();
+    return `
   display: inline-block;
   vertical-align: middle;
+  &:focus-within {
+    ${Box} {
+      box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
+    }}`
+  }}
 `;
 
 export const BaseIcon = styled(Icon)`
