@@ -30,7 +30,7 @@ packages/.DS_Store
 .DS_Store
 docs/
 
-
+coverage/
 
 package-lock.json
 npm-debug.log*
