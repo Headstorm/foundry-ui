@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';

@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyledComponentBase } from 'styled-components';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ValueProp = {

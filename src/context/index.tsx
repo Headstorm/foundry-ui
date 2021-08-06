@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
 

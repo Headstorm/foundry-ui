@@ -8,7 +8,7 @@ import React, {
   TextareaHTMLAttributes,
   InputHTMLAttributes,
 } from 'react';
-import styled, { css, StyledComponentBase } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';

@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useCallback } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import { mdiClose } from '@mdi/js';
 import { useSpring } from 'react-spring';
 import { Portal } from 'react-portal';

@@ -5,9 +5,9 @@ import { Story, Meta } from '@storybook/react';
 
 import { mdiMessage, mdiSend } from '@mdi/js';
 
-import variants from 'src/enums/variants';
-import colors from 'src/enums/colors';
-import FeedbackTypes from 'src/enums/feedbackTypes';
+import variants from '../../enums/variants';
+import colors from '../../enums/colors';
+import FeedbackTypes from '../../enums/feedbackTypes';
 import Button, { ButtonProps } from './Button';
 
 const StyledIconContainer = styled.div`

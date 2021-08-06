@@ -1,5 +1,4 @@
-import { FunctionComponent, MouseEventHandler } from 'react';
-import { StyledComponentBase } from 'styled-components';
+import React, { FunctionComponent, MouseEventHandler } from 'react';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ExpansionIconProps = {

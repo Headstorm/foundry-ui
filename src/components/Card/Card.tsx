@@ -1,5 +1,5 @@
 import React, { ReactNode, MouseEvent } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
