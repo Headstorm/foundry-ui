@@ -20,6 +20,23 @@ const components = checkForComponents(createdFiles)
 import * as exportedComponents from "./src";
 const componentsNotExported = components.filter(component => !exportedComponents[component])
 
+const BASE_DIR = 'base-build';
+const HEAD_DIR = 'build2';
+
+let headSha;
+  let baseSha;
+  try {
+    headSha = (readFileSync(HEAD_DIR + '/COMMIT_SHA') + '').trim();
+    baseSha = (readFileSync(BASE_DIR + '/COMMIT_SHA') + '').trim();
+    message(`${headSha}...${baseSha}`)
+  } catch {
+    warn(
+      "Failed to read build artifacts. It's possible a build configuration " +
+        'has changed upstream. Try pulling the latest changes from the ' +
+        'main branch.'
+    );
+  }
+
 markdown(`
 ${componentsNotExported.length > 0?
     'Components added but not exported: ' + componentsNotExported
