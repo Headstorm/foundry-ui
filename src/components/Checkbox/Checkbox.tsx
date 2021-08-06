@@ -56,9 +56,10 @@ export const Box = styled(Div)`
     const backgroundColor = variant === variants.fill && checked ? color : colors.background;
 
     return `
-      ${variant === variants.outline || variant === variants.fill
-        ? `border: 1px solid ${color};`
-        : ''
+      ${
+        variant === variants.outline || variant === variants.fill
+          ? `border: 1px solid ${color};`
+          : ''
       } 
       background-color: ${backgroundColor};
       border-radius: 2px;
