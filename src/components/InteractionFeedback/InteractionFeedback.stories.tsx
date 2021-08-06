@@ -27,19 +27,17 @@ interface SplashProps {
   color: string;
 }
 
-export const Splash: Story<SplashProps> = args => {
-  const {
-    startingRadius,
-    entranceOpacity,
-    endingRadius,
-    exitOpacity,
-    mass,
-    tension,
-    friction,
-    clamp,
-    color,
-  } = args;
-
+export const Splash: Story<SplashProps> = ({
+  startingRadius,
+  entranceOpacity,
+  endingRadius,
+  exitOpacity,
+  mass,
+  tension,
+  friction,
+  clamp,
+  color,
+}: SplashProps) => {
   const transitionProps = {
     from: {
       r: `${startingRadius}`,

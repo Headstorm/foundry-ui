@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import colors from '../../enums/colors';
-import Label from './Label';
+import Label, { LabelProps } from './Label';
 import TextInput from '../TextInput';
 
-export const BasicLabel: Story = args => {
-  const { htmlFor } = args;
+type BasicLabelProps = LabelProps & { htmlFor: string };
 
+export const BasicLabel: Story<BasicLabelProps> = ({ htmlFor, ...args }: BasicLabelProps) => {
   return (
     <Label {...args}>
       <TextInput id={htmlFor} placeholder="placeholder" />

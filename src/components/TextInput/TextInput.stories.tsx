@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import * as IconPaths from '@mdi/js';
 
-import TextInput from './TextInput';
+import TextInput, { TextInputProps } from './TextInput';
 
 const iconOptions = {
   none: '',
@@ -31,22 +31,32 @@ const callbacks: {
   onKeyDown: event => action('onKeyDown')(event.key),
 };
 
-export const BasicTextInput: Story = args => {
-  const { clearable } = args;
+type BasicTextInputProps = TextInputProps & {
+  clearable: boolean;
+};
 
+export const BasicTextInput: Story<BasicTextInputProps> = ({
+  clearable,
+  onChange,
+  onClear,
+  ...args
+}: BasicTextInputProps) => {
   const [inputValue, setInputValue] = useState('');
 
   const onChangeCallback = useCallback(
     event => {
       setInputValue(event.target.value);
-      args.onChange(event);
+      if (onChange) onChange(event);
     },
-    [args],
+    [onChange],
   );
-  const onClearCallback = useCallback(() => {
-    setInputValue('');
-    args.onClear();
-  }, [args]);
+  const onClearCallback = useCallback(
+    event => {
+      setInputValue('');
+      if (onClear) onClear(event);
+    },
+    [onClear],
+  );
 
   return (
     <TextInput
@@ -58,7 +68,7 @@ export const BasicTextInput: Story = args => {
   );
 };
 BasicTextInput.args = {
-  ariaLabel: 'textInput',
+  'aria-label': 'textInput',
   debounceInterval: 150,
   disabled: false,
   placeholder: 'Placeholder',
@@ -71,13 +81,13 @@ BasicTextInput.args = {
   type: '',
   multiLineIsResizable: false,
   showCharacterCount: true,
-  maxLength: '20',
+  maxLength: 20,
   allowTextBeyondMaxLength: false,
   clearable: false,
   ...callbacks,
 };
 
-export const UncontrolledTextInput: Story = args => {
+export const UncontrolledTextInput: Story<TextInputProps> = (args: TextInputProps) => {
   return <TextInput {...args} onClear={undefined} />;
 };
 UncontrolledTextInput.args = { ...BasicTextInput.args };

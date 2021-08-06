@@ -3,11 +3,10 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Checkbox, { CheckboxTypes } from './Checkbox';
+import Checkbox, { CheckboxProps, CheckboxTypes } from './Checkbox';
 import variants from '../../enums/variants';
 
-const Template: Story = args => {
-  const { checked } = args;
+const Template: Story<CheckboxProps> = ({ checked, ...args }: CheckboxProps) => {
   const [isChecked, setChecked] = React.useState(checked);
   return (
     <Checkbox

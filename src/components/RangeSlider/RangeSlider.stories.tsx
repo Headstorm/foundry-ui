@@ -7,6 +7,7 @@ import { readableColor, toColorString } from 'polished';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
+import { RangeSliderProps } from './types';
 import Card from '../Card';
 
 const Row = styled.div`
@@ -53,22 +54,26 @@ const StyledSlideRail = styled(SlideRail)`
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;
 
-export const Default: Story = args => {
-  const {
-    value,
-    markers,
-    'use marker labels': markerLabels,
-    disabled,
-    showDomainLabels,
-    showSelectedRange,
-    motionBlur,
-    springOnRelease,
-    min,
-    max,
-    debounceInterval,
-    axisLock,
-  } = args;
+type DefaultProps = Omit<RangeSliderProps, 'markers'> & {
+  value: number;
+  'use marker labels': boolean;
+  markers: string;
+};
 
+export const Default: Story<DefaultProps> = ({
+  value,
+  markers,
+  'use marker labels': markerLabels,
+  disabled,
+  showDomainLabels,
+  showSelectedRange,
+  motionBlur,
+  springOnRelease,
+  min,
+  max,
+  debounceInterval,
+  axisLock,
+}: DefaultProps) => {
   const [val, setVal] = useState(value);
 
   useEffect(() => {
@@ -76,7 +81,7 @@ export const Default: Story = args => {
   }, [value]);
 
   const markersSelection = markers;
-  const markersArray: any[] = [];
+  const markersArray = [];
   if (markersSelection === 'all values') {
     for (let i = min; i <= max; i++) {
       markersArray.push(markerLabels ? { value: i, label: `${i}` } : i);
@@ -108,7 +113,7 @@ export const Default: Story = args => {
             label: val,
           },
         ]}
-        markers={markersArray}
+        markers={markersArray as RangeSliderProps['markers']}
       />
     </Row>
   );
@@ -129,20 +134,22 @@ Default.args = {
   axisLock: 'x',
 };
 
-export const Rating: Story = args => {
-  const {
-    value,
-    disabled,
-    showDomainLabels,
-    showSelectedRange,
-    motionBlur,
-    springOnRelease,
-    min,
-    max,
-    debounceInterval,
-    axisLock,
-  } = args;
+type RatingProps = Omit<RangeSliderProps, 'markers'> & {
+  value: number;
+};
 
+export const Rating: Story<RatingProps> = ({
+  value,
+  disabled,
+  showDomainLabels,
+  showSelectedRange,
+  motionBlur,
+  springOnRelease,
+  min,
+  max,
+  debounceInterval,
+  axisLock,
+}: RatingProps) => {
   const [val, setVal] = useState(value);
 
   useEffect(() => {
@@ -191,9 +198,21 @@ Rating.args = {
   axisLock: 'x',
 };
 
-export const ColorPicker: Story = args => {
-  const { hue, lightness, saturation, disabled, showDomainLabels } = args;
+interface ColorPickerProps {
+  hue: number;
+  lightness: number;
+  saturation: number;
+  disabled: boolean;
+  showDomainLabels: boolean;
+}
 
+export const ColorPicker: Story<ColorPickerProps> = ({
+  hue,
+  lightness,
+  saturation,
+  disabled,
+  showDomainLabels,
+}: ColorPickerProps) => {
   const [hue_, setHue] = useState(hue);
   const [sat, setSat] = useState(saturation);
   const [light, setLight] = useState(lightness);

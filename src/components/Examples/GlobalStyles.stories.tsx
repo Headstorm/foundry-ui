@@ -27,9 +27,11 @@ interface ExampleProps {
   grayDark: string;
 }
 
-export const Example: Story<ExampleProps> = args => {
-  const { 'font-family': fontFamily, primary, grayDark } = args;
-
+export const Example: Story<ExampleProps> = ({
+  'font-family': fontFamily,
+  primary,
+  grayDark,
+}: ExampleProps) => {
   const globalStyles = `
     font-family: ${fontFamily};
   `;
