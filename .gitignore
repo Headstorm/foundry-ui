@@ -31,7 +31,7 @@ packages/.DS_Store
 docs/
 
 # Ignore most coverage files aside from badges and coverage summary
-coverage/
+coverage
 
 package-lock.json
 npm-debug.log*
