@@ -1,7 +1,29 @@
-import {message, danger} from "danger"
+import { message, danger, warn, markdown} from "danger";
+import { readFileSync } from "fs";
+import { codeCoverage } from "danger-plugin-code-coverage";
 
-const modifiedMD = danger.git.modified_files.join("- ")
-message("Changed Files in this PR: \n - " + modifiedMD)
+const createdFiles = danger.git.created_files
+const modifiedFiles = danger.git.modified_files
+const deletedFiles = danger.git.deleted_files
 
-const deletedFiles = danger.git.deleted_files.join("- ")
-message("Deleted Files in this PR: \n - " + deletedFiles)
+const checkForComponents = (files) => {
+    const componentPaths = files.filter(file => file.includes('src/components/'))
+    const components = componentPaths.map(component => {
+        component = component.slice(15)
+        component = component.slice(0, component.indexOf('/'))
+        return(component)
+    })
+    return(components.filter((item, index) => components.indexOf(item) === index));
+}
+
+const components = checkForComponents(createdFiles)
+import * as exportedComponents from "./src";
+const componentsNotExported = components.filter(component => !exportedComponents[component])
+
+markdown(`
+${componentsNotExported.length > 0?
+    'Components added but not exported: ' + componentsNotExported
+    : ''
+}
+`)
+codeCoverage()
