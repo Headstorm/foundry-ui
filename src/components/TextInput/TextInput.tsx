@@ -46,7 +46,6 @@ const TextInputContainer = styled(InputElement)`
       &:focus {
         outline: none;
         box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
-        
   `;
   }}
 `;
@@ -66,7 +65,6 @@ const TextAreaInputContainer = styled(TextArea)`
       &:focus {
         outline: none;
         box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
-        
     `;
   }}
 `;

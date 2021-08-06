@@ -101,7 +101,6 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       &:focus {
         outline: none;
         box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
-        
       }
       ${
         feedbackType === FeedbackTypes.simple
