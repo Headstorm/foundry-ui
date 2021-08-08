@@ -70,12 +70,12 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -267,12 +267,12 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -554,12 +554,12 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -749,12 +749,12 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1066,12 +1066,12 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1353,12 +1353,12 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1552,12 +1552,12 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1748,12 +1748,12 @@ exports[`Dropdown renders a value when given a matching option id through props 
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1975,12 +1975,12 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2162,12 +2162,12 @@ exports[`Dropdown renders one value when given two values but only one matches a
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2389,12 +2389,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2624,12 +2624,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2859,12 +2859,12 @@ exports[`Dropdown selects options from values prop 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
