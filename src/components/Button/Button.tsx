@@ -104,6 +104,10 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
       }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
+      }
       ${
         feedbackType === FeedbackTypes.simple
           ? `
