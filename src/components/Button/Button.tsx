@@ -40,7 +40,10 @@ export type ButtonProps = {
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
 
-  StyledSkeleton?: JSX.Element | null;
+  skeletonProps?: SubcomponentPropsType;
+  /**
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   */
   ProgressBar?: JSX.Element | null;
 
   containerRef?: React.RefObject<HTMLButtonElement>;
@@ -158,8 +161,11 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
+  /**
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   */
   ProgressBar, // Deprecated
-  StyledSkeleton = Skeleton,
+  skeletonProps,
 
   containerProps = {},
   interactionFeedbackProps,
@@ -206,7 +212,7 @@ const Button = ({
   };
 
   return (
-    <StyledSkeleton isLoading={isLoading}>
+    <Skeleton isLoading={isLoading} {...skeletonProps}>
       <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
         {!isProcessing &&
           iconPrefix &&
@@ -244,7 +250,7 @@ const Button = ({
           />
         )}
       </StyledContainer>
-    </StyledSkeleton>
+    </Skeleton>
   );
 };
 

@@ -35,6 +35,9 @@ export {
   Tag,
   Text,
   TextInput,
+  /**
+   * @deprecated The Progress loading skeleton is being replaced by the Skeleton component
+   */
   Progress,
   Skeleton,
   FoundryProvider,

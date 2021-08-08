@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
+import { StyledSubcomponentType } from '../components/commonTypes';
 
 export const defaultGlobalStyles = `
   ${

@@ -419,7 +419,9 @@ const Dropdown = ({
             break;
           case 'ArrowDown':
             if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
-              const optionsContainer = focusedElement.parentNode.nextElementSibling; // get parent before nextElementSibling because buttons are nested inside of skeletons
+              const button = focusedElement.parentNode as HTMLElement | undefined;
+              // get parent before nextElementSibling because buttons are nested inside of skeletons
+              const optionsContainer = button ? button.nextElementSibling : null;
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
                 if (toFocus) {
