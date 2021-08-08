@@ -8,6 +8,7 @@ import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
+import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
 import {
   getFontColorFromVariant,
@@ -230,7 +231,7 @@ const Button = ({
             <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
           </StyledLeftIconContainer>
         )}
-        {isLoading && ProgressBar ? <ProgressBar /> : children}
+        {isLoading && ProgressBar ? <Progress /> : children}
         {iconSuffix &&
           (typeof iconSuffix === 'string' ? (
             <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
