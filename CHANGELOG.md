@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Headstorm/foundry-ui/compare/v1.4.0...v1.5.0) (2021-08-08)
+
+
+### Features
+
+* **form components:** added focus on form components such as textInput, buttons and checkboxes ([b3bd267](https://github.com/Headstorm/foundry-ui/commit/b3bd2678ba0153911e7f3a7979bc765acfa48204)), closes [#209](https://github.com/Headstorm/foundry-ui/issues/209)
+
 # [1.4.0](https://github.com/Headstorm/foundry-ui/compare/v1.3.0...v1.4.0) (2021-08-05)
 
 
