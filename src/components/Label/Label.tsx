@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 
 export const DefaultStyledLabel = styled(LabelElement)`
@@ -29,10 +29,10 @@ const DefaultStyledIconContainer = styled(Span)`
 `;
 
 export interface LabelProps {
-  StyledLabelContainer?: string & StyledComponentBase<any, {}>;
-  StyledTextContainer?: string & StyledComponentBase<any, {}>;
-  StyledLabel?: string & StyledComponentBase<any, {}>;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledLabelContainer?: StyledSubcomponentType;
+  StyledTextContainer?: StyledSubcomponentType;
+  StyledLabel?: StyledSubcomponentType;
+  StyledIconContainer?: StyledSubcomponentType;
 
   labelContainerProps?: SubcomponentPropsType;
   textContainerProps?: SubcomponentPropsType;

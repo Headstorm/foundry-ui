@@ -27,13 +27,12 @@ const cities = generateCityList(50);
 
 type BasicProps = DropdownProps & { clearable: boolean };
 
-export const Basic: Story<BasicProps> = ({ clearable, onClear, onSelect, ...args }: BasicProps) => {
+export const Basic: Story<BasicProps> = ({ clearable, onClear, onSelect }: BasicProps) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
 
   return (
     <Label labelText="City" htmlFor="cities-list">
       <Dropdown
-        {...args}
         name="cities-list"
         onClear={clearable ? onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {

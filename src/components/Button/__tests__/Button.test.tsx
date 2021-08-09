@@ -69,6 +69,14 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('shows loading skeleton', async () => {
+    const { container, getByTestId } = render(<Button isLoading onClick={() => {}} />);
+
+    await waitFor(() => screen.getByRole('button'));
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('shows LeftIconContainer when isProcessing', async () => {
     const { container, getByTestId } = render(<Button isProcessing onClick={() => {}} />);
 
@@ -146,12 +154,6 @@ describe('Button', () => {
         onClick={() => {}}
       />,
     );
-    await waitFor(() => screen.getByRole('button'));
-    expect(ref.current).toBeTruthy();
-  });
-  it('loadingBarRef.current should exist', async () => {
-    const ref = React.createRef<HTMLDivElement>();
-    const { getByTestId } = render(<Button loadingBarRef={ref} isLoading onClick={() => {}} />);
     await waitFor(() => screen.getByRole('button'));
     expect(ref.current).toBeTruthy();
   });

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, MouseEventHandler } from 'react';
-import { StyledComponentBase } from 'styled-components';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ExpansionIconProps = {
   isCollapsed: boolean;
@@ -20,10 +19,10 @@ export interface columnTypes {
     sortable?: boolean;
     sortFunction?: (item1: any, item2: any) => boolean;
     isGroupLabel?: boolean;
-    cellComponent?: string & StyledComponentBase<any, {}>;
-    rowComponent?: string & StyledComponentBase<any, {}>;
-    headerCellComponent?: string & StyledComponentBase<any, {}>;
-    groupCellComponent?: string & StyledComponentBase<any, {}>;
+    cellComponent?: StyledSubcomponentType;
+    rowComponent?: StyledSubcomponentType;
+    headerCellComponent?: StyledSubcomponentType;
+    groupCellComponent?: StyledSubcomponentType;
   };
 }
 
@@ -38,12 +37,12 @@ export type TableProps = {
   minWidthBreakpoint?: number;
   sortGroups?: boolean;
 
-  StyledCell?: string & StyledComponentBase<any, {}>;
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledGroupLabelRow?: string & StyledComponentBase<any, {}>;
-  StyledHeader?: string & StyledComponentBase<any, {}>;
-  StyledHeaderCell?: string & StyledComponentBase<any, {}>;
-  StyledRow?: string & StyledComponentBase<any, {}>;
+  StyledCell?: StyledSubcomponentType;
+  StyledContainer?: StyledSubcomponentType;
+  StyledGroupLabelRow?: StyledSubcomponentType;
+  StyledHeader?: StyledSubcomponentType;
+  StyledHeaderCell?: StyledSubcomponentType;
+  StyledRow?: StyledSubcomponentType;
 
   cellProps?: SubcomponentPropsType;
   containerProps?: SubcomponentPropsType;

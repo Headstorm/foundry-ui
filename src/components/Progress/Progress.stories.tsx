@@ -9,6 +9,7 @@ import Progress from './Progress';
 //   url: '',
 // };
 
+// TODO - add a reusable deprecation warning to this story
 export const BasicProgress: Story = args => <Progress {...args} />;
 
 export default {

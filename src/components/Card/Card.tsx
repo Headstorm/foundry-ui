@@ -1,10 +1,10 @@
 import React, { ReactNode, MouseEvent } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback, {
@@ -110,10 +110,10 @@ const StyledFeedbackContainer = styled(InteractionFeedback.Container)`
   top: 0;
 `;
 export interface CardProps {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledHeader?: string & StyledComponentBase<any, {}>;
-  StyledBody?: string & StyledComponentBase<any, {}>;
-  StyledFooter?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledHeader?: StyledSubcomponentType;
+  StyledBody?: StyledSubcomponentType;
+  StyledFooter?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   headerProps?: SubcomponentPropsType;

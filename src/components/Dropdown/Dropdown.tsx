@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
@@ -11,7 +11,7 @@ import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 import { mergeRefs } from '../../utils/refs';
 
@@ -185,15 +185,15 @@ const StyledTagContainer = styled(Tag.Container)`
 `;
 
 export interface DropdownProps {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledValueContainer?: string & StyledComponentBase<any, {}>;
-  StyledValueItem?: string & StyledComponentBase<any, {}>;
-  StyledOptionsContainer?: string & StyledComponentBase<any, {}>;
-  StyledOptionItem?: string & StyledComponentBase<any, {}>;
-  StyledCheckContainer?: string & StyledComponentBase<any, {}>;
-  StyledPlaceholder?: string & StyledComponentBase<any, {}>;
-  StyledCloseIconContainer?: string & StyledComponentBase<any, {}>;
-  StyledArrowIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledValueContainer?: StyledSubcomponentType;
+  StyledValueItem?: StyledSubcomponentType;
+  StyledOptionsContainer?: StyledSubcomponentType;
+  StyledOptionItem?: StyledSubcomponentType;
+  StyledCheckContainer?: StyledSubcomponentType;
+  StyledPlaceholder?: StyledSubcomponentType;
+  StyledCloseIconContainer?: StyledSubcomponentType;
+  StyledArrowIconContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -419,7 +419,9 @@ const Dropdown = ({
             break;
           case 'ArrowDown':
             if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
-              const optionsContainer = focusedElement.nextElementSibling;
+              const button = focusedElement.parentNode as HTMLElement | undefined;
+              // get parent before nextElementSibling because buttons are nested inside of skeletons
+              const optionsContainer = button ? button.nextElementSibling : null;
               if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
                 if (toFocus) {
