@@ -344,7 +344,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   visibility: hidden;
 }
 
-.c12 {
+.c14 {
   background: white;
   position: absolute;
   left: 0px;
@@ -359,7 +359,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c13 {
+.c15 {
   visibility: hidden;
   height: 10rem;
   top: auto;
@@ -502,7 +502,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </div>
     <div
-      class=" c12 c13"
+      class=" c14 c15"
     />
   </div>
 </DocumentFragment>
@@ -851,7 +851,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   visibility: hidden;
 }
 
-.c13 {
+.c15 {
   background: white;
   position: absolute;
   left: 0px;
@@ -866,7 +866,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c14 {
+.c16 {
   visibility: hidden;
   height: 10rem;
   top: auto;
@@ -1040,7 +1040,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c15 c16"
     />
   </div>
 </div>
@@ -1193,7 +1193,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   visibility: hidden;
 }
 
-.c12 {
+.c14 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1208,7 +1208,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c13 {
+.c15 {
   visibility: hidden;
   height: 10rem;
   top: auto;
@@ -1352,7 +1352,7 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </div>
     <div
-      class=" c12 c13"
+      class=" c14 c15"
     />
   </div>
 </div>
