@@ -69,6 +69,14 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('shows loading skeleton', async () => {
+    const { container, getByTestId } = render(<Button isLoading onClick={() => {}} />);
+
+    await waitFor(() => screen.getByRole('button'));
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('shows LeftIconContainer when isProcessing', async () => {
     const { container, getByTestId } = render(<Button isProcessing onClick={() => {}} />);
 

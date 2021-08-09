@@ -212,8 +212,19 @@ const Button = ({
     ...containerProps,
   };
 
+  const mergedSkeletonProps = {
+    isLoading,
+    style: {
+      display: 'inline-block',
+      ...(skeletonProps && Object.prototype.hasOwnProperty.call(skeletonProps, 'style')
+        ? (skeletonProps.style as CSSRule)
+        : {}),
+    },
+    ...skeletonProps,
+  };
+
   return (
-    <Skeleton isLoading={isLoading} {...skeletonProps}>
+    <Skeleton {...mergedSkeletonProps}>
       <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
         {!isProcessing &&
           iconPrefix &&
