@@ -27,13 +27,17 @@ interface ExampleProps {
   grayDark: string;
 }
 
-export const Example: Story<ExampleProps> = args => {
+export const Example: Story<ExampleProps> = ({
+  'font-family': fontFamily,
+  primary,
+  grayDark,
+}: ExampleProps) => {
   const globalStyles = `
-    font-family: ${args['font-family']};
+    font-family: ${fontFamily};
   `;
   const colors = {
-    primary: args.primary,
-    grayDark: args.grayDark,
+    primary,
+    grayDark,
   };
   return (
     <FoundryProvider value={{ globalStyles, colors }}>

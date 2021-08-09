@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import styled from 'styled-components';
@@ -8,7 +8,7 @@ import { name, address, company, commerce } from 'faker';
 
 import Table, { ExpansionIconColumnName } from './Table';
 import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
-import { columnTypes, ExpansionIconProps, RowProps } from './types';
+import { columnTypes, ExpansionIconProps } from './types';
 
 type SampleDataType = {
   name?: string;
@@ -16,13 +16,7 @@ type SampleDataType = {
   address?: string;
   notes?: string;
   isGroupLabel?: boolean;
-};
-
-type SampleSelectionCellType = {
-  index: number;
-  selected: boolean;
-  reachedMinWidth?: boolean;
-  groupIndex?: number;
+  selected?: boolean;
 };
 
 // Custom icon used for overriding the default collapse/expand icons
@@ -80,10 +74,26 @@ const generateSampleGroups = (numberOfGroups = 5, groupSize = 5): Array<SampleDa
   return groupData;
 };
 
-const sampleData: any[] = generateSampleData(10);
-const sampleGroupData: any[] = generateSampleGroups();
+const sampleData = generateSampleData(10);
+const sampleGroupData = generateSampleGroups();
 
-export const Default: Story = args => {
+interface DefaultProps {
+  'Selection width': string;
+  'Name width': string;
+  'Title width': string;
+  'Address width': string;
+  'Notes width': string;
+  'Action width': string;
+}
+
+export const Default: Story<DefaultProps> = ({
+  'Selection width': selectionWidth,
+  'Name width': nameWidth,
+  'Title width': titleWidth,
+  'Address width': addressWidth,
+  'Notes width': notesWidth,
+  'Action width': actionWidth,
+}: DefaultProps) => {
   const [rows, setRows] = useState(sampleData);
 
   const onDelete = (index: number) => {
@@ -98,16 +108,15 @@ export const Default: Story = args => {
     setRows(newRows);
   };
 
-  const selectAll = (evt: SyntheticEvent) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const currentlyChecked = evt.target.checked;
-    const newRows = rows.map((row: RowProps) => ({ ...row, selected: currentlyChecked }));
+  const selectAll = (event: React.MouseEvent) => {
+    const target = event.target as HTMLInputElement;
+    const currentlyChecked = target.checked;
+    const newRows = rows.map((row: SampleDataType) => ({ ...row, selected: currentlyChecked }));
     setRows(newRows);
   };
 
   const SelectAllCell = () => {
-    const checkRowForSelection = (row: columnTypes) =>
+    const checkRowForSelection = (row: SampleDataType) =>
       Object.prototype.hasOwnProperty.call(row, 'selected') && row.selected;
 
     // TODO: don't use pointer-events to control if a column is sortable - it should be checked
@@ -117,12 +126,12 @@ export const Default: Story = args => {
       <Table.HeaderCell sortable>
         <Checkbox
           checkboxType={
-            rows.filter((row: columnTypes) => checkRowForSelection(row)).length === rows.length
+            rows.filter(checkRowForSelection).length === rows.length
               ? CheckboxTypes.check
               : CheckboxTypes.neutral
           }
-          checked={Boolean(rows.filter((row: columnTypes) => checkRowForSelection(row)).length)}
-          onClick={selectAll}
+          checked={Boolean(rows.filter(checkRowForSelection).length)}
+          onClick={e => selectAll(e)}
           inputProps={{ onChange: () => {} }}
         />
       </Table.HeaderCell>
@@ -153,7 +162,7 @@ export const Default: Story = args => {
 
   const NotesCell = ({ notes }: { notes: string }) => (
     <Table.Cell>
-      <NoteField onChange={() => console.log()} rows={3} value={notes} />
+      <NoteField onChange={() => {}} rows={3} value={notes} />
     </Table.Cell>
   );
 
@@ -173,25 +182,25 @@ export const Default: Story = args => {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
-      width: args['Selection width'],
+      width: selectionWidth,
       cellComponent: SelectionCell,
       sortable: false,
     },
     name: {
       name: 'Name',
-      width: args['Name width'],
+      width: nameWidth,
     },
     title: {
       name: 'Title',
-      width: args['Title width'],
+      width: titleWidth,
     },
     address: {
       name: 'Address',
-      width: args['Address width'],
+      width: addressWidth,
     },
     notes: {
       name: 'Notes',
-      width: args['Notes width'],
+      width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
@@ -199,12 +208,12 @@ export const Default: Story = args => {
     action: {
       name: '',
       sortable: false,
-      width: args['Action width'],
+      width: actionWidth,
       cellComponent: ActionCell,
     },
   };
 
-  return <Table columns={sampleColumns} data={rows} />;
+  return <Table columns={sampleColumns} data={rows as columnTypes[]} />;
 };
 Default.args = {
   'Selection width': '2rem',
@@ -215,12 +224,33 @@ Default.args = {
   'Action width': '1rem',
 };
 
-export const Groups: Story = args => {
+interface GroupsProps extends DefaultProps {
+  'Use default expansion column': boolean;
+  'Expansion Icon width': string;
+  groupLabelPosition: 'above' | 'below' | undefined;
+  useCustomLabel: boolean;
+  sortGroups: boolean;
+  areGroupsCollapsible: boolean;
+}
+
+export const Groups: Story<GroupsProps> = ({
+  'Selection width': selectionWidth,
+  'Name width': nameWidth,
+  'Title width': titleWidth,
+  'Address width': addressWidth,
+  'Notes width': notesWidth,
+  'Use default expansion column': useDefaultExpansionColumn,
+  groupLabelPosition,
+  sortGroups,
+  areGroupsCollapsible,
+  useCustomLabel,
+  ...args
+}: GroupsProps) => {
   const [rows, setRows] = useState(sampleGroupData);
 
   const onSelect = (index = 0, groupIndex = 0, selected: boolean) => {
-    const newRows: Array<SampleSelectionCellType[]> = [];
-    rows.forEach((grp: SampleSelectionCellType[]) => {
+    const newRows: SampleDataType[][] = [];
+    rows.forEach(grp => {
       newRows.push([...grp]);
     });
 
@@ -228,14 +258,13 @@ export const Groups: Story = args => {
     setRows(newRows);
   };
 
-  const selectAll = (evt: SyntheticEvent) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const currentlyChecked = evt.target.checked;
-    const newRows: Array<Array<RowProps>> = [];
-    rows.forEach((group: Array<RowProps>) => {
+  const selectAll = (event: React.MouseEvent) => {
+    const target = event.target as HTMLInputElement;
+    const currentlyChecked = target.checked;
+    const newRows: SampleDataType[][] = [];
+    rows.forEach(group => {
       newRows.push(
-        group.map((row: RowProps) => {
+        group.map(row => {
           return { ...row, selected: currentlyChecked };
         }),
       );
@@ -247,8 +276,8 @@ export const Groups: Story = args => {
     let totalSelected = 0;
     let totalCheckboxesAccumulator = 0;
     rows.forEach(groupRows => {
-      groupRows.forEach((row: columnTypes) => {
-        if (groupRows.isGroupLabel) return;
+      groupRows.forEach(row => {
+        if (row.isGroupLabel) return;
         if (row.selected) totalSelected++;
         totalCheckboxesAccumulator++;
       });
@@ -300,7 +329,7 @@ export const Groups: Story = args => {
 
   const NotesCell = ({ notes }: { notes: string }) => (
     <Table.Cell>
-      <NoteField onChange={() => console.log()} rows={3} value={notes} />
+      <NoteField onChange={() => {}} rows={3} value={notes} />
     </Table.Cell>
   );
 
@@ -308,26 +337,26 @@ export const Groups: Story = args => {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
-      width: args['Selection width'],
+      width: selectionWidth,
       cellComponent: SelectionCell,
       sortable: false,
       groupCellComponent: EmptyCell,
     },
     name: {
       name: 'Name',
-      width: args['Name width'],
+      width: nameWidth,
     },
     title: {
       name: 'Title',
-      width: args['Title width'],
+      width: titleWidth,
     },
     address: {
       name: 'Address',
-      width: args['Address width'],
+      width: addressWidth,
     },
     notes: {
       name: 'Notes',
-      width: args['Notes width'],
+      width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
@@ -335,7 +364,7 @@ export const Groups: Story = args => {
     },
   };
 
-  if (!args['Use default expansion column']) {
+  if (!useDefaultExpansionColumn) {
     sampleColumns[ExpansionIconColumnName] = {
       name: '',
       sortable: false,
@@ -343,16 +372,15 @@ export const Groups: Story = args => {
     };
   }
 
-  const position = args['groupLabelPosition'];
+  const position = groupLabelPosition;
 
-  const useCustomLabel = args['useCustomLabel'];
   return (
     <Table
       columns={sampleColumns}
-      data={rows}
-      sortGroups={args['sortGroups']}
+      data={rows as columnTypes[][]}
+      sortGroups={sortGroups}
       groupHeaderPosition={position}
-      areGroupsCollapsible={args['areGroupsCollapsible']}
+      areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
     />
   );

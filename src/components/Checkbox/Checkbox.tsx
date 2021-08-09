@@ -35,17 +35,13 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
 
 export const Label = styled(LabelElement)`
   ${({ disabled }) => {
-    const { colors } = useTheme();
     return `
       display: flex;
       align-items: center;
       cursor: pointer;
       height: 2em;
       font-size: 1em;
-    
-      ${Input}:focus + & {
-        box-shadow: 0 0 0 3px ${colors.grayXlight};
-      }
+      
       ${disabled ? disabledStyles() : ''}
     `;
   }}
@@ -82,8 +78,16 @@ export const Box = styled(Div)`
 `;
 
 export const CheckboxContainer = styled.div`
+  ${() => {
+    const { colors } = useTheme();
+    return `
   display: inline-block;
   vertical-align: middle;
+  &:focus-within {
+    ${Box} {
+      box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
+    }}`;
+  }}
 `;
 
 export const BaseIcon = styled(Icon)`

@@ -1,3 +1,25 @@
+## [1.5.1](https://github.com/Headstorm/foundry-ui/compare/v1.5.0...v1.5.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* **divider:** adds the divider subcomponent to the module exports ([aa30d77](https://github.com/Headstorm/foundry-ui/commit/aa30d77500c8e42f0f494b77e9da17c112f35da1)), closes [#280](https://github.com/Headstorm/foundry-ui/issues/280)
+* **divider:** removed wildcard props being passed to the container ([a1a272b](https://github.com/Headstorm/foundry-ui/commit/a1a272b349d9e7bc7213b0fe7b57a6e71a1fac5b))
+
+# [1.5.0](https://github.com/Headstorm/foundry-ui/compare/v1.4.0...v1.5.0) (2021-08-08)
+
+
+### Features
+
+* **form components:** added focus on form components such as textInput, buttons and checkboxes ([b3bd267](https://github.com/Headstorm/foundry-ui/commit/b3bd2678ba0153911e7f3a7979bc765acfa48204)), closes [#209](https://github.com/Headstorm/foundry-ui/issues/209)
+
+# [1.4.0](https://github.com/Headstorm/foundry-ui/compare/v1.3.0...v1.4.0) (2021-08-05)
+
+
+### Features
+
+* **#188:** added toggle and boolean property for showHandleLabels on the rangeSlider ([c52e562](https://github.com/Headstorm/foundry-ui/commit/c52e562025cc963a9be5fc9a0b98dce52ff40f60)), closes [#188](https://github.com/Headstorm/foundry-ui/issues/188)
+
 # [1.3.0](https://github.com/Headstorm/foundry-ui/compare/v1.2.2...v1.3.0) (2021-08-03)
 
 

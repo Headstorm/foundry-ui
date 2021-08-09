@@ -39,6 +39,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   position: absolute;
   width: 100%;
@@ -191,6 +196,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 .c1:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c7 {
@@ -437,6 +447,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   position: absolute;
   width: 100%;
@@ -587,6 +602,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 
 .c1:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c7 {
@@ -863,6 +883,11 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   position: absolute;
   width: 100%;
@@ -1107,6 +1132,11 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   position: absolute;
   width: 100%;
@@ -1263,6 +1293,11 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   position: absolute;
   width: 100%;
@@ -1414,6 +1449,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
 
 .c1:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c8 {
@@ -1600,6 +1640,11 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   position: absolute;
   width: 100%;
@@ -1742,6 +1787,11 @@ exports[`Dropdown renders one value when given two values but only one matches a
 
 .c1:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c8 {
@@ -1926,6 +1976,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
 
 .c1:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c8 {
@@ -2120,6 +2175,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-color: rgba(0,0,0,0.05);
 }
 
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c8 {
   position: absolute;
   width: 100%;
@@ -2310,6 +2370,11 @@ exports[`Dropdown selects options from values prop 1`] = `
 
 .c1:hover {
   background-color: rgba(0,0,0,0.05);
+}
+
+.c1:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
 .c8 {
