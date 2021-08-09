@@ -12,6 +12,7 @@ import Tag from './components/Tag';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
+import Skeleton from './components/Skeleton';
 import { FoundryProvider, FoundryContext, useTheme } from './context';
 
 import colors from './enums/colors';
@@ -34,7 +35,11 @@ export {
   Tag,
   Text,
   TextInput,
+  /**
+   * @deprecated The Progress loading skeleton is being replaced by the Skeleton component
+   */
   Progress,
+  Skeleton,
   FoundryProvider,
   FoundryContext,
   useTheme,
