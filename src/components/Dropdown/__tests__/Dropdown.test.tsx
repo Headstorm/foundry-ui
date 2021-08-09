@@ -15,6 +15,27 @@ const pokeOptions = [
 
 const mockedSelectHandler = jest.fn();
 
+// Need to mock the IntersectionObserver class as it is not native to node
+class MockIntersectionObserver {
+  readonly root: Element | null;
+  readonly rootMargin: string;
+  readonly thresholds: ReadonlyArray<number>;
+
+  constructor() {
+    this.root = null;
+    this.rootMargin = '';
+    this.thresholds = [];
+  }
+
+  disconnect() {}
+  observe() {}
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
+  unobserve() {}
+}
+window.IntersectionObserver = MockIntersectionObserver;
+
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
     const { container } = render(<Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />);
