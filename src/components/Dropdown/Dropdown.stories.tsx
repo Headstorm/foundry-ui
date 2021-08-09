@@ -36,7 +36,7 @@ export const Basic: Story = args => {
         onClear={args.clearable ? args.onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect();
+          return args.onSelect(selected);
         }}
         options={cities}
         values={values}
@@ -106,7 +106,7 @@ export const Icons: Story = args => {
         name="tea-rank"
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect();
+          return args.onSelect(selected);
         }}
         options={teaOptions}
         values={values}
