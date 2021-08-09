@@ -44,30 +44,30 @@ const Container = styled(Div)`
 `;
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
-  ${({ isOpen, isOpenedBelow, isHidden }) => `
+  ${({ isOpen, isOpenedBelow, isHidden }) => {
+    const openStyle = isOpenedBelow
+      ? `
+            border-bottom: 0px solid transparent;
+            border-bottom-right-radius: 0rem;
+            border-bottom-left-radius: 0rem;
+          `
+      : `
+            border-top: 0px solid transparent;
+            border-top-right-radius: 0rem;
+            border-top-left-radius: 0rem;
+          `;
+
+    return `
     user-select: none;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    ${
-      isOpen && !isHidden
-        ? isOpenedBelow
-          ? `
-            border-bottom: 0px solid transparent;
-            border-bottom-right-radius: 0rem;
-            border-bottom-left-radius: 0rem;
-          `
-          : `
-            border-top: 0px solid transparent;
-            border-top-right-radius: 0rem;
-            border-top-left-radius: 0rem;
-          `
-        : ''
-    }
+    ${isOpen && !isHidden ? openStyle : ''}
     width: 15rem;
     padding: .5rem 1rem;
-  `}
+  `;
+  }}
 `;
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
@@ -147,7 +147,6 @@ const OptionItem = styled(Div)`
     const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
     const selectedBgColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
     const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
-
     return `
       user-select: none;
       padding: 0.5rem;
@@ -159,12 +158,10 @@ const OptionItem = styled(Div)`
           : getFontColorFromVariant(variant, color)
       };
       background-color: ${backgroundColor};
-
       &:hover {
         background-color: ${
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
-
         cursor: pointer;
         outline: none;
       }
@@ -181,12 +178,10 @@ const CheckContainer = styled(Div)`
   ${({ color }: UsefulDropdownState) => {
     const { colors } = useTheme();
     const backgroundColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
-
     return `
       display: flex;
       align-items: center;
       justify-content: center;
-
       color: ${readableColor(backgroundColor, colors.background, color, true)};
       padding-right: 0.2rem;
       width: 2rem;
@@ -276,6 +271,8 @@ export interface DropdownProps {
   variant?: variants;
   optionsVariant?: variants;
   valueVariant?: variants;
+
+  isAware?: boolean;
 }
 
 const Dropdown = ({
@@ -327,6 +324,8 @@ const Dropdown = ({
   rememberScrollPosition = true,
   valueVariant = variants.text,
   values = [],
+
+  isAware = true,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -353,6 +352,7 @@ const Dropdown = ({
 
   const tagContainerItemProps = valueItemTagProps.containerProps || {};
 
+  // effect to determine if user is scrolling up or down
   useEffect(() => {
     const threshold = 0;
     let lastScrollY = window.pageYOffset;
@@ -379,7 +379,7 @@ const Dropdown = ({
     window.addEventListener('scroll', onScroll);
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isScrollingDown]);
+  }, []);
 
   const buildThresholdArray = () => Array.from(Array(100).keys(), i => i / 100);
   const intersectOptions = useMemo(() => {
@@ -392,30 +392,34 @@ const Dropdown = ({
 
   const intersectionCallback = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (entries.length === 1) {
-        const [entry] = entries;
-        // swap the dropdown to open downward if its hitting the top
-        if (
-          entry.intersectionRatio < 0.95 &&
-          entry.target === optionsContainerInternalRef.current
-        ) {
-          if (isScrollingDown) {
-            if (!isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio) {
-              setIsOpenedBelow(true);
+      if (isAware) {
+        if (entries.length === 1) {
+          const [entry] = entries;
+          // swap the dropdown to open downward if its hitting the top
+          if (
+            entry.intersectionRatio < 0.95 &&
+            entry.target === optionsContainerInternalRef.current
+          ) {
+            if (isScrollingDown) {
+              if (!isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio) {
+                setIsOpenedBelow(true);
+              }
             }
           }
+          setPrevIntersectionRatio(entry.intersectionRatio);
+        } else if (entries.length === 2) {
+          const [dropdown, invisibleDrop] = entries;
+          // flip the view if the other direction is more visible in viewport
+          if (invisibleDrop.intersectionRatio > dropdown.intersectionRatio) {
+            setIsOpenedBelow(drop => !drop);
+          }
         }
-        setPrevIntersectionRatio(entry.intersectionRatio);
-      } else if (entries.length === 2) {
-        const [dropdown, invisibleDrop] = entries;
-        // flip the view if the other direction is more visible in viewport
-        if (invisibleDrop.intersectionRatio > dropdown.intersectionRatio) {
-          setIsOpenedBelow(drop => !drop);
-        }
+        setIsHidden(false);
+      } else {
+        setIsHidden(false);
       }
-      setIsHidden(false);
     },
-    [isOpenedBelow, isScrollingDown, prevIntersectionRatio],
+    [isOpenedBelow, isScrollingDown, prevIntersectionRatio, isAware],
   );
 
   const intersectObserver = useMemo(() => {
@@ -479,8 +483,6 @@ const Dropdown = ({
       setFocusWithin(true);
     }
 
-    setIsHidden(true);
-    setIsOpenedBelow(true);
     setIsOpen(true);
     if (onFocus) {
       onFocus();
@@ -522,6 +524,8 @@ const Dropdown = ({
         // @ts-ignore - It's okay if target is null in this case as we want it to close regardless
         handleBlur(e);
       } else {
+        setIsHidden(true);
+        setIsOpenedBelow(true);
         handleFocus();
       }
     },
@@ -678,55 +682,55 @@ const Dropdown = ({
         {closeIcons}
       </Button>
       {isOpen && (
-        <HiddenOptionsContainer
-          ref={hiddenOptionsContainerInternalRef}
-          isOpenedBelow={!isOpenedBelow}
-        />
-      )}
-      {isOpen && (
-        <StyledOptionsContainer
-          color={defaultedColor}
-          variant={optionsVariant}
-          role="listbox"
-          ref={mergeRefs([
-            optionsContainerRef,
-            optionsContainerInternalRef,
-            optionsScrollListenerCallbackRef,
-          ])}
-          isOpenedBelow={isOpenedBelow}
-          isHidden={isHidden}
-          {...optionsContainerProps}
-        >
-          {options.map(option => (
-            <StyledOptionItem
-              id={`${name}-option-${option.id}`}
-              key={`${name}-option-${option.id}`}
-              onClick={() => handleSelect(option.id)}
-              tabIndex={-1}
-              color={defaultedColor}
-              variant={optionsVariant}
-              multi={multi}
-              selected={optionsHash[option.id].isSelected}
-              ref={optionItemRef}
-              role="option"
-              {...optionItemProps}
-            >
-              {multi && (
-                <StyledCheckContainer
-                  color={defaultedColor}
-                  selected={optionsHash[option.id].isSelected}
-                  variant={optionsVariant}
-                  multi={multi}
-                  ref={checkContainerRef}
-                  {...checkContainerProps}
-                >
-                  {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
-                </StyledCheckContainer>
-              )}
-              <Span>{option.optionValue}</Span>
-            </StyledOptionItem>
-          ))}
-        </StyledOptionsContainer>
+        <>
+          <StyledOptionsContainer
+            color={defaultedColor}
+            variant={optionsVariant}
+            role="listbox"
+            ref={mergeRefs([
+              optionsContainerRef,
+              optionsContainerInternalRef,
+              optionsScrollListenerCallbackRef,
+            ])}
+            isOpenedBelow={isOpenedBelow}
+            isHidden={isHidden}
+            {...optionsContainerProps}
+          >
+            {options.map(option => (
+              <StyledOptionItem
+                id={`${name}-option-${option.id}`}
+                key={`${name}-option-${option.id}`}
+                onClick={() => handleSelect(option.id)}
+                tabIndex={-1}
+                color={defaultedColor}
+                variant={optionsVariant}
+                multi={multi}
+                selected={optionsHash[option.id].isSelected}
+                ref={optionItemRef}
+                role="option"
+                {...optionItemProps}
+              >
+                {multi && (
+                  <StyledCheckContainer
+                    color={defaultedColor}
+                    selected={optionsHash[option.id].isSelected}
+                    variant={optionsVariant}
+                    multi={multi}
+                    ref={checkContainerRef}
+                    {...checkContainerProps}
+                  >
+                    {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
+                  </StyledCheckContainer>
+                )}
+                <Span>{option.optionValue}</Span>
+              </StyledOptionItem>
+            ))}
+          </StyledOptionsContainer>
+          <HiddenOptionsContainer
+            ref={hiddenOptionsContainerInternalRef}
+            isOpenedBelow={!isOpenedBelow}
+          />
+        </>
       )}
     </StyledContainer>
   );
