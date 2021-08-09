@@ -59,4 +59,5 @@ const Divider = ({
 );
 
 Divider.Container = DefaultDividerContainer;
+Divider.Divider = DefaultDivider;
 export default Divider;
