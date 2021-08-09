@@ -46,14 +46,8 @@ const Divider = ({
   height = '1px',
   containerRef,
   dividerRef,
-  ...rest
 }: DividerProps): JSX.Element => (
-  <StyledDividerContainer
-    data-test-id="hsui-Divider"
-    {...dividerContainerProps}
-    ref={containerRef}
-    {...rest}
-  >
+  <StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps} ref={containerRef}>
     <StyledDivider width={width} height={height} ref={dividerRef} {...dividerProps} />
   </StyledDividerContainer>
 );
