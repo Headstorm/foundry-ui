@@ -11,19 +11,20 @@ import Label from '../Label';
 import { colors } from '../../index';
 
 const generateCityList = (amount: number): OptionProps[] => {
-  const finalData = [];
+  const tempData: string[] = [];
 
   for (let i = 0; i < amount; i += 1) {
-    const item = address.city();
-    finalData.push({
-      id: item.toLowerCase(),
-      optionValue: item,
-    });
+    let item = address.city();
+    while (tempData.includes(item)) item = address.city();
+    tempData.push(address.city());
   }
 
-  return finalData;
+  return tempData.map(item => ({
+    id: item.toLowerCase(),
+    optionValue: item,
+  }));
 };
-const cities = generateCityList(50);
+const cities = generateCityList(1000);
 
 export const Basic: Story = args => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
