@@ -116,6 +116,7 @@ export const Icons: Story = args => {
 };
 Icons.args = {
   ...Basic.args,
+  placeholder: 'Choose a rating...',
   color: '#0A7700',
   elevation: 1,
 };
