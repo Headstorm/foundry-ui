@@ -1,3 +1,11 @@
+## [1.5.1](https://github.com/Headstorm/foundry-ui/compare/v1.5.0...v1.5.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* **divider:** adds the divider subcomponent to the module exports ([aa30d77](https://github.com/Headstorm/foundry-ui/commit/aa30d77500c8e42f0f494b77e9da17c112f35da1)), closes [#280](https://github.com/Headstorm/foundry-ui/issues/280)
+* **divider:** removed wildcard props being passed to the container ([a1a272b](https://github.com/Headstorm/foundry-ui/commit/a1a272b349d9e7bc7213b0fe7b57a6e71a1fac5b))
+
 # [1.5.0](https://github.com/Headstorm/foundry-ui/compare/v1.4.0...v1.5.0) (2021-08-08)
 
 
