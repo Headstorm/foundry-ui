@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
+import { Components, Virtuoso } from 'react-virtuoso';
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
@@ -86,7 +87,7 @@ const OptionsContainer = styled(Div)`
     position: absolute;
     top: 100%;
     left: 0px;
-    max-height: 10rem;
+    height: 10rem;
     overflow-y: auto;
     width: 15rem;
     ${
@@ -481,6 +482,34 @@ const Dropdown = ({
     </>
   );
 
+  const VirtuosoComponents = useMemo(
+    () => ({
+      Scroller: React.forwardRef(({ children }, listRef) => (
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          role="listbox"
+          ref={mergeRefs([
+            optionsContainerRef,
+            optionsContainerInternalRef,
+            optionsScrollListenerCallbackRef,
+            listRef as React.RefObject<HTMLDivElement>,
+          ])}
+          {...optionsContainerProps}
+        >
+          {children}
+        </StyledOptionsContainer>
+      )),
+    }),
+    [
+      defaultedColor,
+      optionsContainerProps,
+      optionsContainerRef,
+      optionsScrollListenerCallbackRef,
+      optionsVariant,
+    ],
+  );
+
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -544,18 +573,10 @@ const Dropdown = ({
         {closeIcons}
       </Button>
       {isOpen && (
-        <StyledOptionsContainer
-          color={defaultedColor}
-          variant={optionsVariant}
-          role="listbox"
-          ref={mergeRefs([
-            optionsContainerRef,
-            optionsContainerInternalRef,
-            optionsScrollListenerCallbackRef,
-          ])}
-          {...optionsContainerProps}
-        >
-          {options.map(option => (
+        <Virtuoso
+          data={options}
+          components={VirtuosoComponents as Components}
+          itemContent={(index, option) => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
               key={`${name}-option-${option.id}`}
@@ -583,8 +604,8 @@ const Dropdown = ({
               )}
               <Span>{option.optionValue}</Span>
             </StyledOptionItem>
-          ))}
-        </StyledOptionsContainer>
+          )}
+        />
       )}
     </StyledContainer>
   );
