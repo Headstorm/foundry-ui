@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
+import { StyledSubcomponentType } from '../components/commonTypes';
 
 export const defaultGlobalStyles = `
   ${
@@ -58,7 +59,7 @@ export function useTheme(): FoundryContextType {
   return theme;
 }
 
-export const withGlobalStyle = (Component: string & StyledComponentBase<any, {}>) => {
+export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   const ComponentWithGlobalStyles = styled(Component)`
     ${props => {
       return props.globalStyles;

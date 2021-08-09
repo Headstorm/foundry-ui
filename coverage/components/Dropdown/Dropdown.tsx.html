@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.7% </span>
+                <span class="strong">87.8% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>107/122</span>
+                <span class='fraction'>108/123</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.73% </span>
+                <span class="strong">72.36% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>88/121</span>
+                <span class='fraction'>89/123</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.7% </span>
+                <span class="strong">87.8% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>107/122</span>
+                <span class='fraction'>108/123</span>
             </div>
         
             
@@ -657,7 +657,9 @@
 <a name='L598'></a><a href='#L598'>598</a>
 <a name='L599'></a><a href='#L599'>599</a>
 <a name='L600'></a><a href='#L600'>600</a>
-<a name='L601'></a><a href='#L601'>601</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L601'></a><a href='#L601'>601</a>
+<a name='L602'></a><a href='#L602'>602</a>
+<a name='L603'></a><a href='#L603'>603</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1079,6 +1081,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1258,7 +1262,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
@@ -1270,7 +1274,7 @@ import timings from '../../enums/timings';
 import { Div, Span } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 import { mergeRefs } from '../../utils/refs';
 &nbsp;
@@ -1444,15 +1448,15 @@ const StyledTagContainer = styled(Tag.Container)`
 `;
 &nbsp;
 export interface DropdownProps {
-  StyledContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledValueContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledValueItem?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledOptionsContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledOptionItem?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledCheckContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledPlaceholder?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledCloseIconContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-  StyledArrowIconContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
+  StyledContainer?: StyledSubcomponentType;
+  StyledValueContainer?: StyledSubcomponentType;
+  StyledValueItem?: StyledSubcomponentType;
+  StyledOptionsContainer?: StyledSubcomponentType;
+  StyledOptionItem?: StyledSubcomponentType;
+  StyledCheckContainer?: StyledSubcomponentType;
+  StyledPlaceholder?: StyledSubcomponentType;
+  StyledCloseIconContainer?: StyledSubcomponentType;
+  StyledArrowIconContainer?: StyledSubcomponentType;
 &nbsp;
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -1678,7 +1682,9 @@ const Dropdown = ({
             break;
           case 'ArrowDown':
             if (focusedElement &amp;&amp; focusedElement.id === `${name}-dropdown-button`) {
-              const optionsContainer = focusedElement.nextElementSibling;
+              const button = focusedElement.parentNode as HTMLElement | undefined;
+              // get parent before nextElementSibling because buttons are nested inside of skeletons
+              const optionsContainer = button ? button.nextElementSibling : <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
               <span class="missing-if-branch" title="else path not taken" >E</span>if (optionsContainer) {
                 const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (toFocus) {
@@ -1864,7 +1870,7 @@ export default Dropdown;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 05 2021 15:27:58 GMT+0000 (Coordinated Universal Time)
+                at Mon Aug 09 2021 20:26:59 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

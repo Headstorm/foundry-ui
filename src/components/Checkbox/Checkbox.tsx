@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import { darken } from 'polished';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { disabledStyles } from '../../utils/color';
@@ -35,17 +35,13 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
 
 export const Label = styled(LabelElement)`
   ${({ disabled }) => {
-    const { colors } = useTheme();
     return `
       display: flex;
       align-items: center;
       cursor: pointer;
       height: 2em;
       font-size: 1em;
-    
-      ${Input}:focus + & {
-        box-shadow: 0 0 0 3px ${colors.grayXlight};
-      }
+      
       ${disabled ? disabledStyles() : ''}
     `;
   }}
@@ -82,15 +78,23 @@ export const Box = styled(Div)`
 `;
 
 export const CheckboxContainer = styled.div`
+  ${() => {
+    const { colors } = useTheme();
+    return `
   display: inline-block;
   vertical-align: middle;
+  &:focus-within {
+    ${Box} {
+      box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
+    }}`;
+  }}
 `;
 
 export const BaseIcon = styled(Icon)`
   overflow: visible;
   height: 1rem;
   width: 1rem;
-` as string & StyledComponentBase<any, {}>;
+` as StyledSubcomponentType;
 
 const CheckIcon = styled(BaseIcon)`
   ${({ variant }) => {
@@ -134,11 +138,11 @@ const NeutralIcon = styled(BaseIcon)`
 `;
 
 export interface CheckboxProps {
-  StyledLabel?: string & StyledComponentBase<any, {}>;
-  StyledCheckboxContainer?: string & StyledComponentBase<any, {}>;
-  StyledBox?: string & StyledComponentBase<any, {}>;
-  StyledInput?: string & StyledComponentBase<any, {}>;
-  StyledIcon?: string & StyledComponentBase<any, {}>;
+  StyledLabel?: StyledSubcomponentType;
+  StyledCheckboxContainer?: StyledSubcomponentType;
+  StyledBox?: StyledSubcomponentType;
+  StyledInput?: StyledSubcomponentType;
+  StyledIcon?: StyledSubcomponentType;
 
   labelProps?: SubcomponentPropsType;
   checkboxContainerProps?: SubcomponentPropsType;

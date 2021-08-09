@@ -323,7 +323,8 @@
 <a name='L264'></a><a href='#L264'>264</a>
 <a name='L265'></a><a href='#L265'>265</a>
 <a name='L266'></a><a href='#L266'>266</a>
-<a name='L267'></a><a href='#L267'>267</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -372,19 +373,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -403,6 +391,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -461,9 +468,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -517,8 +521,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -599,12 +601,12 @@
   TextareaHTMLAttributes,
   InputHTMLAttributes,
 } from 'react';
-import styled, { css, StyledComponentBase } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 &nbsp;
@@ -634,6 +636,9 @@ const TextInputContainer = styled(InputElement)`
       font-size: 1em;
       padding: 0.5rem;
       background-color: ${colors.transparent};
+      &amp;:focus {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
   `;
   }}
 `;
@@ -650,6 +655,9 @@ const TextAreaInputContainer = styled(TextArea)`
       padding: .5rem;
       background-color: ${colors.transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
+      &amp;:focus {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
     `;
   }}
 `;
@@ -707,12 +715,12 @@ export type TextInputProps = InputHTMLAttributes&lt;HTMLInputElement&gt; &amp;
     allowTextBeyondMaxLength?: boolean;
     showCharacterCount?: boolean;
 &nbsp;
-    StyledContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-    StyledInput?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-    StyledIconContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-    StyledErrorContainer?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-    StyledTextArea?: string &amp; StyledComponentBase&lt;any, {}&gt;;
-    StyledCharacterCount?: string &amp; StyledComponentBase&lt;any, {}&gt;;
+    StyledContainer?: StyledSubcomponentType;
+    StyledInput?: StyledSubcomponentType;
+    StyledIconContainer?: StyledSubcomponentType;
+    StyledErrorContainer?: StyledSubcomponentType;
+    StyledTextArea?: StyledSubcomponentType;
+    StyledCharacterCount?: StyledSubcomponentType;
 &nbsp;
     containerProps?: SubcomponentPropsType;
     inputProps?: SubcomponentPropsType;
@@ -726,10 +734,7 @@ export type TextInputProps = InputHTMLAttributes&lt;HTMLInputElement&gt; &amp;
     characterCountRef?: React.RefObject&lt;HTMLDivElement&gt;;
   };
 &nbsp;
-const createIcon = <span class="fstat-no" title="function not covered" >(</span>
-  StyledIconContainer: string &amp; StyledComponentBase&lt;any, {}&gt;,
-  iconPrefix: ReactNode,
-) =&gt; {
+const createIcon = <span class="fstat-no" title="function not covered" >(S</span>tyledIconContainer: StyledSubcomponentType, iconPrefix: ReactNode) =&gt; {
 <span class="cstat-no" title="statement not covered" >  if (typeof iconPrefix === 'string') {</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;StyledIconContainer&gt;
@@ -782,9 +787,7 @@ const TextInput = ({
     debounceInterval,
   ]);
 &nbsp;
-  const InputComponent: string &amp; StyledComponentBase&lt;any, {}&gt; = isMultiline
-    ? <span class="branch-0 cbranch-no" title="branch not covered" >StyledTextArea</span>
-    : StyledInput;
+  const InputComponent: StyledSubcomponentType = isMultiline ? <span class="branch-0 cbranch-no" title="branch not covered" >StyledTextArea </span>: StyledInput;
 &nbsp;
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
@@ -862,7 +865,7 @@ export default TextInput;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 05 2021 15:27:58 GMT+0000 (Coordinated Universal Time)
+                at Mon Aug 09 2021 20:26:59 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

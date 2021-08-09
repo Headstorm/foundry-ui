@@ -1,3 +1,30 @@
+# [1.6.0](https://github.com/Headstorm/foundry-ui/compare/v1.5.1...v1.6.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **skeleton:** make the skeleton display: inline-block ([b88f270](https://github.com/Headstorm/foundry-ui/commit/b88f270d536349c7ce44a3e6905a93c5bfd0de7f))
+
+
+### Features
+
+* **skeleton:** adds a "new" Skeleton component to replace the old "Progress" component ([b3c5812](https://github.com/Headstorm/foundry-ui/commit/b3c5812af7ef4c8f5de04b99312d614f102044f7)), closes [#267](https://github.com/Headstorm/foundry-ui/issues/267)
+
+## [1.5.1](https://github.com/Headstorm/foundry-ui/compare/v1.5.0...v1.5.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* **divider:** adds the divider subcomponent to the module exports ([aa30d77](https://github.com/Headstorm/foundry-ui/commit/aa30d77500c8e42f0f494b77e9da17c112f35da1)), closes [#280](https://github.com/Headstorm/foundry-ui/issues/280)
+* **divider:** removed wildcard props being passed to the container ([a1a272b](https://github.com/Headstorm/foundry-ui/commit/a1a272b349d9e7bc7213b0fe7b57a6e71a1fac5b))
+
+# [1.5.0](https://github.com/Headstorm/foundry-ui/compare/v1.4.0...v1.5.0) (2021-08-08)
+
+
+### Features
+
+* **form components:** added focus on form components such as textInput, buttons and checkboxes ([b3bd267](https://github.com/Headstorm/foundry-ui/commit/b3bd2678ba0153911e7f3a7979bc765acfa48204)), closes [#209](https://github.com/Headstorm/foundry-ui/issues/209)
+
 # [1.4.0](https://github.com/Headstorm/foundry-ui/compare/v1.3.0...v1.4.0) (2021-08-05)
 
 

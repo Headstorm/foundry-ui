@@ -1,11 +1,11 @@
 import React, { ReactNode, RefObject } from 'react';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
-import Progress from '../Progress/Progress';
+import Skeleton from '../Skeleton/Skeleton';
 import { Span } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 /* Default Styled Text Container */
 export const TextContainer = styled(Span)`
@@ -24,8 +24,8 @@ export interface TextProps {
   isProcessing?: boolean;
   size?: string;
 
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledIconContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
   containerRef?: RefObject<HTMLDivElement>;
@@ -33,12 +33,8 @@ export interface TextProps {
   iconSuffixContainerRef?: RefObject<HTMLElement>;
 }
 
-/* Styled div that represents the scroll bar */
-const StyledProgress = styled(Progress)`
-  ${({ size }: { size: string }) => `
-    width: calc(${size} * 10);
-    height: ${size};
-  `}
+const SkeletonContainer = styled(Skeleton.Container)`
+  display: inline;
 `;
 
 const IconContainer = styled(Span)`
@@ -77,9 +73,7 @@ const Text = ({
     ref={containerRef}
     {...containerProps}
   >
-    {isLoading && <StyledProgress size={size} />}
-    {!isLoading &&
-      !isProcessing &&
+    {!isProcessing &&
       iconPrefix &&
       (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
         <StyledIconContainer side="left" ref={iconPrefixContainerRef} {...iconContainerProps}>
@@ -95,15 +89,16 @@ const Text = ({
           {iconPrefix}
         </StyledIconContainer>
       ))}
-    {!isLoading && isProcessing && (
+    {isProcessing && (
       <StyledIconContainer side="left" ref={iconPrefixContainerRef} {...iconContainerProps}>
         <Icon path={mdiLoading} size={size} spin={1} />
       </StyledIconContainer>
     )}
-    {!isLoading && children}
+    <Skeleton color={color} StyledContainer={SkeletonContainer} isLoading={isLoading}>
+      <Span>{children}</Span>
+    </Skeleton>
 
-    {!isLoading &&
-      iconSuffix &&
+    {iconSuffix &&
       (typeof iconSuffix === 'string' ? (
         <StyledIconContainer side="right" ref={iconSuffixContainerRef} {...iconContainerProps}>
           <Icon path={iconSuffix} size={size} />

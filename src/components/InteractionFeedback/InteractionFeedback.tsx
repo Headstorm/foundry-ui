@@ -1,10 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import colors from '../../enums/colors';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { mergeRefs } from '../../utils/refs';
 
 const Container = styled(animated.div)`
@@ -21,8 +21,8 @@ const SVGContainer = styled.svg`
 type Animation = { cx: string; cy: string; id: string };
 type Transition = { r: string } & Animation;
 export type InteractionFeedbackProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledSVGContainer?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledSVGContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   svgContainerProps?: SubcomponentPropsType;
 

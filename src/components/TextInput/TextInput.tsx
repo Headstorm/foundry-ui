@@ -8,12 +8,12 @@ import React, {
   TextareaHTMLAttributes,
   InputHTMLAttributes,
 } from 'react';
-import styled, { css, StyledComponentBase } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 
@@ -43,6 +43,9 @@ const TextInputContainer = styled(InputElement)`
       font-size: 1em;
       padding: 0.5rem;
       background-color: ${colors.transparent};
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
   `;
   }}
 `;
@@ -59,6 +62,9 @@ const TextAreaInputContainer = styled(TextArea)`
       padding: .5rem;
       background-color: ${colors.transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
     `;
   }}
 `;
@@ -116,12 +122,12 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     allowTextBeyondMaxLength?: boolean;
     showCharacterCount?: boolean;
 
-    StyledContainer?: string & StyledComponentBase<any, {}>;
-    StyledInput?: string & StyledComponentBase<any, {}>;
-    StyledIconContainer?: string & StyledComponentBase<any, {}>;
-    StyledErrorContainer?: string & StyledComponentBase<any, {}>;
-    StyledTextArea?: string & StyledComponentBase<any, {}>;
-    StyledCharacterCount?: string & StyledComponentBase<any, {}>;
+    StyledContainer?: StyledSubcomponentType;
+    StyledInput?: StyledSubcomponentType;
+    StyledIconContainer?: StyledSubcomponentType;
+    StyledErrorContainer?: StyledSubcomponentType;
+    StyledTextArea?: StyledSubcomponentType;
+    StyledCharacterCount?: StyledSubcomponentType;
 
     containerProps?: SubcomponentPropsType;
     inputProps?: SubcomponentPropsType;
@@ -135,10 +141,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     characterCountRef?: React.RefObject<HTMLDivElement>;
   };
 
-const createIcon = (
-  StyledIconContainer: string & StyledComponentBase<any, {}>,
-  iconPrefix: ReactNode,
-) => {
+const createIcon = (StyledIconContainer: StyledSubcomponentType, iconPrefix: ReactNode) => {
   if (typeof iconPrefix === 'string') {
     return (
       <StyledIconContainer>
@@ -191,9 +194,7 @@ const TextInput = ({
     debounceInterval,
   ]);
 
-  const InputComponent: string & StyledComponentBase<any, {}> = isMultiline
-    ? StyledTextArea
-    : StyledInput;
+  const InputComponent: StyledSubcomponentType = isMultiline ? StyledTextArea : StyledInput;
 
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',

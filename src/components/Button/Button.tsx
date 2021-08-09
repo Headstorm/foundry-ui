@@ -7,6 +7,7 @@ import { darken } from 'polished';
 import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
+import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
 import { Div, Button as ButtonElement } from '../../htmlElements';
 import {
@@ -14,7 +15,7 @@ import {
   getBackgroundColorFromVariant,
   disabledStyles,
 } from '../../utils/color';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
@@ -37,32 +38,41 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
-  StyledLeftIconContainer?: StyledComponentBase<any, {}>;
-  StyledRightIconContainer?: StyledComponentBase<any, {}>;
+  StyledLeftIconContainer?: StyledSubcomponentType;
+  StyledRightIconContainer?: StyledSubcomponentType;
+
+  skeletonProps?: SubcomponentPropsType;
+  /**
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   */
+  ProgressBar?: JSX.Element | null;
+
+  containerRef?: React.RefObject<HTMLButtonElement>;
+  leftIconContainerRef?: React.RefObject<HTMLDivElement>;
+  rightIconContainerRef?: React.RefObject<HTMLDivElement>;
+
   containerProps?: SubcomponentPropsType;
-  iconPrefix?: string | JSX.Element;
-  iconSuffix?: string | JSX.Element;
-  isLoading?: boolean;
-  isProcessing?: boolean;
+  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
+
   children?: ReactNode;
+
+  id?: string;
+  disabled?: boolean;
   elevation?: number;
   variant?: variants;
   type?: ButtonTypes;
   color?: string;
   feedbackType?: FeedbackTypes;
-  interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
-  disabled?: boolean;
+  iconPrefix?: string | JSX.Element;
+  iconSuffix?: string | JSX.Element;
+  isLoading?: boolean;
+  isProcessing?: boolean;
+
   onClick?: (...args: any[]) => void;
   onBlur?: (e: React.FocusEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
   onMouseUp?: (e: React.MouseEvent) => void;
-  LoadingBar?: string & StyledComponentBase<any, {}>;
-  id?: string;
-  containerRef?: React.RefObject<HTMLButtonElement>;
-  leftIconContainerRef?: React.RefObject<HTMLDivElement>;
-  rightIconContainerRef?: React.RefObject<HTMLDivElement>;
-  loadingBarRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
@@ -98,6 +108,10 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
           backgroundColor !== 'transparent' ? darken(0.05, backgroundColor) : 'rgba(0, 0, 0, 0.05)'
         };
       }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
+      }
       ${
         feedbackType === FeedbackTypes.simple
           ? `
@@ -113,13 +127,6 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       }
     `;
   }}
-`;
-
-const StyledProgress = styled(Progress)`
-  width: 5rem;
-  height: 10px;
-  margin-top: -5px;
-  margin-bottom: -5px;
 `;
 
 const IconContainer = styled(Div)`
@@ -155,7 +162,11 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
-  LoadingBar = StyledProgress,
+  /**
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   */
+  ProgressBar, // Deprecated
+  skeletonProps,
 
   containerProps = {},
   interactionFeedbackProps,
@@ -163,7 +174,6 @@ const Button = ({
   containerRef,
   leftIconContainerRef,
   rightIconContainerRef,
-  loadingBarRef,
 
   iconPrefix,
   iconSuffix,
@@ -202,57 +212,62 @@ const Button = ({
     ...containerProps,
   };
 
-  const buttonContent = isLoading ? (
-    <LoadingBar ref={loadingBarRef} />
-  ) : (
-    <>
-      {!isProcessing &&
-        iconPrefix &&
-        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-          <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-            <UnstyledIcon path={iconPrefix} size="1rem" />
-          </StyledLeftIconContainer>
-        ) : (
-          <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
-        ))}
-      {isProcessing && (
-        <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
-        </StyledLeftIconContainer>
-      )}
-      {children}
-
-      {iconSuffix &&
-        (typeof iconSuffix === 'string' ? (
-          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-            <UnstyledIcon path={iconSuffix} size="1rem" />
-          </StyledRightIconContainer>
-        ) : (
-          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-            {iconSuffix}
-          </StyledRightIconContainer>
-        ))}
-    </>
-  );
+  const mergedSkeletonProps = {
+    isLoading,
+    style: {
+      display: 'inline-block',
+      ...(skeletonProps && Object.prototype.hasOwnProperty.call(skeletonProps, 'style')
+        ? (skeletonProps.style as CSSRule)
+        : {}),
+    },
+    ...skeletonProps,
+  };
 
   return (
-    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
-      {buttonContent}
-      {feedbackType === FeedbackTypes.ripple && !disabled && (
-        <InteractionFeedback
-          StyledContainer={StyledFeedbackContainer}
-          StyledSVGContainer={StyledFeedbackSVGContainer}
-          color={getFontColorFromVariant(variant, containerColor)}
-          {...(interactionFeedbackProps || {})}
-        />
-      )}
-    </StyledContainer>
+    <Skeleton {...mergedSkeletonProps}>
+      <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
+        {!isProcessing &&
+          iconPrefix &&
+          (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
+            <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
+              <UnstyledIcon path={iconPrefix} size="1rem" />
+            </StyledLeftIconContainer>
+          ) : (
+            <StyledLeftIconContainer ref={leftIconContainerRef}>
+              {iconPrefix}
+            </StyledLeftIconContainer>
+          ))}
+        {isProcessing && (
+          <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
+            <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+          </StyledLeftIconContainer>
+        )}
+        {isLoading && ProgressBar ? <Progress /> : children}
+        {iconSuffix &&
+          (typeof iconSuffix === 'string' ? (
+            <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+              <UnstyledIcon path={iconSuffix} size="1rem" />
+            </StyledRightIconContainer>
+          ) : (
+            <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+              {iconSuffix}
+            </StyledRightIconContainer>
+          ))}
+        {feedbackType === FeedbackTypes.ripple && !disabled && (
+          <InteractionFeedback
+            StyledContainer={StyledFeedbackContainer}
+            StyledSVGContainer={StyledFeedbackSVGContainer}
+            color={getFontColorFromVariant(variant, containerColor)}
+            {...(interactionFeedbackProps || {})}
+          />
+        )}
+      </StyledContainer>
+    </Skeleton>
   );
 };
 
 Button.Container = ButtonContainer;
 Button.ButtonTypes = ButtonTypes;
-Button.LoadingBar = StyledProgress;
 Button.LeftIconContainer = LeftIconContainer;
 Button.RightIconContainer = RightIconContainer;
 

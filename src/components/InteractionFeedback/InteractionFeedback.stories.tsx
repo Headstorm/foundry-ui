@@ -27,21 +27,31 @@ interface SplashProps {
   color: string;
 }
 
-export const Splash: Story<SplashProps> = args => {
+export const Splash: Story<SplashProps> = ({
+  startingRadius,
+  entranceOpacity,
+  endingRadius,
+  exitOpacity,
+  mass,
+  tension,
+  friction,
+  clamp,
+  color,
+}: SplashProps) => {
   const transitionProps = {
     from: {
-      r: `${args.startingRadius}`,
-      opacity: args.entranceOpacity,
+      r: `${startingRadius}`,
+      opacity: entranceOpacity,
     },
     enter: {
-      r: `${args.endingRadius}`,
-      opacity: args.exitOpacity,
+      r: `${endingRadius}`,
+      opacity: exitOpacity,
     },
     config: {
-      mass: args.mass,
-      tension: args.tension,
-      friction: args.friction,
-      clamp: args.clamp,
+      mass,
+      tension,
+      friction,
+      clamp,
     },
   };
   const interpolationFunctions = {
@@ -50,7 +60,7 @@ export const Splash: Story<SplashProps> = args => {
   };
   return (
     <InteractionFeedback
-      color={args.color}
+      color={color}
       interpolationFunctions={interpolationFunctions}
       transitionProps={transitionProps}
     >
