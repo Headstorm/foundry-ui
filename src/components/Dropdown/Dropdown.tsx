@@ -412,9 +412,13 @@ const Dropdown = ({
             break;
           case 'ArrowUp':
             if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              const sibling = focusedElement.previousElementSibling as HTMLElement | null;
-              if (sibling) {
-                sibling.focus();
+              const row = focusedElement.parentNode as HTMLElement | undefined;
+              const rowPrevSibling = row ? row.previousElementSibling : null;
+              if (rowPrevSibling) {
+                const toFocus = rowPrevSibling.children[0] as HTMLElement | undefined;
+                if (toFocus) {
+                  toFocus.focus();
+                }
               }
             }
             break;
@@ -424,15 +428,20 @@ const Dropdown = ({
               // get parent before nextElementSibling because buttons are nested inside of skeletons
               const optionsContainer = button ? button.nextElementSibling : null;
               if (optionsContainer) {
-                const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
+                const toFocus = optionsContainer.children[0]?.children[0]?.children[0]
+                  ?.children[0] as HTMLElement | undefined;
                 if (toFocus) {
                   toFocus.focus();
                 }
               }
             } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              const sibling = focusedElement.nextElementSibling as HTMLElement | null;
-              if (sibling) {
-                sibling.focus();
+              const row = focusedElement.parentNode as HTMLElement | undefined;
+              const rowNextSibling = row ? row.nextElementSibling : null;
+              if (rowNextSibling) {
+                const toFocus = rowNextSibling.children[0] as HTMLElement | undefined;
+                if (toFocus) {
+                  toFocus.focus();
+                }
               }
             }
             break;
@@ -486,7 +495,7 @@ const Dropdown = ({
 
   const VirtuosoComponents = useMemo(
     () => ({
-      Scroller: React.forwardRef(({ children }, listRef) => (
+      Scroller: React.forwardRef(({ children }: { children: React.ReactNode }, listRef) => (
         <StyledOptionsContainer
           color={defaultedColor}
           variant={optionsVariant}
