@@ -43,6 +43,8 @@ export type TableProps = {
   StyledGroupLabelRow?: string & StyledComponentBase<any, {}>;
   StyledHeader?: string & StyledComponentBase<any, {}>;
   StyledHeaderCell?: string & StyledComponentBase<any, {}>;
+  StyledFooter?: string & StyledComponentBase<any, {}>;
+  StyledFooterCell?: string & StyledComponentBase<any, {}>;
   StyledRow?: string & StyledComponentBase<any, {}>;
 
   cellProps?: SubcomponentPropsType;

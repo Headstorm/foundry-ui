@@ -70,6 +70,40 @@ export const HeaderCell = styled(TH)`
   `}
 `;
 
+export const Footer = styled(TR)`
+  ${({ columnGap, columnWidths }: RowProps) => {
+    const { colors } = useTheme();
+    return `
+      display: grid;
+      grid-template-columns: ${columnWidths};
+      padding: 0rem 2rem;
+      column-gap: ${columnGap};
+      user-select: none;
+
+      background-color: ${colors.grayXlight};
+      color: black;
+    `;
+  }}
+`;
+
+export const FooterCell = styled(TH)`
+  ${({ sortable }: { sortable: boolean }) => `
+    display: flex;
+    flex-flow: row;
+    cursor: pointer;
+    padding: 1rem 0rem 1rem 1rem;
+    margin-left: -1rem;
+
+    transition: background-color 0.5s;
+
+    ${sortable ? '' : 'pointer-events: none;'}
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  `}
+`;
+
 export const ResponsiveTitle = styled(Span)`
   ${({ sortable }: { sortable: boolean }) => {
     const { colors } = useTheme();
@@ -201,6 +235,7 @@ const Table = ({
   expansionIconComponent,
   minWidthBreakpoint = 640,
   sortGroups = false,
+  showFooter = true,
 
   StyledCell = Cell,
   StyledContainer = TableContainer,
@@ -208,6 +243,8 @@ const Table = ({
   StyledHeader = Header,
   StyledHeaderCell = HeaderCell,
   StyledRow = Row,
+  StyledFooter = Footer,
+  StyledFooterCell = FooterCell,
   cellProps = {},
   containerProps = {},
   groupLabelRowProps = {},
@@ -575,6 +612,7 @@ const Table = ({
       ref={mergeRefs([ref, containerRef])}
       reachedMinWidth={width < minWidthBreakpoint}
       {...containerProps}
+      showFooter= {showFooter}
     >
       <thead>
         {width > minWidthBreakpoint && (
@@ -617,6 +655,34 @@ const Table = ({
         )}
       </thead>
       {createRows()}
+      {showFooter && (
+              <tfoot>
+              {width > minWidthBreakpoint && (
+                <StyledFooter
+                  columnGap={columnGap}
+                  columnWidths={columnWidths}
+                  ref={headerRef}
+                  {...headerProps}
+                >
+                  {Object.keys(copiedColumns).map((headerColumnKey: string) => {
+                    const RenderedFooterCell = StyledFooterCell;
+                    const breakpointHit =
+                      width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                    // columns.map return
+                    return (
+                      (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
+                        <RenderedFooterCell>
+                          {//FOOTER CONTENT GOES HERE 
+                          }
+                        </RenderedFooterCell>
+                      )
+                    );
+                  })}
+                </StyledFooter>
+              )}
+            </tfoot>
+      )}
+
     </StyledContainer>
   );
 };

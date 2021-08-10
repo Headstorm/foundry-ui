@@ -84,6 +84,7 @@ interface DefaultProps {
   'Address width': string;
   'Notes width': string;
   'Action width': string;
+  'showFooter' : true;
 }
 
 export const Default: Story<DefaultProps> = ({
@@ -93,6 +94,7 @@ export const Default: Story<DefaultProps> = ({
   'Address width': addressWidth,
   'Notes width': notesWidth,
   'Action width': actionWidth,
+  showFooter,
 }: DefaultProps) => {
   const [rows, setRows] = useState(sampleData);
 
@@ -213,7 +215,7 @@ export const Default: Story<DefaultProps> = ({
     },
   };
 
-  return <Table columns={sampleColumns} data={rows as columnTypes[]} />;
+  return <Table columns={sampleColumns} data={rows as columnTypes[]} showFooter={showFooter}/>;
 };
 Default.args = {
   'Selection width': '2rem',
@@ -222,6 +224,7 @@ Default.args = {
   'Address width': '1fr',
   'Notes width': '12rem',
   'Action width': '1rem',
+  'showFooter': true
 };
 
 interface GroupsProps extends DefaultProps {
@@ -244,6 +247,7 @@ export const Groups: Story<GroupsProps> = ({
   sortGroups,
   areGroupsCollapsible,
   useCustomLabel,
+  showFooter,
   ...args
 }: GroupsProps) => {
   const [rows, setRows] = useState(sampleGroupData);
@@ -382,6 +386,7 @@ export const Groups: Story<GroupsProps> = ({
       groupHeaderPosition={position}
       areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
+      showFooter = {showFooter}
     />
   );
 };
