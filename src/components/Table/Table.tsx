@@ -622,7 +622,7 @@ const Table = ({
             ref={headerRef}
             {...headerProps}
           >
-            {Object.keys(copiedColumns).map((headerColumnKey: string) => {
+            {Object.keys(copiedColumns).map((headerColumnKey: string) => {              
               const RenderedHeaderCell =
                 copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
               const breakpointHit =
@@ -661,18 +661,16 @@ const Table = ({
             <StyledFooter
               columnGap={columnGap}
               columnWidths={columnWidths}
-              ref={headerRef}
-              // {...headerProps}
-            >
-              {Object.keys(copiedColumns).map((headerColumnKey: string) => {
+            > 
+              {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
                 const RenderedFooterCell = StyledFooterCell;
                 const breakpointHit =
                   width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
                 // columns.map return
                 return (
                   (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
-                    <RenderedFooterCell>
-                      {
+                    <RenderedFooterCell key = {`f${index}`}>
+                      {console.log(`f${index}`)
                         // FOOTER CONTENT GOES HERE
                       }
                     </RenderedFooterCell>
