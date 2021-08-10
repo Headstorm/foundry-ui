@@ -586,6 +586,7 @@ const Dropdown = ({
       {isOpen && (
         <Virtuoso
           data={options}
+          initialItemCount={options.length}
           components={VirtuosoComponents as Components}
           itemContent={(index, option) => (
             <StyledOptionItem
