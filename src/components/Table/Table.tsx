@@ -656,33 +656,33 @@ const Table = ({
       </thead>
       {createRows()}
       {showFooter && (
-              <tfoot>
-              {width > minWidthBreakpoint && (
-                <StyledFooter
-                  columnGap={columnGap}
-                  columnWidths={columnWidths}
-                  ref={headerRef}
-                  //{...headerProps}
-                >
-                  {Object.keys(copiedColumns).map((headerColumnKey: string) => {
-                    const RenderedFooterCell = StyledFooterCell;
-                    const breakpointHit =
-                      width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
-                    // columns.map return
-                    return (
-                      (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
-                        <RenderedFooterCell>
-                          {// FOOTER CONTENT GOES HERE
-                          }
-                        </RenderedFooterCell>
-                      )
-                    );
-                  })}
-                </StyledFooter>
-              )}
-              </tfoot>
+        <tfoot>
+          {width > minWidthBreakpoint && (
+            <StyledFooter
+              columnGap={columnGap}
+              columnWidths={columnWidths}
+              ref={headerRef}
+              // {...headerProps}
+            >
+              {Object.keys(copiedColumns).map((headerColumnKey: string) => {
+                const RenderedFooterCell = StyledFooterCell;
+                const breakpointHit =
+                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+                // columns.map return
+                return (
+                  (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
+                    <RenderedFooterCell>
+                      {
+                        // FOOTER CONTENT GOES HERE
+                      }
+                    </RenderedFooterCell>
+                  )
+                );
+              })}
+            </StyledFooter>
+          )}
+        </tfoot>
       )}
-
     </StyledContainer>
   );
 };

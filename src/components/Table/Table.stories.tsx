@@ -84,7 +84,7 @@ interface DefaultProps {
   'Address width': string;
   'Notes width': string;
   'Action width': string;
-  'showFooter' : true;
+  showFooter: true;
 }
 
 export const Default: Story<DefaultProps> = ({
