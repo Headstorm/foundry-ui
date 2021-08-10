@@ -612,7 +612,7 @@ const Table = ({
       ref={mergeRefs([ref, containerRef])}
       reachedMinWidth={width < minWidthBreakpoint}
       {...containerProps}
-      showFooter= {showFooter}
+      showFooter={showFooter}
     >
       <thead>
         {width > minWidthBreakpoint && (
@@ -662,7 +662,7 @@ const Table = ({
                   columnGap={columnGap}
                   columnWidths={columnWidths}
                   ref={headerRef}
-                  {...headerProps}
+                  //{...headerProps}
                 >
                   {Object.keys(copiedColumns).map((headerColumnKey: string) => {
                     const RenderedFooterCell = StyledFooterCell;
@@ -672,7 +672,7 @@ const Table = ({
                     return (
                       (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
                         <RenderedFooterCell>
-                          {//FOOTER CONTENT GOES HERE 
+                          {// FOOTER CONTENT GOES HERE
                           }
                         </RenderedFooterCell>
                       )
@@ -680,7 +680,7 @@ const Table = ({
                   })}
                 </StyledFooter>
               )}
-            </tfoot>
+              </tfoot>
       )}
 
     </StyledContainer>

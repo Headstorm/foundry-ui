@@ -215,7 +215,7 @@ export const Default: Story<DefaultProps> = ({
     },
   };
 
-  return <Table columns={sampleColumns} data={rows as columnTypes[]} showFooter={showFooter}/>;
+  return <Table columns={sampleColumns} data={rows as columnTypes[]} showFooter={showFooter} />;
 };
 Default.args = {
   'Selection width': '2rem',
@@ -224,7 +224,7 @@ Default.args = {
   'Address width': '1fr',
   'Notes width': '12rem',
   'Action width': '1rem',
-  'showFooter': true
+  showFooter: true,
 };
 
 interface GroupsProps extends DefaultProps {
@@ -386,7 +386,7 @@ export const Groups: Story<GroupsProps> = ({
       groupHeaderPosition={position}
       areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
-      showFooter = {showFooter}
+      showFooter={showFooter}
     />
   );
 };

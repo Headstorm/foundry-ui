@@ -43,6 +43,40 @@ exports[`Table Shows Table with default props 1`] = `
   background-color: rgba(255,255,255,0.2);
 }
 
+.c7 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0rem 2rem;
+  -webkit-column-gap: 1rem;
+  column-gap: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #D5D5D5;
+  color: black;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  cursor: pointer;
+  padding: 1rem 0rem 1rem 1rem;
+  margin-left: -1rem;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  pointer-events: none;
+}
+
+.c8:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
 .c5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -229,6 +263,21 @@ exports[`Table Shows Table with default props 1`] = `
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr
+        class=" c7"
+      >
+        <th
+          class=" c8"
+        />
+        <th
+          class=" c8"
+        />
+        <th
+          class=" c8"
+        />
+      </tr>
+    </tfoot>
   </table>
 </div>
 `;
