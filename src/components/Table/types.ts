@@ -37,6 +37,7 @@ export type TableProps = {
   expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
   minWidthBreakpoint?: number;
   sortGroups?: boolean;
+  showFooter?: boolean;
 
   StyledCell?: string & StyledComponentBase<any, {}>;
   StyledContainer?: string & StyledComponentBase<any, {}>;
