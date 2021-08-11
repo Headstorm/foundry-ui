@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Story, Meta } from '@storybook/react';
 import { address } from 'faker';
@@ -26,16 +26,27 @@ const generateCityList = (amount: number): OptionProps[] => {
     optionValue: item,
   }));
 };
-const cities = generateCityList(1000);
 
-type BasicProps = DropdownProps & { clearable: boolean };
+type BasicProps = DropdownProps & { clearable: boolean; numCities: number };
 
-export const Basic: Story<BasicProps> = ({ clearable, onClear, onSelect }: BasicProps) => {
+export const Basic: Story<BasicProps> = ({
+  clearable,
+  numCities,
+  onClear,
+  onSelect,
+  ...args
+}: BasicProps) => {
+  const [cities, setCities] = useState<OptionProps[]>([]);
   const [values, setValues] = useState<(string | number)[] | undefined>();
+
+  useEffect(() => {
+    setCities(generateCityList(numCities));
+  }, [numCities]);
 
   return (
     <Label labelText="City" htmlFor="cities-list">
       <Dropdown
+        {...args}
         name="cities-list"
         onClear={clearable ? onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {
@@ -58,6 +69,7 @@ Basic.args = {
   variant: variants.fill,
   optionsVariant: variants.outline,
   valueVariant: variants.text,
+  numCities: 20000,
 };
 
 const teaOptions = [
@@ -101,7 +113,7 @@ const teaOptions = [
   },
 ];
 
-export const Icons: Story = args => {
+export const Icons: Story<DropdownProps> = ({ onSelect, ...args }: DropdownProps) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
   return (
     <Label labelText="How strong do you like your tea?" htmlFor="tea-rank">
@@ -110,7 +122,7 @@ export const Icons: Story = args => {
         name="tea-rank"
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect(selected);
+          return onSelect(selected);
         }}
         options={teaOptions}
         values={values}
