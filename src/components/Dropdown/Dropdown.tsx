@@ -45,17 +45,12 @@ const Container = styled(Div)`
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ isOpen, isOpenedBelow, isHidden }) => {
-    const openStyle = isOpenedBelow
-      ? `
-            border-bottom: 0px solid transparent;
-            border-bottom-right-radius: 0rem;
-            border-bottom-left-radius: 0rem;
-          `
-      : `
-            border-top: 0px solid transparent;
-            border-top-right-radius: 0rem;
-            border-top-left-radius: 0rem;
-          `;
+    const openedDirection = isOpenedBelow ? 'bottom' : 'top';
+    const openStyle = `
+      border-${openedDirection}: 0px solid transparent;
+      border-${openedDirection}-right-radius: 0rem;
+      border-${openedDirection}-left-radius: 0rem;
+    `;
 
     return `
     user-select: none;
@@ -87,7 +82,11 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color, variant, isOpenedBelow, isHidden }: UsefulDropdownState) => `
+  ${({ color, variant, isOpenedBelow, isHidden }: UsefulDropdownState) => {
+    const direction = isOpenedBelow ? 'top' : 'bottom';
+    const borderStyle = isOpenedBelow ? '0rem 0rem 0.25rem 0.25rem' : '0.25rem 0.25rem 0rem 0rem';
+
+    return `
     background: white;
     position: absolute;
     left: 0px;
@@ -102,43 +101,23 @@ const OptionsContainer = styled(Div)`
         : ''
     }
     z-index: 1000;
-    ${
-      isOpenedBelow
-        ? `
-          top: 100%;
-          border-top: 0px solid transparent;
-          border-radius: 0rem 0rem 0.25rem 0.25rem;
-        `
-        : `
-          top: auto;
-          bottom: 100%;
-          border-bottom: 0px solid transparent;
-          border-radius: 0.25rem 0.25rem 0rem 0rem;
-        `
-    }
-    ${isHidden ? `visibility: hidden;` : ''}
-  `}
+    ${direction}: 100%;
+    border-${direction}: 0px solid transparent;
+    border-radius: ${borderStyle};
+    ${isHidden ? 'visibility: hidden;' : ''}
+  `;
+  }}
 `;
 
 const HiddenOptionsContainer = styled(OptionsContainer)`
-  ${({ isOpenedBelow }) => `
+  ${({ isOpenedAbove }) => {
+    const direction = isOpenedAbove ? 'top' : 'bottom';
+
+    return `
     visibility: hidden;
-    height: 10rem;
-    ${
-      isOpenedBelow
-        ? `
-          top: 100%;
-          border-top: 0px solid transparent;
-          border-radius: 0rem 0rem 0.25rem 0.25rem;
-        `
-        : `
-          top: auto;
-          bottom: 100%;
-          border-bottom: 0px solid transparent;
-          border-radius: 0.25rem 0.25rem 0rem 0rem;
-        `
-    }
-  `}
+    ${direction}: 100%;
+  `;
+  }}
 `;
 
 const OptionItem = styled(Div)`
@@ -174,6 +153,7 @@ const OptionItem = styled(Div)`
     `;
   }}
 `;
+
 const CheckContainer = styled(Div)`
   ${({ color }: UsefulDropdownState) => {
     const { colors } = useTheme();
@@ -223,6 +203,7 @@ export interface DropdownProps {
   StyledValueContainer?: StyledSubcomponentType;
   StyledValueItem?: StyledSubcomponentType;
   StyledOptionsContainer?: StyledSubcomponentType;
+  StyledHiddenOptionsContainer?: StyledSubcomponentType;
   StyledOptionItem?: StyledSubcomponentType;
   StyledCheckContainer?: StyledSubcomponentType;
   StyledPlaceholder?: StyledSubcomponentType;
@@ -242,6 +223,7 @@ export interface DropdownProps {
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
+  hiddenOptionsContainerRef?: React.RefObject<HTMLElement>;
   optionItemRef?: React.RefObject<HTMLElement>;
   valueContainerRef?: React.RefObject<HTMLButtonElement>;
   valueItemRef?: React.RefObject<HTMLElement>;
@@ -272,7 +254,9 @@ export interface DropdownProps {
   optionsVariant?: variants;
   valueVariant?: variants;
 
-  isAware?: boolean;
+  shouldStayInView?: boolean;
+  intersectionThreshold?: number;
+  intersectionObserverPrecision?: number;
 }
 
 const Dropdown = ({
@@ -280,6 +264,7 @@ const Dropdown = ({
   StyledValueContainer = ValueContainer,
   StyledValueItem = ValueItem,
   StyledOptionsContainer = OptionsContainer,
+  StyledHiddenOptionsContainer = HiddenOptionsContainer,
   StyledOptionItem = OptionItem,
   StyledCheckContainer = CheckContainer,
   StyledPlaceholder = PlaceholderContainer,
@@ -299,6 +284,7 @@ const Dropdown = ({
 
   containerRef,
   optionsContainerRef,
+  hiddenOptionsContainerRef,
   optionItemRef,
   valueContainerRef,
   valueItemRef,
@@ -325,7 +311,9 @@ const Dropdown = ({
   valueVariant = variants.text,
   values = [],
 
-  isAware = true,
+  shouldStayInView = true,
+  intersectionThreshold = 0.95,
+  intersectionObserverPrecision = 100,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -342,7 +330,8 @@ const Dropdown = ({
   const [isOpenedBelow, setIsOpenedBelow] = useState<boolean>(true);
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const [isScrollingDown, setIsScrollingDown] = useState<boolean>(false);
-  const [prevIntersectionRatio, setPrevIntersectionRatio] = useState<number>(0.5);
+  const prevIntersectionRatio = useRef<number>(0.5);
+  const ticking = useRef<boolean>(false);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -356,24 +345,23 @@ const Dropdown = ({
   useEffect(() => {
     const threshold = 0;
     let lastScrollY = window.pageYOffset;
-    let ticking = false;
 
     const updateScrollDir = () => {
       const scrollY = window.pageYOffset;
 
       if (Math.abs(scrollY - lastScrollY) < threshold) {
-        ticking = false;
+        ticking.current = false;
         return;
       }
       setIsScrollingDown(scrollY > lastScrollY);
       lastScrollY = scrollY > 0 ? scrollY : 0;
-      ticking = false;
+      ticking.current = false;
     };
 
     const onScroll = () => {
-      if (!ticking) {
+      if (!ticking.current) {
         window.requestAnimationFrame(updateScrollDir);
-        ticking = true;
+        ticking.current = true;
       }
     };
     window.addEventListener('scroll', onScroll);
@@ -381,32 +369,39 @@ const Dropdown = ({
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const buildThresholdArray = () => Array.from(Array(100).keys(), i => i / 100);
   const intersectOptions = useMemo(() => {
+    const buildThresholdArray = () =>
+      Array.from(
+        Array(intersectionObserverPrecision + 1).keys(), // + 1 to always get intersection at 100% in viewport
+        i => i / intersectionObserverPrecision,
+      );
+
     return {
       root: null,
       rootMargin: '0px',
       threshold: buildThresholdArray(),
     };
-  }, []);
+  }, [intersectionObserverPrecision]);
 
   const intersectionCallback = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (isAware) {
+      if (shouldStayInView) {
         if (entries.length === 1) {
           const [entry] = entries;
           // swap the dropdown to open downward if its hitting the top
           if (
-            entry.intersectionRatio < 0.95 &&
+            entry.intersectionRatio < intersectionThreshold &&
             entry.target === optionsContainerInternalRef.current
           ) {
             if (isScrollingDown) {
-              if (!isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio) {
+              if (!isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio.current) {
                 setIsOpenedBelow(true);
               }
+            } else if (isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio.current) {
+              setIsOpenedBelow(false);
             }
           }
-          setPrevIntersectionRatio(entry.intersectionRatio);
+          prevIntersectionRatio.current = entry.intersectionRatio;
         } else if (entries.length === 2) {
           const [dropdown, invisibleDrop] = entries;
           // flip the view if the other direction is more visible in viewport
@@ -419,27 +414,28 @@ const Dropdown = ({
         setIsHidden(false);
       }
     },
-    [isOpenedBelow, isScrollingDown, prevIntersectionRatio, isAware],
+    [isOpenedBelow, isScrollingDown, intersectionThreshold, shouldStayInView],
   );
 
-  const intersectObserver = useMemo(() => {
-    const observer = new IntersectionObserver(intersectionCallback, intersectOptions);
-    return observer;
-  }, [intersectOptions, intersectionCallback]);
+  const intersectObserver = useMemo(
+    () => new IntersectionObserver(intersectionCallback, intersectOptions),
+    [intersectOptions, intersectionCallback],
+  );
 
   useEffect(() => {
-    const observer = intersectObserver;
     if (optionsContainerInternalRef.current) {
-      observer.observe(optionsContainerInternalRef.current);
+      intersectObserver.observe(optionsContainerInternalRef.current);
     }
     if (hiddenOptionsContainerInternalRef.current) {
-      observer.observe(hiddenOptionsContainerInternalRef.current);
+      intersectObserver.observe(hiddenOptionsContainerInternalRef.current);
     }
     if (optionsContainerInternalRef.current && hiddenOptionsContainerInternalRef.current) {
-      hiddenOptionsContainerInternalRef.current.style.height =
-        optionsContainerInternalRef.current?.style.height;
+      // height is returned in pixels
+      hiddenOptionsContainerInternalRef.current.style.height = `${
+        optionsContainerInternalRef.current.getBoundingClientRect().height
+      }px`;
     }
-    return () => observer.disconnect();
+    return () => intersectObserver.disconnect();
   }, [optionsContainerInternalRef, hiddenOptionsContainerInternalRef, intersectObserver, isOpen]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
@@ -728,10 +724,12 @@ const Dropdown = ({
               </StyledOptionItem>
             ))}
           </StyledOptionsContainer>
-          <HiddenOptionsContainer
-            ref={hiddenOptionsContainerInternalRef}
-            isOpenedBelow={!isOpenedBelow}
-          />
+          {shouldStayInView && (
+            <StyledHiddenOptionsContainer
+              ref={mergeRefs([hiddenOptionsContainerInternalRef, hiddenOptionsContainerRef])}
+              isOpenedAbove={!isOpenedBelow}
+            />
+          )}
         </>
       )}
     </StyledContainer>
@@ -740,6 +738,7 @@ const Dropdown = ({
 
 Dropdown.Container = Container;
 Dropdown.OptionsContainer = OptionsContainer;
+Dropdown.HiddenOptionsContainer = HiddenOptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
