@@ -78,9 +78,7 @@ const mockedSelectHandler = jest.fn();
 //   global.IntersectionObserver.mockClear();
 // });
 
-const observe = jest.fn(() => {
-  throw new Error('Failed to find IntersectionObserver for element. Is it being observed?');
-});
+const observe = jest.fn(() => {});
 
 beforeEach(() => {
   function setupIntersectionObserverMock({
