@@ -4,7 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
-import { Components, Virtuoso } from 'react-virtuoso';
+import { Components, ListRange, Virtuoso } from 'react-virtuoso';
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
@@ -303,7 +303,7 @@ const Dropdown = ({
   const [focusWithin, setFocusWithin] = useState<boolean>(false);
   const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
 
-  const scrollPos = useRef<number>(0);
+  const [scrollIndex, setScrollIndex] = useState<number>(0);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -321,12 +321,6 @@ const Dropdown = ({
 
     return hash;
   }, [options, values]);
-
-  const scrollListener = () => {
-    scrollPos.current = optionsContainerInternalRef.current
-      ? optionsContainerInternalRef.current.scrollTop
-      : 0;
-  };
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
@@ -465,19 +459,6 @@ const Dropdown = ({
     };
   }, [keyDownHandler]);
 
-  const optionsScrollListenerCallbackRef = useCallback(
-    node => {
-      if (node && rememberScrollPosition) {
-        node.addEventListener('scroll', scrollListener, true);
-
-        if (scrollPos.current) {
-          node.scrollTop = scrollPos.current;
-        }
-      }
-    },
-    [rememberScrollPosition],
-  );
-
   const closeIcons = (
     <>
       {onClear && values.length > 0 && (
@@ -507,7 +488,6 @@ const Dropdown = ({
           ref={mergeRefs([
             optionsContainerRef,
             optionsContainerInternalRef,
-            optionsScrollListenerCallbackRef,
             listRef as React.RefObject<HTMLDivElement>,
           ])}
           {...optionsContainerProps}
@@ -516,13 +496,7 @@ const Dropdown = ({
         </StyledOptionsContainer>
       )),
     }),
-    [
-      defaultedColor,
-      optionsContainerProps,
-      optionsContainerRef,
-      optionsScrollListenerCallbackRef,
-      optionsVariant,
-    ],
+    [defaultedColor, optionsContainerProps, optionsContainerRef, optionsVariant],
   );
 
   return (
@@ -590,13 +564,15 @@ const Dropdown = ({
       {isOpen && (
         <Virtuoso
           data={options}
+          rangeChanged={(range: ListRange) => setScrollIndex(range.startIndex)}
+          initialTopMostItemIndex={rememberScrollPosition ? scrollIndex : 0}
           initialItemCount={
             typeof window !== 'undefined' && window.document && window.document.createElement
               ? initialOptionCount
               : options.length
           }
           components={VirtuosoComponents as Components}
-          itemContent={(index, option) => (
+          itemContent={(_index, option) => (
             <StyledOptionItem
               id={`${name}-option-${option.id}`}
               key={`${name}-option-${option.id}`}
