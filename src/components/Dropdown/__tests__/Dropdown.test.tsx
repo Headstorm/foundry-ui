@@ -15,249 +15,65 @@ const pokeOptions = [
 
 const mockedSelectHandler = jest.fn();
 
-// const mockRect = {
-//   bottom: 0,
-//   top: 0,
-//   left: 0,
-//   right: 0,
-//   height: 0,
-//   width: 0,
-//   x: 0,
-//   y: 0,
-//   toJSON: () => {},
-// };
-// const entries: IntersectionObserverEntry[] = [
-//   {
-//     boundingClientRect: mockRect,
-//     intersectionRatio: 0.2,
-//     intersectionRect: mockRect,
-//     isIntersecting: true,
-//     rootBounds: null,
-//     // @ts-ignore
-//     target: {},
-//     time: 0,
-//   },
-//   {
-//     boundingClientRect: mockRect,
-//     intersectionRatio: 0.8,
-//     intersectionRect: mockRect,
-//     isIntersecting: true,
-//     rootBounds: null,
-//     // @ts-ignore
-//     target: {},
-//     time: 0,
-//   },
-// ];
+// IntersectionObserver needs to be mocked b/c it does not exist in node testing env
+const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
+  window.IntersectionObserver = jest.fn((callback, options = {}) => {
+    const instance: IntersectionObserver = {
+      thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
+      root: options.root ?? null,
+      rootMargin: options.rootMargin ?? '',
+      observe: jest.fn((target: Element) => {
+        callback(entries, instance);
+      }),
+      unobserve,
+      disconnect,
+      takeRecords,
+    };
 
-// // const observe = jest.fn();
-// const unobserve = jest.fn();
-// const disconnect = jest.fn();
-// const takeRecords = jest.fn();
+    return instance;
+  });
+};
 
-// // IntersectionObserver needs to be mocked b/c it does not exist in node testing env
-// beforeEach(() => {
-//   global.IntersectionObserver = jest.fn((callback, options = {}) => {
-//     const instance: IntersectionObserver = {
-//       thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
-//       root: options.root ?? null,
-//       rootMargin: options.rootMargin ?? '',
-//       observe: jest.fn((target: Element) => {
-//         callback(entries, instance);
-//       }),
-//       unobserve,
-//       disconnect,
-//       takeRecords,
-//     };
+const mockRect = {
+  bottom: 0,
+  top: 0,
+  left: 0,
+  right: 0,
+  height: 0,
+  width: 0,
+  x: 0,
+  y: 0,
+  toJSON: () => {},
+};
 
-//     return instance;
-//   });
-// });
-
-// afterEach(() => {
-//   // @ts-ignore
-//   global.IntersectionObserver.mockClear();
-// });
-
-const observe = jest.fn(() => {});
+const observe = jest.fn();
+const unobserve = jest.fn();
+const disconnect = jest.fn();
+const takeRecords = jest.fn();
 
 beforeEach(() => {
-  function setupIntersectionObserverMock({
-    root = null,
-    rootMargin = '',
-    thresholds = [],
-    disconnect = () => null,
-    observe = () => null,
-    takeRecords = () => [],
-    unobserve = () => null,
-  } = {}): void {
-    class MockIntersectionObserver implements IntersectionObserver {
-      readonly root: Element | null = root;
-      readonly rootMargin: string = rootMargin;
-      readonly thresholds: ReadonlyArray<number> = thresholds;
-      disconnect: () => void = disconnect;
-      observe: (target: Element) => void = observe;
-      takeRecords: () => IntersectionObserverEntry[] = takeRecords;
-      unobserve: (target: Element) => void = unobserve;
-    }
+  window.IntersectionObserver = jest.fn((callback, options = {}) => {
+    const instance: IntersectionObserver = {
+      thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
+      root: options.root ?? null,
+      rootMargin: options.rootMargin ?? '',
+      observe: jest.fn((target: Element) => {
+        callback([], instance);
+      }),
+      unobserve,
+      disconnect,
+      takeRecords,
+    };
 
-    Object.defineProperty(window, 'IntersectionObserver', {
-      writable: true,
-      configurable: true,
-      value: MockIntersectionObserver,
-    });
-
-    Object.defineProperty(global, 'IntersectionObserver', {
-      writable: true,
-      configurable: true,
-      value: MockIntersectionObserver,
-    });
-  }
-
-  setupIntersectionObserverMock({ observe });
+    return instance;
+  });
 });
 
-// type Item = {
-//   callback: IntersectionObserverCallback;
-//   elements: Set<Element>;
-//   created: number;
-// };
-
-// const observers = new Map<IntersectionObserver, Item>();
-
-// beforeEach(() => {
-//   /**
-//    * Create a custom IntersectionObserver mock, allowing us to intercept the observe and unobserve calls.
-//    * We keep track of the elements being observed, so when `mockAllIsIntersecting` is triggered it will
-//    * know which elements to trigger the event on.
-//    */
-//   global.IntersectionObserver = jest.fn((cb, options = {}) => {
-//     const item = {
-//       callback: cb,
-//       elements: new Set<Element>(),
-//       created: Date.now(),
-//     };
-//     const instance: IntersectionObserver = {
-//       thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
-//       root: options.root ?? null,
-//       rootMargin: options.rootMargin ?? '',
-//       observe: jest.fn((element: Element) => {
-//         item.elements.add(element);
-//       }),
-//       unobserve: jest.fn((element: Element) => {
-//         item.elements.delete(element);
-//       }),
-//       disconnect: jest.fn(() => {
-//         observers.delete(instance);
-//       }),
-//       takeRecords: jest.fn(),
-//     };
-
-//     observers.set(instance, item);
-
-//     return instance;
-//   });
-// });
-
-// afterEach(() => {
-//   // @ts-ignore
-//   global.IntersectionObserver.mockClear();
-//   observers.clear();
-// });
-
-// const triggerIntersection = (
-//   elements: Element[],
-//   trigger: boolean | number,
-//   observer: IntersectionObserver,
-//   item: Item,
-// ) => {
-//   const entries: IntersectionObserverEntry[] = [];
-
-//   const isIntersecting =
-//     typeof trigger === 'number'
-//       ? observer.thresholds.some(threshold => trigger >= threshold)
-//       : trigger;
-
-//   const ratio =
-//     typeof trigger === 'number'
-//       ? observer.thresholds.find(threshold => trigger >= threshold) ?? 0
-//       : trigger
-//       ? 1
-//       : 0;
-
-//   elements.forEach(element => {
-//     entries.push({
-//       boundingClientRect: element.getBoundingClientRect(),
-//       intersectionRatio: ratio,
-//       intersectionRect: isIntersecting
-//         ? element.getBoundingClientRect()
-//         : {
-//             bottom: 0,
-//             height: 0,
-//             left: 0,
-//             right: 0,
-//             top: 0,
-//             width: 0,
-//             x: 0,
-//             y: 0,
-//             toJSON(): any {},
-//           },
-//       isIntersecting,
-//       rootBounds: null,
-//       target: element,
-//       time: Date.now() - item.created,
-//     });
-//   });
-
-//   // Trigger the IntersectionObserver callback with all the entries
-//   if (act) act(() => item.callback(entries, observer));
-//   else item.callback(entries, observer);
-// };
-
-// /**
-//  * Set the `isIntersecting` on all current IntersectionObserver instances
-//  * @param isIntersecting {boolean | number}
-//  */
-// const mockAllIsIntersecting = (isIntersecting: boolean | number) => {
-//   for (let [observer, item] of observers) {
-//     triggerIntersection(Array.from(item.elements), isIntersecting, observer, item);
-//   }
-// };
-
-// /**
-//  * Set the `isIntersecting` for the IntersectionObserver of a specific element.
-//  *
-//  * @param element {Element}
-//  * @param isIntersecting {boolean | number}
-//  */
-// const mockIsIntersecting = (element: Element, isIntersecting: boolean | number) => {
-//   const observer = intersectionMockInstance(element);
-//   if (!observer) {
-//     throw new Error(
-//       'No IntersectionObserver instance found for element. Is it still mounted in the DOM?',
-//     );
-//   }
-//   const item = observers.get(observer);
-//   if (item) {
-//     triggerIntersection([element], isIntersecting, observer, item);
-//   }
-// };
-
-// /**
-//  * Call the `intersectionMockInstance` method with an element, to get the (mocked)
-//  * `IntersectionObserver` instance. You can use this to spy on the `observe` and
-//  * `unobserve` methods.
-//  * @param element {Element}
-//  * @return IntersectionObserver
-//  */
-// const intersectionMockInstance = (element: Element): IntersectionObserver => {
-//   for (let [observer, item] of observers) {
-//     if (item.elements.has(element)) {
-//       return observer;
-//     }
-//   }
-
-//   throw new Error('Failed to find IntersectionObserver for element. Is it being observed?');
-// };
+afterEach(() => {
+  // @ts-ignore
+  global.IntersectionObserver.mockClear();
+});
+////////////////////////////////////////////////////////////////
 
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
@@ -537,7 +353,6 @@ describe('Dropdown', () => {
       const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
-      // const IO = intersectionMockInstance(container);
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
@@ -549,7 +364,6 @@ describe('Dropdown', () => {
       const { container } = render(
         <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
-      // const IO = intersectionMockInstance(container);
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
@@ -558,8 +372,137 @@ describe('Dropdown', () => {
       expect(observe).toHaveBeenCalledTimes(1);
     });
 
-    it('Make sure dropdown faces direction with most viewport room when both containers are intersecting', () => {
-      const container = render(<Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />);
+    it('Both containers are intersecting with viewport', () => {
+      const entriesBothIntersecting: IntersectionObserverEntry[] = [
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 0.2,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 0.8,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+      ];
+      generateIntersectionObserver(entriesBothIntersecting);
+
+      const { container } = render(
+        <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
+      );
+      act(() => {
+        fireEvent.focus(screen.getByRole('button'));
+      });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('Both containers are fully in viewport', () => {
+      const entriesOptionsInView: IntersectionObserverEntry[] = [
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 1,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 1,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+      ];
+      generateIntersectionObserver(entriesOptionsInView);
+
+      const { container } = render(
+        <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
+      );
+      act(() => {
+        fireEvent.focus(screen.getByRole('button'));
+      });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('Options container is in view and hidden options container is not', () => {
+      const entriesOptionsInView: IntersectionObserverEntry[] = [
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 1,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 0.2,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+      ];
+      generateIntersectionObserver(entriesOptionsInView);
+
+      const { container } = render(
+        <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
+      );
+      act(() => {
+        fireEvent.focus(screen.getByRole('button'));
+      });
+      expect(container).toMatchSnapshot();
+    });
+
+    it('Hidden options container is in view and options container is not', () => {
+      const entriesHiddenOptionsInView: IntersectionObserverEntry[] = [
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 0.2,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+        {
+          boundingClientRect: mockRect,
+          intersectionRatio: 1,
+          intersectionRect: mockRect,
+          isIntersecting: true,
+          rootBounds: null,
+          // @ts-ignore
+          target: {},
+          time: 0,
+        },
+      ];
+      generateIntersectionObserver(entriesHiddenOptionsInView);
+
+      const { container } = render(
+        <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
+      );
+      expect(container).toMatchSnapshot();
     });
   });
 });
