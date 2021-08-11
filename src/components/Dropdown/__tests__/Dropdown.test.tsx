@@ -15,6 +15,10 @@ const pokeOptions = [
 
 const mockedSelectHandler = jest.fn();
 
+const observe = jest.fn((callback, entries, instance) => {
+  callback(entries, instance);
+});
+
 // IntersectionObserver needs to be mocked b/c it does not exist in node testing env
 const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
   window.IntersectionObserver = jest.fn((callback, options = {}) => {
@@ -22,12 +26,10 @@ const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
       thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
       root: options.root ?? null,
       rootMargin: options.rootMargin ?? '',
-      observe: jest.fn((target: Element) => {
-        callback(entries, instance);
-      }),
-      unobserve,
-      disconnect,
-      takeRecords,
+      observe: jest.fn((target: Element) => observe(callback, entries, instance)),
+      unobserve: jest.fn(),
+      disconnect: jest.fn(),
+      takeRecords: jest.fn(),
     };
 
     return instance;
@@ -39,17 +41,17 @@ const mockRect = {
   top: 0,
   left: 0,
   right: 0,
-  height: 0,
+  height: 160,
   width: 0,
   x: 0,
   y: 0,
   toJSON: () => {},
 };
 
-const observe = jest.fn();
-const unobserve = jest.fn();
-const disconnect = jest.fn();
-const takeRecords = jest.fn();
+// const observe = jest.fn();
+// const unobserve = jest.fn();
+// const disconnect = jest.fn();
+// const takeRecords = jest.fn();
 
 beforeEach(() => {
   window.IntersectionObserver = jest.fn((callback, options = {}) => {
@@ -57,12 +59,10 @@ beforeEach(() => {
       thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
       root: options.root ?? null,
       rootMargin: options.rootMargin ?? '',
-      observe: jest.fn((target: Element) => {
-        callback([], instance);
-      }),
-      unobserve,
-      disconnect,
-      takeRecords,
+      observe: jest.fn((target: Element) => observe(callback, [], instance)),
+      unobserve: jest.fn(),
+      disconnect: jest.fn(),
+      takeRecords: jest.fn(),
     };
 
     return instance;
@@ -398,7 +398,7 @@ describe('Dropdown', () => {
       generateIntersectionObserver(entriesBothIntersecting);
 
       const { container } = render(
-        <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
+        <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
@@ -432,7 +432,7 @@ describe('Dropdown', () => {
       generateIntersectionObserver(entriesOptionsInView);
 
       const { container } = render(
-        <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
+        <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
@@ -466,7 +466,7 @@ describe('Dropdown', () => {
       generateIntersectionObserver(entriesOptionsInView);
 
       const { container } = render(
-        <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
+        <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));

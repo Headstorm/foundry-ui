@@ -135,6 +135,20 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   text-align: left;
 }
 
+.c14 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+
 .c12 {
   background: white;
   position: absolute;
@@ -147,6 +161,11 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+
+.c15 {
+  visibility: hidden;
+  bottom: 100%;
 }
 
 .c13 {
@@ -283,6 +302,10 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
         </span>
       </div>
     </div>
+    <div
+      class=" c14 c15"
+      style="height: 0px;"
+    />
   </div>
 </div>
 `;
@@ -422,6 +445,20 @@ exports[`Dropdown IntersectionObserver tests Both containers are intersecting wi
   text-align: left;
 }
 
+.c14 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+
 .c12 {
   background: white;
   position: absolute;
@@ -434,6 +471,11 @@ exports[`Dropdown IntersectionObserver tests Both containers are intersecting wi
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+
+.c15 {
+  visibility: hidden;
+  bottom: 100%;
 }
 
 .c13 {
@@ -570,6 +612,10 @@ exports[`Dropdown IntersectionObserver tests Both containers are intersecting wi
         </span>
       </div>
     </div>
+    <div
+      class=" c14 c15"
+      style="height: 0px;"
+    />
   </div>
 </div>
 `;
@@ -1192,6 +1238,20 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   text-align: left;
 }
 
+.c14 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+
 .c12 {
   background: white;
   position: absolute;
@@ -1204,6 +1264,11 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+
+.c15 {
+  visibility: hidden;
+  bottom: 100%;
 }
 
 .c13 {
@@ -1340,6 +1405,10 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
         </span>
       </div>
     </div>
+    <div
+      class=" c14 c15"
+      style="height: 0px;"
+    />
   </div>
 </div>
 `;
