@@ -238,6 +238,8 @@ export interface DropdownProps {
   variant?: variants;
   optionsVariant?: variants;
   valueVariant?: variants;
+
+  initialOptionCount?: number;
 }
 
 const Dropdown = ({
@@ -289,6 +291,8 @@ const Dropdown = ({
   rememberScrollPosition = true,
   valueVariant = variants.text,
   values = [],
+
+  initialOptionCount,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -586,8 +590,11 @@ const Dropdown = ({
       {isOpen && (
         <Virtuoso
           data={options}
+          initialItemCount={
             typeof window !== 'undefined' && window.document && window.document.createElement
               ? initialOptionCount
+              : options.length
+          }
           components={VirtuosoComponents as Components}
           itemContent={(index, option) => (
             <StyledOptionItem

@@ -346,35 +346,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   z-index: 1000;
 }
 
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c5 {
   opacity: 0.8;
 }
@@ -443,66 +414,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
         <div
-          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
-        >
-          <div
-            data-index="0"
-            data-item-index="0"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-bulbasaur"
-              role="option"
-              tabindex="-1"
-            >
-              <span
-                class=" "
-              >
-                Bulbasaur
-              </span>
-            </div>
-          </div>
-          <div
-            data-index="1"
-            data-item-index="1"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-charmander"
-              role="option"
-              tabindex="-1"
-            >
-              <span
-                class=" "
-              >
-                Charmander
-              </span>
-            </div>
-          </div>
-          <div
-            data-index="2"
-            data-item-index="2"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-squirtle"
-              role="option"
-              tabindex="-1"
-            >
-              <span
-                class=" "
-              >
-                Squirtle
-              </span>
-            </div>
-          </div>
-        </div>
+          style="box-sizing: border-box; padding-top: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
@@ -1197,35 +1110,6 @@ exports[`Dropdown displays all options when focused 1`] = `
   z-index: 1000;
 }
 
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
-}
-
 .c5 {
   opacity: 0.8;
 }
@@ -1295,66 +1179,8 @@ exports[`Dropdown displays all options when focused 1`] = `
         style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
         <div
-          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
-        >
-          <div
-            data-index="0"
-            data-item-index="0"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-bulbasaur"
-              role="option"
-              tabindex="-1"
-            >
-              <span
-                class=" "
-              >
-                Bulbasaur
-              </span>
-            </div>
-          </div>
-          <div
-            data-index="1"
-            data-item-index="1"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-charmander"
-              role="option"
-              tabindex="-1"
-            >
-              <span
-                class=" "
-              >
-                Charmander
-              </span>
-            </div>
-          </div>
-          <div
-            data-index="2"
-            data-item-index="2"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-squirtle"
-              role="option"
-              tabindex="-1"
-            >
-              <span
-                class=" "
-              >
-                Squirtle
-              </span>
-            </div>
-          </div>
-        </div>
+          style="box-sizing: border-box; padding-top: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
