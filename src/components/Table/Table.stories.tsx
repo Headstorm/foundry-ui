@@ -217,6 +217,7 @@ export const Default: Story<DefaultProps> = ({
       sortable: false,
       width: actionWidth,
       cellComponent: ActionCell,
+      footerContent: ''
     },
   };
 

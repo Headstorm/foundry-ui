@@ -18,6 +18,7 @@ export interface columnTypes {
     width?: string;
     minTableWidth?: number;
     sortable?: boolean;
+    footerContent?: string;
     sortFunction?: (item1: any, item2: any) => boolean;
     isGroupLabel?: boolean;
     cellComponent?: string & StyledComponentBase<any, {}>;
