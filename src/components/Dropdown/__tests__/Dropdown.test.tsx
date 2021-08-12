@@ -15,17 +15,37 @@ const pokeOptions = [
 
 const mockedSelectHandler = jest.fn();
 
-const observe = jest.fn((callback, entries, instance) => {
-  callback(entries, instance);
-});
+const observe = jest
+  .fn()
+  .mockImplementation(
+    (
+      callback: IntersectionObserverCallback,
+      entries: IntersectionObserverEntry[],
+      instance: IntersectionObserver,
+    ) => {
+      callback(entries, instance);
+    },
+  );
+
+const mockRect = {
+  bottom: 160,
+  top: 160,
+  left: 160,
+  right: 160,
+  height: 160,
+  width: 160,
+  x: 160,
+  y: 160,
+  toJSON: () => {},
+};
 
 // IntersectionObserver needs to be mocked b/c it does not exist in node testing env
 const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
   window.IntersectionObserver = jest.fn((callback, options = {}) => {
     const instance: IntersectionObserver = {
-      thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
       root: options.root ?? null,
       rootMargin: options.rootMargin ?? '',
+      thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
       observe: jest.fn((target: Element) => observe(callback, entries, instance)),
       unobserve: jest.fn(),
       disconnect: jest.fn(),
@@ -34,55 +54,26 @@ const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
 
     return instance;
   });
+  global.IntersectionObserver = window.IntersectionObserver;
 };
-
-const mockRect = {
-  bottom: 0,
-  top: 0,
-  left: 0,
-  right: 0,
-  height: 160,
-  width: 0,
-  x: 0,
-  y: 0,
-  toJSON: () => {},
-};
-
-// const observe = jest.fn();
-// const unobserve = jest.fn();
-// const disconnect = jest.fn();
-// const takeRecords = jest.fn();
-
-beforeEach(() => {
-  window.IntersectionObserver = jest.fn((callback, options = {}) => {
-    const instance: IntersectionObserver = {
-      thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
-      root: options.root ?? null,
-      rootMargin: options.rootMargin ?? '',
-      observe: jest.fn((target: Element) => observe(callback, [], instance)),
-      unobserve: jest.fn(),
-      disconnect: jest.fn(),
-      takeRecords: jest.fn(),
-    };
-
-    return instance;
-  });
-});
 
 afterEach(() => {
   // @ts-ignore
+  window.IntersectionObserver.mockClear();
+  // @ts-ignore
   global.IntersectionObserver.mockClear();
 });
-////////////////////////////////////////////////////////////////
 
 describe('Dropdown', () => {
   it('does not display options on initial render', () => {
+    generateIntersectionObserver([]);
     const { container } = render(<Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('displays placeholder value on initial render', () => {
+    generateIntersectionObserver([]);
     const { container, getByText } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
@@ -96,6 +87,7 @@ describe('Dropdown', () => {
   });
 
   it('renders a value when given a matching option id through props', () => {
+    generateIntersectionObserver([]);
     const { container } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} values={['bulbasaur']} />,
     );
@@ -105,6 +97,7 @@ describe('Dropdown', () => {
 
   // this happens when multi is false - whether this is the ideal case or not is up for discussion
   it('renders two values when given matching option ids through props', () => {
+    generateIntersectionObserver([]);
     const { container } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
@@ -117,6 +110,7 @@ describe('Dropdown', () => {
   });
 
   it('renders two values when given matching option ids through props when multi is set to true', () => {
+    generateIntersectionObserver([]);
     const { container } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
@@ -130,6 +124,7 @@ describe('Dropdown', () => {
   });
 
   it("renders no value when given a value that doesn't match any option id", () => {
+    generateIntersectionObserver([]);
     const { container } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} values={['pickandchew']} />,
     );
@@ -138,6 +133,7 @@ describe('Dropdown', () => {
   });
 
   it('renders one value when given two values but only one matches an option id', () => {
+    generateIntersectionObserver([]);
     const { container } = render(
       <Dropdown
         onSelect={mockedSelectHandler}
@@ -150,6 +146,7 @@ describe('Dropdown', () => {
   });
 
   it('displays all options when focused', () => {
+    generateIntersectionObserver([]);
     const { container } = render(<Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />);
     act(() => {
       fireEvent.focus(screen.getByRole('button'));
@@ -158,6 +155,7 @@ describe('Dropdown', () => {
   });
 
   it('can focus dropdown and select option', async () => {
+    generateIntersectionObserver([]);
     const { container, getByText } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
@@ -173,6 +171,7 @@ describe('Dropdown', () => {
   });
 
   it('selects multiple options when dropdown is multi', async () => {
+    generateIntersectionObserver([]);
     const { getByText, queryByText } = render(
       <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
@@ -189,6 +188,7 @@ describe('Dropdown', () => {
   });
 
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
+    generateIntersectionObserver([]);
     const { container, getByText } = render(
       <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
@@ -207,6 +207,7 @@ describe('Dropdown', () => {
   });
 
   it('closes options when clicking outside', async () => {
+    generateIntersectionObserver([]);
     const { queryByText, asFragment } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
@@ -227,6 +228,7 @@ describe('Dropdown', () => {
   });
 
   it('can use arrow keys and enter to navigate options', async () => {
+    generateIntersectionObserver([]);
     const { queryByText } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
@@ -262,6 +264,7 @@ describe('Dropdown', () => {
   });
 
   it('selects options from values prop', () => {
+    generateIntersectionObserver([]);
     const { container } = render(
       <Dropdown
         multi
@@ -276,6 +279,7 @@ describe('Dropdown', () => {
 
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
+      generateIntersectionObserver([]);
       const component = (
         <Dropdown onSelect={() => {}} placeholder="hello" options={pokeOptions}></Dropdown>
       );
@@ -287,6 +291,7 @@ describe('Dropdown', () => {
 
   describe('Ref tests', () => {
     it('containerRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       const { container } = render(<Dropdown onSelect={() => {}} containerRef={ref} />);
       await waitFor(() => container);
@@ -294,6 +299,7 @@ describe('Dropdown', () => {
     });
 
     it('optionsContainerRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       render(<Dropdown options={pokeOptions} onSelect={() => {}} optionsContainerRef={ref} />);
       act(() => {
@@ -303,6 +309,7 @@ describe('Dropdown', () => {
     });
 
     it('hiddenOptionsContainerRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       render(
         <Dropdown options={pokeOptions} onSelect={() => {}} hiddenOptionsContainerRef={ref} />,
@@ -314,6 +321,7 @@ describe('Dropdown', () => {
     });
 
     it('optionItemRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       render(<Dropdown options={pokeOptions} onSelect={() => {}} optionItemRef={ref} />);
       act(() => {
@@ -323,6 +331,7 @@ describe('Dropdown', () => {
     });
 
     it('valueContainerRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLButtonElement>();
       render(<Dropdown onSelect={() => {}} valueContainerRef={ref} />);
       await waitFor(() => screen.getByRole(`button`));
@@ -330,6 +339,7 @@ describe('Dropdown', () => {
     });
 
     it('valueItemRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       const { getByTestId } = render(
         <Dropdown name={testId} onSelect={() => {}} valueItemRef={ref} />,
@@ -339,6 +349,7 @@ describe('Dropdown', () => {
     });
 
     it('placeholderRef.current should exist', async () => {
+      generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       const { getByTestId } = render(
         <Dropdown name={testId} onSelect={() => {}} placeholderRef={ref} />,
@@ -350,17 +361,20 @@ describe('Dropdown', () => {
 
   describe('IntersectionObserver tests', () => {
     it('Check if intersection observer is called when dropdown is clicked', () => {
+      generateIntersectionObserver([]);
       const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      //expect observer to be called once for options container and once for hidden options container
+      expect(container).toMatchSnapshot();
+      // expect observer to be called once for options container and once for hidden options container
       expect(observe).toHaveBeenCalledTimes(2);
     });
 
     it('Make sure hidden options container is not rendered when shouldStayInView prop is false', () => {
+      generateIntersectionObserver([]);
       const { container } = render(
         <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
@@ -368,11 +382,11 @@ describe('Dropdown', () => {
         fireEvent.focus(screen.getByRole('button'));
       });
       expect(container).toMatchSnapshot();
-      //observe should only be called once as hidden options container does not exist
+      // observe should only be called once as hidden options container does not exist
       expect(observe).toHaveBeenCalledTimes(1);
     });
 
-    it('Both containers are intersecting with viewport', () => {
+    it('Both containers are intersecting with viewport', async () => {
       const entriesBothIntersecting: IntersectionObserverEntry[] = [
         {
           boundingClientRect: mockRect,
@@ -403,10 +417,11 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
 
-    it('Both containers are fully in viewport', () => {
+    it('Both containers are fully in viewport', async () => {
       const entriesOptionsInView: IntersectionObserverEntry[] = [
         {
           boundingClientRect: mockRect,
@@ -437,10 +452,11 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
 
-    it('Options container is in view and hidden options container is not', () => {
+    it('Options container is in view and hidden options container is not', async () => {
       const entriesOptionsInView: IntersectionObserverEntry[] = [
         {
           boundingClientRect: mockRect,
@@ -471,10 +487,11 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
 
-    it('Hidden options container is in view and options container is not', () => {
+    it('Hidden options container is in view and options container is not', async () => {
       const entriesHiddenOptionsInView: IntersectionObserverEntry[] = [
         {
           boundingClientRect: mockRect,
@@ -502,6 +519,7 @@ describe('Dropdown', () => {
       const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
+      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
   });
