@@ -305,11 +305,12 @@ const Dropdown = ({
 
   const [scrollIndex, setScrollIndex] = useState<number>(0);
 
-  const [isVirtual, setIsVirtual] = useState<boolean>(virtualizeOptions); // TODO: Update if the scroller div is smaller than the max-height
+  const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
+  const [isVirtual, setIsVirtual] = useState<boolean>(virtualizeOptions);
 
   useEffect(() => {
-    setIsVirtual(virtualizeOptions);
-  }, [virtualizeOptions]);
+    setIsVirtual(virtualizeOptions && isOverflowing);
+  }, [virtualizeOptions, isOverflowing]);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -365,17 +366,13 @@ const Dropdown = ({
 
         if (optionsContainer) {
           if (isVirtual) {
-            const virtuosoOuterContainer = optionsContainer.firstElementChild;
-            const virtuosoInnerContainer = virtuosoOuterContainer?.firstElementChild;
-            const virtuosoScroller = virtuosoInnerContainer?.firstElementChild;
+            const virtuosoContainer = optionsContainer.firstElementChild;
+            const virtuosoScroller = virtuosoContainer?.firstElementChild;
             if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
-              setIsVirtual(false);
+              setIsOverflowing(false);
             }
-          } else if (
-            virtualizeOptions &&
-            optionsContainer.scrollHeight > optionsContainer.clientHeight
-          ) {
-            setIsVirtual(true);
+          } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
+            setIsOverflowing(true);
           }
         }
       }
@@ -384,7 +381,7 @@ const Dropdown = ({
     if (onFocus) {
       onFocus();
     }
-  }, [focusTimeoutId, focusWithin, onFocus, name, isVirtual, virtualizeOptions]);
+  }, [focusTimeoutId, focusWithin, onFocus, name, isVirtual]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -460,10 +457,9 @@ const Dropdown = ({
                 // get parent before nextElementSibling because buttons are nested inside of skeletons
                 const optionsContainer = button ? button.nextElementSibling : null;
                 if (optionsContainer) {
-                  const virtuosoOuterContainer = optionsContainer.firstElementChild;
-                  const virtuosoInnerContainer = virtuosoOuterContainer?.firstElementChild;
-                  const virtuosoScroller = virtuosoInnerContainer?.firstElementChild;
-                  const firstOption = virtuosoScroller?.firstElementChild as
+                  const virtuosoContainer = optionsContainer.firstElementChild;
+                  const virtuosoScroller = virtuosoContainer?.firstElementChild;
+                  const firstOption = virtuosoScroller?.firstElementChild?.firstElementChild as
                     | HTMLElement
                     | undefined;
                   if (firstOption) {
@@ -573,7 +569,7 @@ const Dropdown = ({
         </StyledOptionsContainer>
       )),
     }),
-    [defaultedColor, optionsContainerProps, optionsContainerRef, optionsVariant, isVirtual],
+    [defaultedColor, optionsVariant, isVirtual, optionsContainerRef, optionsContainerProps],
   );
 
   return (
