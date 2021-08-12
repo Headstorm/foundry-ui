@@ -99,11 +99,7 @@ describe('Dropdown', () => {
 
   it('can focus dropdown and select option', async () => {
     const { container, getByText } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        options={pokeOptions}
-        initialOptionCount={pokeOptions.length}
-      />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
 
     // TODO - Don't use id, see if we can use a more semantically meaningful element
@@ -122,7 +118,7 @@ describe('Dropdown', () => {
         onSelect={mockedSelectHandler}
         multi
         options={pokeOptions}
-        initialOptionCount={pokeOptions.length}
+        virtualizeOptions={false}
       />,
     );
 
@@ -143,7 +139,7 @@ describe('Dropdown', () => {
         onSelect={mockedSelectHandler}
         multi
         options={pokeOptions}
-        initialOptionCount={pokeOptions.length}
+        virtualizeOptions={false}
       />,
     );
 
@@ -182,11 +178,7 @@ describe('Dropdown', () => {
 
   it('can use arrow keys and enter to navigate options', async () => {
     const { queryByText } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        options={pokeOptions}
-        initialOptionCount={pokeOptions.length}
-      />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
     act(() => {
       screen.getByRole('button').focus();
@@ -263,7 +255,7 @@ describe('Dropdown', () => {
           options={pokeOptions}
           onSelect={() => {}}
           optionItemRef={ref}
-          initialOptionCount={pokeOptions.length}
+          virtualizeOptions={false}
         />,
       );
       act(() => {

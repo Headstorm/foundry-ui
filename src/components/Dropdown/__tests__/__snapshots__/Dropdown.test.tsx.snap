@@ -758,7 +758,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   position: absolute;
   top: 100%;
   left: 0px;
-  height: 10rem;
+  max-height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -880,81 +880,55 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       role="listbox"
     >
       <div
-        style="width: 100%; height: 100%; position: absolute; top: 0px;"
+        class=" c13"
+        color="#252D34"
+        id="dropdown-option-bulbasaur"
+        role="option"
+        tabindex="-1"
       >
         <div
-          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+          class=" c14"
+          color="#252D34"
+        />
+        <span
+          class=" "
         >
-          <div
-            data-index="0"
-            data-item-index="0"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-bulbasaur"
-              role="option"
-              tabindex="-1"
-            >
-              <div
-                class=" c14"
-                color="#252D34"
-              />
-              <span
-                class=" "
-              >
-                Bulbasaur
-              </span>
-            </div>
-          </div>
-          <div
-            data-index="1"
-            data-item-index="1"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-charmander"
-              role="option"
-              tabindex="-1"
-            >
-              <div
-                class=" c14"
-                color="#252D34"
-              />
-              <span
-                class=" "
-              >
-                Charmander
-              </span>
-            </div>
-          </div>
-          <div
-            data-index="2"
-            data-item-index="2"
-            data-known-size="0"
-          >
-            <div
-              class=" c13"
-              color="#252D34"
-              id="dropdown-option-squirtle"
-              role="option"
-              tabindex="-1"
-            >
-              <div
-                class=" c14"
-                color="#252D34"
-              />
-              <span
-                class=" "
-              >
-                Squirtle
-              </span>
-            </div>
-          </div>
-        </div>
+          Bulbasaur
+        </span>
+      </div>
+      <div
+        class=" c13"
+        color="#252D34"
+        id="dropdown-option-charmander"
+        role="option"
+        tabindex="-1"
+      >
+        <div
+          class=" c14"
+          color="#252D34"
+        />
+        <span
+          class=" "
+        >
+          Charmander
+        </span>
+      </div>
+      <div
+        class=" c13"
+        color="#252D34"
+        id="dropdown-option-squirtle"
+        role="option"
+        tabindex="-1"
+      >
+        <div
+          class=" c14"
+          color="#252D34"
+        />
+        <span
+          class=" "
+        >
+          Squirtle
+        </span>
       </div>
     </div>
   </div>

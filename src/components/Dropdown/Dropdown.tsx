@@ -82,12 +82,12 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color, variant }: UsefulDropdownState) => `
+  ${({ color, variant, isVirtual }: UsefulDropdownState & { isVirtual: boolean }) => `
     background: white;
     position: absolute;
     top: 100%;
     left: 0px;
-    height: 10rem;
+    ${isVirtual ? 'height: 10rem;' : 'max-height: 10rem;'}
     overflow-y: auto;
     width: 15rem;
     ${
@@ -239,7 +239,7 @@ export interface DropdownProps {
   optionsVariant?: variants;
   valueVariant?: variants;
 
-  initialOptionCount?: number;
+  virtualizeOptions?: boolean;
 }
 
 const Dropdown = ({
@@ -292,7 +292,7 @@ const Dropdown = ({
   valueVariant = variants.text,
   values = [],
 
-  initialOptionCount,
+  virtualizeOptions = true,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -304,6 +304,12 @@ const Dropdown = ({
   const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
 
   const [scrollIndex, setScrollIndex] = useState<number>(0);
+
+  const [isVirtual, setIsVirtual] = useState<boolean>(virtualizeOptions); // TODO: Update if the scroller div is smaller than the max-height
+
+  useEffect(() => {
+    setIsVirtual(virtualizeOptions);
+  }, [virtualizeOptions]);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -349,10 +355,34 @@ const Dropdown = ({
     }
 
     setIsOpen(true);
+
+    window.setTimeout(() => {
+      const focusedElement = document.activeElement;
+
+      if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
+        const button = focusedElement.parentNode as HTMLElement | undefined;
+        const optionsContainer = button ? button.nextElementSibling : null;
+
+        if (optionsContainer) {
+          if (isVirtual) {
+            const lowestContainer = optionsContainer.children[0]?.children[0]?.children[0];
+            if (lowestContainer && lowestContainer.clientHeight < optionsContainer.clientHeight) {
+              setIsVirtual(false);
+            }
+          } else if (
+            virtualizeOptions &&
+            optionsContainer.scrollHeight > optionsContainer.clientHeight
+          ) {
+            setIsVirtual(true);
+          }
+        }
+      }
+    }, 0);
+
     if (onFocus) {
       onFocus();
     }
-  }, [onFocus, focusWithin, focusTimeoutId]);
+  }, [focusTimeoutId, focusWithin, onFocus, name, isVirtual, virtualizeOptions]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -401,54 +431,94 @@ const Dropdown = ({
       // to activeElement to after it is updated in the DOM
       window.setTimeout(() => {
         const focusedElement = document.activeElement;
-        switch (key) {
-          case 'Enter':
-            const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
-            if (match) {
-              handleSelect(match[1]);
-            }
-            break;
-          case 'ArrowUp':
-            if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              const row = focusedElement.parentNode as HTMLElement | undefined;
-              const rowPrevSibling = row ? row.previousElementSibling : null;
-              if (rowPrevSibling) {
-                const toFocus = rowPrevSibling.children[0] as HTMLElement | undefined;
-                if (toFocus) {
-                  toFocus.focus();
+
+        if (isVirtual) {
+          switch (key) {
+            case 'Enter':
+              const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
+              if (match) {
+                handleSelect(match[1]);
+              }
+              break;
+            case 'ArrowUp':
+              if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
+                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const rowPrevSibling = row ? row.previousElementSibling : null;
+                if (rowPrevSibling) {
+                  const toFocus = rowPrevSibling.children[0] as HTMLElement | undefined;
+                  if (toFocus) {
+                    toFocus.focus();
+                  }
                 }
               }
-            }
-            break;
-          case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
-              const button = focusedElement.parentNode as HTMLElement | undefined;
-              // get parent before nextElementSibling because buttons are nested inside of skeletons
-              const optionsContainer = button ? button.nextElementSibling : null;
-              if (optionsContainer) {
-                const toFocus = optionsContainer.children[0]?.children[0]?.children[0]
-                  ?.children[0] as HTMLElement | undefined;
-                if (toFocus) {
-                  toFocus.focus();
+              break;
+            case 'ArrowDown':
+              if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
+                const button = focusedElement.parentNode as HTMLElement | undefined;
+                // get parent before nextElementSibling because buttons are nested inside of skeletons
+                const optionsContainer = button ? button.nextElementSibling : null;
+                if (optionsContainer) {
+                  const toFocus = optionsContainer.children[0]?.children[0]?.children[0]
+                    ?.children[0] as HTMLElement | undefined;
+                  if (toFocus) {
+                    toFocus.focus();
+                  }
+                }
+              } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
+                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const rowNextSibling = row ? row.nextElementSibling : null;
+                if (rowNextSibling) {
+                  const toFocus = rowNextSibling.children[0] as HTMLElement | undefined;
+                  if (toFocus) {
+                    toFocus.focus();
+                  }
                 }
               }
-            } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              const row = focusedElement.parentNode as HTMLElement | undefined;
-              const rowNextSibling = row ? row.nextElementSibling : null;
-              if (rowNextSibling) {
-                const toFocus = rowNextSibling.children[0] as HTMLElement | undefined;
-                if (toFocus) {
-                  toFocus.focus();
+              break;
+            default:
+              break;
+          }
+        } else {
+          switch (key) {
+            case 'Enter':
+              const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
+              if (match) {
+                handleSelect(match[1]);
+              }
+              break;
+            case 'ArrowUp':
+              if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
+                const sibling = focusedElement.previousElementSibling as HTMLElement | null;
+                if (sibling) {
+                  sibling.focus();
                 }
               }
-            }
-            break;
-          default:
-            break;
+              break;
+            case 'ArrowDown':
+              if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
+                const button = focusedElement.parentNode as HTMLElement | undefined;
+                // get parent before nextElementSibling because buttons are nested inside of skeletons
+                const optionsContainer = button ? button.nextElementSibling : null;
+                if (optionsContainer) {
+                  const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
+                  if (toFocus) {
+                    toFocus.focus();
+                  }
+                }
+              } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
+                const sibling = focusedElement.nextElementSibling as HTMLElement | null;
+                if (sibling) {
+                  sibling.focus();
+                }
+              }
+              break;
+            default:
+              break;
+          }
         }
       }, 0);
     },
-    [handleSelect, name],
+    [handleSelect, isVirtual, name],
   );
 
   useEffect(() => {
@@ -484,6 +554,7 @@ const Dropdown = ({
         <StyledOptionsContainer
           color={defaultedColor}
           variant={optionsVariant}
+          isVirtual={isVirtual}
           role="listbox"
           ref={mergeRefs([
             optionsContainerRef,
@@ -496,7 +567,7 @@ const Dropdown = ({
         </StyledOptionsContainer>
       )),
     }),
-    [defaultedColor, optionsContainerProps, optionsContainerRef, optionsVariant],
+    [defaultedColor, optionsContainerProps, optionsContainerRef, optionsVariant, isVirtual],
   );
 
   return (
@@ -561,48 +632,90 @@ const Dropdown = ({
         </StyledValueItem>
         {closeIcons}
       </Button>
-      {isOpen && (
-        <Virtuoso
-          data={options}
-          rangeChanged={(range: ListRange) => setScrollIndex(range.startIndex)}
-          initialTopMostItemIndex={rememberScrollPosition ? scrollIndex : 0}
-          initialItemCount={
-            typeof window !== 'undefined' && window.document && window.document.createElement
-              ? initialOptionCount
-              : options.length
-          }
-          components={VirtuosoComponents as Components}
-          itemContent={(_index, option) => (
-            <StyledOptionItem
-              id={`${name}-option-${option.id}`}
-              key={`${name}-option-${option.id}`}
-              onClick={() => handleSelect(option.id)}
-              tabIndex={-1}
-              color={defaultedColor}
-              variant={optionsVariant}
-              multi={multi}
-              selected={optionsHash[option.id].isSelected}
-              ref={optionItemRef}
-              role="option"
-              {...optionItemProps}
-            >
-              {multi && (
-                <StyledCheckContainer
-                  color={defaultedColor}
-                  selected={optionsHash[option.id].isSelected}
-                  variant={optionsVariant}
-                  multi={multi}
-                  ref={checkContainerRef}
-                  {...checkContainerProps}
-                >
-                  {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
-                </StyledCheckContainer>
-              )}
-              <Span>{option.optionValue}</Span>
-            </StyledOptionItem>
-          )}
-        />
-      )}
+      {isOpen &&
+        (isVirtual ? (
+          <Virtuoso
+            data={options}
+            rangeChanged={(range: ListRange) => setScrollIndex(range.startIndex)}
+            initialTopMostItemIndex={
+              rememberScrollPosition && scrollIndex < options.length ? scrollIndex : 0
+            }
+            initialItemCount={
+              typeof window !== 'undefined' && window.document && window.document.createElement
+                ? undefined
+                : options.length
+            }
+            components={VirtuosoComponents as Components}
+            itemContent={(_index, option) => (
+              <StyledOptionItem
+                id={`${name}-option-${option.id}`}
+                key={`${name}-option-${option.id}`}
+                onClick={() => handleSelect(option.id)}
+                tabIndex={-1}
+                color={defaultedColor}
+                variant={optionsVariant}
+                multi={multi}
+                selected={optionsHash[option.id].isSelected}
+                ref={optionItemRef}
+                role="option"
+                {...optionItemProps}
+              >
+                {multi && (
+                  <StyledCheckContainer
+                    color={defaultedColor}
+                    selected={optionsHash[option.id].isSelected}
+                    variant={optionsVariant}
+                    multi={multi}
+                    ref={checkContainerRef}
+                    {...checkContainerProps}
+                  >
+                    {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
+                  </StyledCheckContainer>
+                )}
+                <Span>{option.optionValue}</Span>
+              </StyledOptionItem>
+            )}
+          />
+        ) : (
+          <StyledOptionsContainer
+            color={defaultedColor}
+            variant={optionsVariant}
+            isVirtual={isVirtual}
+            role="listbox"
+            ref={mergeRefs([optionsContainerRef, optionsContainerInternalRef])}
+            {...optionsContainerProps}
+          >
+            {options.map(option => (
+              <StyledOptionItem
+                id={`${name}-option-${option.id}`}
+                key={`${name}-option-${option.id}`}
+                onClick={() => handleSelect(option.id)}
+                tabIndex={-1}
+                color={defaultedColor}
+                variant={optionsVariant}
+                multi={multi}
+                selected={optionsHash[option.id].isSelected}
+                ref={optionItemRef}
+                role="option"
+                {...optionItemProps}
+              >
+                {multi && (
+                  <StyledCheckContainer
+                    color={defaultedColor}
+                    selected={optionsHash[option.id].isSelected}
+                    variant={optionsVariant}
+                    multi={multi}
+                    ref={checkContainerRef}
+                    {...checkContainerProps}
+                  >
+                    {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
+                  </StyledCheckContainer>
+                )}
+                <Span>{option.optionValue}</Span>
+              </StyledOptionItem>
+            ))}
+          </StyledOptionsContainer>
+        ))}
     </StyledContainer>
   );
 };

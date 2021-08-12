@@ -69,7 +69,8 @@ Basic.args = {
   variant: variants.fill,
   optionsVariant: variants.outline,
   valueVariant: variants.text,
-  numCities: 20000,
+  numCities: 200,
+  virtualizeOptions: true,
 };
 
 const teaOptions = [
