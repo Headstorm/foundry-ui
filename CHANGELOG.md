@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/Headstorm/foundry-ui/compare/v1.7.0...v1.7.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* **button:** fix skeleton props issue making Buttons display: block ([d1045b3](https://github.com/Headstorm/foundry-ui/commit/d1045b3a1070d8a8276b3d272718433500a839ed))
+
 # [1.7.0](https://github.com/Headstorm/foundry-ui/compare/v1.6.0...v1.7.0) (2021-08-12)
 
 
