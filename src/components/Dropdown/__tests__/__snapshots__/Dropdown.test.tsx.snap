@@ -337,42 +337,13 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   position: absolute;
   top: 100%;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -440,43 +411,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
@@ -1136,42 +1075,13 @@ exports[`Dropdown displays all options when focused 1`] = `
   position: absolute;
   top: 100%;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
   z-index: 1000;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -1240,43 +1150,11 @@ exports[`Dropdown displays all options when focused 1`] = `
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
