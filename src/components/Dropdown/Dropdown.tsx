@@ -365,8 +365,10 @@ const Dropdown = ({
 
         if (optionsContainer) {
           if (isVirtual) {
-            const lowestContainer = optionsContainer.children[0]?.children[0]?.children[0];
-            if (lowestContainer && lowestContainer.clientHeight < optionsContainer.clientHeight) {
+            const virtuosoOuterContainer = optionsContainer.firstElementChild;
+            const virtuosoInnerContainer = virtuosoOuterContainer?.firstElementChild;
+            const virtuosoScroller = virtuosoInnerContainer?.firstElementChild;
+            if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
               setIsVirtual(false);
             }
           } else if (
@@ -445,9 +447,9 @@ const Dropdown = ({
                 const row = focusedElement.parentNode as HTMLElement | undefined;
                 const rowPrevSibling = row ? row.previousElementSibling : null;
                 if (rowPrevSibling) {
-                  const toFocus = rowPrevSibling.children[0] as HTMLElement | undefined;
-                  if (toFocus) {
-                    toFocus.focus();
+                  const prevOption = rowPrevSibling.firstElementChild as HTMLElement | undefined;
+                  if (prevOption) {
+                    prevOption.focus();
                   }
                 }
               }
@@ -458,19 +460,23 @@ const Dropdown = ({
                 // get parent before nextElementSibling because buttons are nested inside of skeletons
                 const optionsContainer = button ? button.nextElementSibling : null;
                 if (optionsContainer) {
-                  const toFocus = optionsContainer.children[0]?.children[0]?.children[0]
-                    ?.children[0] as HTMLElement | undefined;
-                  if (toFocus) {
-                    toFocus.focus();
+                  const virtuosoOuterContainer = optionsContainer.firstElementChild;
+                  const virtuosoInnerContainer = virtuosoOuterContainer?.firstElementChild;
+                  const virtuosoScroller = virtuosoInnerContainer?.firstElementChild;
+                  const firstOption = virtuosoScroller?.firstElementChild as
+                    | HTMLElement
+                    | undefined;
+                  if (firstOption) {
+                    firstOption.focus();
                   }
                 }
               } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
                 const row = focusedElement.parentNode as HTMLElement | undefined;
                 const rowNextSibling = row ? row.nextElementSibling : null;
                 if (rowNextSibling) {
-                  const toFocus = rowNextSibling.children[0] as HTMLElement | undefined;
-                  if (toFocus) {
-                    toFocus.focus();
+                  const nextOption = rowNextSibling.firstElementChild as HTMLElement | undefined;
+                  if (nextOption) {
+                    nextOption.focus();
                   }
                 }
               }
@@ -500,9 +506,9 @@ const Dropdown = ({
                 // get parent before nextElementSibling because buttons are nested inside of skeletons
                 const optionsContainer = button ? button.nextElementSibling : null;
                 if (optionsContainer) {
-                  const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
-                  if (toFocus) {
-                    toFocus.focus();
+                  const firstOption = optionsContainer.firstElementChild as HTMLElement | undefined;
+                  if (firstOption) {
+                    firstOption.focus();
                   }
                 }
               } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
