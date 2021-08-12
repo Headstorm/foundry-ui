@@ -187,18 +187,22 @@ export const Default: Story<DefaultProps> = ({
       width: selectionWidth,
       cellComponent: SelectionCell,
       sortable: false,
+      footerContent: '',
     },
     name: {
       name: 'Name',
       width: nameWidth,
+      footerContent: 'NameFooter',
     },
     title: {
       name: 'Title',
       width: titleWidth,
+      footerContent: 'TitleFooter',
     },
     address: {
       name: 'Address',
       width: addressWidth,
+      footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',
@@ -206,6 +210,7 @@ export const Default: Story<DefaultProps> = ({
       cellComponent: NotesCell,
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
+      footerContent: 'NotesFooter',
     },
     action: {
       name: '',
@@ -345,18 +350,22 @@ export const Groups: Story<GroupsProps> = ({
       cellComponent: SelectionCell,
       sortable: false,
       groupCellComponent: EmptyCell,
+      footerContent: '',
     },
     name: {
       name: 'Name',
       width: nameWidth,
+      footerContent: 'NameFooter',
     },
     title: {
       name: 'Title',
       width: titleWidth,
+      footerContent: 'TitleFooter',
     },
     address: {
       name: 'Address',
       width: addressWidth,
+      footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',
@@ -365,6 +374,7 @@ export const Groups: Story<GroupsProps> = ({
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
       groupCellComponent: EmptyCell,
+      footerContent: 'NotesFooter',
     },
   };
 

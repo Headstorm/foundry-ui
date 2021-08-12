@@ -658,10 +658,7 @@ const Table = ({
       {showFooter && (
         <tfoot>
           {width > minWidthBreakpoint && (
-            <StyledFooter
-              columnGap={columnGap}
-              columnWidths={columnWidths}
-            >
+            <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
               {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
                 const RenderedFooterCell = StyledFooterCell;
                 const breakpointHit =
@@ -670,8 +667,9 @@ const Table = ({
                 return (
                   (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
                     <RenderedFooterCell key={`f${index}`}>
-                      {console.log(`f${index}`)
-                        // FOOTER CONTENT GOES HERE
+                      {
+                        
+                        copiedColumns[headerColumnKey].footerContent
                       }
                     </RenderedFooterCell>
                   )
