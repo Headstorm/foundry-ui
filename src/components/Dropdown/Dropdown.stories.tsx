@@ -14,11 +14,11 @@ const generateCityList = (amount: number): OptionProps[] => {
   const tempData: string[] = [];
 
   for (let i = 0; i < amount; i += 1) {
-    let item = address.city();
-    while (tempData.includes(item)) {
-      item = address.city();
+    let city = address.city();
+    while (tempData.includes(city)) {
+      city = address.city();
     }
-    tempData.push(item);
+    tempData.push(city);
   }
 
   return tempData.map(item => ({
