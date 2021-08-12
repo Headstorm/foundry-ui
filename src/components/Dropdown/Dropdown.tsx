@@ -365,31 +365,23 @@ const Dropdown = ({
 
     setIsOpen(true);
 
-    window.setTimeout(() => {
-      const focusedElement = document.activeElement;
-
-      if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
-        const button = focusedElement.parentNode as HTMLElement | undefined;
-        const optionsContainer = button ? button.nextElementSibling : null;
-
-        if (optionsContainer) {
-          if (isVirtual) {
-            const virtuosoContainer = optionsContainer.firstElementChild;
-            const virtuosoScroller = virtuosoContainer?.firstElementChild;
-            if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
-              setIsOverflowing(false);
-            }
-          } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
-            setIsOverflowing(true);
-          }
+    const optionsContainer = optionsContainerInternalRef.current;
+    if (optionsContainer) {
+      if (isVirtual) {
+        const virtuosoContainer = optionsContainer.firstElementChild;
+        const virtuosoScroller = virtuosoContainer?.firstElementChild;
+        if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
+          setIsOverflowing(false);
         }
+      } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
+        setIsOverflowing(true);
       }
-    }, 0);
+    }
 
     if (onFocus) {
       onFocus();
     }
-  }, [focusTimeoutId, focusWithin, onFocus, name, isVirtual]);
+  }, [focusTimeoutId, focusWithin, onFocus, isVirtual]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
