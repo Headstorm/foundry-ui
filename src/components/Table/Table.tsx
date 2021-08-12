@@ -668,7 +668,7 @@ const Table = ({
                   (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
                     <RenderedFooterCell key={`f${index}`}>
                       {
-                        
+
                         copiedColumns[headerColumnKey].footerContent
                       }
                     </RenderedFooterCell>
