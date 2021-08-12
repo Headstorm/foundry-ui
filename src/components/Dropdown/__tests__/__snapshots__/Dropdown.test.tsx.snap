@@ -145,6 +145,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -358,6 +359,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -567,6 +569,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -827,6 +830,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1097,6 +1101,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1307,6 +1312,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1505,6 +1511,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1729,6 +1736,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1924,6 +1932,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2143,6 +2152,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2370,6 +2380,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2605,6 +2616,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2840,6 +2852,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"

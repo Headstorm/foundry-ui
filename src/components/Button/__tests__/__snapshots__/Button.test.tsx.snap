@@ -98,6 +98,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 <div
   class=" c0"
+  style="display: inline-block;"
 >
   <button
     class=" c1"
@@ -221,6 +222,7 @@ exports[`Button keeps the container the same when switching between isLoading an
 
 <div
   class=" c0"
+  style="display: inline-block;"
 >
   <button
     class=" c1"
@@ -337,6 +339,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -453,6 +456,7 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -569,6 +573,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -687,6 +692,7 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -808,6 +814,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -955,6 +962,7 @@ exports[`Button shows icons 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -1102,6 +1110,7 @@ exports[`Button shows icons with type string 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -1255,6 +1264,7 @@ exports[`Button shows loading skeleton 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
@@ -1380,6 +1390,7 @@ exports[`Button shows loading text when provided 1`] = `
 <div>
   <div
     class=" c0"
+    style="display: inline-block;"
   >
     <button
       class=" c1"
