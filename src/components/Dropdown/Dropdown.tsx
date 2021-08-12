@@ -303,6 +303,8 @@ const Dropdown = ({
   const [focusWithin, setFocusWithin] = useState<boolean>(false);
   const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
 
+  const scrollPos = useRef<number>(0);
+
   const [scrollIndex, setScrollIndex] = useState<number>(0);
 
   const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
@@ -328,6 +330,12 @@ const Dropdown = ({
 
     return hash;
   }, [options, values]);
+
+  const scrollListener = () => {
+    scrollPos.current = optionsContainerInternalRef.current
+      ? optionsContainerInternalRef.current.scrollTop
+      : 0;
+  };
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
@@ -508,6 +516,19 @@ const Dropdown = ({
     };
   }, [keyDownHandler]);
 
+  const optionsScrollListenerCallbackRef = useCallback(
+    node => {
+      if (node && rememberScrollPosition) {
+        node.addEventListener('scroll', scrollListener, true);
+
+        if (scrollPos.current) {
+          node.scrollTop = scrollPos.current;
+        }
+      }
+    },
+    [rememberScrollPosition],
+  );
+
   const closeIcons = (
     <>
       {onClear && values.length > 0 && (
@@ -626,6 +647,7 @@ const Dropdown = ({
             itemContent={(_index, option) => (
               <StyledOptionItem
                 id={`${name}-option-${option.id}`}
+                key={`${name}-option-${option.id}`}
                 onClick={() => handleSelect(option.id)}
                 tabIndex={-1}
                 color={defaultedColor}
@@ -653,10 +675,11 @@ const Dropdown = ({
             )}
           />
         ) : (
-          <InternalOptionsContainer>
+          <InternalOptionsContainer ref={optionsScrollListenerCallbackRef}>
             {options.map(option => (
               <StyledOptionItem
                 id={`${name}-option-${option.id}`}
+                key={`${name}-option-${option.id}`}
                 onClick={() => handleSelect(option.id)}
                 tabIndex={-1}
                 color={defaultedColor}
