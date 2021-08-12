@@ -11,20 +11,22 @@ import Label from '../Label';
 import { colors } from '../../index';
 
 const generateCityList = (amount: number): OptionProps[] => {
-  const tempData: string[] = [];
+  const citySet = new Set<string>();
+  const cityOptions: OptionProps[] = [];
 
   for (let i = 0; i < amount; i += 1) {
     let city = address.city();
-    while (tempData.includes(city)) {
+    while (citySet.has(city)) {
       city = address.city();
     }
-    tempData.push(city);
+    citySet.add(city);
+    cityOptions.push({
+      id: city.toLowerCase(),
+      optionValue: city,
+    });
   }
 
-  return tempData.map(item => ({
-    id: item.toLowerCase(),
-    optionValue: item,
-  }));
+  return cityOptions;
 };
 
 type BasicProps = DropdownProps & { clearable: boolean; numCities: number };
