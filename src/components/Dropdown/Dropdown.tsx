@@ -365,18 +365,20 @@ const Dropdown = ({
 
     setIsOpen(true);
 
-    const optionsContainer = optionsContainerInternalRef.current;
-    if (optionsContainer) {
-      if (isVirtual) {
-        const virtuosoContainer = optionsContainer.firstElementChild;
-        const virtuosoScroller = virtuosoContainer?.firstElementChild;
-        if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
-          setIsOverflowing(false);
+    window.setTimeout(() => {
+      const optionsContainer = optionsContainerInternalRef.current;
+      if (optionsContainer) {
+        if (isVirtual) {
+          const virtuosoContainer = optionsContainer.firstElementChild;
+          const virtuosoScroller = virtuosoContainer?.firstElementChild;
+          if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
+            setIsOverflowing(false);
+          }
+        } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
+          setIsOverflowing(true);
         }
-      } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
-        setIsOverflowing(true);
       }
-    }
+    }, 0);
 
     if (onFocus) {
       onFocus();
