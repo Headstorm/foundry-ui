@@ -8,7 +8,7 @@ import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
 import { Div, Span } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
-import { SubcomponentPropsType } from '../commonTypes';
+import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 
 export type TagContainerProps = {
@@ -39,9 +39,9 @@ export type TagProps = {
   iconPrefixContainerProps?: SubcomponentPropsType;
   iconSuffixContainerProps?: SubcomponentPropsType;
   loadingBarProps?: SubcomponentPropsType;
-  StyledContainer?: string & StyledComponentBase<any, {}>;
-  StyledIconContainer?: string & StyledComponentBase<any, {}>;
-  StyledLoadingBar?: string & StyledComponentBase<any, {}>;
+  StyledContainer?: StyledSubcomponentType;
+  StyledIconContainer?: StyledSubcomponentType;
+  StyledLoadingBar?: StyledSubcomponentType;
   containerRef?: React.RefObject<HTMLSpanElement>;
   iconPrefixContainerRef?: React.RefObject<HTMLElement>;
   iconSuffixContainerRef?: React.RefObject<HTMLElement>;

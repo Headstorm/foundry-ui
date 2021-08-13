@@ -13,9 +13,6 @@ const Template: Story<CheckboxProps> = ({ checked, ...args }: CheckboxProps) => 
       {...args}
       checked={isChecked}
       inputProps={{ onChange: () => setChecked(!isChecked) }}
-      onClick={e => {
-        return args.onClick(e);
-      }}
     />
   );
 };

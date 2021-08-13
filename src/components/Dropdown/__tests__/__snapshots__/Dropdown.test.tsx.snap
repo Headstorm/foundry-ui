@@ -1,18 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
-.c6 {
+.c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -35,16 +66,16 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -52,7 +83,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -67,7 +98,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -91,17 +122,17 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -112,66 +143,105 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
+        <div
           class=" c4"
-          id="dropdown-placeholder"
-        />
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="dropdown-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
           />
-        </svg>
-      </div>
+        </div>
+        <div
+          class=" c6"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
       <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c11"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  .c6 {
+  .c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -194,16 +264,16 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -211,7 +281,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -226,7 +296,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   z-index: 7;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -253,22 +323,22 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c10 {
+.c12 {
   background: white;
   position: absolute;
   top: 100%;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -277,36 +347,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   z-index: 1000;
 }
 
-.c11 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c11:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c11:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -316,91 +357,67 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
-    >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
-      >
-        <span
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
     <div
-      class=" c10"
+      class=" c1"
+      style="display: inline-block;"
+    >
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
+      >
+        <div
+          class=" c4"
+          id="dropdown-value-item"
+        >
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
+          />
+        </div>
+        <div
+          class=" c6"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,15L12,10L17,15H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
+      <div
+        class=" c11"
+      />
+    </div>
+    <div
+      class=" c12"
       color="#252D34"
       role="listbox"
     >
       <div
-        class=" c11"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c11"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c11"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
@@ -409,18 +426,49 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  .c6 {
+  .c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -443,16 +491,16 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -460,7 +508,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -475,7 +523,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -499,17 +547,17 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -519,65 +567,104 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
+        <div
           class=" c4"
-          id="dropdown-placeholder"
-        />
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="dropdown-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
           />
-        </svg>
-      </div>
+        </div>
+        <div
+          class=" c6"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
       <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c11"
+      />
+    </div>
   </div>
 </DocumentFragment>
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
-.c6 {
+.c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -600,16 +687,16 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -617,7 +704,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -632,7 +719,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   z-index: 7;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -659,17 +746,17 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c10 {
+.c12 {
   background: white;
   position: absolute;
   top: 100%;
@@ -683,7 +770,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   z-index: 1000;
 }
 
-.c11 {
+.c13 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -701,18 +788,18 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-color: transparent;
 }
 
-.c11:hover {
+.c13:hover {
   background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
-.c11:focus {
+.c13:focus {
   outline: none;
   background-color: rgba(0,0,0,0.1);
 }
 
-.c12 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -730,7 +817,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: 2rem;
 }
 
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -741,62 +828,70 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
-    >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
-      >
-        <span
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
     <div
-      class=" c10"
+      class=" c1"
+      style="display: inline-block;"
+    >
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
+      >
+        <div
+          class=" c4"
+          id="dropdown-value-item"
+        >
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
+          />
+        </div>
+        <div
+          class=" c6"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,15L12,10L17,15H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
+      <div
+        class=" c11"
+      />
+    </div>
+    <div
+      class=" c12"
       color="#252D34"
       role="listbox"
     >
       <div
-        class=" c11"
+        class=" c13"
         color="#252D34"
         id="dropdown-option-bulbasaur"
         role="option"
         tabindex="-1"
       >
         <div
-          class=" c12"
+          class=" c14"
           color="#252D34"
         />
         <span
@@ -806,14 +901,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         </span>
       </div>
       <div
-        class=" c11"
+        class=" c13"
         color="#252D34"
         id="dropdown-option-charmander"
         role="option"
         tabindex="-1"
       >
         <div
-          class=" c12"
+          class=" c14"
           color="#252D34"
         />
         <span
@@ -823,14 +918,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         </span>
       </div>
       <div
-        class=" c11"
+        class=" c13"
         color="#252D34"
         id="dropdown-option-squirtle"
         role="option"
         tabindex="-1"
       >
         <div
-          class=" c12"
+          class=" c14"
           color="#252D34"
         />
         <span
@@ -845,18 +940,49 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
-.c6 {
+.c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -879,16 +1005,16 @@ exports[`Dropdown displays all options when focused 1`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -896,7 +1022,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -911,7 +1037,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   z-index: 7;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -938,22 +1064,22 @@ exports[`Dropdown displays all options when focused 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c10 {
+.c12 {
   background: white;
   position: absolute;
   top: 100%;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -962,36 +1088,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   z-index: 1000;
 }
 
-.c11 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c11:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c11:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
-}
-
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -1002,91 +1099,67 @@ exports[`Dropdown displays all options when focused 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
-    >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
-      >
-        <span
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,15L12,10L17,15H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
     <div
-      class=" c10"
+      class=" c1"
+      style="display: inline-block;"
+    >
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
+      >
+        <div
+          class=" c4"
+          id="dropdown-value-item"
+        >
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
+          />
+        </div>
+        <div
+          class=" c6"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,15L12,10L17,15H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
+      <div
+        class=" c11"
+      />
+    </div>
+    <div
+      class=" c12"
       color="#252D34"
       role="listbox"
     >
       <div
-        class=" c11"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c11"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c11"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
@@ -1094,18 +1167,49 @@ exports[`Dropdown displays all options when focused 1`] = `
 `;
 
 exports[`Dropdown displays placeholder value on initial render 1`] = `
-.c6 {
+.c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1128,16 +1232,16 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1145,7 +1249,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -1160,7 +1264,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1184,17 +1288,17 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -1206,67 +1310,106 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
+        <div
           class=" c4"
-          id="dropdown-placeholder"
+          id="dropdown-value-item"
         >
-          Choose a pokemon
-        </span>
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
+          >
+            Choose a pokemon
+          </span>
+        </div>
+        <div
+          class=" c6"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
           />
-        </svg>
-      </div>
+        </div>
+      </button>
       <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c11"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown does not display options on initial render 1`] = `
-.c6 {
+.c11 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c8 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c7 {
+  position: relative;
+}
+
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1289,16 +1432,16 @@ exports[`Dropdown does not display options on initial render 1`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1306,7 +1449,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -1321,7 +1464,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1345,17 +1488,17 @@ exports[`Dropdown does not display options on initial render 1`] = `
   padding: .5rem 1rem;
 }
 
-.c5 {
+.c6 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c4 {
+.c5 {
   opacity: 0.8;
 }
 
@@ -1366,65 +1509,104 @@ exports[`Dropdown does not display options on initial render 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
+        <div
           class=" c4"
-          id="dropdown-placeholder"
-        />
-      </div>
-      <div
-        class=" c5"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          id="dropdown-value-item"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <span
+            class=" c5"
+            id="dropdown-placeholder"
           />
-        </svg>
-      </div>
+        </div>
+        <div
+          class=" c6"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            class="c9 c10"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
       <div
-        class="c6 c7"
-      >
-        <svg
-          class="c8 c9"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c11"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders a value when given a matching option id through props 1`] = `
-.c7 {
+.c12 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c9 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c10 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1447,16 +1629,16 @@ exports[`Dropdown renders a value when given a matching option id through props 
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1464,11 +1646,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
   top: 0;
 }
 
-.c10 {
+.c11 {
   border-radius: 0.25em;
 }
 
-.c4 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1500,7 +1682,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1524,17 +1706,17 @@ exports[`Dropdown renders a value when given a matching option id through props 
   padding: .5rem 1rem;
 }
 
-.c6 {
+.c7 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c6 {
   padding: 0;
   line-height: 1;
   margin-top: 0 !important;
@@ -1552,68 +1734,107 @@ exports[`Dropdown renders a value when given a matching option id through props 
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+        <div
+          class=" c4"
+          id="dropdown-value-item"
         >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c6"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Bulbasaur
+          </span>
+        </div>
+        <div
+          class=" c7"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c8 c9"
+        >
+          <svg
+            class="c10 c11"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
           />
-        </svg>
-      </div>
+        </div>
+      </button>
       <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c12"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
-.c5 {
+.c10 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c7 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c6 {
+  position: relative;
+}
+
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1636,16 +1857,16 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1653,7 +1874,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   top: 0;
 }
 
-.c8 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1668,7 +1889,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1692,12 +1913,12 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   padding: .5rem 1rem;
 }
 
-.c4 {
+.c5 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
@@ -1709,60 +1930,99 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
-      />
-      <div
-        class=" c4"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
-          />
-        </svg>
-      </div>
-      <div
-        class="c5 c6"
-      >
-        <svg
-          class="c7 c8"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
+        <div
+          class=" c4"
+          id="dropdown-value-item"
         />
-      </div>
-    </button>
+        <div
+          class=" c5"
+        >
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c6 c7"
+        >
+          <svg
+            class="c8 c9"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
+          />
+        </div>
+      </button>
+      <div
+        class=" c10"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
-.c7 {
+.c12 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c9 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c10 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1785,16 +2045,16 @@ exports[`Dropdown renders one value when given two values but only one matches a
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1802,11 +2062,11 @@ exports[`Dropdown renders one value when given two values but only one matches a
   top: 0;
 }
 
-.c10 {
+.c11 {
   border-radius: 0.25em;
 }
 
-.c4 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1838,7 +2098,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1862,17 +2122,17 @@ exports[`Dropdown renders one value when given two values but only one matches a
   padding: .5rem 1rem;
 }
 
-.c6 {
+.c7 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c6 {
   padding: 0;
   line-height: 1;
   margin-top: 0 !important;
@@ -1890,68 +2150,107 @@ exports[`Dropdown renders one value when given two values but only one matches a
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+        <div
+          class=" c4"
+          id="dropdown-value-item"
         >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c6"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Bulbasaur
+          </span>
+        </div>
+        <div
+          class=" c7"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c8 c9"
+        >
+          <svg
+            class="c10 c11"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
           />
-        </svg>
-      </div>
+        </div>
+      </button>
       <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c12"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props 1`] = `
-.c7 {
+.c12 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c9 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c10 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1974,16 +2273,16 @@ exports[`Dropdown renders two values when given matching option ids through prop
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1991,11 +2290,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   top: 0;
 }
 
-.c10 {
+.c11 {
   border-radius: 0.25em;
 }
 
-.c4 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2027,7 +2326,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2051,17 +2350,17 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
-.c6 {
+.c7 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c6 {
   padding: 0;
   line-height: 1;
   margin-top: 0 !important;
@@ -2079,76 +2378,115 @@ exports[`Dropdown renders two values when given matching option ids through prop
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+        <div
+          class=" c4"
+          id="dropdown-value-item"
         >
-          Bulbasaur
-          ,
-        </span>
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Bulbasaur
+            ,
+          </span>
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Charmander
+          </span>
+        </div>
+        <div
+          class=" c7"
         >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c6"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c8 c9"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <svg
+            class="c10 c11"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
           />
-        </svg>
-      </div>
+        </div>
+      </button>
       <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c12"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
-.c7 {
+.c12 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c9 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c10 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2171,16 +2509,16 @@ exports[`Dropdown renders two values when given matching option ids through prop
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2188,11 +2526,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   top: 0;
 }
 
-.c10 {
+.c11 {
   border-radius: 0.25em;
 }
 
-.c4 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2224,7 +2562,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2248,17 +2586,17 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
-.c6 {
+.c7 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c6 {
   padding: 0;
   line-height: 1;
   margin-top: 0 !important;
@@ -2276,76 +2614,115 @@ exports[`Dropdown renders two values when given matching option ids through prop
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+        <div
+          class=" c4"
+          id="dropdown-value-item"
         >
-          Bulbasaur
-          ,
-        </span>
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Bulbasaur
+            ,
+          </span>
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Charmander
+          </span>
+        </div>
+        <div
+          class=" c7"
         >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c6"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c8 c9"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <svg
+            class="c10 c11"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
           />
-        </svg>
-      </div>
+        </div>
+      </button>
       <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c12"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
-.c7 {
+.c12 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
   position: relative;
 }
 
-.c9 {
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c10 {
   pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.c1 {
+.c2 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2368,16 +2745,16 @@ exports[`Dropdown selects options from values prop 1`] = `
   align-items: center;
 }
 
-.c1:hover {
+.c2:hover {
   background-color: rgba(0,0,0,0.05);
 }
 
-.c1:focus {
+.c2:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2385,11 +2762,11 @@ exports[`Dropdown selects options from values prop 1`] = `
   top: 0;
 }
 
-.c10 {
+.c11 {
   border-radius: 0.25em;
 }
 
-.c4 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2421,7 +2798,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   z-index: 1;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2445,17 +2822,17 @@ exports[`Dropdown selects options from values prop 1`] = `
   padding: .5rem 1rem;
 }
 
-.c6 {
+.c7 {
   height: 1.125rem;
   z-index: 1;
 }
 
-.c3 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c6 {
   padding: 0;
   line-height: 1;
   margin-top: 0 !important;
@@ -2473,59 +2850,67 @@ exports[`Dropdown selects options from values prop 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <button
-      class=" c1 c2"
-      color="#252D34"
-      elevation="0"
-      id="dropdown-dropdown-button"
-      role="button"
-      type="button"
+    <div
+      class=" c1"
+      style="display: inline-block;"
     >
-      <div
-        class=" c3"
-        id="dropdown-value-item"
+      <button
+        class=" c2 c3"
+        color="#252D34"
+        elevation="0"
+        id="dropdown-dropdown-button"
+        role="button"
+        type="button"
       >
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+        <div
+          class=" c4"
+          id="dropdown-value-item"
         >
-          Bulbasaur
-          ,
-        </span>
-        <span
-          class=" c4 c5"
-          color="#9FA2A5"
-          elevation="0"
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Bulbasaur
+            ,
+          </span>
+          <span
+            class=" c5 c6"
+            color="#9FA2A5"
+            elevation="0"
+          >
+            Charmander
+          </span>
+        </div>
+        <div
+          class=" c7"
         >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c6"
-      >
-        <svg
-          role="presentation"
-          style="width: 1.25em; height: 1.25em;"
-          viewBox="0 0 24 24"
+          <svg
+            role="presentation"
+            style="width: 1.25em; height: 1.25em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,10L12,15L17,10H7Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class="c8 c9"
         >
-          <path
-            d="M7,10L12,15L17,10H7Z"
-            style="fill: currentColor;"
+          <svg
+            class="c10 c11"
+            height="0px"
+            viewBox="0 0 0 0"
+            width="0px"
           />
-        </svg>
-      </div>
+        </div>
+      </button>
       <div
-        class="c7 c8"
-      >
-        <svg
-          class="c9 c10"
-          height="0px"
-          viewBox="0 0 0 0"
-          width="0px"
-        />
-      </div>
-    </button>
+        class=" c12"
+      />
+    </div>
   </div>
 </div>
 `;

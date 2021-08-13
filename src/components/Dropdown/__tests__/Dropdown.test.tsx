@@ -99,7 +99,7 @@ describe('Dropdown', () => {
 
   it('can focus dropdown and select option', async () => {
     const { container, getByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
 
     // TODO - Don't use id, see if we can use a more semantically meaningful element
@@ -114,7 +114,12 @@ describe('Dropdown', () => {
 
   it('selects multiple options when dropdown is multi', async () => {
     const { getByText, queryByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        multi
+        options={pokeOptions}
+        virtualizeOptions={false}
+      />,
     );
 
     screen.getByRole('button').focus();
@@ -130,7 +135,12 @@ describe('Dropdown', () => {
 
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
     const { container, getByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        multi
+        options={pokeOptions}
+        virtualizeOptions={false}
+      />,
     );
 
     act(() => {
@@ -168,7 +178,7 @@ describe('Dropdown', () => {
 
   it('can use arrow keys and enter to navigate options', async () => {
     const { queryByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
     act(() => {
       screen.getByRole('button').focus();
@@ -240,7 +250,14 @@ describe('Dropdown', () => {
     });
     it('optionItemRef.current should exist', async () => {
       const ref = React.createRef<HTMLElement>();
-      render(<Dropdown options={pokeOptions} onSelect={() => {}} optionItemRef={ref} />);
+      render(
+        <Dropdown
+          options={pokeOptions}
+          onSelect={() => {}}
+          optionItemRef={ref}
+          virtualizeOptions={false}
+        />,
+      );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });

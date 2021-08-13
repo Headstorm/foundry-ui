@@ -1,3 +1,29 @@
+## [1.7.1](https://github.com/Headstorm/foundry-ui/compare/v1.7.0...v1.7.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* **button:** fix skeleton props issue making Buttons display: block ([d1045b3](https://github.com/Headstorm/foundry-ui/commit/d1045b3a1070d8a8276b3d272718433500a839ed))
+
+# [1.7.0](https://github.com/Headstorm/foundry-ui/compare/v1.6.0...v1.7.0) (2021-08-12)
+
+
+### Features
+
+* **dropdown:** virtualize options list for better performance of long lists ([805ed04](https://github.com/Headstorm/foundry-ui/commit/805ed048e9f360f793c60fba79bbf196b0d1d6f6)), closes [#184](https://github.com/Headstorm/foundry-ui/issues/184)
+
+# [1.6.0](https://github.com/Headstorm/foundry-ui/compare/v1.5.1...v1.6.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **skeleton:** make the skeleton display: inline-block ([b88f270](https://github.com/Headstorm/foundry-ui/commit/b88f270d536349c7ce44a3e6905a93c5bfd0de7f))
+
+
+### Features
+
+* **skeleton:** adds a "new" Skeleton component to replace the old "Progress" component ([b3c5812](https://github.com/Headstorm/foundry-ui/commit/b3c5812af7ef4c8f5de04b99312d614f102044f7)), closes [#267](https://github.com/Headstorm/foundry-ui/issues/267)
+
 ## [1.5.1](https://github.com/Headstorm/foundry-ui/compare/v1.5.0...v1.5.1) (2021-08-09)
 
 

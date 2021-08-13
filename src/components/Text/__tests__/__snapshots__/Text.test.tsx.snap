@@ -1,23 +1,104 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Text matches snapshot 1`] = `
+.c3 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c1 {
+  display: block;
+  position: relative;
+}
+
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
 .c0 {
   font-size: 1rem;
   color: undefined;
+}
+
+.c2 {
+  display: inline;
 }
 
 <div>
   <span
     class=" c0"
     data-test-id="hsui-Text"
-  />
+  >
+    <div
+      class=" c1 c2"
+    >
+      <span
+        class=" "
+      />
+      <div
+        class=" c3"
+      />
+    </div>
+  </span>
 </div>
 `;
 
 exports[`Text matches snapshot with icon strings 1`] = `
+.c4 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c2 {
+  display: block;
+  position: relative;
+}
+
+.c2 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
 .c0 {
   font-size: 1rem;
   color: undefined;
+}
+
+.c3 {
+  display: inline;
 }
 
 .c1 {
@@ -29,7 +110,7 @@ exports[`Text matches snapshot with icon strings 1`] = `
   vertical-align: middle;
 }
 
-.c2 {
+.c5 {
   margin-left: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -57,8 +138,18 @@ exports[`Text matches snapshot with icon strings 1`] = `
         />
       </svg>
     </span>
+    <div
+      class=" c2 c3"
+    >
+      <span
+        class=" "
+      />
+      <div
+        class=" c4"
+      />
+    </div>
     <span
-      class=" c2"
+      class=" c5"
     >
       <svg
         role="presentation"
@@ -76,9 +167,44 @@ exports[`Text matches snapshot with icon strings 1`] = `
 `;
 
 exports[`Text matches snapshot with icons 1`] = `
+.c4 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c2 {
+  display: block;
+  position: relative;
+}
+
+.c2 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
 .c0 {
   font-size: 1rem;
   color: undefined;
+}
+
+.c3 {
+  display: inline;
 }
 
 .c1 {
@@ -90,7 +216,7 @@ exports[`Text matches snapshot with icons 1`] = `
   vertical-align: middle;
 }
 
-.c2 {
+.c5 {
   margin-left: .5em;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -117,8 +243,18 @@ exports[`Text matches snapshot with icons 1`] = `
         />
       </svg>
     </span>
+    <div
+      class=" c2 c3"
+    >
+      <span
+        class=" "
+      />
+      <div
+        class=" c4"
+      />
+    </div>
     <span
-      class=" c2"
+      class=" c5"
     >
       <svg
         role="presentation"
@@ -135,15 +271,44 @@ exports[`Text matches snapshot with icons 1`] = `
 `;
 
 exports[`Text matches snapshot with isLoading 1`] = `
+.c4 {
+  opacity: 1;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
 .c1 {
-  background: linear-gradient( 45deg, rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75), rgba(0,0,0,0.75), rgba(255,255,255,0.75) ) repeat;
-  background-size: 400% 100%;
-  width: 6rem;
-  height: 16px;
-  border-radius: 9999px;
-  -webkit-animation: ia-dwnO 8s linear infinite;
-  animation: ia-dwnO 8s linear infinite;
-  line-height: 0;
+  display: block;
+  position: relative;
+}
+
+.c1 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 > *:not(.c3) {
+  opacity: 0 !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .c0 {
@@ -152,8 +317,7 @@ exports[`Text matches snapshot with isLoading 1`] = `
 }
 
 .c2 {
-  width: calc(1rem * 10);
-  height: 1rem;
+  display: inline;
 }
 
 <div>
@@ -163,15 +327,57 @@ exports[`Text matches snapshot with isLoading 1`] = `
   >
     <div
       class=" c1 c2"
-    />
+    >
+      <span
+        class=" "
+      />
+      <div
+        class=" c3 c4"
+      />
+    </div>
   </span>
 </div>
 `;
 
 exports[`Text matches snapshot with isProcessing 1`] = `
+.c4 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c2 {
+  display: block;
+  position: relative;
+}
+
+.c2 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
 .c0 {
   font-size: 1rem;
   color: undefined;
+}
+
+.c3 {
+  display: inline;
 }
 
 .c1 {
@@ -214,6 +420,16 @@ exports[`Text matches snapshot with isProcessing 1`] = `
         </g>
       </svg>
     </span>
+    <div
+      class=" c2 c3"
+    >
+      <span
+        class=" "
+      />
+      <div
+        class=" c4"
+      />
+    </div>
   </span>
 </div>
 `;
