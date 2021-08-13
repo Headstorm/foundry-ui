@@ -45,8 +45,8 @@ export type TableProps = {
   StyledHeader?: StyledSubcomponentType;
   StyledHeaderCell?: StyledSubcomponentType;
   StyledRow?: StyledSubcomponentType;
-  StyledFooter?: string & StyledComponentBase<any, {}>;
-  StyledFooterCell?: string & StyledComponentBase<any, {}>;
+  StyledFooter?: StyledSubcomponentType;
+  StyledFooterCell?: StyledSubcomponentType;
 
   cellProps?: SubcomponentPropsType;
   containerProps?: SubcomponentPropsType;
