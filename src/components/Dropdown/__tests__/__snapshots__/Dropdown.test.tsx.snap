@@ -1025,7 +1025,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   transition: filter .5s,box-shadow .5s;
   contain: layout;
   position: relative;
-  z-index: 1;
+  z-index: 7;
 }
 
 .c3 {
@@ -1048,6 +1048,9 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -1060,6 +1063,68 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
 .c4 {
   width: 100%;
   text-align: left;
+}
+
+.c14 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+
+.c12 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid #252D34;
+  z-index: 1000;
+  top: 100%;
+  border-top: 0px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+
+.c15 {
+  visibility: hidden;
+  bottom: 100%;
+}
+
+.c13 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #252D34;
+  background-color: transparent;
+}
+
+.c13:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+  outline: none;
+}
+
+.c13:focus {
+  outline: none;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -1102,7 +1167,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
             viewBox="0 0 24 24"
           >
             <path
-              d="M7,10L12,15L17,10H7Z"
+              d="M7,15L12,10L17,15H7Z"
               style="fill: currentColor;"
             />
           </svg>
@@ -1122,6 +1187,55 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
         class=" c11"
       />
     </div>
+    <div
+      class=" c12"
+      color="#252D34"
+      role="listbox"
+    >
+      <div
+        class=" c13"
+        color="#252D34"
+        id="dropdown-option-bulbasaur"
+        role="option"
+        tabindex="-1"
+      >
+        <span
+          class=" "
+        >
+          Bulbasaur
+        </span>
+      </div>
+      <div
+        class=" c13"
+        color="#252D34"
+        id="dropdown-option-charmander"
+        role="option"
+        tabindex="-1"
+      >
+        <span
+          class=" "
+        >
+          Charmander
+        </span>
+      </div>
+      <div
+        class=" c13"
+        color="#252D34"
+        id="dropdown-option-squirtle"
+        role="option"
+        tabindex="-1"
+      >
+        <span
+          class=" "
+        >
+          Squirtle
+        </span>
+      </div>
+    </div>
+    <div
+      class=" c14 c15"
+      style="height: 0px;"
+    />
   </div>
 </div>
 `;

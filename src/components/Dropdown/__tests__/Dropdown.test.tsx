@@ -1,5 +1,14 @@
 import React from 'react';
-import { render, fireEvent, waitFor, act, configure, screen } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  waitFor,
+  act,
+  configure,
+  screen,
+  queryByText,
+  getByText,
+} from '@testing-library/react';
 import Dropdown from '../Dropdown';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -175,7 +184,6 @@ describe('Dropdown', () => {
     const { getByText, queryByText } = render(
       <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
     );
-
     screen.getByRole('button').focus();
     act(() => {
       fireEvent.click(getByText('Charmander'));
@@ -211,7 +219,6 @@ describe('Dropdown', () => {
     const { queryByText, asFragment } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
-
     screen.getByRole('button').focus();
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
@@ -417,7 +424,6 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
 
@@ -452,7 +458,6 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
 
@@ -487,7 +492,6 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => setTimeout(() => {}, 1000));
       expect(container).toMatchSnapshot();
     });
 
@@ -519,7 +523,9 @@ describe('Dropdown', () => {
       const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
-      await waitFor(() => setTimeout(() => {}, 1000));
+      act(() => {
+        fireEvent.focus(screen.getByRole('button'));
+      });
       expect(container).toMatchSnapshot();
     });
   });
