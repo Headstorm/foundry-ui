@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import { darken } from 'polished';
+import { useCheckbox } from 'react-aria';
+import { useToggleState } from '@react-stately/toggle';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { disabledStyles } from '../../utils/color';
+import { mergeRefs } from '../../utils/refs';
 
 export enum CheckboxTypes {
   fill = 'fill',
@@ -205,6 +208,15 @@ const Checkbox = ({
 }: CheckboxProps): JSX.Element => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
+
+  const state = useToggleState(inputProps);
+  const internalRef = React.useRef<HTMLInputElement>();
+  const { inputProps: ariaProps } = useCheckbox(
+    inputProps,
+    state,
+    internalRef as RefObject<HTMLInputElement>,
+  );
+
   return (
     <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" ref={labelRef} {...labelProps}>
       <StyledCheckboxContainer ref={containerRef} {...checkboxContainerProps}>
@@ -225,10 +237,11 @@ const Checkbox = ({
           ) : null}
         </StyledBox>
         <StyledInput
+          {...ariaProps}
           data-test-id="hsui-Checkbox-Input"
           onClick={onClick}
           checked={checked}
-          ref={inputRef}
+          ref={mergeRefs([inputRef, internalRef])}
           {...inputProps}
         />
       </StyledCheckboxContainer>
