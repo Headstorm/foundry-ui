@@ -235,7 +235,6 @@ const Table = ({
   expansionIconComponent,
   minWidthBreakpoint = 640,
   sortGroups = false,
-  showFooter = true,
 
   StyledCell = Cell,
   StyledContainer = TableContainer,
@@ -606,13 +605,23 @@ const Table = ({
     );
   };
 
+  //hasFooter
+  const hasFooter = 
+    Object.values(copiedColumns) // get the values of each column object
+    .some(col => { // if any item here returns true for the below conditional
+      return Object.prototype.hasOwnProperty.call(col, 'footerContent') // has footerContent attribute
+        && col.footerContent !== null // isn't null
+        && col.footerContent !== undefined // isn't undefined
+        && col.footerContent !== '' //isn't empty string
+    })
+  
+
   // Table return
   return (
     <StyledContainer
       ref={mergeRefs([ref, containerRef])}
       reachedMinWidth={width < minWidthBreakpoint}
       {...containerProps}
-      showFooter={showFooter}
     >
       <thead>
         {width > minWidthBreakpoint && (
@@ -655,7 +664,7 @@ const Table = ({
         )}
       </thead>
       {createRows()}
-      {showFooter && (
+      {hasFooter && (
         <tfoot>
           {width > minWidthBreakpoint && (
             <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
