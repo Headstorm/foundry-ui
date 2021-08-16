@@ -84,7 +84,7 @@ const ValueItem = styled(Div)`
 const OptionsContainer = styled(Div)`
   ${({ color, variant, isOpenedBelow, isHidden }: UsefulDropdownState) => {
     const direction = isOpenedBelow ? 'top' : 'bottom';
-    const borderStyle = isOpenedBelow ? '0rem 0rem 0.25rem 0.25rem' : '0.25rem 0.25rem 0rem 0rem';
+    const borderRadii = isOpenedBelow ? '0rem 0rem 0.25rem 0.25rem' : '0.25rem 0.25rem 0rem 0rem';
 
     return `
     background: white;
@@ -103,15 +103,15 @@ const OptionsContainer = styled(Div)`
     z-index: 1000;
     ${direction}: 100%;
     border-${direction}: 0px solid transparent;
-    border-radius: ${borderStyle};
+    border-radius: ${borderRadii};
     ${isHidden ? 'visibility: hidden;' : ''}
   `;
   }}
 `;
 
 const HiddenOptionsContainer = styled(OptionsContainer)`
-  ${({ isOpenedAbove }) => {
-    const direction = isOpenedAbove ? 'top' : 'bottom';
+  ${({ isOpenedBelow }) => {
+    const direction = isOpenedBelow ? 'top' : 'bottom';
 
     return `
     visibility: hidden;
@@ -727,7 +727,8 @@ const Dropdown = ({
           {shouldStayInView && (
             <StyledHiddenOptionsContainer
               ref={mergeRefs([hiddenOptionsContainerInternalRef, hiddenOptionsContainerRef])}
-              isOpenedAbove={!isOpenedBelow}
+              // HiddenOptionsContainer opens in the opposite direction of OptionsContainer
+              isOpenedBelow={!isOpenedBelow}
             />
           )}
         </>

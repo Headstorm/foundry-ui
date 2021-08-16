@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  act,
-  configure,
-  screen,
-  queryByText,
-  getByText,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, act, configure, screen } from '@testing-library/react';
 import Dropdown from '../Dropdown';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -24,18 +15,6 @@ const pokeOptions = [
 
 const mockedSelectHandler = jest.fn();
 
-const observe = jest
-  .fn()
-  .mockImplementation(
-    (
-      callback: IntersectionObserverCallback,
-      entries: IntersectionObserverEntry[],
-      instance: IntersectionObserver,
-    ) => {
-      callback(entries, instance);
-    },
-  );
-
 const mockRect = {
   bottom: 160,
   top: 160,
@@ -48,6 +27,22 @@ const mockRect = {
   toJSON: () => {},
 };
 
+// Mock the implementation once for each test since observe gets called
+// twice on init (once for hidden container and once for options container)
+// for the IntersectionObserver tests, callback only needs to get called once
+const observe = jest.fn();
+beforeEach(() => {
+  observe.mockImplementationOnce(
+    (
+      callback: IntersectionObserverCallback,
+      entries: IntersectionObserverEntry[],
+      instance: IntersectionObserver,
+    ) => {
+      callback(entries, instance);
+    },
+  );
+});
+
 // IntersectionObserver needs to be mocked b/c it does not exist in node testing env
 const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
   window.IntersectionObserver = jest.fn((callback, options = {}) => {
@@ -55,15 +50,15 @@ const generateIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
       root: options.root ?? null,
       rootMargin: options.rootMargin ?? '',
       thresholds: Array.isArray(options.threshold) ? options.threshold : [options.threshold ?? 0],
-      observe: jest.fn((target: Element) => observe(callback, entries, instance)),
+      observe: jest.fn(() => observe(callback, entries, instance)),
       unobserve: jest.fn(),
       disconnect: jest.fn(),
       takeRecords: jest.fn(),
     };
-
     return instance;
   });
   global.IntersectionObserver = window.IntersectionObserver;
+  return window.IntersectionObserver;
 };
 
 afterEach(() => {
@@ -219,6 +214,7 @@ describe('Dropdown', () => {
     const { queryByText, asFragment } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
+
     screen.getByRole('button').focus();
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
@@ -264,7 +260,10 @@ describe('Dropdown', () => {
         key: 'ArrowUp',
         code: 'ArrowUp',
       });
-      fireEvent.keyDown(document.activeElement, { key: 'Enter', code: 'Enter' });
+      fireEvent.keyDown(document.activeElement, {
+        key: 'Enter',
+        code: 'Enter',
+      });
     });
 
     await waitFor(() => expect(mockedSelectHandler).toHaveBeenCalledWith(['charmander']));
@@ -367,64 +366,32 @@ describe('Dropdown', () => {
   });
 
   describe('IntersectionObserver tests', () => {
-    it('Check if intersection observer is called when dropdown is clicked', () => {
+    it('Check if intersection observer is called when dropdown is clicked', async () => {
       generateIntersectionObserver([]);
-      const { container } = render(
+      const { container, queryByText } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => queryByText('Squirtle') !== null);
       expect(container).toMatchSnapshot();
       // expect observer to be called once for options container and once for hidden options container
       expect(observe).toHaveBeenCalledTimes(2);
     });
 
-    it('Make sure hidden options container is not rendered when shouldStayInView prop is false', () => {
+    it('Make sure hidden options container is not rendered when shouldStayInView prop is false', async () => {
       generateIntersectionObserver([]);
-      const { container } = render(
+      const { container, queryByText } = render(
         <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => queryByText('Squirtle') !== null);
       expect(container).toMatchSnapshot();
       // observe should only be called once as hidden options container does not exist
       expect(observe).toHaveBeenCalledTimes(1);
-    });
-
-    it('Both containers are intersecting with viewport', async () => {
-      const entriesBothIntersecting: IntersectionObserverEntry[] = [
-        {
-          boundingClientRect: mockRect,
-          intersectionRatio: 0.2,
-          intersectionRect: mockRect,
-          isIntersecting: true,
-          rootBounds: null,
-          // @ts-ignore
-          target: {},
-          time: 0,
-        },
-        {
-          boundingClientRect: mockRect,
-          intersectionRatio: 0.8,
-          intersectionRect: mockRect,
-          isIntersecting: true,
-          rootBounds: null,
-          // @ts-ignore
-          target: {},
-          time: 0,
-        },
-      ];
-      generateIntersectionObserver(entriesBothIntersecting);
-
-      const { container } = render(
-        <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
-      );
-      act(() => {
-        fireEvent.focus(screen.getByRole('button'));
-      });
-      expect(container).toMatchSnapshot();
     });
 
     it('Both containers are fully in viewport', async () => {
@@ -452,12 +419,13 @@ describe('Dropdown', () => {
       ];
       generateIntersectionObserver(entriesOptionsInView);
 
-      const { container } = render(
+      const { container, queryByText } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => queryByText('Squirtle') !== null);
       expect(container).toMatchSnapshot();
     });
 
@@ -486,12 +454,13 @@ describe('Dropdown', () => {
       ];
       generateIntersectionObserver(entriesOptionsInView);
 
-      const { container } = render(
+      const { container, queryByText } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => queryByText('Squirtle') !== null);
       expect(container).toMatchSnapshot();
     });
 
@@ -520,12 +489,13 @@ describe('Dropdown', () => {
       ];
       generateIntersectionObserver(entriesHiddenOptionsInView);
 
-      const { container } = render(
+      const { container, queryByText } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
+      await waitFor(() => queryByText('Squirtle') !== null);
       expect(container).toMatchSnapshot();
     });
   });
