@@ -113,7 +113,7 @@ export const ResponsiveTitle = styled(Span)`
       ${sortable ? '' : 'pointer-events: none;'}
     `;
   }}
-`; 
+`;
 
 export const Row = styled(TR)`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => {
