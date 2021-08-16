@@ -661,22 +661,22 @@ const Table = ({
       </thead>
       {createRows()}
       <tfoot>
-          {width > minWidthBreakpoint && hasFooter && (
-            <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
-              {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
-                const RenderedFooterCell = StyledFooterCell;
-                const breakpointHit =
-                  width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
-                return (
-                  (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
-                    <RenderedFooterCell key={`f${index}`}>
-                      {copiedColumns[headerColumnKey].footerContent}
-                    </RenderedFooterCell>
-                  )
-                );
-              })}
-            </StyledFooter>
-          )}
+        {width > minWidthBreakpoint && hasFooter && (
+          <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
+            {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
+              const RenderedFooterCell = StyledFooterCell;
+              const breakpointHit =
+                width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+              return (
+                (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
+                  <RenderedFooterCell key={`f${index}`}>
+                    {copiedColumns[headerColumnKey].footerContent}
+                  </RenderedFooterCell>
+                )
+              );
+            })}
+          </StyledFooter>
+        )}
       </tfoot>
     </StyledContainer>
   );
