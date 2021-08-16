@@ -605,16 +605,15 @@ const Table = ({
     );
   };
 
-  //hasFooter
-  const hasFooter = 
+  // hasFooter
+  const hasFooter =
     Object.values(copiedColumns) // get the values of each column object
     .some(col => { // if any item here returns true for the below conditional
       return Object.prototype.hasOwnProperty.call(col, 'footerContent') // has footerContent attribute
         && col.footerContent !== null // isn't null
         && col.footerContent !== undefined // isn't undefined
-        && col.footerContent !== '' //isn't empty string
-    })
-  
+        && col.footerContent !== ''; // isn't empty string
+    });
 
   // Table return
   return (

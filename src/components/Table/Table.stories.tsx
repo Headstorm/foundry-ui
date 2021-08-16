@@ -352,17 +352,17 @@ export const Groups: Story<GroupsProps> = ({
     name: {
       name: 'Name',
       width: nameWidth,
-      //footerContent: 'NameFooter',
+      // footerContent: 'NameFooter',
     },
     title: {
       name: 'Title',
       width: titleWidth,
-      //footerContent: 'TitleFooter',
+      // footerContent: 'TitleFooter',
     },
     address: {
       name: 'Address',
       width: addressWidth,
-      //footerContent: 'AddressFooter',
+      // footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',
@@ -371,7 +371,7 @@ export const Groups: Story<GroupsProps> = ({
       minTableWidth: 800,
       sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
       groupCellComponent: EmptyCell,
-      //footerContent: 'NotesFooter',
+      // footerContent: 'NotesFooter',
     },
   };
 
