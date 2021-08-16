@@ -660,8 +660,7 @@ const Table = ({
         )}
       </thead>
       {createRows()}
-      {(
-        <tfoot>
+      <tfoot>
           {width > minWidthBreakpoint && hasFooter && (
             <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
               {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
@@ -678,8 +677,7 @@ const Table = ({
               })}
             </StyledFooter>
           )}
-        </tfoot>
-      )}
+      </tfoot>
     </StyledContainer>
   );
 };

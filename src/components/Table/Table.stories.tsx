@@ -362,7 +362,7 @@ export const Groups: Story<GroupsProps> = ({
     address: {
       name: 'Address',
       width: addressWidth,
-      //footerContent: 'AddressFooter',
+      // footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',
