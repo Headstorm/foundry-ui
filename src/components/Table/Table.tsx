@@ -87,21 +87,16 @@ export const Footer = styled(TR)`
 `;
 
 export const FooterCell = styled(TH)`
-  ${({ sortable }: { sortable: boolean }) => `
-    display: flex;
-    flex-flow: row;
-    cursor: pointer;
-    padding: 1rem 0rem 1rem 1rem;
-    margin-left: -1rem;
+  display: flex;
+  flex-flow: row;
+  cursor: pointer;
+  padding: 1rem 0rem 1rem 1rem;
+  margin-left: -1rem;
 
-    transition: background-color 0.5s;
-
-    ${sortable ? '' : 'pointer-events: none;'}
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-  `}
+  transition: background-color 0.5s;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `;
 
 export const ResponsiveTitle = styled(Span)`
@@ -118,7 +113,7 @@ export const ResponsiveTitle = styled(Span)`
       ${sortable ? '' : 'pointer-events: none;'}
     `;
   }}
-`;
+`; 
 
 export const Row = styled(TR)`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => {
@@ -673,7 +668,6 @@ const Table = ({
                 const RenderedFooterCell = StyledFooterCell;
                 const breakpointHit =
                   width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
-                // columns.map return
                 return (
                   (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
                     <RenderedFooterCell key={`f${index}`}>
