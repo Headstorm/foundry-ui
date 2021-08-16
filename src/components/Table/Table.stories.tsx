@@ -347,7 +347,7 @@ export const Groups: Story<GroupsProps> = ({
       cellComponent: SelectionCell,
       sortable: false,
       groupCellComponent: EmptyCell,
-      footerContent: undefined,
+      footerContent: '',
     },
     name: {
       name: 'Name',
@@ -362,7 +362,7 @@ export const Groups: Story<GroupsProps> = ({
     address: {
       name: 'Address',
       width: addressWidth,
-      // footerContent: 'AddressFooter',
+      //footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',

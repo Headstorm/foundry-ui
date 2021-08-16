@@ -81,7 +81,7 @@ export const Footer = styled(TR)`
       user-select: none;
 
       background-color: ${colors.grayXlight};
-      color: black;
+      color: ${colors.black};
     `;
   }}
 `;
@@ -660,9 +660,9 @@ const Table = ({
         )}
       </thead>
       {createRows()}
-      {hasFooter && (
+      {(
         <tfoot>
-          {width > minWidthBreakpoint && (
+          {width > minWidthBreakpoint && hasFooter && (
             <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
               {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
                 const RenderedFooterCell = StyledFooterCell;
