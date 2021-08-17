@@ -450,6 +450,7 @@ const Dropdown = ({
 
   useEffect(() => {
     if (isOpen) {
+      // setTimeout ensures this code renders after the initial render
       const timer = window.setTimeout(() => {
         const optionsContainer = optionsContainerInternalRef.current;
         const hiddenContainer = hiddenOptionsContainerInternalRef.current;
@@ -474,12 +475,8 @@ const Dropdown = ({
             // height is returned in pixels
             hiddenContainer.style.height = `${optionsContainerHeight}px`;
           }
-        }
 
-        if (optionsContainer) {
           intersectObserver.observe(optionsContainer);
-        }
-        if (hiddenContainer) {
           intersectObserver.observe(hiddenContainer);
         }
       }, 0);
