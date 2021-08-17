@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
+import { Components, ListRange, Virtuoso } from 'react-virtuoso';
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
@@ -82,7 +83,13 @@ const ValueItem = styled(Div)`
 `;
 
 const OptionsContainer = styled(Div)`
-  ${({ color, variant, isOpenedBelow, isHidden }: UsefulDropdownState) => {
+  ${({
+    color,
+    variant,
+    isOpenedBelow,
+    isHidden,
+    isVirtual,
+  }: UsefulDropdownState & { isVirtual: boolean }) => {
     const direction = isOpenedBelow ? 'top' : 'bottom';
     const borderRadii = isOpenedBelow ? '0rem 0rem 0.25rem 0.25rem' : '0.25rem 0.25rem 0rem 0rem';
 
@@ -90,7 +97,7 @@ const OptionsContainer = styled(Div)`
     background: white;
     position: absolute;
     left: 0px;
-    max-height: 10rem;
+    ${isVirtual ? 'height: 10rem;' : 'max-height: 10rem;'}
     overflow-y: auto;
     width: 15rem;
     ${
@@ -257,6 +264,7 @@ export interface DropdownProps {
   shouldStayInView?: boolean;
   intersectionThreshold?: number;
   intersectionObserverPrecision?: number;
+  virtualizeOptions?: boolean;
 }
 
 const Dropdown = ({
@@ -312,8 +320,9 @@ const Dropdown = ({
   values = [],
 
   shouldStayInView = true,
-  intersectionThreshold = 0.95,
+  intersectionThreshold = 1.0,
   intersectionObserverPrecision = 100,
+  virtualizeOptions = true,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -329,9 +338,14 @@ const Dropdown = ({
 
   const [isOpenedBelow, setIsOpenedBelow] = useState<boolean>(true);
   const [isHidden, setIsHidden] = useState<boolean>(true);
-  const [isScrollingDown, setIsScrollingDown] = useState<boolean>(false);
+  const [isPageScrollingDown, setIsPageScrollingDown] = useState<boolean | null>(null);
   const prevIntersectionRatio = useRef<number>(0.5);
   const ticking = useRef<boolean>(false);
+  const [scrollIndex, setScrollIndex] = useState<number>(0);
+
+  const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
+
+  const isVirtual = virtualizeOptions && isOverflowing;
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -343,36 +357,40 @@ const Dropdown = ({
 
   // effect to determine if user is scrolling up or down
   useEffect(() => {
-    const threshold = 0;
-    let lastScrollY = window.pageYOffset;
+    if (isOpen) {
+      const threshold = 0;
+      let lastScrollY = window.pageYOffset;
 
-    const updateScrollDir = () => {
-      const scrollY = window.pageYOffset;
+      const updateScrollDir = () => {
+        const scrollY = window.pageYOffset;
 
-      if (Math.abs(scrollY - lastScrollY) < threshold) {
+        if (Math.abs(scrollY - lastScrollY) < threshold) {
+          ticking.current = false;
+          return;
+        }
+        setIsPageScrollingDown(scrollY > lastScrollY);
+
+        lastScrollY = scrollY > 0 ? scrollY : 0;
         ticking.current = false;
-        return;
-      }
-      setIsScrollingDown(scrollY > lastScrollY);
-      lastScrollY = scrollY > 0 ? scrollY : 0;
-      ticking.current = false;
-    };
+      };
 
-    const onScroll = () => {
-      if (!ticking.current) {
-        window.requestAnimationFrame(updateScrollDir);
-        ticking.current = true;
-      }
-    };
-    window.addEventListener('scroll', onScroll);
+      const onPageScroll = () => {
+        if (!ticking.current) {
+          window.requestAnimationFrame(updateScrollDir);
+          ticking.current = true;
+        }
+      };
+      window.addEventListener('scroll', onPageScroll);
 
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+      return () => window.removeEventListener('scroll', onPageScroll);
+    }
+    setIsPageScrollingDown(null);
+  }, [isOpen]);
 
   const intersectOptions = useMemo(() => {
     const buildThresholdArray = () =>
       Array.from(
-        Array(intersectionObserverPrecision + 1).keys(), // + 1 to always get intersection at 100% in viewport
+        Array(intersectionObserverPrecision).keys(),
         i => i / intersectionObserverPrecision,
       );
 
@@ -388,16 +406,22 @@ const Dropdown = ({
       if (shouldStayInView) {
         if (entries.length === 1) {
           const [entry] = entries;
-          // swap the dropdown to open downward if its hitting the top
           if (
             entry.intersectionRatio < intersectionThreshold &&
             entry.target === optionsContainerInternalRef.current
           ) {
-            if (isScrollingDown) {
-              if (!isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio.current) {
-                setIsOpenedBelow(true);
-              }
-            } else if (isOpenedBelow && entry.intersectionRatio < prevIntersectionRatio.current) {
+            // swap the dropdown to open downward if its hitting the top
+            if (
+              isPageScrollingDown &&
+              !isOpenedBelow &&
+              entry.intersectionRatio < prevIntersectionRatio.current
+            ) {
+              setIsOpenedBelow(true);
+            } else if (
+              isPageScrollingDown === false &&
+              isOpenedBelow &&
+              entry.intersectionRatio < prevIntersectionRatio.current
+            ) {
               setIsOpenedBelow(false);
             }
           }
@@ -405,16 +429,18 @@ const Dropdown = ({
         } else if (entries.length === 2) {
           const [dropdown, invisibleDrop] = entries;
           // flip the view if the other direction is more visible in viewport
-          if (invisibleDrop.intersectionRatio > dropdown.intersectionRatio) {
+          // and the options container is less than the threshold
+          if (
+            dropdown.intersectionRatio < intersectionThreshold &&
+            invisibleDrop.intersectionRatio > dropdown.intersectionRatio
+          ) {
             setIsOpenedBelow(drop => !drop);
           }
         }
-        setIsHidden(false);
-      } else {
-        setIsHidden(false);
       }
+      setIsHidden(false);
     },
-    [isOpenedBelow, isScrollingDown, intersectionThreshold, shouldStayInView],
+    [shouldStayInView, intersectionThreshold, isPageScrollingDown, isOpenedBelow],
   );
 
   const intersectObserver = useMemo(
@@ -423,20 +449,46 @@ const Dropdown = ({
   );
 
   useEffect(() => {
-    if (optionsContainerInternalRef.current) {
-      intersectObserver.observe(optionsContainerInternalRef.current);
+    if (isOpen) {
+      const timer = window.setTimeout(() => {
+        const optionsContainer = optionsContainerInternalRef.current;
+        const hiddenContainer = hiddenOptionsContainerInternalRef.current;
+
+        if (optionsContainer) {
+          if (isVirtual) {
+            const virtuosoContainer = optionsContainer.firstElementChild;
+            const virtuosoScroller = virtuosoContainer?.firstElementChild;
+            if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
+              setIsOverflowing(false);
+            }
+          } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
+            setIsOverflowing(true);
+          }
+        }
+
+        if (optionsContainer && hiddenContainer) {
+          const optionsContainerHeight = optionsContainer.getBoundingClientRect().height;
+          const hiddenContainerHeight = hiddenContainer.getBoundingClientRect().height;
+
+          if (optionsContainerHeight !== hiddenContainerHeight) {
+            // height is returned in pixels
+            hiddenContainer.style.height = `${optionsContainerHeight}px`;
+          }
+        }
+
+        if (optionsContainer) {
+          intersectObserver.observe(optionsContainer);
+        }
+        if (hiddenContainer) {
+          intersectObserver.observe(hiddenContainer);
+        }
+      }, 0);
+      return () => {
+        clearTimeout(timer);
+        intersectObserver.disconnect();
+      };
     }
-    if (hiddenOptionsContainerInternalRef.current) {
-      intersectObserver.observe(hiddenOptionsContainerInternalRef.current);
-    }
-    if (optionsContainerInternalRef.current && hiddenOptionsContainerInternalRef.current) {
-      // height is returned in pixels
-      hiddenOptionsContainerInternalRef.current.style.height = `${
-        optionsContainerInternalRef.current.getBoundingClientRect().height
-      }px`;
-    }
-    return () => intersectObserver.disconnect();
-  }, [optionsContainerInternalRef, hiddenOptionsContainerInternalRef, intersectObserver, isOpen]);
+  }, [intersectObserver, isOpen, isVirtual]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
@@ -477,13 +529,16 @@ const Dropdown = ({
 
     if (!focusWithin) {
       setFocusWithin(true);
+      // make sure there is no dropdown flickering when tabbing into dropdown
+      setIsHidden(true);
+      setIsOpenedBelow(true);
     }
-
     setIsOpen(true);
+
     if (onFocus) {
       onFocus();
     }
-  }, [onFocus, focusWithin, focusTimeoutId]);
+  }, [focusTimeoutId, focusWithin, onFocus]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -534,6 +589,7 @@ const Dropdown = ({
       // to activeElement to after it is updated in the DOM
       window.setTimeout(() => {
         const focusedElement = document.activeElement;
+
         switch (key) {
           case 'Enter':
             const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
@@ -543,9 +599,19 @@ const Dropdown = ({
             break;
           case 'ArrowUp':
             if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              const sibling = focusedElement.previousElementSibling as HTMLElement | null;
-              if (sibling) {
-                sibling.focus();
+              let prevOption;
+              if (isVirtual) {
+                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const rowPrevSibling = row ? row.previousElementSibling : null;
+                if (rowPrevSibling) {
+                  prevOption = rowPrevSibling.firstElementChild as HTMLElement | undefined;
+                }
+              } else {
+                prevOption = focusedElement.previousElementSibling as HTMLElement | null;
+              }
+
+              if (prevOption) {
+                prevOption.focus();
               }
             }
             break;
@@ -555,15 +621,33 @@ const Dropdown = ({
               // get parent before nextElementSibling because buttons are nested inside of skeletons
               const optionsContainer = button ? button.nextElementSibling : null;
               if (optionsContainer) {
-                const toFocus = optionsContainer.children[0] as HTMLElement | undefined;
-                if (toFocus) {
-                  toFocus.focus();
+                let firstOption;
+                if (isVirtual) {
+                  const virtuosoContainer = optionsContainer.firstElementChild;
+                  const virtuosoScroller = virtuosoContainer?.firstElementChild;
+                  firstOption = virtuosoScroller?.firstElementChild?.firstElementChild as
+                    | HTMLElement
+                    | undefined;
+                } else {
+                  firstOption = optionsContainer.firstElementChild as HTMLElement | undefined;
+                }
+                if (firstOption) {
+                  firstOption.focus();
                 }
               }
             } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              const sibling = focusedElement.nextElementSibling as HTMLElement | null;
-              if (sibling) {
-                sibling.focus();
+              let nextOption;
+              if (isVirtual) {
+                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const rowNextSibling = row ? row.nextElementSibling : null;
+                if (rowNextSibling) {
+                  nextOption = rowNextSibling.firstElementChild as HTMLElement | undefined;
+                }
+              } else {
+                nextOption = focusedElement.nextElementSibling as HTMLElement | null;
+              }
+              if (nextOption) {
+                nextOption.focus();
               }
             }
             break;
@@ -572,7 +656,7 @@ const Dropdown = ({
         }
       }, 0);
     },
-    [handleSelect, name],
+    [handleSelect, isVirtual, name],
   );
 
   useEffect(() => {
@@ -613,6 +697,37 @@ const Dropdown = ({
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
     </>
+  );
+
+  const InternalOptionsContainer = useMemo(
+    () =>
+      React.forwardRef(({ children }: { children: React.ReactNode }, listRef) => (
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          isVirtual={isVirtual}
+          role="listbox"
+          ref={mergeRefs([
+            optionsContainerRef,
+            optionsContainerInternalRef,
+            listRef as React.RefObject<HTMLDivElement>,
+          ])}
+          isOpenedBelow={isOpenedBelow}
+          isHidden={isHidden}
+          {...optionsContainerProps}
+        >
+          {children}
+        </StyledOptionsContainer>
+      )),
+    [
+      defaultedColor,
+      isHidden,
+      isOpenedBelow,
+      isVirtual,
+      optionsContainerProps,
+      optionsContainerRef,
+      optionsVariant,
+    ],
   );
 
   return (
@@ -681,49 +796,81 @@ const Dropdown = ({
       </Button>
       {isOpen && (
         <>
-          <StyledOptionsContainer
-            color={defaultedColor}
-            variant={optionsVariant}
-            role="listbox"
-            ref={mergeRefs([
-              optionsContainerRef,
-              optionsContainerInternalRef,
-              optionsScrollListenerCallbackRef,
-            ])}
-            isOpenedBelow={isOpenedBelow}
-            isHidden={isHidden}
-            {...optionsContainerProps}
-          >
-            {options.map(option => (
-              <StyledOptionItem
-                id={`${name}-option-${option.id}`}
-                key={`${name}-option-${option.id}`}
-                onClick={() => handleSelect(option.id)}
-                tabIndex={-1}
-                color={defaultedColor}
-                variant={optionsVariant}
-                multi={multi}
-                selected={optionsHash[option.id].isSelected}
-                ref={optionItemRef}
-                role="option"
-                {...optionItemProps}
-              >
-                {multi && (
-                  <StyledCheckContainer
-                    color={defaultedColor}
-                    selected={optionsHash[option.id].isSelected}
-                    variant={optionsVariant}
-                    multi={multi}
-                    ref={checkContainerRef}
-                    {...checkContainerProps}
-                  >
-                    {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
-                  </StyledCheckContainer>
-                )}
-                <Span>{option.optionValue}</Span>
-              </StyledOptionItem>
-            ))}
-          </StyledOptionsContainer>
+          {isVirtual ? (
+            <Virtuoso
+              data={options}
+              rangeChanged={(range: ListRange) => setScrollIndex(range.startIndex)}
+              initialTopMostItemIndex={
+                rememberScrollPosition && scrollIndex < options.length ? scrollIndex : 0
+              }
+              components={
+                {
+                  Scroller: InternalOptionsContainer,
+                } as Components
+              }
+              itemContent={(_index, option) => (
+                <StyledOptionItem
+                  id={`${name}-option-${option.id}`}
+                  key={`${name}-option-${option.id}`}
+                  onClick={() => handleSelect(option.id)}
+                  tabIndex={-1}
+                  color={defaultedColor}
+                  variant={optionsVariant}
+                  multi={multi}
+                  selected={optionsHash[option.id].isSelected}
+                  ref={optionItemRef}
+                  role="option"
+                  {...optionItemProps}
+                >
+                  {multi && (
+                    <StyledCheckContainer
+                      color={defaultedColor}
+                      selected={optionsHash[option.id].isSelected}
+                      variant={optionsVariant}
+                      multi={multi}
+                      ref={checkContainerRef}
+                      {...checkContainerProps}
+                    >
+                      {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
+                    </StyledCheckContainer>
+                  )}
+                  <Span>{option.optionValue}</Span>
+                </StyledOptionItem>
+              )}
+            />
+          ) : (
+            <InternalOptionsContainer ref={optionsScrollListenerCallbackRef}>
+              {options.map(option => (
+                <StyledOptionItem
+                  id={`${name}-option-${option.id}`}
+                  key={`${name}-option-${option.id}`}
+                  onClick={() => handleSelect(option.id)}
+                  tabIndex={-1}
+                  color={defaultedColor}
+                  variant={optionsVariant}
+                  multi={multi}
+                  selected={optionsHash[option.id].isSelected}
+                  ref={optionItemRef}
+                  role="option"
+                  {...optionItemProps}
+                >
+                  {multi && (
+                    <StyledCheckContainer
+                      color={defaultedColor}
+                      selected={optionsHash[option.id].isSelected}
+                      variant={optionsVariant}
+                      multi={multi}
+                      ref={checkContainerRef}
+                      {...checkContainerProps}
+                    >
+                      {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
+                    </StyledCheckContainer>
+                  )}
+                  <Span>{option.optionValue}</Span>
+                </StyledOptionItem>
+              ))}
+            </InternalOptionsContainer>
+          )}
           {shouldStayInView && (
             <StyledHiddenOptionsContainer
               ref={mergeRefs([hiddenOptionsContainerInternalRef, hiddenOptionsContainerRef])}

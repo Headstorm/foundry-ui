@@ -135,7 +135,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   text-align: left;
 }
 
-.c14 {
+.c13 {
   background: white;
   position: absolute;
   left: 0px;
@@ -153,7 +153,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   background: white;
   position: absolute;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -163,38 +163,9 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c15 {
+.c14 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -210,6 +181,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -263,48 +235,15 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
     <div
-      class=" c14 c15"
-      style="height: 0px;"
+      class=" c13 c14"
     />
   </div>
 </div>
@@ -445,7 +384,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   text-align: left;
 }
 
-.c14 {
+.c13 {
   background: white;
   position: absolute;
   left: 0px;
@@ -463,7 +402,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   background: white;
   position: absolute;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -473,38 +412,9 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c15 {
+.c14 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -520,6 +430,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -573,48 +484,15 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
     <div
-      class=" c14 c15"
-      style="height: 0px;"
+      class=" c13 c14"
     />
   </div>
 </div>
@@ -755,7 +633,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   text-align: left;
 }
 
-.c14 {
+.c13 {
   background: white;
   position: absolute;
   left: 0px;
@@ -773,7 +651,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   background: white;
   position: absolute;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -783,38 +661,9 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c15 {
+.c14 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -830,6 +679,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -883,48 +733,15 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
     <div
-      class=" c14 c15"
-      style="height: 0px;"
+      class=" c13 c14"
     />
   </div>
 </div>
@@ -1069,7 +886,7 @@ exports[`Dropdown IntersectionObserver tests Make sure hidden options container 
   background: white;
   position: absolute;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -1077,35 +894,6 @@ exports[`Dropdown IntersectionObserver tests Make sure hidden options container 
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -1121,6 +909,7 @@ exports[`Dropdown IntersectionObserver tests Make sure hidden options container 
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1174,43 +963,11 @@ exports[`Dropdown IntersectionObserver tests Make sure hidden options container 
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
   </div>
@@ -1352,7 +1109,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   text-align: left;
 }
 
-.c14 {
+.c13 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1370,7 +1127,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   background: white;
   position: absolute;
   left: 0px;
-  max-height: 10rem;
+  height: 10rem;
   overflow-y: auto;
   width: 15rem;
   border: 1px solid #252D34;
@@ -1380,38 +1137,9 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c15 {
+.c14 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -1427,6 +1155,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1480,48 +1209,15 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
     <div
-      class=" c14 c15"
-      style="height: 0px;"
+      class=" c13 c14"
     />
   </div>
 </div>
@@ -1672,6 +1368,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1842,9 +1539,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 0px solid transparent;
-  border-bottom-right-radius: 0rem;
-  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -1859,7 +1553,22 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   text-align: left;
 }
 
-.c14 {
+.c12 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid #252D34;
+  z-index: 1000;
+  top: 100%;
+  border-top: 0px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+  visibility: hidden;
+}
+
+.c13 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1873,52 +1582,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
-  background: white;
-  position: absolute;
-  left: 0px;
-  max-height: 10rem;
-  overflow-y: auto;
-  width: 15rem;
-  border: 1px solid #252D34;
-  z-index: 1000;
-  top: 100%;
-  border-top: 0px solid transparent;
-  border-radius: 0rem 0rem 0.25rem 0.25rem;
-}
-
-.c15 {
+.c14 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -1933,6 +1599,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -1986,48 +1653,15 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
     <div
-      class=" c14 c15"
-      style="height: 0px;"
+      class=" c13 c14"
     />
   </div>
 </DocumentFragment>
@@ -2178,6 +1812,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2347,9 +1982,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 0px solid transparent;
-  border-bottom-right-radius: 0rem;
-  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -2364,20 +1996,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   text-align: left;
 }
 
-.c15 {
-  background: white;
-  position: absolute;
-  left: 0px;
-  max-height: 10rem;
-  overflow-y: auto;
-  width: 15rem;
-  border: 1px solid undefined;
-  z-index: 1000;
-  bottom: 100%;
-  border-bottom: 0px solid transparent;
-  border-radius: 0.25rem 0.25rem 0rem 0rem;
-}
-
 .c12 {
   background: white;
   position: absolute;
@@ -2390,6 +2008,21 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+  visibility: hidden;
+}
+
+.c15 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
 .c16 {
@@ -2457,6 +2090,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2563,7 +2197,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     </div>
     <div
       class=" c15 c16"
-      style="height: 0px;"
     />
   </div>
 </div>
@@ -2687,9 +2320,6 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 0px solid transparent;
-  border-bottom-right-radius: 0rem;
-  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -2704,7 +2334,22 @@ exports[`Dropdown displays all options when focused 1`] = `
   text-align: left;
 }
 
-.c14 {
+.c12 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid #252D34;
+  z-index: 1000;
+  top: 100%;
+  border-top: 0px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+  visibility: hidden;
+}
+
+.c13 {
   background: white;
   position: absolute;
   left: 0px;
@@ -2718,52 +2363,9 @@ exports[`Dropdown displays all options when focused 1`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
-  background: white;
-  position: absolute;
-  left: 0px;
-  max-height: 10rem;
-  overflow-y: auto;
-  width: 15rem;
-  border: 1px solid #252D34;
-  z-index: 1000;
-  top: 100%;
-  border-top: 0px solid transparent;
-  border-radius: 0rem 0rem 0.25rem 0.25rem;
-}
-
-.c15 {
+.c14 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c13 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #252D34;
-  background-color: transparent;
-}
-
-.c13:hover {
-  background-color: rgba(0,0,0,0.05);
-  cursor: pointer;
-  outline: none;
-}
-
-.c13:focus {
-  outline: none;
-  background-color: rgba(0,0,0,0.1);
 }
 
 .c5 {
@@ -2779,6 +2381,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -2832,48 +2435,15 @@ exports[`Dropdown displays all options when focused 1`] = `
       role="listbox"
     >
       <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-bulbasaur"
-        role="option"
-        tabindex="-1"
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
       >
-        <span
-          class=" "
-        >
-          Bulbasaur
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-charmander"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Charmander
-        </span>
-      </div>
-      <div
-        class=" c13"
-        color="#252D34"
-        id="dropdown-option-squirtle"
-        role="option"
-        tabindex="-1"
-      >
-        <span
-          class=" "
-        >
-          Squirtle
-        </span>
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
       </div>
     </div>
     <div
-      class=" c14 c15"
-      style="height: 0px;"
+      class=" c13 c14"
     />
   </div>
 </div>
@@ -3025,6 +2595,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -3223,6 +2794,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -3447,6 +3019,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -3642,6 +3215,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -3861,6 +3435,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -4088,6 +3663,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -4323,6 +3899,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"
@@ -4558,6 +4135,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   >
     <div
       class=" c1"
+      style="display: inline-block;"
     >
       <button
         class=" c2 c3"

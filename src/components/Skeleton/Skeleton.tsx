@@ -94,7 +94,7 @@ const Skeleton = ({
   isLoading = false,
 }: SkeletonProps): JSX.Element | null => {
   const { colors } = useTheme();
-  const finalColor = color ?? colors.grayLight;
+  const finalColor = color || colors.grayLight;
   return (
     <StyledContainer isLoading={isLoading} {...containerProps}>
       {children}

@@ -161,7 +161,7 @@ describe('Dropdown', () => {
   it('can focus dropdown and select option', async () => {
     generateIntersectionObserver([]);
     const { container, getByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
 
     // TODO - Don't use id, see if we can use a more semantically meaningful element
@@ -177,7 +177,12 @@ describe('Dropdown', () => {
   it('selects multiple options when dropdown is multi', async () => {
     generateIntersectionObserver([]);
     const { getByText, queryByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        multi
+        options={pokeOptions}
+        virtualizeOptions={false}
+      />,
     );
     screen.getByRole('button').focus();
     act(() => {
@@ -193,7 +198,12 @@ describe('Dropdown', () => {
   it('deselects option when clicking on them twice when dropdown is multi', async () => {
     generateIntersectionObserver([]);
     const { container, getByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} multi options={pokeOptions} />,
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        multi
+        options={pokeOptions}
+        virtualizeOptions={false}
+      />,
     );
 
     act(() => {
@@ -233,7 +243,7 @@ describe('Dropdown', () => {
   it('can use arrow keys and enter to navigate options', async () => {
     generateIntersectionObserver([]);
     const { queryByText } = render(
-      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
+      <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
     act(() => {
       screen.getByRole('button').focus();
@@ -329,7 +339,14 @@ describe('Dropdown', () => {
     it('optionItemRef.current should exist', async () => {
       generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
-      render(<Dropdown options={pokeOptions} onSelect={() => {}} optionItemRef={ref} />);
+      render(
+        <Dropdown
+          options={pokeOptions}
+          onSelect={() => {}}
+          optionItemRef={ref}
+          virtualizeOptions={false}
+        />,
+      );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
@@ -368,30 +385,28 @@ describe('Dropdown', () => {
   describe('IntersectionObserver tests', () => {
     it('Check if intersection observer is called when dropdown is clicked', async () => {
       generateIntersectionObserver([]);
-      const { container, queryByText } = render(
+      const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => queryByText('Squirtle') !== null);
-      expect(container).toMatchSnapshot();
       // expect observer to be called once for options container and once for hidden options container
-      expect(observe).toHaveBeenCalledTimes(2);
+      await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
+      expect(container).toMatchSnapshot();
     });
 
     it('Make sure hidden options container is not rendered when shouldStayInView prop is false', async () => {
       generateIntersectionObserver([]);
-      const { container, queryByText } = render(
+      const { container } = render(
         <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => queryByText('Squirtle') !== null);
-      expect(container).toMatchSnapshot();
       // observe should only be called once as hidden options container does not exist
-      expect(observe).toHaveBeenCalledTimes(1);
+      await waitFor(() => expect(observe).toHaveBeenCalledTimes(1));
+      expect(container).toMatchSnapshot();
     });
 
     it('Both containers are fully in viewport', async () => {
@@ -419,13 +434,13 @@ describe('Dropdown', () => {
       ];
       generateIntersectionObserver(entriesOptionsInView);
 
-      const { container, queryByText } = render(
+      const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => queryByText('Squirtle') !== null);
+      await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
       expect(container).toMatchSnapshot();
     });
 
@@ -454,13 +469,13 @@ describe('Dropdown', () => {
       ];
       generateIntersectionObserver(entriesOptionsInView);
 
-      const { container, queryByText } = render(
+      const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => queryByText('Squirtle') !== null);
+      await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
       expect(container).toMatchSnapshot();
     });
 
@@ -489,13 +504,13 @@ describe('Dropdown', () => {
       ];
       generateIntersectionObserver(entriesHiddenOptionsInView);
 
-      const { container, queryByText } = render(
+      const { container } = render(
         <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
       );
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      await waitFor(() => queryByText('Squirtle') !== null);
+      await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
       expect(container).toMatchSnapshot();
     });
   });

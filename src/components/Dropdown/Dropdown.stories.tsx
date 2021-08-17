@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Story, Meta } from '@storybook/react';
 import { address } from 'faker';
@@ -11,24 +11,39 @@ import Label from '../Label';
 import { colors } from '../../index';
 
 const generateCityList = (amount: number): OptionProps[] => {
-  const finalData = [];
+  const citySet = new Set<string>();
+  const cityOptions: OptionProps[] = [];
 
   for (let i = 0; i < amount; i += 1) {
-    const item = address.city();
-    finalData.push({
-      id: item.toLowerCase(),
-      optionValue: item,
+    let city = address.city();
+    while (citySet.has(city)) {
+      city = address.city();
+    }
+    citySet.add(city);
+    cityOptions.push({
+      id: city.toLowerCase(),
+      optionValue: city,
     });
   }
 
-  return finalData;
+  return cityOptions;
 };
-const cities = generateCityList(50);
 
-type BasicProps = DropdownProps & { clearable: boolean };
+type BasicProps = DropdownProps & { clearable: boolean; numCities: number };
 
-export const Basic: Story<BasicProps> = ({ clearable, onClear, onSelect, ...args }: BasicProps) => {
+export const Basic: Story<BasicProps> = ({
+  clearable,
+  numCities,
+  onClear,
+  onSelect,
+  ...args
+}: BasicProps) => {
+  const [cities, setCities] = useState<OptionProps[]>([]);
   const [values, setValues] = useState<(string | number)[] | undefined>();
+
+  useEffect(() => {
+    setCities(generateCityList(numCities));
+  }, [numCities]);
 
   return (
     <Label labelText="City" htmlFor="cities-list">
@@ -38,7 +53,7 @@ export const Basic: Story<BasicProps> = ({ clearable, onClear, onSelect, ...args
         onClear={clearable ? onClear : undefined}
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return onSelect();
+          return onSelect(selected);
         }}
         options={cities}
         values={values}
@@ -58,7 +73,9 @@ Basic.args = {
   valueVariant: variants.text,
   shouldStayInView: true,
   intersectionObserverPrecision: 100,
-  intersectionThreshold: 0.95,
+  intersectionThreshold: 1.0,
+  numCities: 200,
+  virtualizeOptions: true,
 };
 
 const teaOptions = [
@@ -102,7 +119,7 @@ const teaOptions = [
   },
 ];
 
-export const Icons: Story = args => {
+export const Icons: Story<DropdownProps> = ({ onSelect, ...args }: DropdownProps) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
   return (
     <Label labelText="How strong do you like your tea?" htmlFor="tea-rank">
@@ -111,7 +128,7 @@ export const Icons: Story = args => {
         name="tea-rank"
         onSelect={(selected?: Array<string | number>) => {
           setValues(selected);
-          return args.onSelect();
+          return onSelect(selected);
         }}
         options={teaOptions}
         values={values}
@@ -121,6 +138,7 @@ export const Icons: Story = args => {
 };
 Icons.args = {
   ...Basic.args,
+  placeholder: 'Choose a rating...',
   color: '#0A7700',
   elevation: 1,
 };
