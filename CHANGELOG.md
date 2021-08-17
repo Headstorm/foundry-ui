@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/Headstorm/foundry-ui/compare/v1.7.1...v1.8.0) (2021-08-16)
+
+
+### Features
+
+* **table:** added footer support for table ([bc5e41e](https://github.com/Headstorm/foundry-ui/commit/bc5e41e3922e11dd3939b7301f0c0ee6e52bfaa8))
+* **table:** added table footer ([b78eaea](https://github.com/Headstorm/foundry-ui/commit/b78eaea6436b3c928259a0593e446be1765bd40e))
+
 ## [1.7.1](https://github.com/Headstorm/foundry-ui/compare/v1.7.0...v1.7.1) (2021-08-12)
 
 
