@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/Headstorm/foundry-ui/compare/v1.8.0...v1.9.0) (2021-08-17)
+
+
+### Features
+
+* **dropdown:** added functionality to change direction of dropdown menu based on viewport bounds ([28f5203](https://github.com/Headstorm/foundry-ui/commit/28f52033f14765da6093b638b93310ec9fa8ce61)), closes [#187](https://github.com/Headstorm/foundry-ui/issues/187)
+
 # [1.8.0](https://github.com/Headstorm/foundry-ui/compare/v1.7.1...v1.8.0) (2021-08-16)
 
 
