@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEventHandler } from 'react';
+import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ExpansionIconProps = {
@@ -17,6 +17,7 @@ export interface columnTypes {
     width?: string;
     minTableWidth?: number;
     sortable?: boolean;
+    footerContent?: ReactNode;
     sortFunction?: (item1: any, item2: any) => boolean;
     isGroupLabel?: boolean;
     cellComponent?: StyledSubcomponentType;
@@ -43,6 +44,8 @@ export type TableProps = {
   StyledHeader?: StyledSubcomponentType;
   StyledHeaderCell?: StyledSubcomponentType;
   StyledRow?: StyledSubcomponentType;
+  StyledFooter?: StyledSubcomponentType;
+  StyledFooterCell?: StyledSubcomponentType;
 
   cellProps?: SubcomponentPropsType;
   containerProps?: SubcomponentPropsType;
