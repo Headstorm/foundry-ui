@@ -357,7 +357,7 @@ const Dropdown = ({
 
   // effect to determine if user is scrolling up or down
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && shouldStayInView) {
       const threshold = 0;
       let lastScrollY = window.pageYOffset;
 
@@ -385,7 +385,7 @@ const Dropdown = ({
       return () => window.removeEventListener('scroll', onPageScroll);
     }
     setIsPageScrollingDown(null);
-  }, [isOpen]);
+  }, [isOpen, shouldStayInView]);
 
   const intersectOptions = useMemo(() => {
     const buildThresholdArray = () =>

@@ -396,7 +396,7 @@ describe('Dropdown', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('Make sure hidden options container is not rendered when shouldStayInView prop is false', async () => {
+    it('Make sure observer is not called when shouldStayInView prop is false', async () => {
       generateIntersectionObserver([]);
       const { container } = render(
         <Dropdown shouldStayInView={false} onSelect={mockedSelectHandler} options={pokeOptions} />,
@@ -404,9 +404,8 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      // observe should only be called once as hidden options container does not exist
-      await waitFor(() => expect(observe).toHaveBeenCalledTimes(1));
-      expect(container).toMatchSnapshot();
+      // observe should not be called
+      expect(observe).toHaveBeenCalledTimes(0);
     });
 
     it('Both containers are fully in viewport', async () => {
