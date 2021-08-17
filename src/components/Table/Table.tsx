@@ -70,6 +70,35 @@ export const HeaderCell = styled(TH)`
   `}
 `;
 
+export const Footer = styled(TR)`
+  ${({ columnGap, columnWidths }: RowProps) => {
+    const { colors } = useTheme();
+    return `
+      display: grid;
+      grid-template-columns: ${columnWidths};
+      padding: 0rem 2rem;
+      column-gap: ${columnGap};
+      user-select: none;
+
+      background-color: ${colors.grayXlight};
+      color: ${colors.black};
+    `;
+  }}
+`;
+
+export const FooterCell = styled(TH)`
+  display: flex;
+  flex-flow: row;
+  cursor: pointer;
+  padding: 1rem 0rem 1rem 1rem;
+  margin-left: -1rem;
+
+  transition: background-color 0.5s;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+`;
+
 export const ResponsiveTitle = styled(Span)`
   ${({ sortable }: { sortable: boolean }) => {
     const { colors } = useTheme();
@@ -208,6 +237,8 @@ const Table = ({
   StyledHeader = Header,
   StyledHeaderCell = HeaderCell,
   StyledRow = Row,
+  StyledFooter = Footer,
+  StyledFooterCell = FooterCell,
   cellProps = {},
   containerProps = {},
   groupLabelRowProps = {},
@@ -569,6 +600,18 @@ const Table = ({
     );
   };
 
+  // hasFooter
+  const hasFooter = Object.values(copiedColumns) // get the values of each column object
+    .some(col => {
+      // if any item here returns true for the below conditional
+      return (
+        Object.prototype.hasOwnProperty.call(col, 'footerContent') && // has footerContent attribute
+        col.footerContent !== null && // isn't null
+        col.footerContent !== undefined && // isn't undefined
+        col.footerContent !== ''
+      ); // isn't empty string
+    });
+
   // Table return
   return (
     <StyledContainer
@@ -617,6 +660,24 @@ const Table = ({
         )}
       </thead>
       {createRows()}
+      <tfoot>
+        {width > minWidthBreakpoint && hasFooter && (
+          <StyledFooter columnGap={columnGap} columnWidths={columnWidths}>
+            {Object.keys(copiedColumns).map((headerColumnKey: string, index: number) => {
+              const RenderedFooterCell = StyledFooterCell;
+              const breakpointHit =
+                width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+              return (
+                (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
+                  <RenderedFooterCell key={`f${index}`}>
+                    {copiedColumns[headerColumnKey].footerContent}
+                  </RenderedFooterCell>
+                )
+              );
+            })}
+          </StyledFooter>
+        )}
+      </tfoot>
     </StyledContainer>
   );
 };

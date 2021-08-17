@@ -229,6 +229,7 @@ exports[`Table Shows Table with default props 1`] = `
         </td>
       </tr>
     </tbody>
+    <tfoot />
   </table>
 </div>
 `;
