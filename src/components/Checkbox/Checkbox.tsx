@@ -209,10 +209,16 @@ const Checkbox = ({
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
 
+  // add aria-label for accessibility
+  const mergedInputProps = {
+    'aria-label': 'checkbox',
+    ...inputProps,
+  };
+
   const state = useToggleState(inputProps);
   const internalRef = React.useRef<HTMLInputElement>();
   const { inputProps: ariaProps } = useCheckbox(
-    inputProps,
+    mergedInputProps,
     state,
     internalRef as RefObject<HTMLInputElement>,
   );

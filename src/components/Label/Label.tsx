@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
+import { useLabel } from 'react-aria';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
@@ -92,10 +93,24 @@ const Label = ({
     shownIcon = isRequired ? mdiAsterisk : '';
   }
 
+  // add aria-label for accessibility
+  const mergedLabelProps = {
+    'aria-label': 'label',
+    ...labelProps,
+  };
+
+  const { labelProps: ariaProps } = useLabel(mergedLabelProps);
+
   return (
     <StyledLabelContainer ref={labelContainerRef} {...labelContainerProps}>
       <StyledTextContainer ref={textContainerRef} {...textContainerProps}>
-        <StyledLabel htmlFor={htmlFor} color={shownColor} ref={labelRef} {...labelProps}>
+        <StyledLabel
+          {...ariaProps}
+          htmlFor={htmlFor}
+          color={shownColor}
+          ref={labelRef}
+          {...labelProps}
+        >
           {labelText}
         </StyledLabel>
         <StyledIconContainer ref={iconContainerRef} {...iconContainerProps}>
