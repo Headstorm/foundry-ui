@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useSeparator } from 'react-aria';
 import { Div, HR } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
@@ -46,11 +47,24 @@ const Divider = ({
   height = '1px',
   containerRef,
   dividerRef,
-}: DividerProps): JSX.Element => (
-  <StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps} ref={containerRef}>
-    <StyledDivider width={width} height={height} ref={dividerRef} {...dividerProps} />
-  </StyledDividerContainer>
-);
+}: DividerProps): JSX.Element => {
+  const { separatorProps: ariaProps } = useSeparator(dividerProps);
+  return (
+    <StyledDividerContainer
+      data-test-id="hsui-Divider"
+      {...dividerContainerProps}
+      ref={containerRef}
+    >
+      <StyledDivider
+        {...ariaProps}
+        width={width}
+        height={height}
+        ref={dividerRef}
+        {...dividerProps}
+      />
+    </StyledDividerContainer>
+  );
+};
 
 Divider.Container = DefaultDividerContainer;
 Divider.Divider = DefaultDivider;
