@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -121,21 +121,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,7 +151,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,13 +163,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import styled from 'styled-components';
@@ -178,10 +178,10 @@ import { Div, HR } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 &nbsp;
-export const DefaultDivider = styled(HR)`
-  ${({ width = <span class="branch-0 cbranch-no" title="branch not covered" >'90%',</span> height = <span class="branch-0 cbranch-no" title="branch not covered" >'1px' </span>}: { width: string; height: string }) =&gt; {
-    const { colors } = useTheme();
-    return `
+export const DefaultDivider = <span class="cstat-no" title="statement not covered" >styled(HR)`</span>
+  ${<span class="fstat-no" title="function not covered" >({</span> width = <span class="branch-0 cbranch-no" title="branch not covered" >'90%',</span> height = <span class="branch-0 cbranch-no" title="branch not covered" >'1px' </span>}: { width: string; height: string }) =&gt; {
+    const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
+<span class="cstat-no" title="statement not covered" >    return `</span>
       border: none;
       height: ${height};
       width: ${width};
@@ -190,7 +190,7 @@ export const DefaultDivider = styled(HR)`
   }}
 `;
 &nbsp;
-export const DefaultDividerContainer = styled(Div)`
+export const DefaultDividerContainer = <span class="cstat-no" title="statement not covered" >styled(Div)`</span>
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -210,23 +210,23 @@ export interface DividerProps {
   dividerRef?: React.RefObject&lt;HTMLHRElement&gt;;
 }
 &nbsp;
-const Divider = ({
-  StyledDivider = DefaultDivider,
-  StyledDividerContainer = DefaultDividerContainer,
-  dividerProps = {},
-  dividerContainerProps = {},
-  width = '90%',
-  height = '1px',
+const Divider = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
+  StyledDivider = <span class="branch-0 cbranch-no" title="branch not covered" >DefaultDivider,</span>
+  StyledDividerContainer = <span class="branch-0 cbranch-no" title="branch not covered" >DefaultDividerContainer,</span>
+  dividerProps = <span class="branch-0 cbranch-no" title="branch not covered" >{},</span>
+  dividerContainerProps = <span class="branch-0 cbranch-no" title="branch not covered" >{},</span>
+  width = <span class="branch-0 cbranch-no" title="branch not covered" >'90%',</span>
+  height = <span class="branch-0 cbranch-no" title="branch not covered" >'1px',</span>
   containerRef,
   dividerRef,
 }: DividerProps): JSX.Element =&gt; (
-  &lt;StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps} ref={containerRef}&gt;
+<span class="cstat-no" title="statement not covered" >  &lt;StyledDividerContainer data-test-id="hsui-Divider" {...dividerContainerProps} ref={containerRef}&gt;</span>
     &lt;StyledDivider width={width} height={height} ref={dividerRef} {...dividerProps} /&gt;
   &lt;/StyledDividerContainer&gt;
 );
 &nbsp;
-Divider.Container = DefaultDividerContainer;
-Divider.Divider = DefaultDivider;
+<span class="cstat-no" title="statement not covered" >Divider.Container = DefaultDividerContainer;</span>
+<span class="cstat-no" title="statement not covered" >Divider.Divider = DefaultDivider;</span>
 export default Divider;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -235,7 +235,7 @@ export default Divider;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Aug 17 2021 20:25:06 GMT+0000 (Coordinated Universal Time)
+                at Wed Aug 18 2021 10:13:04 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

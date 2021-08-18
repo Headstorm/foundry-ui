@@ -1,10 +1,10 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode /* , useRef */ } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
-import { useButton } from 'react-aria';
+// import { useButton } from 'react-aria';
 import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
@@ -21,7 +21,7 @@ import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
 import FeedbackTypes from '../../enums/feedbackTypes';
-import { mergeRefs } from '../../utils/refs';
+// import { mergeRefs } from '../../utils/refs';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -214,11 +214,11 @@ const Button = ({
     ...containerProps,
   };
 
-  const internalRef = useRef<HTMLButtonElement>();
-  const { buttonProps: ariaProps } = useButton(
-    mergedContainerProps,
-    internalRef as React.RefObject<HTMLButtonElement>,
-  );
+  // const internalRef = useRef<HTMLButtonElement>();
+  // const { buttonProps: ariaProps } = useButton(
+  //   mergedContainerProps,
+  //   internalRef as React.RefObject<HTMLButtonElement>,
+  // );
 
   const skeletonContainerProps = {
     style: {
@@ -235,8 +235,10 @@ const Button = ({
   return (
     <Skeleton isLoading={isLoading} containerProps={skeletonContainerProps}>
       <StyledContainer
-        {...ariaProps}
-        ref={mergeRefs([containerRef, internalRef])}
+        // {...ariaProps}
+        // ref={mergeRefs([containerRef, internalRef])}
+        ref={containerRef}
+        role="button"
         {...mergedContainerProps}
       >
         {!isProcessing &&
