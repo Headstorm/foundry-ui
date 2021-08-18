@@ -5,6 +5,7 @@ import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
 import { Components, ListRange, Virtuoso } from 'react-virtuoso';
+import Fuse from 'fuse.js';
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
@@ -15,6 +16,8 @@ import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../ut
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 import { mergeRefs } from '../../utils/refs';
+import TextInput from '../TextInput';
+import { TextInputProps } from '../TextInput/TextInput';
 
 export type OptionProps = {
   id: number | string;
@@ -266,7 +269,14 @@ export interface DropdownProps {
   intersectionContainer?: HTMLElement | null;
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
+
+  searchable?: boolean;
+  searchFiltersOptions?: boolean;
+  onSearchChange?: TextInputProps['onChange'];
+  onDebouncedSearchChange?: TextInputProps['debouncedOnChange'];
 }
+
+const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const Dropdown = ({
   StyledContainer = Container,
@@ -325,6 +335,11 @@ const Dropdown = ({
   intersectionContainer = null,
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
+
+  searchable = true,
+  searchFiltersOptions = true,
+  onSearchChange = defaultCallback,
+  onDebouncedSearchChange = defaultCallback,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -348,6 +363,12 @@ const Dropdown = ({
   const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
 
   const isVirtual = virtualizeOptions && isOverflowing;
+
+  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
+
+  useEffect(() => {
+    setFilteredOptions(options);
+  }, [options]);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -729,6 +750,27 @@ const Dropdown = ({
     ],
   );
 
+  const handleSearchDebouncedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onDebouncedSearchChange(e);
+
+    const searchText = e.target.value;
+    if (searchFiltersOptions) {
+      if (searchText.length === 0) {
+        setFilteredOptions(options);
+      } else {
+        const fuse = new Fuse(options, {
+          keys: ['id', 'optionValue'],
+        });
+
+        const result = fuse.search(searchText);
+
+        setFilteredOptions(result.map(r => r.item));
+      }
+    }
+  };
+
+  const optionsToRender = searchable && searchFiltersOptions ? filteredOptions : options;
+
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -791,16 +833,19 @@ const Dropdown = ({
             </StyledPlaceholder>
           )}
         </StyledValueItem>
+        {searchable && (
+          <TextInput onChange={onSearchChange} debouncedOnChange={handleSearchDebouncedChange} />
+        )}
         {closeIcons}
       </Button>
       {isOpen && (
         <>
           {isVirtual ? (
             <Virtuoso
-              data={options}
+              data={optionsToRender}
               rangeChanged={(range: ListRange) => setScrollIndex(range.startIndex)}
               initialTopMostItemIndex={
-                rememberScrollPosition && scrollIndex < options.length ? scrollIndex : 0
+                rememberScrollPosition && scrollIndex < optionsToRender.length ? scrollIndex : 0
               }
               components={
                 {
@@ -839,7 +884,7 @@ const Dropdown = ({
             />
           ) : (
             <InternalOptionsContainer ref={optionsScrollListenerCallbackRef}>
-              {options.map(option => (
+              {optionsToRender.map(option => (
                 <StyledOptionItem
                   id={`${name}-option-${option.id}`}
                   key={`${name}-option-${option.id}`}

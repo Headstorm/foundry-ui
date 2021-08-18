@@ -36,6 +36,10 @@ export const Basic: Story<BasicProps> = ({
   numCities,
   onClear,
   onSelect,
+  searchable,
+  searchFiltersOptions,
+  onSearchChange,
+  onDebouncedSearchChange,
   ...args
 }: BasicProps) => {
   const [cities, setCities] = useState<OptionProps[]>([]);
@@ -57,6 +61,10 @@ export const Basic: Story<BasicProps> = ({
         }}
         options={cities}
         values={values}
+        searchable={searchable}
+        searchFiltersOptions={searchFiltersOptions}
+        onSearchChange={onSearchChange}
+        onDebouncedSearchChange={onDebouncedSearchChange}
       />
     </Label>
   );
@@ -76,6 +84,8 @@ Basic.args = {
   intersectionThreshold: 1.0,
   numCities: 200,
   virtualizeOptions: true,
+  searchable: true,
+  searchFiltersOptions: true,
 };
 
 const teaOptions = [
