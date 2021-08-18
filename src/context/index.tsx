@@ -18,7 +18,7 @@ type FoundryColorsType = Record<keyof typeof colorsEnum, string>;
 export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
-  styleConstants: object;
+  styleConstants: { [key in string]: number | string };
 };
 
 const defaultContextValue = {
