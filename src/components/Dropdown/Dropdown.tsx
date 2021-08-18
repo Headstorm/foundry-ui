@@ -263,6 +263,7 @@ export interface DropdownProps {
 
   shouldStayInView?: boolean;
   intersectionThreshold?: number;
+  intersectionContainer?: HTMLElement | null;
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
 }
@@ -321,6 +322,7 @@ const Dropdown = ({
 
   shouldStayInView = true,
   intersectionThreshold = 1.0,
+  intersectionContainer = null,
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 }: DropdownProps): JSX.Element | null => {
@@ -395,11 +397,11 @@ const Dropdown = ({
       );
 
     return {
-      root: null,
+      root: intersectionContainer,
       rootMargin: '0px',
       threshold: buildThresholdArray(),
     };
-  }, [intersectionObserverPrecision]);
+  }, [intersectionContainer, intersectionObserverPrecision]);
 
   const intersectionCallback = useCallback(
     (entries: IntersectionObserverEntry[]) => {
