@@ -71,6 +71,9 @@ Basic.args = {
   variant: variants.fill,
   optionsVariant: variants.outline,
   valueVariant: variants.text,
+  shouldStayInView: true,
+  intersectionObserverPrecision: 100,
+  intersectionThreshold: 1.0,
   numCities: 200,
   virtualizeOptions: true,
 };
