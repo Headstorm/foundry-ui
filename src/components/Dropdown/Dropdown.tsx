@@ -618,70 +618,74 @@ const Dropdown = ({
       window.setTimeout(() => {
         const focusedElement = document.activeElement;
 
+        if (!focusedElement) return;
+
+        let optionToFocus;
+
         switch (key) {
           case 'Enter':
-            const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
+            const match = focusedElement.id.match(`${name}-option-(.*)`);
             if (match) {
               handleSelect(match[1]);
             }
             break;
+
           case 'ArrowUp':
-            if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              let prevOption;
+            if (focusedElement.id.match(`${name}-option-.*`)) {
               if (isVirtual) {
-                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const row = focusedElement.parentElement;
                 const rowPrevSibling = row ? row.previousElementSibling : null;
                 if (rowPrevSibling) {
-                  prevOption = rowPrevSibling.firstElementChild as HTMLElement | undefined;
+                  optionToFocus = rowPrevSibling.firstElementChild;
                 }
               } else {
-                prevOption = focusedElement.previousElementSibling as HTMLElement | null;
-              }
-
-              if (prevOption) {
-                prevOption.focus();
+                optionToFocus = focusedElement.previousElementSibling;
               }
             }
             break;
+
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
-              const button = focusedElement.parentNode as HTMLElement | undefined;
+            if (focusedElement.id === `${name}-dropdown-button`) {
               // get parent before nextElementSibling because buttons are nested inside of skeletons
-              const optionsContainer = button ? button.nextElementSibling : null;
-              if (optionsContainer) {
-                let firstOption;
-                if (isVirtual) {
-                  const virtuosoContainer = optionsContainer.firstElementChild;
-                  const virtuosoScroller = virtuosoContainer?.firstElementChild;
-                  firstOption = virtuosoScroller?.firstElementChild?.firstElementChild as
-                    | HTMLElement
-                    | undefined;
-                } else {
-                  firstOption = optionsContainer.firstElementChild as HTMLElement | undefined;
-                }
-                if (firstOption) {
-                  firstOption.focus();
-                }
-              }
-            } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              let nextOption;
+              const buttonContainer = focusedElement.parentElement;
+              const optionsContainer = buttonContainer?.nextElementSibling;
               if (isVirtual) {
-                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const virtuosoContainer = optionsContainer?.firstElementChild;
+                const virtuosoScroller = virtuosoContainer?.firstElementChild;
+                optionToFocus = virtuosoScroller?.firstElementChild?.firstElementChild;
+              } else {
+                optionToFocus = optionsContainer?.firstElementChild;
+              }
+            } else if (focusedElement.id.match(`${name}-option-.*`)) {
+              if (isVirtual) {
+                const row = focusedElement.parentElement;
                 const rowNextSibling = row ? row.nextElementSibling : null;
                 if (rowNextSibling) {
-                  nextOption = rowNextSibling.firstElementChild as HTMLElement | undefined;
+                  optionToFocus = rowNextSibling.firstElementChild;
                 }
               } else {
-                nextOption = focusedElement.nextElementSibling as HTMLElement | null;
+                optionToFocus = focusedElement.nextElementSibling;
               }
-              if (nextOption) {
-                nextOption.focus();
+            } else if (focusedElement.id === `${name}-search-input`) {
+              const searchInputContainer = focusedElement.parentElement;
+              const valueItemContainer = searchInputContainer?.parentElement;
+              const button = valueItemContainer?.parentElement;
+              // get parent before nextElementSibling because buttons are nested inside of skeletons
+              const buttonContainer = button?.parentElement;
+              const optionsContainer = buttonContainer?.nextElementSibling;
+              if (isVirtual) {
+                const virtuosoContainer = optionsContainer?.firstElementChild;
+                const virtuosoScroller = virtuosoContainer?.firstElementChild;
+                optionToFocus = virtuosoScroller?.firstElementChild?.firstElementChild;
+              } else {
+                optionToFocus = optionsContainer?.firstElementChild;
               }
             }
             break;
           default:
             break;
         }
+        (optionToFocus as HTMLElement)?.focus();
       }, 0);
     },
     [handleSelect, isVirtual, name],
