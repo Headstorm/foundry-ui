@@ -235,6 +235,7 @@ const Checkbox = ({
         >
           {checked ? (
             <IconComponent
+              aria-hidden="true"
               data-test-id="hsui-Checkbox-Icon"
               path={iconPath}
               variant={variant}
