@@ -197,11 +197,6 @@ const Button = ({
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
 
-  // const HandleInteraction = (eventHandler, e: React.ChangeEvent<HTMLInputElement>) => {
-  //   eventHandler(e);
-  //   console.log(useTheme().analyticsFunction('Button', e.type, e, 'TODO', containerProps));
-  // };
-
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     id,

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 // import Device from 'react-device';
+import * as rdd from 'react-device-detect';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
 import { StyledSubcomponentType } from '../components/commonTypes';
@@ -21,7 +22,7 @@ export const analyticsFunction = (
   eventType: string,
   eventArgs: React.ChangeEvent<HTMLInputElement>,
   currentURL: string,
-  props: any,
+  props?: any,
 ): Record<string, unknown> => {
   const result: Record<string, unknown> = {};
   result.componentType = componentType;
@@ -31,6 +32,9 @@ export const analyticsFunction = (
   result.name = props.name;
   result.analytics = props.analytics;
   result.dateTime = new Date();
+  result.deviceInfo = rdd.deviceDetect();
+  result.deviceInfo.innerHeight = window.innerHeight;
+  result.deviceInfo.innerWidth = window.innerWidth;
 
   return result;
 };
@@ -111,18 +115,6 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
     return <ComponentWithGlobalStyles globalStyles={globalStyles} {...props} ref={ref} />;
   });
 };
-
-// export function getAnalytics(
-//   componentType: string,
-//   eventType: string,
-//   eventArgs: Record<string, unknown>,
-//   currentURL: string,
-//   props: any,
-// ): Record<string, unknown> {
-//   const dateTime = new Date();
-
-//   return [componentType, eventType, eventArgs, props.name, props.analytics, currentURL, dateTime];
-// };
 
 export function handleEventWithAnalytics(
   componentType: string,
