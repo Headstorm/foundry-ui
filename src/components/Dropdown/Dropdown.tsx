@@ -48,6 +48,7 @@ const Container = styled(Div)`
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ isOpen, isOpenedBelow, isHidden }) => {
+    const { colors } = useTheme();
     const openedDirection = isOpenedBelow ? 'bottom' : 'top';
     const openStyle = `
       border-${openedDirection}: 0px solid transparent;
@@ -64,6 +65,11 @@ export const ValueContainer = styled(Button.Container)`
     ${isOpen && !isHidden ? openStyle : ''}
     width: 15rem;
     padding: .5rem 1rem;
+
+    &:focus-within {
+      outline: none;
+      box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
+    }
   `;
   }}
 `;
@@ -372,6 +378,7 @@ const Dropdown = ({
 
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
 
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
 
   useEffect(() => {
@@ -553,6 +560,12 @@ const Dropdown = ({
   );
 
   const handleFocus = useCallback(() => {
+    window.setTimeout(() => {
+      if (document.activeElement?.id === `${name}-dropdown-button`) {
+        searchInputRef?.current?.focus();
+      }
+    }, 0);
+
     clearTimeout(focusTimeoutId);
 
     if (!focusWithin) {
@@ -566,7 +579,7 @@ const Dropdown = ({
     if (onFocus) {
       onFocus();
     }
-  }, [focusTimeoutId, focusWithin, onFocus]);
+  }, [focusTimeoutId, focusWithin, name, onFocus]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -854,6 +867,7 @@ const Dropdown = ({
               debouncedOnChange={handleSearchDebouncedChange}
               StyledContainer={StyledSearchContainer}
               StyledInput={StyledSearchInput}
+              inputRef={searchInputRef}
             />
           )}
         </StyledValueItem>
