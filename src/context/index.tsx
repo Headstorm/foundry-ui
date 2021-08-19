@@ -47,7 +47,7 @@ type AnalyticsFunctionType = (
 export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
-  analyticsFunction?: AnalyticsFunctionType;
+  analyticsFunction: AnalyticsFunctionType;
 };
 
 const defaultContextValue = {
@@ -66,7 +66,7 @@ export const FoundryProvider = ({
   value?: {
     globalStyles?: string;
     colors?: Partial<Record<keyof typeof colorsEnum, string>>;
-    analyticsFunction: AnalyticsFunctionType;
+    analyticsFunction?: AnalyticsFunctionType;
   };
   children: React.ReactNode;
 }) => {

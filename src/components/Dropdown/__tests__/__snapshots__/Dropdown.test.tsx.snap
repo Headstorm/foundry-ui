@@ -1312,9 +1312,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 0px solid transparent;
-  border-bottom-right-radius: 0rem;
-  border-bottom-left-radius: 0rem;
   width: 15rem;
   padding: .5rem 1rem;
 }
@@ -1329,20 +1326,6 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   text-align: left;
 }
 
-.c13 {
-  background: white;
-  position: absolute;
-  left: 0px;
-  max-height: 10rem;
-  overflow-y: auto;
-  width: 15rem;
-  border: 1px solid undefined;
-  z-index: 1000;
-  bottom: 100%;
-  border-bottom: 0px solid transparent;
-  border-radius: 0.25rem 0.25rem 0rem 0rem;
-}
-
 .c12 {
   background: white;
   position: absolute;
@@ -1355,6 +1338,21 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+  visibility: hidden;
+}
+
+.c13 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10rem;
+  overflow-y: auto;
+  width: 15rem;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
 .c14 {
