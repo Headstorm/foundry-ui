@@ -376,10 +376,9 @@ const Dropdown = ({
 
   const isVirtual = virtualizeOptions && isOverflowing;
 
-  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
-
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
+  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
 
   useEffect(() => {
     setFilteredOptions(options);
@@ -523,7 +522,7 @@ const Dropdown = ({
         intersectObserver.disconnect();
       };
     }
-  }, [intersectObserver, isOpen, isVirtual]);
+  }, [intersectObserver, isOpen, isVirtual, filteredOptions]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
