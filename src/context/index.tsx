@@ -126,9 +126,9 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
 
 export function handleEventWithAnalytics(
   componentType: string,
-  eventHandler,
+  eventHandler: any,
   event: React.ChangeEvent<HTMLInputElement>,
-  props,
+  props: any,
 ): Record<string, unknown> {
   eventHandler(event);
   const res = analyticsFunction(componentType, event.type, event, 'TODO', props);

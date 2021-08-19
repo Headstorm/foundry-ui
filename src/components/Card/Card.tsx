@@ -138,7 +138,7 @@ export interface CardProps {
   interactiveFeedbackRef?: React.RefObject<HTMLDivElement>;
 }
 
-const handleClick = e => handleEventWithAnalytics('Card', defaultOnClick, e, '');
+const handleClick = (e: any) => handleEventWithAnalytics('Card', defaultOnClick, e, '');
 
 const Card = ({
   StyledContainer = CardContainer,

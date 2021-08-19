@@ -205,11 +205,11 @@ const Button = ({
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     id,
-    onClick: e => handleEventWithAnalytics('Button', onClick, e, containerProps),
-    onBlur: e => handleEventWithAnalytics('Button', onBlur, e, containerProps),
-    onFocus: e => handleEventWithAnalytics('Button', onFocus, e, containerProps),
-    onMouseDown: e => handleEventWithAnalytics('Button', onMouseDown, e, containerProps),
-    onMouseUp: e => handleEventWithAnalytics('Button', onMouseUp, e, containerProps),
+    onClick: (e: any) => handleEventWithAnalytics('Button', onClick, e, containerProps),
+    onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, e, containerProps),
+    onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, e, containerProps),
+    onMouseDown: (e: any) => handleEventWithAnalytics('Button', onMouseDown, e, containerProps),
+    onMouseUp: (e: any) => handleEventWithAnalytics('Button', onMouseUp, e, containerProps),
     elevation,
     color: containerColor,
     variant,
