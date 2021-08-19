@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-// import Device from 'react-device';
 import * as rdd from 'react-device-detect';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
@@ -33,8 +32,8 @@ export const analyticsFunction = (
   result.analytics = props.analytics;
   result.dateTime = new Date();
   result.deviceInfo = rdd.deviceDetect();
-  result.deviceInfo.innerHeight = window.innerHeight;
-  result.deviceInfo.innerWidth = window.innerWidth;
+  (result.deviceInfo as Record<string, unknown>).innerHeight = window.innerHeight;
+  (result.deviceInfo as Record<string, unknown>).innerWidth = window.innerWidth;
 
   return result;
 };
