@@ -47,7 +47,7 @@ type AnalyticsFunctionType = (
 export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
-  analyticsFunction: AnalyticsFunctionType;
+  analyticsFunction?: AnalyticsFunctionType;
 };
 
 const defaultContextValue = {
