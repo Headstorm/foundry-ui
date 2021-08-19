@@ -113,7 +113,7 @@ const Label = ({
         >
           {labelText}
         </StyledLabel>
-        <StyledIconContainer ref={iconContainerRef} {...iconContainerProps}>
+        <StyledIconContainer aria-hidden="true" ref={iconContainerRef} {...iconContainerProps}>
           <Icon path={shownIcon} size=".75rem" color={shownColor} />
         </StyledIconContainer>
       </StyledTextContainer>
