@@ -98,6 +98,7 @@
     "lodash.debounce": "^4.0.8",
     "nanoid": "^3.1.20",
     "polished": "^4.1.1",
+    "react-device": "^0.8.1",
     "react-portal": "^4.2.1",
     "react-virtuoso": "^1.10.5",
     "src": "^1.1.2"

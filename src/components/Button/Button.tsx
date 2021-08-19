@@ -5,7 +5,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import { useTheme } from '../../context';
+import { handleEventWithAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
@@ -68,7 +68,7 @@ export type ButtonProps = {
   isLoading?: boolean;
   isProcessing?: boolean;
 
-  onClick?: (...args: any[]) => void;
+  onClick?: (e: React.MouseEvent) => void;
   onBlur?: (e: React.FocusEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
@@ -186,7 +186,7 @@ const Button = ({
   type = ButtonTypes.button,
   color,
   disabled = false,
-  onClick,
+  onClick = () => {},
   onBlur = () => {},
   onFocus = () => {},
   onMouseDown = () => {},
@@ -196,14 +196,20 @@ const Button = ({
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
+
+  // const HandleInteraction = (eventHandler, e: React.ChangeEvent<HTMLInputElement>) => {
+  //   eventHandler(e);
+  //   console.log(useTheme().analyticsFunction('Button', e.type, e, 'TODO', containerProps));
+  // };
+
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     id,
-    onClick,
-    onBlur,
-    onFocus,
-    onMouseDown,
-    onMouseUp,
+    onClick: e => handleEventWithAnalytics('Button', onClick, e, containerProps),
+    onBlur: e => handleEventWithAnalytics('Button', onBlur, e, containerProps),
+    onFocus: e => handleEventWithAnalytics('Button', onFocus, e, containerProps),
+    onMouseDown: e => handleEventWithAnalytics('Button', onMouseDown, e, containerProps),
+    onMouseUp: e => handleEventWithAnalytics('Button', onMouseUp, e, containerProps),
     elevation,
     color: containerColor,
     variant,
