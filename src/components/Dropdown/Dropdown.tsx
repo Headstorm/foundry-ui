@@ -10,14 +10,13 @@ import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div, Span } from '../../htmlElements';
+import { Div, Span, Input } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 import { mergeRefs } from '../../utils/refs';
-import TextInput from '../TextInput';
-import { TextInputProps } from '../TextInput/TextInput';
+import TextInput, { TextInputProps } from '../TextInput/TextInput';
 
 export type OptionProps = {
   id: number | string;
@@ -179,7 +178,8 @@ const CheckContainer = styled(Div)`
   }}
 `;
 
-const PlaceholderContainer = styled(Span)`
+const PlaceholderContainer = styled(Div)`
+  position: absolute;
   opacity: 0.8;
 `;
 
@@ -206,6 +206,12 @@ const StyledTagContainer = styled(Tag.Container)`
     }
     ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
   `}
+`;
+
+const StyledSearchContainer = styled(Div)``;
+
+const StyledSearchInput = styled(Input)`
+  all: inherit;
 `;
 
 export interface DropdownProps {
@@ -365,6 +371,8 @@ const Dropdown = ({
   const isVirtual = virtualizeOptions && isOverflowing;
 
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
+
+  const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
 
   useEffect(() => {
     setFilteredOptions(options);
@@ -754,6 +762,9 @@ const Dropdown = ({
     onDebouncedSearchChange(e);
 
     const searchText = e.target.value;
+
+    setSearchCharacterCount(searchText.length);
+
     if (searchFiltersOptions) {
       if (searchText.length === 0) {
         setFilteredOptions(options);
@@ -800,6 +811,15 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
+        {searchCharacterCount === 0 && (!values || !values.length) && (
+          <StyledPlaceholder
+            ref={placeholderRef}
+            id={`${name}-placeholder`}
+            {...placeholderMergedProps}
+          >
+            {placeholder}
+          </StyledPlaceholder>
+        )}
         <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
@@ -823,19 +843,16 @@ const Dropdown = ({
                 </Tag>
               ) : undefined,
             )}
-          {(!values || !values.length) && (
-            <StyledPlaceholder
-              ref={placeholderRef}
-              id={`${name}-placeholder`}
-              {...placeholderMergedProps}
-            >
-              {placeholder}
-            </StyledPlaceholder>
+          {searchable && (
+            <TextInput
+              id={`${name}-search-input`}
+              onChange={onSearchChange}
+              debouncedOnChange={handleSearchDebouncedChange}
+              StyledContainer={StyledSearchContainer}
+              StyledInput={StyledSearchInput}
+            />
           )}
         </StyledValueItem>
-        {searchable && (
-          <TextInput onChange={onSearchChange} debouncedOnChange={handleSearchDebouncedChange} />
-        )}
         {closeIcons}
       </Button>
       {isOpen && (
