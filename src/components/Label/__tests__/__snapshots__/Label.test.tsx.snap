@@ -37,6 +37,7 @@ Object {
             Test text
           </label>
           <span
+            aria-hidden="true"
             class=" c1"
           >
             <svg
@@ -69,6 +70,7 @@ Object {
           Test text
         </label>
         <span
+          aria-hidden="true"
           class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
         >
           <svg
@@ -176,6 +178,7 @@ Object {
             Test text
           </label>
           <span
+            aria-hidden="true"
             class=" c1"
           >
             <svg
@@ -208,6 +211,7 @@ Object {
           Test text
         </label>
         <span
+          aria-hidden="true"
           class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
         >
           <svg
@@ -312,6 +316,7 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
         Test text
       </label>
       <span
+        aria-hidden="true"
         class=" c1"
       >
         <svg
@@ -364,6 +369,7 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
         Test text
       </label>
       <span
+        aria-hidden="true"
         class=" c1"
       >
         <svg

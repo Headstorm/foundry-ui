@@ -93,11 +93,13 @@ const Label = ({
     shownIcon = isRequired ? mdiAsterisk : '';
   }
 
-  // add aria-label for accessibility
-  const mergedLabelProps = {
-    'aria-label': 'label',
-    ...labelProps,
-  };
+  // add aria-label for accessibility if no labelText provided
+  let mergedLabelProps;
+  if (children) {
+    mergedLabelProps = { ...labelProps, label: labelText };
+  } else {
+    mergedLabelProps = { ...labelProps, 'aria-label': 'label' };
+  }
 
   const { labelProps: ariaProps } = useLabel(mergedLabelProps);
 

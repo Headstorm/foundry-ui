@@ -145,7 +145,7 @@ const createIcon = (StyledIconContainer: StyledSubcomponentType, iconPrefix: Rea
   if (typeof iconPrefix === 'string') {
     return (
       <StyledIconContainer>
-        <Icon size="1rem" path={iconPrefix} />
+        <Icon aria-hidden="true" size="1rem" path={iconPrefix} />
       </StyledIconContainer>
     );
   }

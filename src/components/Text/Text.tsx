@@ -91,7 +91,7 @@ const Text = ({
       ))}
     {isProcessing && (
       <StyledIconContainer side="left" ref={iconPrefixContainerRef} {...iconContainerProps}>
-        <Icon path={mdiLoading} size={size} spin={1} />
+        <Icon aria-hidden="true" path={mdiLoading} size={size} spin={1} />
       </StyledIconContainer>
     )}
     <Skeleton color={color} StyledContainer={SkeletonContainer} isLoading={isLoading}>

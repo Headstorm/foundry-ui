@@ -827,6 +827,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
         class=" c2 "
       >
         <svg
+          aria-hidden="true"
           role="presentation"
           style="width: 1rem; height: 1rem;"
           viewBox="0 0 24 24"
@@ -1123,6 +1124,7 @@ exports[`Button shows icons with type string 1`] = `
         class=" c2 "
       >
         <svg
+          aria-hidden="true"
           role="presentation"
           style="width: 1rem; height: 1rem;"
           viewBox="0 0 24 24"
@@ -1137,6 +1139,7 @@ exports[`Button shows icons with type string 1`] = `
         class=" c2 "
       >
         <svg
+          aria-hidden="true"
           role="presentation"
           style="width: 1rem; height: 1rem;"
           viewBox="0 0 24 24"

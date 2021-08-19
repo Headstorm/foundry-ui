@@ -209,13 +209,15 @@ const Checkbox = ({
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
 
-  // add aria-label for accessibility
-  const mergedInputProps = {
-    'aria-label': 'checkbox',
-    ...inputProps,
-  };
+  // add aria-label for accessibility if no children elements are provided
+  let mergedInputProps;
+  if (children) {
+    mergedInputProps = { ...inputProps, children };
+  } else {
+    mergedInputProps = { ...inputProps, 'aria-label': 'checkbox' };
+  }
 
-  const state = useToggleState(inputProps);
+  const state = useToggleState({ ...mergedInputProps, isSelected: checked });
   const internalRef = React.useRef<HTMLInputElement>();
   const { inputProps: ariaProps } = useCheckbox(
     mergedInputProps,
@@ -244,6 +246,7 @@ const Checkbox = ({
           ) : null}
         </StyledBox>
         <StyledInput
+          role="checkbox"
           {...ariaProps}
           data-test-id="hsui-Checkbox-Input"
           onClick={onClick}
