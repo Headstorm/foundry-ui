@@ -245,7 +245,7 @@ const Button = ({
           iconPrefix &&
           (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
             <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-              <UnstyledIcon path={iconPrefix} size="1rem" />
+              <UnstyledIcon aria-hidden="true" path={iconPrefix} size="1rem" />
             </StyledLeftIconContainer>
           ) : (
             <StyledLeftIconContainer ref={leftIconContainerRef}>
@@ -254,14 +254,14 @@ const Button = ({
           ))}
         {isProcessing && (
           <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-            <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+            <UnstyledIcon aria-hidden="true" path={mdiLoading} size="1rem" spin={1} />
           </StyledLeftIconContainer>
         )}
         {isLoading && ProgressBar ? <Progress /> : children}
         {iconSuffix &&
           (typeof iconSuffix === 'string' ? (
             <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-              <UnstyledIcon path={iconSuffix} size="1rem" />
+              <UnstyledIcon aria-hidden="true" path={iconSuffix} size="1rem" />
             </StyledRightIconContainer>
           ) : (
             <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
