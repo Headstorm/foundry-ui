@@ -24,6 +24,7 @@ export const analyticsFunction = (
   props?: any,
 ): Record<string, unknown> => {
   const result: Record<string, unknown> = {};
+
   result.componentType = componentType;
   result.eventType = eventType;
   result.eventArgs = eventArgs;
@@ -122,7 +123,7 @@ export function handleEventWithAnalytics(
   props: any,
 ): Record<string, unknown> {
   eventHandler(event);
-  const res = analyticsFunction(componentType, event.type, event, 'TODO', props);
+  const res = analyticsFunction(componentType, event.type, event, window.location.href, props);
   console.log(res);
   return res;
 }
