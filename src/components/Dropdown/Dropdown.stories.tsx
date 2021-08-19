@@ -72,13 +72,13 @@ export const Basic: Story<BasicProps> = ({
 Basic.args = {
   color: colors.primaryDark,
   elevation: 0,
-  multi: false,
+  multi: true,
   placeholder: 'Choose a city...',
-  clearable: false,
+  clearable: true,
   rememberScrollPosition: true,
   variant: variants.fill,
   optionsVariant: variants.outline,
-  valueVariant: variants.text,
+  valueVariant: variants.outline,
   shouldStayInView: true,
   intersectionObserverPrecision: 100,
   intersectionThreshold: 1.0,
@@ -129,7 +129,9 @@ const teaOptions = [
   },
 ];
 
-export const Icons: Story<DropdownProps> = ({ onSelect, ...args }: DropdownProps) => {
+type IconsProps = DropdownProps & { clearable: boolean };
+
+export const Icons: Story<IconsProps> = ({ onSelect, ...args }: IconsProps) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
   return (
     <Label labelText="How strong do you like your tea?" htmlFor="tea-rank">
@@ -148,9 +150,13 @@ export const Icons: Story<DropdownProps> = ({ onSelect, ...args }: DropdownProps
 };
 Icons.args = {
   ...Basic.args,
+  multi: false,
   placeholder: 'Choose a rating...',
+  clearable: false,
   color: '#0A7700',
+  valueVariant: variants.text,
   elevation: 1,
+  searchable: false,
 };
 
 export default {
