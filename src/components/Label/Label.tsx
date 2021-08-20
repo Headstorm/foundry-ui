@@ -95,13 +95,22 @@ const Label = ({
 
   // add aria-label for accessibility if no labelText provided
   let mergedLabelProps;
-  if (children) {
+  if (labelText) {
     mergedLabelProps = { ...labelProps, label: labelText };
   } else {
     mergedLabelProps = { ...labelProps, 'aria-label': 'label' };
   }
 
-  const { labelProps: ariaProps } = useLabel(mergedLabelProps);
+  const { labelProps: ariaProps, fieldProps: ariaFieldProps } = useLabel(mergedLabelProps);
+
+  // add aria props to the child component
+  const childrenWithAriaProps = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      // dont overwrite any preexisting props
+      return React.cloneElement(child, { ...ariaFieldProps, ...child.props });
+    }
+    return child;
+  });
 
   return (
     <StyledLabelContainer ref={labelContainerRef} {...labelContainerProps}>
@@ -119,7 +128,8 @@ const Label = ({
           <Icon path={shownIcon} size=".75rem" color={shownColor} />
         </StyledIconContainer>
       </StyledTextContainer>
-      {children}
+      {/* Only render children with aria props if there is one child */}
+      {React.Children.count(children) === 1 ? childrenWithAriaProps : children}
     </StyledLabelContainer>
   );
 };

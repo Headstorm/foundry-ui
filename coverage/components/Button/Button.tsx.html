@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.36% </span>
+                <span class="strong">81.03% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>45/56</span>
+                <span class='fraction'>47/58</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -330,25 +330,7 @@
 <a name='L271'></a><a href='#L271'>271</a>
 <a name='L272'></a><a href='#L272'>272</a>
 <a name='L273'></a><a href='#L273'>273</a>
-<a name='L274'></a><a href='#L274'>274</a>
-<a name='L275'></a><a href='#L275'>275</a>
-<a name='L276'></a><a href='#L276'>276</a>
-<a name='L277'></a><a href='#L277'>277</a>
-<a name='L278'></a><a href='#L278'>278</a>
-<a name='L279'></a><a href='#L279'>279</a>
-<a name='L280'></a><a href='#L280'>280</a>
-<a name='L281'></a><a href='#L281'>281</a>
-<a name='L282'></a><a href='#L282'>282</a>
-<a name='L283'></a><a href='#L283'>283</a>
-<a name='L284'></a><a href='#L284'>284</a>
-<a name='L285'></a><a href='#L285'>285</a>
-<a name='L286'></a><a href='#L286'>286</a>
-<a name='L287'></a><a href='#L287'>287</a>
-<a name='L288'></a><a href='#L288'>288</a>
-<a name='L289'></a><a href='#L289'>289</a>
-<a name='L290'></a><a href='#L290'>290</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L274'></a><a href='#L274'>274</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -562,12 +544,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -580,14 +556,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">82x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -635,13 +603,12 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { ReactNode /* , useRef */ } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 &nbsp;
-// import { useButton } from 'react-aria';
 import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
@@ -658,7 +625,6 @@ import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
 import FeedbackTypes from '../../enums/feedbackTypes';
-// import { mergeRefs } from '../../utils/refs';
 &nbsp;
 export type ButtonContainerProps = {
   elevation: number;
@@ -707,7 +673,7 @@ export type ButtonProps = {
   isLoading?: boolean;
   isProcessing?: boolean;
 &nbsp;
-  onClick?: React.MouseEventHandler&lt;HTMLButtonElement&gt;;
+  onClick?: (...args: any[]) =&gt; void;
   onBlur?: (e: React.FocusEvent) =&gt; void;
   onFocus?: (e: React.FocusEvent) =&gt; void;
   onMouseDown?: (e: React.MouseEvent) =&gt; void;
@@ -851,12 +817,6 @@ const Button = ({
     ...containerProps,
   };
 &nbsp;
-  // const internalRef = useRef&lt;HTMLButtonElement&gt;();
-  // const { buttonProps: ariaProps } = useButton(
-  //   mergedContainerProps,
-  //   internalRef as React.RefObject&lt;HTMLButtonElement&gt;,
-  // );
-&nbsp;
   const skeletonContainerProps = {
     style: {
       display: 'inline-block',
@@ -867,22 +827,14 @@ const Button = ({
     ...skeletonProps,
   };
 &nbsp;
-  const interactionFeedbackColor = getFontColorFromVariant(variant, containerColor);
-&nbsp;
   return (
     &lt;Skeleton isLoading={isLoading} containerProps={skeletonContainerProps}&gt;
-      &lt;StyledContainer
-        // {...ariaProps}
-        // ref={mergeRefs([containerRef, internalRef])}
-        ref={containerRef}
-        role="button"
-        {...mergedContainerProps}
-      &gt;
+      &lt;StyledContainer ref={containerRef} role="button" {...mergedContainerProps}&gt;
         {!isProcessing &amp;&amp;
           iconPrefix &amp;&amp;
           (typeof iconPrefix === 'string' &amp;&amp; iconPrefix !== '' ? (
             &lt;StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}&gt;
-              &lt;UnstyledIcon aria-hidden="true" path={iconPrefix} size="1rem" /&gt;
+              &lt;UnstyledIcon path={iconPrefix} size="1rem" /&gt;
             &lt;/StyledLeftIconContainer&gt;
           ) : (
             &lt;StyledLeftIconContainer ref={leftIconContainerRef}&gt;
@@ -891,26 +843,26 @@ const Button = ({
           ))}
         {isProcessing &amp;&amp; (
           &lt;StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}&gt;
-            &lt;UnstyledIcon aria-hidden="true" path={mdiLoading} size="1rem" spin={1} /&gt;
+            &lt;UnstyledIcon path={mdiLoading} size="1rem" spin={1} /&gt;
           &lt;/StyledLeftIconContainer&gt;
         )}
         {isLoading &amp;&amp; ProgressBar ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;Progress /&gt; </span>: children}
         {iconSuffix &amp;&amp;
           (typeof iconSuffix === 'string' ? (
             &lt;StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}&gt;
-              &lt;UnstyledIcon aria-hidden="true" path={iconSuffix} size="1rem" /&gt;
+              &lt;UnstyledIcon path={iconSuffix} size="1rem" /&gt;
             &lt;/StyledRightIconContainer&gt;
           ) : (
             &lt;StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}&gt;
               {iconSuffix}
             &lt;/StyledRightIconContainer&gt;
           ))}
-        {feedbackType !== FeedbackTypes.simple &amp;&amp; !disabled &amp;&amp; (
+        {feedbackType === FeedbackTypes.ripple &amp;&amp; !disabled &amp;&amp; (
           &lt;InteractionFeedback
-            color={interactionFeedbackColor}
             StyledContainer={StyledFeedbackContainer}
             StyledSVGContainer={StyledFeedbackSVGContainer}
-            {...interactionFeedbackProps}
+            color={getFontColorFromVariant(variant, containerColor)}
+            {...(interactionFeedbackProps || {})}
           /&gt;
         )}
       &lt;/StyledContainer&gt;
@@ -931,7 +883,7 @@ export default Button;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 19 2021 12:33:33 GMT-0500 (Central Daylight Time)
+                at Tue Aug 17 2021 20:25:06 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

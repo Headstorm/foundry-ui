@@ -229,12 +229,18 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
+        // ref={mergeRefs([inputRef, internalInputRef])}
         ref={inputRef}
         {...inputProps}
       />
       {onClear && (
-        <StyledIconContainer onClick={onClear} {...iconContainerProps}>
-          <Icon path={mdiClose} size="1em" />
+        <StyledIconContainer
+          role="button"
+          aria-label="Clear"
+          onClick={onClear}
+          {...iconContainerProps}
+        >
+          <Icon aria-hidden="true" path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
       {showCharacterCount && maxLength && (

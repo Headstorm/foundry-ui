@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.15% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/26</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.14% </span>
+                <span class="strong">84.62% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>23/28</span>
+                <span class='fraction'>22/26</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.15% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/26</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -172,25 +172,7 @@
 <a name='L113'></a><a href='#L113'>113</a>
 <a name='L114'></a><a href='#L114'>114</a>
 <a name='L115'></a><a href='#L115'>115</a>
-<a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a>
-<a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L116'></a><a href='#L116'>116</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,23 +266,7 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -325,7 +291,6 @@
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
-import { useLabel } from 'react-aria';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
@@ -416,29 +381,13 @@ const Label = ({
     shownIcon = isRequired ? mdiAsterisk : '';
   }
 &nbsp;
-  // add aria-label for accessibility if no labelText provided
-  let mergedLabelProps;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (children) {
-<span class="cstat-no" title="statement not covered" >    mergedLabelProps = { ...labelProps, label: labelText };</span>
-  } else {
-    mergedLabelProps = { ...labelProps, 'aria-label': 'label' };
-  }
-&nbsp;
-  const { labelProps: ariaProps } = useLabel(mergedLabelProps);
-&nbsp;
   return (
     &lt;StyledLabelContainer ref={labelContainerRef} {...labelContainerProps}&gt;
       &lt;StyledTextContainer ref={textContainerRef} {...textContainerProps}&gt;
-        &lt;StyledLabel
-          {...ariaProps}
-          htmlFor={htmlFor}
-          color={shownColor}
-          ref={labelRef}
-          {...labelProps}
-        &gt;
+        &lt;StyledLabel htmlFor={htmlFor} color={shownColor} ref={labelRef} {...labelProps}&gt;
           {labelText}
         &lt;/StyledLabel&gt;
-        &lt;StyledIconContainer aria-hidden="true" ref={iconContainerRef} {...iconContainerProps}&gt;
+        &lt;StyledIconContainer ref={iconContainerRef} {...iconContainerProps}&gt;
           &lt;Icon path={shownIcon} size=".75rem" color={shownColor} /&gt;
         &lt;/StyledIconContainer&gt;
       &lt;/StyledTextContainer&gt;
@@ -460,7 +409,7 @@ export default Label;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 19 2021 12:33:33 GMT-0500 (Central Daylight Time)
+                at Tue Aug 17 2021 20:25:06 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
