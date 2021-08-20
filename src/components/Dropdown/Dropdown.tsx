@@ -75,6 +75,7 @@ export const CloseIconContainer = styled(Div)`
 export const ArrowIconContainer = styled(Div)`
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 `;
 
 const ValueItem = styled(Div)`
