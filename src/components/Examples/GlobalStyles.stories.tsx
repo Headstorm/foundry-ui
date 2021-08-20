@@ -39,8 +39,12 @@ export const Example: Story<ExampleProps> = ({
     primary,
     grayDark,
   };
+  const styleConstants = {
+    paddingSmall: '1rem',
+    paddingLarge: '2rem',
+  };
   return (
-    <FoundryProvider value={{ globalStyles, colors }}>
+    <FoundryProvider value={{ globalStyles, colors, styleConstants }}>
       <Container>
         <Text StyledContainer={StyledTextContainer}>Hello!</Text>
         <Card StyledContainer={StyledCardContainer} elevation={0} header="Title">
