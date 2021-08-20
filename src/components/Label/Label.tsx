@@ -102,7 +102,6 @@ const Label = ({
   }
 
   const { labelProps: ariaProps, fieldProps: ariaFieldProps } = useLabel(mergedLabelProps);
-
   // add aria props to the child component
   const childrenWithAriaProps = React.Children.map(children, child => {
     if (React.isValidElement(child)) {
