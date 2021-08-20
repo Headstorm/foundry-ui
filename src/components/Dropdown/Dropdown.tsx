@@ -682,6 +682,7 @@ const Dropdown = ({
     <>
       {onClear && values.length > 0 && (
         <StyledCloseIconContainer
+          onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
           onClick={handleClear}
           onFocus={(e: React.FocusEvent) => e.stopPropagation()}
           tabIndex={tabIndex}
