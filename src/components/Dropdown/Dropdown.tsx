@@ -75,6 +75,7 @@ export const CloseIconContainer = styled(Div)`
 export const ArrowIconContainer = styled(Div)`
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 `;
 
 const ValueItem = styled(Div)`
@@ -681,6 +682,7 @@ const Dropdown = ({
     <>
       {onClear && values.length > 0 && (
         <StyledCloseIconContainer
+          onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
           onClick={handleClear}
           onFocus={(e: React.FocusEvent) => e.stopPropagation()}
           tabIndex={tabIndex}
