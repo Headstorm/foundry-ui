@@ -200,7 +200,8 @@ const TextInput = ({
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
   const handleEventWithAnalytics = useEventWithAnalytics();
-  const handleClear = (e: any) => handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
+  const handleClear = (e: any) =>
+    handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
 
   return (
     <StyledContainer

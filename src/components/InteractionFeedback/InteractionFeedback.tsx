@@ -3,7 +3,7 @@ import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { useEventWithAnalytics } from 'src/context';
+import { useEventWithAnalytics } from '../../context';
 import colors from '../../enums/colors';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { mergeRefs } from '../../utils/refs';
@@ -104,7 +104,14 @@ const InteractionFeedback = ({
   );
 
   const handleEventWithAnalytics = useEventWithAnalytics();
-  const handleMouseDown = (e: any) => handleEventWithAnalytics('InteractionFeedback', mouseDownHandler, 'onMouseDown', e, containerProps);
+  const handleMouseDown = (e: any) =>
+    handleEventWithAnalytics(
+      'InteractionFeedback',
+      mouseDownHandler,
+      'onMouseDown',
+      e,
+      containerProps,
+    );
 
   return (
     <StyledContainer

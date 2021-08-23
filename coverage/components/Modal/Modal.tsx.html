@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">61.7% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/40</span>
+                <span class='fraction'>29/47</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>5/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">61.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/40</span>
+                <span class='fraction'>29/47</span>
             </div>
         
             
@@ -295,7 +295,15 @@
 <a name='L236'></a><a href='#L236'>236</a>
 <a name='L237'></a><a href='#L237'>237</a>
 <a name='L238'></a><a href='#L238'>238</a>
-<a name='L239'></a><a href='#L239'>239</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -433,6 +441,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -543,7 +559,7 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useEventWithAnalytics, useTheme } from '../../context';
 &nbsp;
 const Underlay = styled(AnimatedDiv)&lt;{ backgroundBlur: string; backgroundDarkness: number }&gt;`
   ${() =&gt; `
@@ -672,6 +688,14 @@ const Modal = ({
   const { styles: containerStyles }: { styles?: Record&lt;string, unknown&gt; } = containerProps;
   const { styles: underlayStyles }: { styles?: Record&lt;string, unknown&gt; } = underlayProps;
 &nbsp;
+  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleClickOutside = <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
+<span class="cstat-no" title="statement not covered" >    handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);</span>
+  const handleEsc = <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
+<span class="cstat-no" title="statement not covered" >    handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps);</span>
+  const handleClose = <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
+<span class="cstat-no" title="statement not covered" >    handleEventWithAnalytics('Modal', onClose, 'onClose', e, containerProps);</span>
+&nbsp;
   const { containerTransform, containerOpacity, underlayBackdropFilter } = useSpring({
     from: {
       containerTransform: 'translate(-50%, -25%)',
@@ -694,10 +718,10 @@ const Modal = ({
   const escFunction = useCallback(
 <span class="fstat-no" title="function not covered" >    ev</span>ent =&gt; {
 <span class="cstat-no" title="statement not covered" >      if (event.keyCode === 27) {</span>
-<span class="cstat-no" title="statement not covered" >        onClickOutside();</span>
+<span class="cstat-no" title="statement not covered" >        handleEsc(event);</span>
       }
     },
-    [onClickOutside],
+    [handleEsc],
   );
 &nbsp;
   useEffect(() =&gt; {
@@ -721,7 +745,7 @@ const Modal = ({
           color={colors.background}
           elevation={1}
           variant={variants.text}
-          onClick={onClose}
+          onClick={handleClose}
           {...closeButtonProps}
         /&gt;
       )}
@@ -747,7 +771,7 @@ const Modal = ({
             color={closeButtonAttachment === 'inside' ? colors.grayDark : <span class="branch-1 cbranch-no" title="branch not covered" >colors.background}</span>
             elevation={closeButtonAttachment === 'inside' ? 0 : <span class="branch-1 cbranch-no" title="branch not covered" >1}</span>
             variant={variants.text}
-            onClick={onClose}
+            onClick={handleClose}
             {...closeButtonProps}
           /&gt;
         )}
@@ -755,7 +779,7 @@ const Modal = ({
       &lt;StyledUnderlay
         backgroundBlur={backgroundBlur}
         backgroundDarkness={backgroundDarkness}
-        onClick={onClickOutside}
+        onClick={handleClickOutside}
         ref={underlayRef}
         {...underlayProps}
         style={{
@@ -778,7 +802,7 @@ export default Modal;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Aug 17 2021 20:25:06 GMT+0000 (Coordinated Universal Time)
+                at Mon Aug 23 2021 09:47:32 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

@@ -72,7 +72,11 @@ export const FoundryProvider = ({
   };
   children: React.ReactNode;
 }) => {
-  const { globalStyles = defaultGlobalStyles, colors = colorsEnum, analyticsFunction = defaultAnalyticsFunction } = value;
+  const {
+    globalStyles = defaultGlobalStyles,
+    colors = colorsEnum,
+    analyticsFunction = defaultAnalyticsFunction,
+  } = value;
 
   // use the default set of styles, unless we've got something to override
   const mergedStyles =
@@ -87,13 +91,15 @@ export const FoundryProvider = ({
     ...colors,
   };
   const mergedAnalytics =
-    defaultAnalyticsFunction === analyticsFunction
-      ? defaultAnalyticsFunction
-      : analyticsFunction;
+    defaultAnalyticsFunction === analyticsFunction ? defaultAnalyticsFunction : analyticsFunction;
 
   return (
     <FoundryContext.Provider
-      value={{ globalStyles: mergedStyles, colors: mergedColors, analyticsFunction: mergedAnalytics }}
+      value={{
+        globalStyles: mergedStyles,
+        colors: mergedColors,
+        analyticsFunction: mergedAnalytics,
+      }}
     >
       {children}
     </FoundryContext.Provider>
@@ -126,27 +132,27 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
 export const useEventWithAnalytics = () => {
   const context = useContext(FoundryContext);
   return (
-  componentType: string,
-  eventHandler: any,
-  eventType: string,
-  event: any,
-  props: any,
-): void => {
-  eventHandler(event);
-  const dateTime = new Date();
-  const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
-  deviceInfo.innerHeight = window.innerHeight;
-  deviceInfo.innerWidth = window.innerWidth;
+    componentType: string,
+    eventHandler: any,
+    eventType: string,
+    event: any,
+    props: any,
+  ): void => {
+    eventHandler(event);
+    const dateTime = new Date();
+    const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
+    deviceInfo.innerHeight = window.innerHeight;
+    deviceInfo.innerWidth = window.innerWidth;
 
-  const res = context.analyticsFunction(
-    componentType,
-    eventType,
-    event,
-    dateTime,
-    deviceInfo,
-    window.location.href,
-    props,
-  );
-  console.log(res);
-};
+    const res = context.analyticsFunction(
+      componentType,
+      eventType,
+      event,
+      dateTime,
+      deviceInfo,
+      window.location.href,
+      props,
+    );
+    console.log(res);
+  };
 };

@@ -177,7 +177,8 @@ const Card = ({
   const hasFooter = Boolean(footer);
 
   const handleEventWithAnalytics = useEventWithAnalytics();
-  const handleClick = (e: any) => handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps);
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps);
 
   return (
     <StyledContainer

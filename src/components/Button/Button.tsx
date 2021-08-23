@@ -204,8 +204,10 @@ const Button = ({
     onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
     onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
     onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
-    onMouseDown: (e: any) => handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
-    onMouseUp: (e: any) => handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
+    onMouseDown: (e: any) =>
+      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
+    onMouseUp: (e: any) =>
+      handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
     elevation,
     color: containerColor,
     variant,

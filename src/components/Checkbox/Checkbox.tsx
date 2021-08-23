@@ -206,7 +206,8 @@ const Checkbox = ({
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
   const handleEventWithAnalytics = useEventWithAnalytics();
-  const handleClick = (e: any) => handleEventWithAnalytics('Checkbox', onClick, 'onClick', e, checkboxContainerProps);
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('Checkbox', onClick, 'onClick', e, checkboxContainerProps);
 
   return (
     <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" ref={labelRef} {...labelProps}>

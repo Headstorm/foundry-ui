@@ -138,9 +138,12 @@ const Modal = ({
   const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
 
   const handleEventWithAnalytics = useEventWithAnalytics();
-  const handleClickOutside = (e: any) => handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
-  const handleEsc = (e: any) => handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps);
-  const handleClose = (e: any) => handleEventWithAnalytics('Modal', onClose, 'onClose', e, containerProps);
+  const handleClickOutside = (e: any) =>
+    handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
+  const handleEsc = (e: any) =>
+    handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps);
+  const handleClose = (e: any) =>
+    handleEventWithAnalytics('Modal', onClose, 'onClose', e, containerProps);
 
   const { containerTransform, containerOpacity, underlayBackdropFilter } = useSpring({
     from: {

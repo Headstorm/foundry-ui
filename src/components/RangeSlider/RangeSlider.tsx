@@ -347,7 +347,8 @@ export const RangeSlider = ({
     },
     [slideRailProps, sliderBounds, onDrag, domain, processedValues],
   );
-  const handleSlideRailClickWithAnalytics = (e: any) => handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
+  const handleSlideRailClickWithAnalytics = (e: any) =>
+    handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
 
   const bind = useDrag(
     ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
