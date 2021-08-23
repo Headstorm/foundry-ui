@@ -11,7 +11,7 @@ import {
   RowProps,
   TableProps,
 } from './types';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { mergeRefs } from '../../utils/refs';
 
 type collapsedState = Record<string, string>;
@@ -207,8 +207,19 @@ const ExpansionIcon: React.FunctionComponent<InternalExpansionIconProps> = ({
 }: InternalExpansionIconProps) => {
   const expanded = groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
   const path = isCollapsed ? mdiChevronRight : expanded;
+  const handleEventWithAnalytics = useAnalytics();
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('Table', onClick, isCollapsed ? 'Expand' : 'Collapse', e, {
+      name: 'ExpansionIcon',
+    });
+
   return (
-    <StyledExpansionIconSpan tabIndex={0} onClick={onClick} role="button" onKeyPress={onKeyPress}>
+    <StyledExpansionIconSpan
+      tabIndex={0}
+      onClick={handleClick}
+      role="button"
+      onKeyPress={onKeyPress}
+    >
       <Icon path={path} size="1rem" />
     </StyledExpansionIconSpan>
   );
