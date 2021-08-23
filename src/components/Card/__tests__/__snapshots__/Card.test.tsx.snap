@@ -430,7 +430,6 @@ exports[`Card shows Card with non-default elevation 1`] = `
 
 exports[`Card shows Card with ripple feedback and no onClick 1`] = `
 .c0 {
-  cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -520,7 +519,6 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
 
 exports[`Card shows Card with simple feedback and no onClick 1`] = `
 .c0 {
-  cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -537,10 +535,6 @@ exports[`Card shows Card with simple feedback and no onClick 1`] = `
   -webkit-filter: drop-shadow(0rem 0.067rem 0.25rem rgba(20,22,31,0.429));
   filter: drop-shadow(0rem 0.067rem 0.25rem rgba(20,22,31,0.429));
   background-color: #fff;
-}
-
-.c0:active {
-  background-color: #e6e6e6;
 }
 
 <div>
