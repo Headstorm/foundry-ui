@@ -5,7 +5,7 @@ import { darken } from 'polished';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useEventWithAnalytics, useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback, {
   InteractionFeedbackProps,
@@ -176,7 +176,7 @@ const Card = ({
   const hasBody = Boolean(children);
   const hasFooter = Boolean(footer);
 
-  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleEventWithAnalytics = useAnalytics();
   const handleClick = (e: any) =>
     handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps);
 

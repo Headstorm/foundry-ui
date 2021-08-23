@@ -14,7 +14,7 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useEventWithAnalytics, useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 
 const Container = styled(Div)`
@@ -199,7 +199,7 @@ const TextInput = ({
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
-  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleEventWithAnalytics = useAnalytics();
   const handleClear = (e: any) =>
     handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
 

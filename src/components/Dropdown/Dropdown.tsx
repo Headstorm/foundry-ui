@@ -5,7 +5,7 @@ import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
 import { Components, ListRange, Virtuoso } from 'react-virtuoso';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
@@ -245,11 +245,11 @@ export interface DropdownProps {
   name?: string;
   placeholder?: string;
 
-  componentUUID?: string;
+  componentUUID?: string;ß
 
   onBlur?: () => void;
-  onClear?: () => void;
   onFocus?: () => void;
+  onClear?: () => void;
   onSelect: (selected?: Array<string | number>) => void;
 
   rememberScrollPosition?: boolean;
@@ -344,6 +344,21 @@ const Dropdown = ({
   const [scrollIndex, setScrollIndex] = useState<number>(0);
 
   const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
+
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleOnBlur = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onBlur || (() => {}), 'onBlur', e, { name }),
+    [handleEventWithAnalytics, onBlur, name],
+  );
+  const handleOnFocus = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onFocus || (() => {}), 'onFocus', e, { name }),
+    [handleEventWithAnalytics, onFocus, name],
+  );
+  const handleOnClear = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onClear || (() => {}), 'onClear', e, { name }),
+    [handleEventWithAnalytics, onClear, name],
+  );
 
   const isVirtual = virtualizeOptions && isOverflowing;
 
@@ -513,31 +528,34 @@ const Dropdown = ({
           if (focusWithin) {
             setFocusWithin(false);
             setIsOpen(false);
-            if (onBlur) {
-              onBlur();
+            if (handleOnBlur) {
+              handleOnBlur(e);
             }
           }
         }, 0),
       );
     },
-    [onBlur, focusWithin],
+    [handleOnBlur, focusWithin],
   );
 
-  const handleFocus = useCallback(() => {
-    clearTimeout(focusTimeoutId);
+  const handleFocus = useCallback(
+    (e: any) => {
+      clearTimeout(focusTimeoutId);
 
-    if (!focusWithin) {
-      setFocusWithin(true);
-      // make sure there is no dropdown flickering when tabbing into dropdown
-      setIsHidden(true);
-      setIsOpenedBelow(true);
-    }
-    setIsOpen(true);
+      if (!focusWithin) {
+        setFocusWithin(true);
+        // make sure there is no dropdown flickering when tabbing into dropdown
+        setIsHidden(true);
+        setIsOpenedBelow(true);
+      }
+      setIsOpen(true);
 
-    if (onFocus) {
-      onFocus();
-    }
-  }, [focusTimeoutId, focusWithin, onFocus]);
+      if (handleOnFocus) {
+        handleOnFocus(e);
+      }
+    },
+    [focusTimeoutId, focusWithin, handleOnFocus],
+  );
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -560,11 +578,11 @@ const Dropdown = ({
       e.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
       onSelect(multi ? [] : undefined);
-      if (onClear) {
-        onClear();
+      if (handleOnClear) {
+        handleOnClear(e);
       }
     },
-    [multi, onClear, onSelect],
+    [multi, handleOnClear, onSelect],
   );
 
   const handleMouseDownOnButton = useCallback(
@@ -576,7 +594,7 @@ const Dropdown = ({
       } else {
         setIsHidden(true);
         setIsOpenedBelow(true);
-        handleFocus();
+        handleFocus(e);
       }
     },
     [isOpen, handleBlur, handleFocus],
@@ -681,7 +699,7 @@ const Dropdown = ({
 
   const closeIcons = (
     <>
-      {onClear && values.length > 0 && (
+      {handleClear && values.length > 0 && (
         <StyledCloseIconContainer
           onClick={handleClear}
           onFocus={(e: React.FocusEvent) => e.stopPropagation()}

@@ -111,11 +111,6 @@ export function useTheme(): FoundryContextType {
   return theme;
 }
 
-// export function useAnalytics(): AnalyticsFunctionType {
-//   const analytics = useContext(FoundryContext).analyticsFunction;
-//   return analytics;
-// }
-
 export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   const ComponentWithGlobalStyles = styled(Component)`
     ${props => {
@@ -129,7 +124,7 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   });
 };
 
-export const useEventWithAnalytics = () => {
+export const useAnalytics = () => {
   const context = useContext(FoundryContext);
   return (
     componentType: string,

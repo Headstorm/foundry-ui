@@ -8,7 +8,7 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useEventWithAnalytics, useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 
 const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${() => `
@@ -137,7 +137,7 @@ const Modal = ({
   const { styles: containerStyles }: { styles?: Record<string, unknown> } = containerProps;
   const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
 
-  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleEventWithAnalytics = useAnalytics();
   const handleClickOutside = (e: any) =>
     handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
   const handleEsc = (e: any) =>

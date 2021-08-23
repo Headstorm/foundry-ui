@@ -20,7 +20,7 @@ import {
   SelectedRangeProps,
   DomainLabelProps,
 } from './types';
-import { useEventWithAnalytics, useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { Div } from '../../htmlElements';
 
 export const Container = styled.div`
@@ -286,7 +286,7 @@ export const RangeSlider = ({
 
   const domain = max - min;
 
-  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleEventWithAnalytics = useAnalytics();
 
   // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);

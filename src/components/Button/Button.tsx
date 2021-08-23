@@ -5,7 +5,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import { useEventWithAnalytics, useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
@@ -196,7 +196,7 @@ const Button = ({
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
-  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleEventWithAnalytics = useAnalytics();
 
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
