@@ -245,7 +245,7 @@ export interface DropdownProps {
   name?: string;
   placeholder?: string;
 
-  componentUUID?: string;ß
+  componentUUID?: string;
 
   onBlur?: () => void;
   onFocus?: () => void;
