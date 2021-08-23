@@ -19,7 +19,7 @@ export const defaultGlobalStyles = `
 export const defaultAnalyticsFunction = (
   componentType: string,
   eventType: string,
-  eventArgs: React.ChangeEvent<HTMLInputElement>,
+  eventArgs: any,
   dateTime: Date,
   deviceInfo: Record<string, unknown>,
   currentURL: string,
@@ -133,12 +133,12 @@ export const useAnalytics = () => {
   const context = useContext(FoundryContext);
   return (
     componentType: string,
-    eventHandler: any,
+    eventFunction: any,
     eventType: string,
-    event: any,
+    eventArgs: any,
     props: any,
   ): void => {
-    eventHandler(event);
+    eventFunction(eventArgs);
     const dateTime = new Date();
     const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
     deviceInfo.innerHeight = window.innerHeight;
@@ -147,7 +147,7 @@ export const useAnalytics = () => {
     context.analyticsFunction(
       componentType,
       eventType,
-      event,
+      eventArgs,
       dateTime,
       deviceInfo,
       window.location.href,
