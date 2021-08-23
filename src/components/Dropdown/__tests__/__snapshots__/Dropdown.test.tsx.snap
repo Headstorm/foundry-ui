@@ -2776,12 +2776,12 @@ exports[`Dropdown renders a value when given a matching option id through props 
 .c7 {
   height: 1.125rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .c8 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3004,12 +3004,12 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 .c5 {
   height: 1.125rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3234,12 +3234,12 @@ exports[`Dropdown renders one value when given two values but only one matches a
 .c7 {
   height: 1.125rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .c8 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3483,12 +3483,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
 .c7 {
   height: 1.125rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .c8 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3740,12 +3740,12 @@ exports[`Dropdown renders two values when given matching option ids through prop
 .c7 {
   height: 1.125rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .c8 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3997,12 +3997,12 @@ exports[`Dropdown selects options from values prop 1`] = `
 .c7 {
   height: 1.125rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .c8 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
