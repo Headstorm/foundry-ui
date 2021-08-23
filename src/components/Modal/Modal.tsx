@@ -8,7 +8,7 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useEventWithAnalytics, useTheme } from '../../context';
 
 const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${() => `
@@ -137,6 +137,11 @@ const Modal = ({
   const { styles: containerStyles }: { styles?: Record<string, unknown> } = containerProps;
   const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
 
+  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleClickOutside = (e: any) => handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
+  const handleEsc = (e: any) => handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps);
+  const handleClose = (e: any) => handleEventWithAnalytics('Modal', onClose, 'onClose', e, containerProps);
+
   const { containerTransform, containerOpacity, underlayBackdropFilter } = useSpring({
     from: {
       containerTransform: 'translate(-50%, -25%)',
@@ -159,10 +164,10 @@ const Modal = ({
   const escFunction = useCallback(
     event => {
       if (event.keyCode === 27) {
-        onClickOutside();
+        handleEsc(event);
       }
     },
-    [onClickOutside],
+    [handleEsc],
   );
 
   useEffect(() => {
@@ -186,7 +191,7 @@ const Modal = ({
           color={colors.background}
           elevation={1}
           variant={variants.text}
-          onClick={onClose}
+          onClick={handleClose}
           {...closeButtonProps}
         />
       )}
@@ -212,7 +217,7 @@ const Modal = ({
             color={closeButtonAttachment === 'inside' ? colors.grayDark : colors.background}
             elevation={closeButtonAttachment === 'inside' ? 0 : 1}
             variant={variants.text}
-            onClick={onClose}
+            onClick={handleClose}
             {...closeButtonProps}
           />
         )}
@@ -220,7 +225,7 @@ const Modal = ({
       <StyledUnderlay
         backgroundBlur={backgroundBlur}
         backgroundDarkness={backgroundDarkness}
-        onClick={onClickOutside}
+        onClick={handleClickOutside}
         ref={underlayRef}
         {...underlayProps}
         style={{

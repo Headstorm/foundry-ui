@@ -5,7 +5,7 @@ import { darken } from 'polished';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { handleEventWithAnalytics, useTheme } from '../../context';
+import { useEventWithAnalytics, useTheme } from '../../context';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback, {
   InteractionFeedbackProps,
@@ -138,8 +138,6 @@ export interface CardProps {
   interactiveFeedbackRef?: React.RefObject<HTMLDivElement>;
 }
 
-const handleClick = (e: any) => handleEventWithAnalytics('Card', defaultOnClick, e, '');
-
 const Card = ({
   StyledContainer = CardContainer,
   StyledHeader = Header,
@@ -158,7 +156,7 @@ const Card = ({
   footerRef,
   interactiveFeedbackRef,
 
-  onClick = handleClick,
+  onClick = defaultOnClick,
 
   header,
   children,
@@ -178,9 +176,12 @@ const Card = ({
   const hasBody = Boolean(children);
   const hasFooter = Boolean(footer);
 
+  const handleEventWithAnalytics = useEventWithAnalytics();
+  const handleClick = (e: any) => handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps);
+
   return (
     <StyledContainer
-      onClick={onClick}
+      onClick={handleClick}
       elevation={elevation}
       feedbackType={feedbackType}
       {...containerProps}

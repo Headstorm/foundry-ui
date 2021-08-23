@@ -5,7 +5,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import { handleEventWithAnalytics, useTheme } from '../../context';
+import { useEventWithAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
@@ -196,15 +196,16 @@ const Button = ({
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
+  const handleEventWithAnalytics = useEventWithAnalytics();
 
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     id,
-    onClick: (e: any) => handleEventWithAnalytics('Button', onClick, e, containerProps),
-    onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, e, containerProps),
-    onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, e, containerProps),
-    onMouseDown: (e: any) => handleEventWithAnalytics('Button', onMouseDown, e, containerProps),
-    onMouseUp: (e: any) => handleEventWithAnalytics('Button', onMouseUp, e, containerProps),
+    onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
+    onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
+    onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
+    onMouseDown: (e: any) => handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
+    onMouseUp: (e: any) => handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
     elevation,
     color: containerColor,
     variant,

@@ -16,37 +16,35 @@ export const defaultGlobalStyles = `
   }
 `;
 
-export const analyticsFunction = (
+export const defaultAnalyticsFunction = (
   componentType: string,
   eventType: string,
   eventArgs: React.ChangeEvent<HTMLInputElement>,
+  dateTime: Date,
+  deviceInfo: Record<string, unknown>,
   currentURL: string,
   props?: any,
-): Record<string, unknown> => {
-  const result: Record<string, unknown> = {};
-
-  result.componentType = componentType;
-  result.eventType = eventType;
-  result.eventArgs = eventArgs;
-  result.currentURL = currentURL;
-  result.name = props.name;
-  result.analytics = props.analytics;
-  result.dateTime = new Date();
-  result.deviceInfo = rdd.deviceDetect();
-  (result.deviceInfo as Record<string, unknown>).innerHeight = window.innerHeight;
-  (result.deviceInfo as Record<string, unknown>).innerWidth = window.innerWidth;
-
-  return result;
-};
+): Record<string, unknown> => ({
+  componentType,
+  eventType,
+  eventArgs,
+  dateTime,
+  deviceInfo,
+  currentURL,
+  name: props.name,
+  analytics: props.analytics,
+});
 
 type FoundryColorsType = Record<keyof typeof colorsEnum, string>;
 type AnalyticsFunctionType = (
   componentType: string,
   eventType: string,
   eventArgs: React.ChangeEvent<HTMLInputElement>,
+  dateTime: Date,
+  deviceInfo: Record<string, unknown>,
   currentURL: string,
-  props: any,
-) => Record<string, unknown>;
+  props?: any,
+) => any;
 
 export type FoundryContextType = {
   globalStyles: string;
@@ -57,7 +55,7 @@ export type FoundryContextType = {
 const defaultContextValue = {
   globalStyles: defaultGlobalStyles,
   colors: colorsEnum,
-  analyticsFunction,
+  analyticsFunction: defaultAnalyticsFunction,
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 };
 
@@ -74,7 +72,7 @@ export const FoundryProvider = ({
   };
   children: React.ReactNode;
 }) => {
-  const { globalStyles = defaultGlobalStyles, colors = colorsEnum } = value;
+  const { globalStyles = defaultGlobalStyles, colors = colorsEnum, analyticsFunction = defaultAnalyticsFunction } = value;
 
   // use the default set of styles, unless we've got something to override
   const mergedStyles =
@@ -88,10 +86,14 @@ export const FoundryProvider = ({
     ...colorsEnum,
     ...colors,
   };
+  const mergedAnalytics =
+    defaultAnalyticsFunction === analyticsFunction
+      ? defaultAnalyticsFunction
+      : analyticsFunction;
 
   return (
     <FoundryContext.Provider
-      value={{ globalStyles: mergedStyles, colors: mergedColors, analyticsFunction }}
+      value={{ globalStyles: mergedStyles, colors: mergedColors, analyticsFunction: mergedAnalytics }}
     >
       {children}
     </FoundryContext.Provider>
@@ -102,6 +104,11 @@ export function useTheme(): FoundryContextType {
   const theme = useContext(FoundryContext);
   return theme;
 }
+
+// export function useAnalytics(): AnalyticsFunctionType {
+//   const analytics = useContext(FoundryContext).analyticsFunction;
+//   return analytics;
+// }
 
 export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   const ComponentWithGlobalStyles = styled(Component)`
@@ -116,14 +123,30 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   });
 };
 
-export function handleEventWithAnalytics(
+export const useEventWithAnalytics = () => {
+  const context = useContext(FoundryContext);
+  return (
   componentType: string,
   eventHandler: any,
-  event: React.ChangeEvent<HTMLInputElement>,
+  eventType: string,
+  event: any,
   props: any,
-): Record<string, unknown> {
+): void => {
   eventHandler(event);
-  const res = analyticsFunction(componentType, event.type, event, window.location.href, props);
+  const dateTime = new Date();
+  const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
+  deviceInfo.innerHeight = window.innerHeight;
+  deviceInfo.innerWidth = window.innerWidth;
+
+  const res = context.analyticsFunction(
+    componentType,
+    eventType,
+    event,
+    dateTime,
+    deviceInfo,
+    window.location.href,
+    props,
+  );
   console.log(res);
-  return res;
-}
+};
+};

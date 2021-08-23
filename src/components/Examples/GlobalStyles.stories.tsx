@@ -39,8 +39,22 @@ export const Example: Story<ExampleProps> = ({
     primary,
     grayDark,
   };
+  const showAnalytics = (
+    componentType: string,
+    eventType: string,
+    eventArgs?: React.ChangeEvent<HTMLInputElement>,
+    dateTime?: Date,
+    deviceInfo?: Record<string, unknown>,
+    currentURL?: string,
+    props?: any,
+  ): void => {
+    console.log(componentType, eventType, eventArgs, dateTime, deviceInfo, currentURL, props);
+    console.log(`${componentType} ${eventType}`);
+    action(`${componentType} ${eventType}`);
+  };
+
   return (
-    <FoundryProvider value={{ globalStyles, colors }}>
+    <FoundryProvider value={{ globalStyles, colors, analyticsFunction: showAnalytics }}>
       <Container>
         <Text StyledContainer={StyledTextContainer}>Hello!</Text>
         <Card StyledContainer={StyledCardContainer} elevation={0} header="Title">
