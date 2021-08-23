@@ -179,7 +179,9 @@ Output:
 
 See the [Form demo example](https://headstorm.github.io/foundry-ui/?path=/story/form-example--controlled-form) and [source code](./src/components/Examples/Form.stories.tsx)
 
-### Global styling
+### Global Styling / Provider
+
+FoundryProvider provides global styling utilities and the option to store constants globally by setting styleConstants.
 
 See the [Global styling demo example](https://headstorm.github.io/foundry-ui/?path=/story/global-styles--example) and [Global styling source code](./src/components/Examples/GlobalStyles.stories.tsx)
 

@@ -51,9 +51,14 @@ export const Example: Story<ExampleProps> = ({
     console.log(componentType, eventType, eventArgs, dateTime, deviceInfo, currentURL, props);
     action(`${componentType} ${eventType} (details in console)`)();
   };
-
+  const styleConstants = {
+    paddingSmall: '1rem',
+    paddingLarge: '2rem',
+  };
   return (
-    <FoundryProvider value={{ globalStyles, colors, analyticsFunction: showAnalytics }}>
+    <FoundryProvider
+      value={{ globalStyles, colors, styleConstants, analyticsFunction: showAnalytics }}
+    >
       <Container>
         <Text StyledContainer={StyledTextContainer}>Hello!</Text>
         <Card StyledContainer={StyledCardContainer} elevation={0} header="Title">

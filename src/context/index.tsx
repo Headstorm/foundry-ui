@@ -50,12 +50,14 @@ export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
   analyticsFunction: AnalyticsFunctionType;
+  styleConstants: { [key in string]: number | string };
 };
 
 const defaultContextValue = {
   globalStyles: defaultGlobalStyles,
   colors: colorsEnum,
   analyticsFunction: defaultAnalyticsFunction,
+  styleConstants: {},
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 };
 
@@ -69,17 +71,19 @@ export const FoundryProvider = ({
     globalStyles?: string;
     colors?: Partial<Record<keyof typeof colorsEnum, string>>;
     analyticsFunction?: AnalyticsFunctionType;
+    styleConstants?: {};
   };
   children: React.ReactNode;
 }) => {
   const {
     globalStyles = defaultGlobalStyles,
     colors = colorsEnum,
+    styleConstants = {},
     analyticsFunction = defaultAnalyticsFunction,
   } = value;
 
   // use the default set of styles, unless we've got something to override
-  const mergedStyles =
+  const mergedGlobalStyles =
     globalStyles === defaultGlobalStyles
       ? globalStyles
       : `
@@ -96,9 +100,10 @@ export const FoundryProvider = ({
   return (
     <FoundryContext.Provider
       value={{
-        globalStyles: mergedStyles,
+        globalStyles: mergedGlobalStyles,
         colors: mergedColors,
         analyticsFunction: mergedAnalytics,
+        styleConstants,
       }}
     >
       {children}

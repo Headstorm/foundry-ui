@@ -128,6 +128,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -377,6 +378,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -626,6 +628,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -875,6 +878,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -1121,6 +1125,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -1319,6 +1324,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -1566,6 +1572,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -1762,6 +1769,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -2100,6 +2108,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -2347,6 +2356,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -2547,6 +2557,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -2765,6 +2776,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c8 {
@@ -2992,6 +3004,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 .c5 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c6 {
@@ -3221,6 +3234,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c8 {
@@ -3469,6 +3483,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c8 {
@@ -3725,6 +3740,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c8 {
@@ -3981,6 +3997,7 @@ exports[`Dropdown selects options from values prop 1`] = `
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c8 {

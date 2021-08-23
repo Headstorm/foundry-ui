@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">26.67% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/14</span>
+                <span class='fraction'>4/15</span>
             </div>
         
             
@@ -263,14 +263,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -280,8 +272,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -291,20 +300,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -413,12 +413,14 @@ export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
   analyticsFunction: AnalyticsFunctionType;
+  styleConstants: { [key in string]: number | string };
 };
 &nbsp;
 const defaultContextValue = {
   globalStyles: defaultGlobalStyles,
   colors: colorsEnum,
   analyticsFunction: defaultAnalyticsFunction,
+  styleConstants: {},
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
 };
 &nbsp;
@@ -432,17 +434,14 @@ export const FoundryProvider = <span class="fstat-no" title="function not covere
     globalStyles?: string;
     colors?: Partial&lt;Record&lt;keyof typeof colorsEnum, string&gt;&gt;;
     analyticsFunction?: AnalyticsFunctionType;
+    styleConstants?: {};
   };
   children: React.ReactNode;
 }) =&gt; {
-  const {
-    globalStyles = <span class="branch-0 cbranch-no" title="branch not covered" >defaultGlobalStyles,</span>
-    colors = <span class="branch-0 cbranch-no" title="branch not covered" >colorsEnum,</span>
-    analyticsFunction = <span class="branch-0 cbranch-no" title="branch not covered" >defaultAnalyticsFunction,</span>
-  } = <span class="cstat-no" title="statement not covered" >value;</span>
+  const { globalStyles = <span class="branch-0 cbranch-no" title="branch not covered" >defaultGlobalStyles,</span> colors = <span class="branch-0 cbranch-no" title="branch not covered" >colorsEnum,</span> styleConstants = <span class="branch-0 cbranch-no" title="branch not covered" >{},</span> analyticsFunction = <span class="branch-0 cbranch-no" title="branch not covered" >defaultAnalyticsFunction,</span> } = <span class="cstat-no" title="statement not covered" >value;</span>
 &nbsp;
   // use the default set of styles, unless we've got something to override
-  const mergedStyles =
+  const mergedGlobalStyles =
 <span class="cstat-no" title="statement not covered" >    globalStyles === defaultGlobalStyles</span>
       ? globalStyles
       : `
@@ -459,9 +458,10 @@ export const FoundryProvider = <span class="fstat-no" title="function not covere
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;FoundryContext.Provider
       value={{
-        globalStyles: mergedStyles,
+        globalStyles: mergedGlobalStyles,
         colors: mergedColors,
         analyticsFunction: mergedAnalytics,
+        styleConstants,
       }}
     &gt;
       {children}
@@ -520,7 +520,7 @@ export const useAnalytics = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Aug 23 2021 11:31:49 GMT-0500 (Central Daylight Time)
+                at Mon Aug 23 2021 13:00:38 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>
