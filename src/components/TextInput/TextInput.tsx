@@ -188,9 +188,20 @@ const TextInput = ({
 
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleDebouncedOnChange = (e: any) =>
+    handleEventWithAnalytics(
+      'TextInput',
+      debouncedOnChange,
+      'debouncedOnChange',
+      e,
+      containerProps,
+    );
+
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
-  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), [
-    debouncedOnChange,
+  const debouncedChange = useCallback(debounce(handleDebouncedOnChange, debounceInterval), [
+    handleDebouncedOnChange,
     debounceInterval,
   ]);
 
@@ -199,7 +210,7 @@ const TextInput = ({
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
-  const handleEventWithAnalytics = useAnalytics();
+
   const handleClear = (e: any) =>
     handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
 
