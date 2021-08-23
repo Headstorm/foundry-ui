@@ -178,7 +178,7 @@ const Card = ({
 
   const handleEventWithAnalytics = useAnalytics();
   const handleClick = (e: any) =>
-    handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps);
+    handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps || { name: 'Card' });
 
   return (
     <StyledContainer

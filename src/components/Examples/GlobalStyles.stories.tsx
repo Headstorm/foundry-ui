@@ -49,8 +49,7 @@ export const Example: Story<ExampleProps> = ({
     props?: any,
   ): void => {
     console.log(componentType, eventType, eventArgs, dateTime, deviceInfo, currentURL, props);
-    console.log(`${componentType} ${eventType}`);
-    action(`${componentType} ${eventType}`);
+    action(`${componentType} ${eventType} (details in console)`)();
   };
 
   return (

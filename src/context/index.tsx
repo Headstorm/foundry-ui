@@ -31,8 +31,8 @@ export const defaultAnalyticsFunction = (
   dateTime,
   deviceInfo,
   currentURL,
-  name: props.name,
-  analytics: props.analytics,
+  name: 'name' in props ? props.name : 'No name provided',
+  analytics: 'analytics' in props ? props.analytics : 'No analytics object provided',
 });
 
 type FoundryColorsType = Record<keyof typeof colorsEnum, string>;
@@ -139,7 +139,7 @@ export const useAnalytics = () => {
     deviceInfo.innerHeight = window.innerHeight;
     deviceInfo.innerWidth = window.innerWidth;
 
-    const res = context.analyticsFunction(
+    context.analyticsFunction(
       componentType,
       eventType,
       event,
@@ -148,6 +148,5 @@ export const useAnalytics = () => {
       window.location.href,
       props,
     );
-    console.log(res);
   };
 };
