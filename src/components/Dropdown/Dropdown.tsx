@@ -558,32 +558,46 @@ const Dropdown = ({
     [focusTimeoutId, focusWithin, handleOnFocus],
   );
 
+  const handleOnSelect = useCallback(
+    (selected?: Array<string | number>) =>
+      handleEventWithAnalytics(
+        'Dropdown',
+        () => {
+          onSelect(selected);
+        },
+        'onSelect',
+        { type: 'onSelect', selected },
+        { name },
+      ),
+    [handleEventWithAnalytics, onSelect, name],
+  );
+
   const handleSelect = useCallback(
     (clickedId: string | number) => {
       if (!multi) {
         setIsOpen(false);
-        onSelect([clickedId]);
+        handleOnSelect([clickedId]);
       } else {
         const previouslySelected = optionsHash[clickedId].isSelected;
         const newValues = previouslySelected
           ? values.filter(val => val !== clickedId)
           : [...values, clickedId];
-        onSelect(newValues);
+        handleOnSelect(newValues);
       }
     },
-    [onSelect, multi, values, optionsHash],
+    [handleOnSelect, multi, values, optionsHash],
   );
 
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
-      onSelect(multi ? [] : undefined);
+      handleOnSelect(multi ? [] : undefined);
       if (handleOnClear) {
         handleOnClear(e);
       }
     },
-    [multi, handleOnClear, onSelect],
+    [multi, handleOnClear, handleOnSelect],
   );
 
   const handleMouseDownOnButton = useCallback(

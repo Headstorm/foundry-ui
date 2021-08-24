@@ -288,9 +288,23 @@ export const RangeSlider = ({
 
   const handleEventWithAnalytics = useAnalytics();
 
+  const handleDrag = useCallback(
+    (newVal: number) =>
+      handleEventWithAnalytics(
+        'RangeSlider',
+        () => {
+          onDrag(newVal);
+        },
+        'onDrag',
+        { type: 'onDrag', newVal },
+        containerProps,
+      ),
+    [handleEventWithAnalytics, onDrag, containerProps],
+  );
+
   // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);
-  const debouncedDrag = debounce(() => onDrag(valueBuffer.current), debounceInterval);
+  const debouncedDrag = debounce(() => handleDrag(valueBuffer.current), debounceInterval);
   const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
@@ -338,14 +352,14 @@ export const RangeSlider = ({
 
       if (closestVal) {
         // TODO: use the closest val to find the handle to move and move it
-        onDrag(clickedValue);
+        handleDrag(clickedValue);
         if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
           e.persist();
           slideRailProps.onMouseDown(e);
         }
       }
     },
-    [slideRailProps, sliderBounds, onDrag, domain, processedValues],
+    [slideRailProps, sliderBounds, handleDrag, domain, processedValues],
   );
   const handleSlideRailClickWithAnalytics = (e: any) =>
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);

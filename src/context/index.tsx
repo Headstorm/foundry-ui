@@ -153,14 +153,16 @@ export const useAnalytics = () => {
         ? window.location.href
         : 'Server Side Rendering Requires the analytics function to handle window URL';
 
-    context.analyticsFunction(
-      componentType,
-      eventType,
-      eventArgs,
-      dateTime,
-      deviceInfo,
-      currURL,
-      props,
+    console.log(
+      context.analyticsFunction(
+        componentType,
+        eventType,
+        eventArgs,
+        dateTime,
+        deviceInfo,
+        currURL,
+        props,
+      ),
     );
   };
 };
