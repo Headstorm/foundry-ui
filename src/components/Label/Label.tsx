@@ -94,12 +94,9 @@ const Label = ({
   }
 
   // add aria-label for accessibility if no labelText provided
-  let mergedLabelProps;
-  if (labelText) {
-    mergedLabelProps = { ...labelProps, label: labelText };
-  } else {
-    mergedLabelProps = { ...labelProps, 'aria-label': 'label' };
-  }
+  const mergedLabelProps = labelText
+    ? { ...labelProps, label: labelText }
+    : { ...labelProps, 'aria-label': 'label' };
 
   const { labelProps: ariaProps, fieldProps: ariaFieldProps } = useLabel(mergedLabelProps);
   // add aria props to the child component
