@@ -25,7 +25,7 @@ export const CardContainer = styled(Div)`
     const { colors } = useTheme();
 
     return `
-      ${ originalOnClick !== defaultOnClick ? 'cursor: pointer;' : ''}
+      ${originalOnClick !== defaultOnClick ? 'cursor: pointer;' : ''}
       display: inline-flex;
       flex-flow: column nowrap;
       font-size: 1rem;

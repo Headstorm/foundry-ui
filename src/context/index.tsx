@@ -94,15 +94,13 @@ export const FoundryProvider = ({
     ...colorsEnum,
     ...colors,
   };
-  const mergedAnalytics =
-    defaultAnalyticsFunction === analyticsFunction ? defaultAnalyticsFunction : analyticsFunction;
 
   return (
     <FoundryContext.Provider
       value={{
         globalStyles: mergedGlobalStyles,
         colors: mergedColors,
-        analyticsFunction: mergedAnalytics,
+        analyticsFunction,
         styleConstants,
       }}
     >
