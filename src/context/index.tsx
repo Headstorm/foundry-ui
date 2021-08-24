@@ -141,10 +141,19 @@ export const useAnalytics = () => {
     eventFunction(eventArgs);
     const dateTime = new Date();
     const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
-    deviceInfo.innerHeight = (typeof window !== 'undefined' ? window.innerHeight : 'Server Side Rendering Requires the analytics function to handle window dimensions');
-    deviceInfo.innerWidth = (typeof window !== 'undefined' ? window.innerWidth : 'Server Side Rendering Requires the analytics function to handle window dimensions');
+    deviceInfo.innerHeight =
+      typeof window !== 'undefined'
+        ? window.innerHeight
+        : 'Server Side Rendering Requires the analytics function to handle window dimensions';
+    deviceInfo.innerWidth =
+      typeof window !== 'undefined'
+        ? window.innerWidth
+        : 'Server Side Rendering Requires the analytics function to handle window dimensions';
 
-    const currURL = (typeof window !== 'undefined' ? window.location.href : 'Server Side Rendering Requires the analytics function to handle window URL');
+    const currURL =
+      typeof window !== 'undefined'
+        ? window.location.href
+        : 'Server Side Rendering Requires the analytics function to handle window URL';
 
     context.analyticsFunction(
       componentType,
