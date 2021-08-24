@@ -349,7 +349,7 @@ const Dropdown = ({
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 
-  searchable = true,
+  searchable = false,
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
   onDebouncedSearchChange = defaultCallback,
