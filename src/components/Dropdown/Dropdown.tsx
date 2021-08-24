@@ -5,16 +5,18 @@ import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
 import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
 import { Components, ListRange, Virtuoso } from 'react-virtuoso';
+import Fuse from 'fuse.js';
 import { useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div, Span } from '../../htmlElements';
+import { Div, Span, Input } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle, getDropdownTagStyle } from '../../utils/styles';
 import { mergeRefs } from '../../utils/refs';
+import TextInput, { TextInputProps } from '../TextInput/TextInput';
 
 export type OptionProps = {
   id: number | string;
@@ -46,6 +48,7 @@ const Container = styled(Div)`
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ isOpen, isOpenedBelow, isHidden }) => {
+    const { colors } = useTheme();
     const openedDirection = isOpenedBelow ? 'bottom' : 'top';
     const openStyle = `
       border-${openedDirection}: 0px solid transparent;
@@ -62,6 +65,11 @@ export const ValueContainer = styled(Button.Container)`
     ${isOpen && !isHidden ? openStyle : ''}
     width: 15rem;
     padding: .5rem 1rem;
+
+    &:focus-within {
+      outline: none;
+      box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
+    }
   `;
   }}
 `;
@@ -177,7 +185,8 @@ const CheckContainer = styled(Div)`
   }}
 `;
 
-const PlaceholderContainer = styled(Span)`
+const PlaceholderContainer = styled(Div)`
+  position: absolute;
   opacity: 0.8;
 `;
 
@@ -204,6 +213,12 @@ const StyledTagContainer = styled(Tag.Container)`
     }
     ${getDropdownTagStyle(dropdownVariant, tagVariant, dropdownColor, transparentColor)}
   `}
+`;
+
+const StyledSearchContainer = styled(Div)``;
+
+const StyledSearchInput = styled(Input)`
+  all: inherit;
 `;
 
 export interface DropdownProps {
@@ -264,9 +279,17 @@ export interface DropdownProps {
 
   shouldStayInView?: boolean;
   intersectionThreshold?: number;
+  intersectionContainer?: HTMLElement | null;
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
+
+  searchable?: boolean;
+  searchFiltersOptions?: boolean;
+  onSearchChange?: TextInputProps['onChange'];
+  onDebouncedSearchChange?: TextInputProps['debouncedOnChange'];
 }
+
+const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
 const Dropdown = ({
   StyledContainer = Container,
@@ -322,8 +345,14 @@ const Dropdown = ({
 
   shouldStayInView = true,
   intersectionThreshold = 1.0,
+  intersectionContainer = null,
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
+
+  searchable = false,
+  searchFiltersOptions = true,
+  onSearchChange = defaultCallback,
+  onDebouncedSearchChange = defaultCallback,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -347,6 +376,14 @@ const Dropdown = ({
   const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
 
   const isVirtual = virtualizeOptions && isOverflowing;
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
+  const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
+
+  useEffect(() => {
+    setFilteredOptions(options);
+  }, [options]);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -396,11 +433,11 @@ const Dropdown = ({
       );
 
     return {
-      root: null,
+      root: intersectionContainer,
       rootMargin: '0px',
       threshold: buildThresholdArray(),
     };
-  }, [intersectionObserverPrecision]);
+  }, [intersectionContainer, intersectionObserverPrecision]);
 
   const intersectionCallback = useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -486,7 +523,7 @@ const Dropdown = ({
         intersectObserver.disconnect();
       };
     }
-  }, [intersectObserver, isOpen, isVirtual]);
+  }, [intersectObserver, isOpen, isVirtual, filteredOptions]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
@@ -523,6 +560,12 @@ const Dropdown = ({
   );
 
   const handleFocus = useCallback(() => {
+    window.setTimeout(() => {
+      if (document.activeElement?.id === `${name}-dropdown-button`) {
+        searchInputRef?.current?.focus();
+      }
+    }, 0);
+
     clearTimeout(focusTimeoutId);
 
     if (!focusWithin) {
@@ -536,7 +579,7 @@ const Dropdown = ({
     if (onFocus) {
       onFocus();
     }
-  }, [focusTimeoutId, focusWithin, onFocus]);
+  }, [focusTimeoutId, focusWithin, name, onFocus]);
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
@@ -588,70 +631,74 @@ const Dropdown = ({
       window.setTimeout(() => {
         const focusedElement = document.activeElement;
 
+        if (!focusedElement) return;
+
+        let optionToFocus;
+
         switch (key) {
           case 'Enter':
-            const match = focusedElement && focusedElement.id.match(`${name}-option-(.*)`);
+            const match = focusedElement.id.match(`${name}-option-(.*)`);
             if (match) {
               handleSelect(match[1]);
             }
             break;
+
           case 'ArrowUp':
-            if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              let prevOption;
+            if (focusedElement.id.match(`${name}-option-.*`)) {
               if (isVirtual) {
-                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const row = focusedElement.parentElement;
                 const rowPrevSibling = row ? row.previousElementSibling : null;
                 if (rowPrevSibling) {
-                  prevOption = rowPrevSibling.firstElementChild as HTMLElement | undefined;
+                  optionToFocus = rowPrevSibling.firstElementChild;
                 }
               } else {
-                prevOption = focusedElement.previousElementSibling as HTMLElement | null;
-              }
-
-              if (prevOption) {
-                prevOption.focus();
+                optionToFocus = focusedElement.previousElementSibling;
               }
             }
             break;
+
           case 'ArrowDown':
-            if (focusedElement && focusedElement.id === `${name}-dropdown-button`) {
-              const button = focusedElement.parentNode as HTMLElement | undefined;
+            if (focusedElement.id === `${name}-dropdown-button`) {
               // get parent before nextElementSibling because buttons are nested inside of skeletons
-              const optionsContainer = button ? button.nextElementSibling : null;
-              if (optionsContainer) {
-                let firstOption;
-                if (isVirtual) {
-                  const virtuosoContainer = optionsContainer.firstElementChild;
-                  const virtuosoScroller = virtuosoContainer?.firstElementChild;
-                  firstOption = virtuosoScroller?.firstElementChild?.firstElementChild as
-                    | HTMLElement
-                    | undefined;
-                } else {
-                  firstOption = optionsContainer.firstElementChild as HTMLElement | undefined;
-                }
-                if (firstOption) {
-                  firstOption.focus();
-                }
-              }
-            } else if (focusedElement && focusedElement.id.match(`${name}-option-.*`)) {
-              let nextOption;
+              const buttonContainer = focusedElement.parentElement;
+              const optionsContainer = buttonContainer?.nextElementSibling;
               if (isVirtual) {
-                const row = focusedElement.parentNode as HTMLElement | undefined;
+                const virtuosoContainer = optionsContainer?.firstElementChild;
+                const virtuosoScroller = virtuosoContainer?.firstElementChild;
+                optionToFocus = virtuosoScroller?.firstElementChild?.firstElementChild;
+              } else {
+                optionToFocus = optionsContainer?.firstElementChild;
+              }
+            } else if (focusedElement.id.match(`${name}-option-.*`)) {
+              if (isVirtual) {
+                const row = focusedElement.parentElement;
                 const rowNextSibling = row ? row.nextElementSibling : null;
                 if (rowNextSibling) {
-                  nextOption = rowNextSibling.firstElementChild as HTMLElement | undefined;
+                  optionToFocus = rowNextSibling.firstElementChild;
                 }
               } else {
-                nextOption = focusedElement.nextElementSibling as HTMLElement | null;
+                optionToFocus = focusedElement.nextElementSibling;
               }
-              if (nextOption) {
-                nextOption.focus();
+            } else if (focusedElement.id === `${name}-search-input`) {
+              const searchInputContainer = focusedElement.parentElement;
+              const valueItemContainer = searchInputContainer?.parentElement;
+              const button = valueItemContainer?.parentElement;
+              // get parent before nextElementSibling because buttons are nested inside of skeletons
+              const buttonContainer = button?.parentElement;
+              const optionsContainer = buttonContainer?.nextElementSibling;
+              if (isVirtual) {
+                const virtuosoContainer = optionsContainer?.firstElementChild;
+                const virtuosoScroller = virtuosoContainer?.firstElementChild;
+                optionToFocus = virtuosoScroller?.firstElementChild?.firstElementChild;
+              } else {
+                optionToFocus = optionsContainer?.firstElementChild;
               }
             }
             break;
           default:
             break;
         }
+        (optionToFocus as HTMLElement)?.focus();
       }, 0);
     },
     [handleSelect, isVirtual, name],
@@ -729,6 +776,30 @@ const Dropdown = ({
     ],
   );
 
+  const handleSearchDebouncedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onDebouncedSearchChange(e);
+
+    const searchText = e.target.value;
+
+    setSearchCharacterCount(searchText.length);
+
+    if (searchFiltersOptions) {
+      if (searchText.length === 0) {
+        setFilteredOptions(options);
+      } else {
+        const fuse = new Fuse(options, {
+          keys: ['id', 'optionValue'],
+        });
+
+        const result = fuse.search(searchText);
+
+        setFilteredOptions(result.map(r => r.item));
+      }
+    }
+  };
+
+  const optionsToRender = searchable && searchFiltersOptions ? filteredOptions : options;
+
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -758,6 +829,15 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
+        {searchCharacterCount === 0 && (!values || !values.length) && (
+          <StyledPlaceholder
+            ref={placeholderRef}
+            id={`${name}-placeholder`}
+            {...placeholderMergedProps}
+          >
+            {placeholder}
+          </StyledPlaceholder>
+        )}
         <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
           {values
             .filter(val => val !== undefined && optionsHash[val] !== undefined)
@@ -781,14 +861,16 @@ const Dropdown = ({
                 </Tag>
               ) : undefined,
             )}
-          {(!values || !values.length) && (
-            <StyledPlaceholder
-              ref={placeholderRef}
-              id={`${name}-placeholder`}
-              {...placeholderMergedProps}
-            >
-              {placeholder}
-            </StyledPlaceholder>
+          {searchable && (
+            <TextInput
+              id={`${name}-search-input`}
+              aria-label={`${name}-search-input`}
+              onChange={onSearchChange}
+              debouncedOnChange={handleSearchDebouncedChange}
+              StyledContainer={StyledSearchContainer}
+              StyledInput={StyledSearchInput}
+              inputRef={searchInputRef}
+            />
           )}
         </StyledValueItem>
         {closeIcons}
@@ -797,10 +879,10 @@ const Dropdown = ({
         <>
           {isVirtual ? (
             <Virtuoso
-              data={options}
+              data={optionsToRender}
               rangeChanged={(range: ListRange) => setScrollIndex(range.startIndex)}
               initialTopMostItemIndex={
-                rememberScrollPosition && scrollIndex < options.length ? scrollIndex : 0
+                rememberScrollPosition && scrollIndex < optionsToRender.length ? scrollIndex : 0
               }
               components={
                 {
@@ -839,7 +921,7 @@ const Dropdown = ({
             />
           ) : (
             <InternalOptionsContainer ref={optionsScrollListenerCallbackRef}>
-              {options.map(option => (
+              {optionsToRender.map(option => (
                 <StyledOptionItem
                   id={`${name}-option-${option.id}`}
                   key={`${name}-option-${option.id}`}

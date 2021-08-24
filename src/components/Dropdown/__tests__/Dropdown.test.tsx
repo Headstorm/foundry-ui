@@ -312,7 +312,9 @@ describe('Dropdown', () => {
     it('containerRef.current should exist', async () => {
       generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
-      const { container } = render(<Dropdown onSelect={() => {}} containerRef={ref} />);
+      const { container } = render(
+        <Dropdown onSelect={() => {}} options={pokeOptions} containerRef={ref} />,
+      );
       await waitFor(() => container);
       expect(ref.current instanceof HTMLElement).toBeTruthy();
     });
@@ -359,7 +361,7 @@ describe('Dropdown', () => {
     it('valueContainerRef.current should exist', async () => {
       generateIntersectionObserver([]);
       const ref = React.createRef<HTMLButtonElement>();
-      render(<Dropdown onSelect={() => {}} valueContainerRef={ref} />);
+      render(<Dropdown options={pokeOptions} onSelect={() => {}} valueContainerRef={ref} />);
       await waitFor(() => screen.getByRole(`button`));
       expect(ref.current instanceof HTMLButtonElement).toBeTruthy();
     });
@@ -368,7 +370,7 @@ describe('Dropdown', () => {
       generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       const { getByTestId } = render(
-        <Dropdown name={testId} onSelect={() => {}} valueItemRef={ref} />,
+        <Dropdown name={testId} options={pokeOptions} onSelect={() => {}} valueItemRef={ref} />,
       );
       await waitFor(() => getByTestId(`${testId}-value-item`));
       expect(ref.current instanceof HTMLElement).toBeTruthy();
@@ -378,7 +380,7 @@ describe('Dropdown', () => {
       generateIntersectionObserver([]);
       const ref = React.createRef<HTMLElement>();
       const { getByTestId } = render(
-        <Dropdown name={testId} onSelect={() => {}} placeholderRef={ref} />,
+        <Dropdown name={testId} options={pokeOptions} onSelect={() => {}} placeholderRef={ref} />,
       );
       await waitFor(() => getByTestId(`${testId}-placeholder`));
       expect(ref.current instanceof HTMLElement).toBeTruthy();

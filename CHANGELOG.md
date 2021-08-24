@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/Headstorm/foundry-ui/compare/v1.9.1...v1.10.0) (2021-08-24)
+
+
+### Features
+
+* **dropdown:** add searching (with callbacks) ([d1e9237](https://github.com/Headstorm/foundry-ui/commit/d1e9237e01f14fae6ae863c87863fd3ea60a91f0)), closes [#185](https://github.com/Headstorm/foundry-ui/issues/185)
+
 ## [1.9.1](https://github.com/Headstorm/foundry-ui/compare/v1.9.0...v1.9.1) (2021-08-20)
 
 
