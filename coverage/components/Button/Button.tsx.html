@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.1% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/29</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.36% </span>
+                <span class="strong">81.03% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>48/59</span>
+                <span class='fraction'>47/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.29% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/14</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.1% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/29</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -330,11 +330,7 @@
 <a name='L271'></a><a href='#L271'>271</a>
 <a name='L272'></a><a href='#L272'>272</a>
 <a name='L273'></a><a href='#L273'>273</a>
-<a name='L274'></a><a href='#L274'>274</a>
-<a name='L275'></a><a href='#L275'>275</a>
-<a name='L276'></a><a href='#L276'>276</a>
-<a name='L277'></a><a href='#L277'>277</a>
-<a name='L278'></a><a href='#L278'>278</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L274'></a><a href='#L274'>274</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -532,18 +528,14 @@
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">82x</span>
-<span class="cline-any cline-yes">82x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -618,7 +610,7 @@ import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 &nbsp;
 import timings from '../../enums/timings';
-import { useAnalytics, useTheme } from '../../context';
+import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
@@ -681,7 +673,7 @@ export type ButtonProps = {
   isLoading?: boolean;
   isProcessing?: boolean;
 &nbsp;
-  onClick?: (e: React.MouseEvent) =&gt; void;
+  onClick?: (...args: any[]) =&gt; void;
   onBlur?: (e: React.FocusEvent) =&gt; void;
   onFocus?: (e: React.FocusEvent) =&gt; void;
   onMouseDown?: (e: React.MouseEvent) =&gt; void;
@@ -799,7 +791,7 @@ const Button = ({
   type = ButtonTypes.button,
   color,
   disabled = false,
-  onClick = <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
+  onClick,
   onBlur = () =&gt; {},
   onFocus = () =&gt; {},
   onMouseDown = <span class="fstat-no" title="function not covered" >()</span> =&gt; {},
@@ -809,18 +801,14 @@ const Button = ({
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
-  const handleEventWithAnalytics = useAnalytics();
-&nbsp;
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
     id,
-    onClick: (e: any) =&gt; handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
-    onBlur: (e: any) =&gt; handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
-    onFocus: (e: any) =&gt; handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
-    onMouseDown: <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
-<span class="cstat-no" title="statement not covered" >      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),</span>
-    onMouseUp: <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
-<span class="cstat-no" title="statement not covered" >      handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),</span>
+    onClick,
+    onBlur,
+    onFocus,
+    onMouseDown,
+    onMouseUp,
     elevation,
     color: containerColor,
     variant,
@@ -895,7 +883,7 @@ export default Button;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Aug 23 2021 13:08:31 GMT-0500 (Central Daylight Time)
+                at Fri Aug 20 2021 23:37:34 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
