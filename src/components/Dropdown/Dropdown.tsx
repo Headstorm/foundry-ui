@@ -517,8 +517,6 @@ const Dropdown = ({
       ? optionsContainerInternalRef.current.scrollTop
       : 0;
   };
-  // const handleEventWithAnalytics = useEventWithAnalytics();
-  // const handleClick = (e: any) => handleEventWithAnalytics('Card', onClick, 'onClick', e, '');
 
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
