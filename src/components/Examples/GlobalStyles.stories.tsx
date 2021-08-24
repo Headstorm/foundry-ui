@@ -48,8 +48,15 @@ export const Example: Story<ExampleProps> = ({
     currentURL?: string,
     props?: any,
   ): void => {
-    console.log(componentType, eventType, eventArgs, dateTime, deviceInfo, currentURL, props);
-    action(`${componentType} ${eventType} (details in console)`)();
+    action(`${componentType} ${eventType}`)(
+      componentType,
+      eventType,
+      eventArgs,
+      dateTime,
+      deviceInfo,
+      currentURL,
+      props,
+    );
   };
   const styleConstants = {
     paddingSmall: '1rem',
