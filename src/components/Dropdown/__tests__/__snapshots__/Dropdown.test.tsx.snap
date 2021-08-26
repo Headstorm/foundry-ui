@@ -125,12 +125,18 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -168,7 +174,8 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   bottom: 100%;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -193,13 +200,12 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -374,12 +380,18 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -417,7 +429,8 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   bottom: 100%;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -442,13 +455,12 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -623,12 +635,18 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -666,7 +684,8 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   bottom: 100%;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -691,13 +710,12 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -872,12 +890,18 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -915,7 +939,8 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   bottom: 100%;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -940,13 +965,12 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -1118,17 +1142,24 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -1153,13 +1184,12 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -1316,12 +1346,18 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -1360,7 +1396,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   bottom: 100%;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -1384,13 +1421,12 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -1563,17 +1599,24 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -1597,13 +1640,12 @@ exports[`Dropdown closes options when clicking outside 2`] = `
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -1759,12 +1801,18 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -1850,7 +1898,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   width: 2rem;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -1875,13 +1924,12 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -2097,12 +2145,18 @@ exports[`Dropdown displays all options when focused 1`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
@@ -2141,7 +2195,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   bottom: 100%;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -2166,13 +2221,12 @@ exports[`Dropdown displays all options when focused 1`] = `
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -2344,17 +2398,24 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -2380,15 +2441,14 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
       >
         <div
           class=" c4"
-          id="dropdown-value-item"
+          id="dropdown-placeholder"
         >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          >
-            Choose a pokemon
-          </span>
+          Choose a pokemon
         </div>
+        <div
+          class=" c5"
+          id="dropdown-value-item"
+        />
         <div
           class=" c6"
         >
@@ -2544,17 +2604,24 @@ exports[`Dropdown does not display options on initial render 1`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c6 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
-.c4 {
+.c5 {
   width: 100%;
   text-align: left;
 }
 
-.c5 {
+.c4 {
+  position: absolute;
   opacity: 0.8;
 }
 
@@ -2579,13 +2646,12 @@ exports[`Dropdown does not display options on initial render 1`] = `
       >
         <div
           class=" c4"
+          id="dropdown-placeholder"
+        />
+        <div
+          class=" c5"
           id="dropdown-value-item"
-        >
-          <span
-            class=" c5"
-            id="dropdown-placeholder"
-          />
-        </div>
+        />
         <div
           class=" c6"
         >
@@ -2762,9 +2828,15 @@ exports[`Dropdown renders a value when given a matching option id through props 
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -2969,9 +3041,15 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c5 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3178,9 +3256,15 @@ exports[`Dropdown renders one value when given two values but only one matches a
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3406,9 +3490,15 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3642,9 +3732,15 @@ exports[`Dropdown renders two values when given matching option ids through prop
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {
@@ -3878,9 +3974,15 @@ exports[`Dropdown selects options from values prop 1`] = `
   padding: .5rem 1rem;
 }
 
+.c3:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
 .c7 {
   height: 1.125rem;
   z-index: 1;
+  pointer-events: none;
 }
 
 .c4 {

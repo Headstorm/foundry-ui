@@ -1,3 +1,17 @@
+# [1.10.0](https://github.com/Headstorm/foundry-ui/compare/v1.9.1...v1.10.0) (2021-08-24)
+
+
+### Features
+
+* **dropdown:** add searching (with callbacks) ([d1e9237](https://github.com/Headstorm/foundry-ui/commit/d1e9237e01f14fae6ae863c87863fd3ea60a91f0)), closes [#185](https://github.com/Headstorm/foundry-ui/issues/185)
+
+## [1.9.1](https://github.com/Headstorm/foundry-ui/compare/v1.9.0...v1.9.1) (2021-08-20)
+
+
+### Bug Fixes
+
+* **dropdown:** stop clear icon from opening dropdown and remove pointer options from arrow icon ([f29fa05](https://github.com/Headstorm/foundry-ui/commit/f29fa054c856629bf597aacddf8bb04fcffff03d)), closes [#288](https://github.com/Headstorm/foundry-ui/issues/288)
+
 # [1.9.0](https://github.com/Headstorm/foundry-ui/compare/v1.8.0...v1.9.0) (2021-08-17)
 
 

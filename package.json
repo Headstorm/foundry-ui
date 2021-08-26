@@ -95,6 +95,7 @@
   "dependencies": {
     "@mdi/js": "^5.9.55",
     "@mdi/react": "^1.4.0",
+    "fuse.js": "^6.4.6",
     "lodash.debounce": "^4.0.8",
     "nanoid": "^3.1.20",
     "polished": "^4.1.1",
@@ -123,7 +124,7 @@
     "webpack": "webpack --config webpack.config.js",
     "dts": "tsc --declaration --outDir dist/types/ --emitDeclarationOnly --declarationMap --allowJs false --checkJs false",
     "pre-push": "yarn run lint-ci && yarn run test && yarn run clean && yarn run webpack && yarn run dts",
-    "test": "jest",
+    "test": "jest --collectCoverage=false",
     "test-ci": "rm -rf 'coverage/*' && jest --collectCoverage=true && jest-coverage-badges",
     "update-tests": "jest -u",
     "test-interactive": "jest --watch",
