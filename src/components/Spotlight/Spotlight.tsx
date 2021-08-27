@@ -16,12 +16,11 @@ const SpotlightContainer = styled(AnimatedDiv)`
   contain: strict;
   clip-path: url(#foundryMask);
   background-color: colors.black;
-
-  z-index: 1000;
 `;
 
 const BackgroundBlurrer = styled(AnimatedDiv)`
   position: fixed;
+  z-index: -1;
 `;
 
 export type SpotlightProps = {
@@ -30,7 +29,7 @@ export type SpotlightProps = {
   containerRef?: React.RefObject<HTMLDivElement>;
 
   children?: React.ReactNode;
-  targetElementRef?: React.MutableRefObject<HTMLElement | undefined>;
+  targetElement?: HTMLElement;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   shape?: 'circular' | 'box' | 'rounded box'; // TODO make this an enum and export it
@@ -47,9 +46,9 @@ const Spotlight = ({
   containerRef,
 
   children,
-  targetElementRef,
+  targetElement,
   backgroundBlur = '0.5rem',
-  backgroundDarkness = 0.2,
+  backgroundDarkness = 0.5,
   shape = 'circular',
   roundedCornerRadius = 4,
   padding = 16, // 8px === .5rem
@@ -62,23 +61,49 @@ const Spotlight = ({
     height: window.innerHeight,
   });
 
-  const rect = useMemo<DOMRect>(() => {
-    if (targetElementRef?.current) {
-      const bounds = targetElementRef?.current?.getBoundingClientRect();
+  const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
+    const defaultVal = {
+      x: windowDimensions.width / 2,
+      y: windowDimensions.height / 2,
+      width: 0,
+      height: 0,
+      bottom: windowDimensions.height / 2,
+      left: windowDimensions.width / 2,
+      top: windowDimensions.height / 2,
+      right: windowDimensions.width / 2,
+    };
+
+    if (targetElement) {
+      const bounds = targetElement?.getBoundingClientRect();
       bounds.x -= padding;
       bounds.y -= padding;
+      // bounds.bottom += padding;
+      // bounds.right += padding;
       bounds.width += padding * 2;
       bounds.height += padding * 2;
       return bounds;
     }
-    return { x: 0, y: 0, width: 0, height: 0 };
-  }, [targetElementRef, padding, windowDimensions]);
+    return defaultVal;
+  }, [targetElement, padding, windowDimensions]);
 
-  console.log(rect);
+  // TODO: pass this to useSpring - ensure number of points don't change
+  const outerRectPath = `M 0 0 h${windowDimensions.width} v${windowDimensions.height} h-${windowDimensions.width}`;
+  const innerShapePath = `
+    M ${rect.x} ${rect.y + rect.height / 2}
+    Q ${rect.x} ${rect.y}, ${rect.x + rect.width / 2} ${rect.y}
+    Q ${rect.x + rect.width} ${rect.y}, ${rect.x + rect.width} ${rect.y + rect.height / 2}
+    Q ${rect.x + rect.width} ${rect.y + rect.height}, ${rect.x + rect.width / 2} ${
+    rect.y + rect.height
+  }
+    Q ${rect.x} ${rect.y + rect.height}, ${rect.x} ${rect.y + rect.height / 2}
+  `;
+  const finalPath = `${outerRectPath} ${innerShapePath}`;
+
   const {
-    containerOpacity,
+    // containerOpacity,
     containerFilter,
     containerBackgroundColor,
+    lightPath,
 
     topBlurHeight,
     topBlurWidth,
@@ -95,27 +120,9 @@ const Spotlight = ({
     from: {
       containerOpacity: 0,
       containerFilter: `blur(${backgroundBlur})`,
-      containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
+      containerBackgroundColor: 'rgba(0,0,0,0)',
 
-      topBlurWidth: windowDimensions.width / 2,
-      topBlurHeight: windowDimensions.height / 2,
-
-      bottomBlurY: windowDimensions.height / 2,
-      bottomBlurWidth: windowDimensions.width,
-      bottomBlurHeight: windowDimensions.height / 2,
-
-      leftBlurY: windowDimensions.height / 2,
-      leftBlurWidth: windowDimensions.width / 2,
-      leftBlurHeight: windowDimensions.height / 2,
-
-      rightBlurY: windowDimensions.height / 2,
-      rightBlurWidth: windowDimensions.width / 2,
-      rightBlurHeight: windowDimensions.height / 2,
-    },
-    to: {
-      containerOpacity: 1,
-      containerFilter: `blur(${backgroundBlur})`,
-      containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
+      lightPath: finalPath,
 
       topBlurWidth: windowDimensions.width,
       topBlurHeight: rect.y,
@@ -132,11 +139,32 @@ const Spotlight = ({
       rightBlurWidth: windowDimensions.width - rect.right,
       rightBlurHeight: rect.height,
     },
+    to: {
+      containerOpacity: 1,
+      containerFilter: `blur(${backgroundBlur})`,
+      containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
+
+      lightPath: finalPath,
+
+      topBlurWidth: windowDimensions.width,
+      topBlurHeight: rect.y - 1,
+
+      bottomBlurY: rect.bottom,
+      bottomBlurWidth: windowDimensions.width,
+      bottomBlurHeight: windowDimensions.height - rect.bottom - 1,
+
+      leftBlurY: rect.y,
+      leftBlurWidth: rect.x,
+      leftBlurHeight: rect.height + 2,
+
+      rightBlurY: rect.y,
+      rightBlurWidth: windowDimensions.width - rect.right,
+      rightBlurHeight: rect.height + 2,
+    },
     config: {
       friction: 75,
       tension: 550,
       mass: 5,
-      clamp: true,
     },
     ...animationSpringConfig,
   });
@@ -164,19 +192,6 @@ const Spotlight = ({
     }
   };
 
-  // TODO: pass this to useSpring - ensure number of points don't change
-  const outerRectPath = `M 0 0 h${windowDimensions.width} v${windowDimensions.height} h-${windowDimensions.width}`;
-  const innerShapePath = `
-    M ${rect.x} ${rect.y + rect.height / 2}
-    Q ${rect.x} ${rect.y}, ${rect.x + rect.width / 2} ${rect.y}
-    Q ${rect.x + rect.width} ${rect.y}, ${rect.x + rect.width} ${rect.y + rect.height / 2}
-    Q ${rect.x + rect.width} ${rect.y + rect.height}, ${rect.x + rect.width / 2} ${
-    rect.y + rect.height
-  }
-    Q ${rect.x} ${rect.y + rect.height}, ${rect.x} ${rect.y + rect.height / 2}
-  `;
-  const finalPath = `${outerRectPath} ${innerShapePath}`;
-
   return (
     <Portal>
       <StyledContainer
@@ -184,7 +199,7 @@ const Spotlight = ({
         onClick={handleClick}
         style={{
           backgroundColor: containerBackgroundColor,
-          opacity: containerOpacity,
+          // opacity: containerOpacity,
         }}
         {...containerProps}
       >
@@ -228,12 +243,12 @@ const Spotlight = ({
       <svg
         style={{ position: 'fixed', top: 0, left: 0 }}
         viewBox={`0 0 ${windowDimensions.width} ${windowDimensions.height}`}
-        width={windowDimensions.width}
-        height={windowDimensions.height}
+        width={0}
+        height={0}
       >
         <defs>
           <clipPath clipRule="evenodd" id="foundryMask">
-            <animated.path fill="#FFFFFF" stroke="#000000" d={finalPath} />
+            <animated.path fill="#FFFFFF" stroke="#000000" d={lightPath} />
           </clipPath>
         </defs>
       </svg>

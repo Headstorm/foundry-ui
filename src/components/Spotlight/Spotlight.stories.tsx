@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
+import { mdiDotsVertical } from '@mdi/js';
 
 import Spotlight, { SpotlightProps } from './Spotlight';
-import { Button, Card } from '../../index';
+import { Button, Card, Dropdown } from '../../index';
 
-export const AnimatedSpotlight: Story = () => {
+export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
   const [buttonRef, setRef] = useState<HTMLButtonElement>();
+  const [tourStarted, setTour] = useState<boolean>(false);
 
   return (
     <>
-      {/*
-      // @ts-ignore */}
       <Card
+        header={<Dropdown options={[]} valueContainerProps={{ iconSuffix: mdiDotsVertical }} />}
         footer={
           <Button
-            containerRef={(newRef: HTMLButtonElement) => {
-              if (newRef) {
-                setRef(newRef);
-              }
+            onClick={() => {
+              setTour(true);
             }}
+            containerRef={setRef}
           >
             A button
           </Button>
@@ -26,18 +26,23 @@ export const AnimatedSpotlight: Story = () => {
       >
         There are a few items in this card we can talk about
       </Card>
-      <Spotlight
-        // {...args}
-        targetElementRef={{ current: buttonRef }}
-      />
+      {tourStarted && (
+        <Spotlight {...args} targetElement={buttonRef}>
+          <Button
+            elevation={1}
+            onClick={() => {
+              setTour(false);
+            }}
+          >
+            Skip
+          </Button>
+        </Spotlight>
+      )}
     </>
   );
 };
 AnimatedSpotlight.args = {
-  animateTargetChanges: true,
-  backgroundBlur: '4rem',
-  shape: 'circular',
-  padding: 8,
+  padding: 12,
 };
 
 export default {
