@@ -1,30 +1,42 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Spotlight from './Spotlight';
+import Spotlight, { SpotlightProps } from './Spotlight';
 import { Button, Card } from '../../index';
 
 export const AnimatedSpotlight: Story = () => {
-  const buttonRef = useRef<HTMLButtonElement>();
-  console.log(buttonRef.current);
+  const [buttonRef, setRef] = useState<HTMLButtonElement>();
 
   return (
     <>
       {/*
       // @ts-ignore */}
-      <Card footer={<Button containerRef={buttonRef}>A button</Button>}>
+      <Card
+        footer={
+          <Button
+            containerRef={(newRef: HTMLButtonElement) => {
+              if (newRef) {
+                setRef(newRef);
+              }
+            }}
+          >
+            A button
+          </Button>
+        }
+      >
         There are a few items in this card we can talk about
       </Card>
-      <Spotlight targetElementRef={buttonRef} />
+      <Spotlight
+        // {...args}
+        targetElementRef={{ current: buttonRef }}
+      />
     </>
   );
 };
 AnimatedSpotlight.args = {
   animateTargetChanges: true,
-  backgroundBlur: 4,
-  children: 'Default text',
-  isLoading: true,
-  shape: 'rounded box',
+  backgroundBlur: '4rem',
+  shape: 'circular',
   padding: 8,
 };
 

@@ -13,9 +13,15 @@ const SpotlightContainer = styled(AnimatedDiv)`
   position: fixed;
   top: 0;
   left: 0;
+  contain: strict;
   clip-path: url(#foundryMask);
+  background-color: colors.black;
 
   z-index: 1000;
+`;
+
+const BackgroundBlurrer = styled(AnimatedDiv)`
+  position: fixed;
 `;
 
 export type SpotlightProps = {
@@ -25,9 +31,9 @@ export type SpotlightProps = {
 
   children?: React.ReactNode;
   targetElementRef?: React.MutableRefObject<HTMLElement | undefined>;
-  backgroundDarkness?: number;
   backgroundBlur?: string;
-  shape?: 'circle' | 'box' | 'rounded box'; // TODO make this an enum and export it
+  backgroundDarkness?: number;
+  shape?: 'circular' | 'box' | 'rounded box'; // TODO make this an enum and export it
   roundedCornerRadius?: number;
   padding?: number;
   onClick?: (e: React.MouseEvent) => void;
@@ -42,11 +48,11 @@ const Spotlight = ({
 
   children,
   targetElementRef,
-  // backgroundBlur = '0rem',
+  backgroundBlur = '0.5rem',
   backgroundDarkness = 0.2,
-  shape = 'circle',
+  shape = 'circular',
   roundedCornerRadius = 4,
-  padding = 8, // 8px === .5rem
+  padding = 16, // 8px === .5rem
   onClick,
   animateTargetChanges = true,
   animationSpringConfig,
@@ -56,40 +62,81 @@ const Spotlight = ({
     height: window.innerHeight,
   });
 
-  const rect = useMemo<{
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  }>(() => {
-    console.log(targetElementRef?.current);
-
+  const rect = useMemo<DOMRect>(() => {
     if (targetElementRef?.current) {
-      return {
-        x: targetElementRef?.current.clientLeft,
-        y: targetElementRef?.current.clientTop,
-        width: targetElementRef?.current.clientWidth,
-        height: targetElementRef?.current.clientHeight,
-      };
+      const bounds = targetElementRef?.current?.getBoundingClientRect();
+      bounds.x -= padding;
+      bounds.y -= padding;
+      bounds.width += padding * 2;
+      bounds.height += padding * 2;
+      return bounds;
     }
     return { x: 0, y: 0, width: 0, height: 0 };
-  }, [targetElementRef]);
+  }, [targetElementRef, padding, windowDimensions]);
 
-  const { containerOpacity, containerBackgroundColor } = useSpring({
+  console.log(rect);
+  const {
+    containerOpacity,
+    containerFilter,
+    containerBackgroundColor,
+
+    topBlurHeight,
+    topBlurWidth,
+    bottomBlurY,
+    bottomBlurHeight,
+    bottomBlurWidth,
+    leftBlurY,
+    leftBlurHeight,
+    leftBlurWidth,
+    rightBlurY,
+    rightBlurHeight,
+    rightBlurWidth,
+  } = useSpring({
     from: {
       containerOpacity: 0,
-      // containerFilter: 'blur(0rem) brightness(1)',
-      containerBackgroundColor: 'rgba(0, 0, 0, 0)',
+      containerFilter: `blur(${backgroundBlur})`,
+      containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
+
+      topBlurWidth: windowDimensions.width / 2,
+      topBlurHeight: windowDimensions.height / 2,
+
+      bottomBlurY: windowDimensions.height / 2,
+      bottomBlurWidth: windowDimensions.width,
+      bottomBlurHeight: windowDimensions.height / 2,
+
+      leftBlurY: windowDimensions.height / 2,
+      leftBlurWidth: windowDimensions.width / 2,
+      leftBlurHeight: windowDimensions.height / 2,
+
+      rightBlurY: windowDimensions.height / 2,
+      rightBlurWidth: windowDimensions.width / 2,
+      rightBlurHeight: windowDimensions.height / 2,
     },
     to: {
       containerOpacity: 1,
-      // containerFilter: `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`,
-      containerBackgroundColor: `rgba(0, 0, 0, ${1 - backgroundDarkness})`,
+      containerFilter: `blur(${backgroundBlur})`,
+      containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
+
+      topBlurWidth: windowDimensions.width,
+      topBlurHeight: rect.y,
+
+      bottomBlurY: rect.bottom,
+      bottomBlurWidth: windowDimensions.width,
+      bottomBlurHeight: windowDimensions.height - rect.bottom,
+
+      leftBlurY: rect.y,
+      leftBlurWidth: rect.x,
+      leftBlurHeight: rect.height,
+
+      rightBlurY: rect.y,
+      rightBlurWidth: windowDimensions.width - rect.right,
+      rightBlurHeight: rect.height,
     },
     config: {
       friction: 75,
       tension: 550,
       mass: 5,
+      clamp: true,
     },
     ...animationSpringConfig,
   });
@@ -136,12 +183,48 @@ const Spotlight = ({
         ref={containerRef}
         onClick={handleClick}
         style={{
-          // backdropFilter: containerFilter,
           backgroundColor: containerBackgroundColor,
           opacity: containerOpacity,
         }}
         {...containerProps}
-      />
+      >
+        <BackgroundBlurrer
+          style={{
+            backdropFilter: containerFilter,
+            top: 0,
+            left: 0,
+            width: topBlurWidth,
+            height: topBlurHeight,
+          }}
+        />
+        <BackgroundBlurrer
+          style={{
+            backdropFilter: containerFilter,
+            top: bottomBlurY,
+            left: 0,
+            width: bottomBlurWidth,
+            height: bottomBlurHeight,
+          }}
+        />
+        <BackgroundBlurrer
+          style={{
+            backdropFilter: containerFilter,
+            top: leftBlurY,
+            left: 0,
+            width: leftBlurWidth,
+            height: leftBlurHeight,
+          }}
+        />
+        <BackgroundBlurrer
+          style={{
+            backdropFilter: containerFilter,
+            top: rightBlurY,
+            right: 0,
+            width: rightBlurWidth,
+            height: rightBlurHeight,
+          }}
+        />
+      </StyledContainer>
       <svg
         style={{ position: 'fixed', top: 0, left: 0 }}
         viewBox={`0 0 ${windowDimensions.width} ${windowDimensions.height}`}
@@ -150,13 +233,7 @@ const Spotlight = ({
       >
         <defs>
           <clipPath clipRule="evenodd" id="foundryMask">
-            <animated.path
-              stroke-width="1.5794"
-              stroke-miterlimit="10"
-              fill="#FFFFFF"
-              stroke="#000000"
-              d={finalPath}
-            />
+            <animated.path fill="#FFFFFF" stroke="#000000" d={finalPath} />
           </clipPath>
         </defs>
       </svg>
