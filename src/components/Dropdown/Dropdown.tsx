@@ -603,11 +603,9 @@ const Dropdown = ({
     (selected?: Array<string | number>) =>
       handleEventWithAnalytics(
         'Dropdown',
-        () => {
-          onSelect(selected);
-        },
+        onSelect,
         'onSelect',
-        { type: 'onSelect', selected },
+        selected,
         { name },
       ),
     [handleEventWithAnalytics, onSelect, name],
@@ -815,7 +813,7 @@ const Dropdown = ({
   const handleSearchDebouncedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleEventWithAnalytics(
       'Dropdown',
-      () => onDebouncedSearchChange(e),
+      onDebouncedSearchChange,
       'onDebouncedSearchChange',
       e,
       { name },
