@@ -17,15 +17,15 @@ const defaultOnClick = () => {};
 export type CardContainerProps = {
   elevation: number;
   feedbackType: FeedbackTypes;
-  originalOnClick: (evt: MouseEvent) => void;
+  isDefaultOnClick: boolean;
 };
 
 export const CardContainer = styled(Div)`
-  ${({ elevation, feedbackType, originalOnClick }: CardContainerProps) => {
+  ${({ elevation, feedbackType, isDefaultOnClick }: CardContainerProps) => {
     const { colors } = useTheme();
 
     return `
-      ${originalOnClick !== defaultOnClick ? 'cursor: pointer;' : ''}
+      ${!isDefaultOnClick ? 'cursor: pointer;' : ''}
       display: inline-flex;
       flex-flow: column nowrap;
       font-size: 1rem;
@@ -39,7 +39,7 @@ export const CardContainer = styled(Div)`
       ${getShadowStyle(elevation, colors.shadow)}
       background-color: ${colors.background};
       ${
-        feedbackType === FeedbackTypes.simple && originalOnClick !== defaultOnClick
+        feedbackType === FeedbackTypes.simple && !isDefaultOnClick
           ? `
             &:active {
               background-color: ${
@@ -179,13 +179,14 @@ const Card = ({
   const handleEventWithAnalytics = useAnalytics();
   const handleClick = (e: any) =>
     handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps || { name: 'Card' });
+  const isDefaultOnClick = onClick === defaultOnClick;
 
   return (
     <StyledContainer
       onClick={handleClick}
       elevation={elevation}
       feedbackType={feedbackType}
-      originalOnClick={onClick}
+      isDefaultOnClick={isDefaultOnClick}
       {...containerProps}
       ref={containerRef}
     >
