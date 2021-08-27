@@ -2686,7 +2686,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 `;
 
 exports[`Dropdown renders a value when given a matching option id through props 1`] = `
-.c12 {
+.c13 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
@@ -2717,11 +2717,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
   transition: opacity .2s;
 }
 
-.c8 {
+.c9 {
   position: relative;
 }
 
-.c10 {
+.c11 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -2760,7 +2760,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2768,7 +2768,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
   top: 0;
 }
 
-.c11 {
+.c12 {
   border-radius: 0.25em;
 }
 
@@ -2836,6 +2836,11 @@ exports[`Dropdown renders a value when given a matching option id through props 
 .c7 {
   height: 1.125rem;
   z-index: 1;
+}
+
+.c8 {
+  height: 1.125rem;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -2888,6 +2893,21 @@ exports[`Dropdown renders a value when given a matching option id through props 
         </div>
         <div
           class=" c7"
+          tabindex="0"
+        >
+          <svg
+            role="presentation"
+            style="width: 1em; height: 1em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class=" c8"
         >
           <svg
             role="presentation"
@@ -2901,10 +2921,10 @@ exports[`Dropdown renders a value when given a matching option id through props 
           </svg>
         </div>
         <div
-          class="c8 c9"
+          class="c9 c10"
         >
           <svg
-            class="c10 c11"
+            class="c11 c12"
             height="0px"
             viewBox="0 0 0 0"
             width="0px"
@@ -2912,7 +2932,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
         </div>
       </button>
       <div
-        class=" c12"
+        class=" c13"
       />
     </div>
   </div>
@@ -2920,7 +2940,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
 `;
 
 exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
-.c10 {
+.c11 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
@@ -2951,11 +2971,11 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   transition: opacity .2s;
 }
 
-.c6 {
+.c7 {
   position: relative;
 }
 
-.c8 {
+.c9 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -2994,7 +3014,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -3002,7 +3022,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   top: 0;
 }
 
-.c9 {
+.c10 {
   border-radius: 0.25em;
 }
 
@@ -3047,6 +3067,11 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c5 {
+  height: 1.125rem;
+  z-index: 1;
+}
+
+.c6 {
   height: 1.125rem;
   z-index: 1;
   pointer-events: none;
@@ -3082,6 +3107,21 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
         />
         <div
           class=" c5"
+          tabindex="0"
+        >
+          <svg
+            role="presentation"
+            style="width: 1em; height: 1em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class=" c6"
         >
           <svg
             role="presentation"
@@ -3095,10 +3135,10 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
           </svg>
         </div>
         <div
-          class="c6 c7"
+          class="c7 c8"
         >
           <svg
-            class="c8 c9"
+            class="c9 c10"
             height="0px"
             viewBox="0 0 0 0"
             width="0px"
@@ -3106,7 +3146,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
         </div>
       </button>
       <div
-        class=" c10"
+        class=" c11"
       />
     </div>
   </div>
@@ -3114,7 +3154,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 `;
 
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
-.c12 {
+.c13 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
@@ -3145,11 +3185,11 @@ exports[`Dropdown renders one value when given two values but only one matches a
   transition: opacity .2s;
 }
 
-.c8 {
+.c9 {
   position: relative;
 }
 
-.c10 {
+.c11 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -3188,7 +3228,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -3196,7 +3236,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
   top: 0;
 }
 
-.c11 {
+.c12 {
   border-radius: 0.25em;
 }
 
@@ -3264,6 +3304,11 @@ exports[`Dropdown renders one value when given two values but only one matches a
 .c7 {
   height: 1.125rem;
   z-index: 1;
+}
+
+.c8 {
+  height: 1.125rem;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -3316,6 +3361,21 @@ exports[`Dropdown renders one value when given two values but only one matches a
         </div>
         <div
           class=" c7"
+          tabindex="0"
+        >
+          <svg
+            role="presentation"
+            style="width: 1em; height: 1em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class=" c8"
         >
           <svg
             role="presentation"
@@ -3329,10 +3389,10 @@ exports[`Dropdown renders one value when given two values but only one matches a
           </svg>
         </div>
         <div
-          class="c8 c9"
+          class="c9 c10"
         >
           <svg
-            class="c10 c11"
+            class="c11 c12"
             height="0px"
             viewBox="0 0 0 0"
             width="0px"
@@ -3340,7 +3400,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
         </div>
       </button>
       <div
-        class=" c12"
+        class=" c13"
       />
     </div>
   </div>
@@ -3348,7 +3408,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props 1`] = `
-.c12 {
+.c13 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
@@ -3379,11 +3439,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   transition: opacity .2s;
 }
 
-.c8 {
+.c9 {
   position: relative;
 }
 
-.c10 {
+.c11 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -3422,7 +3482,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -3430,7 +3490,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   top: 0;
 }
 
-.c11 {
+.c12 {
   border-radius: 0.25em;
 }
 
@@ -3498,6 +3558,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
 .c7 {
   height: 1.125rem;
   z-index: 1;
+}
+
+.c8 {
+  height: 1.125rem;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -3558,6 +3623,21 @@ exports[`Dropdown renders two values when given matching option ids through prop
         </div>
         <div
           class=" c7"
+          tabindex="0"
+        >
+          <svg
+            role="presentation"
+            style="width: 1em; height: 1em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class=" c8"
         >
           <svg
             role="presentation"
@@ -3571,10 +3651,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
           </svg>
         </div>
         <div
-          class="c8 c9"
+          class="c9 c10"
         >
           <svg
-            class="c10 c11"
+            class="c11 c12"
             height="0px"
             viewBox="0 0 0 0"
             width="0px"
@@ -3582,7 +3662,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
         </div>
       </button>
       <div
-        class=" c12"
+        class=" c13"
       />
     </div>
   </div>
@@ -3590,7 +3670,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 `;
 
 exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
-.c12 {
+.c13 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
@@ -3621,11 +3701,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
   transition: opacity .2s;
 }
 
-.c8 {
+.c9 {
   position: relative;
 }
 
-.c10 {
+.c11 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -3664,7 +3744,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -3672,7 +3752,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
   top: 0;
 }
 
-.c11 {
+.c12 {
   border-radius: 0.25em;
 }
 
@@ -3740,6 +3820,11 @@ exports[`Dropdown renders two values when given matching option ids through prop
 .c7 {
   height: 1.125rem;
   z-index: 1;
+}
+
+.c8 {
+  height: 1.125rem;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -3800,6 +3885,21 @@ exports[`Dropdown renders two values when given matching option ids through prop
         </div>
         <div
           class=" c7"
+          tabindex="0"
+        >
+          <svg
+            role="presentation"
+            style="width: 1em; height: 1em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class=" c8"
         >
           <svg
             role="presentation"
@@ -3813,10 +3913,10 @@ exports[`Dropdown renders two values when given matching option ids through prop
           </svg>
         </div>
         <div
-          class="c8 c9"
+          class="c9 c10"
         >
           <svg
-            class="c10 c11"
+            class="c11 c12"
             height="0px"
             viewBox="0 0 0 0"
             width="0px"
@@ -3824,7 +3924,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
         </div>
       </button>
       <div
-        class=" c12"
+        class=" c13"
       />
     </div>
   </div>
@@ -3832,7 +3932,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 `;
 
 exports[`Dropdown selects options from values prop 1`] = `
-.c12 {
+.c13 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
@@ -3863,11 +3963,11 @@ exports[`Dropdown selects options from values prop 1`] = `
   transition: opacity .2s;
 }
 
-.c8 {
+.c9 {
   position: relative;
 }
 
-.c10 {
+.c11 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -3906,7 +4006,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -3914,7 +4014,7 @@ exports[`Dropdown selects options from values prop 1`] = `
   top: 0;
 }
 
-.c11 {
+.c12 {
   border-radius: 0.25em;
 }
 
@@ -3982,6 +4082,11 @@ exports[`Dropdown selects options from values prop 1`] = `
 .c7 {
   height: 1.125rem;
   z-index: 1;
+}
+
+.c8 {
+  height: 1.125rem;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -4042,6 +4147,21 @@ exports[`Dropdown selects options from values prop 1`] = `
         </div>
         <div
           class=" c7"
+          tabindex="0"
+        >
+          <svg
+            role="presentation"
+            style="width: 1em; height: 1em;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              style="fill: currentColor;"
+            />
+          </svg>
+        </div>
+        <div
+          class=" c8"
         >
           <svg
             role="presentation"
@@ -4055,10 +4175,10 @@ exports[`Dropdown selects options from values prop 1`] = `
           </svg>
         </div>
         <div
-          class="c8 c9"
+          class="c9 c10"
         >
           <svg
-            class="c10 c11"
+            class="c11 c12"
             height="0px"
             viewBox="0 0 0 0"
             width="0px"
@@ -4066,7 +4186,7 @@ exports[`Dropdown selects options from values prop 1`] = `
         </div>
       </button>
       <div
-        class=" c12"
+        class=" c13"
       />
     </div>
   </div>
