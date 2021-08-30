@@ -101,6 +101,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
+      user-select: none;
       align-items: center;
       ${disabled ? disabledStyles() : ''}
       &:hover {
