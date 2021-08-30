@@ -6,7 +6,7 @@ import { shade, tint, getLuminance, darken, readableColor } from 'polished';
 
 import { Components, ListRange, Virtuoso } from 'react-virtuoso';
 import Fuse from 'fuse.js';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
@@ -264,8 +264,8 @@ export interface DropdownProps {
   componentUUID?: string;
 
   onBlur?: () => void;
-  onClear?: () => void;
   onFocus?: () => void;
+  onClear?: () => void;
   onSelect: (selected?: Array<string | number>) => void;
 
   rememberScrollPosition?: boolean;
@@ -374,6 +374,21 @@ const Dropdown = ({
   const [scrollIndex, setScrollIndex] = useState<number>(0);
 
   const [isOverflowing, setIsOverflowing] = useState<boolean>(true);
+
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleOnBlur = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onBlur || (() => {}), 'onBlur', e, { name }),
+    [handleEventWithAnalytics, onBlur, name],
+  );
+  const handleOnFocus = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onFocus || (() => {}), 'onFocus', e, { name }),
+    [handleEventWithAnalytics, onFocus, name],
+  );
+  const handleOnClear = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onClear || (() => {}), 'onClear', e, { name }),
+    [handleEventWithAnalytics, onClear, name],
+  );
 
   const isVirtual = virtualizeOptions && isOverflowing;
 
@@ -549,64 +564,79 @@ const Dropdown = ({
           if (focusWithin) {
             setFocusWithin(false);
             setIsOpen(false);
-            if (onBlur) {
-              onBlur();
+            if (handleOnBlur) {
+              handleOnBlur(e);
             }
           }
         }, 0),
       );
     },
-    [onBlur, focusWithin],
+    [handleOnBlur, focusWithin],
   );
 
-  const handleFocus = useCallback(() => {
-    window.setTimeout(() => {
-      if (document.activeElement?.id === `${name}-dropdown-button`) {
-        searchInputRef?.current?.focus();
+  const handleFocus = useCallback(
+    (e: any) => {
+      window.setTimeout(() => {
+        if (document.activeElement?.id === `${name}-dropdown-button`) {
+          searchInputRef?.current?.focus();
+        }
+      }, 0);
+
+      clearTimeout(focusTimeoutId);
+
+      if (!focusWithin) {
+        setFocusWithin(true);
+        // make sure there is no dropdown flickering when tabbing into dropdown
+        setIsHidden(true);
+        setIsOpenedBelow(true);
       }
-    }, 0);
+      setIsOpen(true);
 
-    clearTimeout(focusTimeoutId);
+      if (handleOnFocus) {
+        handleOnFocus(e);
+      }
+    },
+    [focusTimeoutId, focusWithin, handleOnFocus, name],
+  );
 
-    if (!focusWithin) {
-      setFocusWithin(true);
-      // make sure there is no dropdown flickering when tabbing into dropdown
-      setIsHidden(true);
-      setIsOpenedBelow(true);
-    }
-    setIsOpen(true);
-
-    if (onFocus) {
-      onFocus();
-    }
-  }, [focusTimeoutId, focusWithin, name, onFocus]);
+  const handleOnSelect = useCallback(
+    (selected?: Array<string | number>) =>
+      handleEventWithAnalytics(
+        'Dropdown',
+        onSelect,
+        'onSelect',
+        selected,
+        { name },
+      ),
+    [handleEventWithAnalytics, onSelect, name],
+  );
 
   const handleSelect = useCallback(
     (clickedId: string | number) => {
       if (!multi) {
         setIsOpen(false);
-        onSelect([clickedId]);
+        handleOnSelect([clickedId]);
       } else {
         const previouslySelected = optionsHash[clickedId].isSelected;
         const newValues = previouslySelected
           ? values.filter(val => val !== clickedId)
           : [...values, clickedId];
-        onSelect(newValues);
+        handleOnSelect(newValues);
       }
     },
-    [onSelect, multi, values, optionsHash],
+    [handleOnSelect, multi, values, optionsHash],
   );
 
   const handleClear = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
-      onSelect(multi ? [] : undefined);
-      if (onClear) {
-        onClear();
+      handleOnSelect(multi ? [] : undefined);
+      if (handleOnClear) {
+        handleOnClear(e);
       }
     },
-    [multi, onClear, onSelect],
+    [multi, handleOnClear, handleOnSelect],
   );
 
   const handleMouseDownOnButton = useCallback(
@@ -618,7 +648,7 @@ const Dropdown = ({
       } else {
         setIsHidden(true);
         setIsOpenedBelow(true);
-        handleFocus();
+        handleFocus(e);
       }
     },
     [isOpen, handleBlur, handleFocus],
@@ -727,7 +757,7 @@ const Dropdown = ({
 
   const closeIcons = (
     <>
-      {onClear && values.length > 0 && (
+      {handleClear && values.length > 0 && (
         <StyledCloseIconContainer
           onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
           onClick={handleClear}
@@ -775,9 +805,19 @@ const Dropdown = ({
       optionsVariant,
     ],
   );
+  const handleSearchChange = useCallback(
+    (e: any) => handleEventWithAnalytics('Dropdown', onSearchChange, 'onSearchChange', e, { name }),
+    [handleEventWithAnalytics, onSearchChange, name],
+  );
 
   const handleSearchDebouncedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onDebouncedSearchChange(e);
+    handleEventWithAnalytics(
+      'Dropdown',
+      onDebouncedSearchChange,
+      'onDebouncedSearchChange',
+      e,
+      { name },
+    );
 
     const searchText = e.target.value;
 
@@ -865,7 +905,7 @@ const Dropdown = ({
             <TextInput
               id={`${name}-search-input`}
               aria-label={`${name}-search-input`}
-              onChange={onSearchChange}
+              onChange={handleSearchChange}
               debouncedOnChange={handleSearchDebouncedChange}
               StyledContainer={StyledSearchContainer}
               StyledInput={StyledSearchInput}

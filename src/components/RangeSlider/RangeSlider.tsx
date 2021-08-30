@@ -20,7 +20,7 @@ import {
   SelectedRangeProps,
   DomainLabelProps,
 } from './types';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { Div } from '../../htmlElements';
 
 export const Container = styled.div`
@@ -286,9 +286,25 @@ export const RangeSlider = ({
 
   const domain = max - min;
 
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleDrag = useCallback(
+    (newVal: number) =>
+      handleEventWithAnalytics(
+        'RangeSlider',
+        () => {
+          onDrag(newVal);
+        },
+        'onDrag',
+        { type: 'onDrag', newVal },
+        containerProps,
+      ),
+    [handleEventWithAnalytics, onDrag, containerProps],
+  );
+
   // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);
-  const debouncedDrag = debounce(() => onDrag(valueBuffer.current), debounceInterval);
+  const debouncedDrag = debounce(() => handleDrag(valueBuffer.current), debounceInterval);
   const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
@@ -336,15 +352,17 @@ export const RangeSlider = ({
 
       if (closestVal) {
         // TODO: use the closest val to find the handle to move and move it
-        onDrag(clickedValue);
+        handleDrag(clickedValue);
         if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
           e.persist();
           slideRailProps.onMouseDown(e);
         }
       }
     },
-    [slideRailProps, sliderBounds, onDrag, domain, processedValues],
+    [slideRailProps, sliderBounds, handleDrag, domain, processedValues],
   );
+  const handleSlideRailClickWithAnalytics = (e: any) =>
+    handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
 
   const bind = useDrag(
     ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
@@ -415,7 +433,7 @@ export const RangeSlider = ({
       <StyledSlideRail
         ref={mergeRefs([slideRailRef, ref])}
         {...slideRailProps}
-        onMouseDown={handleSlideRailClick}
+        onMouseDown={handleSlideRailClickWithAnalytics}
       >
         {showSelectedRange && (
           <StyledSelectedRangeRail

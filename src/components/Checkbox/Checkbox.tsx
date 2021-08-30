@@ -6,7 +6,7 @@ import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 import { darken } from 'polished';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { disabledStyles } from '../../utils/color';
 
@@ -205,6 +205,10 @@ const Checkbox = ({
 }: CheckboxProps): JSX.Element => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
+  const handleEventWithAnalytics = useAnalytics();
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('Checkbox', onClick, 'onClick', e, checkboxContainerProps);
+
   return (
     <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" ref={labelRef} {...labelProps}>
       <StyledCheckboxContainer ref={containerRef} {...checkboxContainerProps}>
@@ -226,7 +230,7 @@ const Checkbox = ({
         </StyledBox>
         <StyledInput
           data-test-id="hsui-Checkbox-Input"
-          onClick={onClick}
+          onClick={handleClick}
           checked={checked}
           ref={inputRef}
           {...inputProps}

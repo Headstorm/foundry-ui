@@ -5,7 +5,7 @@ import { darken } from 'polished';
 import timings from '../../enums/timings';
 import { Div } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback, {
   InteractionFeedbackProps,
@@ -17,15 +17,15 @@ const defaultOnClick = () => {};
 export type CardContainerProps = {
   elevation: number;
   feedbackType: FeedbackTypes;
-  onClick: (evt: MouseEvent) => void;
+  isDefaultOnClick: boolean;
 };
 
 export const CardContainer = styled(Div)`
-  ${({ elevation, feedbackType, onClick }: CardContainerProps) => {
+  ${({ elevation, feedbackType, isDefaultOnClick }: CardContainerProps) => {
     const { colors } = useTheme();
 
     return `
-      ${onClick !== defaultOnClick ? 'cursor: pointer;' : ''}
+      ${!isDefaultOnClick ? 'cursor: pointer;' : ''}
       display: inline-flex;
       flex-flow: column nowrap;
       font-size: 1rem;
@@ -39,7 +39,7 @@ export const CardContainer = styled(Div)`
       ${getShadowStyle(elevation, colors.shadow)}
       background-color: ${colors.background};
       ${
-        feedbackType === FeedbackTypes.simple && onClick !== defaultOnClick
+        feedbackType === FeedbackTypes.simple && !isDefaultOnClick
           ? `
             &:active {
               background-color: ${
@@ -176,11 +176,17 @@ const Card = ({
   const hasBody = Boolean(children);
   const hasFooter = Boolean(footer);
 
+  const handleEventWithAnalytics = useAnalytics();
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('Card', onClick, 'onClick', e, containerProps || { name: 'Card' });
+  const isDefaultOnClick = onClick === defaultOnClick;
+
   return (
     <StyledContainer
-      onClick={onClick}
+      onClick={handleClick}
       elevation={elevation}
       feedbackType={feedbackType}
+      isDefaultOnClick={isDefaultOnClick}
       {...containerProps}
       ref={containerRef}
     >
