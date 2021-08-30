@@ -185,6 +185,10 @@ FoundryProvider provides global styling utilities and the option to store consta
 
 See the [Global styling demo example](https://headstorm.github.io/foundry-ui/?path=/story/global-styles--example) and [Global styling source code](./src/components/Examples/GlobalStyles.stories.tsx)
 
+### Analytics
+
+Events triggered on Foundry Components can be tracked using a custom analytics function passed to the Foundry Provider. See the [Analytics event action examples](https://headstorm.github.io/foundry-ui/?path=/story/global-styles--example) and [Analytics example source code](./src/components/Examples/GlobalStyles.stories.tsx)
+
 # Contributing
 
 Pick a ticket from the `Priority to do` swim-lane of the [project board](https://github.com/Headstorm/foundry-ui/projects/1). **Fork and clone** the repository and create a branch for your ticket, with the ticket number prefixing the name of the ticket (i.e. `4-publish-package-to-npm`). When making commits, be sure to prefix your commit messages with the ticket number, like so: `#4 Updating package.json to make the package public`. Once you've made a commit it should automatically be moved to the `In progress` swim-lane, and then moved to `Needs review` once a PR is made. For commits to be included in the changelog you muse use formatted commit messages. We've made this easier to do by adding a script for committing messages, simply use `npm run commit` or `yarn commit` to create your commits that should be added to the changelog.

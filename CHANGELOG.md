@@ -1,3 +1,16 @@
+# [1.11.0](https://github.com/Headstorm/foundry-ui/compare/v1.10.0...v1.11.0) (2021-08-30)
+
+
+### Bug Fixes
+
+* **button:** stop button text from being selectable (via CSS user-select:none) ([38832cc](https://github.com/Headstorm/foundry-ui/commit/38832ccff2606a7a1b62fbec75564cd82343d5b8))
+* **button/dropdown:** fix breaking change caused by nesting Button inside of skeleton component ([23986e9](https://github.com/Headstorm/foundry-ui/commit/23986e924ecc399754f9d6412a63b76220473533)), closes [#308](https://github.com/Headstorm/foundry-ui/issues/308)
+
+
+### Features
+
+* **foundryprovider:** add global analytics function which fires on every user interraction ([2a1ad39](https://github.com/Headstorm/foundry-ui/commit/2a1ad39744e59749ff5ff92e29a842fbb5540e0e))
+
 # [1.10.0](https://github.com/Headstorm/foundry-ui/compare/v1.9.1...v1.10.0) (2021-08-24)
 
 

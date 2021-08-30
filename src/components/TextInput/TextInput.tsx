@@ -14,7 +14,7 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 
 const Container = styled(Div)`
@@ -188,9 +188,20 @@ const TextInput = ({
 
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleDebouncedOnChange = (e: any) =>
+    handleEventWithAnalytics(
+      'TextInput',
+      debouncedOnChange,
+      'debouncedOnChange',
+      e,
+      containerProps,
+    );
+
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
-  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), [
-    debouncedOnChange,
+  const debouncedChange = useCallback(debounce(handleDebouncedOnChange, debounceInterval), [
+    handleDebouncedOnChange,
     debounceInterval,
   ]);
 
@@ -199,6 +210,9 @@ const TextInput = ({
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
+
+  const handleClear = (e: any) =>
+    handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
 
   return (
     <StyledContainer
@@ -233,7 +247,7 @@ const TextInput = ({
         {...inputProps}
       />
       {onClear && (
-        <StyledIconContainer onClick={onClear} {...iconContainerProps}>
+        <StyledIconContainer onClick={handleClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}

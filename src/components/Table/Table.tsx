@@ -11,7 +11,7 @@ import {
   RowProps,
   TableProps,
 } from './types';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { mergeRefs } from '../../utils/refs';
 
 type collapsedState = Record<string, string>;
@@ -207,8 +207,21 @@ const ExpansionIcon: React.FunctionComponent<InternalExpansionIconProps> = ({
 }: InternalExpansionIconProps) => {
   const expanded = groupHeaderPosition === 'above' ? mdiChevronDown : mdiChevronUp;
   const path = isCollapsed ? mdiChevronRight : expanded;
+
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('ExpansionIcon', onClick, isCollapsed ? 'expand' : 'collapse', e, {
+      name: 'ExpansionIcon',
+    });
+
   return (
-    <StyledExpansionIconSpan tabIndex={0} onClick={onClick} role="button" onKeyPress={onKeyPress}>
+    <StyledExpansionIconSpan
+      tabIndex={0}
+      onClick={handleClick}
+      role="button"
+      onKeyPress={onKeyPress}
+    >
       <Icon path={path} size="1rem" />
     </StyledExpansionIconSpan>
   );
@@ -354,8 +367,20 @@ const Table = ({
     setCollapsedGroups(defaultCollapsed);
   };
 
+  const handleEventWithAnalytics = useAnalytics();
+  const handleOnSort = (key: string, newDirection: boolean) =>
+    handleEventWithAnalytics(
+      'Table',
+      () => {
+        onSort(key, newDirection);
+      },
+      'onSort',
+      { type: 'onSort', key, newDirection },
+      { containerProps },
+    );
+
   useEffect(() => {
-    onSort(sortMethod[0], sortMethod[1]);
+    handleOnSort(sortMethod[0], sortMethod[1]);
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
@@ -400,7 +425,10 @@ const Table = ({
           {width < minWidthBreakpoint && (
             <ResponsiveTitle
               onClick={() => {
-                onSort(headerColumnKey, headerColumnKey === sortMethod[0] ? !sortMethod[1] : true);
+                handleOnSort(
+                  headerColumnKey,
+                  headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
+                );
               }}
               sortable={copiedColumns[headerColumnKey].sortable}
             >
@@ -638,7 +666,7 @@ const Table = ({
                   <RenderedHeaderCell
                     key={headerColumnKey}
                     onClick={() => {
-                      onSort(
+                      handleOnSort(
                         headerColumnKey,
                         headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
                       );

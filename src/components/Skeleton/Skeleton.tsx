@@ -1,5 +1,5 @@
-import { parseToRgb } from 'polished';
 import React from 'react';
+import { parseToRgb } from 'polished';
 import styled, { keyframes, css } from 'styled-components';
 
 import { useTheme } from '../../context';
@@ -16,8 +16,8 @@ export const animation = css`
 `;
 
 const SkeletonShimmer = styled(Div)`
-  ${({ isLoading, finalColor }) => {
-    const rgb = parseToRgb(finalColor);
+  ${({ isLoading, color }) => {
+    const rgb = parseToRgb(color);
 
     return css`
       opacity: ${isLoading ? 1 : 0};
@@ -60,6 +60,7 @@ const SkeletonContainer = styled(Div)`
   ${
     isLoading
       ? `
+        color: transparent !important;
         & > *:not(${SkeletonShimmer}) {
           opacity: 0 !important;
           user-select: none;
@@ -98,7 +99,7 @@ const Skeleton = ({
   return (
     <StyledContainer isLoading={isLoading} {...containerProps}>
       {children}
-      <StyledShimmer isLoading={isLoading} finalColor={finalColor} {...shimmerProps} />
+      <StyledShimmer isLoading={isLoading} color={finalColor} {...shimmerProps} />
     </StyledContainer>
   );
 };
