@@ -3,7 +3,7 @@
 exports[`Dropdown IntersectionObserver tests Both containers are fully in viewport 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -190,55 +190,51 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -262,7 +258,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
 exports[`Dropdown IntersectionObserver tests Check if intersection observer is called when dropdown is clicked 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -449,55 +445,51 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -521,7 +513,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
 exports[`Dropdown IntersectionObserver tests Hidden options container is in view and options container is not 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -708,55 +700,51 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -780,7 +768,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
 exports[`Dropdown IntersectionObserver tests Options container is in view and hidden options container is not 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -967,55 +955,51 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -1039,7 +1023,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
 exports[`Dropdown can focus dropdown and select option 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1190,55 +1174,51 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -1247,7 +1227,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
   .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1431,55 +1411,51 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -1504,7 +1480,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
   .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1654,55 +1630,51 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </DocumentFragment>
 `;
@@ -1710,7 +1682,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1942,55 +1914,51 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -2058,7 +2026,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 exports[`Dropdown displays all options when focused 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2243,55 +2211,51 @@ exports[`Dropdown displays all options when focused 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,15L12,10L17,15H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,15L12,10L17,15H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
     <div
       class=" c12"
       color="#252D34"
@@ -2315,7 +2279,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 exports[`Dropdown displays placeholder value on initial render 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2467,57 +2431,53 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
+        Choose a pokemon
+      </div>
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          Choose a pokemon
-        </div>
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
-        >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -2525,7 +2485,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 exports[`Dropdown does not display options on initial render 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2676,55 +2636,51 @@ exports[`Dropdown does not display options on initial render 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-placeholder"
+      />
+      <div
+        class=" c5"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c6"
       >
-        <div
-          class=" c4"
-          id="dropdown-placeholder"
-        />
-        <div
-          class=" c5"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c6"
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -2732,7 +2688,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 exports[`Dropdown renders a value when given a matching option id through props 1`] = `
 .c13 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2915,74 +2871,70 @@ exports[`Dropdown renders a value when given a matching option id through props 
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-value-item"
       >
-        <div
-          class=" c4"
-          id="dropdown-value-item"
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Bulbasaur
-          </span>
-        </div>
-        <div
-          class=" c7"
-          tabindex="0"
+          Bulbasaur
+        </span>
+      </div>
+      <div
+        class=" c7"
+        tabindex="0"
+      >
+        <svg
+          role="presentation"
+          style="width: 1em; height: 1em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1em; height: 1em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class=" c8"
-        >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c9 c10"
-        >
-          <svg
-            class="c11 c12"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class=" c8"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c9 c10"
+      >
+        <svg
+          class="c11 c12"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c13"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -2990,7 +2942,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
 exports[`Dropdown renders no value when given a value that doesn't match any option id 1`] = `
 .c11 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3141,66 +3093,62 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-value-item"
+      />
+      <div
+        class=" c5"
+        tabindex="0"
       >
-        <div
-          class=" c4"
-          id="dropdown-value-item"
-        />
-        <div
-          class=" c5"
-          tabindex="0"
+        <svg
+          role="presentation"
+          style="width: 1em; height: 1em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1em; height: 1em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class=" c6"
-        >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c7 c8"
-        >
-          <svg
-            class="c9 c10"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class=" c6"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c7 c8"
+      >
+        <svg
+          class="c9 c10"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c11"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -3208,7 +3156,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 exports[`Dropdown renders one value when given two values but only one matches an option id 1`] = `
 .c13 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3391,74 +3339,70 @@ exports[`Dropdown renders one value when given two values but only one matches a
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-value-item"
       >
-        <div
-          class=" c4"
-          id="dropdown-value-item"
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Bulbasaur
-          </span>
-        </div>
-        <div
-          class=" c7"
-          tabindex="0"
+          Bulbasaur
+        </span>
+      </div>
+      <div
+        class=" c7"
+        tabindex="0"
+      >
+        <svg
+          role="presentation"
+          style="width: 1em; height: 1em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1em; height: 1em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class=" c8"
-        >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c9 c10"
-        >
-          <svg
-            class="c11 c12"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class=" c8"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c9 c10"
+      >
+        <svg
+          class="c11 c12"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c13"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -3466,7 +3410,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
 exports[`Dropdown renders two values when given matching option ids through props 1`] = `
 .c13 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3649,82 +3593,78 @@ exports[`Dropdown renders two values when given matching option ids through prop
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-value-item"
       >
-        <div
-          class=" c4"
-          id="dropdown-value-item"
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Bulbasaur
-            ,
-          </span>
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Charmander
-          </span>
-        </div>
-        <div
-          class=" c7"
-          tabindex="0"
+          Bulbasaur
+          ,
+        </span>
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <svg
-            role="presentation"
-            style="width: 1em; height: 1em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class=" c8"
+          Charmander
+        </span>
+      </div>
+      <div
+        class=" c7"
+        tabindex="0"
+      >
+        <svg
+          role="presentation"
+          style="width: 1em; height: 1em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c9 c10"
-        >
-          <svg
-            class="c11 c12"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class=" c8"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c9 c10"
+      >
+        <svg
+          class="c11 c12"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c13"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -3732,7 +3672,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 exports[`Dropdown renders two values when given matching option ids through props when multi is set to true 1`] = `
 .c13 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3915,82 +3855,78 @@ exports[`Dropdown renders two values when given matching option ids through prop
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-value-item"
       >
-        <div
-          class=" c4"
-          id="dropdown-value-item"
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Bulbasaur
-            ,
-          </span>
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Charmander
-          </span>
-        </div>
-        <div
-          class=" c7"
-          tabindex="0"
+          Bulbasaur
+          ,
+        </span>
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <svg
-            role="presentation"
-            style="width: 1em; height: 1em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class=" c8"
+          Charmander
+        </span>
+      </div>
+      <div
+        class=" c7"
+        tabindex="0"
+      >
+        <svg
+          role="presentation"
+          style="width: 1em; height: 1em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c9 c10"
-        >
-          <svg
-            class="c11 c12"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class=" c8"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c9 c10"
+      >
+        <svg
+          class="c11 c12"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c13"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;
@@ -3998,7 +3934,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 exports[`Dropdown selects options from values prop 1`] = `
 .c13 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -4181,82 +4117,78 @@ exports[`Dropdown selects options from values prop 1`] = `
     id="dropdown-container"
     name="dropdown"
   >
-    <div
-      class=" c1"
-      style="display: inline-block;"
+    <button
+      class=" c1 c2 c3"
+      color="#252D34"
+      elevation="0"
+      id="dropdown-dropdown-button"
+      role="button"
+      type="button"
     >
-      <button
-        class=" c2 c3"
-        color="#252D34"
-        elevation="0"
-        id="dropdown-dropdown-button"
-        role="button"
-        type="button"
+      <div
+        class=" c4"
+        id="dropdown-value-item"
       >
-        <div
-          class=" c4"
-          id="dropdown-value-item"
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Bulbasaur
-            ,
-          </span>
-          <span
-            class=" c5 c6"
-            color="#9FA2A5"
-            elevation="0"
-          >
-            Charmander
-          </span>
-        </div>
-        <div
-          class=" c7"
-          tabindex="0"
+          Bulbasaur
+          ,
+        </span>
+        <span
+          class=" c5 c6"
+          color="#9FA2A5"
+          elevation="0"
         >
-          <svg
-            role="presentation"
-            style="width: 1em; height: 1em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class=" c8"
+          Charmander
+        </span>
+      </div>
+      <div
+        class=" c7"
+        tabindex="0"
+      >
+        <svg
+          role="presentation"
+          style="width: 1em; height: 1em;"
+          viewBox="0 0 24 24"
         >
-          <svg
-            role="presentation"
-            style="width: 1.25em; height: 1.25em;"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10L12,15L17,10H7Z"
-              style="fill: currentColor;"
-            />
-          </svg>
-        </div>
-        <div
-          class="c9 c10"
-        >
-          <svg
-            class="c11 c12"
-            height="0px"
-            viewBox="0 0 0 0"
-            width="0px"
+          <path
+            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            style="fill: currentColor;"
           />
-        </div>
-      </button>
+        </svg>
+      </div>
+      <div
+        class=" c8"
+      >
+        <svg
+          role="presentation"
+          style="width: 1.25em; height: 1.25em;"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7,10L12,15L17,10H7Z"
+            style="fill: currentColor;"
+          />
+        </svg>
+      </div>
+      <div
+        class="c9 c10"
+      >
+        <svg
+          class="c11 c12"
+          height="0px"
+          viewBox="0 0 0 0"
+          width="0px"
+        />
+      </div>
       <div
         class=" c13"
+        color="#252D34"
       />
-    </div>
+    </button>
   </div>
 </div>
 `;

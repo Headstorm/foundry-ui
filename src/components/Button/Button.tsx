@@ -76,7 +76,7 @@ export type ButtonProps = {
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
-  ButtonElement,
+  Skeleton.Container,
 )`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
@@ -167,7 +167,6 @@ const Button = ({
    * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
    */
   ProgressBar, // Deprecated
-  skeletonProps,
 
   containerProps = {},
   interactionFeedbackProps,
@@ -201,7 +200,9 @@ const Button = ({
 
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
+    as: ButtonElement,
     id,
+    isLoading,
     onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
     onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
     onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
@@ -217,56 +218,46 @@ const Button = ({
     ...containerProps,
   };
 
-  const skeletonContainerProps = {
-    style: {
-      display: 'inline-block',
-      ...(skeletonProps && Object.prototype.hasOwnProperty.call(skeletonProps, 'style')
-        ? (skeletonProps.style as CSSRule)
-        : {}),
-    },
-    ...skeletonProps,
-  };
-
   return (
-    <Skeleton isLoading={isLoading} containerProps={skeletonContainerProps}>
-      <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
-        {!isProcessing &&
-          iconPrefix &&
-          (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-            <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-              <UnstyledIcon path={iconPrefix} size="1rem" />
-            </StyledLeftIconContainer>
-          ) : (
-            <StyledLeftIconContainer ref={leftIconContainerRef}>
-              {iconPrefix}
-            </StyledLeftIconContainer>
-          ))}
-        {isProcessing && (
+    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
+      {!isProcessing &&
+        iconPrefix &&
+        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-            <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+            <UnstyledIcon path={iconPrefix} size="1rem" />
           </StyledLeftIconContainer>
-        )}
-        {isLoading && ProgressBar ? <Progress /> : children}
-        {iconSuffix &&
-          (typeof iconSuffix === 'string' ? (
-            <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-              <UnstyledIcon path={iconSuffix} size="1rem" />
-            </StyledRightIconContainer>
-          ) : (
-            <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-              {iconSuffix}
-            </StyledRightIconContainer>
-          ))}
-        {feedbackType === FeedbackTypes.ripple && !disabled && (
-          <InteractionFeedback
-            StyledContainer={StyledFeedbackContainer}
-            StyledSVGContainer={StyledFeedbackSVGContainer}
-            color={getFontColorFromVariant(variant, containerColor)}
-            {...(interactionFeedbackProps || {})}
-          />
-        )}
-      </StyledContainer>
-    </Skeleton>
+        ) : (
+          <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
+        ))}
+      {isProcessing && (
+        <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
+          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+        </StyledLeftIconContainer>
+      )}
+      {isLoading && ProgressBar ? <Progress /> : children}
+      {iconSuffix &&
+        (typeof iconSuffix === 'string' ? (
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            <UnstyledIcon path={iconSuffix} size="1rem" />
+          </StyledRightIconContainer>
+        ) : (
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            {iconSuffix}
+          </StyledRightIconContainer>
+        ))}
+      {feedbackType === FeedbackTypes.ripple && !disabled && !isLoading && (
+        <InteractionFeedback
+          StyledContainer={StyledFeedbackContainer}
+          StyledSVGContainer={StyledFeedbackSVGContainer}
+          color={getFontColorFromVariant(variant, containerColor)}
+          {...(interactionFeedbackProps || {})}
+        />
+      )}
+      <Skeleton.Shimmer
+        color={getFontColorFromVariant(variant, containerColor, colors.background, colors.grayDark)}
+        isLoading={isLoading}
+      />
+    </StyledContainer>
   );
 };
 

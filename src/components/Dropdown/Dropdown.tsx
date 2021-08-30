@@ -57,20 +57,20 @@ export const ValueContainer = styled(Button.Container)`
     `;
 
     return `
-    user-select: none;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    ${isOpen && !isHidden ? openStyle : ''}
-    width: 15rem;
-    padding: .5rem 1rem;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+      ${isOpen && !isHidden ? openStyle : ''}
+      width: 15rem;
+      padding: .5rem 1rem;
 
-    &:focus-within {
-      outline: none;
-      box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
-    }
-  `;
+      &:focus-within {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiaryDark};
+      }
+    `;
   }}
 `;
 
@@ -601,13 +601,7 @@ const Dropdown = ({
 
   const handleOnSelect = useCallback(
     (selected?: Array<string | number>) =>
-      handleEventWithAnalytics(
-        'Dropdown',
-        onSelect,
-        'onSelect',
-        selected,
-        { name },
-      ),
+      handleEventWithAnalytics('Dropdown', onSelect, 'onSelect', selected, { name }),
     [handleEventWithAnalytics, onSelect, name],
   );
 
@@ -689,9 +683,7 @@ const Dropdown = ({
 
           case 'ArrowDown':
             if (focusedElement.id === `${name}-dropdown-button`) {
-              // get parent before nextElementSibling because buttons are nested inside of skeletons
-              const buttonContainer = focusedElement.parentElement;
-              const optionsContainer = buttonContainer?.nextElementSibling;
+              const optionsContainer = focusedElement?.nextElementSibling;
               if (isVirtual) {
                 const virtuosoContainer = optionsContainer?.firstElementChild;
                 const virtuosoScroller = virtuosoContainer?.firstElementChild;
@@ -713,9 +705,7 @@ const Dropdown = ({
               const searchInputContainer = focusedElement.parentElement;
               const valueItemContainer = searchInputContainer?.parentElement;
               const button = valueItemContainer?.parentElement;
-              // get parent before nextElementSibling because buttons are nested inside of skeletons
-              const buttonContainer = button?.parentElement;
-              const optionsContainer = buttonContainer?.nextElementSibling;
+              const optionsContainer = button?.nextElementSibling;
               if (isVirtual) {
                 const virtuosoContainer = optionsContainer?.firstElementChild;
                 const virtuosoScroller = virtuosoContainer?.firstElementChild;
@@ -811,13 +801,9 @@ const Dropdown = ({
   );
 
   const handleSearchDebouncedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleEventWithAnalytics(
-      'Dropdown',
-      onDebouncedSearchChange,
-      'onDebouncedSearchChange',
-      e,
-      { name },
-    );
+    handleEventWithAnalytics('Dropdown', onDebouncedSearchChange, 'onDebouncedSearchChange', e, {
+      name,
+    });
 
     const searchText = e.target.value;
 

@@ -6,9 +6,7 @@ import { mdiPhone } from '@mdi/js';
 import colors from '../../enums/colors';
 
 import Skeleton, { SkeletonProps } from './Skeleton';
-import Divider from '../Divider';
-import Card from '../Card';
-import Text from '../Text';
+import { Button, Card, Divider, Text } from '../../index';
 
 const HorizontalFlexBody = styled(Card.Body)`
   display: flex;
@@ -41,7 +39,15 @@ const Name = styled(Text.Container)`
 `;
 
 export const LoadingProfileExample: Story = ({ isLoading, color }: SkeletonProps) => (
-  <Card StyledBody={HorizontalFlexBody} elevation={0}>
+  <Card
+    StyledBody={HorizontalFlexBody}
+    elevation={0}
+    footer={
+      <Button isLoading={isLoading} onClick={() => {}}>
+        Add to contacts
+      </Button>
+    }
+  >
     <PhotoContainer>
       <Skeleton isLoading={isLoading} color={color}>
         <ProfilePhoto />
