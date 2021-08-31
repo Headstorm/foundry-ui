@@ -155,51 +155,30 @@ const Spotlight = ({
   `;
   const finalPath = `${outerRectPath} ${shape === 'circular' ? circularPath : innerShapePath}`;
 
-  const {
-    // containerOpacity,
-    containerFilter,
-    containerBackgroundColor,
-    lightPath,
+  const [
+    {
+      // containerOpacity,
+      containerFilter,
+      containerBackgroundColor,
+      lightPath,
 
-    annotationTransform,
+      annotationTransform,
 
-    topBlurHeight,
-    topBlurWidth,
-    bottomBlurY,
-    bottomBlurHeight,
-    bottomBlurWidth,
-    leftBlurY,
-    leftBlurHeight,
-    leftBlurWidth,
-    rightBlurY,
-    rightBlurHeight,
-    rightBlurWidth,
-  } = useSpring({
-    from: {
-      containerOpacity: 0,
-      containerFilter: `blur(${backgroundBlur})`,
-      containerBackgroundColor: 'rgba(0,0,0,0)',
-
-      lightPath: finalPath,
-
-      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
-
-      topBlurWidth: windowDimensions.width,
-      topBlurHeight: rect.y,
-
-      bottomBlurY: rect.bottom,
-      bottomBlurWidth: windowDimensions.width,
-      bottomBlurHeight: windowDimensions.height - rect.bottom,
-
-      leftBlurY: rect.y,
-      leftBlurWidth: rect.x,
-      leftBlurHeight: rect.height,
-
-      rightBlurY: rect.y,
-      rightBlurWidth: windowDimensions.width - rect.right,
-      rightBlurHeight: rect.height,
+      topBlurHeight,
+      topBlurWidth,
+      bottomBlurY,
+      bottomBlurHeight,
+      bottomBlurWidth,
+      leftBlurY,
+      leftBlurHeight,
+      leftBlurWidth,
+      rightBlurY,
+      rightBlurHeight,
+      rightBlurWidth,
     },
-    to: {
+    setSpring,
+  ] = useSpring(
+    () => ({
       containerOpacity: 1,
       containerFilter: `blur(${backgroundBlur})`,
       containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
@@ -222,15 +201,23 @@ const Spotlight = ({
       rightBlurY: rect.y,
       rightBlurWidth: windowDimensions.width - rect.right,
       rightBlurHeight: rect.height + 2,
-    },
-    config: {
+
       friction: 75,
       tension: 550,
       mass: 5,
       immediate: !animateTargetChanges,
       ...animationSpringConfig,
-    },
-  });
+    }),
+    [
+      targetElement,
+      shape,
+      backgroundBlur,
+      backgroundDarkness,
+      padding,
+      cornerRadius,
+      windowDimensions,
+    ],
+  );
 
   // TODO: use a resize observer to detect when the bounds of the target change
   const updateWindowBounds = () => {

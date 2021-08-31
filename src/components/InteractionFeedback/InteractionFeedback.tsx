@@ -3,6 +3,7 @@ import { animated, useTransition } from '@react-spring/web';
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+
 import { useAnalytics } from '../../context';
 import colors from '../../enums/colors';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
