@@ -131,7 +131,7 @@
     "test-interactive": "jest --watch",
     "semver-dryrun": "npx semantic-release -d --debug",
     "semver-release": "npx semantic-release",
-    "commit": "npx git-cz"
+    "changelog-commit": "npx git-cz"
   },
   "husky": {
     "hooks": {
