@@ -226,6 +226,9 @@ describe('Dropdown', () => {
     );
 
     screen.getByRole('button').focus();
+    // need to wait for observer to be called (for hidden options container and options container)
+    // before the dropdown is rendered correctly
+    await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
     expect(optionsOutFrag).toMatchSnapshot();
@@ -244,50 +247,6 @@ describe('Dropdown', () => {
     generateIntersectionObserver([]);
     const { queryByText } = render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
-    );
-    act(() => {
-      screen.getByRole('button').focus();
-    });
-    await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
-    act(() => {
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowUp',
-        code: 'ArrowUp',
-      });
-      fireEvent.keyDown(document.activeElement, {
-        key: 'Enter',
-        code: 'Enter',
-      });
-    });
-
-    await waitFor(() => expect(mockedSelectHandler).toHaveBeenCalledWith(['charmander']));
-  });
-
-  it('can use arrow keys and enter to navigate options when searchable is true', async () => {
-    generateIntersectionObserver([]);
-    const { queryByText } = render(
-      <Dropdown
-        onSelect={mockedSelectHandler}
-        searchable
-        options={pokeOptions}
-        virtualizeOptions={false}
-      />,
     );
     act(() => {
       screen.getByRole('button').focus();
