@@ -157,7 +157,6 @@ const Spotlight = ({
 
   const [
     {
-      // containerOpacity,
       containerFilter,
       containerBackgroundColor,
       lightPath,
@@ -176,7 +175,7 @@ const Spotlight = ({
       rightBlurHeight,
       rightBlurWidth,
     },
-    setSpring,
+    // setSpring,
   ] = useSpring(
     () => ({
       containerOpacity: 1,
