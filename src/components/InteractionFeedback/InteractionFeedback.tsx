@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { animated, useTransition } from 'react-spring';
+import { animated, useTransition } from '@react-spring/web';
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
