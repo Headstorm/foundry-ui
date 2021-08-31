@@ -28,6 +28,7 @@ const Annotation = styled(AnimatedDiv)`
   position: fixed;
   top: 0;
   left: 0;
+  padding-bottom: 1rem;
 
   width: fit-content;
   max-width: 50vw;
@@ -36,7 +37,11 @@ const Annotation = styled(AnimatedDiv)`
 export type SpotlightProps = {
   StyledContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
-  containerRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLElement>;
+
+  StyledAnnotation?: StyledSubcomponentType;
+  annotationProps?: SubcomponentPropsType;
+  annotationRef?: React.RefObject<HTMLElement>;
 
   annotationJustify?: 'start' | 'center' | 'end';
   annotationPosition?: 'left' | 'above' | 'right' | 'below';
@@ -46,7 +51,7 @@ export type SpotlightProps = {
   backgroundBlur?: string;
   backgroundDarkness?: number;
   shape?: 'circular' | 'round' | 'box' | 'rounded box'; // TODO make this an enum and export it
-  roundedCornerRadius?: number;
+  cornerRadius?: number;
   padding?: number;
   onClick?: (e: React.MouseEvent) => void;
   animateTargetChanges?: boolean;
@@ -58,16 +63,20 @@ const Spotlight = ({
   containerProps,
   containerRef,
 
-  annotationJustify = 'center',
-  annotationPosition = 'above',
+  StyledAnnotation = Annotation,
+  annotationProps,
+  annotationRef,
+
+  // annotationJustify = 'center',
+  // annotationPosition = 'above',
 
   children,
   targetElement,
-  backgroundBlur = '0.5rem',
+  backgroundBlur = '0.25rem',
   backgroundDarkness = 0.3,
   shape = 'circular',
-  roundedCornerRadius = 4,
-  padding = 16, // 8px === .5rem
+  cornerRadius = 12,
+  padding = 12, // 8px === .5rem
   onClick,
   animateTargetChanges = true,
   animationSpringConfig,
@@ -92,27 +101,50 @@ const Spotlight = ({
     if (targetElement) {
       const bounds = targetElement?.getBoundingClientRect();
 
+      if (shape === 'circular') {
+        if (bounds.width > bounds.height) {
+          const newHeight = bounds.width;
+          bounds.y -= (newHeight - bounds.height) * 0.5;
+          bounds.height = newHeight;
+        } else if (bounds.width < bounds.height) {
+          const newWidth = bounds.height;
+          bounds.x -= (newWidth - bounds.width) / 2;
+          bounds.width = newWidth;
+        }
+      }
+
       bounds.x -= padding;
       bounds.y -= padding;
-      // bounds.bottom += padding;
-      // bounds.right += padding;
       bounds.width += padding * 2;
       bounds.height += padding * 2;
       return bounds;
     }
     return defaultVal;
-  }, [targetElement, padding, windowDimensions]);
+  }, [targetElement, padding, windowDimensions, shape]);
+
+  const radii = [Math.min(cornerRadius, rect.width / 2), Math.min(cornerRadius, rect.height / 2)];
+  if (shape === 'round') {
+    radii[0] = rect.width / 2;
+    radii[1] = rect.height / 2;
+  } else if (shape === 'box') {
+    radii[0] = 0;
+    radii[1] = 0;
+  }
 
   // TODO: pass this to useSpring - ensure number of points don't change
   const outerRectPath = `M 0 0 h${windowDimensions.width} v${windowDimensions.height} h-${windowDimensions.width}`;
   const innerShapePath = `
-    M ${rect.x} ${rect.y + rect.height / 2}
-    Q ${rect.x} ${rect.y}, ${rect.x + rect.width / 2} ${rect.y}
-    Q ${rect.x + rect.width} ${rect.y}, ${rect.x + rect.width} ${rect.y + rect.height / 2}
-    Q ${rect.x + rect.width} ${rect.y + rect.height}, ${rect.x + rect.width / 2} ${
+    M ${rect.x} ${rect.y + radii[1]}
+    Q ${rect.x} ${rect.y}, ${rect.x + radii[0]} ${rect.y}
+    L ${rect.x + rect.width - radii[0]} ${rect.y}
+    Q ${rect.x + rect.width} ${rect.y}, ${rect.x + rect.width} ${rect.y + radii[1]}
+    L ${rect.x + rect.width} ${rect.y + rect.height - radii[1]}
+    Q ${rect.x + rect.width} ${rect.y + rect.height}, ${rect.x + rect.width - radii[0]} ${
     rect.y + rect.height
   }
-    Q ${rect.x} ${rect.y + rect.height}, ${rect.x} ${rect.y + rect.height / 2}
+    L ${rect.x + radii[0]} ${rect.y + rect.height}
+    Q ${rect.x} ${rect.y + rect.height}, ${rect.x} ${rect.y + rect.height - radii[1]}
+    L ${rect.x} ${rect.y + radii[1]}
   `;
 
   const radius = Math.max(rect.width, rect.height) / 2;
@@ -195,6 +227,7 @@ const Spotlight = ({
       friction: 75,
       tension: 550,
       mass: 5,
+      immediate: !animateTargetChanges,
       ...animationSpringConfig,
     },
   });
@@ -225,12 +258,11 @@ const Spotlight = ({
   return (
     <Portal>
       <StyledContainer
-        ref={containerRef}
         onClick={handleClick}
         style={{
           backgroundColor: containerBackgroundColor,
-          // opacity: containerOpacity,
         }}
+        ref={containerRef}
         {...containerProps}
       >
         <BackgroundBlurrer
@@ -275,19 +307,25 @@ const Spotlight = ({
         viewBox={`0 0 ${windowDimensions.width} ${windowDimensions.height}`}
         width={0}
         height={0}
-        // {...windowDimensions}
       >
         <defs>
           <clipPath clipRule="evenodd" id="foundryMask">
-            <animated.path fill="#FFFFFF" stroke="#000000" d={lightPath} />
+            <animated.path fill="#FFFFFF" d={lightPath} />
           </clipPath>
         </defs>
       </svg>
-      <Annotation style={{ transform: annotationTransform }}>{children}</Annotation>
+      <StyledAnnotation
+        style={{ transform: annotationTransform }}
+        ref={annotationRef}
+        {...annotationProps}
+      >
+        {children}
+      </StyledAnnotation>
     </Portal>
   );
 };
 
 Spotlight.Container = SpotlightContainer;
+Spotlight.Annotation = Annotation;
 
 export default Spotlight;
