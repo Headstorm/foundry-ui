@@ -97,7 +97,11 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         box-shadow ${timings.slow};
       ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
-      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
+      border: ${
+        variant === variants.outline
+          ? `1px solid ${color || colors.grayDark}`
+          : '1px solid transparent;'
+      };
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};

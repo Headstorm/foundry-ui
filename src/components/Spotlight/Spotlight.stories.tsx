@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { mdiDotsVertical } from '@mdi/js';
+import { mdiChevronDoubleRight, mdiDotsVertical } from '@mdi/js';
+import styled from 'styled-components';
 
 import Spotlight, { SpotlightProps } from './Spotlight';
-import { Button, Card, Dropdown } from '../../index';
+import { Button, Card, Text, variants, colors } from '../../index';
+
+const Header = styled(Card.NoPaddingHeader)`
+  display: flex;
+  justify-content: flex-end;
+`;
 
 export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
   const [buttonRef, setRef] = useState<HTMLButtonElement>();
@@ -12,7 +18,8 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
   return (
     <>
       <Card
-        header={<Dropdown options={[]} valueContainerProps={{ iconSuffix: mdiDotsVertical }} />}
+        StyledHeader={Header}
+        header={<Button iconSuffix={mdiDotsVertical} variant={variants.text} color="black" />}
         footer={
           <Button
             onClick={() => {
@@ -28,13 +35,22 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
       </Card>
       {tourStarted && (
         <Spotlight {...args} targetElement={buttonRef}>
+          <Text color="white" containerProps={{ as: 'h1', style: { fontSize: '2em' } }}>
+            Click this button! It seems like a good idea.
+          </Text>
           <Button
-            elevation={1}
+            color={colors.background}
+            iconSuffix={mdiChevronDoubleRight}
+            variant={variants.outline}
             onClick={() => {
               setTour(false);
             }}
           >
             Skip
+          </Button>
+          &nbsp;
+          <Button elevation={1} color={colors.primaryDark} onClick={() => {}}>
+            Next
           </Button>
         </Spotlight>
       )}

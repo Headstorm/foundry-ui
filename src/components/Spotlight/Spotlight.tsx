@@ -23,16 +23,29 @@ const BackgroundBlurrer = styled(AnimatedDiv)`
   z-index: -1;
 `;
 
+const Annotation = styled(AnimatedDiv)`
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: fit-content;
+  max-width: 50vw;
+`;
+
 export type SpotlightProps = {
   StyledContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   containerRef?: React.RefObject<HTMLDivElement>;
 
+  annotationJustify?: 'start' | 'center' | 'end';
+  annotationPosition?: 'left' | 'above' | 'right' | 'below';
+
   children?: React.ReactNode;
   targetElement?: HTMLElement;
   backgroundBlur?: string;
   backgroundDarkness?: number;
-  shape?: 'circular' | 'box' | 'rounded box'; // TODO make this an enum and export it
+  shape?: 'circular' | 'round' | 'box' | 'rounded box'; // TODO make this an enum and export it
   roundedCornerRadius?: number;
   padding?: number;
   onClick?: (e: React.MouseEvent) => void;
@@ -45,10 +58,13 @@ const Spotlight = ({
   containerProps,
   containerRef,
 
+  annotationJustify = 'center',
+  annotationPosition = 'above',
+
   children,
   targetElement,
   backgroundBlur = '0.5rem',
-  backgroundDarkness = 0.5,
+  backgroundDarkness = 0.3,
   shape = 'circular',
   roundedCornerRadius = 4,
   padding = 16, // 8px === .5rem
@@ -75,6 +91,7 @@ const Spotlight = ({
 
     if (targetElement) {
       const bounds = targetElement?.getBoundingClientRect();
+
       bounds.x -= padding;
       bounds.y -= padding;
       // bounds.bottom += padding;
@@ -97,13 +114,22 @@ const Spotlight = ({
   }
     Q ${rect.x} ${rect.y + rect.height}, ${rect.x} ${rect.y + rect.height / 2}
   `;
-  const finalPath = `${outerRectPath} ${innerShapePath}`;
+
+  const radius = Math.max(rect.width, rect.height) / 2;
+  const circularPath = `
+    M ${rect.x} ${rect.y + rect.height / 2}
+    A ${radius}, ${radius}, 0, 1, 1, ${rect.x} ${rect.y + rect.height / 2 + 1}
+    L ${rect.x} ${rect.y + rect.height / 2}
+  `;
+  const finalPath = `${outerRectPath} ${shape === 'circular' ? circularPath : innerShapePath}`;
 
   const {
     // containerOpacity,
     containerFilter,
     containerBackgroundColor,
     lightPath,
+
+    annotationTransform,
 
     topBlurHeight,
     topBlurWidth,
@@ -123,6 +149,8 @@ const Spotlight = ({
       containerBackgroundColor: 'rgba(0,0,0,0)',
 
       lightPath: finalPath,
+
+      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
       topBlurWidth: windowDimensions.width,
       topBlurHeight: rect.y,
@@ -146,6 +174,8 @@ const Spotlight = ({
 
       lightPath: finalPath,
 
+      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
+
       topBlurWidth: windowDimensions.width,
       topBlurHeight: rect.y - 1,
 
@@ -165,8 +195,8 @@ const Spotlight = ({
       friction: 75,
       tension: 550,
       mass: 5,
+      ...animationSpringConfig,
     },
-    ...animationSpringConfig,
   });
 
   // TODO: use a resize observer to detect when the bounds of the target change
@@ -245,6 +275,7 @@ const Spotlight = ({
         viewBox={`0 0 ${windowDimensions.width} ${windowDimensions.height}`}
         width={0}
         height={0}
+        // {...windowDimensions}
       >
         <defs>
           <clipPath clipRule="evenodd" id="foundryMask">
@@ -252,7 +283,7 @@ const Spotlight = ({
           </clipPath>
         </defs>
       </svg>
-      {children}
+      <Annotation style={{ transform: annotationTransform }}>{children}</Annotation>
     </Portal>
   );
 };
