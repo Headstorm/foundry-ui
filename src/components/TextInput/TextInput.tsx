@@ -214,6 +214,10 @@ const TextInput = ({
   const handleClear = (e: any) =>
     handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
 
+  if (internalValue !== nativeHTMLAttributes.value && nativeHTMLAttributes.value === '') {
+    setInternalValue('');
+  }
+
   return (
     <StyledContainer
       disabled={nativeHTMLAttributes.disabled}
