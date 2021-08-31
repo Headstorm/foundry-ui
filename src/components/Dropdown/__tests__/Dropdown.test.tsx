@@ -226,6 +226,9 @@ describe('Dropdown', () => {
     );
 
     screen.getByRole('button').focus();
+    // need to wait for observer to be called (for hidden options container and options container)
+    // before the dropdown is rendered correctly
+    await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
     await waitFor(() => queryByText('Squirtle') !== null);
     const optionsOutFrag = asFragment();
     expect(optionsOutFrag).toMatchSnapshot();
