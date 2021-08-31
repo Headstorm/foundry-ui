@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/Headstorm/foundry-ui/compare/v1.11.0...v1.11.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* **dropdown tests:** dropdown tests used to fail at random due to options not being fully rendered ([5b92a4e](https://github.com/Headstorm/foundry-ui/commit/5b92a4ee7efb9c033ee48ac3acb3fcdef3d61d9a))
+
 # [1.11.0](https://github.com/Headstorm/foundry-ui/compare/v1.10.0...v1.11.0) (2021-08-30)
 
 
