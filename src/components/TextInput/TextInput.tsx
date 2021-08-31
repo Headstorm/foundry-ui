@@ -269,15 +269,15 @@ const TextInput = ({
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
-      {showCharacterCount && maxLength && (
+      {showCharacterCount && (
         <StyledCharacterCount
           ref={characterCountRef}
           errorMessage={errorMessage}
           isValid={isValid}
-          textIsTooLong={(internalValue as string).length > maxLength}
+          textIsTooLong={maxLength ? (internalValue as string).length > maxLength : false}
           {...characterCountProps}
         >
-          {(internalValue as string).length} / {maxLength}
+          {(internalValue as string).length} {maxLength !== undefined ? `/ ${maxLength}` : null}
         </StyledCharacterCount>
       )}
       {isValid === false && errorMessage && (
