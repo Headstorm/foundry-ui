@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { mdiChevronDoubleRight, mdiDotsVertical } from '@mdi/js';
+import { mdiArrowRightBold, mdiCheckBold, mdiChevronDoubleRight, mdiDotsVertical } from '@mdi/js';
 import styled from 'styled-components';
 
 import Spotlight, { SpotlightProps } from './Spotlight';
@@ -30,7 +30,11 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
   const [tourStarted, setTour] = useState<boolean>(false);
 
   const stepOptions = [buttonRef, menuRef, cardRef];
-  const messages = ['Click here to start the tour!', 'This is a menu.', 'This is the whole card'];
+  const messages = [
+    { title: 'This button starts the tour!', subtitle: '(you already knew that though)' },
+    { title: 'This is a kebab menu.', subtitle: '' },
+    { title: 'This is the whole card', subtitle: '' },
+  ];
 
   const goNext = () => {
     setStep(step => {
@@ -42,13 +46,19 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
     });
   };
 
+  const lastStep = currStep === stepOptions.length - 1;
+
   return (
     <>
       <Card
         StyledHeader={Header}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore - our ref types don't like getting a set state dispatch function
         containerRef={setCardRef}
         header={
           <Button
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore - our ref types don't like getting a set state dispatch function
             containerRef={setMenuRef}
             iconSuffix={mdiDotsVertical}
             variant={variants.text}
@@ -60,7 +70,10 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
             onClick={() => {
               setTour(true);
             }}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore - our ref types don't like getting a set state dispatch function
             containerRef={setButtonRef}
+            color={colors.tertiary}
           >
             Start the tour!
           </Button>
@@ -71,8 +84,13 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
       {tourStarted && (
         <Spotlight {...args} StyledAnnotation={Annotation} targetElement={stepOptions[currStep]}>
           <Text color="white" containerProps={{ as: 'h1', style: { fontSize: '2em' } }}>
-            {messages[currStep]}
+            {messages[currStep].title}
           </Text>
+          <Text color="white" containerProps={{ style: { fontWeight: '700' } }}>
+            {messages[currStep].subtitle}
+          </Text>
+          <br />
+          <br />
           <Button
             color={colors.background}
             iconSuffix={mdiChevronDoubleRight}
@@ -87,13 +105,14 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
           &nbsp;
           <Button
             StyledContainer={NextButtonContainer}
+            iconSuffix={lastStep ? mdiCheckBold : mdiArrowRightBold}
             elevation={1}
-            color={colors.primaryDark}
+            color={lastStep ? colors.secondaryDark : colors.primaryDark}
             onClick={() => {
               goNext();
             }}
           >
-            {currStep === stepOptions.length - 1 ? 'Done' : 'Next'}
+            {lastStep ? 'I got it' : 'Next'}
           </Button>
         </Spotlight>
       )}

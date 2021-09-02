@@ -43,9 +43,6 @@ export type SpotlightProps = {
   annotationProps?: SubcomponentPropsType;
   annotationRef?: React.RefObject<HTMLElement>;
 
-  annotationJustify?: 'start' | 'center' | 'end';
-  annotationPosition?: 'left' | 'above' | 'right' | 'below';
-
   children?: React.ReactNode;
   targetElement?: HTMLElement;
   backgroundBlur?: string;
@@ -66,9 +63,6 @@ const Spotlight = ({
   StyledAnnotation = Annotation,
   annotationProps,
   annotationRef,
-
-  // annotationJustify = 'center',
-  // annotationPosition = 'above',
 
   children,
   targetElement,
@@ -131,7 +125,6 @@ const Spotlight = ({
     radii[1] = 0;
   }
 
-  // TODO: pass this to useSpring - ensure number of points don't change
   const outerRectPath = `M 0 0 h${windowDimensions.width} v${windowDimensions.height} h-${windowDimensions.width}`;
   const innerShapePath = `
     M ${rect.x} ${rect.y + radii[1]}
@@ -175,9 +168,40 @@ const Spotlight = ({
       rightBlurHeight,
       rightBlurWidth,
     },
-    // setSpring,
-  ] = useSpring(
-    () => ({
+    setSpring,
+  ] = useSpring(() => ({
+    containerOpacity: 0,
+    containerFilter: 'blur(0rem)',
+    containerBackgroundColor: 'rgba(0,0,0,0)',
+
+    lightPath: finalPath,
+
+    annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
+
+    topBlurWidth: windowDimensions.width,
+    topBlurHeight: rect.y - 1,
+
+    bottomBlurY: rect.bottom,
+    bottomBlurWidth: windowDimensions.width,
+    bottomBlurHeight: windowDimensions.height - rect.bottom - 1,
+
+    leftBlurY: rect.y,
+    leftBlurWidth: rect.x,
+    leftBlurHeight: rect.height + 2,
+
+    rightBlurY: rect.y,
+    rightBlurWidth: windowDimensions.width - rect.right,
+    rightBlurHeight: rect.height + 2,
+
+    friction: 75,
+    tension: 550,
+    mass: 5,
+    immediate: !animateTargetChanges,
+    ...animationSpringConfig,
+  }));
+
+  useEffect(() => {
+    setSpring(() => ({
       containerOpacity: 1,
       containerFilter: `blur(${backgroundBlur})`,
       containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
@@ -206,17 +230,25 @@ const Spotlight = ({
       mass: 5,
       immediate: !animateTargetChanges,
       ...animationSpringConfig,
-    }),
-    [
-      targetElement,
-      shape,
-      backgroundBlur,
-      backgroundDarkness,
-      padding,
-      cornerRadius,
-      windowDimensions,
-    ],
-  );
+    }));
+  }, [
+    targetElement,
+    shape,
+    backgroundBlur,
+    backgroundDarkness,
+    padding,
+    cornerRadius,
+    windowDimensions,
+    setSpring,
+    finalPath,
+    rect.x,
+    rect.y,
+    rect.bottom,
+    rect.height,
+    rect.right,
+    animateTargetChanges,
+    animationSpringConfig,
+  ]);
 
   // TODO: use a resize observer to detect when the bounds of the target change
   const updateWindowBounds = () => {
