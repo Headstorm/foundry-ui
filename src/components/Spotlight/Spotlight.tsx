@@ -15,7 +15,6 @@ const SpotlightContainer = styled(AnimatedDiv)`
   left: 0;
   contain: strict;
   clip-path: url(#foundryMask);
-  background-color: colors.black;
 `;
 
 const BackgroundBlurrer = styled(AnimatedDiv)`

@@ -101,7 +101,6 @@ exports[`Spotlight Should match previous snapshot with a targetElement 1`] = `
   contain: strict;
   -webkit-clip-path: url(#foundryMask);
   clip-path: url(#foundryMask);
-  background-color: colors.black;
 }
 
 .c1 {
@@ -127,7 +126,7 @@ exports[`Spotlight Should match previous snapshot with a targetElement 1`] = `
       globalstyles="
   
 "
-      style="background-color: rgba(0, 0, 0, 0.7019607843137254);"
+      style="background-color: rgba(0, 0, 0, 0.139135721819163);"
     >
       <div
         class=" c1"
@@ -225,7 +224,6 @@ exports[`Spotlight Should match previous snapshot with default props 1`] = `
   contain: strict;
   -webkit-clip-path: url(#foundryMask);
   clip-path: url(#foundryMask);
-  background-color: colors.black;
 }
 
 .c1 {
@@ -252,7 +250,7 @@ exports[`Spotlight Should match previous snapshot with default props 1`] = `
       globalstyles="
   
 "
-      style="background-color: rgba(0, 0, 0, 0.7019607843137254);"
+      style="background-color: rgba(0, 0, 0, 0);"
     >
       <div
         class=" c1"

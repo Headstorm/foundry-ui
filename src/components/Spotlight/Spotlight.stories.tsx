@@ -120,8 +120,12 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
   );
 };
 AnimatedSpotlight.args = {
-  padding: 16,
+  padding: 12,
   shape: 'rounded box',
+  animateTargetChanges: true,
+  backgroundDarkness: 0.3,
+  backgroundBlur: '0.25rem',
+  cornerRadius: 12,
 };
 
 export default {
