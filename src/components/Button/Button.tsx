@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
@@ -41,9 +41,9 @@ export type ButtonProps = {
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
 
-  skeletonProps?: SubcomponentPropsType;
+  skeletonShimmerProps?: ComponentProps<typeof Skeleton.Shimmer>;
   /**
-   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonShimmerProps to customize the Skeleton wrapping the button.
    */
   ProgressBar?: JSX.Element | null;
 
@@ -163,8 +163,10 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
+
+  skeletonShimmerProps,
   /**
-   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonShimmerProps to customize the Skeleton wrapping the button.
    */
   ProgressBar, // Deprecated
 
@@ -256,6 +258,7 @@ const Button = ({
       <Skeleton.Shimmer
         color={getFontColorFromVariant(variant, containerColor, colors.background, colors.grayDark)}
         isLoading={isLoading}
+        {...skeletonShimmerProps}
       />
     </StyledContainer>
   );
