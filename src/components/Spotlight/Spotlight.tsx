@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { animated, useSpring } from '@react-spring/web';
+import { animated, useSpring, OnRest, Controller, SpringValue } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
+import { useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
 
 const SpotlightContainer = styled(AnimatedDiv)`
@@ -33,6 +34,13 @@ const Annotation = styled(AnimatedDiv)`
   max-width: 50vw;
 `;
 
+export enum SpotlightShapes {
+  circular = 'circular',
+  round = 'round',
+  box = 'box',
+  'roundedBox' = 'rounded box',
+}
+
 export type SpotlightProps = {
   StyledContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
@@ -42,11 +50,13 @@ export type SpotlightProps = {
   annotationProps?: SubcomponentPropsType;
   annotationRef?: React.RefObject<HTMLElement>;
 
+  onAnimationEnd?: OnRest<SpringValue, Controller>;
+
   children?: React.ReactNode;
   targetElement?: HTMLElement;
   backgroundBlur?: string;
   backgroundDarkness?: number;
-  shape?: 'circular' | 'round' | 'box' | 'rounded box'; // TODO make this an enum and export it
+  shape?: SpotlightShapes;
   cornerRadius?: number;
   padding?: number;
   onClick?: (e: React.MouseEvent) => void;
@@ -63,17 +73,20 @@ const Spotlight = ({
   annotationProps,
   annotationRef,
 
+  onAnimationEnd,
+
   children,
   targetElement,
   backgroundBlur = '0.25rem',
   backgroundDarkness = 0.3,
-  shape = 'circular',
+  shape = SpotlightShapes.circular,
   cornerRadius = 12,
   padding = 12, // 8px === .5rem
   onClick,
   animateTargetChanges = true,
   animationSpringConfig,
 }: SpotlightProps): JSX.Element | null => {
+  const handleEventWithAnalytics = useAnalytics();
   const [windowDimensions, setWindowDimensions] = useState<{ width: number; height: number }>({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -94,7 +107,7 @@ const Spotlight = ({
     if (targetElement) {
       const bounds = targetElement?.getBoundingClientRect();
 
-      if (shape === 'circular') {
+      if (shape === SpotlightShapes.circular) {
         if (bounds.width > bounds.height) {
           const newHeight = bounds.width;
           bounds.y -= (newHeight - bounds.height) * 0.5;
@@ -116,10 +129,10 @@ const Spotlight = ({
   }, [targetElement, padding, windowDimensions, shape]);
 
   const radii = [Math.min(cornerRadius, rect.width / 2), Math.min(cornerRadius, rect.height / 2)];
-  if (shape === 'round') {
+  if (shape === SpotlightShapes.round) {
     radii[0] = rect.width / 2;
     radii[1] = rect.height / 2;
-  } else if (shape === 'box') {
+  } else if (shape === SpotlightShapes.box) {
     radii[0] = 0;
     radii[1] = 0;
   }
@@ -145,7 +158,9 @@ const Spotlight = ({
     A ${radius}, ${radius}, 0, 1, 1, ${rect.x} ${rect.y + rect.height / 2 + 1}
     L ${rect.x} ${rect.y + rect.height / 2}
   `;
-  const finalPath = `${outerRectPath} ${shape === 'circular' ? circularPath : innerShapePath}`;
+  const finalPath = `${outerRectPath} ${
+    shape === SpotlightShapes.circular ? circularPath : innerShapePath
+  }`;
 
   const [
     {
@@ -196,6 +211,7 @@ const Spotlight = ({
     tension: 550,
     mass: 5,
     immediate: !animateTargetChanges,
+    onRest: onAnimationEnd,
     ...animationSpringConfig,
   }));
 
@@ -228,6 +244,8 @@ const Spotlight = ({
       tension: 550,
       mass: 5,
       immediate: !animateTargetChanges,
+
+      onRest: onAnimationEnd,
       ...animationSpringConfig,
     }));
   }, [
@@ -266,10 +284,7 @@ const Spotlight = ({
   }, []);
 
   const handleClick = (evt: React.MouseEvent) => {
-    // TODO: analytics stuff here once that is merged
-    if (onClick) {
-      onClick(evt);
-    }
+    handleEventWithAnalytics('Spotlight', onClick, 'onClick', evt, containerProps);
   };
 
   return (
@@ -344,5 +359,6 @@ const Spotlight = ({
 
 Spotlight.Container = SpotlightContainer;
 Spotlight.Annotation = Annotation;
+Spotlight.SpotlightShapes = SpotlightShapes;
 
 export default Spotlight;

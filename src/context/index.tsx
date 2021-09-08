@@ -136,7 +136,9 @@ export const useAnalytics = () => {
     eventArgs: any,
     props: any,
   ): void => {
-    eventFunction(eventArgs);
+    if (eventFunction !== undefined) {
+      eventFunction(eventArgs);
+    }
     const dateTime = new Date();
     const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
     deviceInfo.innerHeight =

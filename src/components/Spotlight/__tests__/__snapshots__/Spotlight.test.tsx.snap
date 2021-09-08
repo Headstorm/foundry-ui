@@ -126,7 +126,7 @@ exports[`Spotlight Should match previous snapshot with a targetElement 1`] = `
       globalstyles="
   
 "
-      style="background-color: rgba(0, 0, 0, 0.139135721819163);"
+      style="background-color: rgba(0, 0, 0, 0.7);"
     >
       <div
         class=" c1"
@@ -250,7 +250,7 @@ exports[`Spotlight Should match previous snapshot with default props 1`] = `
       globalstyles="
   
 "
-      style="background-color: rgba(0, 0, 0, 0);"
+      style="background-color: rgba(0, 0, 0, 0.7);"
     >
       <div
         class=" c1"

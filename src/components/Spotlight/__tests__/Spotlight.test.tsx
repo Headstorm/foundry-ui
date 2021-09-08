@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { Button, Spotlight } from '../../../index';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { Button, Spotlight } from '../../../index';
 
 expect.extend(toHaveNoViolations);
 
@@ -13,19 +13,23 @@ describe('Spotlight', () => {
     expect(results).toHaveNoViolations();
   });
   it('Should match previous snapshot with default props', async () => {
-    const component = <Spotlight />;
+    const onEnd = jest.fn();
+    const component = <Spotlight onAnimationEnd={onEnd} />;
     const { container } = render(component, { container: document.body });
+    await waitFor(() => expect(onEnd).toHaveBeenCalled());
     expect(container).toMatchSnapshot();
   });
   it('Should match previous snapshot with a targetElement', async () => {
     const buttonRef = React.createRef<HTMLButtonElement>();
+    const onEnd = jest.fn();
     const component = (
-      <Spotlight targetElement={buttonRef.current}>
+      <Spotlight onAnimationEnd={onEnd} targetElement={buttonRef.current}>
         <Button containerRef={buttonRef}>Test</Button>
       </Spotlight>
     );
     const { container } = render(component, { container: document.body });
     await waitFor(() => buttonRef.current);
+    await waitFor(() => expect(onEnd).toHaveBeenCalled());
     expect(container).toMatchSnapshot();
   });
 });
