@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangeSlider renders 1`] = `
+.c0 {
+  position: relative;
+  height: 1rem;
+  width: 100%;
+  font-family: Arial,Roboto,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: filter .1s;
+  transition: filter .1s;
+  top: -.5rem;
+  margin-top: 1rem;
+  top: -.75rem;
+  margin-top: 1.5rem;
+}
+
+.c1 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #D5D5D5;
+}
+
+.c2 {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  left: Infinity%;
+  right: Infinity%;
+  -webkit-transition: left .3s,right .3s;
+  transition: left .3s,right .3s;
+  background-color: #DA4200;
+}
+
+.c3 {
+  position: absolute;
+  bottom: 100%;
+  left: 0rem;
+  color: #51575D;
+  font-size: .5rem;
+}
+
+.c4 {
+  position: absolute;
+  bottom: 100%;
+  right: 0rem;
+  color: #51575D;
+  font-size: .5rem;
+}
+
+<div>
+  <div
+    class="c0"
+    data-test-id="hs-ui-range-slider-unit-test"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+        max="10"
+        min="0"
+        values=""
+      />
+    </div>
+    <div
+      class="c3"
+    >
+      0
+    </div>
+    <div
+      class="c4"
+    >
+      10
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeSlider renders 2`] = `
+.c0 {
+  position: relative;
+  height: 1rem;
+  width: 100%;
+  font-family: Arial,Roboto,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: filter .1s;
+  transition: filter .1s;
+  top: -.5rem;
+  margin-top: 1rem;
+  top: -.75rem;
+  margin-top: 1.5rem;
+}
+
+.c5 {
+  position: absolute;
+  bottom: -.125rem;
+  left: -.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: #DA4200;
+  color: #DA4200;
+  border: .125rem solid #fff;
+  border-radius: 50%;
+  touch-action: none;
+  -webkit-filter: url(#blur);
+  filter: url(#blur);
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  z-index: 2;
+}
+
+.c6 {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(0deg);
+  -ms-transform: translateX(-50%) rotate(0deg);
+  transform: translateX(-50%) rotate(0deg);
+  background-color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.c1 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #D5D5D5;
+}
+
+.c2 {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  left: 0%;
+  right: 70%;
+  -webkit-transition: left .3s,right .3s;
+  transition: left .3s,right .3s;
+  background-color: #DA4200;
+}
+
+.c3 {
+  position: absolute;
+  bottom: 100%;
+  left: 0rem;
+  color: #51575D;
+  font-size: .5rem;
+}
+
+.c4 {
+  position: absolute;
+  bottom: 100%;
+  right: 0rem;
+  color: #51575D;
+  font-size: .5rem;
+}
+
+.c7 {
+  position: absolute;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 1rem;
+  width: 2px;
+  left: 0px;
+  background-color: #9FA2A5;
+}
+
+.c8 {
+  position: absolute;
+  bottom: 100%;
+  white-space: nowrap;
+  font-size: .375rem;
+  color: #9FA2A5;
+}
+
+<div>
+  <div
+    class="c0"
+    data-test-id="hs-ui-range-slider-unit-test"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+        max="10"
+        min="0"
+        values="[object Object]"
+      />
+    </div>
+    <div
+      class="c3"
+    >
+      0
+    </div>
+    <div
+      class="c4"
+    >
+      10
+    </div>
+    <div
+      class="c5"
+      draggable="false"
+      style="transform: none;"
+    >
+      <div
+        class="c6"
+        value="3"
+      />
+    </div>
+    <div
+      class=" c7"
+      id="marker-3"
+    >
+      <div
+        class=" c8"
+      />
+    </div>
+  </div>
+</div>
+`;

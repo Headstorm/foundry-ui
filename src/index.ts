@@ -7,6 +7,7 @@ import InteractionFeedback from './components/InteractionFeedback';
 import Label from './components/Label';
 import Modal from './components/Modal';
 import RangeSlider from './components/RangeSlider';
+import StepProgress from './components/StepProgress';
 import Table from './components/Table';
 import Tag from './components/Tag';
 import Text from './components/Text';
@@ -31,6 +32,7 @@ export {
   Label,
   Modal,
   RangeSlider,
+  StepProgress,
   Table,
   Tag,
   Text,
