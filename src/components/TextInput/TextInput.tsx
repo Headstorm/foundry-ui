@@ -7,11 +7,13 @@ import React, {
   useState,
   TextareaHTMLAttributes,
   InputHTMLAttributes,
+  useRef,
 } from 'react';
 import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
+import { mergeRefs } from '../../utils/refs';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
@@ -75,7 +77,6 @@ const IconContainer = styled(Div)`
     return `
       padding: 0.5em;
       height: 100%;
-      display: flex;
       align-items: center;
       justify-content: center;
       color: ${colors.grayMedium};
@@ -112,6 +113,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
   TextareaHTMLAttributes<HTMLTextAreaElement> & {
     iconPrefix?: string | ReactNode;
     onClear?: (event: SyntheticEvent) => void;
+    clearable?: boolean;
     debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
     isValid?: boolean;
     isMultiline?: boolean;
@@ -158,6 +160,7 @@ const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-e
 const TextInput = ({
   debouncedOnChange = defaultCallback,
   onClear,
+  clearable,
   iconPrefix,
   isValid = true,
   isMultiline,
@@ -205,14 +208,29 @@ const TextInput = ({
     debounceInterval,
   ]);
 
+  const internalInputRef = useRef<HTMLInputElement>(null);
+
   const InputComponent: StyledSubcomponentType = isMultiline ? StyledTextArea : StyledInput;
 
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
 
-  const handleClear = (e: any) =>
-    handleEventWithAnalytics('TextInput', onClear, 'onClear', e, containerProps);
+  const handleClear = (e: any) => {
+    const onClearToUse =
+      onClear ??
+      (() => {
+        if (!inputRef?.current?.value && internalInputRef?.current?.value) {
+          setInternalValue('');
+          internalInputRef.current.value = '';
+        }
+      });
+    handleEventWithAnalytics('TextInput', onClearToUse, 'onClear', e, containerProps);
+  };
+
+  if (internalValue !== nativeHTMLAttributes.value && nativeHTMLAttributes.value === '') {
+    setInternalValue('');
+  }
 
   return (
     <StyledContainer
@@ -243,23 +261,23 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        ref={inputRef}
+        ref={mergeRefs([inputRef, internalInputRef])}
         {...inputProps}
       />
-      {onClear && (
+      {(onClear || clearable) && (
         <StyledIconContainer onClick={handleClear} {...iconContainerProps}>
           <Icon path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
-      {showCharacterCount && maxLength && (
+      {showCharacterCount && (
         <StyledCharacterCount
           ref={characterCountRef}
           errorMessage={errorMessage}
           isValid={isValid}
-          textIsTooLong={(internalValue as string).length > maxLength}
+          textIsTooLong={maxLength ? (internalValue as string).length > maxLength : false}
           {...characterCountProps}
         >
-          {(internalValue as string).length} / {maxLength}
+          {(internalValue as string).length} {maxLength !== undefined ? `/ ${maxLength}` : null}
         </StyledCharacterCount>
       )}
       {isValid === false && errorMessage && (
