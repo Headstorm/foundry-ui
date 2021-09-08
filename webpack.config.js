@@ -24,7 +24,7 @@ module.exports = {
     rules: [
       // we use babel-loader to load our jsx and tsx files
       {
-        test: /\.(ts|js)x?$/,
+        test: /(?<!.stories)\.(ts|js)x?$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
