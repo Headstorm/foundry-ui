@@ -19,6 +19,7 @@ module.exports = {
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
+    restrictions: [/(?<!.stories)\.(ts|js)x?$/],
   },
   module: {
     rules: [
