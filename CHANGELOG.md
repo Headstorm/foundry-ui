@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/Headstorm/foundry-ui/compare/v1.11.1...v1.11.2) (2021-09-07)
+
+
+### Bug Fixes
+
+* **button:** skeleton props object is now correctly spread on skeleton shimmer ([1fcf324](https://github.com/Headstorm/foundry-ui/commit/1fcf324055fc9667b168dcc054132657c51798b7)), closes [#322](https://github.com/Headstorm/foundry-ui/issues/322)
+
 ## [1.11.1](https://github.com/Headstorm/foundry-ui/compare/v1.11.0...v1.11.1) (2021-08-31)
 
 
