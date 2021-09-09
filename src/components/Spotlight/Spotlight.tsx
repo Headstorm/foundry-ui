@@ -152,14 +152,12 @@ const Spotlight = ({
   `;
 
   const radius = Math.max(rect.width, rect.height) / 2;
-  const circularPath = `
+  const circularPath = `${outerRectPath} 
     M ${rect.x} ${rect.y + rect.height / 2}
     A ${radius}, ${radius}, 0, 1, 1, ${rect.x} ${rect.y + rect.height / 2 + 1}
     L ${rect.x} ${rect.y + rect.height / 2}
   `;
-  const finalPath = `${outerRectPath} ${
-    shape === SpotlightShapes.circular ? circularPath : innerShapePath
-  }`;
+  const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
 
   const [
     {
@@ -187,7 +185,7 @@ const Spotlight = ({
     containerFilter: 'blur(0rem)',
     containerBackgroundColor: 'rgba(0,0,0,0)',
 
-    lightPath: finalPath,
+    lightPath: finalRectangularPath,
 
     annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
@@ -220,7 +218,7 @@ const Spotlight = ({
       containerFilter: `blur(${backgroundBlur})`,
       containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
 
-      lightPath: finalPath,
+      lightPath: finalRectangularPath,
 
       annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
@@ -256,7 +254,7 @@ const Spotlight = ({
     cornerRadius,
     windowDimensions,
     setSpring,
-    finalPath,
+    finalRectangularPath,
     rect.x,
     rect.y,
     rect.bottom,
@@ -342,7 +340,10 @@ const Spotlight = ({
       >
         <defs>
           <clipPath clipRule="evenodd" id="foundryMask">
-            <animated.path fill="#FFFFFF" d={lightPath} />
+            <animated.path
+              fill="#FFFFFF"
+              d={shape === SpotlightShapes.circular ? circularPath : lightPath}
+            />
           </clipPath>
         </defs>
       </svg>
