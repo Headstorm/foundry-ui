@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { animated, useSpring, OnRest, Controller, SpringValue } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
@@ -50,8 +50,6 @@ export type SpotlightProps = {
   annotationProps?: SubcomponentPropsType;
   annotationRef?: React.RefObject<HTMLElement>;
 
-  onAnimationEnd?: OnRest<SpringValue, Controller>;
-
   children?: React.ReactNode;
   targetElement?: HTMLElement;
   backgroundBlur?: string;
@@ -61,6 +59,8 @@ export type SpotlightProps = {
   padding?: number;
   onClick?: (e: React.MouseEvent) => void;
   animateTargetChanges?: boolean;
+  // onAnimationEnd?: ControllerProps['onRest'];
+  onAnimationEnd?: () => void;
   animationSpringConfig?: Record<string, unknown>;
 };
 
@@ -73,8 +73,6 @@ const Spotlight = ({
   annotationProps,
   annotationRef,
 
-  onAnimationEnd,
-
   children,
   targetElement,
   backgroundBlur = '0.25rem',
@@ -84,6 +82,7 @@ const Spotlight = ({
   padding = 12, // 8px === .5rem
   onClick,
   animateTargetChanges = true,
+  onAnimationEnd,
   animationSpringConfig,
 }: SpotlightProps): JSX.Element | null => {
   const handleEventWithAnalytics = useAnalytics();
@@ -265,6 +264,7 @@ const Spotlight = ({
     rect.right,
     animateTargetChanges,
     animationSpringConfig,
+    onAnimationEnd,
   ]);
 
   // TODO: use a resize observer to detect when the bounds of the target change
