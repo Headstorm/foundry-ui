@@ -218,7 +218,7 @@ const TextInput = ({
 
   const handleClear = (e: any) => {
     const onClearToUse =
-      onClear ??
+      onClear &&
       (() => {
         if (!inputRef?.current?.value && internalInputRef?.current?.value) {
           setInternalValue('');
