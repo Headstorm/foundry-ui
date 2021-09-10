@@ -1,3 +1,10 @@
+## [1.11.4](https://github.com/Headstorm/foundry-ui/compare/v1.11.3...v1.11.4) (2021-09-10)
+
+
+### Bug Fixes
+
+* **textinput:** swap nullish coalescing for && to fix broken bundle ([d4718d2](https://github.com/Headstorm/foundry-ui/commit/d4718d2dba184ff6558e792d601773d9bf049531))
+
 ## [1.11.3](https://github.com/Headstorm/foundry-ui/compare/v1.11.2...v1.11.3) (2021-09-08)
 
 
