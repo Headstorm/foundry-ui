@@ -35,9 +35,12 @@ export const Default: Story<DefaultProps> = ({ disabled }: DefaultProps) => {
   //   markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
   // }
 
+  const labels = ['inconsistent', 'inconsistent', 'inconsistent', 'inconsistent'];
+  const index = 1;
+
   return (
     <Row>
-      <StepProgress disabled={disabled} />
+      <StepProgress disabled={disabled} labels={labels} index={index} />
     </Row>
   );
 };
