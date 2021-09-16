@@ -6,8 +6,8 @@ on:
   push:
     branches: [master, v1-release, next, alpha, beta]
     paths:
-      - "packages/foundry-react-ui/**"
-      - "!packages/foundry-react-ui/coverage/**"
+      - '**'
+      - '!coverage/**'
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -26,29 +26,29 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
       - name: Prepare
         run: yarn install
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Lint React
-        run: yarn run lint-react
+        run: yarn run lint
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Test React
-        run: yarn run test-react
+        run: yarn run test-ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build React
-        run: yarn run build-react
+        run: yarn run bundle
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build Storybook
-        run: yarn run build-docs
+        run: yarn run build-storybook
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -58,10 +58,10 @@ jobs:
           name: react-artifact
           path: |
             docs/
-            packages/foundry-react-ui/dist/
-            packages/foundry-react-ui/coverage/
+            dist/
+            coverage/
       - name: Update version
-        run: npm run semver-release # Uses the configuration from packages/foundry-react-ui/package.json
+        run: npm run semver-release # Uses the configuration from package.json
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
