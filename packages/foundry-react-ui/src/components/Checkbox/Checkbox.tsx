@@ -9,7 +9,14 @@ import { SubcomponentPropsType } from '../commonTypes';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { disabledStyles } from '../../utils/color';
-import CheckboxTypes from '../../enums/checkboxTypes';
+
+export enum CheckboxTypes {
+  fill = 'fill',
+  cross = 'cross',
+  check = 'check',
+  default = 'default',
+  neutral = 'neutral',
+}
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
