@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
+import CheckboxTypes from 'src/enums/checkboxTypes';
 
 import { darken } from 'polished';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
@@ -9,14 +10,6 @@ import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import { disabledStyles } from '../../utils/color';
-
-export enum CheckboxTypes {
-  fill = 'fill',
-  cross = 'cross',
-  check = 'check',
-  default = 'default',
-  neutral = 'neutral',
-}
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
