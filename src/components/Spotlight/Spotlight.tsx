@@ -164,6 +164,7 @@ const Spotlight = ({
       containerFilter,
       containerBackgroundColor,
       lightPath,
+      circularLightPath,
 
       annotationTransform,
 
@@ -186,6 +187,7 @@ const Spotlight = ({
     containerBackgroundColor: 'rgba(0,0,0,0)',
 
     lightPath: finalRectangularPath,
+    circularLightPath: circularPath,
 
     annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
@@ -219,6 +221,7 @@ const Spotlight = ({
       containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
 
       lightPath: finalRectangularPath,
+      circularLightPath: circularPath,
 
       annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
@@ -255,6 +258,7 @@ const Spotlight = ({
     windowDimensions,
     setSpring,
     finalRectangularPath,
+    circularPath,
     rect.x,
     rect.y,
     rect.bottom,
@@ -342,7 +346,7 @@ const Spotlight = ({
           <clipPath clipRule="evenodd" id="foundryMask">
             <animated.path
               fill="#FFFFFF"
-              d={shape === SpotlightShapes.circular ? circularPath : lightPath}
+              d={shape === SpotlightShapes.circular ? circularLightPath : lightPath}
             />
           </clipPath>
         </defs>
