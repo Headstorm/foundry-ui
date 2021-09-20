@@ -55,7 +55,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -157,7 +157,7 @@ exports[`Button keeps the container the same when switching between isLoading an
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -273,7 +273,7 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -507,7 +507,7 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: transparent;
   color: #9FA2A5;
@@ -743,7 +743,7 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -891,7 +891,7 @@ exports[`Button shows icons 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -1039,7 +1039,7 @@ exports[`Button shows icons with type string 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -1188,7 +1188,7 @@ exports[`Button shows loading skeleton 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;
@@ -1282,7 +1282,7 @@ exports[`Button shows loading text when provided 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 0 none;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #9FA2A5;
   color: #000;

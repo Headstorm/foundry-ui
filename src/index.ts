@@ -7,6 +7,7 @@ import InteractionFeedback from './components/InteractionFeedback';
 import Label from './components/Label';
 import Modal from './components/Modal';
 import RangeSlider from './components/RangeSlider';
+import Spotlight from './components/Spotlight';
 import Table from './components/Table';
 import Tag from './components/Tag';
 import Text from './components/Text';
@@ -32,6 +33,8 @@ export {
   Label,
   Modal,
   RangeSlider,
+  Skeleton,
+  Spotlight,
   Table,
   Tag,
   Text,
@@ -40,7 +43,6 @@ export {
    * @deprecated The Progress loading skeleton is being replaced by the Skeleton component
    */
   Progress,
-  Skeleton,
   FoundryProvider,
   FoundryContext,
   useTheme,
