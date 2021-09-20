@@ -21,6 +21,7 @@ import timings from './enums/timings';
 import fonts from './enums/fonts';
 import variants from './enums/variants';
 import feedbackTypes from './enums/feedbackTypes';
+import checkboxTypes from './enums/checkboxTypes';
 
 export {
   Button,
@@ -50,4 +51,5 @@ export {
   fonts,
   variants,
   feedbackTypes,
+  checkboxTypes,
 };
