@@ -1,3 +1,10 @@
+## [1.11.5](https://github.com/Headstorm/foundry-ui/compare/v1.11.4...v1.11.5) (2021-09-21)
+
+
+### Bug Fixes
+
+* **checkbox.stories:** fixed import location for checkboxTypes ([d0542f7](https://github.com/Headstorm/foundry-ui/commit/d0542f715d0bfee588a0fd68840fb032fcecde0c)), closes [#334](https://github.com/Headstorm/foundry-ui/issues/334)
+
 ## [1.11.4](https://github.com/Headstorm/foundry-ui/compare/v1.11.3...v1.11.4) (2021-09-10)
 
 
