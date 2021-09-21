@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useMemo, useState, useCallback } from 'react'
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
-import { useSpring, a } from 'react-spring';
+import { useSpring, a } from '@react-spring/web';
 import { useDrag } from 'react-use-gesture';
 import useMeasure from 'react-use-measure';
 import { ResizeObserver } from '@juggle/resize-observer';

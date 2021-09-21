@@ -41,7 +41,7 @@ Peer dependencies:
 - react ^16.13.1
 - react-dom ^16.13.1
 - react-is ^16.13.1
-- react-spring ^8.0.27
+- @react-spring/web ^9.2.0
 - styled-components >= 5.1.0
 
 If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). [Storybook](https://storybook.js.org/) is the open source tool we use to demonstrate and document the Foundry UI components. Click the Live Demo link above to view the Foundry components now or checkout the Contributing section below for information about how to run Storybook on your local machine.
@@ -59,9 +59,9 @@ yarn add @headstorm/foundry-react-ui
 For the peer dependency [styled components](https://styled-components.com/), [react-is](https://www.npmjs.com/package/react-is), and [react-spring](https://www.npmjs.com/package/react-spring) install from the same root directory, run the command:
 
 ```
-npm install --save styled-components react-is react-spring
+npm install --save styled-components react-is @react-spring/web
 // or
-yarn add styled-components react-is react-spring
+yarn add styled-components react-is @react-spring/web
 ```
 
 ## Usage
