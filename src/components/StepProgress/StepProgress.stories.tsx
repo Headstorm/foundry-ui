@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
+import colors from 'src/enums/colors';
+import labelTypes from 'src/enums/labelTypes';
 import StepProgress, { StepProgressProps } from './StepProgress';
 import fonts from '../../enums/fonts';
 
@@ -21,40 +23,23 @@ export const Default: Story<DefaultProps> = ({
   disabled,
   index,
   selectedStepColor,
+  color,
+  clickable,
+  round,
+  labels,
+  canClickToNextStep,
+  canClickToPreviousSteps,
+  labelType,
 }: DefaultProps) => {
   const [currStep, setCurrStep] = useState(index);
 
   useEffect(() => setCurrStep(index), [index]);
-  // const [val, setVal] = useState(value);
 
-  // useEffect(() => {
-  //   setVal(value);
-  // }, [value]);
-
-  // const markersSelection = markers;
-  // const markersArray = [];
-  // if (markersSelection === 'all values') {
-  //   for (let i = min; i <= max; i++) {
-  //     markersArray.push(markerLabels ? { value: i, label: `${i}` } : i);
-  //   }
-  // } else if (markersSelection === 'middle value') {
-  //   const midpoint = (min + max) / 2;
-  //   markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
-  // }
-  // // var index = 0;
-  // const setIndex = (newIndex: number) => {
-  //   index = newIndex;
-  //   console.log(index);
-  // };
-
-  const labels = ['step 1 longer', 'step 2', 'step 3', 'step 4'];
-  const onClicks = [
-    () => setCurrStep(0),
-    () => setCurrStep(1),
-    () => setCurrStep(2),
-    () => setCurrStep(3),
-  ];
-  // const index = 1;
+  const onClicks: any[] = [];
+  labels = labels || [];
+  labels.forEach((label, i) => {
+    onClicks.push(() => setCurrStep(i));
+  });
 
   return (
     <Row>
@@ -64,6 +49,12 @@ export const Default: Story<DefaultProps> = ({
         labels={labels}
         index={currStep}
         selectedStepColor={selectedStepColor}
+        color={color}
+        clickable={clickable}
+        round={round}
+        canClickToNextStep={canClickToNextStep}
+        canClickToPreviousSteps={canClickToPreviousSteps}
+        labelType={labelType}
       />
     </Row>
   );
@@ -72,6 +63,13 @@ Default.args = {
   disabled: false,
   index: 1,
   selectedStepColor: '#fff',
+  color: colors.primaryDark,
+  clickable: true,
+  round: false,
+  labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4'],
+  canClickToNextStep: true,
+  canClickToPreviousSteps: true,
+  labelType: labelTypes.inner,
 };
 
 export default {
@@ -83,6 +81,12 @@ export default {
         min: 0,
         max: 5,
         step: 1,
+      },
+    },
+    labelType: {
+      options: [labelTypes.inner, labelTypes.under, labelTypes.over],
+      control: {
+        type: 'select',
       },
     },
   },
