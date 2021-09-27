@@ -1,19 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { darken } from 'polished';
+import variants from 'src/enums/variants';
+import { getFontColorFromVariant } from 'src/utils/color';
 import fonts from '../../enums/fonts';
 import { StyledSubcomponentType, SubcomponentPropsType } from '../commonTypes';
 import { useTheme } from '../../context';
 import Button from '../Button';
-
-export type StepProgressProps = {
-  StyledContainer?: StyledSubcomponentType;
-
-  containerProps?: SubcomponentPropsType;
-
-  index?: number;
-  labels?: string[];
-  disabled?: boolean;
-};
 
 export type ContainerProps = {
   disabled: boolean;
@@ -53,13 +46,44 @@ const LabelFlex = styled.div`
   gap: 1rem;
 `;
 
-const LabelButton = styled(Button)``;
-// ${({ textColor }: { textColor: string }) => `
-// color: ${getFontColorFromVariant(variants.fill, textColor, colors.background, colors.grayDark)};
-// `}
+const LabelButton = styled(Button)`
+  ${({ clickable }: { clickable: boolean }) => `
+
+  ${
+    clickable
+      ? ''
+      : `
+    &:hover {
+    }`
+  }
+`}
+`;
 
 const LabelContainer = styled(Button.Container)`
+  ${({ round }: { round: boolean }) => `
+  ${
+    round
+      ? `border-radius: 100vw;
+          &:before{
+            content:"";
+            display:block;
+            margin-top:110%;
+          }
+          `
+      : ''
+  }
   display: flex;
+`}
+`;
+
+export const SelectedStep = styled(LabelContainer)`
+  ${({ bgColor }: { bgColor: string }) => `
+  color: ${getFontColorFromVariant(variants.fill, bgColor)};
+  background-color: ${bgColor};
+  &:hover {
+    background-color: ${bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'};
+  }
+  `}
 `;
 
 export const SlideRail = styled.div`
@@ -82,11 +106,11 @@ export const SlideRail = styled.div`
 `;
 
 export const SelectedRangeRail = styled(SlideRail)`
-  ${({ index }: { index: number }) => {
+  ${({ index, max }: { index: number; max: number }) => {
     const { colors } = useTheme(); // TODO: don't force the color to be primary
     return `
       left: 0%;
-      width: ${100 / (index + 1)}%;
+      width: ${100 * (index / (max - 1)) < 100 ? 100 * (index / (max - 1)) : 100}%;
 
       transition: left .3s, right .3s;
 
@@ -95,25 +119,58 @@ export const SelectedRangeRail = styled(SlideRail)`
   }}
 `;
 
+export type StepProgressProps = {
+  StyledContainer?: StyledSubcomponentType;
+
+  containerProps?: SubcomponentPropsType;
+
+  onClicks?: { (): void }[];
+
+  index?: number;
+  labels?: string[];
+  color?: string;
+  round?: boolean;
+  selectedStepColor?: string;
+  clickable?: boolean;
+  disabled?: boolean;
+};
+
 export const StepProgress = ({
   StyledContainer = Container,
+  containerProps = {},
+  onClicks = [],
   disabled = false,
+  clickable = true,
+  round = true,
   index = 0,
   labels = [],
-  containerProps = {},
+  color,
+  selectedStepColor = '#fff',
 }: StepProgressProps): JSX.Element | null => {
   const { colors } = useTheme();
+
+  const containerColor = color || colors.primaryDark;
+
+  const SelectedStepProps: SubcomponentPropsType = {
+    bgColor: selectedStepColor,
+    round,
+  };
 
   return (
     <StyledContainer disabled={disabled} {...containerProps}>
       <SlideRail />
-      <SelectedRangeRail index={index} />
+      <SelectedRangeRail index={index} max={labels.length} />
       <LabelFlex>
         {labels.map((label, i) => (
           <LabelButton
-            color={index >= i ? colors.primary : colors.grayXlight}
-            StyledContainer={LabelContainer}
-            disabled={index < i}
+            color={index >= i ? containerColor : colors.grayXlight}
+            StyledContainer={index === i ? SelectedStep : LabelContainer}
+            containerProps={index === i ? SelectedStepProps : { round }}
+            disabled={index + 1 < i}
+            variant={index === i ? variants.outline : variants.fill}
+            onClick={clickable ? onClicks[i] : () => {}}
+            clickable={clickable}
+            round={round}
           >
             {label}
           </LabelButton>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
 import StepProgress, { StepProgressProps } from './StepProgress';
@@ -17,7 +17,14 @@ const Row = styled.div`
   margin: 0 auto;
 `;
 
-export const Default: Story<DefaultProps> = ({ disabled }: DefaultProps) => {
+export const Default: Story<DefaultProps> = ({
+  disabled,
+  index,
+  selectedStepColor,
+}: DefaultProps) => {
+  const [currStep, setCurrStep] = useState(index);
+
+  useEffect(() => setCurrStep(index), [index]);
   // const [val, setVal] = useState(value);
 
   // useEffect(() => {
@@ -34,31 +41,51 @@ export const Default: Story<DefaultProps> = ({ disabled }: DefaultProps) => {
   //   const midpoint = (min + max) / 2;
   //   markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
   // }
+  // // var index = 0;
+  // const setIndex = (newIndex: number) => {
+  //   index = newIndex;
+  //   console.log(index);
+  // };
 
-  const labels = ['inconsistent', 'inconsistent', 'inconsistent', 'inconsistent'];
-  const index = 1;
+  const labels = ['step 1 longer', 'step 2', 'step 3', 'step 4'];
+  const onClicks = [
+    () => setCurrStep(0),
+    () => setCurrStep(1),
+    () => setCurrStep(2),
+    () => setCurrStep(3),
+  ];
+  // const index = 1;
 
   return (
     <Row>
-      <StepProgress disabled={disabled} labels={labels} index={index} />
+      <StepProgress
+        onClicks={onClicks}
+        disabled={disabled}
+        labels={labels}
+        index={currStep}
+        selectedStepColor={selectedStepColor}
+      />
     </Row>
   );
 };
 Default.args = {
   disabled: false,
+  index: 1,
+  selectedStepColor: '#fff',
 };
 
 export default {
   title: 'StepProgress',
-  // argTypes: {
-  //   value: {
-  //     control: {
-  //       type: 'range',
-  //       min: 0,
-  //       max: 5,
-  //       step: 1,
-  //     },
-  //   },
+  argTypes: {
+    index: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 5,
+        step: 1,
+      },
+    },
+  },
   //   min: {
   //     control: { type: 'range', min: -10, max: 10, step: 1 },
   //   },
