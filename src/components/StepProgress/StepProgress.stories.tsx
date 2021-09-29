@@ -79,7 +79,7 @@ export default {
       control: {
         type: 'range',
         min: 0,
-        max: 5,
+        max: 10,
         step: 1,
       },
     },

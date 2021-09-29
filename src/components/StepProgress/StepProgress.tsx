@@ -4,6 +4,7 @@ import { darken } from 'polished';
 import variants from 'src/enums/variants';
 import labelTypes from 'src/enums/labelTypes';
 import { getFontColorFromVariant } from 'src/utils/color';
+import { Div } from 'src/htmlElements';
 import fonts from '../../enums/fonts';
 import { StyledSubcomponentType, SubcomponentPropsType } from '../commonTypes';
 import { useTheme, useAnalytics } from '../../context';
@@ -13,8 +14,7 @@ import Text from '../Text';
 export type ContainerProps = {
   disabled: boolean;
 };
-
-export const Container = styled.div`
+export const Container = styled(Div)`
   ${({ disabled }: ContainerProps) => `
     position: relative;
     height: 1rem;
@@ -29,19 +29,19 @@ export const Container = styled.div`
     ${
       disabled
         ? `
-      filter: grayscale(1) contrast(.5) brightness(1.2);
-      pointer-events: none;
-    `
+          filter: grayscale(1) contrast(.5) brightness(1.2);
+          pointer-events: none;
+        `
         : ''
     }
   `}
 `;
 
-const LabelList = styled.div`
+const LabelList = styled(Div)`
   position: relative;
   height: 1rem;
   display: flex;
-  width: 110%;
+  width: 100%;
   height: 100%;
   justify-content: space-between;
   align-items: center;
@@ -49,35 +49,34 @@ const LabelList = styled.div`
   gap: 1rem;
 `;
 
-const LabelFlex = styled.div`
+const LabelFlex = styled(Div)`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 `;
 
-const LabelText = styled(Text.Container)`
+export const LabelTextContainer = styled(Text.Container)`
   ${({ visible }: { visible: boolean }) => `
   text-align: center;
-  align-self: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
   ${visible ? '' : 'visibility: hidden;'}
 `}
 `;
 
-const TopText = styled(LabelText)`
+export const OverTextContainer = styled(LabelTextContainer)`
   margin-bottom: 0.5rem;
   align-self: flex-start;
 `;
 
-const BottomText = styled(LabelText)`
+export const UnderTextContainer = styled(LabelTextContainer)`
   margin-top: 0.5rem;
   align-self: flex-end;
 `;
 
-const LabelButton = styled(Button)``;
-
-const LabelContainer = styled(Button.Container)`
+export const LabelContainer = styled(Button.Container)`
   ${({ round, clickable }: { round: boolean; clickable: boolean }) => `
   ${
     round
@@ -90,24 +89,44 @@ const LabelContainer = styled(Button.Container)`
           `
       : ''
   }
-  ${clickable ? '' : 'pointer-events: none;'}
+  ${
+    clickable
+      ? ''
+      : `pointer-events: none;
+        `
+  }
   width: 100%;
   height: 100%;
+  transition: background-color .3s, color .3s;
   display: flex;
-`}
+  `}
 `;
 
-export const SelectedStep = styled(LabelContainer)`
+export const SelectedStepContainer = styled(LabelContainer)`
   ${({ bgColor }: { bgColor: string }) => `
-color: ${getFontColorFromVariant(variants.fill, bgColor)};
-background-color: ${bgColor};
-&:hover {
-  background-color: ${bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'};
-};
-`}
+    color: ${getFontColorFromVariant(variants.fill, bgColor)};
+    background-color: ${bgColor};
+    &:hover {
+      background-color: ${
+        bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'
+      };
+    };
+  `}
 `;
 
-export const SlideRail = styled.div`
+export const OutOfRangeStepContainer = styled(LabelContainer)`
+  ${({ bgColor }: { bgColor: string }) => `
+    color: ${bgColor};
+    background-color: #fff;
+    &:hover {
+      background-color: ${
+        bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'
+      };
+    };
+  `}
+`;
+
+export const SlideRail = styled(Div)`
   ${() => {
     const { colors } = useTheme();
     return `
@@ -129,10 +148,10 @@ export const SlideRail = styled.div`
 export const SelectedRangeRail = styled(SlideRail)`
   ${({ index, max, color }: { index: number; max: number; color: string }) => {
     return `
-      left: 0%;
+      left: 0;
       width: ${100 * (index / (max - 1)) < 100 ? 100 * (index / (max - 1)) : 100}%;
 
-      transition: left .3s, right .3s;
+      transition: width .3s;
 
       background-color: ${color};
     `;
@@ -141,8 +160,20 @@ export const SelectedRangeRail = styled(SlideRail)`
 
 export type StepProgressProps = {
   StyledContainer?: StyledSubcomponentType;
+  StyledSelectedStepContainer?: StyledSubcomponentType;
+  StyledOutOfRangeStepContainer?: StyledSubcomponentType;
+  StyledCompletedStepContainer?: StyledSubcomponentType;
+  StyledInnerTextContainer?: StyledSubcomponentType;
+  StyledOverTextContainer?: StyledSubcomponentType;
+  StyledUnderTextContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
+  selectedStepProps?: SubcomponentPropsType;
+  outOfRangeStepProps?: SubcomponentPropsType;
+  completedStepProps?: SubcomponentPropsType;
+  textProps?: SubcomponentPropsType;
+
+  containerRef?: React.RefObject<HTMLButtonElement>;
 
   index?: number;
   labels?: string[];
@@ -160,8 +191,20 @@ export type StepProgressProps = {
 
 export const StepProgress = ({
   StyledContainer = Container,
+  StyledSelectedStepContainer = SelectedStepContainer,
+  StyledOutOfRangeStepContainer = OutOfRangeStepContainer,
+  StyledCompletedStepContainer = LabelContainer,
+  StyledInnerTextContainer = LabelTextContainer,
+  StyledOverTextContainer = OverTextContainer,
+  StyledUnderTextContainer = UnderTextContainer,
 
   containerProps = {},
+  selectedStepProps = {},
+  outOfRangeStepProps = {},
+  completedStepProps = {},
+  textProps = {},
+
+  containerRef,
 
   index = 0,
   labels = [],
@@ -181,8 +224,15 @@ export const StepProgress = ({
 
   const containerColor = color || colors.primaryDark;
 
-  const SelectedStepProps: SubcomponentPropsType = {
+  const defaultSelectedStepProps: SubcomponentPropsType = {
     bgColor: selectedStepColor,
+    round,
+    clickable: false,
+    labelType,
+  };
+
+  const defaultOutOfRangeStepProps: SubcomponentPropsType = {
+    bgColor: colors.grayXlight,
     round,
     clickable: false,
     labelType,
@@ -204,37 +254,57 @@ export const StepProgress = ({
     return '#000';
   };
 
+  const getContainer = (i: number) => {
+    if (index === i) {
+      return StyledSelectedStepContainer;
+    }
+    if (index < i - 1 || (index <= i - 1 && (!canClickToNextStep || !clickable))) {
+      return StyledOutOfRangeStepContainer;
+    }
+    return StyledCompletedStepContainer;
+  };
+
+  const getContainerProps = (i: number) => {
+    if (index === i) {
+      return { ...defaultSelectedStepProps, ...selectedStepProps };
+    }
+    if (index < i - 1 || (index <= i - 1 && (!canClickToNextStep || !clickable))) {
+      return { ...defaultOutOfRangeStepProps, ...outOfRangeStepProps };
+    }
+    return {
+      round,
+      clickable:
+        clickable && ((index < i && canClickToNextStep) || (index >= i && canClickToPreviousSteps)),
+      labelType,
+      ...completedStepProps,
+    };
+  };
+
   return (
-    <StyledContainer disabled={disabled} {...containerProps}>
+    <StyledContainer ref={containerRef} disabled={disabled} {...containerProps}>
       <SlideRail />
       <SelectedRangeRail index={index} max={labels.length} color={containerColor} />
       <LabelList>
         {labels.map((label, i) => (
           <LabelFlex>
             <Text
-              StyledContainer={TopText}
-              containerProps={{ visible: labelType === labelTypes.over }}
+              StyledContainer={StyledOverTextContainer}
+              containerProps={{ visible: labelType === labelTypes.over, ...textProps }}
               color={getTextColor(i)}
             >
               {label}
             </Text>
-            <LabelButton
+            <Button
               color={index >= i ? containerColor : colors.grayXlight}
-              StyledContainer={index === i ? SelectedStep : LabelContainer}
-              containerProps={
-                index === i
-                  ? SelectedStepProps
-                  : {
-                      round,
-                      clickable:
-                        clickable &&
-                        ((index < i && canClickToNextStep) ||
-                          (index >= i && canClickToPreviousSteps)),
-                      labelType,
-                    }
+              StyledContainer={getContainer(i)}
+              containerProps={getContainerProps(i)}
+              variant={
+                index === i ||
+                index < i - 1 ||
+                (index <= i - 1 && (!canClickToNextStep || !clickable))
+                  ? variants.outline
+                  : variants.fill
               }
-              disabled={canClickToNextStep ? index + 1 < i : index < i}
-              variant={index === i ? variants.outline : variants.fill}
               onClick={
                 clickable &&
                 ((index < i && canClickToNextStep) || (index >= i && canClickToPreviousSteps))
@@ -249,13 +319,16 @@ export const StepProgress = ({
                   : () => {}
               }
             >
-              <Text StyledContainer={LabelText} containerProps={{ visible: true }}>
+              <Text
+                StyledContainer={StyledInnerTextContainer}
+                containerProps={{ visible: true, ...textProps }}
+              >
                 {labelType === labelTypes.inner ? label : i}
               </Text>
-            </LabelButton>
+            </Button>
             <Text
-              StyledContainer={BottomText}
-              containerProps={{ visible: labelType === labelTypes.under }}
+              StyledContainer={StyledUnderTextContainer}
+              containerProps={{ visible: labelType === labelTypes.under, ...textProps }}
               color={getTextColor(i)}
             >
               {label}
