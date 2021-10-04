@@ -41,7 +41,7 @@ Peer dependencies:
 - react ^16.13.1
 - react-dom ^16.13.1
 - react-is ^16.13.1
-- react-spring ^8.0.27
+- @react-spring/web ^9.2.0
 - styled-components >= 5.1.0
 
 If you're new to React or web development, no problem! There are other great open-source tools out there that will have you creating gleaming web apps in a reasonably short amount of time. If you haven't already, set up a new React project--a great place to start is [create-react-app](https://create-react-app.dev/docs/getting-started). [Storybook](https://storybook.js.org/) is the open source tool we use to demonstrate and document the Foundry UI components. Click the Live Demo link above to view the Foundry components now or checkout the Contributing section below for information about how to run Storybook on your local machine.
@@ -59,9 +59,9 @@ yarn add @headstorm/foundry-react-ui
 For the peer dependency [styled components](https://styled-components.com/), [react-is](https://www.npmjs.com/package/react-is), and [react-spring](https://www.npmjs.com/package/react-spring) install from the same root directory, run the command:
 
 ```
-npm install --save styled-components react-is react-spring
+npm install --save styled-components react-is @react-spring/web
 // or
-yarn add styled-components react-is react-spring
+yarn add styled-components react-is @react-spring/web
 ```
 
 ## Usage
@@ -218,7 +218,7 @@ For example, the Card component has 4 (at the time of writing) styled-components
   - NOTE: This feature has not yet been completed, see [Issue #15](https://github.com/Headstorm/foundry-ui/issues/15) to follow the progress.
 - Replace a portion of a base component with your own styled-component
   - While the `Card` `Header` is a `styled.div` with `text-transform: uppercase`, you can pass in any styled component to replace the header entirely, it could even be a `styled.span` if you want! Create your styled-component and then pass it to the StyledHeader prop of the `Card` and voilà! It doesn't use any of the previous styles that were originally created for the Card Header.
-  - You'll have access to all the props which are passed to the styled-component as well. In the case of Card, the `elevation` prop is passed directly into the Container, so while a Material Design theme may use it to programatically control the `box-shadow` and `border` property, you can use it for anything you wish.
+  - You'll have access to all the props which are passed to the styled-component as well. In the case of Card, the `elevation` prop is passed directly into the Container, so while a Material Design theme may use it to programmatically control the `box-shadow` and `border` property, you can use it for anything you wish.
 - Add CSS/SASS overrides to a portion of a base component
   - This almost the same as the previous method, except that you'll first import the piece you're overriding from the original base component. In the case of the Card Header, you'll `import Card, { Header } from 'foundry-react-ui/Card;`, and then use that as your base as so: `` styled(Header)`styles go here` ``. You'll have the full power of styled-components, and you can include your constants files as you like.
   - Again, the `styled(Header)` will receive the same props that the original did, giving you full control of how to handle the props in the style.

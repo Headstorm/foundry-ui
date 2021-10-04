@@ -70,7 +70,6 @@ export const Header = styled(Div)`
 
 export const NoPaddingHeader = styled(Header)`
   padding: 0;
-  overflow: hidden;
 `;
 
 export const Body = styled(Div)`

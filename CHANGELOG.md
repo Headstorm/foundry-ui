@@ -1,3 +1,26 @@
+## [1.11.5](https://github.com/Headstorm/foundry-ui/compare/v1.11.4...v1.11.5) (2021-09-21)
+
+
+### Bug Fixes
+
+* **checkbox.stories:** fixed import location for checkboxTypes ([d0542f7](https://github.com/Headstorm/foundry-ui/commit/d0542f715d0bfee588a0fd68840fb032fcecde0c)), closes [#334](https://github.com/Headstorm/foundry-ui/issues/334)
+
+## [1.11.4](https://github.com/Headstorm/foundry-ui/compare/v1.11.3...v1.11.4) (2021-09-10)
+
+
+### Bug Fixes
+
+* **textinput:** swap nullish coalescing for && to fix broken bundle ([d4718d2](https://github.com/Headstorm/foundry-ui/commit/d4718d2dba184ff6558e792d601773d9bf049531))
+
+## [1.11.3](https://github.com/Headstorm/foundry-ui/compare/v1.11.2...v1.11.3) (2021-09-08)
+
+
+### Bug Fixes
+
+* **textinput:** enable display of character count without max length ([90844f3](https://github.com/Headstorm/foundry-ui/commit/90844f3db583ed109f39a9eaab41081b3399fb96)), closes [#295](https://github.com/Headstorm/foundry-ui/issues/295)
+* **textinput:** make uncontrolled input clearable ([4b1a4f0](https://github.com/Headstorm/foundry-ui/commit/4b1a4f0b038b60c62387a8583bc135e5e7e03fba)), closes [#295](https://github.com/Headstorm/foundry-ui/issues/295)
+* **textinput:** reset character count on clear ([abd36a5](https://github.com/Headstorm/foundry-ui/commit/abd36a59b027ddb47ece7b39b05bfac57a04977d)), closes [#295](https://github.com/Headstorm/foundry-ui/issues/295)
+
 ## [1.11.2](https://github.com/Headstorm/foundry-ui/compare/v1.11.1...v1.11.2) (2021-09-07)
 
 

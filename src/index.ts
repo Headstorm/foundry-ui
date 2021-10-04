@@ -7,6 +7,7 @@ import InteractionFeedback from './components/InteractionFeedback';
 import Label from './components/Label';
 import Modal from './components/Modal';
 import RangeSlider from './components/RangeSlider';
+import Spotlight from './components/Spotlight';
 import StepProgress from './components/StepProgress';
 import Table from './components/Table';
 import Tag from './components/Tag';
@@ -21,6 +22,7 @@ import timings from './enums/timings';
 import fonts from './enums/fonts';
 import variants from './enums/variants';
 import feedbackTypes from './enums/feedbackTypes';
+import checkboxTypes from './enums/checkboxTypes';
 
 export {
   Button,
@@ -32,6 +34,8 @@ export {
   Label,
   Modal,
   RangeSlider,
+  Skeleton,
+  Spotlight,
   StepProgress,
   Table,
   Tag,
@@ -41,7 +45,6 @@ export {
    * @deprecated The Progress loading skeleton is being replaced by the Skeleton component
    */
   Progress,
-  Skeleton,
   FoundryProvider,
   FoundryContext,
   useTheme,
@@ -50,4 +53,5 @@ export {
   fonts,
   variants,
   feedbackTypes,
+  checkboxTypes,
 };

@@ -15,14 +15,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "es5",
-    "types": [
-      "jest",
-      "node"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "types": ["jest", "node"],
+    "lib": ["es2017", "dom"],
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -30,16 +24,15 @@
     "isolatedModules": true,
     "noEmit": false
   },
-  "include": [
-    "src/**/*",
-    "node_modules/@types"
-  ],
+  "include": ["src/**/*", "node_modules/@types"],
   "exclude": [
     "node_modules",
     "build",
     "dist",
     "**/*.test.ts",
     "**/*.test.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
     "scripts",
     "src/serviceWorker.ts",
     "src/setupTests.ts"

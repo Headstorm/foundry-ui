@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { mdiClose } from '@mdi/js';
-import { useSpring } from 'react-spring';
+import { useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
 import variants from '../../enums/variants';
