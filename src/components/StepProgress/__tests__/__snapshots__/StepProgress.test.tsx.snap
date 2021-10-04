@@ -1,0 +1,1351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangeSlider renders 1`] = `
+.c10 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.25), rgba(0,0,0,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c15 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c20 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(255,255,255,0.75), rgba(255,255,255,0.25), rgba(255,255,255,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c23 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(191,58,0,0.75), rgba(191,58,0,0.25), rgba(191,58,0,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c27 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(213,213,213,0.75), rgba(213,213,213,0.25), rgba(213,213,213,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c8 {
+  display: block;
+  position: relative;
+}
+
+.c8 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c16 {
+  position: relative;
+}
+
+.c18 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: #BF3A00;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11:hover {
+  background-color: #a63200;
+}
+
+.c11:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c24 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid #BF3A00;
+  cursor: pointer;
+  background-color: transparent;
+  color: #BF3A00;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c24:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c24:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c28 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid #D5D5D5;
+  cursor: pointer;
+  background-color: transparent;
+  color: #D5D5D5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c28:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c28:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c17 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.c19 {
+  border-radius: 0.25em;
+}
+
+.c5 {
+  font-size: 1rem;
+  color: #000;
+}
+
+.c13 {
+  font-size: 1rem;
+  color: undefined;
+}
+
+.c22 {
+  font-size: 1rem;
+  color: #BF3A00;
+}
+
+.c26 {
+  font-size: 1rem;
+  color: #D5D5D5;
+}
+
+.c9 {
+  display: inline;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: Arial,Roboto,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: filter .1s;
+  transition: filter .1s;
+}
+
+.c3 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex: 1 1 0;
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.c12 {
+  pointer-events: none;
+  -webkit-transition: background-color .3s,color .3s;
+  transition: background-color .3s,color .3s;
+  width: 100%;
+}
+
+.c12:before {
+  display: block;
+  content: '';
+  height: 0;
+  padding-bottom: 110%;
+}
+
+.c25 {
+  color: #000;
+  background-color: #fff;
+}
+
+.c25:hover {
+  background-color: #f2f2f2;
+}
+
+.c29 {
+  color: #D5D5D5;
+  background-color: #fff;
+}
+
+.c29:hover {
+  background-color: #c8c8c8;
+}
+
+.c6 {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  overflow-wrap: break-word;
+  visibility: hidden;
+}
+
+.c14 {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.c7 {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  height: 100%;
+  padding-bottom: 0;
+  vertical-align: bottom;
+}
+
+.c21 {
+  margin-top: 0.5rem;
+  height: 100%;
+}
+
+.c1 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #D5D5D5;
+}
+
+.c2 {
+  left: 0;
+  width: 50%;
+  -webkit-transition: width .3s;
+  transition: width .3s;
+  background-color: #BF3A00;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-test-id="hs-ui-step-progress-unit-test"
+  >
+    <div
+      class=" c1"
+    />
+    <div
+      class=" c1 c2"
+      color="#BF3A00"
+      max="3"
+    />
+    <div
+      class=" c3"
+    >
+      <div
+        class=" c4"
+      >
+        <span
+          class=" c5 c6 c7"
+          color="#000"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              0
+            </span>
+            <div
+              class=" c10"
+              color="#000"
+            />
+          </div>
+        </span>
+        <button
+          class=" c8 c11 c12"
+          color="#BF3A00"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c13 c14"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c8 c9"
+            >
+              <span
+                class=" "
+              >
+                0
+              </span>
+              <div
+                class=" c15"
+                color="#9FA2A5"
+              />
+            </div>
+          </span>
+          <div
+            class="c16 c17"
+          >
+            <svg
+              class="c18 c19"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c20"
+            color="#fff"
+          />
+        </button>
+        <span
+          class=" c5 c14 c21"
+          color="#000"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              0
+            </span>
+            <div
+              class=" c10"
+              color="#000"
+            />
+          </div>
+        </span>
+      </div>
+      <div
+        class=" c4"
+      >
+        <span
+          class=" c22 c6 c7"
+          color="#BF3A00"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              1
+            </span>
+            <div
+              class=" c23"
+              color="#BF3A00"
+            />
+          </div>
+        </span>
+        <button
+          class=" c8 c24 c12 c25"
+          color="#BF3A00"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c13 c14"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c8 c9"
+            >
+              <span
+                class=" "
+              >
+                1
+              </span>
+              <div
+                class=" c15"
+                color="#9FA2A5"
+              />
+            </div>
+          </span>
+          <div
+            class="c16 c17"
+          >
+            <svg
+              class="c18 c19"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c23"
+            color="#BF3A00"
+          />
+        </button>
+        <span
+          class=" c22 c14 c21"
+          color="#BF3A00"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              1
+            </span>
+            <div
+              class=" c23"
+              color="#BF3A00"
+            />
+          </div>
+        </span>
+      </div>
+      <div
+        class=" c4"
+      >
+        <span
+          class=" c26 c6 c7"
+          color="#D5D5D5"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              2
+            </span>
+            <div
+              class=" c27"
+              color="#D5D5D5"
+            />
+          </div>
+        </span>
+        <button
+          class=" c8 c28 c12 c29"
+          color="#D5D5D5"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c13 c14"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c8 c9"
+            >
+              <span
+                class=" "
+              >
+                2
+              </span>
+              <div
+                class=" c15"
+                color="#9FA2A5"
+              />
+            </div>
+          </span>
+          <div
+            class="c16 c17"
+          >
+            <svg
+              class="c18 c19"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c27"
+            color="#D5D5D5"
+          />
+        </button>
+        <span
+          class=" c26 c14 c21"
+          color="#D5D5D5"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              2
+            </span>
+            <div
+              class=" c27"
+              color="#D5D5D5"
+            />
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeSlider renders 2`] = `
+.c10 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.25), rgba(0,0,0,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c15 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c20 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(255,255,255,0.75), rgba(255,255,255,0.25), rgba(255,255,255,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c23 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(191,58,0,0.75), rgba(191,58,0,0.25), rgba(191,58,0,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c27 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(213,213,213,0.75), rgba(213,213,213,0.25), rgba(213,213,213,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c8 {
+  display: block;
+  position: relative;
+}
+
+.c8 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c16 {
+  position: relative;
+}
+
+.c18 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: #BF3A00;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11:hover {
+  background-color: #a63200;
+}
+
+.c11:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c24 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid #BF3A00;
+  cursor: pointer;
+  background-color: transparent;
+  color: #BF3A00;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c24:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c24:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c28 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid #D5D5D5;
+  cursor: pointer;
+  background-color: transparent;
+  color: #D5D5D5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c28:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.c28:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c17 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.c19 {
+  border-radius: 0.25em;
+}
+
+.c5 {
+  font-size: 1rem;
+  color: #000;
+}
+
+.c13 {
+  font-size: 1rem;
+  color: undefined;
+}
+
+.c22 {
+  font-size: 1rem;
+  color: #BF3A00;
+}
+
+.c26 {
+  font-size: 1rem;
+  color: #D5D5D5;
+}
+
+.c9 {
+  display: inline;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: Arial,Roboto,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: filter .1s;
+  transition: filter .1s;
+}
+
+.c3 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex: 1 1 0;
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.c12 {
+  pointer-events: none;
+  -webkit-transition: background-color .3s,color .3s;
+  transition: background-color .3s,color .3s;
+  width: 100%;
+}
+
+.c12:before {
+  display: block;
+  content: '';
+  height: 0;
+  padding-bottom: 110%;
+}
+
+.c25 {
+  color: #000;
+  background-color: #fff;
+}
+
+.c25:hover {
+  background-color: #f2f2f2;
+}
+
+.c29 {
+  color: #D5D5D5;
+  background-color: #fff;
+}
+
+.c29:hover {
+  background-color: #c8c8c8;
+}
+
+.c6 {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  overflow-wrap: break-word;
+  visibility: hidden;
+}
+
+.c14 {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.c7 {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  height: 100%;
+  padding-bottom: 0;
+  vertical-align: bottom;
+}
+
+.c21 {
+  margin-top: 0.5rem;
+  height: 100%;
+}
+
+.c1 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #D5D5D5;
+}
+
+.c2 {
+  left: 0;
+  width: 50%;
+  -webkit-transition: width .3s;
+  transition: width .3s;
+  background-color: #BF3A00;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-test-id="hs-ui-step-progress-unit-test"
+  >
+    <div
+      class=" c1"
+    />
+    <div
+      class=" c1 c2"
+      color="#BF3A00"
+      max="3"
+    />
+    <div
+      class=" c3"
+    >
+      <div
+        class=" c4"
+      >
+        <span
+          class=" c5 c6 c7"
+          color="#000"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              0
+            </span>
+            <div
+              class=" c10"
+              color="#000"
+            />
+          </div>
+        </span>
+        <button
+          class=" c8 c11 c12"
+          color="#BF3A00"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c13 c14"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c8 c9"
+            >
+              <span
+                class=" "
+              >
+                0
+              </span>
+              <div
+                class=" c15"
+                color="#9FA2A5"
+              />
+            </div>
+          </span>
+          <div
+            class="c16 c17"
+          >
+            <svg
+              class="c18 c19"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c20"
+            color="#fff"
+          />
+        </button>
+        <span
+          class=" c5 c14 c21"
+          color="#000"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              0
+            </span>
+            <div
+              class=" c10"
+              color="#000"
+            />
+          </div>
+        </span>
+      </div>
+      <div
+        class=" c4"
+      >
+        <span
+          class=" c22 c6 c7"
+          color="#BF3A00"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              1
+            </span>
+            <div
+              class=" c23"
+              color="#BF3A00"
+            />
+          </div>
+        </span>
+        <button
+          class=" c8 c24 c12 c25"
+          color="#BF3A00"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c13 c14"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c8 c9"
+            >
+              <span
+                class=" "
+              >
+                1
+              </span>
+              <div
+                class=" c15"
+                color="#9FA2A5"
+              />
+            </div>
+          </span>
+          <div
+            class="c16 c17"
+          >
+            <svg
+              class="c18 c19"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c23"
+            color="#BF3A00"
+          />
+        </button>
+        <span
+          class=" c22 c14 c21"
+          color="#BF3A00"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              1
+            </span>
+            <div
+              class=" c23"
+              color="#BF3A00"
+            />
+          </div>
+        </span>
+      </div>
+      <div
+        class=" c4"
+      >
+        <span
+          class=" c26 c6 c7"
+          color="#D5D5D5"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              2
+            </span>
+            <div
+              class=" c27"
+              color="#D5D5D5"
+            />
+          </div>
+        </span>
+        <button
+          class=" c8 c28 c12 c29"
+          color="#D5D5D5"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c13 c14"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c8 c9"
+            >
+              <span
+                class=" "
+              >
+                2
+              </span>
+              <div
+                class=" c15"
+                color="#9FA2A5"
+              />
+            </div>
+          </span>
+          <div
+            class="c16 c17"
+          >
+            <svg
+              class="c18 c19"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c27"
+            color="#D5D5D5"
+          />
+        </button>
+        <span
+          class=" c26 c14 c21"
+          color="#D5D5D5"
+          data-test-id="hsui-Text"
+        >
+          <div
+            class=" c8 c9"
+          >
+            <span
+              class=" "
+            >
+              2
+            </span>
+            <div
+              class=" c27"
+              color="#D5D5D5"
+            />
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
-import colors from 'src/enums/colors';
-import labelTypes from 'src/enums/labelTypes';
+import colors from '../../enums/colors';
+import labelTypes from '../../enums/labelTypes';
 import StepProgress, { StepProgressProps } from './StepProgress';
 import fonts from '../../enums/fonts';
 

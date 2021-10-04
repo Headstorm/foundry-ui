@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import variants from 'src/enums/variants';
-import labelTypes from 'src/enums/labelTypes';
-import { getFontColorFromVariant } from 'src/utils/color';
-import { Div } from 'src/htmlElements';
+import variants from '../../enums/variants';
+import labelTypes from '../../enums/labelTypes';
+import { getFontColorFromVariant } from '../../utils/color';
+import { Div } from '../../htmlElements';
 import fonts from '../../enums/fonts';
 import { StyledSubcomponentType, SubcomponentPropsType } from '../commonTypes';
 import { useTheme, useAnalytics } from '../../context';
