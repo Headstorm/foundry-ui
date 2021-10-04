@@ -66,7 +66,7 @@ Default.args = {
   color: colors.primaryDark,
   clickable: true,
   round: false,
-  labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4'],
+  labels: ['asfsafdsfaasdfsdfdsfdss1', 'Step 2', 'Step 3', 'Step 4'],
   canClickToNextStep: true,
   canClickToPreviousSteps: true,
   labelType: labelTypes.inner,

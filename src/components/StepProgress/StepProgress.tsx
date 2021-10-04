@@ -17,8 +17,8 @@ export type ContainerProps = {
 export const Container = styled(Div)`
   ${({ disabled }: ContainerProps) => `
     position: relative;
-    height: 1rem;
     width: 100%;
+    height: 100%;
 
     ${fonts.body}
 
@@ -39,41 +39,21 @@ export const Container = styled(Div)`
 
 const LabelList = styled(Div)`
   position: relative;
-  height: 1rem;
   display: flex;
   width: 100%;
-  height: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   flex-direction: row;
   gap: 1rem;
 `;
 
 const LabelFlex = styled(Div)`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: stretch;
   justify-content: space-between;
-  width: 100%;
-`;
-
-export const LabelTextContainer = styled(Text.Container)`
-  ${({ visible }: { visible: boolean }) => `
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  ${visible ? '' : 'visibility: hidden;'}
-`}
-`;
-
-export const OverTextContainer = styled(LabelTextContainer)`
-  margin-bottom: 0.5rem;
-  align-self: flex-start;
-`;
-
-export const UnderTextContainer = styled(LabelTextContainer)`
-  margin-top: 0.5rem;
-  align-self: flex-end;
+  flex: 1 1 0;
+  min-width: 0;
 `;
 
 export const LabelContainer = styled(Button.Container)`
@@ -81,25 +61,24 @@ export const LabelContainer = styled(Button.Container)`
   ${
     round
       ? `border-radius: 100%;
-          &:before{
-            content:"";
-            display:block;
-            margin-top:110%;
-          };
-          `
+      `
       : ''
   }
-  ${
-    clickable
-      ? ''
-      : `pointer-events: none;
-        `
-  }
-  width: 100%;
-  height: 100%;
-  transition: background-color .3s, color .3s;
-  display: flex;
+    ${
+      clickable
+        ? ''
+        : `pointer-events: none;
+      `
+    }
+    transition: background-color .3s, color .3s;
   `}
+  width: 100%;
+  &:before {
+    display: block;
+    content: '';
+    height: 0;
+    padding-bottom: 110%;
+  }
 `;
 
 export const SelectedStepContainer = styled(LabelContainer)`
@@ -124,6 +103,30 @@ export const OutOfRangeStepContainer = styled(LabelContainer)`
       };
     };
   `}
+`;
+
+export const LabelTextContainer = styled(Text.Container)`
+  ${({ visible }: { visible: boolean }) => `
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  overflow-wrap: break-word;
+  ${visible ? '' : 'visibility: hidden;'}
+`}
+`;
+
+export const OverTextContainer = styled(LabelTextContainer)`
+  margin-bottom: 0.5rem;
+  text-align: bottom;
+  height: 100%;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-self: flex-end;
+`;
+
+export const UnderTextContainer = styled(LabelTextContainer)`
+  margin-top: 0.5rem;
+  height: 100%;
 `;
 
 export const SlideRail = styled(Div)`
