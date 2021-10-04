@@ -117,11 +117,10 @@ export const LabelTextContainer = styled(Text.Container)`
 
 export const OverTextContainer = styled(LabelTextContainer)`
   margin-bottom: 0.5rem;
-  text-align: bottom;
+  text-align: center;
   height: 100%;
-  align-content: flex-end;
-  justify-content: flex-end;
-  align-self: flex-end;
+  padding-bottom: 0;
+  vertical-align: bottom;
 `;
 
 export const UnderTextContainer = styled(LabelTextContainer)`
@@ -176,7 +175,9 @@ export type StepProgressProps = {
   completedStepProps?: SubcomponentPropsType;
   textProps?: SubcomponentPropsType;
 
-  containerRef?: React.RefObject<HTMLButtonElement>;
+  containerRef?: React.RefObject<HTMLDivElement>;
+  buttonRefs?: React.RefObject<HTMLButtonElement>[];
+  labelRefs?: React.RefObject<HTMLDivElement>[];
 
   index?: number;
   labels?: string[];
@@ -208,6 +209,8 @@ export const StepProgress = ({
   textProps = {},
 
   containerRef,
+  buttonRefs = [],
+  labelRefs = [],
 
   index = 0,
   labels = [],
@@ -289,7 +292,7 @@ export const StepProgress = ({
       <SelectedRangeRail index={index} max={labels.length} color={containerColor} />
       <LabelList>
         {labels.map((label, i) => (
-          <LabelFlex>
+          <LabelFlex ref={labelRefs[i]}>
             <Text
               StyledContainer={StyledOverTextContainer}
               containerProps={{ visible: labelType === labelTypes.over, ...textProps }}
@@ -298,6 +301,7 @@ export const StepProgress = ({
               {label}
             </Text>
             <Button
+              containerRef={buttonRefs[i]}
               color={index >= i ? containerColor : colors.grayXlight}
               StyledContainer={getContainer(i)}
               containerProps={getContainerProps(i)}
