@@ -292,7 +292,7 @@ export const StepProgress = ({
       <SelectedRangeRail index={index} max={labels.length} color={containerColor} />
       <LabelList>
         {labels.map((label, i) => (
-          <LabelFlex ref={labelRefs[i]}>
+          <LabelFlex ref={labelRefs[i]} key={`${label}-label`}>
             <Text
               StyledContainer={StyledOverTextContainer}
               containerProps={{ visible: labelType === labelTypes.over, ...textProps }}
