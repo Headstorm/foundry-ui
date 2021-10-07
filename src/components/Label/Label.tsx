@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
+import { useLabel } from 'react-aria';
 import { Div, Label as LabelElement, Span } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
@@ -92,17 +93,39 @@ const Label = ({
     shownIcon = isRequired ? mdiAsterisk : '';
   }
 
+  // add aria-label for accessibility if no labelText provided
+  const mergedLabelProps = labelText
+    ? { ...labelProps, label: labelText }
+    : { ...labelProps, 'aria-label': 'label' };
+
+  const { labelProps: ariaProps, fieldProps: ariaFieldProps } = useLabel(mergedLabelProps);
+  // add aria props to the child component
+  const childrenWithAriaProps = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      // dont overwrite any preexisting props
+      return React.cloneElement(child, { ...ariaFieldProps, ...child.props });
+    }
+    return child;
+  });
+
   return (
     <StyledLabelContainer ref={labelContainerRef} {...labelContainerProps}>
       <StyledTextContainer ref={textContainerRef} {...textContainerProps}>
-        <StyledLabel htmlFor={htmlFor} color={shownColor} ref={labelRef} {...labelProps}>
+        <StyledLabel
+          {...ariaProps}
+          htmlFor={htmlFor}
+          color={shownColor}
+          ref={labelRef}
+          {...labelProps}
+        >
           {labelText}
         </StyledLabel>
-        <StyledIconContainer ref={iconContainerRef} {...iconContainerProps}>
+        <StyledIconContainer aria-hidden="true" ref={iconContainerRef} {...iconContainerProps}>
           <Icon path={shownIcon} size=".75rem" color={shownColor} />
         </StyledIconContainer>
       </StyledTextContainer>
-      {children}
+      {/* Only render children with aria props if there is one child */}
+      {React.Children.count(children) === 1 ? childrenWithAriaProps : children}
     </StyledLabelContainer>
   );
 };

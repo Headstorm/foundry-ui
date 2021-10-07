@@ -33,10 +33,12 @@ Object {
             class=" c0"
             color="#9FA2A5"
             for="default"
+            id="label"
           >
             Test text
           </label>
           <span
+            aria-hidden="true"
             class=" c1"
           >
             <svg
@@ -65,10 +67,12 @@ Object {
           class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI KHjYR"
           color="#9FA2A5"
           for="default"
+          id="label"
         >
           Test text
         </label>
         <span
+          aria-hidden="true"
           class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
         >
           <svg
@@ -172,10 +176,12 @@ Object {
             class=" c0"
             color="#FF4500"
             for="default"
+            id="label"
           >
             Test text
           </label>
           <span
+            aria-hidden="true"
             class=" c1"
           >
             <svg
@@ -204,10 +210,12 @@ Object {
           class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI cPoeDw"
           color="#FF4500"
           for="default"
+          id="label"
         >
           Test text
         </label>
         <span
+          aria-hidden="true"
           class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
         >
           <svg
@@ -308,10 +316,12 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
         class=" c0"
         color="#9400D3"
         for="default"
+        id="label"
       >
         Test text
       </label>
       <span
+        aria-hidden="true"
         class=" c1"
       >
         <svg
@@ -360,10 +370,12 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
         class=" c0"
         color="#0000FF"
         for="default"
+        id="label"
       >
         Test text
       </label>
       <span
+        aria-hidden="true"
         class=" c1"
       >
         <svg

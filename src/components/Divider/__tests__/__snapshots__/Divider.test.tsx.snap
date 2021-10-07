@@ -29,6 +29,7 @@ exports[`Divider matches snapshot 1`] = `
     <hr
       class=" c1"
       height="1px"
+      role="separator"
       width="90%"
     />
   </div>
@@ -64,6 +65,7 @@ exports[`Divider matches snapshot with props 1`] = `
     <hr
       class=" c1"
       height="2rem"
+      role="separator"
       width="50%"
     />
   </div>

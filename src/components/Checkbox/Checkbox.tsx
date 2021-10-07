@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 
 import { darken } from 'polished';
+import { useCheckbox } from 'react-aria';
+import { useToggleState } from '@react-stately/toggle';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import CheckboxTypes from '../../enums/checkboxTypes';
 import { disabledStyles } from '../../utils/color';
+import { mergeRefs } from '../../utils/refs';
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
@@ -198,6 +201,19 @@ const Checkbox = ({
 }: CheckboxProps): JSX.Element => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
+
+  // add aria-label for accessibility if no children elements are provided
+  const mergedInputProps = children
+    ? { isDisabled: disabled, isSelected: checked, ...inputProps, children }
+    : { isDisabled: disabled, isSelected: checked, ...inputProps, 'aria-label': 'checkbox' };
+
+  const state = useToggleState({ ...mergedInputProps });
+  const internalRef = React.useRef<HTMLInputElement>();
+  const { inputProps: ariaProps } = useCheckbox(
+    mergedInputProps,
+    state,
+    internalRef as RefObject<HTMLInputElement>,
+  );
   const handleEventWithAnalytics = useAnalytics();
   const handleClick = (e: any) =>
     handleEventWithAnalytics('Checkbox', onClick, 'onClick', e, checkboxContainerProps);
@@ -214,6 +230,7 @@ const Checkbox = ({
         >
           {checked ? (
             <IconComponent
+              aria-hidden="true"
               data-test-id="hsui-Checkbox-Icon"
               path={iconPath}
               variant={variant}
@@ -222,10 +239,12 @@ const Checkbox = ({
           ) : null}
         </StyledBox>
         <StyledInput
+          role="checkbox"
+          {...ariaProps}
           data-test-id="hsui-Checkbox-Input"
           onClick={handleClick}
           checked={checked}
-          ref={inputRef}
+          ref={mergeRefs([inputRef, internalRef])}
           {...inputProps}
         />
       </StyledCheckboxContainer>

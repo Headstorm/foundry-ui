@@ -403,6 +403,7 @@ exports[`Text matches snapshot with isProcessing 1`] = `
       class=" c1"
     >
       <svg
+        aria-hidden="true"
         role="presentation"
         style="width: 1rem; height: 1rem;"
         viewBox="0 0 24 24"

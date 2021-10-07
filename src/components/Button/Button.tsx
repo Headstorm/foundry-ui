@@ -68,7 +68,7 @@ export type ButtonProps = {
   isLoading?: boolean;
   isProcessing?: boolean;
 
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   onBlur?: (e: React.FocusEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onMouseDown?: (e: React.MouseEvent) => void;
