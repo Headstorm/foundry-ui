@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled, { StyledComponentBase } from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
@@ -41,9 +41,9 @@ export type ButtonProps = {
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
 
-  skeletonProps?: SubcomponentPropsType;
+  skeletonShimmerProps?: ComponentProps<typeof Skeleton.Shimmer>;
   /**
-   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonShimmerProps to customize the Skeleton wrapping the button.
    */
   ProgressBar?: JSX.Element | null;
 
@@ -76,7 +76,7 @@ export type ButtonProps = {
 };
 
 export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
-  ButtonElement,
+  Skeleton.Container,
 )`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
@@ -97,10 +97,15 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
         box-shadow ${timings.slow};
       ${getShadowStyle(elevation, colors.shadow)}
       outline: 0 none;
-      border: ${variant === variants.outline ? `1px solid ${color || colors.grayDark}` : '0 none;'};
+      border: ${
+        variant === variants.outline
+          ? `1px solid ${color || colors.grayDark}`
+          : '1px solid transparent;'
+      };
       cursor: pointer;
       background-color: ${backgroundColor};
       color: ${fontColor};
+      user-select: none;
       align-items: center;
       ${disabled ? disabledStyles() : ''}
       &:hover {
@@ -162,11 +167,12 @@ const Button = ({
   StyledContainer = ButtonContainer,
   StyledLeftIconContainer = LeftIconContainer,
   StyledRightIconContainer = RightIconContainer,
+
+  skeletonShimmerProps,
   /**
-   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonProps to customize the Skeleton wrapping the button.
+   * @deprecated The ProgressBar loading skeleton is being replaced by the Skeleton component - use skeletonShimmerProps to customize the Skeleton wrapping the button.
    */
   ProgressBar, // Deprecated
-  skeletonProps,
 
   containerProps = {},
   interactionFeedbackProps,
@@ -186,7 +192,7 @@ const Button = ({
   type = ButtonTypes.button,
   color,
   disabled = false,
-  onClick,
+  onClick = () => {},
   onBlur = () => {},
   onFocus = () => {},
   onMouseDown = () => {},
@@ -196,14 +202,20 @@ const Button = ({
   const hasContent = Boolean(children);
   const { colors } = useTheme();
   const containerColor = color || colors.grayLight;
+  const handleEventWithAnalytics = useAnalytics();
+
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
+    as: ButtonElement,
     id,
-    onClick,
-    onBlur,
-    onFocus,
-    onMouseDown,
-    onMouseUp,
+    isLoading,
+    onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
+    onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
+    onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
+    onMouseDown: (e: any) =>
+      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
+    onMouseUp: (e: any) =>
+      handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
     elevation,
     color: containerColor,
     variant,
@@ -212,58 +224,47 @@ const Button = ({
     ...containerProps,
   };
 
-  const skeletonContainerProps = {
-    style: {
-      display: 'inline-block',
-      ...(skeletonProps && Object.prototype.hasOwnProperty.call(skeletonProps, 'style')
-        ? (skeletonProps.style as CSSRule)
-        : {}),
-    },
-    ...skeletonProps,
-  };
-
-  const interactionFeedbackColor = getFontColorFromVariant(variant, containerColor);
-
   return (
-    <Skeleton isLoading={isLoading} containerProps={skeletonContainerProps}>
-      <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
-        {!isProcessing &&
-          iconPrefix &&
-          (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
-            <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-              <UnstyledIcon aria-hidden="true" path={iconPrefix} size="1rem" />
-            </StyledLeftIconContainer>
-          ) : (
-            <StyledLeftIconContainer ref={leftIconContainerRef}>
-              {iconPrefix}
-            </StyledLeftIconContainer>
-          ))}
-        {isProcessing && (
+    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
+      {!isProcessing &&
+        iconPrefix &&
+        (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-            <UnstyledIcon aria-hidden="true" path={mdiLoading} size="1rem" spin={1} />
+            <UnstyledIcon path={iconPrefix} size="1rem" />
           </StyledLeftIconContainer>
-        )}
-        {isLoading && ProgressBar ? <Progress /> : children}
-        {iconSuffix &&
-          (typeof iconSuffix === 'string' ? (
-            <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-              <UnstyledIcon aria-hidden="true" path={iconSuffix} size="1rem" />
-            </StyledRightIconContainer>
-          ) : (
-            <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-              {iconSuffix}
-            </StyledRightIconContainer>
-          ))}
-        {feedbackType !== FeedbackTypes.simple && !disabled && (
-          <InteractionFeedback
-            color={interactionFeedbackColor}
-            StyledContainer={StyledFeedbackContainer}
-            StyledSVGContainer={StyledFeedbackSVGContainer}
-            {...interactionFeedbackProps}
-          />
-        )}
-      </StyledContainer>
-    </Skeleton>
+        ) : (
+          <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
+        ))}
+      {isProcessing && (
+        <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
+          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+        </StyledLeftIconContainer>
+      )}
+      {isLoading && ProgressBar ? <Progress /> : children}
+      {iconSuffix &&
+        (typeof iconSuffix === 'string' ? (
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            <UnstyledIcon path={iconSuffix} size="1rem" />
+          </StyledRightIconContainer>
+        ) : (
+          <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
+            {iconSuffix}
+          </StyledRightIconContainer>
+        ))}
+      {feedbackType === FeedbackTypes.ripple && !disabled && !isLoading && (
+        <InteractionFeedback
+          StyledContainer={StyledFeedbackContainer}
+          StyledSVGContainer={StyledFeedbackSVGContainer}
+          color={getFontColorFromVariant(variant, containerColor)}
+          {...(interactionFeedbackProps || {})}
+        />
+      )}
+      <Skeleton.Shimmer
+        color={getFontColorFromVariant(variant, containerColor, colors.background, colors.grayDark)}
+        isLoading={isLoading}
+        {...skeletonShimmerProps}
+      />
+    </StyledContainer>
   );
 };
 

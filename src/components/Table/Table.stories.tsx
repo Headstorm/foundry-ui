@@ -7,8 +7,9 @@ import { mdiClose } from '@mdi/js';
 import { name, address, company, commerce } from 'faker';
 
 import Table, { ExpansionIconColumnName } from './Table';
-import Checkbox, { CheckboxTypes } from '../Checkbox/Checkbox';
+import Checkbox from '../Checkbox/Checkbox';
 import { columnTypes, ExpansionIconProps } from './types';
+import { CheckboxTypes } from '../../enums/checkboxTypes';
 
 type SampleDataType = {
   name?: string;

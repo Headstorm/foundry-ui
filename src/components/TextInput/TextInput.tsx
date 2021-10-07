@@ -7,6 +7,7 @@ import React, {
   useState,
   TextareaHTMLAttributes,
   InputHTMLAttributes,
+  useRef,
 } from 'react';
 import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
@@ -14,7 +15,7 @@ import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 
 const Container = styled(Div)`
@@ -75,7 +76,6 @@ const IconContainer = styled(Div)`
     return `
       padding: 0.5em;
       height: 100%;
-      display: flex;
       align-items: center;
       justify-content: center;
       color: ${colors.grayMedium};
@@ -112,6 +112,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
   TextareaHTMLAttributes<HTMLTextAreaElement> & {
     iconPrefix?: string | ReactNode;
     onClear?: (event: SyntheticEvent) => void;
+    clearable?: boolean;
     debouncedOnChange?: EventHandler<ChangeEvent<HTMLInputElement>>;
     isValid?: boolean;
     isMultiline?: boolean;
@@ -158,6 +159,7 @@ const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-e
 const TextInput = ({
   debouncedOnChange = defaultCallback,
   onClear,
+  clearable,
   iconPrefix,
   isValid = true,
   isMultiline,
@@ -188,17 +190,46 @@ const TextInput = ({
 
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
+  const handleEventWithAnalytics = useAnalytics();
+
+  const handleDebouncedOnChange = (e: any) =>
+    handleEventWithAnalytics(
+      'TextInput',
+      debouncedOnChange,
+      'debouncedOnChange',
+      e,
+      containerProps,
+    );
+
   // Debounce the change function using useCallback so that the function is not initialized each time it renders
-  const debouncedChange = useCallback(debounce(debouncedOnChange, debounceInterval), [
-    debouncedOnChange,
+  const debouncedChange = useCallback(debounce(handleDebouncedOnChange, debounceInterval), [
+    handleDebouncedOnChange,
     debounceInterval,
   ]);
+
+  const internalInputRef = useRef<HTMLInputElement>(null);
 
   const InputComponent: StyledSubcomponentType = isMultiline ? StyledTextArea : StyledInput;
 
   const [internalValue, setInternalValue] = useState(
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
+
+  const handleClear = (e: any) => {
+    const onClearToUse =
+      onClear &&
+      (() => {
+        if (!inputRef?.current?.value && internalInputRef?.current?.value) {
+          setInternalValue('');
+          internalInputRef.current.value = '';
+        }
+      });
+    handleEventWithAnalytics('TextInput', onClearToUse, 'onClear', e, containerProps);
+  };
+
+  if (internalValue !== nativeHTMLAttributes.value && nativeHTMLAttributes.value === '') {
+    setInternalValue('');
+  }
 
   return (
     <StyledContainer
@@ -233,25 +264,25 @@ const TextInput = ({
         ref={inputRef}
         {...inputProps}
       />
-      {onClear && (
+      {(onClear || clearable) && (
         <StyledIconContainer
+          onClick={handleClear}
           role="button"
           aria-label="Clear"
-          onClick={onClear}
           {...iconContainerProps}
         >
           <Icon aria-hidden="true" path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
-      {showCharacterCount && maxLength && (
+      {showCharacterCount && (
         <StyledCharacterCount
           ref={characterCountRef}
           errorMessage={errorMessage}
           isValid={isValid}
-          textIsTooLong={(internalValue as string).length > maxLength}
+          textIsTooLong={maxLength ? (internalValue as string).length > maxLength : false}
           {...characterCountProps}
         >
-          {(internalValue as string).length} / {maxLength}
+          {(internalValue as string).length} {maxLength !== undefined ? `/ ${maxLength}` : null}
         </StyledCharacterCount>
       )}
       {isValid === false && errorMessage && (

@@ -54,6 +54,7 @@ exports[`Text matches snapshot 1`] = `
       />
       <div
         class=" c3"
+        color="#9FA2A5"
       />
     </div>
   </span>
@@ -146,6 +147,7 @@ exports[`Text matches snapshot with icon strings 1`] = `
       />
       <div
         class=" c4"
+        color="#9FA2A5"
       />
     </div>
     <span
@@ -251,6 +253,7 @@ exports[`Text matches snapshot with icons 1`] = `
       />
       <div
         class=" c4"
+        color="#9FA2A5"
       />
     </div>
     <span
@@ -295,6 +298,7 @@ exports[`Text matches snapshot with isLoading 1`] = `
 .c1 {
   display: block;
   position: relative;
+  color: transparent !important;
 }
 
 .c1 > * {
@@ -333,6 +337,7 @@ exports[`Text matches snapshot with isLoading 1`] = `
       />
       <div
         class=" c3 c4"
+        color="#9FA2A5"
       />
     </div>
   </span>
@@ -429,6 +434,7 @@ exports[`Text matches snapshot with isProcessing 1`] = `
       />
       <div
         class=" c4"
+        color="#9FA2A5"
       />
     </div>
   </span>

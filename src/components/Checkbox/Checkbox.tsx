@@ -8,18 +8,11 @@ import { useCheckbox } from 'react-aria';
 import { useToggleState } from '@react-stately/toggle';
 import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
+import CheckboxTypes from '../../enums/checkboxTypes';
 import { disabledStyles } from '../../utils/color';
 import { mergeRefs } from '../../utils/refs';
-
-export enum CheckboxTypes {
-  fill = 'fill',
-  cross = 'cross',
-  check = 'check',
-  default = 'default',
-  neutral = 'neutral',
-}
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
@@ -221,6 +214,9 @@ const Checkbox = ({
     state,
     internalRef as RefObject<HTMLInputElement>,
   );
+  const handleEventWithAnalytics = useAnalytics();
+  const handleClick = (e: any) =>
+    handleEventWithAnalytics('Checkbox', onClick, 'onClick', e, checkboxContainerProps);
 
   return (
     <StyledLabel disabled={disabled} data-test-id="hsui-Checkbox" ref={labelRef} {...labelProps}>
@@ -246,7 +242,7 @@ const Checkbox = ({
           role="checkbox"
           {...ariaProps}
           data-test-id="hsui-Checkbox-Input"
-          onClick={onClick}
+          onClick={handleClick}
           checked={checked}
           ref={mergeRefs([inputRef, internalRef])}
           {...inputProps}

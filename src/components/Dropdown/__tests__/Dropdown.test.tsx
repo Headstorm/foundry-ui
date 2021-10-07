@@ -282,6 +282,50 @@ describe('Dropdown', () => {
     await waitFor(() => expect(mockedSelectHandler).toHaveBeenCalledWith(['charmander']));
   });
 
+  it('can use arrow keys and enter to navigate options when searchable is true', async () => {
+    generateIntersectionObserver([]);
+    const { queryByText } = render(
+      <Dropdown
+        onSelect={mockedSelectHandler}
+        searchable
+        options={pokeOptions}
+        virtualizeOptions={false}
+      />,
+    );
+    act(() => {
+      screen.getByRole('button').focus();
+    });
+    await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
+    act(() => {
+      fireEvent.keyDown(document.activeElement, {
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+      });
+      fireEvent.keyDown(document.activeElement, {
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+      });
+      fireEvent.keyDown(document.activeElement, {
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+      });
+      fireEvent.keyDown(document.activeElement, {
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+      });
+      fireEvent.keyDown(document.activeElement, {
+        key: 'ArrowUp',
+        code: 'ArrowUp',
+      });
+      fireEvent.keyDown(document.activeElement, {
+        key: 'Enter',
+        code: 'Enter',
+      });
+    });
+
+    await waitFor(() => expect(mockedSelectHandler).toHaveBeenCalledWith(['charmander']));
+  });
+
   it('selects options from values prop', () => {
     generateIntersectionObserver([]);
     const { container } = render(

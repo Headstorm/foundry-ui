@@ -19,12 +19,13 @@ module.exports = {
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
+    restrictions: [/(?<!.stories)\.(ts|js)x?$/],
   },
   module: {
     rules: [
       // we use babel-loader to load our jsx and tsx files
       {
-        test: /\.(ts|js)x?$/,
+        test: /(?<!.stories)\.(ts|js)x?$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',

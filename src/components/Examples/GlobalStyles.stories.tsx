@@ -39,12 +39,33 @@ export const Example: Story<ExampleProps> = ({
     primary,
     grayDark,
   };
+  const showAnalytics = (
+    componentType: string,
+    eventType: string,
+    eventArgs?: React.ChangeEvent<HTMLInputElement>,
+    dateTime?: Date,
+    deviceInfo?: Record<string, unknown>,
+    currentURL?: string,
+    props?: any,
+  ): void => {
+    action(`${componentType} ${eventType}`)(
+      componentType,
+      eventType,
+      eventArgs,
+      dateTime,
+      deviceInfo,
+      currentURL,
+      props,
+    );
+  };
   const styleConstants = {
     paddingSmall: '1rem',
     paddingLarge: '2rem',
   };
   return (
-    <FoundryProvider value={{ globalStyles, colors, styleConstants }}>
+    <FoundryProvider
+      value={{ globalStyles, colors, styleConstants, analyticsFunction: showAnalytics }}
+    >
       <Container>
         <Text StyledContainer={StyledTextContainer}>Hello!</Text>
         <Card StyledContainer={StyledCardContainer} elevation={0} header="Title">
