@@ -273,8 +273,6 @@ exports[`RangeSlider renders 1`] = `
 
 .c0 {
   position: relative;
-  width: 100%;
-  height: 100%;
   font-family: Arial,Roboto,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -952,8 +950,6 @@ exports[`RangeSlider renders 2`] = `
 
 .c0 {
   position: relative;
-  width: 100%;
-  height: 100%;
   font-family: Arial,Roboto,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
