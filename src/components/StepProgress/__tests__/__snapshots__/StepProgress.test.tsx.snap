@@ -272,6 +272,9 @@ exports[`RangeSlider renders 1`] = `
 }
 
 .c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   position: relative;
   font-family: Arial,Roboto,sans-serif;
   -webkit-user-select: none;
@@ -949,6 +952,9 @@ exports[`RangeSlider renders 2`] = `
 }
 
 .c0 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   position: relative;
   font-family: Arial,Roboto,sans-serif;
   -webkit-user-select: none;
