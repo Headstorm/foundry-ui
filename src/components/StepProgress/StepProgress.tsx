@@ -216,12 +216,12 @@ export const StepProgress = ({
   labels = [],
   onClicks = [],
 
-  labelType = labelTypes.under,
+  labelType = labelTypes.inner,
   round = false,
   color,
   selectedStepColor = '#fff',
-  canClickToNextStep = false,
-  canClickToPreviousSteps = false,
+  canClickToNextStep = true,
+  canClickToPreviousSteps = true,
   clickable = true,
   disabled = false,
 }: StepProgressProps): JSX.Element | null => {
