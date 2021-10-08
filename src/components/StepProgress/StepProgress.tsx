@@ -16,6 +16,7 @@ export type ContainerProps = {
 };
 export const Container = styled(Div)`
   ${({ disabled }: ContainerProps) => `
+    width: fit-content;
     position: relative;
 
     ${fonts.body}
@@ -160,6 +161,8 @@ export const SelectedRangeRail = styled(SlideRail)`
 
 export type StepProgressProps = {
   StyledContainer?: StyledSubcomponentType;
+  StyledSlideRail?: StyledSubcomponentType;
+  StyledSelectedRangeRail?: StyledSubcomponentType;
   StyledSelectedStepContainer?: StyledSubcomponentType;
   StyledOutOfRangeStepContainer?: StyledSubcomponentType;
   StyledCompletedStepContainer?: StyledSubcomponentType;
@@ -193,6 +196,8 @@ export type StepProgressProps = {
 
 export const StepProgress = ({
   StyledContainer = Container,
+  StyledSlideRail = SlideRail,
+  StyledSelectedRangeRail = SelectedRangeRail,
   StyledSelectedStepContainer = SelectedStepContainer,
   StyledOutOfRangeStepContainer = OutOfRangeStepContainer,
   StyledCompletedStepContainer = LabelContainer,
@@ -286,8 +291,8 @@ export const StepProgress = ({
 
   return (
     <StyledContainer ref={containerRef} disabled={disabled} {...containerProps}>
-      <SlideRail />
-      <SelectedRangeRail index={index} max={labels.length} color={containerColor} />
+      <StyledSlideRail />
+      <StyledSelectedRangeRail index={index} max={labels.length} color={containerColor} />
       <LabelList>
         {labels.map((label, i) => (
           <LabelFlex ref={labelRefs[i]} key={`${label}-label`}>
@@ -344,5 +349,16 @@ export const StepProgress = ({
     </StyledContainer>
   );
 };
+
+StepProgress.labelTypes = labelTypes;
+StepProgress.Container = Container;
+StepProgress.SlideRail = SlideRail;
+StepProgress.SelectedRangeRail = SelectedRangeRail;
+StepProgress.StyledSelectedStepContainer = SelectedStepContainer;
+StepProgress.StyledOutOfRangeStepContainer = OutOfRangeStepContainer;
+StepProgress.StyledCompletedStepContainer = LabelContainer;
+StepProgress.StyledInnerTextContainer = LabelTextContainer;
+StepProgress.StyledOverTextContainer = OverTextContainer;
+StepProgress.StyledUnderTextContainer = UnderTextContainer;
 
 export default StepProgress;
