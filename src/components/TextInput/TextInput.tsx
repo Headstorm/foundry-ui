@@ -13,7 +13,6 @@ import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
-import { mergeRefs } from '../../utils/refs';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
@@ -147,7 +146,7 @@ const createIcon = (StyledIconContainer: StyledSubcomponentType, iconPrefix: Rea
   if (typeof iconPrefix === 'string') {
     return (
       <StyledIconContainer>
-        <Icon size="1rem" path={iconPrefix} />
+        <Icon aria-hidden="true" size="1rem" path={iconPrefix} />
       </StyledIconContainer>
     );
   }
@@ -261,12 +260,18 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        ref={mergeRefs([inputRef, internalInputRef])}
+        // ref={mergeRefs([inputRef, internalInputRef])}
+        ref={inputRef}
         {...inputProps}
       />
       {(onClear || clearable) && (
-        <StyledIconContainer onClick={handleClear} {...iconContainerProps}>
-          <Icon path={mdiClose} size="1em" />
+        <StyledIconContainer
+          onClick={handleClear}
+          role="button"
+          aria-label="Clear"
+          {...iconContainerProps}
+        >
+          <Icon aria-hidden="true" path={mdiClose} size="1em" />
         </StyledIconContainer>
       )}
       {showCharacterCount && (

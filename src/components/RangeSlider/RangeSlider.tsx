@@ -491,7 +491,12 @@ export const RangeSlider = ({
       })}
 
       {motionBlur && (
-        <svg viewBox="-200 -100 200 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <svg
+          style={{ display: 'none' }}
+          viewBox="-200 -100 200 100"
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+        >
           <defs>
             <filter id="blur">
               <feGaussianBlur ref={blurRef} in="SourceGraphic" stdDeviation="0,0" />

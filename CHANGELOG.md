@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/Headstorm/foundry-ui/compare/v1.11.5...v1.12.0) (2021-10-07)
+
+
+### Features
+
+* **added aria attributes to components:** added aria roles and labels to some components ([7b73659](https://github.com/Headstorm/foundry-ui/commit/7b73659a396c9c7fb827bdf6e102b66400cbdb0d)), closes [#266](https://github.com/Headstorm/foundry-ui/issues/266)
+
 ## [1.11.5](https://github.com/Headstorm/foundry-ui/compare/v1.11.4...v1.11.5) (2021-09-21)
 
 
