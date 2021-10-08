@@ -13,9 +13,10 @@ import Text from '../Text';
 
 export type ContainerProps = {
   disabled: boolean;
+  vertical: boolean;
 };
 export const Container = styled(Div)`
-  ${({ disabled }: ContainerProps) => `
+  ${({ disabled, vertical }: ContainerProps) => `
     width: fit-content;
     position: relative;
 
@@ -33,6 +34,7 @@ export const Container = styled(Div)`
         `
         : ''
     }
+    ${vertical ? 'transform: rotate(90deg);' : ''}
   `}
 `;
 
@@ -105,26 +107,31 @@ export const OutOfRangeStepContainer = styled(LabelContainer)`
 `;
 
 export const LabelTextContainer = styled(Text.Container)`
-  ${({ visible }: { visible: boolean }) => `
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  overflow-wrap: break-word;
-  ${visible ? '' : 'visibility: hidden;'}
+  ${({ visible, vertical }: { visible: boolean; vertical: boolean }) => `
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    overflow-wrap: break-word;
+    ${visible ? '' : 'visibility: hidden;'}
+    ${vertical ? `transform: rotate(-90deg);` : ''}
 `}
 `;
 
 export const OverTextContainer = styled(LabelTextContainer)`
-  margin-bottom: 0.5rem;
-  text-align: center;
-  height: 100%;
-  padding-bottom: 0;
-  vertical-align: bottom;
+  ${({ vertical }: { vertical: boolean }) => `
+    margin-bottom: ${vertical ? '1.5rem' : '.5rem'};
+    text-align: center;
+    height: 100%;
+    padding-bottom: 0;
+    vertical-align: bottom;
+  `}
 `;
 
 export const UnderTextContainer = styled(LabelTextContainer)`
-  margin-top: 0.5rem;
-  height: 100%;
+  ${({ vertical }: { vertical: boolean }) => `
+    margin-top: ${vertical ? '1.5rem' : '.5rem'};
+    height: 100%;
+  `}
 `;
 
 export const SlideRail = styled(Div)`
@@ -186,6 +193,7 @@ export type StepProgressProps = {
 
   labelType?: string;
   round?: boolean;
+  vertical?: boolean;
   color?: string;
   selectedStepColor?: string;
   canClickToNextStep?: boolean;
@@ -221,6 +229,7 @@ export const StepProgress = ({
 
   labelType = labelTypes.inner,
   round = false,
+  vertical = false,
   color,
   selectedStepColor = '#fff',
   canClickToNextStep = true,
@@ -290,7 +299,7 @@ export const StepProgress = ({
   };
 
   return (
-    <StyledContainer ref={containerRef} disabled={disabled} {...containerProps}>
+    <StyledContainer ref={containerRef} disabled={disabled} vertical={vertical} {...containerProps}>
       <StyledSlideRail />
       <StyledSelectedRangeRail index={index} max={labels.length} color={containerColor} />
       <LabelList>
@@ -298,7 +307,7 @@ export const StepProgress = ({
           <LabelFlex ref={labelRefs[i]} key={`${label}-label`}>
             <Text
               StyledContainer={StyledOverTextContainer}
-              containerProps={{ visible: labelType === labelTypes.over, ...textProps }}
+              containerProps={{ visible: labelType === labelTypes.over, vertical, ...textProps }}
               color={getTextColor(i)}
             >
               {label}
@@ -331,14 +340,14 @@ export const StepProgress = ({
             >
               <Text
                 StyledContainer={StyledInnerTextContainer}
-                containerProps={{ visible: true, ...textProps }}
+                containerProps={{ visible: true, vertical, ...textProps }}
               >
                 {labelType === labelTypes.inner ? label : i}
               </Text>
             </Button>
             <Text
               StyledContainer={StyledUnderTextContainer}
-              containerProps={{ visible: labelType === labelTypes.under, ...textProps }}
+              containerProps={{ visible: labelType === labelTypes.under, vertical, ...textProps }}
               color={getTextColor(i)}
             >
               {label}

@@ -26,6 +26,7 @@ export const Default: Story<DefaultProps> = ({
   color,
   clickable,
   round,
+  vertical,
   labels,
   canClickToNextStep,
   canClickToPreviousSteps,
@@ -52,6 +53,7 @@ export const Default: Story<DefaultProps> = ({
         color={color}
         clickable={clickable}
         round={round}
+        vertical={vertical}
         canClickToNextStep={canClickToNextStep}
         canClickToPreviousSteps={canClickToPreviousSteps}
         labelType={labelType}
@@ -66,6 +68,7 @@ Default.args = {
   color: colors.primaryDark,
   clickable: true,
   round: false,
+  vertical: false,
   labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4'],
   canClickToNextStep: true,
   canClickToPreviousSteps: true,
