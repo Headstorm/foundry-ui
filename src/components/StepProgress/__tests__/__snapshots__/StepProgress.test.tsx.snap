@@ -85,9 +85,9 @@ exports[`RangeSlider renders 1`] = `
   animation: gZwmnl 2s linear infinite;
 }
 
-.c27 {
+.c28 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(213,213,213,0.75), rgba(213,213,213,0.25), rgba(213,213,213,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(81,87,93,0.75), rgba(81,87,93,0.25), rgba(81,87,93,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -199,7 +199,7 @@ exports[`RangeSlider renders 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c28 {
+.c29 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -212,10 +212,10 @@ exports[`RangeSlider renders 1`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #D5D5D5;
+  border: 1px solid transparent;
   cursor: pointer;
-  background-color: transparent;
-  color: #D5D5D5;
+  background-color: #D5D5D5;
+  color: #000;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -226,11 +226,11 @@ exports[`RangeSlider renders 1`] = `
   align-items: center;
 }
 
-.c28:hover {
-  background-color: rgba(0,0,0,0.05);
+.c29:hover {
+  background-color: #c8c8c8;
 }
 
-.c28:focus {
+.c29:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
@@ -262,9 +262,9 @@ exports[`RangeSlider renders 1`] = `
   color: #BF3A00;
 }
 
-.c26 {
+.c27 {
   font-size: 1rem;
-  color: #D5D5D5;
+  color: #51575D;
 }
 
 .c9 {
@@ -328,7 +328,6 @@ exports[`RangeSlider renders 1`] = `
 }
 
 .c12 {
-  pointer-events: none;
   -webkit-transition: background-color .3s,color .3s;
   transition: background-color .3s,color .3s;
   width: 100%;
@@ -342,21 +341,26 @@ exports[`RangeSlider renders 1`] = `
 }
 
 .c25 {
+  pointer-events: none;
+  -webkit-transition: background-color .3s,color .3s;
+  transition: background-color .3s,color .3s;
+  width: 100%;
+}
+
+.c25:before {
+  display: block;
+  content: '';
+  height: 0;
+  padding-bottom: 110%;
+}
+
+.c26 {
   color: #000;
   background-color: #fff;
 }
 
-.c25:hover {
+.c26:hover {
   background-color: #f2f2f2;
-}
-
-.c29 {
-  color: #D5D5D5;
-  background-color: #fff;
-}
-
-.c29:hover {
-  background-color: #c8c8c8;
 }
 
 .c6 {
@@ -487,7 +491,7 @@ exports[`RangeSlider renders 1`] = `
           />
         </button>
         <span
-          class=" c5 c14 c21"
+          class=" c5 c6 c21"
           color="#000"
           data-test-id="hsui-Text"
         >
@@ -529,7 +533,7 @@ exports[`RangeSlider renders 1`] = `
           </div>
         </span>
         <button
-          class=" c8 c24 c12 c25"
+          class=" c8 c24 c25 c26"
           color="#BF3A00"
           elevation="0"
           role="button"
@@ -569,7 +573,7 @@ exports[`RangeSlider renders 1`] = `
           />
         </button>
         <span
-          class=" c22 c14 c21"
+          class=" c22 c6 c21"
           color="#BF3A00"
           data-test-id="hsui-Text"
         >
@@ -592,8 +596,8 @@ exports[`RangeSlider renders 1`] = `
         class=" c4"
       >
         <span
-          class=" c26 c6 c7"
-          color="#D5D5D5"
+          class=" c27 c6 c7"
+          color="#51575D"
           data-test-id="hsui-Text"
         >
           <div
@@ -605,13 +609,13 @@ exports[`RangeSlider renders 1`] = `
               2
             </span>
             <div
-              class=" c27"
-              color="#D5D5D5"
+              class=" c28"
+              color="#51575D"
             />
           </div>
         </span>
         <button
-          class=" c8 c28 c12 c29"
+          class=" c8 c29 c12"
           color="#D5D5D5"
           elevation="0"
           role="button"
@@ -646,13 +650,13 @@ exports[`RangeSlider renders 1`] = `
             />
           </div>
           <div
-            class=" c27"
-            color="#D5D5D5"
+            class=" c10"
+            color="#000"
           />
         </button>
         <span
-          class=" c26 c14 c21"
-          color="#D5D5D5"
+          class=" c27 c6 c21"
+          color="#51575D"
           data-test-id="hsui-Text"
         >
           <div
@@ -664,8 +668,8 @@ exports[`RangeSlider renders 1`] = `
               2
             </span>
             <div
-              class=" c27"
-              color="#D5D5D5"
+              class=" c28"
+              color="#51575D"
             />
           </div>
         </span>
@@ -760,9 +764,9 @@ exports[`RangeSlider renders 2`] = `
   animation: gZwmnl 2s linear infinite;
 }
 
-.c27 {
+.c28 {
   opacity: 0;
-  background: linear-gradient( 90deg, rgba(213,213,213,0.75), rgba(213,213,213,0.25), rgba(213,213,213,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(81,87,93,0.75), rgba(81,87,93,0.25), rgba(81,87,93,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -874,7 +878,7 @@ exports[`RangeSlider renders 2`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c28 {
+.c29 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -887,10 +891,10 @@ exports[`RangeSlider renders 2`] = `
   transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
   contain: layout;
   outline: 0 none;
-  border: 1px solid #D5D5D5;
+  border: 1px solid transparent;
   cursor: pointer;
-  background-color: transparent;
-  color: #D5D5D5;
+  background-color: #D5D5D5;
+  color: #000;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -901,11 +905,11 @@ exports[`RangeSlider renders 2`] = `
   align-items: center;
 }
 
-.c28:hover {
-  background-color: rgba(0,0,0,0.05);
+.c29:hover {
+  background-color: #c8c8c8;
 }
 
-.c28:focus {
+.c29:focus {
   outline: none;
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
@@ -937,9 +941,9 @@ exports[`RangeSlider renders 2`] = `
   color: #BF3A00;
 }
 
-.c26 {
+.c27 {
   font-size: 1rem;
-  color: #D5D5D5;
+  color: #51575D;
 }
 
 .c9 {
@@ -1003,7 +1007,6 @@ exports[`RangeSlider renders 2`] = `
 }
 
 .c12 {
-  pointer-events: none;
   -webkit-transition: background-color .3s,color .3s;
   transition: background-color .3s,color .3s;
   width: 100%;
@@ -1017,21 +1020,26 @@ exports[`RangeSlider renders 2`] = `
 }
 
 .c25 {
+  pointer-events: none;
+  -webkit-transition: background-color .3s,color .3s;
+  transition: background-color .3s,color .3s;
+  width: 100%;
+}
+
+.c25:before {
+  display: block;
+  content: '';
+  height: 0;
+  padding-bottom: 110%;
+}
+
+.c26 {
   color: #000;
   background-color: #fff;
 }
 
-.c25:hover {
+.c26:hover {
   background-color: #f2f2f2;
-}
-
-.c29 {
-  color: #D5D5D5;
-  background-color: #fff;
-}
-
-.c29:hover {
-  background-color: #c8c8c8;
 }
 
 .c6 {
@@ -1162,7 +1170,7 @@ exports[`RangeSlider renders 2`] = `
           />
         </button>
         <span
-          class=" c5 c14 c21"
+          class=" c5 c6 c21"
           color="#000"
           data-test-id="hsui-Text"
         >
@@ -1204,7 +1212,7 @@ exports[`RangeSlider renders 2`] = `
           </div>
         </span>
         <button
-          class=" c8 c24 c12 c25"
+          class=" c8 c24 c25 c26"
           color="#BF3A00"
           elevation="0"
           role="button"
@@ -1244,7 +1252,7 @@ exports[`RangeSlider renders 2`] = `
           />
         </button>
         <span
-          class=" c22 c14 c21"
+          class=" c22 c6 c21"
           color="#BF3A00"
           data-test-id="hsui-Text"
         >
@@ -1267,8 +1275,8 @@ exports[`RangeSlider renders 2`] = `
         class=" c4"
       >
         <span
-          class=" c26 c6 c7"
-          color="#D5D5D5"
+          class=" c27 c6 c7"
+          color="#51575D"
           data-test-id="hsui-Text"
         >
           <div
@@ -1280,13 +1288,13 @@ exports[`RangeSlider renders 2`] = `
               2
             </span>
             <div
-              class=" c27"
-              color="#D5D5D5"
+              class=" c28"
+              color="#51575D"
             />
           </div>
         </span>
         <button
-          class=" c8 c28 c12 c29"
+          class=" c8 c29 c12"
           color="#D5D5D5"
           elevation="0"
           role="button"
@@ -1321,13 +1329,13 @@ exports[`RangeSlider renders 2`] = `
             />
           </div>
           <div
-            class=" c27"
-            color="#D5D5D5"
+            class=" c10"
+            color="#000"
           />
         </button>
         <span
-          class=" c26 c14 c21"
-          color="#D5D5D5"
+          class=" c27 c6 c21"
+          color="#51575D"
           data-test-id="hsui-Text"
         >
           <div
@@ -1339,8 +1347,8 @@ exports[`RangeSlider renders 2`] = `
               2
             </span>
             <div
-              class=" c27"
-              color="#D5D5D5"
+              class=" c28"
+              color="#51575D"
             />
           </div>
         </span>

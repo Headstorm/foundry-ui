@@ -20,6 +20,7 @@ import { FoundryProvider, FoundryContext, useTheme } from './context';
 import colors from './enums/colors';
 import timings from './enums/timings';
 import fonts from './enums/fonts';
+import labelTypes from './enums/labelTypes';
 import variants from './enums/variants';
 import feedbackTypes from './enums/feedbackTypes';
 import checkboxTypes from './enums/checkboxTypes';
@@ -51,6 +52,7 @@ export {
   colors,
   timings,
   fonts,
+  labelTypes,
   variants,
   feedbackTypes,
   checkboxTypes,
