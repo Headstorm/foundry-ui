@@ -17,8 +17,6 @@ export type ContainerProps = {
 export const Container = styled(Div)`
   ${({ disabled }: ContainerProps) => `
     position: relative;
-    width: 100%;
-    height: 100%;
 
     ${fonts.body}
 
