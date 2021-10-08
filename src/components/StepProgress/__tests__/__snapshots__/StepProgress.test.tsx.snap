@@ -380,7 +380,7 @@ exports[`RangeSlider renders 1`] = `
 }
 
 .c7 {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
   text-align: center;
   height: 100%;
   padding-bottom: 0;
@@ -388,7 +388,7 @@ exports[`RangeSlider renders 1`] = `
 }
 
 .c21 {
-  margin-top: 0.5rem;
+  margin-top: .5rem;
   height: 100%;
 }
 
@@ -1060,7 +1060,7 @@ exports[`RangeSlider renders 2`] = `
 }
 
 .c7 {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
   text-align: center;
   height: 100%;
   padding-bottom: 0;
@@ -1068,7 +1068,7 @@ exports[`RangeSlider renders 2`] = `
 }
 
 .c21 {
-  margin-top: 0.5rem;
+  margin-top: .5rem;
   height: 100%;
 }
 

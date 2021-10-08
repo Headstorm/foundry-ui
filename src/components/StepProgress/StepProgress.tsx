@@ -113,7 +113,7 @@ export const LabelTextContainer = styled(Text.Container)`
     width: 100%;
     overflow-wrap: break-word;
     ${visible ? '' : 'visibility: hidden;'}
-    ${vertical ? `transform: rotate(-90deg);` : ''}
+    ${vertical ? 'transform: rotate(-90deg);' : ''}
 `}
 `;
 
