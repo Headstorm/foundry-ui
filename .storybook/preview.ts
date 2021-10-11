@@ -1,6 +1,11 @@
 import { withDesign } from 'storybook-addon-designs';
-
+import { configureActions } from '@storybook/addon-actions';
 import colors from '../src/enums/colors';
+
+configureActions({
+  depth: 3,
+  limit: 10,
+});
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
