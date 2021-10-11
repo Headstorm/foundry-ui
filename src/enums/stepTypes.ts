@@ -1,7 +1,7 @@
-enum labelTypes {
+enum stepTypes {
   inner = 'inner',
   under = 'under',
   over = 'over',
 }
 
-export default labelTypes;
+export default stepTypes;

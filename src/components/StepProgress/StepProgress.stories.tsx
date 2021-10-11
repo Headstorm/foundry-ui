@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
 import colors from '../../enums/colors';
-import labelTypes from '../../enums/labelTypes';
+import stepTypes from '../../enums/stepTypes';
 import StepProgress, { StepProgressProps } from './StepProgress';
 import fonts from '../../enums/fonts';
 
@@ -27,18 +27,18 @@ export const Default: Story<DefaultProps> = ({
   clickable,
   round,
   vertical,
-  labels,
+  steps,
   canClickToNextStep,
   canClickToPreviousSteps,
-  labelType,
+  stepType,
 }: DefaultProps) => {
   const [currStep, setCurrStep] = useState(index);
 
   useEffect(() => setCurrStep(index), [index]);
 
   const onClicks: any[] = [];
-  labels = labels || [];
-  labels.forEach((label, i) => {
+  steps = steps || [];
+  steps.forEach((step, i) => {
     onClicks.push(() => setCurrStep(i));
   });
 
@@ -47,7 +47,7 @@ export const Default: Story<DefaultProps> = ({
       <StepProgress
         onClicks={onClicks}
         disabled={disabled}
-        labels={labels}
+        steps={steps}
         index={currStep}
         selectedStepColor={selectedStepColor}
         color={color}
@@ -56,7 +56,7 @@ export const Default: Story<DefaultProps> = ({
         vertical={vertical}
         canClickToNextStep={canClickToNextStep}
         canClickToPreviousSteps={canClickToPreviousSteps}
-        labelType={labelType}
+        stepType={stepType}
       />
     </Row>
   );
@@ -69,10 +69,10 @@ Default.args = {
   clickable: true,
   round: false,
   vertical: false,
-  labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4'],
+  steps: ['Step 1', 'Step 2', 'Step 3', 'Step 4'],
   canClickToNextStep: true,
   canClickToPreviousSteps: true,
-  labelType: labelTypes.inner,
+  stepType: stepTypes.inner,
 };
 
 export default {
@@ -86,8 +86,8 @@ export default {
         step: 1,
       },
     },
-    labelType: {
-      options: [labelTypes.inner, labelTypes.under, labelTypes.over],
+    stepType: {
+      options: [stepTypes.inner, stepTypes.under, stepTypes.over],
       control: {
         type: 'select',
       },

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import variants from '../../enums/variants';
-import labelTypes from '../../enums/labelTypes';
+import stepTypes from '../../enums/stepTypes';
 import { getFontColorFromVariant } from '../../utils/color';
 import { Div } from '../../htmlElements';
 import fonts from '../../enums/fonts';
@@ -45,7 +45,7 @@ export const Container = styled(Div)`
   `}
 `;
 
-const LabelList = styled(Div)`
+const StepList = styled(Div)`
   position: relative;
   display: flex;
   width: 100%;
@@ -55,7 +55,7 @@ const LabelList = styled(Div)`
   gap: 1rem;
 `;
 
-const LabelFlex = styled(Div)`
+const StepFlex = styled(Div)`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -64,7 +64,7 @@ const LabelFlex = styled(Div)`
   min-width: 0;
 `;
 
-export const LabelContainer = styled(Button.Container)`
+export const StepContainer = styled(Button.Container)`
   ${({ round, clickable }: { round: boolean; clickable: boolean }) => `
   ${
     round
@@ -89,7 +89,7 @@ export const LabelContainer = styled(Button.Container)`
   }
 `;
 
-export const SelectedStepContainer = styled(LabelContainer)`
+export const SelectedStepContainer = styled(StepContainer)`
   ${({ bgColor }: { bgColor: string }) => `
     color: ${getFontColorFromVariant(variants.fill, bgColor)};
     background-color: ${bgColor};
@@ -101,7 +101,7 @@ export const SelectedStepContainer = styled(LabelContainer)`
   `}
 `;
 
-export const OutOfRangeStepContainer = styled(LabelContainer)`
+export const OutOfRangeStepContainer = styled(StepContainer)`
   ${({ bgColor }: { bgColor: string }) => `
     color: ${bgColor};
     background-color: #fff;
@@ -113,7 +113,7 @@ export const OutOfRangeStepContainer = styled(LabelContainer)`
   `}
 `;
 
-export const LabelTextContainer = styled(Text.Container)`
+export const StepTextContainer = styled(Text.Container)`
   ${({ visible, vertical }: { visible: boolean; vertical: boolean }) => `
     display: inline-block;
     text-align: center;
@@ -124,7 +124,7 @@ export const LabelTextContainer = styled(Text.Container)`
 `}
 `;
 
-export const OverTextContainer = styled(LabelTextContainer)`
+export const OverTextContainer = styled(StepTextContainer)`
   ${({ vertical }: { vertical: boolean }) => `
     margin-bottom: ${vertical ? '1.5rem' : '.5rem'};
     text-align: center;
@@ -134,7 +134,7 @@ export const OverTextContainer = styled(LabelTextContainer)`
   `}
 `;
 
-export const UnderTextContainer = styled(LabelTextContainer)`
+export const UnderTextContainer = styled(StepTextContainer)`
   ${({ vertical }: { vertical: boolean }) => `
     margin-top: ${vertical ? '1.5rem' : '.5rem'};
     height: 100%;
@@ -192,13 +192,13 @@ export type StepProgressProps = {
 
   containerRef?: React.RefObject<HTMLDivElement>;
   buttonRefs?: React.RefObject<HTMLButtonElement>[];
-  labelRefs?: React.RefObject<HTMLDivElement>[];
+  stepRefs?: React.RefObject<HTMLDivElement>[];
 
   index?: number;
-  labels?: string[];
+  steps?: string[];
   onClicks?: { (): void }[];
 
-  labelType?: string;
+  stepType?: string;
   round?: boolean;
   vertical?: boolean;
   color?: string;
@@ -215,8 +215,8 @@ export const StepProgress = ({
   StyledSelectedRangeRail = SelectedRangeRail,
   StyledSelectedStepContainer = SelectedStepContainer,
   StyledOutOfRangeStepContainer = OutOfRangeStepContainer,
-  StyledCompletedStepContainer = LabelContainer,
-  StyledInnerTextContainer = LabelTextContainer,
+  StyledCompletedStepContainer = StepContainer,
+  StyledInnerTextContainer = StepTextContainer,
   StyledOverTextContainer = OverTextContainer,
   StyledUnderTextContainer = UnderTextContainer,
 
@@ -228,13 +228,13 @@ export const StepProgress = ({
 
   containerRef,
   buttonRefs = [],
-  labelRefs = [],
+  stepRefs = [],
 
   index = 0,
-  labels = [],
+  steps = [],
   onClicks = [],
 
-  labelType = labelTypes.inner,
+  stepType = stepTypes.inner,
   round = false,
   vertical = false,
   color,
@@ -253,14 +253,14 @@ export const StepProgress = ({
     bgColor: selectedStepColor,
     round,
     clickable: false,
-    labelType,
+    stepType,
   };
 
   const defaultOutOfRangeStepProps: SubcomponentPropsType = {
     bgColor: colors.grayXlight,
     round,
     clickable: false,
-    labelType,
+    stepType,
   };
 
   const getTextColor = (i: number) => {
@@ -300,7 +300,7 @@ export const StepProgress = ({
       round,
       clickable:
         clickable && ((index < i && canClickToNextStep) || (index >= i && canClickToPreviousSteps)),
-      labelType,
+      stepType,
       ...completedStepProps,
     };
   };
@@ -308,16 +308,16 @@ export const StepProgress = ({
   return (
     <StyledContainer ref={containerRef} disabled={disabled} vertical={vertical} {...containerProps}>
       <StyledSlideRail />
-      <StyledSelectedRangeRail index={index} max={labels.length} color={containerColor} />
-      <LabelList>
-        {labels.map((label, i) => (
-          <LabelFlex ref={labelRefs[i]} key={`${label}-label`}>
+      <StyledSelectedRangeRail index={index} max={steps.length} color={containerColor} />
+      <StepList>
+        {steps.map((step, i) => (
+          <StepFlex ref={stepRefs[i]} key={`${step}-step`}>
             <Text
               StyledContainer={StyledOverTextContainer}
-              containerProps={{ visible: labelType === labelTypes.over, vertical, ...textProps }}
+              containerProps={{ visible: stepType === stepTypes.over, vertical, ...textProps }}
               color={getTextColor(i)}
             >
-              {label}
+              {step}
             </Text>
             <Button
               containerRef={buttonRefs[i]}
@@ -349,31 +349,31 @@ export const StepProgress = ({
                 StyledContainer={StyledInnerTextContainer}
                 containerProps={{ visible: true, vertical, ...textProps }}
               >
-                {labelType === labelTypes.inner ? label : i}
+                {stepType === stepTypes.inner ? step : i}
               </Text>
             </Button>
             <Text
               StyledContainer={StyledUnderTextContainer}
-              containerProps={{ visible: labelType === labelTypes.under, vertical, ...textProps }}
+              containerProps={{ visible: stepType === stepTypes.under, vertical, ...textProps }}
               color={getTextColor(i)}
             >
-              {label}
+              {step}
             </Text>
-          </LabelFlex>
+          </StepFlex>
         ))}
-      </LabelList>
+      </StepList>
     </StyledContainer>
   );
 };
 
-StepProgress.labelTypes = labelTypes;
+StepProgress.stepTypes = stepTypes;
 StepProgress.Container = Container;
 StepProgress.SlideRail = SlideRail;
 StepProgress.SelectedRangeRail = SelectedRangeRail;
 StepProgress.StyledSelectedStepContainer = SelectedStepContainer;
 StepProgress.StyledOutOfRangeStepContainer = OutOfRangeStepContainer;
-StepProgress.StyledCompletedStepContainer = LabelContainer;
-StepProgress.StyledInnerTextContainer = LabelTextContainer;
+StepProgress.StyledCompletedStepContainer = StepContainer;
+StepProgress.StyledInnerTextContainer = StepTextContainer;
 StepProgress.StyledOverTextContainer = OverTextContainer;
 StepProgress.StyledUnderTextContainer = UnderTextContainer;
 
