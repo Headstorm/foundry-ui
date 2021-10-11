@@ -34,10 +34,14 @@ export const Container = styled(Div)`
         `
         : ''
     }
-    ${vertical ? `
+    ${
+      vertical
+        ? `
     transform-origin: top left;
     transform: translateX(50%) rotate(90deg);
-    ` : ''}
+    `
+        : ''
+    }
   `}
 `;
 
