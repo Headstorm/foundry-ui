@@ -104,7 +104,9 @@ exports[`MainNavigation nav button clicks 1`] = `
   position: relative;
   background-color: #BF3A00;
   color: #fff;
-  height: 3rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
   -webkit-transform: scaleY(1);
   -ms-transform: scaleY(1);
@@ -124,9 +126,6 @@ exports[`MainNavigation nav button clicks 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -138,15 +137,18 @@ exports[`MainNavigation nav button clicks 1`] = `
 }
 
 .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c3 {
@@ -157,7 +159,7 @@ exports[`MainNavigation nav button clicks 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  padding: 0.25rem 0rem 0.25rem 1rem;
   height: 100%;
   border-radius: 0 0 0 0;
 }
@@ -175,7 +177,7 @@ exports[`MainNavigation nav button clicks 1`] = `
   <div
     class=" c0"
     color="#BF3A00"
-    height="3rem"
+    height="fit-content"
   >
     <div
       class=" c1"
@@ -236,7 +238,9 @@ exports[`MainNavigation renders 1`] = `
   position: relative;
   background-color: #BF3A00;
   color: #fff;
-  height: 3rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
   -webkit-transform: scaleY(1);
   -ms-transform: scaleY(1);
@@ -256,9 +260,6 @@ exports[`MainNavigation renders 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -270,15 +271,18 @@ exports[`MainNavigation renders 1`] = `
 }
 
 .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .c3 {
@@ -290,7 +294,7 @@ exports[`MainNavigation renders 1`] = `
     class=" c0"
     color="#BF3A00"
     data-test-id="hs-ui-main-navigation-unit-test"
-    height="3rem"
+    height="fit-content"
   >
     <div
       class=" c1"

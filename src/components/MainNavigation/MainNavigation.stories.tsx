@@ -23,7 +23,7 @@ const HeaderText = styled(Text.Container)`
 
 const HamburgerButton = styled(Button.Container)`
   height: 100%;
-  padding: 0.25rem;
+  padding: 0.5rem;
   margin-right: 1rem;
   &:focus {
     box-shadow: 0 0 0;
@@ -31,13 +31,17 @@ const HamburgerButton = styled(Button.Container)`
 `;
 
 const SearchBar = styled(TextInput.Container)`
-  width: 70%;
-  margin-left: auto;
-  margin-right: 1rem;
-  &:focus-within {
-    outline: none;
-    box-shadow: 0 0 5px 0.15rem ${colors.tertiary};
-  }
+  ${({ expanded }: { expanded: boolean }) => `
+    width: ${expanded ? '99%' : '80%'};
+    margin-left: auto;
+    margin-right: ${expanded ? 'auto' : '1rem'};
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    &:focus-within {
+      outline: none;
+      box-shadow: 0 0 5px 0.15rem ${colors.tertiary};
+    }
+  `}
 `;
 
 const SearchInput = styled(TextInput.Input)`
@@ -93,6 +97,8 @@ const getIconPath = (path: string, color: string) =>
 export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
   const [hidden, setHidden] = React.useState(args.hidden);
   React.useEffect(() => setHidden(hidden), [hidden]);
+  const [expanded, setExpanded] = React.useState(args.bodyBelow);
+  React.useEffect(() => setExpanded(expanded), [expanded]);
 
   const getScrollSpeed = MainNavigation.getScrollSpeed(50);
 
@@ -100,7 +106,9 @@ export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
     <App>
       <MainNavigation
         hidden={hidden}
+        hideBody={args.hideBody && !expanded}
         hiddenBelowY={args.hiddenBelowY}
+        bodyBelow={expanded}
         onScroll={() => {
           action(`Scrolled with speed: ${Math.abs(getScrollSpeed())}`)();
         }}
@@ -109,10 +117,26 @@ export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
         color={args.color}
         height={args.height}
         header={args.header}
-        body={args.body}
+        body={
+          <TextInput
+            placeholder="Search Bar"
+            StyledContainer={SearchBar}
+            containerProps={{ expanded }}
+            StyledInput={SearchInput}
+            iconPrefix={getIconPath(Icons.mdiMagnify, 'grey')}
+          />
+        }
         navButtons={args.navButtons}
         labelFontSize={args.labelFontSize}
-        footer={args.footer}
+        footer={
+          <Button
+            color="#0000"
+            StyledContainer={HamburgerButton}
+            onClick={() => setExpanded(!expanded)}
+          >
+            {getIconPath(Icons.mdiMenu, 'white')}
+          </Button>
+        }
       />
       <body>
         <h2>
@@ -126,20 +150,14 @@ export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
 Default.args = {
   hidden: false,
   hiddenBelowY: 100,
+  hideBody: false,
+  bodyBelow: false,
   color: colors.primaryDark,
-  height: '3rem',
+  height: 'fit-content',
   header: (
     <Text StyledContainer={HeaderText} color="#fff">
       Foundry UI
     </Text>
-  ),
-  body: (
-    <TextInput
-      placeholder="Search Bar"
-      StyledContainer={SearchBar}
-      StyledInput={SearchInput}
-      iconPrefix={getIconPath(Icons.mdiMagnify, 'grey')}
-    />
   ),
   navButtons: [
     {
@@ -162,11 +180,6 @@ Default.args = {
     },
   ],
   labelFontSize: '.75rem',
-  footer: (
-    <Button color="#0000" StyledContainer={HamburgerButton}>
-      {getIconPath(Icons.mdiMenu, 'white')}
-    </Button>
-  ),
   position: 'relative',
 };
 

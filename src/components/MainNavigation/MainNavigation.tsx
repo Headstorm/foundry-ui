@@ -55,19 +55,24 @@ const NavFlex = styled(Div)`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   align-content: stretch;
   padding-left: 1rem;
 `;
 
 export const NavSection = styled(Div)`
+  ${({ bodyBelow }: { bodyBelow: boolean }) => `
+    flex-direction: ${bodyBelow ? 'column' : 'row'};
+    align-items: ${bodyBelow ? 'flex-start' : 'center'};
+  `}
   display: flex;
   height: 100%;
-  align-items: center;
 `;
 
 export const Header = styled(NavSection)`
+  ${({ bodyBelow }: { bodyBelow: boolean }) => `
+    align-self: ${bodyBelow ? 'flex-start' : 'center'};
+  `}
   margin-right: 1rem;
   width: fit-content;
 `;
@@ -78,7 +83,7 @@ export const Body = styled(NavSection)`
 
 export const NavButtonContainer = styled(Button.Container)`
   width: fit-content;
-  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  padding: 0.25rem 0rem 0.25rem 1rem;
   height: 100%;
   border-radius: 0 0 0 0;
   &:hover {
@@ -155,6 +160,8 @@ export interface MainNavigationProps {
 
   hidden?: boolean;
   disabled?: boolean;
+  hideBody?: boolean;
+  bodyBelow?: boolean;
   hiddenBelowY?: number;
   onScroll?: () => void;
   HideAnimationProps?: HideAnimationPropType;
@@ -193,6 +200,8 @@ const MainNavigation = ({
 
   hidden = false,
   disabled = false,
+  hideBody = false,
+  bodyBelow = false,
   // auto hiding below Y uses window.onscroll by default, for server-side rendering use your own onscroll to set the hidden argument
   hiddenBelowY,
   onScroll,
@@ -200,7 +209,7 @@ const MainNavigation = ({
   hideAnimation = defaultHideAnimation,
   position = 'relative',
   location = '',
-  height = '3rem',
+  height = 'fit-content',
   color,
 }: MainNavigationProps): JSX.Element => {
   const { colors } = useTheme();
@@ -229,39 +238,85 @@ const MainNavigation = ({
       disabled={disabled}
       {...containerProps}
     >
-      <NavFlex>
-        {header && (
-          <StyledHeader ref={headerRef} {...headerProps}>
-            {header}
-          </StyledHeader>
-        )}
-        <StyledBody ref={bodyRef} {...bodyProps}>
-          {navButtons &&
-            navButtons.map((navButton, index) => (
-              <Button
-                containerRef={navButtonRefs[index]}
-                key={navButton.label}
-                onClick={navButton.onClick}
-                color="#0000"
-                StyledContainer={NavButtonContainer}
-                containerProps={{ ...navButtonProps[index] }}
-              >
-                <Text
-                  color={getFontColorFromVariant(variants.fill, backgroundColor)}
-                  size={labelFontSize}
-                >
-                  {navButton.label}
-                </Text>
-              </Button>
-            ))}
-          {body && body}
-        </StyledBody>
-        {footer && (
-          <StyledFooter ref={footerRef} {...footerProps}>
-            {footer}
-          </StyledFooter>
-        )}
-      </NavFlex>
+      {bodyBelow ? (
+        <>
+          <NavFlex>
+            {header && (
+              <StyledHeader ref={headerRef} {...headerProps}>
+                {header}
+              </StyledHeader>
+            )}
+            {footer && (
+              <StyledFooter ref={footerRef} {...footerProps}>
+                {footer}
+              </StyledFooter>
+            )}
+          </NavFlex>
+          {!hideBody ? (
+            <StyledBody ref={bodyRef} bodyBelow={bodyBelow} {...bodyProps}>
+              {navButtons &&
+                navButtons.map((navButton, index) => (
+                  <Button
+                    containerRef={navButtonRefs[index]}
+                    key={navButton.label}
+                    onClick={navButton.onClick}
+                    color="#0000"
+                    StyledContainer={NavButtonContainer}
+                    containerProps={{ ...navButtonProps[index] }}
+                  >
+                    <Text
+                      color={getFontColorFromVariant(variants.fill, backgroundColor)}
+                      size={labelFontSize}
+                    >
+                      {navButton.label}
+                    </Text>
+                  </Button>
+                ))}
+              {body && body}
+            </StyledBody>
+          ) : (
+            ''
+          )}
+        </>
+      ) : (
+        <NavFlex>
+          {header && (
+            <StyledHeader ref={headerRef} {...headerProps}>
+              {header}
+            </StyledHeader>
+          )}
+          {!hideBody ? (
+            <StyledBody ref={bodyRef} bodyBelow={bodyBelow} {...bodyProps}>
+              {navButtons &&
+                navButtons.map((navButton, index) => (
+                  <Button
+                    containerRef={navButtonRefs[index]}
+                    key={navButton.label}
+                    onClick={navButton.onClick}
+                    color="#0000"
+                    StyledContainer={NavButtonContainer}
+                    containerProps={{ ...navButtonProps[index] }}
+                  >
+                    <Text
+                      color={getFontColorFromVariant(variants.fill, backgroundColor)}
+                      size={labelFontSize}
+                    >
+                      {navButton.label}
+                    </Text>
+                  </Button>
+                ))}
+              {body && body}
+            </StyledBody>
+          ) : (
+            ''
+          )}
+          {footer && (
+            <StyledFooter ref={footerRef} {...footerProps}>
+              {footer}
+            </StyledFooter>
+          )}
+        </NavFlex>
+      )}
     </StyledContainer>
   );
 };
