@@ -154,16 +154,24 @@ export interface MainNavigationProps {
 
   header?: ReactNode;
   body?: ReactNode;
+  // navButtons are a list of links as buttons with onClicks that are included in the body section before the body object
   navButtons?: NavButton[];
   labelFontSize?: string;
   footer?: ReactNode;
 
   hidden?: boolean;
   disabled?: boolean;
+
+  // removes body, good for mobile to hide unless the body is expanded below
   hideBody?: boolean;
+  // puts body below the header and footer sections
   bodyBelow?: boolean;
+  // enables automatically hiding the navbar below a certain scroll position, only usable when window.onscroll
+  // is available. Otherwise use the hidden prop and your own function to detect position
   hiddenBelowY?: number;
+  // function to call when window.onscroll is used
   onScroll?: () => void;
+
   HideAnimationProps?: HideAnimationPropType;
   hideAnimation?: (value: HideAnimationPropType) => void;
   // set CSS position type ie `relative`, `absolute`, `static`, etc.
@@ -202,7 +210,6 @@ const MainNavigation = ({
   disabled = false,
   hideBody = false,
   bodyBelow = false,
-  // auto hiding below Y uses window.onscroll by default, for server-side rendering use your own onscroll to set the hidden argument
   hiddenBelowY,
   onScroll,
   HideAnimationProps,
