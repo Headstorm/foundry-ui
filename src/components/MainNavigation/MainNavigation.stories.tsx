@@ -96,9 +96,9 @@ const getIconPath = (path: string, color: string) =>
 
 export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
   const [hidden, setHidden] = React.useState(args.hidden);
-  React.useEffect(() => setHidden(hidden), [hidden]);
+  React.useEffect(() => setHidden(args.hidden), [args.hidden]);
   const [expanded, setExpanded] = React.useState(args.bodyBelow);
-  React.useEffect(() => setExpanded(expanded), [expanded]);
+  React.useEffect(() => setExpanded(args.bodyBelow), [args.bodyBelow]);
 
   const getScrollSpeed = MainNavigation.getScrollSpeed(50);
 
