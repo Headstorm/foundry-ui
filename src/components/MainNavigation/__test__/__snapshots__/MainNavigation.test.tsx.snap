@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainNavigation nav button clicks 1`] = `
+.c9 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(255,255,255,0.75), rgba(255,255,255,0.25), rgba(255,255,255,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: gZwmnl 2s linear infinite;
+  animation: gZwmnl 2s linear infinite;
+}
+
+.c4 {
+  display: block;
+  position: relative;
+}
+
+.c4 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c10 {
+  position: relative;
+}
+
+.c12 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  font-size: 1em;
+  padding: .75em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  transition: background-color .2s, color .5s, outline .5s, filter .5s, box-shadow .5s;
+  contain: layout;
+  outline: 0 none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: #0000;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5:hover {
+  background-color: rgba(0,0,0,0);
+}
+
+.c5:focus {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #338BAA;
+}
+
+.c11 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.c13 {
+  border-radius: 0.25em;
+}
+
+.c7 {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.c8 {
+  display: inline;
+}
+
+.c0 {
+  position: relative;
+  background-color: #BF3A00;
+  color: #fff;
+  height: 3rem;
+  width: 100%;
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+  -webkit-transition: -webkit-transform 0.1s cubic-bezier(0,.7,.9,1);
+  -webkit-transition: transform 0.1s cubic-bezier(0,.7,.9,1);
+  transition: transform 0.1s cubic-bezier(0,.7,.9,1);
+}
+
+.c1 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  padding-left: 1rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  width: 100%;
+}
+
+.c6 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  height: 100%;
+  border-radius: 0 0 0 0;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c6:focus {
+  box-shadow: 0 0 0;
+}
+
+<div>
+  <div
+    class=" c0"
+    color="#BF3A00"
+    height="3rem"
+  >
+    <div
+      class=" c1"
+    >
+      <div
+        class=" c2 c3"
+      >
+        <button
+          class=" c4 c5 c6"
+          color="#0000"
+          data-test-id="hs-ui-main-navigation-unit-test-click"
+          elevation="0"
+          role="button"
+          type="button"
+        >
+          <span
+            class=" c7"
+            color="#fff"
+            data-test-id="hsui-Text"
+          >
+            <div
+              class=" c4 c8"
+            >
+              <span
+                class=" "
+              >
+                Test link
+              </span>
+              <div
+                class=" c9"
+                color="#fff"
+              />
+            </div>
+          </span>
+          <div
+            class="c10 c11"
+          >
+            <svg
+              class="c12 c13"
+              height="0px"
+              viewBox="0 0 0 0"
+              width="0px"
+            />
+          </div>
+          <div
+            class=" c9"
+            color="#fff"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MainNavigation renders 1`] = `
+.c0 {
+  position: relative;
+  background-color: #BF3A00;
+  color: #fff;
+  height: 3rem;
+  width: 100%;
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+  -webkit-transition: -webkit-transform 0.1s cubic-bezier(0,.7,.9,1);
+  -webkit-transition: transform 0.1s cubic-bezier(0,.7,.9,1);
+  transition: transform 0.1s cubic-bezier(0,.7,.9,1);
+}
+
+.c1 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  padding-left: 1rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  width: 100%;
+}
+
+<div>
+  <div
+    class=" c0"
+    color="#BF3A00"
+    data-test-id="hs-ui-main-navigation-unit-test"
+    height="3rem"
+  >
+    <div
+      class=" c1"
+    >
+      <div
+        class=" c2 c3"
+      />
+    </div>
+  </div>
+</div>
+`;
