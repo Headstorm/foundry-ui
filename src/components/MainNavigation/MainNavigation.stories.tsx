@@ -99,6 +99,7 @@ export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
   React.useEffect(() => setHidden(args.hidden), [args.hidden]);
   const [expanded, setExpanded] = React.useState(args.bodyBelow);
   React.useEffect(() => setExpanded(args.bodyBelow), [args.bodyBelow]);
+  const [active, setActive] = React.useState(0);
 
   const getScrollSpeed = MainNavigation.getScrollSpeed(50);
 
@@ -126,7 +127,30 @@ export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
             iconPrefix={getIconPath(Icons.mdiMagnify, 'grey')}
           />
         }
-        navButtons={args.navButtons}
+        navButtons={[
+          {
+            label: 'Link 1',
+            onClick: () => {
+              setActive(0);
+              action('click 1')();
+            },
+          },
+          {
+            label: 'Link 2',
+            onClick: () => {
+              setActive(1);
+              action('click 2')();
+            },
+          },
+          {
+            label: 'Link 3',
+            onClick: () => {
+              setActive(2);
+              action('click 3')();
+            },
+          },
+        ]}
+        activeButton={active}
         labelFontSize={args.labelFontSize}
         footer={
           <Button
@@ -159,26 +183,6 @@ Default.args = {
       Foundry UI
     </Text>
   ),
-  navButtons: [
-    {
-      label: 'Link 1',
-      onClick: () => {
-        action('click 1')();
-      },
-    },
-    {
-      label: 'Link 2',
-      onClick: () => {
-        action('click 2')();
-      },
-    },
-    {
-      label: 'Link 3',
-      onClick: () => {
-        action('click 3')();
-      },
-    },
-  ],
   labelFontSize: '.75rem',
   position: 'relative',
 };
