@@ -292,37 +292,20 @@ const MainNavigation = ({
       disabled={disabled}
       {...containerProps}
     >
-      {bodyBelow ? (
-        <>
-          <NavFlex>
-            {header && (
-              <StyledHeader ref={headerRef} {...headerProps}>
-                {header}
-              </StyledHeader>
-            )}
-            {footer && (
-              <StyledFooter ref={footerRef} {...footerProps}>
-                {footer}
-              </StyledFooter>
-            )}
-          </NavFlex>
-          <FinalBody />
-        </>
-      ) : (
-        <NavFlex>
-          {header && (
-            <StyledHeader ref={headerRef} {...headerProps}>
-              {header}
-            </StyledHeader>
-          )}
-          <FinalBody />
-          {footer && (
-            <StyledFooter ref={footerRef} {...footerProps}>
-              {footer}
-            </StyledFooter>
-          )}
-        </NavFlex>
-      )}
+      <NavFlex>
+        {header && (
+          <StyledHeader ref={headerRef} {...headerProps}>
+            {header}
+          </StyledHeader>
+        )}
+        {!bodyBelow && <FinalBody />}
+        {footer && (
+          <StyledFooter ref={footerRef} {...footerProps}>
+            {footer}
+          </StyledFooter>
+        )}
+      </NavFlex>
+      {bodyBelow && <FinalBody />}
     </StyledContainer>
   );
 };

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainNavigation nav button clicks 1`] = `
-.c9 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(255,255,255,0.75), rgba(255,255,255,0.25), rgba(255,255,255,0.75) ) repeat;
   color: transparent;
@@ -32,11 +32,11 @@ exports[`MainNavigation nav button clicks 1`] = `
   transition: opacity .2s;
 }
 
-.c10 {
+.c11 {
   position: relative;
 }
 
-.c12 {
+.c13 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -58,7 +58,7 @@ exports[`MainNavigation nav button clicks 1`] = `
   outline: 0 none;
   border: 1px solid transparent;
   cursor: pointer;
-  background-color: #0000;
+  background-color: #BF3A00;
   color: #fff;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -71,7 +71,7 @@ exports[`MainNavigation nav button clicks 1`] = `
 }
 
 .c5:hover {
-  background-color: rgba(0,0,0,0);
+  background-color: #a63200;
 }
 
 .c5:focus {
@@ -79,7 +79,7 @@ exports[`MainNavigation nav button clicks 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c11 {
+.c12 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -87,7 +87,7 @@ exports[`MainNavigation nav button clicks 1`] = `
   top: 0;
 }
 
-.c13 {
+.c14 {
   border-radius: 0.25em;
 }
 
@@ -96,7 +96,7 @@ exports[`MainNavigation nav button clicks 1`] = `
   color: #fff;
 }
 
-.c8 {
+.c9 {
   display: inline;
 }
 
@@ -156,21 +156,24 @@ exports[`MainNavigation nav button clicks 1`] = `
 }
 
 .c6 {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.25rem 0rem 0.25rem 1rem;
-  height: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   border-radius: 0 0 0 0;
-}
-
-.c6:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
 }
 
 .c6:focus {
   box-shadow: 0 0 0;
+}
+
+.c8:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
 }
 
 <div>
@@ -187,19 +190,19 @@ exports[`MainNavigation nav button clicks 1`] = `
       >
         <button
           class=" c4 c5 c6"
-          color="#0000"
+          color="#BF3A00"
           data-test-id="hs-ui-main-navigation-unit-test-click"
           elevation="0"
           role="button"
           type="button"
         >
           <span
-            class=" c7"
+            class=" c7 c8"
             color="#fff"
             data-test-id="hsui-Text"
           >
             <div
-              class=" c4 c8"
+              class=" c4 c9"
             >
               <span
                 class=" "
@@ -207,23 +210,23 @@ exports[`MainNavigation nav button clicks 1`] = `
                 Test link
               </span>
               <div
-                class=" c9"
+                class=" c10"
                 color="#fff"
               />
             </div>
           </span>
           <div
-            class="c10 c11"
+            class="c11 c12"
           >
             <svg
-              class="c12 c13"
+              class="c13 c14"
               height="0px"
               viewBox="0 0 0 0"
               width="0px"
             />
           </div>
           <div
-            class=" c9"
+            class=" c10"
             color="#fff"
           />
         </button>
