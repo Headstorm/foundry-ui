@@ -100,7 +100,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
       border: ${
         variant === variants.outline
           ? `1px solid ${color || colors.grayDark}`
-          : '1px solid transparent;'
+          : '1px solid transparent'
       };
       cursor: pointer;
       background-color: ${backgroundColor};

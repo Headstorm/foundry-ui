@@ -11,25 +11,43 @@ import React, {
 } from 'react';
 import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
-import { mdiClose } from '@mdi/js';
 import debounce from 'lodash.debounce';
+import { mdiClose } from '@mdi/js';
+import { darken } from 'polished';
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
+import variants from '../../enums/variants';
+
+export type TextInputContainerProps = {
+  disabled?: boolean;
+  isValid?: boolean;
+  variant?: variants;
+};
 
 const Container = styled(Div)`
-  ${({ disabled = false, isValid }: { disabled?: boolean; isValid?: boolean }) => {
+  ${({ disabled = false, isValid, variant = variants.outline }: TextInputContainerProps) => {
     const { colors } = useTheme();
+    const borderColor = isValid === false ? colors.destructive : colors.grayMedium;
     return `
-      border 1px solid ${isValid === false ? colors.destructive : colors.grayMedium};
-      min-width: 10rem;
-      position: relative;
-      display: flex;
-      flex-flow: row;
-      border-radius: 0.25em;
-      background-color: ${colors.background};
-      ${disabled ? disabledStyles() : ''}
+    min-width: 10rem;
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    border-radius: 0.25em;
+    border: ${variant === variants.outline ? `1px solid ${borderColor}` : '1px solid transparent'};
+    ${
+      variant === variants.fill
+        ? `border-bottom: 1px solid ${borderColor}; 
+          border-bottom-left-radius: 0; 
+          border-bottom-right-radius: 0;`
+        : ''
+    }
+    background-color: ${
+      variant === variants.fill ? darken(0.1, colors.background) : colors.background
+    };
+    ${disabled ? disabledStyles() : ''}
   `;
   }}
 `;
@@ -117,6 +135,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     isValid?: boolean;
     isMultiline?: boolean;
     errorMessage?: string;
+    variant?: variants;
     debounceInterval?: number;
     multiLineIsResizable?: boolean;
     maxLength?: number;
@@ -164,6 +183,7 @@ const TextInput = ({
   isValid = true,
   isMultiline,
   errorMessage,
+  variant = variants.outline,
   debounceInterval = 8,
   multiLineIsResizable,
   maxLength,
@@ -235,6 +255,7 @@ const TextInput = ({
     <StyledContainer
       disabled={nativeHTMLAttributes.disabled}
       isValid={isValid}
+      variant={variant}
       ref={containerRef}
       {...containerProps}
     >
