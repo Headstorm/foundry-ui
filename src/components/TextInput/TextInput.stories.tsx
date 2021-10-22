@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import * as IconPaths from '@mdi/js';
 
 import TextInput, { TextInputProps } from './TextInput';
+import variants from '../../enums/variants';
 
 const iconOptions = {
   none: '',
@@ -78,6 +79,7 @@ BasicTextInput.args = {
   cols: 0,
   isValid: true,
   errorMessage: '',
+  variant: variants.outline,
   type: '',
   multiLineIsResizable: false,
   showCharacterCount: true,
@@ -107,6 +109,13 @@ export default {
       mapping: maxLengthOptions,
       control: {
         type: 'select',
+      },
+    },
+    variant: {
+      options: Object.keys(variants),
+      mapping: variants,
+      control: {
+        type: 'radio',
       },
     },
   },
