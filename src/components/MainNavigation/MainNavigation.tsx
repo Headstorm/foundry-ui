@@ -146,6 +146,7 @@ export interface MainNavigationProps {
   StyledHeader?: StyledSubcomponentType;
   StyledBody?: StyledSubcomponentType;
   StyledFooter?: StyledSubcomponentType;
+  StyledNavButtonContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   headerProps?: SubcomponentPropsType;
@@ -195,6 +196,7 @@ const MainNavigation = ({
   StyledHeader = Header,
   StyledBody = Body,
   StyledFooter = Footer,
+  StyledNavButtonContainer = NavButtonContainer,
 
   containerProps = {},
   headerProps = {},
@@ -262,7 +264,7 @@ const MainNavigation = ({
               key={navButton.label}
               onClick={navButton.onClick}
               color={getNavColor(index)}
-              StyledContainer={NavButtonContainer}
+              StyledContainer={StyledNavButtonContainer}
               containerProps={{ bodyBelow, ...navButtonProps[index] }}
             >
               <Text
