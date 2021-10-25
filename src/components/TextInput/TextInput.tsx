@@ -31,24 +31,32 @@ const Container = styled(Div)`
     const { colors } = useTheme();
     const borderColor = isValid === false ? colors.destructive : colors.grayMedium;
     return `
-    min-width: 10rem;
-    position: relative;
-    display: flex;
-    flex-flow: row;
-    border-radius: 0.25em;
-    border: ${variant === variants.outline ? `1px solid ${borderColor}` : '1px solid transparent'};
-    ${
-      variant === variants.fill
-        ? `border-bottom: 1px solid ${borderColor}; 
-          border-bottom-left-radius: 0; 
-          border-bottom-right-radius: 0;`
-        : ''
-    }
-    background-color: ${
-      variant === variants.fill ? darken(0.1, colors.background) : colors.background
-    };
-    ${disabled ? disabledStyles() : ''}
-  `;
+      min-width: 10rem;
+      position: relative;
+      display: flex;
+      flex-flow: row;
+      border-radius: 0.25em;
+      border: ${
+        variant === variants.outline ? `1px solid ${borderColor}` : '1px solid transparent'
+      };
+
+      &:focus-within {
+        outline: none;
+        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
+      }
+      
+      ${
+        variant === variants.fill
+          ? `border-bottom: 1px solid ${borderColor}; 
+            border-bottom-left-radius: 0; 
+            border-bottom-right-radius: 0;`
+          : ''
+      }
+      background-color: ${
+        variant === variants.fill ? darken(0.1, colors.background) : colors.background
+      };
+      ${disabled ? disabledStyles() : ''}
+    `;
   }}
 `;
 
@@ -62,9 +70,6 @@ const TextInputContainer = styled(InputElement)`
       font-size: 1em;
       padding: 0.5rem;
       background-color: ${colors.transparent};
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
   `;
   }}
 `;

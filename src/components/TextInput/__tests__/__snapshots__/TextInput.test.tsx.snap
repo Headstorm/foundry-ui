@@ -16,6 +16,11 @@ exports[`TextInput Rendering tests Shows TextInput with default props 1`] = `
   background-color: #fff;
 }
 
+.c0:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #64ACC5;
+}
+
 .c1 {
   border: 0 none;
   -webkit-box-flex: 1;
@@ -26,11 +31,6 @@ exports[`TextInput Rendering tests Shows TextInput with default props 1`] = `
   font-size: 1em;
   padding: 0.5rem;
   background-color: transparent;
-}
-
-.c1:focus {
-  outline: none;
-  box-shadow: 0 0 5px 0.150rem #64ACC5;
 }
 
 <div>
@@ -67,6 +67,11 @@ exports[`TextInput Rendering tests Shows TextInput with fill variant 1`] = `
   background-color: #e6e6e6;
 }
 
+.c0:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #64ACC5;
+}
+
 .c1 {
   border: 0 none;
   -webkit-box-flex: 1;
@@ -77,11 +82,6 @@ exports[`TextInput Rendering tests Shows TextInput with fill variant 1`] = `
   font-size: 1em;
   padding: 0.5rem;
   background-color: transparent;
-}
-
-.c1:focus {
-  outline: none;
-  box-shadow: 0 0 5px 0.150rem #64ACC5;
 }
 
 <div>
@@ -115,6 +115,11 @@ exports[`TextInput Rendering tests Shows TextInput with text variant 1`] = `
   background-color: #fff;
 }
 
+.c0:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #64ACC5;
+}
+
 .c1 {
   border: 0 none;
   -webkit-box-flex: 1;
@@ -125,11 +130,6 @@ exports[`TextInput Rendering tests Shows TextInput with text variant 1`] = `
   font-size: 1em;
   padding: 0.5rem;
   background-color: transparent;
-}
-
-.c1:focus {
-  outline: none;
-  box-shadow: 0 0 5px 0.150rem #64ACC5;
 }
 
 <div>
