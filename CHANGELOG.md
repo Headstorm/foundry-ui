@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/Headstorm/foundry-ui/compare/v1.12.0...v1.13.0) (2021-10-25)
+
+
+### Features
+
+* **textinput:** add variant support to TextInput ([f88aac8](https://github.com/Headstorm/foundry-ui/commit/f88aac8327c05b94af66e6d870ccddda9b32cc34)), closes [#256](https://github.com/Headstorm/foundry-ui/issues/256)
+
 # [1.12.0](https://github.com/Headstorm/foundry-ui/compare/v1.11.5...v1.12.0) (2021-10-07)
 
 
