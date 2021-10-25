@@ -94,6 +94,7 @@ const IconContainer = styled(Div)`
     return `
       padding: 0.5em;
       height: 100%;
+      display: flex;
       align-items: center;
       justify-content: center;
       color: ${colors.grayMedium};
@@ -161,11 +162,15 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     characterCountRef?: React.RefObject<HTMLDivElement>;
   };
 
-const createIcon = (StyledIconContainer: StyledSubcomponentType, iconPrefix: ReactNode) => {
+const createIcon = (
+  StyledIconContainer: StyledSubcomponentType,
+  iconPrefix: ReactNode,
+  iconProps: SubcomponentPropsType,
+) => {
   if (typeof iconPrefix === 'string') {
     return (
-      <StyledIconContainer>
-        <Icon aria-hidden="true" size="1rem" path={iconPrefix} />
+      <StyledIconContainer {...iconProps}>
+        <Icon aria-hidden="true" size="1em" path={iconPrefix} />
       </StyledIconContainer>
     );
   }
@@ -259,7 +264,7 @@ const TextInput = ({
       ref={containerRef}
       {...containerProps}
     >
-      {iconPrefix && createIcon(StyledIconContainer, iconPrefix)}
+      {iconPrefix && createIcon(StyledIconContainer, iconPrefix, iconContainerProps)}
       <InputComponent
         // Set default values above nativeHTMLAttributes
         type="text"
