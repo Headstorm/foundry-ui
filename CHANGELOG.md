@@ -1,3 +1,11 @@
+## [1.13.1](https://github.com/Headstorm/foundry-ui/compare/v1.13.0...v1.13.1) (2021-10-25)
+
+
+### Bug Fixes
+
+* **textinput:** icon container -> , icon size -> , pass icon props ([0b4d458](https://github.com/Headstorm/foundry-ui/commit/0b4d45800c4ae9b7310a86550a18f85032da1687))
+* **textinput:** move focus highlighting to container ([71ac95d](https://github.com/Headstorm/foundry-ui/commit/71ac95d7759f05c946b0eb6e31cc7fea6ce0d4d0))
+
 # [1.13.0](https://github.com/Headstorm/foundry-ui/compare/v1.12.0...v1.13.0) (2021-10-25)
 
 
