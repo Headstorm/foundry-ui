@@ -86,9 +86,6 @@ const TextAreaInputContainer = styled(TextArea)`
       padding: .5rem;
       background-color: ${colors.transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
     `;
   }}
 `;
