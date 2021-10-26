@@ -19,26 +19,14 @@ const Row = styled.div`
   margin: 0 auto;
 `;
 
-export const Default: Story<DefaultProps> = ({
-  disabled,
-  index,
-  selectedStepColor,
-  color,
-  clickable,
-  round,
-  vertical,
-  steps,
-  canClickToNextStep,
-  canClickToPreviousSteps,
-  stepType,
-}: DefaultProps) => {
-  const [currStep, setCurrStep] = useState(index);
+export const Default: Story<DefaultProps> = ({ ...args }: DefaultProps) => {
+  const [currStep, setCurrStep] = useState(args.index);
 
-  useEffect(() => setCurrStep(index), [index]);
+  useEffect(() => setCurrStep(args.index), [args.index]);
 
   const onClicks: any[] = [];
-  steps = steps || [];
-  steps.forEach((step, i) => {
+  args.steps = args.steps || [];
+  args.steps.forEach((step, i) => {
     onClicks.push(() => setCurrStep(i));
   });
 
@@ -46,26 +34,32 @@ export const Default: Story<DefaultProps> = ({
     <Row>
       <StepProgress
         onClicks={onClicks}
-        disabled={disabled}
-        steps={steps}
+        disabled={args.disabled}
+        showSlideRail={args.showSlideRail}
+        steps={args.steps}
         index={currStep}
-        selectedStepColor={selectedStepColor}
-        color={color}
-        clickable={clickable}
-        round={round}
-        vertical={vertical}
-        canClickToNextStep={canClickToNextStep}
-        canClickToPreviousSteps={canClickToPreviousSteps}
-        stepType={stepType}
+        completeColor={args.completeColor}
+        incompleteColor={args.incompleteColor}
+        selectedStepColor={args.selectedStepColor}
+        nextStepColor={args.nextStepColor}
+        clickable={args.clickable}
+        round={args.round}
+        vertical={args.vertical}
+        canClickToNextStep={args.canClickToNextStep}
+        canClickToPreviousSteps={args.canClickToPreviousSteps}
+        stepType={args.stepType}
       />
     </Row>
   );
 };
 Default.args = {
   disabled: false,
+  showSlideRail: true,
   index: 1,
+  completeColor: colors.primaryDark,
+  incompleteColor: colors.grayXlight,
   selectedStepColor: '#fff',
-  color: colors.primaryDark,
+  nextStepColor: colors.grayXlight,
   clickable: true,
   round: false,
   vertical: false,

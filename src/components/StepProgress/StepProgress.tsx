@@ -90,9 +90,23 @@ export const StepContainer = styled(Button.Container)`
 `;
 
 export const SelectedStepContainer = styled(StepContainer)`
-  ${({ bgColor }: { bgColor: string }) => `
+  ${({ bgColor, borderColor }: { bgColor: string; borderColor: string }) => `
     color: ${getFontColorFromVariant(variants.fill, bgColor)};
     background-color: ${bgColor};
+    border: 1px solid ${borderColor};
+    &:hover {
+      background-color: ${
+        bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'
+      };
+    };
+  `}
+`;
+
+export const NextStepContainer = styled(StepContainer)`
+  ${({ bgColor, borderColor }: { bgColor: string; borderColor: string }) => `
+    color: ${getFontColorFromVariant(variants.fill, bgColor)};
+    background-color: ${bgColor};
+    border: 1px solid ${borderColor};
     &:hover {
       background-color: ${
         bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'
@@ -102,9 +116,10 @@ export const SelectedStepContainer = styled(StepContainer)`
 `;
 
 export const OutOfRangeStepContainer = styled(StepContainer)`
-  ${({ bgColor }: { bgColor: string }) => `
-    color: ${bgColor};
-    background-color: #fff;
+  ${({ bgColor, borderColor }: { bgColor: string; borderColor: string }) => `
+    color: ${borderColor};
+    background-color: ${bgColor};
+    border: 1px solid ${borderColor};
     &:hover {
       background-color: ${
         bgColor !== 'transparent' ? darken(0.05, bgColor) : 'rgba(0, 0, 0, 0.05)'
@@ -142,9 +157,7 @@ export const UnderTextContainer = styled(StepTextContainer)`
 `;
 
 export const SlideRail = styled(Div)`
-  ${() => {
-    const { colors } = useTheme();
-    return `
+  ${({ color }: { color: string }) => `
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -155,9 +168,8 @@ export const SlideRail = styled(Div)`
       overflow: hidden;
 
       border-radius: 0.125rem;
-      background-color: ${colors.grayXlight};
-    `;
-  }}
+      background-color: ${color};
+    `}
 `;
 
 export const SelectedRangeRail = styled(SlideRail)`
@@ -177,6 +189,7 @@ export type StepProgressProps = {
   StyledContainer?: StyledSubcomponentType;
   StyledSlideRail?: StyledSubcomponentType;
   StyledSelectedRangeRail?: StyledSubcomponentType;
+  StyledNextStepContainer?: StyledSubcomponentType;
   StyledSelectedStepContainer?: StyledSubcomponentType;
   StyledOutOfRangeStepContainer?: StyledSubcomponentType;
   StyledCompletedStepContainer?: StyledSubcomponentType;
@@ -185,9 +198,11 @@ export type StepProgressProps = {
   StyledUnderTextContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
-  selectedStepProps?: SubcomponentPropsType;
-  outOfRangeStepProps?: SubcomponentPropsType;
   completedStepProps?: SubcomponentPropsType;
+  selectedStepProps?: SubcomponentPropsType;
+  nextStepProps?: SubcomponentPropsType;
+  outOfRangeStepProps?: SubcomponentPropsType;
+  allStepsProps?: SubcomponentPropsType;
   textProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLDivElement>;
@@ -201,10 +216,13 @@ export type StepProgressProps = {
   stepType?: string;
   round?: boolean;
   vertical?: boolean;
-  color?: string;
+  completeColor?: string;
+  incompleteColor?: string;
   selectedStepColor?: string;
+  nextStepColor?: string;
   canClickToNextStep?: boolean;
   canClickToPreviousSteps?: boolean;
+  showSlideRail?: boolean;
   clickable?: boolean;
   disabled?: boolean;
 };
@@ -214,6 +232,7 @@ export const StepProgress = ({
   StyledSlideRail = SlideRail,
   StyledSelectedRangeRail = SelectedRangeRail,
   StyledSelectedStepContainer = SelectedStepContainer,
+  StyledNextStepContainer = NextStepContainer,
   StyledOutOfRangeStepContainer = OutOfRangeStepContainer,
   StyledCompletedStepContainer = StepContainer,
   StyledInnerTextContainer = StepTextContainer,
@@ -221,9 +240,11 @@ export const StepProgress = ({
   StyledUnderTextContainer = UnderTextContainer,
 
   containerProps = {},
-  selectedStepProps = {},
-  outOfRangeStepProps = {},
   completedStepProps = {},
+  selectedStepProps = {},
+  nextStepProps = {},
+  outOfRangeStepProps = {},
+  allStepsProps = {},
   textProps = {},
 
   containerRef,
@@ -237,27 +258,49 @@ export const StepProgress = ({
   stepType = stepTypes.inner,
   round = false,
   vertical = false,
-  color,
+  completeColor,
+  incompleteColor,
   selectedStepColor = '#fff',
+  nextStepColor,
   canClickToNextStep = true,
   canClickToPreviousSteps = true,
+  showSlideRail = true,
   clickable = true,
   disabled = false,
 }: StepProgressProps): JSX.Element | null => {
   const { colors } = useTheme();
   const handleEventWithAnalytics = useAnalytics();
 
-  const containerColor = color || colors.primaryDark;
+  const finishedColor = completeColor || colors.primaryDark;
+  const unfinishedColor = incompleteColor || colors.grayXlight;
+  const nextStepFinalColor = nextStepColor || colors.grayXlight;
+
+  const defaultCompletedStepProps: SubcomponentPropsType = {
+    bgColor: finishedColor,
+    round,
+    clickable: clickable && canClickToPreviousSteps,
+    stepType,
+  };
 
   const defaultSelectedStepProps: SubcomponentPropsType = {
     bgColor: selectedStepColor,
+    borderColor: finishedColor,
     round,
     clickable: false,
     stepType,
   };
 
+  const defaultNextStepProps: SubcomponentPropsType = {
+    bgColor: nextStepFinalColor,
+    borderColor: unfinishedColor,
+    round,
+    clickable: true,
+    stepType,
+  };
+
   const defaultOutOfRangeStepProps: SubcomponentPropsType = {
-    bgColor: colors.grayXlight,
+    bgColor: '#fff',
+    borderColor: unfinishedColor,
     round,
     clickable: false,
     stepType,
@@ -265,7 +308,7 @@ export const StepProgress = ({
 
   const getTextColor = (i: number) => {
     if (index === i) {
-      return containerColor;
+      return finishedColor;
     }
     if (index === i - 1) {
       if (canClickToNextStep) {
@@ -283,32 +326,49 @@ export const StepProgress = ({
     if (index === i) {
       return StyledSelectedStepContainer;
     }
-    if (index < i - 1 || (index <= i - 1 && (!canClickToNextStep || !clickable))) {
+    // The next step if clickable
+    if (i === index + 1 && clickable && canClickToNextStep) {
+      return StyledNextStepContainer;
+    }
+    // Anything past the selected step
+    if (i > index) {
       return StyledOutOfRangeStepContainer;
     }
+    // Previous steps
     return StyledCompletedStepContainer;
   };
 
   const getContainerProps = (i: number) => {
+    // Selected step
     if (index === i) {
-      return { ...defaultSelectedStepProps, ...selectedStepProps };
+      return { ...defaultSelectedStepProps, ...selectedStepProps, ...allStepsProps };
     }
-    if (index < i - 1 || (index <= i - 1 && (!canClickToNextStep || !clickable))) {
-      return { ...defaultOutOfRangeStepProps, ...outOfRangeStepProps };
+    // The next step
+    if (i === index + 1 && clickable && canClickToNextStep) {
+      return {
+        ...defaultNextStepProps,
+        ...nextStepProps,
+        ...allStepsProps,
+      };
     }
-    return {
-      round,
-      clickable:
-        clickable && ((index < i && canClickToNextStep) || (index >= i && canClickToPreviousSteps)),
-      stepType,
-      ...completedStepProps,
-    };
+    // Anything past the selected step
+    if (i > index) {
+      return { ...defaultOutOfRangeStepProps, ...outOfRangeStepProps, ...allStepsProps };
+    }
+    // Previous steps
+    return { ...defaultCompletedStepProps, ...completedStepProps, ...allStepsProps };
   };
 
   return (
     <StyledContainer ref={containerRef} disabled={disabled} vertical={vertical} {...containerProps}>
-      <StyledSlideRail />
-      <StyledSelectedRangeRail index={index} max={steps.length} color={containerColor} />
+      {showSlideRail ? (
+        <>
+          <StyledSlideRail color={unfinishedColor} />
+          <StyledSelectedRangeRail index={index} max={steps.length} color={finishedColor} />
+        </>
+      ) : (
+        ''
+      )}
       <StepList>
         {steps.map((step, i) => (
           <StepFlex ref={stepRefs[i]} key={`${step}-step`}>
@@ -321,16 +381,10 @@ export const StepProgress = ({
             </Text>
             <Button
               containerRef={buttonRefs[i]}
-              color={index >= i ? containerColor : colors.grayXlight}
+              color={String(getContainerProps(i).bgColor)}
               StyledContainer={getContainer(i)}
               containerProps={getContainerProps(i)}
-              variant={
-                index === i ||
-                index < i - 1 ||
-                (index <= i - 1 && (!canClickToNextStep || !clickable))
-                  ? variants.outline
-                  : variants.fill
-              }
+              variant={variants.fill}
               onClick={
                 clickable &&
                 ((index < i && canClickToNextStep) || (index >= i && canClickToPreviousSteps))
@@ -371,6 +425,7 @@ StepProgress.Container = Container;
 StepProgress.SlideRail = SlideRail;
 StepProgress.SelectedRangeRail = SelectedRangeRail;
 StepProgress.StyledSelectedStepContainer = SelectedStepContainer;
+StepProgress.StyledNextStepContainer = NextStepContainer;
 StepProgress.StyledOutOfRangeStepContainer = OutOfRangeStepContainer;
 StepProgress.StyledCompletedStepContainer = StepContainer;
 StepProgress.StyledInnerTextContainer = StepTextContainer;

@@ -15,7 +15,7 @@ exports[`RangeSlider renders 1`] = `
   transition: filter .1s;
 }
 
-.c3 {
+.c4 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -50,6 +50,19 @@ exports[`RangeSlider renders 1`] = `
 }
 
 .c2 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #BF3A00;
+}
+
+.c3 {
   left: 0;
   width: -100%;
   -webkit-transition: width .3s;
@@ -64,14 +77,15 @@ exports[`RangeSlider renders 1`] = `
   >
     <div
       class=" c1"
+      color="#D5D5D5"
     />
     <div
-      class=" c1 c2"
+      class=" c2 c3"
       color="#BF3A00"
       max="0"
     />
     <div
-      class=" c3"
+      class=" c4"
     />
   </div>
 </div>
@@ -92,7 +106,7 @@ exports[`RangeSlider renders 2`] = `
   transition: filter .1s;
 }
 
-.c3 {
+.c4 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -127,6 +141,19 @@ exports[`RangeSlider renders 2`] = `
 }
 
 .c2 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #BF3A00;
+}
+
+.c3 {
   left: 0;
   width: -100%;
   -webkit-transition: width .3s;
@@ -141,14 +168,15 @@ exports[`RangeSlider renders 2`] = `
   >
     <div
       class=" c1"
+      color="#D5D5D5"
     />
     <div
-      class=" c1 c2"
+      class=" c2 c3"
       color="#BF3A00"
       max="0"
     />
     <div
-      class=" c3"
+      class=" c4"
     />
   </div>
 </div>
