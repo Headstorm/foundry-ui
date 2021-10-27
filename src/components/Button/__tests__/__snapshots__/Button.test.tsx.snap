@@ -767,7 +767,6 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
 }
 
 .c2 {
-  height: 1rem;
   vertical-align: middle;
 }
 
@@ -915,7 +914,6 @@ exports[`Button shows icons 1`] = `
 }
 
 .c2 {
-  height: 1rem;
   vertical-align: middle;
 }
 
@@ -1063,7 +1061,6 @@ exports[`Button shows icons with type string 1`] = `
 }
 
 .c2 {
-  height: 1rem;
   vertical-align: middle;
 }
 
