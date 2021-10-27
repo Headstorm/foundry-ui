@@ -109,6 +109,22 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('shows icons with custom props', async () => {
+    const { container, getByTestId } = render(
+      <Button
+        iconSuffix="mdiComment"
+        leftIconProps={{ size: '2rem' }}
+        iconPrefix="mdiComment"
+        rightIconProps={{ size: '2rem' }}
+        onClick={() => {}}
+      />,
+    );
+
+    await waitFor(() => screen.getByRole('button'));
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('keeps the container the same when switching between isLoading and not isLoading', async () => {
     const onClick = jest.fn();
     const { getByTestId, rerender, asFragment } = render(
