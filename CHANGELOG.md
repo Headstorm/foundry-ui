@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/Headstorm/foundry-ui/compare/v1.13.1...v1.14.0) (2021-11-04)
+
+
+### Features
+
+* **button:** add prop support for Button icons ([490705a](https://github.com/Headstorm/foundry-ui/commit/490705a0775023b1fbea8c645cbe876440fa485e)), closes [#330](https://github.com/Headstorm/foundry-ui/issues/330)
+
 ## [1.13.1](https://github.com/Headstorm/foundry-ui/compare/v1.13.0...v1.13.1) (2021-10-25)
 
 
