@@ -53,6 +53,8 @@ export type ButtonProps = {
 
   containerProps?: SubcomponentPropsType;
   interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
+  leftIconProps?: SubcomponentPropsType;
+  rightIconProps?: SubcomponentPropsType;
 
   children?: ReactNode;
 
@@ -135,7 +137,6 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
 `;
 
 const IconContainer = styled(Div)`
-  height: 1rem;
   vertical-align: middle;
 `;
 
@@ -176,6 +177,8 @@ const Button = ({
 
   containerProps = {},
   interactionFeedbackProps,
+  leftIconProps = {},
+  rightIconProps = {},
 
   containerRef,
   leftIconContainerRef,
@@ -230,7 +233,7 @@ const Button = ({
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-            <UnstyledIcon path={iconPrefix} size="1rem" />
+            <UnstyledIcon path={iconPrefix} size="1rem" {...leftIconProps} />
           </StyledLeftIconContainer>
         ) : (
           <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
@@ -244,7 +247,7 @@ const Button = ({
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
           <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-            <UnstyledIcon path={iconSuffix} size="1rem" />
+            <UnstyledIcon path={iconSuffix} size="1rem" {...rightIconProps} />
           </StyledRightIconContainer>
         ) : (
           <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
