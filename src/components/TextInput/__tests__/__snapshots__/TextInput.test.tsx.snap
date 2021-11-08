@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput Rendering tests Shows TextInput with default props 1`] = `
+.c0 {
+  min-width: 10rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  border-radius: 0.25em;
+  border: 1px solid #51575D;
+  background-color: #fff;
+}
+
+.c0:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #64ACC5;
+}
+
+.c1 {
+  border: 0 none;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  outline: 0 none;
+  font-size: 1em;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-test-id="foundry-text-input"
+  >
+    <input
+      class=" c1"
+      cols="10"
+      rows="10"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`TextInput Rendering tests Shows TextInput with fill variant 1`] = `
+.c0 {
+  min-width: 10rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  border-radius: 0.25em;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #51575D;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #e6e6e6;
+}
+
+.c0:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #64ACC5;
+}
+
+.c1 {
+  border: 0 none;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  outline: 0 none;
+  font-size: 1em;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-test-id="foundry-text-input"
+  >
+    <input
+      class=" c1"
+      cols="10"
+      rows="10"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`TextInput Rendering tests Shows TextInput with text variant 1`] = `
+.c0 {
+  min-width: 10rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  border-radius: 0.25em;
+  border: 1px solid transparent;
+  background-color: #fff;
+}
+
+.c0:focus-within {
+  outline: none;
+  box-shadow: 0 0 5px 0.150rem #64ACC5;
+}
+
+.c1 {
+  border: 0 none;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  outline: 0 none;
+  font-size: 1em;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+
+<div>
+  <div
+    class=" c0"
+    data-test-id="foundry-text-input"
+  >
+    <input
+      class=" c1"
+      cols="10"
+      rows="10"
+      type="text"
+    />
+  </div>
+</div>
+`;

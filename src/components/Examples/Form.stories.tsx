@@ -314,6 +314,7 @@ export const ControlledForm: Story = () => {
             options={stateAbbreviations.map(abr => ({ id: abr, optionValue: abr }))}
             color={colors.primaryDark}
             values={[state.state]}
+            searchable
             onSelect={val => {
               setState({ ...state, state: `${val}` });
             }}

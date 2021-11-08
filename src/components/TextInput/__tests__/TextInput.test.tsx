@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { render, configure, waitFor } from '@testing-library/react';
 import TextInput from '../TextInput';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import variants from '../../../enums/variants';
 
 expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
@@ -11,6 +12,27 @@ const testId = 'foundry-text-input';
 const containerProps = { 'data-test-id': testId };
 
 describe('TextInput', () => {
+  describe('Rendering tests', () => {
+    it('Shows TextInput with default props', async () => {
+      const { container, getByTestId } = render(<TextInput containerProps={containerProps} />);
+      await waitFor(() => getByTestId(testId));
+      expect(container).toMatchSnapshot();
+    });
+    it('Shows TextInput with fill variant', async () => {
+      const { container, getByTestId } = render(
+        <TextInput variant={variants.fill} containerProps={containerProps} />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(container).toMatchSnapshot();
+    });
+    it('Shows TextInput with text variant', async () => {
+      const { container, getByTestId } = render(
+        <TextInput variant={variants.text} containerProps={containerProps} />,
+      );
+      await waitFor(() => getByTestId(testId));
+      expect(container).toMatchSnapshot();
+    });
+  });
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
       const component = <TextInput aria-label="text-input"></TextInput>;

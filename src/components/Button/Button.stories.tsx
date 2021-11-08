@@ -32,6 +32,8 @@ BasicButton.args = {
   iconSuffix: 'none',
   children: 'Default text',
   StyledRightIconContainer: StyledIconContainer,
+  leftIconProps: { size: '1rem' },
+  rightIconProps: { size: '1rem' },
 };
 
 const iconOptions = {

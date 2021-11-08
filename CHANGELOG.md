@@ -1,3 +1,25 @@
+# [1.14.0](https://github.com/Headstorm/foundry-ui/compare/v1.13.1...v1.14.0) (2021-11-04)
+
+
+### Features
+
+* **button:** add prop support for Button icons ([490705a](https://github.com/Headstorm/foundry-ui/commit/490705a0775023b1fbea8c645cbe876440fa485e)), closes [#330](https://github.com/Headstorm/foundry-ui/issues/330)
+
+## [1.13.1](https://github.com/Headstorm/foundry-ui/compare/v1.13.0...v1.13.1) (2021-10-25)
+
+
+### Bug Fixes
+
+* **textinput:** icon container -> , icon size -> , pass icon props ([0b4d458](https://github.com/Headstorm/foundry-ui/commit/0b4d45800c4ae9b7310a86550a18f85032da1687))
+* **textinput:** move focus highlighting to container ([71ac95d](https://github.com/Headstorm/foundry-ui/commit/71ac95d7759f05c946b0eb6e31cc7fea6ce0d4d0))
+
+# [1.13.0](https://github.com/Headstorm/foundry-ui/compare/v1.12.0...v1.13.0) (2021-10-25)
+
+
+### Features
+
+* **textinput:** add variant support to TextInput ([f88aac8](https://github.com/Headstorm/foundry-ui/commit/f88aac8327c05b94af66e6d870ccddda9b32cc34)), closes [#256](https://github.com/Headstorm/foundry-ui/issues/256)
+
 # [1.12.0](https://github.com/Headstorm/foundry-ui/compare/v1.11.5...v1.12.0) (2021-10-07)
 
 
