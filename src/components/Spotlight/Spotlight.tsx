@@ -126,8 +126,6 @@ const Spotlight = ({
       return bounds;
     }
     return defaultVal;
-    // TODO: move this calculation into a function and invoke it on scroll change
-    // instead of just storing the scroll position in state and re-memoizing it on change
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetElement, padding, windowDimensions, shape, scrollTop]);
 
