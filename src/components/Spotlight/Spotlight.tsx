@@ -90,6 +90,7 @@ const Spotlight = ({
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [scrollTop, setScrollTop] = useState<number>(0);
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -125,7 +126,8 @@ const Spotlight = ({
       return bounds;
     }
     return defaultVal;
-  }, [targetElement, padding, windowDimensions, shape]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetElement, padding, windowDimensions, shape, scrollTop]);
 
   const radii = [Math.min(cornerRadius, rect.width / 2), Math.min(cornerRadius, rect.height / 2)];
   if (shape === SpotlightShapes.round) {
@@ -276,6 +278,18 @@ const Spotlight = ({
       height: window.innerHeight,
     });
   };
+
+  const updateScrollPosition = (e: Event) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore documentElement does exist on target element
+    setScrollTop(e?.target?.documentElement.scrollTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', updateScrollPosition);
+
+    return () => window.removeEventListener('scroll', updateScrollPosition);
+  }, []);
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowBounds);
