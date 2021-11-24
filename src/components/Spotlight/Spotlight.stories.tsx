@@ -29,11 +29,15 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
   const [menuRef, setMenuRef] = useState<HTMLElement>();
   const [tourStarted, setTour] = useState<boolean>(false);
 
-  const stepOptions = [menuRef, cardRef, buttonRef];
+  const stepOptions = [null, menuRef, cardRef, buttonRef];
   const messages = [
+    {
+      title: 'Welcome to the tutorial!',
+      subtitle: 'targetElement is null for this part of the tour, so nothing is highlighted!',
+    },
     { title: 'This is a kebab menu.', subtitle: '' },
     { title: 'This is the whole card', subtitle: '' },
-    { title: 'This button starts the tour!', subtitle: '(you already knew that though)' },
+    { title: 'Press this button to restart the tour!', subtitle: '(you already knew that though)' },
   ];
 
   const goNext = () => {
