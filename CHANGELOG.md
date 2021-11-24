@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/Headstorm/foundry-ui/compare/v1.14.0...v1.14.1) (2021-11-24)
+
+
+### Bug Fixes
+
+* **spotlight:** Spotlight now reacts to scroll events, keeping targets highlighted ([6866c09](https://github.com/Headstorm/foundry-ui/commit/6866c09b949391d9a1193614715d553d4b74384d))
+
 # [1.14.0](https://github.com/Headstorm/foundry-ui/compare/v1.13.1...v1.14.0) (2021-11-04)
 
 
