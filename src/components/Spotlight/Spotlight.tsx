@@ -16,6 +16,7 @@ const SpotlightContainer = styled(AnimatedDiv)`
   left: 0;
   contain: strict;
   clip-path: url(#foundryMask);
+  z-index: 200;
 `;
 
 const BackgroundBlurrer = styled(AnimatedDiv)`
