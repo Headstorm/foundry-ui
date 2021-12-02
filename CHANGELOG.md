@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/Headstorm/foundry-ui/compare/v1.14.1...v1.14.2) (2021-12-02)
+
+
+### Bug Fixes
+
+* **spotlight:** set default z-index of 200 ([9916fe6](https://github.com/Headstorm/foundry-ui/commit/9916fe6638134b74379b76323f6ed649124ad7be))
+
 ## [1.14.1](https://github.com/Headstorm/foundry-ui/compare/v1.14.0...v1.14.1) (2021-11-24)
 
 
