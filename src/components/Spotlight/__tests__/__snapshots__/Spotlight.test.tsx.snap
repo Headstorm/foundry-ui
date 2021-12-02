@@ -101,6 +101,7 @@ exports[`Spotlight Should match previous snapshot with a targetElement 1`] = `
   contain: strict;
   -webkit-clip-path: url(#foundryMask);
   clip-path: url(#foundryMask);
+  z-index: 200;
 }
 
 .c1 {
@@ -224,6 +225,7 @@ exports[`Spotlight Should match previous snapshot with default props 1`] = `
   contain: strict;
   -webkit-clip-path: url(#foundryMask);
   clip-path: url(#foundryMask);
+  z-index: 200;
 }
 
 .c1 {
