@@ -1,34 +1,56 @@
 import React from 'react';
-import { render, screen, configure, waitFor, act, fireEvent } from '@testing-library/react';
+import {
+  render,
+  screen,
+  configure,
+  waitFor,
+  act,
+  fireEvent,
+  getByRole,
+} from '@testing-library/react';
 import TextInput from '../TextInput';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import variants from '../../../enums/variants';
 
 expect.extend(toHaveNoViolations);
-configure({ testIdAttribute: 'data-test-id' });
-
-const testId = 'foundry-text-input';
-const containerProps = { 'data-test-id': testId };
 
 describe('TextInput', () => {
   describe('Rendering tests', () => {
     it('Shows TextInput with default props', async () => {
-      const { container, getByTestId } = render(<TextInput containerProps={containerProps} />);
-      await waitFor(() => getByTestId(testId));
+      const { container, getByRole } = render(<TextInput />);
+      await waitFor(() => getByRole('textbox'));
       expect(container).toMatchSnapshot();
     });
     it('Shows TextInput with fill variant', async () => {
-      const { container, getByTestId } = render(
-        <TextInput variant={variants.fill} containerProps={containerProps} />,
-      );
-      await waitFor(() => getByTestId(testId));
+      const { container, getByRole } = render(<TextInput variant={variants.fill} />);
+      await waitFor(() => getByRole('textbox'));
       expect(container).toMatchSnapshot();
     });
     it('Shows TextInput with text variant', async () => {
-      const { container, getByTestId } = render(
-        <TextInput variant={variants.text} containerProps={containerProps} />,
-      );
-      await waitFor(() => getByTestId(testId));
+      const { container, getByRole } = render(<TextInput variant={variants.text} />);
+      await waitFor(() => getByRole('textbox'));
+      expect(container).toMatchSnapshot();
+    });
+    it('Shows TextInput with clear button disabled when clearable is true and input is empty', async () => {
+      const { container, getByRole } = render(<TextInput clearable />);
+      await waitFor(() => getByRole('textbox'));
+      expect(container).toMatchSnapshot();
+    });
+    it('Shows TextInput with clear button enabled when clearable is true and input is populated (controlled)', async () => {
+      const { container, getByRole } = render(<TextInput clearable value="test" />);
+      await waitFor(() => getByRole('textbox'));
+      expect(container).toMatchSnapshot();
+    });
+    it('Shows TextInput with clear button enabled when clearable is true and input is populated (uncontrolled)', async () => {
+      const { container, getByRole } = render(<TextInput clearable />);
+      await waitFor(() => getByRole('textbox'));
+
+      act(() => {
+        fireEvent.change(getByRole('textbox'), {
+          target: { value: 'test' },
+        });
+      });
+
       expect(container).toMatchSnapshot();
     });
   });
@@ -118,42 +140,30 @@ describe('TextInput', () => {
   describe('Ref tests', () => {
     it('containerRef.current should exist', async () => {
       const ref = React.createRef<HTMLDivElement>();
-      const { getByTestId } = render(
-        <TextInput containerRef={ref} containerProps={containerProps} />,
-      );
-      await waitFor(() => getByTestId(testId));
+      const { getByRole } = render(<TextInput containerRef={ref} />);
+      await waitFor(() => getByRole('textbox'));
       expect(ref.current instanceof HTMLDivElement).toBeTruthy();
     });
     it('inputRef.current should exist', async () => {
       const ref = React.createRef<HTMLInputElement>();
-      const { getByTestId } = render(<TextInput inputRef={ref} containerProps={containerProps} />);
-      await waitFor(() => getByTestId(testId));
+      const { getByRole } = render(<TextInput inputRef={ref} />);
+      await waitFor(() => getByRole('textbox'));
       expect(ref.current instanceof HTMLInputElement).toBeTruthy();
     });
     it('errorContainerRef.current should exist', async () => {
       const ref = React.createRef<HTMLDivElement>();
-      const { getByTestId } = render(
-        <TextInput
-          errorContainerRef={ref}
-          isValid={false}
-          errorMessage={'error!'}
-          containerProps={containerProps}
-        />,
+      const { getByRole } = render(
+        <TextInput errorContainerRef={ref} isValid={false} errorMessage={'error!'} />,
       );
-      await waitFor(() => getByTestId(testId));
+      await waitFor(() => getByRole('textbox'));
       expect(ref.current instanceof HTMLDivElement).toBeTruthy();
     });
     it('characterCountRef.current should exist', async () => {
       const ref = React.createRef<HTMLDivElement>();
-      const { getByTestId } = render(
-        <TextInput
-          showCharacterCount
-          maxLength={20}
-          characterCountRef={ref}
-          containerProps={containerProps}
-        />,
+      const { getByRole } = render(
+        <TextInput showCharacterCount maxLength={20} characterCountRef={ref} />,
       );
-      await waitFor(() => getByTestId(testId));
+      await waitFor(() => getByRole('textbox'));
       expect(ref.current instanceof HTMLDivElement).toBeTruthy();
     });
   });
