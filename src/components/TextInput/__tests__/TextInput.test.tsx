@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { render, configure, waitFor } from '@testing-library/react';
+import { render, screen, configure, waitFor, act, fireEvent } from '@testing-library/react';
 import TextInput from '../TextInput';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import variants from '../../../enums/variants';
@@ -33,6 +32,81 @@ describe('TextInput', () => {
       expect(container).toMatchSnapshot();
     });
   });
+  describe('Event tests', () => {
+    it('Fires onChange when input is typed in', async () => {
+      const changeFn = jest.fn();
+      const { getByRole } = render(<TextInput onChange={changeFn} />);
+      await waitFor(() => getByRole('textbox'));
+
+      act(() => {
+        fireEvent.change(screen.getByRole('textbox'), {
+          target: { value: 'test' },
+        });
+      });
+
+      expect(changeFn).toBeCalledTimes(1);
+    });
+    it('Fires onDebouncedChange when input is typed in', async () => {
+      const debouncedChangeFn = jest.fn();
+      const { getByRole } = render(<TextInput debouncedOnChange={debouncedChangeFn} />);
+      await waitFor(() => getByRole('textbox'));
+
+      act(() => {
+        fireEvent.change(screen.getByRole('textbox'), {
+          target: { value: 'test' },
+        });
+      });
+
+      waitFor(() => expect(debouncedChangeFn).toBeCalledTimes(1));
+    });
+    it("Doesn't fire onClear when clearable is true but no value exists (uncontrolled)", async () => {
+      const onClearFn = jest.fn();
+      const { getByRole } = render(<TextInput clearable onClear={onClearFn} />);
+      await waitFor(() => getByRole('button'));
+
+      act(() => {
+        fireEvent.click(screen.getByRole('button'));
+      });
+
+      expect(onClearFn).toBeCalledTimes(0);
+    });
+    it('Fires onClear when clearable is true and value exists (uncontrolled)', async () => {
+      const onClearFn = jest.fn();
+      const onChangeFn = jest.fn();
+      const { getByRole } = render(
+        <TextInput clearable onChange={onChangeFn} onClear={onClearFn} />,
+      );
+      await waitFor(() => getByRole('button'));
+
+      act(() => {
+        fireEvent.change(screen.getByRole('textbox'), {
+          target: { value: 'test' },
+        });
+      });
+
+      await waitFor(() => expect(onChangeFn).toBeCalledTimes(1));
+      expect((screen.getByRole('textbox') as HTMLInputElement).value).toEqual('test');
+
+      act(() => {
+        fireEvent.click(screen.getByRole('button'));
+      });
+
+      expect(onClearFn).toBeCalledTimes(1);
+      expect((screen.getByRole('textbox') as HTMLInputElement).value).toEqual('');
+    });
+    it('Fires onClear when clearable is true and value exists (controlled)', async () => {
+      const onClearFn = jest.fn();
+      const { getByRole } = render(<TextInput value="test" clearable onClear={onClearFn} />);
+      await waitFor(() => getByRole('button'));
+
+      act(() => {
+        fireEvent.click(screen.getByRole('button'));
+      });
+
+      expect(onClearFn).toBeCalledTimes(1);
+    });
+  });
+
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
       const component = <TextInput aria-label="text-input"></TextInput>;

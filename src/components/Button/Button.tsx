@@ -38,6 +38,7 @@ export enum ButtonTypes {
 
 export type ButtonProps = {
   StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+  // TODO: rename these to StyledIconPrefixContainer - etc
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
 
@@ -48,11 +49,13 @@ export type ButtonProps = {
   ProgressBar?: JSX.Element | null;
 
   containerRef?: React.RefObject<HTMLButtonElement>;
+  // TODO: rename these to iconPrefixContainerRef - etc
   leftIconContainerRef?: React.RefObject<HTMLDivElement>;
   rightIconContainerRef?: React.RefObject<HTMLDivElement>;
 
   containerProps?: SubcomponentPropsType;
   interactionFeedbackProps?: Omit<InteractionFeedbackProps, 'children'>;
+  // TODO: rename these to iconPrefixProps - etc
   leftIconProps?: SubcomponentPropsType;
   rightIconProps?: SubcomponentPropsType;
 

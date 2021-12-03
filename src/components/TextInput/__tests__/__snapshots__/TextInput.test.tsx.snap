@@ -11,6 +11,10 @@ exports[`TextInput Rendering tests Shows TextInput with default props 1`] = `
   -webkit-flex-flow: row;
   -ms-flex-flow: row;
   flex-flow: row;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   border-radius: 0.25em;
   border: 1px solid #51575D;
   background-color: #fff;
@@ -41,6 +45,7 @@ exports[`TextInput Rendering tests Shows TextInput with default props 1`] = `
     <input
       class=" c1"
       cols="10"
+      role="textbox"
       rows="10"
       type="text"
     />
@@ -59,6 +64,10 @@ exports[`TextInput Rendering tests Shows TextInput with fill variant 1`] = `
   -webkit-flex-flow: row;
   -ms-flex-flow: row;
   flex-flow: row;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   border-radius: 0.25em;
   border: 1px solid transparent;
   border-bottom: 1px solid #51575D;
@@ -92,6 +101,7 @@ exports[`TextInput Rendering tests Shows TextInput with fill variant 1`] = `
     <input
       class=" c1"
       cols="10"
+      role="textbox"
       rows="10"
       type="text"
     />
@@ -110,6 +120,10 @@ exports[`TextInput Rendering tests Shows TextInput with text variant 1`] = `
   -webkit-flex-flow: row;
   -ms-flex-flow: row;
   flex-flow: row;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   border-radius: 0.25em;
   border: 1px solid transparent;
   background-color: #fff;
@@ -140,6 +154,7 @@ exports[`TextInput Rendering tests Shows TextInput with text variant 1`] = `
     <input
       class=" c1"
       cols="10"
+      role="textbox"
       rows="10"
       type="text"
     />
