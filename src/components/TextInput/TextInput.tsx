@@ -100,7 +100,7 @@ const IconContainer = styled(Div)`
       align-items: center;
       justify-content: center;
       color: ${colors.grayMedium};
-      cursor: pointer;
+      cursor: text;
     `;
   }}
 `;
