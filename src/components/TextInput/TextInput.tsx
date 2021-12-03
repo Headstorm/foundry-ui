@@ -359,6 +359,7 @@ TextInput.Container = Container;
 TextInput.ErrorContainer = ErrorContainer;
 TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
+TextInput.ClearButtonContainer = ClearButtonContainer;
 TextInput.TextArea = TextAreaInputContainer;
 TextInput.CharacterCount = CharacterCount;
 
