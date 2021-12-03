@@ -299,7 +299,6 @@ const TextInput = ({
         cols={10}
         rows={10}
         role="textbox"
-        areaReadonly={!nativeHTMLAttributes.disabled ? 'true' : undefined}
         {...nativeHTMLAttributes}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           e.persist();
