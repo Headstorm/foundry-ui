@@ -1,3 +1,11 @@
+## [1.14.3](https://github.com/Headstorm/foundry-ui/compare/v1.14.2...v1.14.3) (2021-12-03)
+
+
+### Bug Fixes
+
+* **textinput:** Change TextInput icon cursor from 'pointer' to 'text' ([8c47466](https://github.com/Headstorm/foundry-ui/commit/8c47466fa40f9b72e2e01fef388bffaac5f614d7))
+* **textinput:** fix onclear for uncontrolled and controlled TextInputs ([2558829](https://github.com/Headstorm/foundry-ui/commit/2558829782e6de27e0a279e5e815a7ee32956b46)), closes [#355](https://github.com/Headstorm/foundry-ui/issues/355) [#356](https://github.com/Headstorm/foundry-ui/issues/356) [#357](https://github.com/Headstorm/foundry-ui/issues/357)
+
 ## [1.14.2](https://github.com/Headstorm/foundry-ui/compare/v1.14.1...v1.14.2) (2021-12-02)
 
 
