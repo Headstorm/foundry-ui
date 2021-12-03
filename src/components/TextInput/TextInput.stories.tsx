@@ -1,14 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import * as IconPaths from '@mdi/js';
+import { mdiAccount, mdiOfficeBuilding, mdiPhone } from '@mdi/js';
 
 import TextInput, { TextInputProps } from './TextInput';
 import variants from '../../enums/variants';
 
 const iconOptions = {
   none: '',
-  ...IconPaths,
+  mdiAccount,
+  mdiOfficeBuilding,
+  mdiPhone,
 };
 
 const maxLengthOptions = {

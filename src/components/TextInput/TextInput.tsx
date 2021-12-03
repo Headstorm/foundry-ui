@@ -8,17 +8,21 @@ import React, {
   TextareaHTMLAttributes,
   InputHTMLAttributes,
   useRef,
+  useEffect,
 } from 'react';
 import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
 import debounce from 'lodash.debounce';
 import { mdiClose } from '@mdi/js';
 import { darken } from 'polished';
+
 import { Div, Input as InputElement, TextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
+import { mergeRefs } from '../../utils/refs';
 import { useAnalytics, useTheme } from '../../context';
 import { disabledStyles } from '../../utils/color';
 import variants from '../../enums/variants';
+import Button from '../Button';
 
 export type TextInputContainerProps = {
   disabled?: boolean;
@@ -35,6 +39,7 @@ const Container = styled(Div)`
       position: relative;
       display: flex;
       flex-flow: row;
+      align-items: stretch;
       border-radius: 0.25em;
       border: ${
         variant === variants.outline ? `1px solid ${borderColor}` : '1px solid transparent'
@@ -90,17 +95,21 @@ const TextAreaInputContainer = styled(TextArea)`
   }}
 `;
 
+const ClearButtonContainer = styled(Button.Container)`
+  padding: 0.5em;
+  height: 100%;
+`;
+
 const IconContainer = styled(Div)`
   ${() => {
     const { colors } = useTheme();
     return `
       padding: 0.5em;
-      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: ${colors.grayMedium};
-      cursor: pointer;
+      cursor: text;
     `;
   }}
 `;
@@ -148,6 +157,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     StyledContainer?: StyledSubcomponentType;
     StyledInput?: StyledSubcomponentType;
     StyledIconContainer?: StyledSubcomponentType;
+    StyledClearButtonContainer?: StyledSubcomponentType;
     StyledErrorContainer?: StyledSubcomponentType;
     StyledTextArea?: StyledSubcomponentType;
     StyledCharacterCount?: StyledSubcomponentType;
@@ -155,30 +165,17 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     containerProps?: SubcomponentPropsType;
     inputProps?: SubcomponentPropsType;
     iconContainerProps?: SubcomponentPropsType;
+    clearButtonContainerProps?: SubcomponentPropsType;
     errorContainerProps?: SubcomponentPropsType;
     characterCountProps?: SubcomponentPropsType;
 
     containerRef?: React.RefObject<HTMLDivElement>;
     inputRef?: React.RefObject<HTMLInputElement>;
+    iconContainerRef?: React.RefObject<HTMLDivElement>;
+    clearButtonContainerRef?: React.RefObject<HTMLButtonElement>;
     errorContainerRef?: React.RefObject<HTMLDivElement>;
     characterCountRef?: React.RefObject<HTMLDivElement>;
   };
-
-const createIcon = (
-  StyledIconContainer: StyledSubcomponentType,
-  iconPrefix: ReactNode,
-  iconProps: SubcomponentPropsType,
-) => {
-  if (typeof iconPrefix === 'string') {
-    return (
-      <StyledIconContainer {...iconProps}>
-        <Icon aria-hidden="true" size="1em" path={iconPrefix} />
-      </StyledIconContainer>
-    );
-  }
-
-  return <StyledIconContainer>{iconPrefix}</StyledIconContainer>;
-};
 
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
@@ -200,6 +197,7 @@ const TextInput = ({
   StyledContainer = Container,
   StyledInput = TextInputContainer,
   StyledIconContainer = IconContainer,
+  StyledClearButtonContainer = ClearButtonContainer,
   StyledErrorContainer = ErrorContainer,
   StyledTextArea = TextAreaInputContainer,
   StyledCharacterCount = CharacterCount,
@@ -207,17 +205,21 @@ const TextInput = ({
   containerProps = {},
   inputProps = {},
   iconContainerProps = {},
+  clearButtonContainerProps = {},
   errorContainerProps = {},
   characterCountProps = {},
 
   containerRef,
   inputRef,
+  iconContainerRef,
+  clearButtonContainerRef,
   errorContainerRef,
   characterCountRef,
 
   ...nativeHTMLAttributes
 }: TextInputProps): JSX.Element => {
   const handleEventWithAnalytics = useAnalytics();
+  const theme = useTheme();
 
   const handleDebouncedOnChange = (e: any) =>
     handleEventWithAnalytics(
@@ -242,21 +244,31 @@ const TextInput = ({
     nativeHTMLAttributes.value || nativeHTMLAttributes.defaultValue || '',
   );
 
-  const handleClear = (e: any) => {
-    const onClearToUse =
-      onClear &&
-      (() => {
-        if (!inputRef?.current?.value && internalInputRef?.current?.value) {
-          setInternalValue('');
+  const onClearToUse = useCallback(
+    evt => {
+      // if this is an uncontrolled input
+      if (nativeHTMLAttributes.value === undefined) {
+        if (internalInputRef?.current) {
           internalInputRef.current.value = '';
         }
-      });
+        setInternalValue('');
+      }
+      if (onClear) {
+        onClear(evt);
+      }
+    },
+    [nativeHTMLAttributes.value, onClear],
+  );
+
+  const handleClear = (e: any) => {
     handleEventWithAnalytics('TextInput', onClearToUse, 'onClear', e, containerProps);
   };
 
-  if (internalValue !== nativeHTMLAttributes.value && nativeHTMLAttributes.value === '') {
-    setInternalValue('');
-  }
+  useEffect(() => {
+    if (internalValue !== nativeHTMLAttributes.value && nativeHTMLAttributes.value === '') {
+      setInternalValue('');
+    }
+  }, [internalValue, nativeHTMLAttributes.value]);
 
   return (
     <StyledContainer
@@ -266,13 +278,27 @@ const TextInput = ({
       ref={containerRef}
       {...containerProps}
     >
-      {iconPrefix && createIcon(StyledIconContainer, iconPrefix, iconContainerProps)}
+      {iconPrefix &&
+        (typeof iconPrefix === 'string' ? (
+          <StyledIconContainer
+            onClick={() => internalInputRef.current?.focus()}
+            {...iconContainerProps}
+            ref={iconContainerRef}
+          >
+            <Icon aria-hidden="true" size="1em" path={iconPrefix} />
+          </StyledIconContainer>
+        ) : (
+          <StyledIconContainer onClick={() => internalInputRef.current?.focus()}>
+            {iconPrefix}
+          </StyledIconContainer>
+        ))}
       <InputComponent
         // Set default values above nativeHTMLAttributes
         type="text"
         disabled={false}
         cols={10}
         rows={10}
+        role="textbox"
         {...nativeHTMLAttributes}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           e.persist();
@@ -288,19 +314,25 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        // ref={mergeRefs([inputRef, internalInputRef])}
-        ref={inputRef}
+        ref={mergeRefs([inputRef, internalInputRef])}
         {...inputProps}
       />
       {(onClear || clearable) && (
-        <StyledIconContainer
+        <Button
+          StyledContainer={StyledClearButtonContainer}
+          containerRef={clearButtonContainerRef}
+          containerProps={{
+            'aria-label': 'Clear',
+            style: { lineHeight: '0' },
+            ...clearButtonContainerProps,
+          }}
+          iconPrefix={mdiClose}
+          leftIconProps={{ style: { height: '1em', width: '1em' } }}
+          disabled={internalValue === ''}
           onClick={handleClear}
-          role="button"
-          aria-label="Clear"
-          {...iconContainerProps}
-        >
-          <Icon aria-hidden="true" path={mdiClose} size="1em" />
-        </StyledIconContainer>
+          color={theme.colors.grayMedium}
+          variant={variants.text}
+        />
       )}
       {showCharacterCount && (
         <StyledCharacterCount
@@ -326,6 +358,7 @@ TextInput.Container = Container;
 TextInput.ErrorContainer = ErrorContainer;
 TextInput.Input = TextInputContainer;
 TextInput.IconContainer = IconContainer;
+TextInput.ClearButtonContainer = ClearButtonContainer;
 TextInput.TextArea = TextAreaInputContainer;
 TextInput.CharacterCount = CharacterCount;
 
