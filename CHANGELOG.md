@@ -1,3 +1,10 @@
+## [1.14.5](https://github.com/Headstorm/foundry-ui/compare/v1.14.4...v1.14.5) (2021-12-06)
+
+
+### Bug Fixes
+
+* **textinput:** Hotfix to hide clear button if clearable is false ([919c54f](https://github.com/Headstorm/foundry-ui/commit/919c54ff0599876526d97b19eacbb9b191c66b58))
+
 ## [1.14.4](https://github.com/Headstorm/foundry-ui/compare/v1.14.3...v1.14.4) (2021-12-06)
 
 
