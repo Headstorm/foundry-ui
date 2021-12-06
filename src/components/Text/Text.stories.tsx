@@ -1,15 +1,17 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import { mdiAlertDecagramOutline, mdiScooter, mdiAlignVerticalCenter } from '@mdi/js';
 
 import Icon from '@mdi/react';
-import * as Icons from '@mdi/js';
 
 import Text, { TextProps } from './Text';
 import colors from '../../enums/colors';
 
 const options = {
   none: '',
-  ...Icons,
+  mdiAlertDecagramOutline,
+  mdiScooter,
+  mdiAlignVerticalCenter,
 };
 
 type DefaultProps = TextProps & {

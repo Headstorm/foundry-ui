@@ -99,12 +99,17 @@ const Text = ({
     </Skeleton>
 
     {iconSuffix &&
-      (typeof iconSuffix === 'string' ? (
+      (typeof iconSuffix === 'string' && iconSuffix !== '' ? (
         <StyledIconContainer side="right" ref={iconSuffixContainerRef} {...iconContainerProps}>
           <Icon path={iconSuffix} size={size} />
         </StyledIconContainer>
       ) : (
-        <StyledIconContainer side="right" ref={iconSuffixContainerRef} {...iconContainerProps}>
+        <StyledIconContainer
+          side="right"
+          size={size}
+          ref={iconSuffixContainerRef}
+          {...iconContainerProps}
+        >
           {iconSuffix}
         </StyledIconContainer>
       ))}
