@@ -37,6 +37,10 @@ exports[`TextInput Rendering tests Shows TextInput with clear button disabled wh
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   position: relative;
   font-size: 1em;
   padding: .75em 1em;
@@ -208,6 +212,10 @@ exports[`TextInput Rendering tests Shows TextInput with clear button enabled whe
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   position: relative;
   font-size: 1em;
   padding: .75em 1em;
@@ -398,6 +406,10 @@ exports[`TextInput Rendering tests Shows TextInput with clear button enabled whe
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   position: relative;
   font-size: 1em;
   padding: .75em 1em;

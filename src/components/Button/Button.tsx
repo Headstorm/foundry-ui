@@ -90,6 +90,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
 
     return `
       display: inline-flex;
+      align-items: baseline;
       position: relative;
       font-size: 1em;
       padding: .75em 1em;
