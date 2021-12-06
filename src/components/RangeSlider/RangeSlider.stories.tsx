@@ -24,10 +24,10 @@ const Row = styled.div`
 const ColorPreview = styled.div`
   ${fonts.body}
 
-  height: 12em;
-  width: 34em;
+  height: 12rem;
+  width: 34rem;
   transition: color 0.5s;
-  font-size: 5em;
+  font-size: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;

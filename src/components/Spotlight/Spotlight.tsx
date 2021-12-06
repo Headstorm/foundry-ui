@@ -31,6 +31,8 @@ const Annotation = styled(AnimatedDiv)`
   left: 0;
   padding-bottom: 1rem;
 
+  z-index: 201;
+
   width: fit-content;
   max-width: 50vw;
 `;
