@@ -21,7 +21,7 @@ exports[`Card header bottom padding should be 0rem when body is present 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -33,14 +33,14 @@ exports[`Card header bottom padding should be 0rem when body is present 1`] = `
 }
 
 .c1 {
-  padding: 1.5rem 1.5rem 0rem;
+  padding: 1.5em 1.5em 0em;
   border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
   color: #252D34;
 }
 
 .c2 {
-  padding: 1.5rem 1.5rem;
+  padding: 1.5em 1.5em;
   color: #51575D;
 }
 
@@ -103,7 +103,7 @@ exports[`Card header bottom padding should be 0rem when footer is present 1`] = 
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -115,14 +115,14 @@ exports[`Card header bottom padding should be 0rem when footer is present 1`] = 
 }
 
 .c1 {
-  padding: 1.5rem 1.5rem 0rem;
+  padding: 1.5em 1.5em 0em;
   border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
   color: #252D34;
 }
 
 .c2 {
-  padding: 1rem 1.5rem;
+  padding: 1em 1.5em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -197,7 +197,7 @@ exports[`Card header bottom padding should be 1.5rem without body and footer 1`]
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -209,7 +209,7 @@ exports[`Card header bottom padding should be 1.5rem without body and footer 1`]
 }
 
 .c1 {
-  padding: 1.5rem 1.5rem;
+  padding: 1.5em 1.5em;
   border-radius: 0.25rem 0.25rem 0rem 0rem;
   font-weight: bold;
   color: #252D34;
@@ -269,7 +269,7 @@ exports[`Card shows Card with default feedback 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -329,7 +329,7 @@ exports[`Card shows Card with default props 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -389,7 +389,7 @@ exports[`Card shows Card with non-default elevation 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -437,7 +437,7 @@ exports[`Card shows Card with ripple feedback and no onClick 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -478,7 +478,7 @@ exports[`Card shows Card with ripple feedback with onClick 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -526,7 +526,7 @@ exports[`Card shows Card with simple feedback and no onClick 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;
@@ -556,7 +556,7 @@ exports[`Card shows Card with simple feedback with onClick 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 0.25rem;
   border: 0px solid transparent;
   -webkit-transition: filter .5s, box-shadow .5s, border .3s, background-color .3s;

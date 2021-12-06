@@ -59,13 +59,13 @@ export const Box = styled(Div)`
       } 
       background-color: ${backgroundColor};
       border-radius: 2px;
-      width: 1rem;
-      height: 1rem;
+      width: 1em;
+      height: 1em;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: visible;
-      margin-right: 0.5rem;
+      margin-right: 0.5em;
       &:hover {
         background-color: ${darken(0.05, backgroundColor)}
       }
@@ -88,8 +88,8 @@ export const CheckboxContainer = styled.div`
 
 export const BaseIcon = styled(Icon)`
   overflow: visible;
-  height: 1rem;
-  width: 1rem;
+  height: 1em;
+  width: 1em;
 ` as StyledSubcomponentType;
 
 const CheckIcon = styled(BaseIcon)`

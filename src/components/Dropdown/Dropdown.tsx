@@ -63,8 +63,8 @@ export const ValueContainer = styled(Button.Container)`
       flex-direction: row;
       align-items: center;
       ${isOpen && !isHidden ? openStyle : ''}
-      width: 15rem;
-      padding: .5rem 1rem;
+      width: 15em;
+      padding: .5em 1em;
 
       &:focus-within {
         outline: none;
@@ -76,12 +76,12 @@ export const ValueContainer = styled(Button.Container)`
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
 export const CloseIconContainer = styled(Div)`
-  height: 1.125rem;
+  height: 1.125em;
   z-index: 1;
 `;
 
 export const ArrowIconContainer = styled(Div)`
-  height: 1.125rem;
+  height: 1.125em;
   z-index: 1;
   pointer-events: none;
 `;
@@ -106,9 +106,9 @@ const OptionsContainer = styled(Div)`
     background: white;
     position: absolute;
     left: 0px;
-    ${isVirtual ? 'height: 10rem;' : 'max-height: 10rem;'}
+    ${isVirtual ? 'height: 10em;' : 'max-height: 10em;'}
     overflow-y: auto;
-    width: 15rem;
+    width: 15em;
     ${
       variant !== variants.text
         ? `
@@ -144,7 +144,7 @@ const OptionItem = styled(Div)`
     const backgroundColor = selected ? selectedBgColor : unselectedBgColor;
     return `
       user-select: none;
-      padding: 0.5rem;
+      padding: 0.5em;
       display: flex;
       align-items: center;
       color: ${
@@ -179,8 +179,8 @@ const CheckContainer = styled(Div)`
       align-items: center;
       justify-content: center;
       color: ${readableColor(backgroundColor, colors.background, color, true)};
-      padding-right: 0.2rem;
-      width: 2rem;
+      padding-right: 0.2em;
+      width: 2em;
     `;
   }}
 `;
