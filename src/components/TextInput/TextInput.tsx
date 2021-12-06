@@ -35,7 +35,7 @@ const Container = styled(Div)`
     const { colors } = useTheme();
     const borderColor = isValid === false ? colors.destructive : colors.grayMedium;
     return `
-      min-width: 10rem;
+      min-width: 10em;
       position: relative;
       display: flex;
       flex-flow: row;
@@ -73,7 +73,7 @@ const TextInputContainer = styled(InputElement)`
       flex-grow: 1;
       outline: 0 none;
       font-size: 1em;
-      padding: 0.5rem;
+      padding: 0.5em;
       background-color: ${colors.transparent};
   `;
   }}
@@ -88,7 +88,7 @@ const TextAreaInputContainer = styled(TextArea)`
       outline: 0 none;
       font-size: 1em;
       min-width: 0px;
-      padding: .5rem;
+      padding: .5em;
       background-color: ${colors.transparent};
       resize: ${multiLineIsResizable ? 'both' : 'none'};
     `;
@@ -133,7 +133,7 @@ const ErrorContainer = styled(Div)`
       position: absolute;
       top: calc(100% + 0.25em);
       color: ${colors.destructive};
-      font-size: 0.75rem;
+      font-size: 0.75em;
     `;
   }}
 `;

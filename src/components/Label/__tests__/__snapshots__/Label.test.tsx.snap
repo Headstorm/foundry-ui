@@ -19,7 +19,7 @@ Object {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-left: 0.25rem;
+  margin-left: 0.25em;
 }
 
 <div>
@@ -43,7 +43,7 @@ Object {
           >
             <svg
               role="presentation"
-              style="width: .75rem; height: .75rem;"
+              style="width: .75em; height: .75em;"
               viewBox="0 0 24 24"
             >
               <path
@@ -73,11 +73,11 @@ Object {
         </label>
         <span
           aria-hidden="true"
-          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
+          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi fDVdMr"
         >
           <svg
             role="presentation"
-            style="width: .75rem; height: .75rem;"
+            style="width: .75em; height: .75em;"
             viewBox="0 0 24 24"
           >
             <path
@@ -161,7 +161,7 @@ Object {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-left: 0.25rem;
+  margin-left: 0.25em;
 }
 
 <body>
@@ -186,7 +186,7 @@ Object {
           >
             <svg
               role="presentation"
-              style="width: .75rem; height: .75rem;"
+              style="width: .75em; height: .75em;"
               viewBox="0 0 24 24"
             >
               <path
@@ -216,11 +216,11 @@ Object {
         </label>
         <span
           aria-hidden="true"
-          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi gtRhhV"
+          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi fDVdMr"
         >
           <svg
             role="presentation"
-            style="width: .75rem; height: .75rem;"
+            style="width: .75em; height: .75em;"
             viewBox="0 0 24 24"
           >
             <path
@@ -302,7 +302,7 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-left: 0.25rem;
+  margin-left: 0.25em;
 }
 
 <div>
@@ -326,7 +326,7 @@ exports[`Label should have text be colorInvalid if given a isValid prop of false
       >
         <svg
           role="presentation"
-          style="width: .75rem; height: .75rem;"
+          style="width: .75em; height: .75em;"
           viewBox="0 0 24 24"
         >
           <path
@@ -356,7 +356,7 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-left: 0.25rem;
+  margin-left: 0.25em;
 }
 
 <div>
@@ -380,7 +380,7 @@ exports[`Label should have text be colorValid and a check icon if given a isVali
       >
         <svg
           role="presentation"
-          style="width: .75rem; height: .75rem;"
+          style="width: .75em; height: .75em;"
           viewBox="0 0 24 24"
         >
           <path

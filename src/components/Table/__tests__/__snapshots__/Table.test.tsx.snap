@@ -12,9 +12,9 @@ exports[`Table Shows Table with default props 1`] = `
 .c1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 0rem 2rem;
-  -webkit-column-gap: 1rem;
-  column-gap: 1rem;
+  padding: 0em 2em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -32,8 +32,8 @@ exports[`Table Shows Table with default props 1`] = `
   -ms-flex-flow: row;
   flex-flow: row;
   cursor: pointer;
-  padding: 1rem 0rem 1rem 1rem;
-  margin-left: -1rem;
+  padding: 1em 0em 1em 1em;
+  margin-left: -1em;
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   pointer-events: none;
@@ -46,10 +46,10 @@ exports[`Table Shows Table with default props 1`] = `
 .c5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 0rem 2rem;
-  row-gap: .5rem;
-  -webkit-column-gap: 1rem;
-  column-gap: 1rem;
+  padding: 0em 2em;
+  row-gap: .5em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
   position: relative;
   background-color: #fff;
 }
@@ -79,7 +79,7 @@ exports[`Table Shows Table with default props 1`] = `
 
 .c6 {
   display: block;
-  padding: 1rem 0;
+  padding: 1em 0;
   word-break: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
@@ -89,9 +89,9 @@ exports[`Table Shows Table with default props 1`] = `
 }
 
 .c3 {
-  margin-left: 1rem;
+  margin-left: 1em;
   fill: white;
-  width: 1rem;
+  width: 1em;
   -webkit-transition: -webkit-transform .2s,opacity .5s;
   -webkit-transition: transform .2s,opacity .5s;
   transition: transform .2s,opacity .5s;
@@ -102,9 +102,9 @@ exports[`Table Shows Table with default props 1`] = `
 }
 
 .c4 {
-  margin-left: 1rem;
+  margin-left: 1em;
   fill: white;
-  width: 1rem;
+  width: 1em;
   -webkit-transition: -webkit-transform .2s,opacity .5s;
   -webkit-transition: transform .2s,opacity .5s;
   transition: transform .2s,opacity .5s;

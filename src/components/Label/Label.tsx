@@ -26,7 +26,7 @@ export const DefaultStyledLabelContainer = styled(Div)``;
 
 const DefaultStyledIconContainer = styled(Span)`
   display: inline-flex;
-  margin-left: 0.25rem;
+  margin-left: 0.25em;
 `;
 
 export interface LabelProps {
@@ -121,7 +121,7 @@ const Label = ({
           {labelText}
         </StyledLabel>
         <StyledIconContainer aria-hidden="true" ref={iconContainerRef} {...iconContainerProps}>
-          <Icon path={shownIcon} size=".75rem" color={shownColor} />
+          <Icon path={shownIcon} size=".75em" color={shownColor} />
         </StyledIconContainer>
       </StyledTextContainer>
       {/* Only render children with aria props if there is one child */}

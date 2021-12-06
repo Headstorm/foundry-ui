@@ -28,7 +28,7 @@ export const CardContainer = styled(Div)`
       ${!isDefaultOnClick ? 'cursor: pointer;' : ''}
       display: inline-flex;
       flex-flow: column nowrap;
-      font-size: 1rem;
+      font-size: 1em;
       border-radius: 0.25rem;
       border: ${!elevation ? `1px solid ${colors.grayXlight}` : '0px solid transparent'};
       transition:
@@ -60,7 +60,7 @@ export const Header = styled(Div)`
     const { colors } = useTheme();
 
     return `
-      padding: 1.5rem 1.5rem ${hasBody || hasFooter ? '0rem' : ''};
+      padding: 1.5em 1.5em ${hasBody || hasFooter ? '0em' : ''};
       border-radius: 0.25rem 0.25rem 0rem 0rem;
       font-weight: bold;
       color: ${colors.grayDark};
@@ -77,7 +77,7 @@ export const Body = styled(Div)`
     const { colors } = useTheme();
 
     return `
-      padding: 1.5rem 1.5rem;
+      padding: 1.5em 1.5em;
       color: ${colors.grayMedium};
     `;
   }}
@@ -88,7 +88,7 @@ export const Footer = styled(Div)`
     const { colors } = useTheme();
 
     return `
-      padding: 1rem 1.5rem;
+      padding: 1em 1.5em;
       display: flex;
       flex-flow: row wrap;
 

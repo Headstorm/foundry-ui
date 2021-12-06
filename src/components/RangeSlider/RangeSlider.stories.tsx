@@ -15,8 +15,8 @@ const Row = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding: 0.5rem;
-  min-width: 20rem;
+  padding: 0.5em;
+  min-width: 20em;
   width: 90%;
   margin: 0 auto;
 `;
@@ -24,10 +24,10 @@ const Row = styled.div`
 const ColorPreview = styled.div`
   ${fonts.body}
 
-  height: 12rem;
-  width: 34rem;
+  height: 12em;
+  width: 34em;
   transition: color 0.5s;
-  font-size: 5rem;
+  font-size: 5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +49,7 @@ const skillColors = ['red', 'orangered', 'orange', 'goldenrod', 'yellowgreen', '
 const StyledSlideRail = styled(SlideRail)`
   filter: grayscale(0.5) brightness(1.3);
   border: 0.5px solid ${colors.grayLight};
-  height: 0.5rem;
+  height: 0.5em;
   border-radius: 0.25rem;
   background-image: linear-gradient(to right, ${skillColors.join(', ')});
 `;

@@ -76,7 +76,7 @@ export const Container: string & StyledComponentBase<any, {}, TagContainerProps>
 `;
 
 const StyledProgress = styled(Progress)`
-  width: 5rem;
+  width: 5em;
   height: 10px;
   margin-top: -5px;
   margin-bottom: -5px;
@@ -85,7 +85,7 @@ const StyledProgress = styled(Progress)`
 const IconContainer = styled(Div)`
   ${({ position, hasContent }: IconContainerProps) => {
     return `
-    height: 1rem;
+    height: 1em;
     ${hasContent ? `margin-${position === 'right' ? 'left' : 'right'}: 1em;` : ''}
   `;
   }}
@@ -143,7 +143,7 @@ const Tag = ({
             ref={iconPrefixContainerRef}
             {...iconPrefixContainerProps}
           >
-            <UnstyledIcon path={iconPrefix} size="1rem" />
+            <UnstyledIcon path={iconPrefix} size="1em" />
           </StyledIconContainer>
         ) : (
           <StyledIconContainer ref={iconPrefixContainerRef}>{iconPrefix}</StyledIconContainer>
@@ -155,7 +155,7 @@ const Tag = ({
           ref={iconPrefixContainerRef}
           {...iconPrefixContainerProps}
         >
-          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+          <UnstyledIcon path={mdiLoading} size="1em" spin={1} />
         </StyledIconContainer>
       )}
       {children}
@@ -168,7 +168,7 @@ const Tag = ({
             ref={iconSuffixContainerRef}
             {...iconSuffixContainerProps}
           >
-            <UnstyledIcon path={iconSuffix} size="1rem" />
+            <UnstyledIcon path={iconSuffix} size="1em" />
           </StyledIconContainer>
         ) : (
           <StyledIconContainer

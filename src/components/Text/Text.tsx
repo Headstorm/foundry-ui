@@ -56,7 +56,7 @@ const Text = ({
   iconSuffix,
   isLoading,
   isProcessing,
-  size = '1rem',
+  size = '1em',
 
   StyledContainer = TextContainer,
   StyledIconContainer = IconContainer,

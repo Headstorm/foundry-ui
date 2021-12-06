@@ -42,7 +42,7 @@ export const Header = styled(TR)`
     return `
       display: grid;
       grid-template-columns: ${columnWidths};
-      padding: 0rem 2rem;
+      padding: 0em 2em;
       column-gap: ${columnGap};
       user-select: none;
 
@@ -57,8 +57,8 @@ export const HeaderCell = styled(TH)`
     display: flex;
     flex-flow: row;
     cursor: pointer;
-    padding: 1rem 0rem 1rem 1rem;
-    margin-left: -1rem;
+    padding: 1em 0em 1em 1em;
+    margin-left: -1em;
 
     transition: background-color 0.5s;
 
@@ -76,7 +76,7 @@ export const Footer = styled(TR)`
     return `
       display: grid;
       grid-template-columns: ${columnWidths};
-      padding: 0rem 2rem;
+      padding: 0em 2em;
       column-gap: ${columnGap};
       user-select: none;
 
@@ -90,8 +90,8 @@ export const FooterCell = styled(TH)`
   display: flex;
   flex-flow: row;
   cursor: pointer;
-  padding: 1rem 0rem 1rem 1rem;
-  margin-left: -1rem;
+  padding: 1em 0em 1em 1em;
+  margin-left: -1em;
 
   transition: background-color 0.5s;
   &:hover {
@@ -104,10 +104,10 @@ export const ResponsiveTitle = styled(Span)`
     const { colors } = useTheme();
     return `
       color: ${colors.primary};
-      padding: 0.5rem;
+      padding: 0.5em;
       user-select: none;
       cursor: pointer;
-      margin-right: .5rem;
+      margin-right: .5em;
       background-color: rgba(0,0,0,0.05);
       border-radius: .5rem;
       ${sortable ? '' : 'pointer-events: none;'}
@@ -121,8 +121,8 @@ export const Row = styled(TR)`
     return `
       display: grid;
       grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
-      padding: ${reachedMinWidth ? '1rem' : '0rem'} 2rem;
-      row-gap: .5rem;
+      padding: ${reachedMinWidth ? '1em' : '0em'} 2em;
+      row-gap: .5em;
       column-gap: ${columnGap};
       position: relative;
       background-color: ${colors.background};
@@ -163,7 +163,7 @@ export const GroupRow = styled(Row)`
 
 export const Cell = styled(TD)`
   display: block;
-  padding: 1rem 0;
+  padding: 1em 0;
   word-break: break-word;
   hyphens: auto;
   width: unset;
@@ -171,9 +171,9 @@ export const Cell = styled(TD)`
 
 export const SortIcon = styled(Icon)`
   ${({ direction }: { direction?: boolean | null }) => `
-    margin-left: 1rem;
+    margin-left: 1em;
     fill: white;
-    width: 1rem;
+    width: 1em;
     transition: transform .2s, opacity .5s;
     opacity: ${direction === null ? 0 : 1};
     transform: rotate(${direction ? 0 : 180}deg);
@@ -188,7 +188,7 @@ const defaultCollapsed: collapsedState = {};
 const collapsedExpandedIconColumn = {
   name: '',
   sortable: false,
-  width: '1rem',
+  width: '1em',
 };
 
 // Keyboard listener required for a11y on the clickable span
@@ -222,7 +222,7 @@ const ExpansionIcon: React.FunctionComponent<InternalExpansionIconProps> = ({
       role="button"
       onKeyPress={onKeyPress}
     >
-      <Icon path={path} size="1rem" />
+      <Icon path={path} size="1em" />
     </StyledExpansionIconSpan>
   );
 };
@@ -234,7 +234,7 @@ export const ExpansionIconColumnName = '__EXPANSION_COLUMN__';
 // TODO: Add window width media query to complement the table width media query API
 
 const Table = ({
-  columnGap = '1rem',
+  columnGap = '1em',
   columns,
   areGroupsCollapsible = false,
   data = [],

@@ -19,6 +19,8 @@ describe('Spotlight', () => {
     await waitFor(() => expect(onEnd).toHaveBeenCalled());
     expect(container).toMatchSnapshot();
   });
+
+  // TODO: waitFor onEnd is a slightly flakey test.
   it('Should match previous snapshot with a targetElement', async () => {
     const buttonRef = React.createRef<HTMLButtonElement>();
     const onEnd = jest.fn();

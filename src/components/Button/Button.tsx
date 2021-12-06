@@ -236,21 +236,21 @@ const Button = ({
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
           <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-            <UnstyledIcon path={iconPrefix} size="1rem" {...leftIconProps} />
+            <UnstyledIcon path={iconPrefix} size="1em" {...leftIconProps} />
           </StyledLeftIconContainer>
         ) : (
           <StyledLeftIconContainer ref={leftIconContainerRef}>{iconPrefix}</StyledLeftIconContainer>
         ))}
       {isProcessing && (
         <StyledLeftIconContainer hasContent={hasContent} ref={leftIconContainerRef}>
-          <UnstyledIcon path={mdiLoading} size="1rem" spin={1} />
+          <UnstyledIcon path={mdiLoading} size="1em" spin={1} />
         </StyledLeftIconContainer>
       )}
       {isLoading && ProgressBar ? <Progress /> : children}
       {iconSuffix &&
         (typeof iconSuffix === 'string' ? (
           <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
-            <UnstyledIcon path={iconSuffix} size="1rem" {...rightIconProps} />
+            <UnstyledIcon path={iconSuffix} size="1em" {...rightIconProps} />
           </StyledRightIconContainer>
         ) : (
           <StyledRightIconContainer hasContent={hasContent} ref={rightIconContainerRef}>
