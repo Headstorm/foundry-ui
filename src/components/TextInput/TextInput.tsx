@@ -317,7 +317,7 @@ const TextInput = ({
         ref={mergeRefs([inputRef, internalInputRef])}
         {...inputProps}
       />
-      {(onClear || clearable) && (
+      {clearable && (
         <Button
           StyledContainer={StyledClearButtonContainer}
           containerRef={clearButtonContainerRef}
