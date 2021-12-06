@@ -1,3 +1,13 @@
+## [1.14.4](https://github.com/Headstorm/foundry-ui/compare/v1.14.3...v1.14.4) (2021-12-06)
+
+
+### Bug Fixes
+
+* **button:** icons should align with text baseline ([dadbc4f](https://github.com/Headstorm/foundry-ui/commit/dadbc4f40edcf603e9938123511bcadbdfdfb4a0))
+* **most components:** utilize em instead of rem in font-size, padding, etc ([24129a1](https://github.com/Headstorm/foundry-ui/commit/24129a1a9f9db78522830eabee4c6485c6f2a5a7))
+* **spotlight:** set z-index of default annotation to be above spotlight container ([4dd7acd](https://github.com/Headstorm/foundry-ui/commit/4dd7acd1f59d34e4b2819a6a5df37fdf85968865))
+* **text:** apply size to iconSuffix correctly ([7c8ec58](https://github.com/Headstorm/foundry-ui/commit/7c8ec58a3cd28688c73d0d290fd49793d72c0fbc))
+
 ## [1.14.3](https://github.com/Headstorm/foundry-ui/compare/v1.14.2...v1.14.3) (2021-12-03)
 
 
