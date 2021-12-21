@@ -356,7 +356,7 @@ describe('Dropdown', () => {
     it('Should pass accessibility test with default props', async () => {
       generateIntersectionObserver([]);
       const component = (
-          <Dropdown onSelect={() => {}} placeholder="hello" options={undefined}></Dropdown>
+        <Dropdown onSelect={() => {}} placeholder="hello" options={undefined}></Dropdown>
       );
       const { container } = render(component);
       const results = await axe(container);
