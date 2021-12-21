@@ -394,13 +394,13 @@ const Dropdown = ({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
-  const stringifyOptions = JSON.stringify(options);
+  const stringifiedOptions = JSON.stringify(options);
 
   useEffect(() => {
     setFilteredOptions(options);
     // empty array of options makes this useEffect loop
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stringifyOptions]);
+  }, [stringifiedOptions]);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -503,7 +503,7 @@ const Dropdown = ({
     [intersectOptions, intersectionCallback],
   );
 
-  const stringifyFilteredOptions = JSON.stringify(filteredOptions);
+  const stringifiedFilteredOptions = JSON.stringify(filteredOptions);
   useEffect(() => {
     if (isOpen) {
       // setTimeout ensures this code renders after the initial render
@@ -541,7 +541,7 @@ const Dropdown = ({
         intersectObserver.disconnect();
       };
     }
-  }, [intersectObserver, isOpen, isVirtual, stringifyFilteredOptions]);
+  }, [intersectObserver, isOpen, isVirtual, stringifiedFilteredOptions]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
