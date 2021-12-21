@@ -342,7 +342,6 @@ const Dropdown = ({
   rememberScrollPosition = true,
   valueVariant = variants.text,
   values = [],
-
   shouldStayInView = true,
   intersectionThreshold = 1.0,
   intersectionContainer = null,
@@ -395,10 +394,13 @@ const Dropdown = ({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
+  const stringifiedOptions = JSON.stringify(options);
 
   useEffect(() => {
     setFilteredOptions(options);
-  }, [options]);
+    // empty array of options makes this useEffect loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stringifiedOptions]);
 
   // Merge the default styled container prop and the placeholderProps object to get user styles
   const placeholderMergedProps = {
@@ -501,6 +503,7 @@ const Dropdown = ({
     [intersectOptions, intersectionCallback],
   );
 
+  const stringifiedFilteredOptions = JSON.stringify(filteredOptions);
   useEffect(() => {
     if (isOpen) {
       // setTimeout ensures this code renders after the initial render
@@ -538,7 +541,7 @@ const Dropdown = ({
         intersectObserver.disconnect();
       };
     }
-  }, [intersectObserver, isOpen, isVirtual, filteredOptions]);
+  }, [intersectObserver, isOpen, isVirtual, stringifiedFilteredOptions]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
@@ -558,7 +561,7 @@ const Dropdown = ({
   const handleBlur = useCallback(
     (e: React.FocusEvent) => {
       e.preventDefault();
-
+      e.persist();
       setFocusTimeoutId(
         window.setTimeout(() => {
           if (focusWithin) {
@@ -576,6 +579,7 @@ const Dropdown = ({
 
   const handleFocus = useCallback(
     (e: any) => {
+      e.persist();
       window.setTimeout(() => {
         if (document.activeElement?.id === `${name}-dropdown-button`) {
           searchInputRef?.current?.focus();

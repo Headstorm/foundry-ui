@@ -76,6 +76,13 @@ describe('Dropdown', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('does not display options on initial render when options is undefined', () => {
+    generateIntersectionObserver([]);
+    const { container } = render(<Dropdown onSelect={mockedSelectHandler} options={undefined} />);
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('displays placeholder value on initial render', () => {
     generateIntersectionObserver([]);
     const { container, getByText } = render(
@@ -335,6 +342,20 @@ describe('Dropdown', () => {
         values={['bulbasaur', 'charmander']}
         onSelect={mockedSelectHandler}
       />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('selects options from values prop', () => {
+    generateIntersectionObserver([]);
+    const { container } = render(
+        <Dropdown
+            multi
+            options={pokeOptions}
+            values={['bulbasaur', 'charmander']}
+            onSelect={mockedSelectHandler}
+        />,
     );
 
     expect(container).toMatchSnapshot();
