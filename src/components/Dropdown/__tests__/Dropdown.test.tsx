@@ -352,6 +352,18 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('Undefined Options Accessibility Tests', () => {
+    it('Should pass accessibility test with default props', async () => {
+      generateIntersectionObserver([]);
+      const component = (
+          <Dropdown onSelect={() => {}} placeholder="hello" options={undefined}></Dropdown>
+      );
+      const { container } = render(component);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+
   describe('Ref tests', () => {
     it('containerRef.current should exist', async () => {
       generateIntersectionObserver([]);

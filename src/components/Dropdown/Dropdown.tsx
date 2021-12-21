@@ -291,6 +291,12 @@ export interface DropdownProps {
 
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 
+const pokeOptions = [
+  { id: 'bulbasaur', optionValue: 'Bulbasaur' },
+  { id: 'charmander', optionValue: 'Charmander' },
+  { id: 'squirtle', optionValue: 'Squirtle' },
+];
+
 const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
@@ -335,7 +341,7 @@ const Dropdown = ({
   onFocus,
   onClear,
   onSelect,
-  options = [],
+  options = pokeOptions,
   tabIndex = 0,
   variant = variants.outline,
   optionsVariant = variants.outline,
@@ -395,6 +401,10 @@ const Dropdown = ({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
+
+  if (typeof options === 'undefined') {
+    options = pokeOptions;
+  }
 
   useEffect(() => {
     setFilteredOptions(options);
