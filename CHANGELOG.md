@@ -1,3 +1,11 @@
+## [1.14.6](https://github.com/Headstorm/foundry-ui/compare/v1.14.5...v1.14.6) (2021-12-21)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** 309 - changed useEffect to use Json.stringify (options)/(filteredOptions) ([05e4484](https://github.com/Headstorm/foundry-ui/commit/05e448435a8be5754c243b567f5d16b94412632d))
+* **dropdown.tsx dropdown.test.tsx dropdown.test.tsx.snap:** changed variable name for useEffect dep ([eae6f44](https://github.com/Headstorm/foundry-ui/commit/eae6f44d075fa94aea4f8d79ed2fc48efded783c))
+
 ## [1.14.5](https://github.com/Headstorm/foundry-ui/compare/v1.14.4...v1.14.5) (2021-12-06)
 
 
