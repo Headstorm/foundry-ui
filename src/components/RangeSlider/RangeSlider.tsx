@@ -505,7 +505,7 @@ export const RangeSlider = ({
         </svg>
       )}
 
-      {processedMarkers.map((val: number | ValueProp) => {
+      {processedMarkers.map((val: number | ValueProp, index: number) => {
         const { value, color, label } =
           typeof val === 'number'
             ? {
@@ -518,7 +518,7 @@ export const RangeSlider = ({
 
         return (
           <StyledMarker
-            key={`marker-${value}`}
+            key={`marker-${index}`}
             id={`marker-${value}`}
             sliderPosition={position}
             ref={markerRef}
