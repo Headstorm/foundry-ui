@@ -87,9 +87,12 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const BaseIcon = styled(Icon)`
-  overflow: visible;
-  height: 1em;
-  width: 1em;
+  ${({ color }) => `
+    overflow: visible;
+    color: ${color};
+    width: 1em;
+    height: 1em;
+  `}
 ` as StyledSubcomponentType;
 
 const CheckIcon = styled(BaseIcon)`
@@ -126,7 +129,6 @@ const NeutralIcon = styled(BaseIcon)`
     return `
       color: ${color};
       path {
-        stroke: ${color};
         stroke-width: 2px;
       }
     `;
@@ -148,6 +150,7 @@ export interface CheckboxProps {
 
   checkboxType?: CheckboxTypes;
   variant?: variants;
+  color?: string;
   children?: React.ReactNode;
   checked?: boolean;
   disabled?: boolean;
@@ -190,6 +193,7 @@ const Checkbox = ({
 
   checkboxType = CheckboxTypes.check,
   variant = variants.fill,
+  color,
   checked = false,
   children,
   disabled = false,
@@ -233,6 +237,7 @@ const Checkbox = ({
               aria-hidden="true"
               data-test-id="hsui-Checkbox-Icon"
               path={iconPath}
+              color={color}
               variant={variant}
               {...iconProps}
             />
