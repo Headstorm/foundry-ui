@@ -885,6 +885,7 @@ const Dropdown = ({
                     tagVariant: valueVariant,
                     dropdownColor: defaultedColor,
                     transparentColor: colors.transparent,
+                    ...(valueItemTagProps.containerProps || {}),
                   }}
                   key={val}
                 >
