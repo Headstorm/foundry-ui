@@ -57,8 +57,7 @@ const SkeletonContainer = styled(Div)`
       transition: opacity .2s;
     }
 
-  ${
-    isLoading
+  ${isLoading
       ? `
         color: transparent !important;
         & > *:not(${SkeletonShimmer}) {
@@ -68,7 +67,7 @@ const SkeletonContainer = styled(Div)`
         }
     `
       : ''
-  }
+    }
   `}
 `;
 
@@ -76,19 +75,23 @@ export type SkeletonProps = {
   StyledContainer?: StyledSubcomponentType;
   StyledShimmer?: StyledSubcomponentType;
 
-  containerProps?: SubcomponentPropsType;
+  SkeletonProps?: SubcomponentPropsType;
   shimmerProps?: SubcomponentPropsType;
 
   children?: React.ReactNode;
   color?: string;
   isLoading?: boolean;
+
+  skeletonRef?: React.RefObject<HTMLElement>;
+
 };
 
 const Skeleton = ({
   StyledContainer = SkeletonContainer,
   StyledShimmer = SkeletonShimmer,
-  containerProps,
+  SkeletonProps,
   shimmerProps,
+  skeletonRef,
 
   children,
   color,
@@ -97,7 +100,7 @@ const Skeleton = ({
   const { colors } = useTheme();
   const finalColor = color || colors.grayLight;
   return (
-    <StyledContainer isLoading={isLoading} {...containerProps}>
+    <StyledContainer isLoading={isLoading} {...SkeletonProps} ref={skeletonRef}>
       {children}
       <StyledShimmer isLoading={isLoading} color={finalColor} {...shimmerProps} />
     </StyledContainer>
