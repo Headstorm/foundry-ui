@@ -28,11 +28,13 @@ export interface TextProps {
   StyledIconContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
-  SkeletonProps?: SubcomponentPropsType;
+  skeletonProps?: SubcomponentPropsType;
   containerRef?: RefObject<HTMLDivElement>;
   iconPrefixContainerRef?: RefObject<HTMLElement>;
   iconSuffixContainerRef?: RefObject<HTMLElement>;
-  skeletonRef?: RefObject<HTMLElement>
+  skeletonRef?: RefObject<HTMLElement>;
+  shimmerRef?: RefObject<HTMLElement>;
+
 }
 
 const StyledSkeletonContainer = styled(Skeleton.Container)`
@@ -63,11 +65,12 @@ const Text = ({
   StyledIconContainer = IconContainer,
   containerProps = {},
   iconContainerProps = {},
-  SkeletonProps = {},
+  skeletonProps = {},
   containerRef,
   iconPrefixContainerRef,
   iconSuffixContainerRef,
   skeletonRef,
+  shimmerRef,
 }: TextProps): JSX.Element => (
   <StyledContainer
     data-test-id="hsui-Text"
@@ -97,12 +100,18 @@ const Text = ({
         <Icon aria-hidden="true" path={mdiLoading} size={size} spin={1} />
       </StyledIconContainer>
     )}
-    <Skeleton isLoading={isLoading} skeletonRef={skeletonRef} StyledContainer={StyledSkeletonContainer} {...SkeletonProps}>
+    <Skeleton
+      color={color}
+      isLoading={isLoading}
+      containerRef={skeletonRef}
+      shimmerRef={shimmerRef}
+      StyledContainer={StyledSkeletonContainer}
+      {...skeletonProps}
+    >
       <Span>{children}</Span>
     </Skeleton>
 
-    {
-      iconSuffix &&
+    {iconSuffix &&
       (typeof iconSuffix === 'string' && iconSuffix !== '' ? (
         <StyledIconContainer side="right" ref={iconSuffixContainerRef} {...iconContainerProps}>
           <Icon path={iconSuffix} size={size} />
@@ -116,8 +125,7 @@ const Text = ({
         >
           {iconSuffix}
         </StyledIconContainer>
-      ))
-    }
+      ))}
   </StyledContainer>
 );
 

@@ -75,24 +75,24 @@ export type SkeletonProps = {
   StyledContainer?: StyledSubcomponentType;
   StyledShimmer?: StyledSubcomponentType;
 
-  SkeletonProps?: SubcomponentPropsType;
+  containerProps?: SubcomponentPropsType;
   shimmerProps?: SubcomponentPropsType;
 
   children?: React.ReactNode;
   color?: string;
   isLoading?: boolean;
 
-  skeletonRef?: React.RefObject<HTMLElement>;
-
+  containerRef?: React.RefObject<HTMLElement>;
+  shimmerRef?: React.RefObject<HTMLElement>;
 };
 
 const Skeleton = ({
   StyledContainer = SkeletonContainer,
   StyledShimmer = SkeletonShimmer,
-  SkeletonProps,
+  containerProps,
   shimmerProps,
-  skeletonRef,
-
+  containerRef,
+  shimmerRef,
   children,
   color,
   isLoading = false,
@@ -100,9 +100,9 @@ const Skeleton = ({
   const { colors } = useTheme();
   const finalColor = color || colors.grayLight;
   return (
-    <StyledContainer isLoading={isLoading} {...SkeletonProps} ref={skeletonRef}>
+    <StyledContainer isLoading={isLoading} {...containerProps} ref={containerRef}>
       {children}
-      <StyledShimmer isLoading={isLoading} color={finalColor} {...shimmerProps} />
+      <StyledShimmer isLoading={isLoading} color={finalColor} {...shimmerProps} ref={shimmerRef} />
     </StyledContainer>
   );
 };
