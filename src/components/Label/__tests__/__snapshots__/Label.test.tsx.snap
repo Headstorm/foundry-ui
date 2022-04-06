@@ -3,7 +3,8 @@
 exports[`Label should have asterisk icon if isRequired is true 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c0 {
+  "baseElement": <body>
+    .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -21,8 +22,7 @@ Object {
   margin-left: 0.25em;
 }
 
-<body>
-    <div>
+<div>
       <div
         class=" "
       >
@@ -56,33 +56,15 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  color: #9FA2A5;
-  margin-bottom: .25em;
-  font-size: .75em;
-}
-
-.c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  margin-left: 0.25em;
-}
-
-<div>
+  "container": <div>
     <div
-      class=" "
+      class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-iwajpm"
     >
       <div
-        class=" "
+        class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-bCwfaz"
       >
         <label
-          class=" c0"
+          class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI KHjYR"
           color="#9FA2A5"
           for="default"
           id="label"
@@ -91,7 +73,7 @@ Object {
         </label>
         <span
           aria-hidden="true"
-          class=" c1"
+          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi fDVdMr"
         >
           <svg
             role="presentation"
@@ -217,33 +199,15 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  color: #FF4500;
-  margin-bottom: .25em;
-  font-size: .75em;
-}
-
-.c1 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  margin-left: 0.25em;
-}
-
-<div>
+  "container": <div>
     <div
-      class=" "
+      class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-iwajpm"
     >
       <div
-        class=" "
+        class="sc-bdnxRM sc-gtsrHT  kHfwcl sc-bCwfaz"
       >
         <label
-          class=" c0"
+          class="sc-fujyAs sc-pNWdM  gA-dQZb sc-fKgJPI cPoeDw"
           color="#FF4500"
           for="default"
           id="label"
@@ -252,7 +216,7 @@ Object {
         </label>
         <span
           aria-hidden="true"
-          class=" c1"
+          class="sc-dlnjwi sc-hKFxyN  drTWVl sc-cxNHIi fDVdMr"
         >
           <svg
             role="presentation"

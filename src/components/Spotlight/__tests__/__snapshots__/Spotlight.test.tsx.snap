@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Spotlight Should match previous snapshot with a targetElement 1`] = `
-.c9 {
+<body>
+  .c9 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.25), rgba(0,0,0,0.75) ) repeat;
   color: transparent;
@@ -125,8 +126,7 @@ exports[`Spotlight Should match previous snapshot with a targetElement 1`] = `
   max-width: 50vw;
 }
 
-<body>
-  <div>
+<div>
     <div
       class=" c0"
       globalstyles="
