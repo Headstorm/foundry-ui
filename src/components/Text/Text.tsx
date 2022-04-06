@@ -1,6 +1,5 @@
 import React, { ReactNode, RefObject } from 'react';
 import styled from 'styled-components';
-
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import Skeleton from '../Skeleton/Skeleton';
