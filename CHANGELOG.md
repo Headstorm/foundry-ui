@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/Headstorm/foundry-ui/compare/v1.14.6...v1.15.0) (2022-04-06)
+
+
+### Features
+
+* **adding props and refs:** targeting the skeleton component from Text using props and refs ([7f6271a](https://github.com/Headstorm/foundry-ui/commit/7f6271a264c3a1bb6ab78d49f064830d15e8d1e6))
+
 ## [1.14.6](https://github.com/Headstorm/foundry-ui/compare/v1.14.5...v1.14.6) (2021-12-21)
 
 
