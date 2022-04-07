@@ -22,7 +22,6 @@ import fonts from './enums/fonts';
 import variants from './enums/variants';
 import feedbackTypes from './enums/feedbackTypes';
 import checkboxTypes from './enums/checkboxTypes';
-import ErrorBoundary from './components/ErrorBoundary';
 
 export {
   Button,
@@ -30,7 +29,6 @@ export {
   Checkbox,
   Divider,
   Dropdown,
-  ErrorBoundary,
   InteractionFeedback,
   Label,
   Modal,
