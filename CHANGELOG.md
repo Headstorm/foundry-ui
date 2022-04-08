@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/Headstorm/foundry-ui/compare/v1.15.0...v1.15.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* **dropdown:** added missing props to control the value Tag(s) ([7f5e053](https://github.com/Headstorm/foundry-ui/commit/7f5e05333d8fa2023b21d1b1e62688cdf735a400))
+
 # [1.15.0](https://github.com/Headstorm/foundry-ui/compare/v1.14.6...v1.15.0) (2022-04-06)
 
 
