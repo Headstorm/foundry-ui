@@ -350,12 +350,12 @@ describe('Dropdown', () => {
   it('selects options from values prop', () => {
     generateIntersectionObserver([]);
     const { container } = render(
-        <Dropdown
-            multi
-            options={pokeOptions}
-            values={['bulbasaur', 'charmander']}
-            onSelect={mockedSelectHandler}
-        />,
+      <Dropdown
+        multi
+        options={pokeOptions}
+        values={['bulbasaur', 'charmander']}
+        onSelect={mockedSelectHandler}
+      />,
     );
 
     expect(container).toMatchSnapshot();
