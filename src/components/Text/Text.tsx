@@ -33,7 +33,6 @@ export interface TextProps {
   iconSuffixContainerRef?: RefObject<HTMLElement>;
   skeletonRef?: RefObject<HTMLElement>;
   shimmerRef?: RefObject<HTMLElement>;
-
 }
 
 const StyledSkeletonContainer = styled(Skeleton.Container)`

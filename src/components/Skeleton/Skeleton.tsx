@@ -57,7 +57,8 @@ const SkeletonContainer = styled(Div)`
       transition: opacity .2s;
     }
 
-  ${isLoading
+  ${
+    isLoading
       ? `
         color: transparent !important;
         & > *:not(${SkeletonShimmer}) {
@@ -67,7 +68,7 @@ const SkeletonContainer = styled(Div)`
         }
     `
       : ''
-    }
+  }
   `}
 `;
 
