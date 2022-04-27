@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { render, configure, waitFor } from '@testing-library/react';
 import Modal from '../Modal';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -11,7 +10,6 @@ const testId = 'foundry-modal';
 describe('Modal', () => {
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
-      //
       const component = (
         <Modal
           children={<div>Test Child</div>}

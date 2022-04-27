@@ -171,8 +171,9 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
 
-    // TODO - Don't use id, see if we can use a more semantically meaningful element
-    fireEvent.focus(screen.getByRole('button'));
+    act(() => {
+      fireEvent.focus(screen.getByRole('button'));
+    });
     await waitFor(() => getByText('Charmander'));
     act(() => {
       fireEvent.click(getByText('Charmander'));
@@ -191,8 +192,8 @@ describe('Dropdown', () => {
         virtualizeOptions={false}
       />,
     );
-    screen.getByRole('button').focus();
     act(() => {
+      screen.getByRole('button').focus();
       fireEvent.click(getByText('Charmander'));
       fireEvent.click(getByText('Squirtle'));
       fireEvent.blur(screen.getByRole('button'));
@@ -232,7 +233,9 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
 
-    screen.getByRole('button').focus();
+    act(() => {
+      screen.getByRole('button').focus();
+    });
     // need to wait for observer to be called (for hidden options container and options container)
     // before the dropdown is rendered correctly
     await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
@@ -273,10 +276,6 @@ describe('Dropdown', () => {
         code: 'ArrowDown',
       });
       fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
-      fireEvent.keyDown(document.activeElement, {
         key: 'ArrowUp',
         code: 'ArrowUp',
       });
@@ -304,10 +303,6 @@ describe('Dropdown', () => {
     });
     await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
     act(() => {
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
       fireEvent.keyDown(document.activeElement, {
         key: 'ArrowDown',
         code: 'ArrowDown',
@@ -474,7 +469,6 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      // observe should not be called
       expect(observe).toHaveBeenCalledTimes(0);
     });
 

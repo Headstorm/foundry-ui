@@ -8,7 +8,7 @@ expect.extend(toHaveNoViolations);
 describe('Spotlight', () => {
   it('Should pass accessibility test with default props', async () => {
     const component = <Spotlight />;
-    const { container } = render(component);
+    const { container } = render(component, { container: document.body });
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
