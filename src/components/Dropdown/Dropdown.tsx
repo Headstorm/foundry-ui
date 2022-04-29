@@ -898,6 +898,7 @@ const Dropdown = ({
             <TextInput
               id={`${name}-search-input`}
               aria-label={`${name}-search-input`}
+              role="searchbox"
               onChange={handleSearchChange}
               debouncedOnChange={handleSearchDebouncedChange}
               StyledContainer={StyledSearchContainer}
