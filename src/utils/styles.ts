@@ -16,7 +16,7 @@ export type ElevationValues = {
  * @param {number} elevation - The elevation to get values for
  * @returns {ElevationValues} The values for each of the shadow values plus color opacity
  */
-export const calculateElevationValues = (elevation = 0) => {
+export const calculateElevationValues = (elevation = 0): ElevationValues => {
   const elevationValues = {
     xOffset: 0,
     yOffset: 0,
@@ -82,7 +82,7 @@ export const getDropdownTagStyle = (
   tagVariant: variants,
   dropdownColor: string,
   transparentColor: string,
-) => {
+): string => {
   let backgroundColor = '';
   let fontColor = '';
   switch (dropdownVariant) {

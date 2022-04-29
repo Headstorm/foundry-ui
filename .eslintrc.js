@@ -30,7 +30,7 @@ module.exports = {
     'function-paren-newline': 0,
     'implicit-arrow-linebreak': 0,
     'import/extensions': 0,
-    'import/no-extraneous-dependencies': 1,
+    'import/no-extraneous-dependencies': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 1,
     'jsx-a11y/label-has-associated-control': 0,
