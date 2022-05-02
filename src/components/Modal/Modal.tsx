@@ -165,7 +165,7 @@ const Modal = ({
   });
 
   const escFunction = useCallback(
-    event => {
+    (event: KeyboardEvent) => {
       if (event.keyCode === 27) {
         handleEsc(event);
       }

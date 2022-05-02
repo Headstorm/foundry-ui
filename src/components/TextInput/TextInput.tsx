@@ -245,7 +245,7 @@ const TextInput = ({
   );
 
   const onClearToUse = useCallback(
-    evt => {
+    (evt: SyntheticEvent<Element, Event>) => {
       // if this is an uncontrolled input
       if (nativeHTMLAttributes.value === undefined) {
         if (internalInputRef?.current) {
