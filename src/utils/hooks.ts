@@ -13,7 +13,6 @@ export const useStateWithPrevious = <Type>(
   }, [currentValue]);
 
   const setCurrent = (value: Type): void => {
-    console.log(currentValue);
     previous.current = currentValueRef.current;
     currentValueRef.current = value;
     setInternalCurrentValue(value);
