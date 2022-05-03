@@ -21,9 +21,10 @@ export const useStateWithPrevious = <Type>(
   return [currentValue, previous.current, setCurrent];
 };
 
-export const useWindowSize = (
-  reportInterval: number = 0, // only cause rerenders in the component using the hook every X milliseconds
-  resizeEndReportDelay: number = 50, // wait this long after the last resize event to update curr/prev values
+// TODO: Generalize observer to observe any attribute of any element on when an event happens, with previous values, "onComplete" callback func, and an "isComplete" flag
+export const useWindowSizeObserver = (
+  reportInterval = 0, // only cause rerenders in the component using the hook every X milliseconds
+  resizeEndReportDelay = 50, // wait this long after the last resize event to update curr/prev values
 ): {
   width: number;
   height: number;
@@ -68,4 +69,53 @@ export const useWindowSize = (
   }, [throttledResizeHandler]);
 
   return { width, height, previousWidth, previousHeight, isResizing };
+};
+
+export const useScrollObserver = (
+  reportInterval = 0, // only cause rerenders in the component using the hook every X milliseconds
+  scrollEndReportDelay = 50, // wait this long after the last resize event to update curr/prev values
+): {
+  scrollX: number;
+  scrollY: number;
+  previousScrollX: number;
+  previousScrollY: number;
+  isScrolling: boolean;
+} => {
+  const [scrollX, previousScrollX, setScrollX] = useStateWithPrevious(window.scrollX);
+  const [scrollY, previousScrollY, setScrollY] = useStateWithPrevious(window.scrollY);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  // if the scrolling events stop for more than 100ms, set the previous X/Y to the current
+  // because this is based on async timing of debounce,
+  // // the current/previous values will be delivered on the next render of the component using this hook.
+  const debouncedEndScroll = debounce(
+    () => {
+      setScrollX(window.scrollX);
+      setScrollY(window.scrollY);
+      setIsScrolling(false);
+    },
+    scrollEndReportDelay,
+    { leading: false, trailing: true },
+  );
+
+  const updateWindowBounds = useCallback(() => {
+    setScrollX(window.scrollX);
+    setScrollY(window.scrollY);
+    if (!isScrolling) {
+      setIsScrolling(true);
+    }
+    debouncedEndScroll();
+  }, [debouncedEndScroll, isScrolling, setScrollY, setScrollX]);
+
+  const throttledScrollHandler = throttle(updateWindowBounds, reportInterval);
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttledScrollHandler);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScrollHandler);
+    };
+  }, [throttledScrollHandler]);
+
+  return { scrollX, scrollY, previousScrollX, previousScrollY, isScrolling };
 };

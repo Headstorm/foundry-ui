@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useStateWithPrevious, useWindowSize } from '../../utils/hooks';
+import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
 import { useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
 
@@ -67,6 +67,7 @@ export type SpotlightProps = {
   onAnimationEnd?: () => void;
   animationSpringConfig?: Record<string, unknown>;
   resizeUpdateInterval?: number;
+  scrollUpdateInterval?: number;
 };
 
 const Spotlight = ({
@@ -90,14 +91,15 @@ const Spotlight = ({
   onAnimationEnd,
   animationSpringConfig,
   resizeUpdateInterval = 0,
+  scrollUpdateInterval = 0,
 }: SpotlightProps): JSX.Element | null => {
   const handleEventWithAnalytics = useAnalytics();
   const {
     width: windowWidth,
     height: windowHeight,
     isResizing,
-  } = useWindowSize(resizeUpdateInterval);
-  const [scrollTop, prevScrollTop, setScrollTop] = useStateWithPrevious<number>(0);
+  } = useWindowSizeObserver(resizeUpdateInterval);
+  const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -134,7 +136,7 @@ const Spotlight = ({
     }
     return defaultVal;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetElement, padding, windowWidth, windowHeight, shape, scrollTop]);
+  }, [targetElement, padding, windowWidth, windowHeight, shape, scrollY]);
 
   const radii = [Math.min(cornerRadius, rect.width / 2), Math.min(cornerRadius, rect.height / 2)];
   if (shape === SpotlightShapes.round) {
@@ -167,8 +169,6 @@ const Spotlight = ({
     L ${rect.x} ${rect.y + rect.height / 2}
   `;
   const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
-
-  const screenLayoutHasChanged = scrollTop !== prevScrollTop || isResizing;
 
   const [
     {
@@ -220,7 +220,7 @@ const Spotlight = ({
     friction: 75,
     tension: 550,
     mass: 5,
-    immediate: !animateTargetChanges || screenLayoutHasChanged,
+    immediate: !animateTargetChanges || isScrolling || isResizing,
     onRest: onAnimationEnd,
     ...animationSpringConfig,
   }));
@@ -254,7 +254,7 @@ const Spotlight = ({
       friction: 75,
       tension: 550,
       mass: 5,
-      immediate: !animateTargetChanges || screenLayoutHasChanged,
+      immediate: !animateTargetChanges || isScrolling || isResizing,
 
       onRest: onAnimationEnd,
       ...animationSpringConfig,
@@ -268,7 +268,8 @@ const Spotlight = ({
     cornerRadius,
     windowWidth,
     windowHeight,
-    screenLayoutHasChanged,
+    isScrolling,
+    isResizing,
     setSpring,
     finalRectangularPath,
     circularPath,
@@ -281,23 +282,6 @@ const Spotlight = ({
     animationSpringConfig,
     onAnimationEnd,
   ]);
-
-  const updateScrollPosition = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore documentElement does exist on target element
-    setScrollTop(window.scrollY);
-  }, [setScrollTop]);
-
-  useEffect(() => {
-    updateScrollPosition(); // update scroll position every render that the scroll changes so the previous value will update after scrolling events stop
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.scrollY]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', updateScrollPosition);
-
-    return () => window.removeEventListener('scroll', updateScrollPosition);
-  }, [updateScrollPosition]);
 
   const handleClick = (evt: React.MouseEvent) => {
     handleEventWithAnalytics('Spotlight', onClick, 'onClick', evt, containerProps);
