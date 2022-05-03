@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/Headstorm/foundry-ui/compare/v1.15.1...v1.16.0) (2022-05-03)
+
+
+### Features
+
+* **react:** update React version to 18.1.X ([f28d6f3](https://github.com/Headstorm/foundry-ui/commit/f28d6f3fb357f9557a311db90b7299a01c30d736)), closes [#383](https://github.com/Headstorm/foundry-ui/issues/383)
+
 ## [1.15.1](https://github.com/Headstorm/foundry-ui/compare/v1.15.0...v1.15.1) (2022-04-06)
 
 
