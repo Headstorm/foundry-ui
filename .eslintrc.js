@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/ban-types': 1, // StyledComponentBase<any, {}> failed every time
     '@typescript-eslint/no-empty-function': 0,
+    '@typescript-eslint/no-inferrable-types': 1,
     'arrow-body-style': 0,
     'arrow-parens': 0,
     'comma-dangle': 1,

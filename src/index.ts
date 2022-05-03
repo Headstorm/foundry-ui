@@ -15,7 +15,7 @@ import TextInput from './components/TextInput';
 import Progress from './components/Progress';
 import Skeleton from './components/Skeleton';
 import { FoundryProvider, FoundryContext, useTheme } from './context';
-import { useStateWithPrevious } from './utils/hooks';
+import { useStateWithPrevious, useWindowSize } from './utils/hooks';
 import { clamp } from './utils/math';
 
 import colors from './enums/colors';
@@ -58,6 +58,7 @@ export {
   getBackgroundColorFromVariant,
   disabledStyles,
   useStateWithPrevious,
+  useWindowSize,
   colors,
   timings,
   fonts,
