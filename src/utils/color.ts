@@ -15,7 +15,7 @@ export const getFontColorFromVariant = (
   color: string,
   lightReturnColor: string = colors.background,
   darkReturnColor: string = colors.grayDark,
-) => {
+): string => {
   if (variant === 'fill') {
     return readableColor(color, lightReturnColor, darkReturnColor, true);
   }
@@ -32,7 +32,7 @@ export const getBackgroundColorFromVariant = (
   variant: string,
   color: string,
   transparentColor = 'transparent',
-) => {
+): string => {
   switch (variant) {
     case variants.text:
     case variants.outline:
@@ -53,7 +53,7 @@ export const disabledStyles = ({
   grayscale?: number;
   contrast?: number;
   brightness?: number;
-} = {}) => `
+} = {}): string => `
   filter: grayscale(${grayscale}) contrast(${contrast}) brightness(${brightness});
   pointer-events: none;
 `;

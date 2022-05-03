@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import * as rdd from 'react-device-detect';
@@ -74,7 +75,7 @@ export const FoundryProvider = ({
     styleConstants?: {};
   };
   children: React.ReactNode;
-}) => {
+}): JSX.Element => {
   const {
     globalStyles = defaultGlobalStyles,
     colors = colorsEnum,
@@ -114,7 +115,9 @@ export function useTheme(): FoundryContextType {
   return theme;
 }
 
-export const withGlobalStyle = (Component: StyledSubcomponentType) => {
+export const withGlobalStyle = (
+  Component: StyledSubcomponentType,
+): React.ForwardRefExoticComponent<any> => {
   const ComponentWithGlobalStyles = styled(Component)`
     ${props => {
       return props.globalStyles;
@@ -127,7 +130,13 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   });
 };
 
-export const useAnalytics = () => {
+export const useAnalytics = (): ((
+  componentType: string,
+  eventFunction: any,
+  eventType: string,
+  eventArgs: any,
+  props: any,
+) => void) => {
   const context = useContext(FoundryContext);
   return (
     componentType: string,

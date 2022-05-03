@@ -37,7 +37,7 @@ describe('Label', () => {
 
   it('should have default color text if not given a isValid', () => {
     const container = render(
-      <Label labelProps={{ id: 'label' }} color={'#FF4500'} labelText="Test text" />,
+      <Label labelProps={{ id: 'label' }} color="#FF4500" labelText="Test text" />,
     );
 
     expect(container).toMatchSnapshot();

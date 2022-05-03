@@ -655,7 +655,7 @@ const Dropdown = ({
   );
 
   const keyDownHandler = useCallback(
-    ({ key }) => {
+    ({ key }: { key: string }) => {
       // setTimeout(0) needed when responding to key events to push back call
       // to activeElement to after it is updated in the DOM
       window.setTimeout(() => {
@@ -739,7 +739,7 @@ const Dropdown = ({
   }, [keyDownHandler]);
 
   const optionsScrollListenerCallbackRef = useCallback(
-    node => {
+    (node: HTMLElement) => {
       if (node && rememberScrollPosition) {
         node.addEventListener('scroll', scrollListener, true);
 
@@ -898,6 +898,7 @@ const Dropdown = ({
             <TextInput
               id={`${name}-search-input`}
               aria-label={`${name}-search-input`}
+              role="searchbox"
               onChange={handleSearchChange}
               debouncedOnChange={handleSearchDebouncedChange}
               StyledContainer={StyledSearchContainer}
