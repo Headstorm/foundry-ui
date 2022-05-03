@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
+import { useStateWithPrevious } from '../../utils/hooks';
 import { useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
 
@@ -89,11 +90,14 @@ const Spotlight = ({
   animationSpringConfig,
 }: SpotlightProps): JSX.Element | null => {
   const handleEventWithAnalytics = useAnalytics();
-  const [windowDimensions, setWindowDimensions] = useState<{ width: number; height: number }>({
+  const [windowDimensions, prevWindowDimensions, setWindowDimensions] = useStateWithPrevious<{
+    width: number;
+    height: number;
+  }>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
-  const [scrollTop, setScrollTop] = useState<number>(0);
+  const [scrollTop, prevScrollTop, setScrollTop] = useStateWithPrevious<number>(0);
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -164,6 +168,11 @@ const Spotlight = ({
   `;
   const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
 
+  const screenLayoutHasChanged =
+    scrollTop !== prevScrollTop ||
+    windowDimensions.width !== prevWindowDimensions.width ||
+    windowDimensions.height !== prevWindowDimensions.height;
+
   const [
     {
       containerFilter,
@@ -214,7 +223,7 @@ const Spotlight = ({
     friction: 75,
     tension: 550,
     mass: 5,
-    immediate: !animateTargetChanges,
+    immediate: !animateTargetChanges || screenLayoutHasChanged,
     onRest: onAnimationEnd,
     ...animationSpringConfig,
   }));
@@ -248,7 +257,7 @@ const Spotlight = ({
       friction: 75,
       tension: 550,
       mass: 5,
-      immediate: !animateTargetChanges,
+      immediate: !animateTargetChanges || screenLayoutHasChanged,
 
       onRest: onAnimationEnd,
       ...animationSpringConfig,
@@ -261,6 +270,7 @@ const Spotlight = ({
     padding,
     cornerRadius,
     windowDimensions,
+    screenLayoutHasChanged,
     setSpring,
     finalRectangularPath,
     circularPath,
@@ -275,24 +285,34 @@ const Spotlight = ({
   ]);
 
   // TODO: use a resize observer to detect when the bounds of the target change
-  const updateWindowBounds = () => {
+  const updateWindowBounds = useCallback(() => {
     setWindowDimensions({
       width: window.innerWidth,
       height: window.innerHeight,
     });
-  };
+  }, [setWindowDimensions]);
 
-  const updateScrollPosition = (e: Event) => {
+  const updateScrollPosition = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore documentElement does exist on target element
-    setScrollTop(e?.target?.documentElement.scrollTop);
-  };
+    // setScrollTop(e?.target?.documentElement.scrollTop);
+    setScrollTop(window.scrollY);
+  }, [setScrollTop]);
+
+  useEffect(() => {
+    updateScrollPosition(); // update scroll position every render that the scroll changes so the previous value will update after scrolling events stop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.scrollY]);
+  useEffect(() => {
+    updateWindowBounds(); // update window dimensions every render that the window resizes so the previous value will update after resize events stop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.innerWidth, window.innerHeight]);
 
   useEffect(() => {
     window.addEventListener('scroll', updateScrollPosition);
 
     return () => window.removeEventListener('scroll', updateScrollPosition);
-  }, []);
+  }, [updateScrollPosition]);
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowBounds);
@@ -300,7 +320,7 @@ const Spotlight = ({
     return () => {
       window.removeEventListener('resize', updateWindowBounds);
     };
-  }, []);
+  }, [updateWindowBounds]);
 
   const handleClick = (evt: React.MouseEvent) => {
     handleEventWithAnalytics('Spotlight', onClick, 'onClick', evt, containerProps);
