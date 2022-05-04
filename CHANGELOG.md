@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/Headstorm/foundry-ui/compare/v1.16.0...v1.16.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* **spotlight:** spotlight now smoothly animates only when switching target and not on scroll/resize ([9c8f763](https://github.com/Headstorm/foundry-ui/commit/9c8f763a77d8737f3626e8ae3f29411b101ea160)), closes [#360](https://github.com/Headstorm/foundry-ui/issues/360)
+
 # [1.16.0](https://github.com/Headstorm/foundry-ui/compare/v1.15.1...v1.16.0) (2022-05-03)
 
 
