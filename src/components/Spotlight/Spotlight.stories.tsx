@@ -79,11 +79,11 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
             containerRef={setButtonRef}
             color={colors.tertiary}
           >
-            Start the tour!
+            Start tour
           </Button>
         }
       >
-        There are a few items in this card we can talk about
+        There are a few items in this card we can talk about!
       </Card>
       {tourStarted && (
         <Spotlight {...args} StyledAnnotation={Annotation} targetElement={stepOptions[currStep]}>

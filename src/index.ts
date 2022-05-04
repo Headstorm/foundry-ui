@@ -15,6 +15,8 @@ import TextInput from './components/TextInput';
 import Progress from './components/Progress';
 import Skeleton from './components/Skeleton';
 import { FoundryProvider, FoundryContext, useTheme } from './context';
+import { useStateWithPrevious, useWindowSizeObserver, useScrollObserver } from './utils/hooks';
+import { clamp } from './utils/math';
 
 import colors from './enums/colors';
 import timings from './enums/timings';
@@ -22,6 +24,11 @@ import fonts from './enums/fonts';
 import variants from './enums/variants';
 import feedbackTypes from './enums/feedbackTypes';
 import checkboxTypes from './enums/checkboxTypes';
+import {
+  disabledStyles,
+  getBackgroundColorFromVariant,
+  getFontColorFromVariant,
+} from './utils/color';
 
 export {
   Button,
@@ -46,6 +53,13 @@ export {
   FoundryProvider,
   FoundryContext,
   useTheme,
+  clamp,
+  getFontColorFromVariant,
+  getBackgroundColorFromVariant,
+  disabledStyles,
+  useStateWithPrevious,
+  useWindowSizeObserver,
+  useScrollObserver,
   colors,
   timings,
   fonts,
