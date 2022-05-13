@@ -213,7 +213,7 @@ const Button = ({
 
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    a: StyledBaseButton,
+    as: StyledBaseButton,
     id,
     isLoading,
     onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
