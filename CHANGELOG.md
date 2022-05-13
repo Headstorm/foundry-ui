@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/Headstorm/foundry-ui/compare/v1.16.1...v1.17.0) (2022-05-13)
+
+
+### Features
+
+* **base html components:** renamed the internally used base styled html elements, and exported them ([d80004b](https://github.com/Headstorm/foundry-ui/commit/d80004b036ec5345782e17d33bcbf67e04685914)), closes [#388](https://github.com/Headstorm/foundry-ui/issues/388)
+
 ## [1.16.1](https://github.com/Headstorm/foundry-ui/compare/v1.16.0...v1.16.1) (2022-05-04)
 
 
