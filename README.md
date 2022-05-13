@@ -88,7 +88,7 @@ In this hello world example, you can see the Card component has preset styling f
 ```
 // /foundry-react-ui/src/components/Card/Card.tsx
 
-export const CardContainer = styled(Div)`
+export const CardContainer = styled(StyledBaseDiv)`
   ${({ elevation }: { elevation: number }) => {
     const { grayXlight, background, shadow } = useColors();
     return `
@@ -106,7 +106,7 @@ export const CardContainer = styled(Div)`
 
 ...
 
-export const Body = styled(Div)`
+export const Body = styled(StyledBaseDiv)`
   ${() => {
     const { grayMedium } = useColors();
     return `
@@ -235,8 +235,8 @@ const MyContainer = styled.div`styles`;
 
 // do this
 import styled from 'styled-components';
-import { Div } from 'path/to/htmlElements';
-const MyContainer = styled(Div)`styles here`;
+import { StyledBaseDiv } from 'path/to/htmlElements';
+const MyContainer = styled(StyledBaseDiv)`styles here`;
 ```
 
 ### Passing Refs to Children Elements

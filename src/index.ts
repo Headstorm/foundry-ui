@@ -14,9 +14,23 @@ import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Progress from './components/Progress';
 import Skeleton from './components/Skeleton';
-import { FoundryProvider, FoundryContext, useTheme } from './context';
+import { FoundryProvider, FoundryContext, useTheme, withGlobalStyle } from './context';
 import { useStateWithPrevious, useWindowSizeObserver, useScrollObserver } from './utils/hooks';
 import { clamp } from './utils/math';
+
+import {
+  StyledBaseDiv,
+  StyledBaseSpan,
+  StyledBaseButton,
+  StyledBaseInput,
+  StyledBaseLabel,
+  StyledBaseHR,
+  StyledBaseTable,
+  StyledBaseTH,
+  StyledBaseTD,
+  StyledBaseTR,
+  StyledBaseTextArea,
+} from './htmlElements';
 
 import colors from './enums/colors';
 import timings from './enums/timings';
@@ -31,6 +45,20 @@ import {
 } from './utils/color';
 
 export {
+  // Globally styled base elements
+  StyledBaseDiv,
+  StyledBaseSpan,
+  StyledBaseButton,
+  StyledBaseInput,
+  StyledBaseLabel,
+  StyledBaseHR,
+  StyledBaseTable,
+  StyledBaseTH,
+  StyledBaseTD,
+  StyledBaseTR,
+  StyledBaseTextArea,
+  withGlobalStyle,
+  // Components
   Button,
   Card,
   Checkbox,
@@ -46,12 +74,9 @@ export {
   Tag,
   Text,
   TextInput,
-  /**
-   * @deprecated The Progress loading skeleton is being replaced by the Skeleton component
-   */
-  Progress,
   FoundryProvider,
   FoundryContext,
+  // Utils and helpers
   useTheme,
   clamp,
   getFontColorFromVariant,
@@ -60,10 +85,15 @@ export {
   useStateWithPrevious,
   useWindowSizeObserver,
   useScrollObserver,
+  // Defaults
   colors,
   timings,
   fonts,
+  // Enums and types
   variants,
   feedbackTypes,
   checkboxTypes,
+  // deprecated exports
+  /** @deprecated The Progress loading skeleton is being replaced by the Skeleton component */
+  Progress,
 };

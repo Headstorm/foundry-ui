@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheckBold, mdiAsterisk } from '@mdi/js';
 import { useLabel } from 'react-aria';
-import { Div, Label as LabelElement, Span } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseLabel, StyledBaseSpan } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 
-export const DefaultStyledLabel = styled(LabelElement)`
+export const DefaultStyledLabel = styled(StyledBaseLabel)`
   ${({ color }: { color: string }) => {
     const { colors } = useTheme();
     const labelColor = color || colors.grayLight;
@@ -20,11 +20,11 @@ export const DefaultStyledLabel = styled(LabelElement)`
   }}
 `;
 
-export const DefaultStyledTextContainer = styled(Div)``;
+export const DefaultStyledTextContainer = styled(StyledBaseDiv)``;
 
-export const DefaultStyledLabelContainer = styled(Div)``;
+export const DefaultStyledLabelContainer = styled(StyledBaseDiv)``;
 
-const DefaultStyledIconContainer = styled(Span)`
+const DefaultStyledIconContainer = styled(StyledBaseSpan)`
   display: inline-flex;
   margin-left: 0.25em;
 `;

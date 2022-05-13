@@ -4,7 +4,7 @@ import styled, { keyframes, css } from 'styled-components';
 
 import { useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { Div } from '../../htmlElements';
+import { StyledBaseDiv } from '../../htmlElements';
 
 export const movingGradient = keyframes`
   0% { background-position: 0vw bottom; }
@@ -15,7 +15,7 @@ export const animation = css`
   ${movingGradient} 2s linear infinite;
 `;
 
-const SkeletonShimmer = styled(Div)`
+const SkeletonShimmer = styled(StyledBaseDiv)`
   ${({ isLoading, color }) => {
     const rgb = parseToRgb(color);
 
@@ -48,7 +48,7 @@ const SkeletonShimmer = styled(Div)`
   }}
 `;
 
-const SkeletonContainer = styled(Div)`
+const SkeletonContainer = styled(StyledBaseDiv)`
   ${({ isLoading }: { isLoading: boolean }) => `
   display: block;
 

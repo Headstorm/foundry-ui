@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useSeparator } from 'react-aria';
-import { Div, HR } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseHR } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useTheme } from '../../context';
 
-export const DefaultDivider = styled(HR)`
+export const DefaultDivider = styled(StyledBaseHR)`
   ${({ width = '90%', height = '1px' }: { width: string; height: string }) => {
     const { colors } = useTheme();
     return `
@@ -18,7 +18,7 @@ export const DefaultDivider = styled(HR)`
   }}
 `;
 
-export const DefaultDividerContainer = styled(Div)`
+export const DefaultDividerContainer = styled(StyledBaseDiv)`
   display: flex;
   justify-content: center;
   margin-top: 10px;

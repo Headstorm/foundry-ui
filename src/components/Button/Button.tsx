@@ -9,7 +9,7 @@ import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Skeleton from '../Skeleton/Skeleton';
 import Progress from '../Progress/Progress';
-import { Div, Button as ButtonElement } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseButton } from '../../htmlElements';
 import {
   getFontColorFromVariant,
   getBackgroundColorFromVariant,
@@ -140,7 +140,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
   }}
 `;
 
-const IconContainer = styled(Div)`
+const IconContainer = styled(StyledBaseDiv)`
   vertical-align: middle;
 `;
 
@@ -213,7 +213,7 @@ const Button = ({
 
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    as: ButtonElement,
+    a: StyledBaseButton,
     id,
     isLoading,
     onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),

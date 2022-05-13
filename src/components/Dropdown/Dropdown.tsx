@@ -10,7 +10,7 @@ import { useAnalytics, useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div, Span, Input } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseSpan, StyledBaseInput } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
@@ -33,7 +33,7 @@ type UsefulDropdownState = {
   isHidden?: boolean;
 };
 
-const Container = styled(Div)`
+const Container = styled(StyledBaseDiv)`
   ${({ elevation, isOpen }) => {
     const { colors } = useTheme();
     return `
@@ -75,23 +75,23 @@ export const ValueContainer = styled(Button.Container)`
 `;
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
-export const CloseIconContainer = styled(Div)`
+export const CloseIconContainer = styled(StyledBaseDiv)`
   height: 1.125em;
   z-index: 1;
 `;
 
-export const ArrowIconContainer = styled(Div)`
+export const ArrowIconContainer = styled(StyledBaseDiv)`
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 `;
 
-const ValueItem = styled(Div)`
+const ValueItem = styled(StyledBaseDiv)`
   width: 100%;
   text-align: left;
 `;
 
-const OptionsContainer = styled(Div)`
+const OptionsContainer = styled(StyledBaseDiv)`
   ${({
     color,
     variant,
@@ -136,7 +136,7 @@ const HiddenOptionsContainer = styled(OptionsContainer)`
   }}
 `;
 
-const OptionItem = styled(Div)`
+const OptionItem = styled(StyledBaseDiv)`
   ${({ selected, color, variant }: UsefulDropdownState) => {
     const { colors } = useTheme();
     const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
@@ -170,7 +170,7 @@ const OptionItem = styled(Div)`
   }}
 `;
 
-const CheckContainer = styled(Div)`
+const CheckContainer = styled(StyledBaseDiv)`
   ${({ color }: UsefulDropdownState) => {
     const { colors } = useTheme();
     const backgroundColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
@@ -185,7 +185,7 @@ const CheckContainer = styled(Div)`
   }}
 `;
 
-const PlaceholderContainer = styled(Div)`
+const PlaceholderContainer = styled(StyledBaseDiv)`
   position: absolute;
   opacity: 0.8;
 `;
@@ -215,9 +215,9 @@ const ValueItemTagContainer = styled(Tag.Container)`
   `}
 `;
 
-const StyledSearchContainer = styled(Div)``;
+const StyledSearchContainer = styled(StyledBaseDiv)``;
 
-const StyledSearchInput = styled(Input)`
+const StyledSearchInput = styled(StyledBaseInput)`
   all: inherit;
 `;
 
@@ -949,7 +949,7 @@ const Dropdown = ({
                       {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                     </StyledCheckContainer>
                   )}
-                  <Span>{option.optionValue}</Span>
+                  <StyledBaseSpan>{option.optionValue}</StyledBaseSpan>
                 </StyledOptionItem>
               )}
             />
@@ -981,7 +981,7 @@ const Dropdown = ({
                       {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                     </StyledCheckContainer>
                   )}
-                  <Span>{option.optionValue}</Span>
+                  <StyledBaseSpan>{option.optionValue}</StyledBaseSpan>
                 </StyledOptionItem>
               ))}
             </InternalOptionsContainer>
