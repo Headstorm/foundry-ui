@@ -231,11 +231,13 @@ These elements have a set of sensible default styles that we wish to apply to al
 ```jsx
 // don't do this
 import styled from 'styled-components';
+
 const MyContainer = styled.div`styles`;
 
 // do this
 import styled from 'styled-components';
-import { StyledBaseDiv } from 'path/to/htmlElements';
+import { StyledBaseDiv } from '@headstorm/foundry-react-ui';
+
 const MyContainer = styled(StyledBaseDiv)`styles here`;
 ```
 
