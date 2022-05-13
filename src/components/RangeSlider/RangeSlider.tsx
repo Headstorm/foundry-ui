@@ -21,7 +21,7 @@ import {
   DomainLabelProps,
 } from './types';
 import { useAnalytics, useTheme } from '../../context';
-import { Div } from '../../htmlElements';
+import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
   ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
@@ -162,7 +162,7 @@ export const DomainLabel = styled.div`
   }}
 `;
 
-export const Marker = styled(Div)`
+export const Marker = styled(StyledBaseDiv)`
   ${({ sliderPosition = 0 }) => {
     const { colors } = useTheme();
     return `
@@ -177,7 +177,7 @@ export const Marker = styled(Div)`
     `;
   }}
 `;
-export const MarkerLabel = styled(Div)`
+export const MarkerLabel = styled(StyledBaseDiv)`
   ${({ color }) => {
     const { colors } = useTheme();
     return `

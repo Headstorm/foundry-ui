@@ -16,7 +16,7 @@ import debounce from 'lodash.debounce';
 import { mdiClose } from '@mdi/js';
 import { darken } from 'polished';
 
-import { Div, Input as InputElement, TextArea } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseInput, StyledBaseTextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { mergeRefs } from '../../utils/refs';
 import { useAnalytics, useTheme } from '../../context';
@@ -30,7 +30,7 @@ export type TextInputContainerProps = {
   variant?: variants;
 };
 
-const Container = styled(Div)`
+const Container = styled(StyledBaseDiv)`
   ${({ disabled = false, isValid, variant = variants.outline }: TextInputContainerProps) => {
     const { colors } = useTheme();
     const borderColor = isValid === false ? colors.destructive : colors.grayMedium;
@@ -65,7 +65,7 @@ const Container = styled(Div)`
   }}
 `;
 
-const TextInputContainer = styled(InputElement)`
+const TextInputContainer = styled(StyledBaseInput)`
   ${() => {
     const { colors } = useTheme();
     return `
@@ -79,7 +79,7 @@ const TextInputContainer = styled(InputElement)`
   }}
 `;
 
-const TextAreaInputContainer = styled(TextArea)`
+const TextAreaInputContainer = styled(StyledBaseTextArea)`
   ${({ multiLineIsResizable }: TextInputProps) => {
     const { colors } = useTheme();
     return `
@@ -100,7 +100,7 @@ const ClearButtonContainer = styled(Button.Container)`
   height: 100%;
 `;
 
-const IconContainer = styled(Div)`
+const IconContainer = styled(StyledBaseDiv)`
   ${() => {
     const { colors } = useTheme();
     return `
@@ -114,7 +114,7 @@ const IconContainer = styled(Div)`
   }}
 `;
 
-const CharacterCount = styled(Div)`
+const CharacterCount = styled(StyledBaseDiv)`
   ${({ textIsTooLong, isValid, errorMessage }) => {
     const { colors } = useTheme();
     return css`
@@ -126,7 +126,7 @@ const CharacterCount = styled(Div)`
   }}
 `;
 
-const ErrorContainer = styled(Div)`
+const ErrorContainer = styled(StyledBaseDiv)`
   ${() => {
     const { colors } = useTheme();
     return css`

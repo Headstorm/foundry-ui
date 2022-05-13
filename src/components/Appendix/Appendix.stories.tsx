@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { Story, Meta } from '@storybook/react';
 
-import { Div } from '../../htmlElements';
+import { StyledBaseDiv } from '../../htmlElements';
 
-const DocContainer = styled(Div)`
+const DocContainer = styled(StyledBaseDiv)`
   justify-self: flex-start;
   padding: 2rem;
   max-width: 60rem;

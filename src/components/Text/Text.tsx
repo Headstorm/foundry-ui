@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import Skeleton from '../Skeleton/Skeleton';
-import { Span } from '../../htmlElements';
+import { StyledBaseSpan } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 /* Default Styled Text Container */
-export const TextContainer = styled(Span)`
+export const TextContainer = styled(StyledBaseSpan)`
   ${({ size, color }: { size: string; color: string }) => `
     font-size: ${size};
     color: ${color};
@@ -39,7 +39,7 @@ const StyledSkeletonContainer = styled(Skeleton.Container)`
   display: inline;
 `;
 
-const IconContainer = styled(Span)`
+const IconContainer = styled(StyledBaseSpan)`
   ${({ side }: { side: 'left' | 'right' }) => `
     margin-${side === 'left' ? 'right' : 'left'}: .5em;
     display: inline-flex;
@@ -106,7 +106,7 @@ const Text = ({
       StyledContainer={StyledSkeletonContainer}
       {...skeletonProps}
     >
-      <Span>{children}</Span>
+      <StyledBaseSpan>{children}</StyledBaseSpan>
     </Skeleton>
 
     {iconSuffix &&

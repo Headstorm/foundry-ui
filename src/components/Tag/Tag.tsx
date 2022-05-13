@@ -6,7 +6,7 @@ import timings from '../../enums/timings';
 import { useTheme } from '../../context';
 import variants from '../../enums/variants';
 import Progress from '../Progress/Progress';
-import { Div, Span } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseSpan } from '../../htmlElements';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
@@ -48,7 +48,9 @@ export type TagProps = {
   loadingBarRef?: React.RefObject<HTMLElement>;
 };
 
-export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(Span)`
+export const Container: string & StyledComponentBase<any, {}, TagContainerProps> = styled(
+  StyledBaseSpan,
+)`
   ${({ elevation = 0, color, variant }: TagContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
@@ -82,7 +84,7 @@ const StyledProgress = styled(Progress)`
   margin-bottom: -5px;
 `;
 
-const IconContainer = styled(Div)`
+const IconContainer = styled(StyledBaseDiv)`
   ${({ position, hasContent }: IconContainerProps) => {
     return `
     height: 1em;
