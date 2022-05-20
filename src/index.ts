@@ -43,6 +43,7 @@ import {
   getBackgroundColorFromVariant,
   getFontColorFromVariant,
 } from './utils/color';
+import { useReducedMotion } from './utils/a11y';
 
 export {
   // Globally styled base elements
@@ -85,6 +86,7 @@ export {
   useStateWithPrevious,
   useWindowSizeObserver,
   useScrollObserver,
+  useReducedMotion,
   // Defaults
   colors,
   timings,

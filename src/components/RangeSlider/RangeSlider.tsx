@@ -20,7 +20,7 @@ import {
   SelectedRangeProps,
   DomainLabelProps,
 } from './types';
-import { useAnalytics, useTheme } from '../../context';
+import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../context';
 import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
@@ -133,7 +133,7 @@ export const SlideRail = styled.div`
 `;
 
 export const SelectedRangeRail = styled.div`
-  ${({ min, max, selectedRange }: SelectedRangeProps) => {
+  ${({ min, max, selectedRange, animateRangeRail }: SelectedRangeProps) => {
     const { colors } = useTheme(); // TODO: don't force the color to be primary
     return `
       position: absolute;
@@ -142,7 +142,13 @@ export const SelectedRangeRail = styled.div`
       left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
       right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
 
+      ${
+        animateRangeRail
+          ? `
       transition: left .3s, right .3s;
+      `
+          : ''
+      }
 
       background-color: ${colors.primary};
     `;
@@ -238,6 +244,7 @@ export const RangeSlider = ({
   testId,
 }: RangeSliderProps): JSX.Element | null => {
   const { colors } = useTheme();
+  const { prefersReducedMotion } = useAccessibilityPreferences();
   const hasHandleLabels = useRef(false);
   const initializing = useRef(true);
 
@@ -302,9 +309,11 @@ export const RangeSlider = ({
     [handleEventWithAnalytics, onDrag, containerProps],
   );
 
+  const finalDebounceInterval = prefersReducedMotion ? 0 : debounceInterval;
+
   // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);
-  const debouncedDrag = debounce(() => handleDrag(valueBuffer.current), debounceInterval);
+  const debouncedDrag = debounce(() => handleDrag(valueBuffer.current), finalDebounceInterval);
   const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
@@ -319,10 +328,12 @@ export const RangeSlider = ({
   });
 
   // get the x offset and an animation setter function
-  const [{ x, y }, set] = useSpring(
-    () => ({ to: { x: pixelPositions[0], y: 0 }, config: { friction: 13, tension: 100 } }),
-    [values],
-  );
+  const [{ x, y }, set] = useSpring(() => ({
+    to: { x: pixelPositions[0], y: 0 },
+    friction: 13,
+    tension: 100,
+    immediate: prefersReducedMotion,
+  }));
 
   const handleSlideRailClick = useCallback(
     (e: React.MouseEvent) => {
@@ -386,7 +397,7 @@ export const RangeSlider = ({
         x: down ? deltaX : pixelPositions[0],
         y: down ? deltaY : 0,
 
-        immediate: springOnRelease ? down : true,
+        immediate: prefersReducedMotion || springOnRelease ? down : true,
         config: { friction: 13, tension: 100 },
       });
     },
@@ -411,14 +422,14 @@ export const RangeSlider = ({
 
       // always snap to position on initial render
       // then leave snapping up to springOnRelease
-      immediate: !springOnRelease || initializing.current,
+      immediate: prefersReducedMotion || !springOnRelease || initializing.current,
       config: { friction: 13, tension: 100 },
       onRest: () => {
         // wait for the first "set" to finish before turning off immediate mode
         initializing.current = false;
       },
     });
-  }, [pixelPositions, set, springOnRelease]);
+  }, [pixelPositions, set, springOnRelease, prefersReducedMotion]);
 
   return (
     <StyledContainer
@@ -441,6 +452,7 @@ export const RangeSlider = ({
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
+            animatedRangeRail={!prefersReducedMotion}
             ref={selectedRangeRailRef}
             {...selectedRangeRailProps}
           />

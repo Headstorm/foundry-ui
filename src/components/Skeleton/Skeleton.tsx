@@ -1,6 +1,7 @@
 import React from 'react';
 import { parseToRgb } from 'polished';
 import styled, { keyframes, css } from 'styled-components';
+import { useReducedMotion } from 'src/utils/a11y';
 
 import { useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
@@ -16,7 +17,7 @@ export const animation = css`
 `;
 
 const SkeletonShimmer = styled(StyledBaseDiv)`
-  ${({ isLoading, color }) => {
+  ${({ isLoading, color, animatedShimmer }) => {
     const rgb = parseToRgb(color);
 
     return css`
@@ -43,7 +44,7 @@ const SkeletonShimmer = styled(StyledBaseDiv)`
       background-size: 100vw 100vh;
       background-attachment: fixed;
       border-radius: 0.25rem;
-      animation: ${animation};
+      animation: ${animatedShimmer ? animation : 'none'};
     `;
   }}
 `;
@@ -79,12 +80,13 @@ export type SkeletonProps = {
   containerProps?: SubcomponentPropsType;
   shimmerProps?: SubcomponentPropsType;
 
+  containerRef?: React.RefObject<HTMLElement>;
+  shimmerRef?: React.RefObject<HTMLElement>;
+
   children?: React.ReactNode;
   color?: string;
   isLoading?: boolean;
-
-  containerRef?: React.RefObject<HTMLElement>;
-  shimmerRef?: React.RefObject<HTMLElement>;
+  animatedShimmer?: boolean;
 };
 
 const Skeleton = ({
@@ -97,13 +99,24 @@ const Skeleton = ({
   children,
   color,
   isLoading = false,
+  animatedShimmer = true,
 }: SkeletonProps): JSX.Element | null => {
   const { colors } = useTheme();
+  const prefersReducedMotion = useReducedMotion();
+
   const finalColor = color || colors.grayLight;
+  const finalAnimationPreference = !prefersReducedMotion && animatedShimmer;
+
   return (
     <StyledContainer isLoading={isLoading} {...containerProps} ref={containerRef}>
       {children}
-      <StyledShimmer isLoading={isLoading} color={finalColor} {...shimmerProps} ref={shimmerRef} />
+      <StyledShimmer
+        animatedShimmer={finalAnimationPreference}
+        isLoading={isLoading}
+        color={finalColor}
+        {...shimmerProps}
+        ref={shimmerRef}
+      />
     </StyledContainer>
   );
 };

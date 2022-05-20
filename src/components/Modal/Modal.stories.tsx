@@ -6,6 +6,7 @@ import colors from '../../enums/colors';
 import Modal, { ModalProps } from './Modal';
 import Button from '../Button/Button';
 import Card from '../Card';
+import { withFoundryContext } from '../../../.storybook/decorators';
 
 const Background = styled.div`
   background-image: url(https://source.unsplash.com/weekly?landscape);
@@ -97,6 +98,7 @@ export default {
       control: { type: 'range', min: 0, max: 5, step: 0.1 },
     },
   },
+  decorators: [withFoundryContext],
   parameters: {
     layout: 'fullscreen',
     design: {
