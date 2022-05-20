@@ -5,9 +5,8 @@ import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
-import { useAnalytics } from '../../context';
+import { useAccessibilityPreferences, useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
-import { useReducedMotion } from '../../utils/a11y';
 
 const SpotlightContainer = styled(AnimatedDiv)`
   height: 100%;
@@ -102,7 +101,7 @@ const Spotlight = ({
   } = useWindowSizeObserver(resizeUpdateInterval);
   const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
 
-  const prefersReducedMotion = useReducedMotion();
+  const { prefersReducedMotion } = useAccessibilityPreferences();
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {

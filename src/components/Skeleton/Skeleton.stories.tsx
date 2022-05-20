@@ -3,6 +3,8 @@ import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 import { mdiPhone } from '@mdi/js';
 
+import { withFoundryContext } from '../../../.storybook/decorators';
+
 import colors from '../../enums/colors';
 
 import Skeleton, { SkeletonProps } from './Skeleton';
@@ -78,6 +80,7 @@ LoadingProfileExample.args = {
 export default {
   title: 'Skeleton',
   component: Skeleton,
+  decorators: [withFoundryContext],
   parameters: {
     // { design }, Once we have a design for Skeleton we can link it here
   },

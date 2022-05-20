@@ -1,9 +1,8 @@
 import React from 'react';
 import { parseToRgb } from 'polished';
 import styled, { keyframes, css } from 'styled-components';
-import { useReducedMotion } from 'src/utils/a11y';
 
-import { useTheme } from '../../context';
+import { useAccessibilityPreferences, useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { StyledBaseDiv } from '../../htmlElements';
 
@@ -102,7 +101,7 @@ const Skeleton = ({
   animatedShimmer = true,
 }: SkeletonProps): JSX.Element | null => {
   const { colors } = useTheme();
-  const prefersReducedMotion = useReducedMotion();
+  const { prefersReducedMotion } = useAccessibilityPreferences();
 
   const finalColor = color || colors.grayLight;
   const finalAnimationPreference = !prefersReducedMotion && animatedShimmer;

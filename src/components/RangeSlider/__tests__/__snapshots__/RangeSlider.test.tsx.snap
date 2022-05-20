@@ -37,8 +37,6 @@ exports[`RangeSlider renders 1`] = `
   height: 100%;
   left: Infinity%;
   right: Infinity%;
-  -webkit-transition: left .3s,right .3s;
-  transition: left .3s,right .3s;
   background-color: #DA4200;
 }
 
@@ -158,8 +156,6 @@ exports[`RangeSlider renders 2`] = `
   height: 100%;
   left: 0%;
   right: 70%;
-  -webkit-transition: left .3s,right .3s;
-  transition: left .3s,right .3s;
   background-color: #DA4200;
 }
 
