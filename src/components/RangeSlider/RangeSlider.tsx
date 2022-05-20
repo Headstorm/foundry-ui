@@ -279,12 +279,16 @@ export const RangeSlider = ({
 
   const selectedRange = [
     Math.min(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       ...processedValues.map((val: number | ValueProp) =>
         typeof val === 'number' ? val : val.value,
       ),
       showSelectedRange && values && values.length === 1 ? min : Infinity,
     ),
     Math.max(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       ...processedValues.map((val: number | ValueProp) =>
         typeof val === 'number' ? val : val.value,
       ),
