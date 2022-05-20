@@ -18,8 +18,8 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -114,8 +114,8 @@ exports[`Button keeps the container the same when switching between isLoading an
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c8 > *:not(.c6) {
@@ -243,8 +243,8 @@ exports[`Button shows ButtonContainer ButtonVariant.fill 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -364,8 +364,8 @@ exports[`Button shows ButtonContainer ButtonVariant.outline 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -485,8 +485,8 @@ exports[`Button shows ButtonContainer ButtonVariant.text 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -606,8 +606,8 @@ exports[`Button shows ButtonContainer with nondefault props variant and color 1`
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -729,8 +729,8 @@ exports[`Button shows LeftIconContainer when isProcessing 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -880,8 +880,8 @@ exports[`Button shows icons 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -1031,8 +1031,8 @@ exports[`Button shows icons with custom props 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -1184,8 +1184,8 @@ exports[`Button shows icons with type string 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -1337,8 +1337,8 @@ exports[`Button shows loading skeleton 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -1435,8 +1435,8 @@ exports[`Button shows loading text when provided 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
