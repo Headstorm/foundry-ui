@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/Headstorm/foundry-ui/compare/v1.17.0...v1.18.0) (2022-05-23)
+
+
+### Features
+
+* **context and hooks:** added support for prefers-reduced-motion OS setting via the context & hook ([5d17f2a](https://github.com/Headstorm/foundry-ui/commit/5d17f2a7dc192f049954ecb359a37b5eb4ceb633)), closes [#391](https://github.com/Headstorm/foundry-ui/issues/391)
+
 # [1.17.0](https://github.com/Headstorm/foundry-ui/compare/v1.16.1...v1.17.0) (2022-05-13)
 
 

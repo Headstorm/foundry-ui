@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.7% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/47</span>
+                <span class='fraction'>30/48</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.7% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/47</span>
+                <span class='fraction'>30/48</span>
             </div>
         
             
@@ -309,7 +309,9 @@
 <a name='L244'></a><a href='#L244'>244</a>
 <a name='L245'></a><a href='#L245'>245</a>
 <a name='L246'></a><a href='#L246'>246</a>
-<a name='L247'></a><a href='#L247'>247</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -444,6 +446,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -453,11 +456,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -565,7 +569,7 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useAnalytics, useTheme } from '../../context';
+import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../context';
 &nbsp;
 const Underlay = styled(AnimatedDiv)&lt;{ backgroundBlur: string; backgroundDarkness: number }&gt;`
   ${() =&gt; `
@@ -690,6 +694,7 @@ const Modal = ({
   backgroundDarkness = 0.2,
 }: ModalProps): JSX.Element =&gt; {
   const { colors } = useTheme();
+  const { prefersReducedMotion } = useAccessibilityPreferences();
 &nbsp;
   const { styles: containerStyles }: { styles?: Record&lt;string, unknown&gt; } = containerProps;
   const { styles: underlayStyles }: { styles?: Record&lt;string, unknown&gt; } = underlayProps;
@@ -697,8 +702,10 @@ const Modal = ({
   const handleEventWithAnalytics = useAnalytics();
   const handleClickOutside = <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
 <span class="cstat-no" title="statement not covered" >    handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);</span>
-  const handleEsc = <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
-<span class="cstat-no" title="statement not covered" >    handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps);</span>
+  const handleEsc = useCallback(
+<span class="fstat-no" title="function not covered" >    (e</span>: any) =&gt; <span class="cstat-no" title="statement not covered" >handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps),</span>
+    [containerProps, handleEventWithAnalytics, onClickOutside],
+  );
   const handleClose = <span class="fstat-no" title="function not covered" >(e</span>: any) =&gt;
 <span class="cstat-no" title="statement not covered" >    handleEventWithAnalytics('Modal', onClose, 'onClose', e, containerProps);</span>
 &nbsp;
@@ -713,17 +720,16 @@ const Modal = ({
       containerOpacity: 1,
       underlayBackdropFilter: `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`,
     },
-    config: {
-      friction: 75,
-      tension: 550,
-      mass: 5,
-    },
+    immediate: prefersReducedMotion,
+    friction: 75,
+    tension: 550,
+    mass: 5,
     ...animationSpringConfig,
   });
 &nbsp;
   const escFunction = useCallback(
 <span class="fstat-no" title="function not covered" >    (e</span>vent: KeyboardEvent) =&gt; {
-<span class="cstat-no" title="statement not covered" >      if (event.keyCode === 27) {</span>
+<span class="cstat-no" title="statement not covered" >      if (event.code === 'Escape') {</span>
 <span class="cstat-no" title="statement not covered" >        handleEsc(event);</span>
       }
     },
@@ -808,7 +814,7 @@ export default Modal;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri May 13 2022 21:56:50 GMT+0000 (Coordinated Universal Time)
+                at Mon May 23 2022 15:53:43 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
