@@ -22,7 +22,12 @@ export type HandleProps = {
 
 export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean };
 
-export type SelectedRangeProps = { min: number; max: number; selectedRange: number[] };
+export type SelectedRangeProps = {
+  min: number;
+  max: number;
+  selectedRange: number[];
+  animateRangeRail: boolean;
+};
 
 export type DomainLabelProps = { position: 'left' | 'right' };
 

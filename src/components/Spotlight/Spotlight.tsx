@@ -5,7 +5,7 @@ import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
-import { useAnalytics } from '../../context';
+import { useAccessibilityPreferences, useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
 
 const SpotlightContainer = styled(AnimatedDiv)`
@@ -100,6 +100,8 @@ const Spotlight = ({
     isResizing,
   } = useWindowSizeObserver(resizeUpdateInterval);
   const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
+
+  const { prefersReducedMotion } = useAccessibilityPreferences();
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -220,7 +222,7 @@ const Spotlight = ({
     friction: 75,
     tension: 550,
     mass: 5,
-    immediate: !animateTargetChanges || isScrolling || isResizing,
+    immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
     onRest: onAnimationEnd,
     ...animationSpringConfig,
   }));
@@ -254,7 +256,7 @@ const Spotlight = ({
       friction: 75,
       tension: 550,
       mass: 5,
-      immediate: !animateTargetChanges || isScrolling || isResizing,
+      immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
 
       onRest: onAnimationEnd,
       ...animationSpringConfig,
@@ -280,6 +282,7 @@ const Spotlight = ({
     rect.right,
     animateTargetChanges,
     animationSpringConfig,
+    prefersReducedMotion,
     onAnimationEnd,
   ]);
 

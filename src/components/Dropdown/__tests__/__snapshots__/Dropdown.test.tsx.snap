@@ -18,8 +18,8 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -277,8 +277,8 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -536,8 +536,8 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -795,8 +795,8 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1054,8 +1054,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1262,8 +1262,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1521,8 +1521,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1779,8 +1779,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2127,8 +2127,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2384,8 +2384,8 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2594,8 +2594,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2801,8 +2801,8 @@ exports[`Dropdown does not display options on initial render when options is und
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3008,8 +3008,8 @@ exports[`Dropdown renders a value when given a matching option id through props 
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3266,8 +3266,8 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3484,8 +3484,8 @@ exports[`Dropdown renders one value when given two values but only one matches a
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3742,8 +3742,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -4008,8 +4008,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -4274,8 +4274,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -4540,8 +4540,8 @@ exports[`Dropdown selects options from values prop 2`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {

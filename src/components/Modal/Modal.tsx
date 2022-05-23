@@ -8,7 +8,7 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useAnalytics, useTheme } from '../../context';
+import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../context';
 
 const Underlay = styled(AnimatedDiv)<{ backgroundBlur: string; backgroundDarkness: number }>`
   ${() => `
@@ -133,6 +133,7 @@ const Modal = ({
   backgroundDarkness = 0.2,
 }: ModalProps): JSX.Element => {
   const { colors } = useTheme();
+  const { prefersReducedMotion } = useAccessibilityPreferences();
 
   const { styles: containerStyles }: { styles?: Record<string, unknown> } = containerProps;
   const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
@@ -140,8 +141,10 @@ const Modal = ({
   const handleEventWithAnalytics = useAnalytics();
   const handleClickOutside = (e: any) =>
     handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
-  const handleEsc = (e: any) =>
-    handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps);
+  const handleEsc = useCallback(
+    (e: any) => handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps),
+    [containerProps, handleEventWithAnalytics, onClickOutside],
+  );
   const handleClose = (e: any) =>
     handleEventWithAnalytics('Modal', onClose, 'onClose', e, containerProps);
 
@@ -156,17 +159,16 @@ const Modal = ({
       containerOpacity: 1,
       underlayBackdropFilter: `blur(${backgroundBlur}) brightness(${1 - backgroundDarkness})`,
     },
-    config: {
-      friction: 75,
-      tension: 550,
-      mass: 5,
-    },
+    immediate: prefersReducedMotion,
+    friction: 75,
+    tension: 550,
+    mass: 5,
     ...animationSpringConfig,
   });
 
   const escFunction = useCallback(
     (event: KeyboardEvent) => {
-      if (event.keyCode === 27) {
+      if (event.code === 'Escape') {
         handleEsc(event);
       }
     },
