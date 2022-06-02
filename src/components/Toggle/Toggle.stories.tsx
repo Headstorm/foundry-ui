@@ -66,14 +66,14 @@ Default.args = {
   variant: variants.fill,
 };
 
-const containerRef = React.createRef<HTMLDivElement>();
-const boxRef = React.createRef<HTMLDivElement>();
+const containerRef = React.createRef<HTMLLabelElement>();
+const handleRef = React.createRef<HTMLDivElement>();
 
 export const Ref = Template.bind({});
 Ref.args = {
   ...Default.args,
   containerRef,
-  boxRef,
+  handleRef,
 };
 
 export default {

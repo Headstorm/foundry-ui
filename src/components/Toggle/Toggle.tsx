@@ -124,7 +124,7 @@ const Toggle = ({
   StyledHandle = Handle,
   StyledInput = Input,
 
-  toggleContainerProps = {},
+  containerProps = {},
   handleProps = {},
   inputProps = {},
 
@@ -143,7 +143,7 @@ const Toggle = ({
   StyledInput?: StyledSubcomponentType;
   StyledIcon?: StyledSubcomponentType;
 
-  toggleContainerProps?: SubcomponentPropsType;
+  containerProps?: SubcomponentPropsType;
   handleProps?: SubcomponentPropsType;
   inputProps?: SubcomponentPropsType;
   iconProps?: SubcomponentPropsType;
@@ -188,7 +188,7 @@ const Toggle = ({
   );
   const handleEventWithAnalytics = useAnalytics();
   const handleToggle = (e: any) =>
-    handleEventWithAnalytics('Toggle', onToggle, 'onToggle', e, toggleContainerProps);
+    handleEventWithAnalytics('Toggle', onToggle, 'onToggle', e, containerProps);
 
   return (
     <StyledContainer
@@ -197,7 +197,7 @@ const Toggle = ({
       variant={variant}
       focusRingColor={colors.tertiary}
       disabled={disabled}
-      {...toggleContainerProps}
+      {...containerProps}
     >
       <StyledHandle
         color={color || colors.background}
