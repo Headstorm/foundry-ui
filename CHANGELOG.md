@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/Headstorm/foundry-ui/compare/v1.18.0...v1.19.0) (2022-06-03)
+
+
+### Features
+
+* **toggle:** added new toggle component ([fa9a187](https://github.com/Headstorm/foundry-ui/commit/fa9a187b39933ab7ab744dab3d64c7e2271f3c50)), closes [#382](https://github.com/Headstorm/foundry-ui/issues/382)
+
 # [1.18.0](https://github.com/Headstorm/foundry-ui/compare/v1.17.0...v1.18.0) (2022-05-23)
 
 
