@@ -77,12 +77,14 @@ export const CheckboxContainer = styled.div`
   ${() => {
     const { colors } = useTheme();
     return `
-  display: inline-block;
-  vertical-align: middle;
-  &:focus-within {
-    ${Box} {
-      box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
-    }}`;
+      display: inline-block;
+      vertical-align: middle;
+      &:focus-within {
+        ${Box} {
+          box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
+        }
+      }
+    `;
   }}
 `;
 

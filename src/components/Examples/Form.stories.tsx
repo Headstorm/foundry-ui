@@ -6,7 +6,6 @@ import { name, address, internet, company, phone, commerce, lorem } from 'faker'
 import TextInput from '../TextInput';
 import Button from '../Button';
 import Card from '../Card';
-import Checkbox from '../Checkbox';
 import Divider from '../Divider';
 import Dropdown from '../Dropdown';
 import Modal from '../Modal';
@@ -15,6 +14,7 @@ import Label from '../Label';
 
 import colors from '../../enums/colors';
 import variants from '../../enums/variants';
+import Toggle from '../Toggle/Toggle';
 
 // All 50 + DC
 const stateAbbreviations = [
@@ -323,16 +323,15 @@ export const ControlledForm: Story = () => {
         </Label>
 
         <Label labelText="Notifications" htmlFor="notifications" key="notifications">
-          <Checkbox
-            onClick={() => {
+          <Toggle
+            onToggle={() => {
               setState({ ...state, notifications: !state.notifications });
             }}
             checked={state.notifications}
-            checkboxType={Checkbox.Types.check}
             inputProps={{ onChange: () => {} }}
-          >
-            {state.notifications ? 'Enabled' : 'Disabled'}
-          </Checkbox>
+            color={state.notifications ? '#8f8' : 'white'}
+          />
+          {state.notifications ? '  Enabled' : '  Disabled'}
         </Label>
       </Card>
       {isModalOpen && (
