@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/Headstorm/foundry-ui/compare/v1.19.0...v1.19.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* **exports:** add Toggle component to module exports ([10215f9](https://github.com/Headstorm/foundry-ui/commit/10215f9503526fa586da6224915e118a37e727f5))
+
 # [1.19.0](https://github.com/Headstorm/foundry-ui/compare/v1.18.0...v1.19.0) (2022-06-03)
 
 
