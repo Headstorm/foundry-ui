@@ -12,6 +12,7 @@ import Table from './components/Table';
 import Tag from './components/Tag';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
+import Toggle from './components/Toggle';
 import Progress from './components/Progress';
 import Skeleton from './components/Skeleton';
 import { FoundryProvider, FoundryContext, useTheme, withGlobalStyle } from './context';
@@ -75,6 +76,7 @@ export {
   Tag,
   Text,
   TextInput,
+  Toggle,
   FoundryProvider,
   FoundryContext,
   // Utils and helpers
