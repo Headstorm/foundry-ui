@@ -2,23 +2,12 @@ import { animated, useTransition } from '@react-spring/web';
 import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import { randomId } from '../../utils/math';
 
 import { useAnalytics } from '../../context';
 import colors from '../../enums/colors';
 import { mergeRefs } from '../../utils/refs';
 import { StyledSubcomponentType, SubcomponentPropsType } from '../commonTypes';
-
-function randomId(length: number): string {
-  const alphabet =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-  }
-
-  return result;
-}
 
 const Container = styled(animated.div)`
   position: relative;
