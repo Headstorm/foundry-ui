@@ -100,7 +100,6 @@
     "@react-stately/toggle": "^3.2.3",
     "fuse.js": "^6.4.6",
     "lodash.debounce": "^4.0.8",
-    "nanoid": "^3.1.20",
     "polished": "^4.1.1",
     "react-aria": "^3.9.0",
     "react-device-detect": "^1.17.0",
