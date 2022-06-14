@@ -81,7 +81,6 @@
     "react-use-measure": "^2.0.3",
     "regenerator-runtime": "^0.13.5",
     "rimraf": "^3.0.2",
-    "sb": "^6.5.9",
     "semantic-release": "^19.0.3",
     "source-map-loader": "^0.2.4",
     "src": "^1.1.2",
