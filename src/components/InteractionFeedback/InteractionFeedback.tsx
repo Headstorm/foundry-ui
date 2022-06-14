@@ -1,13 +1,13 @@
-import React, { useCallback, useRef, useState } from 'react';
 import { animated, useTransition } from '@react-spring/web';
+import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { nanoid } from 'nanoid';
 import useResizeObserver from 'use-resize-observer/polyfilled';
+import { randomId } from '../../utils/math';
 
 import { useAnalytics } from '../../context';
 import colors from '../../enums/colors';
-import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { mergeRefs } from '../../utils/refs';
+import { StyledSubcomponentType, SubcomponentPropsType } from '../commonTypes';
 
 const Container = styled(animated.div)`
   position: relative;
@@ -98,7 +98,7 @@ const InteractionFeedback = ({
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
 
-        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: nanoid() }]);
+        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: randomId(18) }]);
       }
     },
     [internalRef],
