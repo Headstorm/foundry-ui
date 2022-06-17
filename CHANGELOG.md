@@ -1,3 +1,10 @@
+## [1.19.2](https://github.com/Headstorm/foundry-ui/compare/v1.19.1...v1.19.2) (2022-06-17)
+
+
+### Bug Fixes
+
+* **dependencies:** this commit is merely to generate a new npm version deploy of the CRA 5.X fixes ([433310b](https://github.com/Headstorm/foundry-ui/commit/433310b07fcd37f77f68ed788e9da8cb0fd66402))
+
 ## [1.19.1](https://github.com/Headstorm/foundry-ui/compare/v1.19.0...v1.19.1) (2022-06-06)
 
 
