@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
 
 import colors from '../../enums/colors';
-import Modal, { ModalProps } from './Modal';
+import Modal, { ModalProps, ModalApi } from './Modal';
 import Button from '../Button/Button';
 import Card from '../Card';
 import { withFoundryContext } from '../../../.storybook/decorators';
@@ -38,6 +38,14 @@ export const Default: Story<DefaultProps> = ({
     onClose();
   };
 
+  const modalRef = useRef<ModalApi>();
+
+  const customCloseButtonClick = useCallback(() => {
+    if (modalRef.current) {
+      modalRef.current.close();
+    }
+  }, [modalRef]);
+
   return (
     <Background>
       <Card elevation={1} header="Use this button to open the modal again">
@@ -55,11 +63,12 @@ export const Default: Story<DefaultProps> = ({
           backgroundBlur={`${backgroundBlur}rem`}
           onClickOutside={onClickOutside ? handleClose : undefined}
           onClose={handleClose}
+          ref={modalRef}
         >
           <Card
             header="Hello world!"
             footer={
-              <Button color={colors.primaryDark} onClick={handleClose}>
+              <Button color={colors.primaryDark} onClick={customCloseButtonClick}>
                 Okay...
               </Button>
             }
