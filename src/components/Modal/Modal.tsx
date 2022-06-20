@@ -109,8 +109,8 @@ export interface ModalProps {
 
   children: ReactNode;
 
-  onClickOutside?: () => void;
-  onClose?: () => void;
+  onClickOutside?: (e: MouseEvent) => void;
+  onClose?: (e: MouseEvent) => void;
 
   closeButtonAttachment?: string;
   backgroundBlur?: string;
@@ -143,7 +143,7 @@ const Modal = forwardRef<ModalApi, ModalProps>(
 
       children,
 
-      onClickOutside = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+      onClickOutside,
       onClose = () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 
       closeButtonAttachment = 'inside',
@@ -162,8 +162,11 @@ const Modal = forwardRef<ModalApi, ModalProps>(
     const { styles: underlayStyles }: { styles?: Record<string, unknown> } = underlayProps;
 
     const handleEventWithAnalytics = useAnalytics();
-    const handleClickOutside = (e: MouseEvent) =>
-      handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (onClickOutside) {
+        handleEventWithAnalytics('Modal', onClickOutside, 'onClickOutside', e, containerProps);
+      }
+    };
     const handleEsc = useCallback(
       (e: KeyboardEvent) =>
         handleEventWithAnalytics('Modal', onClickOutside, 'onEsc', e, containerProps),
@@ -291,7 +294,11 @@ const Modal = forwardRef<ModalApi, ModalProps>(
         </StyledContainer>
         <StyledUnderlay
           colors={colors}
-          onClick={(e: MouseEvent) => animateClose(handleClickOutside, e)}
+          onClick={(e: MouseEvent) => {
+            if (onClickOutside) {
+              animateClose(handleClickOutside, e);
+            }
+          }}
           ref={underlayRef}
           {...underlayProps}
           style={{
