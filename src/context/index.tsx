@@ -2,8 +2,10 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import * as rdd from 'react-device-detect';
+import { TierResult, TierType } from 'detect-gpu';
 
 import { useReducedMotion } from '../utils/a11y';
+import { usePerformanceInfo } from '../utils/performance';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
 import { StyledSubcomponentType } from '../components/commonTypes';
@@ -19,7 +21,10 @@ export const defaultGlobalStyles = `
   }
 `;
 
-export type FoundryColorsType = Record<keyof typeof colorsEnum, string>;
+// in order to let users add their own colors to their theme provider,
+// added generic string keys, which makes the type ambiguous but gives users access to colorsEnum
+export type FoundryColorsType = Record<keyof typeof colorsEnum | string, string>;
+
 export type AnalyticsFunctionType = (
   componentType: string,
   eventType: string,
@@ -62,14 +67,16 @@ export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
   analyticsFunction: AnalyticsFunctionType;
+  performanceInfo: TierResult;
   accessibilityPreferences: AccessibilityPreferences;
-  styleConstants: { [key in string]: number | string };
+  styleConstants: Record<string, number | string>;
 };
 
 const defaultContextValue = {
   globalStyles: defaultGlobalStyles,
   colors: colorsEnum,
   accessibilityPreferences: defaultAccessibilityPreferences,
+  performanceInfo: { tier: 2, type: 'BENCHMARK' as TierType },
   analyticsFunction: defaultAnalyticsFunction,
   styleConstants: {},
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
@@ -83,9 +90,9 @@ export const FoundryProvider = ({
 }: {
   value?: {
     globalStyles?: string;
-    colors?: Partial<Record<keyof typeof colorsEnum, string>>;
+    colors?: FoundryColorsType;
     analyticsFunction?: AnalyticsFunctionType;
-    styleConstants?: {};
+    styleConstants?: Record<string, string | number>;
   };
   children: React.ReactNode;
 }): JSX.Element => {
@@ -96,7 +103,10 @@ export const FoundryProvider = ({
     analyticsFunction = defaultAnalyticsFunction,
   } = value;
 
+  // causes a rerender
   const prefersReducedMotion = useReducedMotion();
+  // causes a rerender
+  const performanceInfo = usePerformanceInfo();
 
   // use the default set of styles, unless we've got something to override
   const mergedGlobalStyles =
@@ -118,6 +128,7 @@ export const FoundryProvider = ({
         colors: mergedColors,
         analyticsFunction,
         accessibilityPreferences: { prefersReducedMotion },
+        performanceInfo,
         styleConstants,
       }}
     >

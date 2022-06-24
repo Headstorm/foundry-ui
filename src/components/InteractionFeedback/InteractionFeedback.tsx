@@ -54,7 +54,8 @@ const defaultTransitionProps = {
     mass: 90,
     tension: 1000,
     friction: 20,
-    clamp: true,
+    round: 1,
+    clamp: false,
   },
 };
 const InteractionFeedback = ({

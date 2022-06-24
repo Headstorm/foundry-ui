@@ -5,7 +5,7 @@ import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
-import { useAccessibilityPreferences, useAnalytics } from '../../context';
+import { useTheme, useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
 
 const SpotlightContainer = styled(AnimatedDiv)`
@@ -100,8 +100,10 @@ const Spotlight = ({
     isResizing,
   } = useWindowSizeObserver(resizeUpdateInterval);
   const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
-
-  const { prefersReducedMotion } = useAccessibilityPreferences();
+  const {
+    performanceInfo: { tier: gpuTier },
+    accessibilityPreferences: { prefersReducedMotion },
+  } = useTheme();
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -193,7 +195,7 @@ const Spotlight = ({
       rightBlurHeight,
       rightBlurWidth,
     },
-    setSpring,
+    spring,
   ] = useSpring(() => ({
     containerOpacity: 0,
     containerFilter: 'blur(0rem)',
@@ -218,19 +220,18 @@ const Spotlight = ({
     rightBlurY: rect.y,
     rightBlurWidth: windowWidth - rect.right,
     rightBlurHeight: rect.height + 2,
-
-    friction: 75,
-    tension: 550,
-    mass: 5,
-    immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
+    config: {
+      immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
+      round: gpuTier < 2 ? 1 : undefined,
+      ...animationSpringConfig,
+    },
     onRest: onAnimationEnd,
-    ...animationSpringConfig,
   }));
 
   useEffect(() => {
-    setSpring(() => ({
+    spring.start(() => ({
       containerOpacity: 1,
-      containerFilter: `blur(${backgroundBlur})`,
+      containerFilter: gpuTier < 2 ? 'blur(0rem)' : `blur(${backgroundBlur})`,
       containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
 
       lightPath: finalRectangularPath,
@@ -253,13 +254,7 @@ const Spotlight = ({
       rightBlurWidth: windowWidth - rect.right,
       rightBlurHeight: rect.height + 2,
 
-      friction: 75,
-      tension: 550,
-      mass: 5,
-      immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
-
       onRest: onAnimationEnd,
-      ...animationSpringConfig,
     }));
   }, [
     targetElement,
@@ -272,7 +267,7 @@ const Spotlight = ({
     windowHeight,
     isScrolling,
     isResizing,
-    setSpring,
+    spring,
     finalRectangularPath,
     circularPath,
     rect.x,
@@ -281,9 +276,8 @@ const Spotlight = ({
     rect.height,
     rect.right,
     animateTargetChanges,
-    animationSpringConfig,
-    prefersReducedMotion,
     onAnimationEnd,
+    gpuTier,
   ]);
 
   const handleClick = (evt: React.MouseEvent) => {
