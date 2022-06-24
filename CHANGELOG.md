@@ -1,3 +1,11 @@
+# [1.20.0](https://github.com/Headstorm/foundry-ui/compare/v1.19.2...v1.20.0) (2022-06-24)
+
+
+### Features
+
+* **foundryprovider/context:** add GPU profiling results to context for performance tuning ([4cffbce](https://github.com/Headstorm/foundry-ui/commit/4cffbcec9f678dd7a940c43074a0b0d8dd1ac15c))
+* **modal:** add a .close() function to smoothly animate modal away instead of unmounting ([ebcb993](https://github.com/Headstorm/foundry-ui/commit/ebcb993fb61b08212e44be189d05a2950062bf07))
+
 ## [1.19.2](https://github.com/Headstorm/foundry-ui/compare/v1.19.1...v1.19.2) (2022-06-17)
 
 
