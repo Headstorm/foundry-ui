@@ -16,23 +16,25 @@ import variants from '../../enums/variants';
 import Button from '../Button/Button';
 import { AnimatedDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { FoundryColorsType, useAnalytics, useTheme } from '../../context';
+import { useAnalytics, useTheme } from '../../context';
 
-const Underlay = styled(AnimatedDiv)<{
-  colors: FoundryColorsType;
-}>`
-  ${({ colors }) => `
-    height: 100%;
-    width: 100%;
+const Underlay = styled(AnimatedDiv)`
+  ${() => {
+    const { colors } = useTheme();
 
-    background-color: ${colors.black};
+    return `
+      height: 100%;
+      width: 100%;
 
-    position: fixed;
-    top: 0;
-    left: 0;
+      background-color: ${colors.black};
 
-    z-index: 1000;
-  `}
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      z-index: 1000;
+    `;
+  }}
 `;
 
 const Container = styled(AnimatedDiv)`

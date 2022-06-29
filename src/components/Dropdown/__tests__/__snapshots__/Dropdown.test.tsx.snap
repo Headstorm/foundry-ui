@@ -903,9 +903,6 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 0px solid transparent;
-  border-bottom-right-radius: 0rem;
-  border-bottom-left-radius: 0rem;
   width: 15em;
   padding: .5em 1em;
 }
@@ -926,20 +923,6 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   text-align: left;
 }
 
-.c13 {
-  background: white;
-  position: absolute;
-  left: 0px;
-  max-height: 10em;
-  overflow-y: auto;
-  width: 15em;
-  border: 1px solid undefined;
-  z-index: 1000;
-  bottom: 100%;
-  border-bottom: 0px solid transparent;
-  border-radius: 0.25rem 0.25rem 0rem 0rem;
-}
-
 .c12 {
   background: white;
   position: absolute;
@@ -952,6 +935,21 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   top: 100%;
   border-top: 0px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
+  visibility: hidden;
+}
+
+.c13 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10em;
+  overflow-y: auto;
+  width: 15em;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
 .c14 {
