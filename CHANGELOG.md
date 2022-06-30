@@ -1,3 +1,11 @@
+## [1.20.1](https://github.com/Headstorm/foundry-ui/compare/v1.20.0...v1.20.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **modal underlay:** set the default background color to a translucent black instead of opaque black ([8f625b5](https://github.com/Headstorm/foundry-ui/commit/8f625b5da7bf89f32c44a3a87a91fea23682384b))
+* **modal underlay:** use theme hook in subcomponent so the subcomponent is portable outside of Modal ([b50d70c](https://github.com/Headstorm/foundry-ui/commit/b50d70c533119695f0bf08bf32cbb28d084bbd2a))
+
 # [1.20.0](https://github.com/Headstorm/foundry-ui/compare/v1.19.2...v1.20.0) (2022-06-24)
 
 
