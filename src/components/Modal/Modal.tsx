@@ -22,7 +22,7 @@ const Underlay = styled(AnimatedDiv)`
   height: 100%;
   width: 100%;
 
-  background-color: #000;
+  background-color: transparentize(0.5, '#000');
 
   position: fixed;
   top: 0;
