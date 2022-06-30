@@ -19,22 +19,16 @@ import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
 
 const Underlay = styled(AnimatedDiv)`
-  ${() => {
-    const { colors } = useTheme();
+  height: 100%;
+  width: 100%;
 
-    return `
-      height: 100%;
-      width: 100%;
+  background-color: #000;
 
-      background-color: ${colors.black};
+  position: fixed;
+  top: 0;
+  left: 0;
 
-      position: fixed;
-      top: 0;
-      left: 0;
-
-      z-index: 1000;
-    `;
-  }}
+  z-index: 1000;
 `;
 
 const Container = styled(AnimatedDiv)`
