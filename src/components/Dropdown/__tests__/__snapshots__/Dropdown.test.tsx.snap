@@ -44,6 +44,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -303,6 +304,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -562,6 +564,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -821,6 +824,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1080,6 +1084,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1288,6 +1293,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1547,6 +1553,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1805,6 +1812,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2153,6 +2161,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2410,6 +2419,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2620,6 +2630,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2827,6 +2838,7 @@ exports[`Dropdown does not display options on initial render when options is und
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3034,6 +3046,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3292,6 +3305,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3510,6 +3524,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3768,6 +3783,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4034,6 +4050,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4300,6 +4317,7 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4566,6 +4584,7 @@ exports[`Dropdown selects options from values prop 2`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
