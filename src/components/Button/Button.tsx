@@ -89,6 +89,7 @@ export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContai
     const fontColor = getFontColorFromVariant(variant, color, colors.background, colors.grayDark);
 
     return `
+      -webkit-appearance: none;
       display: inline-flex;
       align-items: baseline;
       position: relative;
