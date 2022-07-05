@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/Headstorm/foundry-ui/compare/v1.20.1...v1.20.2) (2022-07-05)
+
+
+### Bug Fixes
+
+* webkit-appearance: none for ButtonContainer ([3eefc91](https://github.com/Headstorm/foundry-ui/commit/3eefc91656ebfe812e7e8f4e9d8fa9681f3360ea))
+
 ## [1.20.1](https://github.com/Headstorm/foundry-ui/compare/v1.20.0...v1.20.1) (2022-06-30)
 
 
