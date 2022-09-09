@@ -1,3 +1,11 @@
+## [1.20.3](https://github.com/Headstorm/foundry-ui/compare/v1.20.2...v1.20.3) (2022-09-09)
+
+
+### Bug Fixes
+
+* **card component:** add position relative ([c35cd6a](https://github.com/Headstorm/foundry-ui/commit/c35cd6ad42e3cbc1e2c6a80bd316577862ea8e57)), closes [#408](https://github.com/Headstorm/foundry-ui/issues/408)
+* **card component:** add position relative ([8a44c4b](https://github.com/Headstorm/foundry-ui/commit/8a44c4b3c6d2b196c47087156257c64b1c00336a)), closes [#408](https://github.com/Headstorm/foundry-ui/issues/408)
+
 ## [1.20.2](https://github.com/Headstorm/foundry-ui/compare/v1.20.1...v1.20.2) (2022-07-05)
 
 
