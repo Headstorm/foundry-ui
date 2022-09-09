@@ -26,6 +26,7 @@ export const CardContainer = styled(StyledBaseDiv)`
 
     return `
       ${!isDefaultOnClick ? 'cursor: pointer;' : ''}
+      position: relative;
       display: inline-flex;
       flex-flow: column nowrap;
       font-size: 1em;
