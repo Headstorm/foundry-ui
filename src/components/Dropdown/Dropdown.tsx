@@ -10,7 +10,7 @@ import { useAnalytics, useTheme } from '../../context';
 import Button from '../Button/Button';
 import variants from '../../enums/variants';
 import timings from '../../enums/timings';
-import { Div, Span, Input } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseSpan, StyledBaseInput } from '../../htmlElements';
 import Tag, { TagProps } from '../Tag/Tag';
 import { getFontColorFromVariant, getBackgroundColorFromVariant } from '../../utils/color';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
@@ -33,7 +33,7 @@ type UsefulDropdownState = {
   isHidden?: boolean;
 };
 
-const Container = styled(Div)`
+const Container = styled(StyledBaseDiv)`
   ${({ elevation, isOpen }) => {
     const { colors } = useTheme();
     return `
@@ -75,23 +75,23 @@ export const ValueContainer = styled(Button.Container)`
 `;
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
-export const CloseIconContainer = styled(Div)`
+export const CloseIconContainer = styled(StyledBaseDiv)`
   height: 1.125em;
   z-index: 1;
 `;
 
-export const ArrowIconContainer = styled(Div)`
+export const ArrowIconContainer = styled(StyledBaseDiv)`
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 `;
 
-const ValueItem = styled(Div)`
+const ValueItem = styled(StyledBaseDiv)`
   width: 100%;
   text-align: left;
 `;
 
-const OptionsContainer = styled(Div)`
+const OptionsContainer = styled(StyledBaseDiv)`
   ${({
     color,
     variant,
@@ -136,7 +136,7 @@ const HiddenOptionsContainer = styled(OptionsContainer)`
   }}
 `;
 
-const OptionItem = styled(Div)`
+const OptionItem = styled(StyledBaseDiv)`
   ${({ selected, color, variant }: UsefulDropdownState) => {
     const { colors } = useTheme();
     const unselectedBgColor = getBackgroundColorFromVariant(variant, color);
@@ -170,7 +170,7 @@ const OptionItem = styled(Div)`
   }}
 `;
 
-const CheckContainer = styled(Div)`
+const CheckContainer = styled(StyledBaseDiv)`
   ${({ color }: UsefulDropdownState) => {
     const { colors } = useTheme();
     const backgroundColor = getLuminance(color) > 0.5 ? shade(0.125, color) : tint(0.5, color);
@@ -185,12 +185,12 @@ const CheckContainer = styled(Div)`
   }}
 `;
 
-const PlaceholderContainer = styled(Div)`
+const PlaceholderContainer = styled(StyledBaseDiv)`
   position: absolute;
   opacity: 0.8;
 `;
 
-const StyledTagContainer = styled(Tag.Container)`
+const ValueItemTagContainer = styled(Tag.Container)`
   ${({
     dropdownVariant,
     tagVariant,
@@ -215,9 +215,9 @@ const StyledTagContainer = styled(Tag.Container)`
   `}
 `;
 
-const StyledSearchContainer = styled(Div)``;
+const StyledSearchContainer = styled(StyledBaseDiv)``;
 
-const StyledSearchInput = styled(Input)`
+const StyledSearchInput = styled(StyledBaseInput)`
   all: inherit;
 `;
 
@@ -225,6 +225,7 @@ export interface DropdownProps {
   StyledContainer?: StyledSubcomponentType;
   StyledValueContainer?: StyledSubcomponentType;
   StyledValueItem?: StyledSubcomponentType;
+  StyledValueItemTagContainer?: StyledSubcomponentType;
   StyledOptionsContainer?: StyledSubcomponentType;
   StyledHiddenOptionsContainer?: StyledSubcomponentType;
   StyledOptionItem?: StyledSubcomponentType;
@@ -236,13 +237,13 @@ export interface DropdownProps {
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
   valueItemProps?: SubcomponentPropsType;
+  valueItemTagProps?: TagProps;
   optionsContainerProps?: SubcomponentPropsType;
   optionItemProps?: SubcomponentPropsType;
   checkContainerProps?: SubcomponentPropsType;
   placeholderProps?: SubcomponentPropsType;
   closeIconProps?: SubcomponentPropsType;
   arrowIconProps?: SubcomponentPropsType;
-  valueItemTagProps?: TagProps;
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
@@ -250,6 +251,7 @@ export interface DropdownProps {
   optionItemRef?: React.RefObject<HTMLElement>;
   valueContainerRef?: React.RefObject<HTMLButtonElement>;
   valueItemRef?: React.RefObject<HTMLElement>;
+  valueItemTagRef?: React.RefObject<HTMLElement>;
   checkContainerRef?: React.RefObject<HTMLElement>;
   placeholderRef?: React.RefObject<HTMLElement>;
   closeIconRef?: React.RefObject<HTMLElement>;
@@ -295,6 +297,7 @@ const Dropdown = ({
   StyledContainer = Container,
   StyledValueContainer = ValueContainer,
   StyledValueItem = ValueItem,
+  StyledValueItemTagContainer = ValueItemTagContainer,
   StyledOptionsContainer = OptionsContainer,
   StyledHiddenOptionsContainer = HiddenOptionsContainer,
   StyledOptionItem = OptionItem,
@@ -320,6 +323,7 @@ const Dropdown = ({
   optionItemRef,
   valueContainerRef,
   valueItemRef,
+  valueItemTagRef,
   checkContainerRef,
   placeholderRef,
   closeIconRef,
@@ -407,8 +411,6 @@ const Dropdown = ({
     StyledContainer: PlaceholderContainer,
     ...placeholderProps,
   };
-
-  const tagContainerItemProps = valueItemTagProps.containerProps || {};
 
   // effect to determine if user is scrolling up or down
   useEffect(() => {
@@ -653,7 +655,7 @@ const Dropdown = ({
   );
 
   const keyDownHandler = useCallback(
-    ({ key }) => {
+    ({ key }: { key: string }) => {
       // setTimeout(0) needed when responding to key events to push back call
       // to activeElement to after it is updated in the DOM
       window.setTimeout(() => {
@@ -737,7 +739,7 @@ const Dropdown = ({
   }, [keyDownHandler]);
 
   const optionsScrollListenerCallbackRef = useCallback(
-    node => {
+    (node: HTMLElement) => {
       if (node && rememberScrollPosition) {
         node.addEventListener('scroll', scrollListener, true);
 
@@ -874,15 +876,16 @@ const Dropdown = ({
             .map((val, i, arr) =>
               optionsHash[val] !== undefined ? (
                 <Tag
-                  StyledContainer={StyledTagContainer}
+                  StyledContainer={StyledValueItemTagContainer}
                   variant={valueVariant}
+                  containerRef={valueItemTagRef}
                   {...valueItemTagProps}
                   containerProps={{
                     dropdownVariant: variant,
                     tagVariant: valueVariant,
                     dropdownColor: defaultedColor,
                     transparentColor: colors.transparent,
-                    ...tagContainerItemProps,
+                    ...(valueItemTagProps.containerProps || {}),
                   }}
                   key={val}
                 >
@@ -895,6 +898,7 @@ const Dropdown = ({
             <TextInput
               id={`${name}-search-input`}
               aria-label={`${name}-search-input`}
+              role="searchbox"
               onChange={handleSearchChange}
               debouncedOnChange={handleSearchDebouncedChange}
               StyledContainer={StyledSearchContainer}
@@ -945,7 +949,7 @@ const Dropdown = ({
                       {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                     </StyledCheckContainer>
                   )}
-                  <Span>{option.optionValue}</Span>
+                  <StyledBaseSpan>{option.optionValue}</StyledBaseSpan>
                 </StyledOptionItem>
               )}
             />
@@ -977,7 +981,7 @@ const Dropdown = ({
                       {optionsHash[option.id].isSelected && <Icon path={mdiCheck} size="1em" />}
                     </StyledCheckContainer>
                   )}
-                  <Span>{option.optionValue}</Span>
+                  <StyledBaseSpan>{option.optionValue}</StyledBaseSpan>
                 </StyledOptionItem>
               ))}
             </InternalOptionsContainer>
@@ -1001,6 +1005,7 @@ Dropdown.HiddenOptionsContainer = HiddenOptionsContainer;
 Dropdown.OptionItem = OptionItem;
 Dropdown.ValueContainer = ValueContainer;
 Dropdown.ValueItem = ValueItem;
+Dropdown.ValueItemTagContainer = ValueItemTagContainer;
 Dropdown.Placeholder = PlaceholderContainer;
 
 export default Dropdown;

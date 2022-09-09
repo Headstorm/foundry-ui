@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import { mdiArrowRightBold, mdiCheckBold, mdiChevronDoubleRight, mdiDotsVertical } from '@mdi/js';
 import styled from 'styled-components';
 
+import { withFoundryContext } from '../../../.storybook/decorators';
 import Spotlight, { SpotlightProps } from './Spotlight';
 import { Button, Card, Text, variants, colors } from '../../index';
 
@@ -79,11 +80,11 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
             containerRef={setButtonRef}
             color={colors.tertiary}
           >
-            Start the tour!
+            Start tour
           </Button>
         }
       >
-        There are a few items in this card we can talk about
+        There are a few items in this card we can talk about!
       </Card>
       {tourStarted && (
         <Spotlight {...args} StyledAnnotation={Annotation} targetElement={stepOptions[currStep]}>
@@ -135,6 +136,7 @@ AnimatedSpotlight.args = {
 export default {
   title: 'Spotlight',
   component: Spotlight,
+  decorators: [withFoundryContext],
   parameters: {
     // { design }, Once we have a design for Spotlight we can link it here
   },

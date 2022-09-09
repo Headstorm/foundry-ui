@@ -18,8 +18,8 @@ exports[`TextInput Rendering tests Shows TextInput with clear button disabled wh
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c2 {
@@ -33,6 +33,7 @@ exports[`TextInput Rendering tests Shows TextInput with clear button disabled wh
 }
 
 .c3 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -182,8 +183,8 @@ exports[`TextInput Rendering tests Shows TextInput with clear button enabled whe
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c2 {
@@ -208,6 +209,7 @@ exports[`TextInput Rendering tests Shows TextInput with clear button enabled whe
 }
 
 .c3 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -376,8 +378,8 @@ exports[`TextInput Rendering tests Shows TextInput with clear button enabled whe
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c2 {
@@ -402,6 +404,7 @@ exports[`TextInput Rendering tests Shows TextInput with clear button enabled whe
 }
 
 .c3 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

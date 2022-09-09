@@ -66,6 +66,7 @@ afterEach(() => {
   window.IntersectionObserver.mockClear();
   // @ts-ignore
   global.IntersectionObserver.mockClear();
+  mockedSelectHandler.mockClear();
 });
 
 describe('Dropdown', () => {
@@ -171,8 +172,9 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
 
-    // TODO - Don't use id, see if we can use a more semantically meaningful element
-    fireEvent.focus(screen.getByRole('button'));
+    act(() => {
+      fireEvent.focus(screen.getByRole('button'));
+    });
     await waitFor(() => getByText('Charmander'));
     act(() => {
       fireEvent.click(getByText('Charmander'));
@@ -191,7 +193,10 @@ describe('Dropdown', () => {
         virtualizeOptions={false}
       />,
     );
-    screen.getByRole('button').focus();
+    act(() => {
+      screen.getByRole('button').focus();
+    });
+    await waitFor(() => getByText('Charmander'));
     act(() => {
       fireEvent.click(getByText('Charmander'));
       fireEvent.click(getByText('Squirtle'));
@@ -232,19 +237,19 @@ describe('Dropdown', () => {
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} />,
     );
 
-    screen.getByRole('button').focus();
+    act(() => {
+      screen.getByRole('button').focus();
+    });
     // need to wait for observer to be called (for hidden options container and options container)
     // before the dropdown is rendered correctly
     await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
-    await waitFor(() => queryByText('Squirtle') !== null);
-    const optionsOutFrag = asFragment();
-    expect(optionsOutFrag).toMatchSnapshot();
+    const optionsOpenFrag = asFragment();
+    expect(optionsOpenFrag).toMatchSnapshot();
 
     act(() => {
-      fireEvent.blur(screen.getByRole('button'));
+      screen.getByRole('button').blur();
     });
-    await waitFor(() => queryByText('Squirtle') === null);
-    expect(queryByText('Squirtle')).toBeNull();
+    await waitFor(() => expect(queryByText('Charmander')).toBeNull());
 
     const optionsClosedFrag = asFragment();
     expect(optionsClosedFrag).toMatchSnapshot();
@@ -252,18 +257,14 @@ describe('Dropdown', () => {
 
   it('can use arrow keys and enter to navigate options', async () => {
     generateIntersectionObserver([]);
-    const { queryByText } = render(
+    render(
       <Dropdown onSelect={mockedSelectHandler} options={pokeOptions} virtualizeOptions={false} />,
     );
     act(() => {
       screen.getByRole('button').focus();
     });
-    await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
+    await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
     act(() => {
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
       fireEvent.keyDown(document.activeElement, {
         key: 'ArrowDown',
         code: 'ArrowDown',
@@ -291,7 +292,7 @@ describe('Dropdown', () => {
 
   it('can use arrow keys and enter to navigate options when searchable is true', async () => {
     generateIntersectionObserver([]);
-    const { queryByText } = render(
+    render(
       <Dropdown
         onSelect={mockedSelectHandler}
         searchable
@@ -300,14 +301,10 @@ describe('Dropdown', () => {
       />,
     );
     act(() => {
-      screen.getByRole('button').focus();
+      screen.getByRole('searchbox').focus();
     });
-    await waitFor(() => expect(queryByText('Squirtle')).toBeTruthy());
+    await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));
     act(() => {
-      fireEvent.keyDown(document.activeElement, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-      });
       fireEvent.keyDown(document.activeElement, {
         key: 'ArrowDown',
         code: 'ArrowDown',
@@ -350,12 +347,12 @@ describe('Dropdown', () => {
   it('selects options from values prop', () => {
     generateIntersectionObserver([]);
     const { container } = render(
-        <Dropdown
-            multi
-            options={pokeOptions}
-            values={['bulbasaur', 'charmander']}
-            onSelect={mockedSelectHandler}
-        />,
+      <Dropdown
+        multi
+        options={pokeOptions}
+        values={['bulbasaur', 'charmander']}
+        onSelect={mockedSelectHandler}
+      />,
     );
 
     expect(container).toMatchSnapshot();
@@ -474,7 +471,6 @@ describe('Dropdown', () => {
       act(() => {
         fireEvent.focus(screen.getByRole('button'));
       });
-      // observe should not be called
       expect(observe).toHaveBeenCalledTimes(0);
     });
 

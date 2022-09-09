@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import timings from '../../enums/timings';
-import { Div } from '../../htmlElements';
+import { StyledBaseDiv } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
 import { getShadowStyle } from '../../utils/styles';
@@ -20,7 +20,7 @@ export type CardContainerProps = {
   isDefaultOnClick: boolean;
 };
 
-export const CardContainer = styled(Div)`
+export const CardContainer = styled(StyledBaseDiv)`
   ${({ elevation, feedbackType, isDefaultOnClick }: CardContainerProps) => {
     const { colors } = useTheme();
 
@@ -55,7 +55,7 @@ export const CardContainer = styled(Div)`
   }}
 `;
 
-export const Header = styled(Div)`
+export const Header = styled(StyledBaseDiv)`
   ${({ hasBody, hasFooter }) => {
     const { colors } = useTheme();
 
@@ -72,7 +72,7 @@ export const NoPaddingHeader = styled(Header)`
   padding: 0;
 `;
 
-export const Body = styled(Div)`
+export const Body = styled(StyledBaseDiv)`
   ${() => {
     const { colors } = useTheme();
 
@@ -83,7 +83,7 @@ export const Body = styled(Div)`
   }}
 `;
 
-export const Footer = styled(Div)`
+export const Footer = styled(StyledBaseDiv)`
   ${() => {
     const { colors } = useTheme();
 

@@ -1,14 +1,13 @@
 import React, { ReactNode, RefObject } from 'react';
 import styled from 'styled-components';
-
 import Icon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import Skeleton from '../Skeleton/Skeleton';
-import { Span } from '../../htmlElements';
+import { StyledBaseSpan } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 /* Default Styled Text Container */
-export const TextContainer = styled(Span)`
+export const TextContainer = styled(StyledBaseSpan)`
   ${({ size, color }: { size: string; color: string }) => `
     font-size: ${size};
     color: ${color};
@@ -23,21 +22,24 @@ export interface TextProps {
   isLoading?: boolean;
   isProcessing?: boolean;
   size?: string;
-
+  StyledSkeletonContainer?: StyledSubcomponentType;
   StyledContainer?: StyledSubcomponentType;
   StyledIconContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
   iconContainerProps?: SubcomponentPropsType;
+  skeletonProps?: SubcomponentPropsType;
   containerRef?: RefObject<HTMLDivElement>;
   iconPrefixContainerRef?: RefObject<HTMLElement>;
   iconSuffixContainerRef?: RefObject<HTMLElement>;
+  skeletonRef?: RefObject<HTMLElement>;
+  shimmerRef?: RefObject<HTMLElement>;
 }
 
-const SkeletonContainer = styled(Skeleton.Container)`
+const StyledSkeletonContainer = styled(Skeleton.Container)`
   display: inline;
 `;
 
-const IconContainer = styled(Span)`
+const IconContainer = styled(StyledBaseSpan)`
   ${({ side }: { side: 'left' | 'right' }) => `
     margin-${side === 'left' ? 'right' : 'left'}: .5em;
     display: inline-flex;
@@ -57,14 +59,16 @@ const Text = ({
   isLoading,
   isProcessing,
   size = '1em',
-
   StyledContainer = TextContainer,
   StyledIconContainer = IconContainer,
   containerProps = {},
   iconContainerProps = {},
+  skeletonProps = {},
   containerRef,
   iconPrefixContainerRef,
   iconSuffixContainerRef,
+  skeletonRef,
+  shimmerRef,
 }: TextProps): JSX.Element => (
   <StyledContainer
     data-test-id="hsui-Text"
@@ -94,8 +98,15 @@ const Text = ({
         <Icon aria-hidden="true" path={mdiLoading} size={size} spin={1} />
       </StyledIconContainer>
     )}
-    <Skeleton color={color} StyledContainer={SkeletonContainer} isLoading={isLoading}>
-      <Span>{children}</Span>
+    <Skeleton
+      color={color}
+      isLoading={isLoading}
+      containerRef={skeletonRef}
+      shimmerRef={shimmerRef}
+      StyledContainer={StyledSkeletonContainer}
+      {...skeletonProps}
+    >
+      <StyledBaseSpan>{children}</StyledBaseSpan>
     </Skeleton>
 
     {iconSuffix &&

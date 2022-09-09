@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { Story, Meta } from '@storybook/react';
 import { readableColor, toColorString } from 'polished';
 
+import { withFoundryContext } from '../../../.storybook/decorators';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
@@ -422,6 +423,7 @@ export default {
       },
     },
   },
+  decorators: [withFoundryContext],
   parameters: {
     design: {
       type: 'figma',

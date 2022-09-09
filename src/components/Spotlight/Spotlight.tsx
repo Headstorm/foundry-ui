@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { useAnalytics } from '../../context';
+import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
+import { useTheme, useAnalytics } from '../../context';
 import { AnimatedDiv } from '../../htmlElements';
 
 const SpotlightContainer = styled(AnimatedDiv)`
@@ -65,6 +66,8 @@ export type SpotlightProps = {
   // onAnimationEnd?: ControllerProps['onRest'];
   onAnimationEnd?: () => void;
   animationSpringConfig?: Record<string, unknown>;
+  resizeUpdateInterval?: number;
+  scrollUpdateInterval?: number;
 };
 
 const Spotlight = ({
@@ -87,24 +90,31 @@ const Spotlight = ({
   animateTargetChanges = true,
   onAnimationEnd,
   animationSpringConfig,
+  resizeUpdateInterval = 0,
+  scrollUpdateInterval = 0,
 }: SpotlightProps): JSX.Element | null => {
   const handleEventWithAnalytics = useAnalytics();
-  const [windowDimensions, setWindowDimensions] = useState<{ width: number; height: number }>({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  const [scrollTop, setScrollTop] = useState<number>(0);
+  const {
+    width: windowWidth,
+    height: windowHeight,
+    isResizing,
+  } = useWindowSizeObserver(resizeUpdateInterval);
+  const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
+  const {
+    performanceInfo: { tier: gpuTier },
+    accessibilityPreferences: { prefersReducedMotion },
+  } = useTheme();
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
-      x: windowDimensions.width / 2,
-      y: windowDimensions.height / 2,
+      x: windowWidth / 2,
+      y: windowHeight / 2,
       width: 0,
       height: 0,
-      bottom: windowDimensions.height / 2,
-      left: windowDimensions.width / 2,
-      top: windowDimensions.height / 2,
-      right: windowDimensions.width / 2,
+      bottom: windowHeight / 2,
+      left: windowWidth / 2,
+      top: windowHeight / 2,
+      right: windowWidth / 2,
     };
 
     if (targetElement) {
@@ -130,7 +140,7 @@ const Spotlight = ({
     }
     return defaultVal;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetElement, padding, windowDimensions, shape, scrollTop]);
+  }, [targetElement, padding, windowWidth, windowHeight, shape, scrollY]);
 
   const radii = [Math.min(cornerRadius, rect.width / 2), Math.min(cornerRadius, rect.height / 2)];
   if (shape === SpotlightShapes.round) {
@@ -141,7 +151,7 @@ const Spotlight = ({
     radii[1] = 0;
   }
 
-  const outerRectPath = `M 0 0 h${windowDimensions.width} v${windowDimensions.height} h-${windowDimensions.width}`;
+  const outerRectPath = `M 0 0 h${windowWidth} v${windowHeight} h-${windowWidth}`;
   const innerShapePath = `
     M ${rect.x} ${rect.y + radii[1]}
     Q ${rect.x} ${rect.y}, ${rect.x + radii[0]} ${rect.y}
@@ -185,7 +195,7 @@ const Spotlight = ({
       rightBlurHeight,
       rightBlurWidth,
     },
-    setSpring,
+    spring,
   ] = useSpring(() => ({
     containerOpacity: 0,
     containerFilter: 'blur(0rem)',
@@ -196,33 +206,32 @@ const Spotlight = ({
 
     annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
-    topBlurWidth: windowDimensions.width,
+    topBlurWidth: windowWidth,
     topBlurHeight: rect.y - 1,
 
     bottomBlurY: rect.bottom,
-    bottomBlurWidth: windowDimensions.width,
-    bottomBlurHeight: windowDimensions.height - rect.bottom - 1,
+    bottomBlurWidth: windowWidth,
+    bottomBlurHeight: windowHeight - rect.bottom - 1,
 
     leftBlurY: rect.y,
     leftBlurWidth: rect.x,
     leftBlurHeight: rect.height + 2,
 
     rightBlurY: rect.y,
-    rightBlurWidth: windowDimensions.width - rect.right,
+    rightBlurWidth: windowWidth - rect.right,
     rightBlurHeight: rect.height + 2,
-
-    friction: 75,
-    tension: 550,
-    mass: 5,
-    immediate: !animateTargetChanges,
+    config: {
+      immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
+      round: gpuTier < 2 ? 1 : undefined,
+      ...animationSpringConfig,
+    },
     onRest: onAnimationEnd,
-    ...animationSpringConfig,
   }));
 
   useEffect(() => {
-    setSpring(() => ({
+    spring.start(() => ({
       containerOpacity: 1,
-      containerFilter: `blur(${backgroundBlur})`,
+      containerFilter: gpuTier < 2 ? 'blur(0rem)' : `blur(${backgroundBlur})`,
       containerBackgroundColor: `rgba(0,0,0,${1 - backgroundDarkness})`,
 
       lightPath: finalRectangularPath,
@@ -230,28 +239,22 @@ const Spotlight = ({
 
       annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
 
-      topBlurWidth: windowDimensions.width,
+      topBlurWidth: windowWidth,
       topBlurHeight: rect.y - 1,
 
       bottomBlurY: rect.bottom,
-      bottomBlurWidth: windowDimensions.width,
-      bottomBlurHeight: windowDimensions.height - rect.bottom - 1,
+      bottomBlurWidth: windowWidth,
+      bottomBlurHeight: windowHeight - rect.bottom - 1,
 
       leftBlurY: rect.y,
       leftBlurWidth: rect.x,
       leftBlurHeight: rect.height + 2,
 
       rightBlurY: rect.y,
-      rightBlurWidth: windowDimensions.width - rect.right,
+      rightBlurWidth: windowWidth - rect.right,
       rightBlurHeight: rect.height + 2,
 
-      friction: 75,
-      tension: 550,
-      mass: 5,
-      immediate: !animateTargetChanges,
-
       onRest: onAnimationEnd,
-      ...animationSpringConfig,
     }));
   }, [
     targetElement,
@@ -260,8 +263,11 @@ const Spotlight = ({
     backgroundDarkness,
     padding,
     cornerRadius,
-    windowDimensions,
-    setSpring,
+    windowWidth,
+    windowHeight,
+    isScrolling,
+    isResizing,
+    spring,
     finalRectangularPath,
     circularPath,
     rect.x,
@@ -270,37 +276,9 @@ const Spotlight = ({
     rect.height,
     rect.right,
     animateTargetChanges,
-    animationSpringConfig,
     onAnimationEnd,
+    gpuTier,
   ]);
-
-  // TODO: use a resize observer to detect when the bounds of the target change
-  const updateWindowBounds = () => {
-    setWindowDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
-
-  const updateScrollPosition = (e: Event) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore documentElement does exist on target element
-    setScrollTop(e?.target?.documentElement.scrollTop);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', updateScrollPosition);
-
-    return () => window.removeEventListener('scroll', updateScrollPosition);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('resize', updateWindowBounds);
-
-    return () => {
-      window.removeEventListener('resize', updateWindowBounds);
-    };
-  }, []);
 
   const handleClick = (evt: React.MouseEvent) => {
     handleEventWithAnalytics('Spotlight', onClick, 'onClick', evt, containerProps);
@@ -355,7 +333,7 @@ const Spotlight = ({
       </StyledContainer>
       <svg
         style={{ position: 'fixed', top: 0, left: 0 }}
-        viewBox={`0 0 ${windowDimensions.width} ${windowDimensions.height}`}
+        viewBox={`0 0 ${windowWidth} ${windowHeight}`}
         width={0}
         height={0}
       >

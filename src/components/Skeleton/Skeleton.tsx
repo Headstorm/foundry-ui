@@ -2,9 +2,9 @@ import React from 'react';
 import { parseToRgb } from 'polished';
 import styled, { keyframes, css } from 'styled-components';
 
-import { useTheme } from '../../context';
+import { useAccessibilityPreferences, useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
-import { Div } from '../../htmlElements';
+import { StyledBaseDiv } from '../../htmlElements';
 
 export const movingGradient = keyframes`
   0% { background-position: 0vw bottom; }
@@ -15,8 +15,8 @@ export const animation = css`
   ${movingGradient} 2s linear infinite;
 `;
 
-const SkeletonShimmer = styled(Div)`
-  ${({ isLoading, color }) => {
+const SkeletonShimmer = styled(StyledBaseDiv)`
+  ${({ isLoading, color, animatedShimmer }) => {
     const rgb = parseToRgb(color);
 
     return css`
@@ -43,12 +43,12 @@ const SkeletonShimmer = styled(Div)`
       background-size: 100vw 100vh;
       background-attachment: fixed;
       border-radius: 0.25rem;
-      animation: ${animation};
+      animation: ${animatedShimmer ? animation : 'none'};
     `;
   }}
 `;
 
-const SkeletonContainer = styled(Div)`
+const SkeletonContainer = styled(StyledBaseDiv)`
   ${({ isLoading }: { isLoading: boolean }) => `
   display: block;
 
@@ -79,9 +79,13 @@ export type SkeletonProps = {
   containerProps?: SubcomponentPropsType;
   shimmerProps?: SubcomponentPropsType;
 
+  containerRef?: React.RefObject<HTMLElement>;
+  shimmerRef?: React.RefObject<HTMLElement>;
+
   children?: React.ReactNode;
   color?: string;
   isLoading?: boolean;
+  animatedShimmer?: boolean;
 };
 
 const Skeleton = ({
@@ -89,17 +93,29 @@ const Skeleton = ({
   StyledShimmer = SkeletonShimmer,
   containerProps,
   shimmerProps,
-
+  containerRef,
+  shimmerRef,
   children,
   color,
   isLoading = false,
+  animatedShimmer = true,
 }: SkeletonProps): JSX.Element | null => {
   const { colors } = useTheme();
+  const { prefersReducedMotion } = useAccessibilityPreferences();
+
   const finalColor = color || colors.grayLight;
+  const finalAnimationPreference = !prefersReducedMotion && animatedShimmer;
+
   return (
-    <StyledContainer isLoading={isLoading} {...containerProps}>
+    <StyledContainer isLoading={isLoading} {...containerProps} ref={containerRef}>
       {children}
-      <StyledShimmer isLoading={isLoading} color={finalColor} {...shimmerProps} />
+      <StyledShimmer
+        animatedShimmer={finalAnimationPreference}
+        isLoading={isLoading}
+        color={finalColor}
+        {...shimmerProps}
+        ref={shimmerRef}
+      />
     </StyledContainer>
   );
 };

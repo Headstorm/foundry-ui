@@ -1,6 +1,8 @@
+import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
 import { configureActions } from '@storybook/addon-actions';
 import colors from '../src/enums/colors';
+import { withFoundryContext } from './decorators';
 
 configureActions({
   depth: 3,
@@ -17,6 +19,7 @@ export const parameters = {
     sort: 'requiredFirst',
     exclude: /\w+Props|\w+Ref|Styled\w+$/,
   },
+  decorators: [withFoundryContext],
   layout: 'centered',
   backgrounds: {
     default: 'background',

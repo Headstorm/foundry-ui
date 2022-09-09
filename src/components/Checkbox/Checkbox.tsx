@@ -6,7 +6,7 @@ import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
 import { darken } from 'polished';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from '@react-stately/toggle';
-import { Div, Input as InputElement, Label as LabelElement } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseInput, StyledBaseLabel } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
@@ -16,7 +16,7 @@ import { mergeRefs } from '../../utils/refs';
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
-export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
+export const Input = styled(StyledBaseInput).attrs({ type: 'checkbox' })`
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -29,7 +29,7 @@ export const Input = styled(InputElement).attrs({ type: 'checkbox' })`
   width: 1px;
 `;
 
-export const Label = styled(LabelElement)`
+export const Label = styled(StyledBaseLabel)`
   ${({ disabled }) => {
     return `
       display: flex;
@@ -43,7 +43,7 @@ export const Label = styled(LabelElement)`
   }}
 `;
 
-export const Box = styled(Div)`
+export const Box = styled(StyledBaseDiv)`
   ${({ variant, checked, checkboxType }) => {
     const { colors } = useTheme();
     let color = colors.grayLight;
@@ -77,12 +77,14 @@ export const CheckboxContainer = styled.div`
   ${() => {
     const { colors } = useTheme();
     return `
-  display: inline-block;
-  vertical-align: middle;
-  &:focus-within {
-    ${Box} {
-      box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
-    }}`;
+      display: inline-block;
+      vertical-align: middle;
+      &:focus-within {
+        ${Box} {
+          box-shadow: 0 0 5px 0.150rem ${colors.tertiary};
+        }
+      }
+    `;
   }}
 `;
 

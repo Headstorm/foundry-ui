@@ -30,7 +30,7 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74.36% </span>
+                <span class="strong">74.35% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>58/78</span>
             </div>
@@ -54,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line high'></div>
     <pre><table class="coverage">
@@ -642,10 +648,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -655,20 +661,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -684,17 +690,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -805,7 +811,7 @@ import debounce from 'lodash.debounce';
 import { mdiClose } from '@mdi/js';
 import { darken } from 'polished';
 &nbsp;
-import { Div, Input as InputElement, TextArea } from '../../htmlElements';
+import { StyledBaseDiv, StyledBaseInput, StyledBaseTextArea } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { mergeRefs } from '../../utils/refs';
 import { useAnalytics, useTheme } from '../../context';
@@ -819,7 +825,7 @@ export type TextInputContainerProps = {
   variant?: variants;
 };
 &nbsp;
-const Container = styled(Div)`
+const Container = styled(StyledBaseDiv)`
   ${({ disabled = false, isValid, variant = <span class="branch-0 cbranch-no" title="branch not covered" >variants.outline </span>}: TextInputContainerProps) =&gt; {
     const { colors } = useTheme();
     const borderColor = isValid === false ? colors.destructive : colors.grayMedium;
@@ -854,7 +860,7 @@ const Container = styled(Div)`
   }}
 `;
 &nbsp;
-const TextInputContainer = styled(InputElement)`
+const TextInputContainer = styled(StyledBaseInput)`
   ${() =&gt; {
     const { colors } = useTheme();
     return `
@@ -868,7 +874,7 @@ const TextInputContainer = styled(InputElement)`
   }}
 `;
 &nbsp;
-const TextAreaInputContainer = styled(TextArea)`
+const TextAreaInputContainer = styled(StyledBaseTextArea)`
   ${<span class="fstat-no" title="function not covered" >({</span> multiLineIsResizable }: TextInputProps) =&gt; {
     const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return `</span>
@@ -889,7 +895,7 @@ const ClearButtonContainer = styled(Button.Container)`
   height: 100%;
 `;
 &nbsp;
-const IconContainer = styled(Div)`
+const IconContainer = styled(StyledBaseDiv)`
   ${<span class="fstat-no" title="function not covered" >()</span> =&gt; {
     const { colors } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 <span class="cstat-no" title="statement not covered" >    return `</span>
@@ -903,7 +909,7 @@ const IconContainer = styled(Div)`
   }}
 `;
 &nbsp;
-const CharacterCount = styled(Div)`
+const CharacterCount = styled(StyledBaseDiv)`
   ${({ textIsTooLong, isValid, errorMessage }) =&gt; {
     const { colors } = useTheme();
     return css`
@@ -915,7 +921,7 @@ const CharacterCount = styled(Div)`
   }}
 `;
 &nbsp;
-const ErrorContainer = styled(Div)`
+const ErrorContainer = styled(StyledBaseDiv)`
   ${() =&gt; {
     const { colors } = useTheme();
     return css`
@@ -1034,7 +1040,7 @@ const TextInput = ({
   );
 &nbsp;
   const onClearToUse = useCallback(
-    evt =&gt; {
+    (evt: SyntheticEvent&lt;Element, Event&gt;) =&gt; {
       // if this is an uncontrolled input
       if (nativeHTMLAttributes.value === undefined) {
         <span class="missing-if-branch" title="else path not taken" >E</span>if (internalInputRef?.current) {
@@ -1158,10 +1164,9 @@ export default TextInput;
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Dec 21 2021 22:09:23 GMT+0000 (Coordinated Universal Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Tue Jul 05 2022 20:55:55 GMT+0000 (Coordinated Universal Time)
             </div>
-        </div>
         <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {

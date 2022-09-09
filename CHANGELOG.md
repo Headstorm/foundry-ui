@@ -1,3 +1,89 @@
+## [1.20.2](https://github.com/Headstorm/foundry-ui/compare/v1.20.1...v1.20.2) (2022-07-05)
+
+
+### Bug Fixes
+
+* webkit-appearance: none for ButtonContainer ([3eefc91](https://github.com/Headstorm/foundry-ui/commit/3eefc91656ebfe812e7e8f4e9d8fa9681f3360ea))
+
+## [1.20.1](https://github.com/Headstorm/foundry-ui/compare/v1.20.0...v1.20.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **modal underlay:** set the default background color to a translucent black instead of opaque black ([8f625b5](https://github.com/Headstorm/foundry-ui/commit/8f625b5da7bf89f32c44a3a87a91fea23682384b))
+* **modal underlay:** use theme hook in subcomponent so the subcomponent is portable outside of Modal ([b50d70c](https://github.com/Headstorm/foundry-ui/commit/b50d70c533119695f0bf08bf32cbb28d084bbd2a))
+
+# [1.20.0](https://github.com/Headstorm/foundry-ui/compare/v1.19.2...v1.20.0) (2022-06-24)
+
+
+### Features
+
+* **foundryprovider/context:** add GPU profiling results to context for performance tuning ([4cffbce](https://github.com/Headstorm/foundry-ui/commit/4cffbcec9f678dd7a940c43074a0b0d8dd1ac15c))
+* **modal:** add a .close() function to smoothly animate modal away instead of unmounting ([ebcb993](https://github.com/Headstorm/foundry-ui/commit/ebcb993fb61b08212e44be189d05a2950062bf07))
+
+## [1.19.2](https://github.com/Headstorm/foundry-ui/compare/v1.19.1...v1.19.2) (2022-06-17)
+
+
+### Bug Fixes
+
+* **dependencies:** this commit is merely to generate a new npm version deploy of the CRA 5.X fixes ([433310b](https://github.com/Headstorm/foundry-ui/commit/433310b07fcd37f77f68ed788e9da8cb0fd66402))
+
+## [1.19.1](https://github.com/Headstorm/foundry-ui/compare/v1.19.0...v1.19.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* **exports:** add Toggle component to module exports ([10215f9](https://github.com/Headstorm/foundry-ui/commit/10215f9503526fa586da6224915e118a37e727f5))
+
+# [1.19.0](https://github.com/Headstorm/foundry-ui/compare/v1.18.0...v1.19.0) (2022-06-03)
+
+
+### Features
+
+* **toggle:** added new toggle component ([fa9a187](https://github.com/Headstorm/foundry-ui/commit/fa9a187b39933ab7ab744dab3d64c7e2271f3c50)), closes [#382](https://github.com/Headstorm/foundry-ui/issues/382)
+
+# [1.18.0](https://github.com/Headstorm/foundry-ui/compare/v1.17.0...v1.18.0) (2022-05-23)
+
+
+### Features
+
+* **context and hooks:** added support for prefers-reduced-motion OS setting via the context & hook ([5d17f2a](https://github.com/Headstorm/foundry-ui/commit/5d17f2a7dc192f049954ecb359a37b5eb4ceb633)), closes [#391](https://github.com/Headstorm/foundry-ui/issues/391)
+
+# [1.17.0](https://github.com/Headstorm/foundry-ui/compare/v1.16.1...v1.17.0) (2022-05-13)
+
+
+### Features
+
+* **base html components:** renamed the internally used base styled html elements, and exported them ([d80004b](https://github.com/Headstorm/foundry-ui/commit/d80004b036ec5345782e17d33bcbf67e04685914)), closes [#388](https://github.com/Headstorm/foundry-ui/issues/388)
+
+## [1.16.1](https://github.com/Headstorm/foundry-ui/compare/v1.16.0...v1.16.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* **spotlight:** spotlight now smoothly animates only when switching target and not on scroll/resize ([9c8f763](https://github.com/Headstorm/foundry-ui/commit/9c8f763a77d8737f3626e8ae3f29411b101ea160)), closes [#360](https://github.com/Headstorm/foundry-ui/issues/360)
+
+# [1.16.0](https://github.com/Headstorm/foundry-ui/compare/v1.15.1...v1.16.0) (2022-05-03)
+
+
+### Features
+
+* **react:** update React version to 18.1.X ([f28d6f3](https://github.com/Headstorm/foundry-ui/commit/f28d6f3fb357f9557a311db90b7299a01c30d736)), closes [#383](https://github.com/Headstorm/foundry-ui/issues/383)
+
+## [1.15.1](https://github.com/Headstorm/foundry-ui/compare/v1.15.0...v1.15.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* **dropdown:** added missing props to control the value Tag(s) ([7f5e053](https://github.com/Headstorm/foundry-ui/commit/7f5e05333d8fa2023b21d1b1e62688cdf735a400))
+
+# [1.15.0](https://github.com/Headstorm/foundry-ui/compare/v1.14.6...v1.15.0) (2022-04-06)
+
+
+### Features
+
+* **adding props and refs:** targeting the skeleton component from Text using props and refs ([7f6271a](https://github.com/Headstorm/foundry-ui/commit/7f6271a264c3a1bb6ab78d49f064830d15e8d1e6))
+
 ## [1.14.6](https://github.com/Headstorm/foundry-ui/compare/v1.14.5...v1.14.6) (2021-12-21)
 
 

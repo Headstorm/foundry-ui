@@ -3,7 +3,13 @@ import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { mdiArrowDown, mdiChevronDown, mdiChevronRight, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
-import { Span, Table as TableElement, TD, TH, TR } from '../../htmlElements';
+import {
+  StyledBaseSpan,
+  StyledBaseTable,
+  StyledBaseTD,
+  StyledBaseTH,
+  StyledBaseTR,
+} from '../../htmlElements';
 import {
   CellOptions,
   columnTypes,
@@ -18,11 +24,11 @@ type collapsedState = Record<string, string>;
 
 /** Start of styled components */
 
-const StyledExpansionIconSpan = styled(Span)`
+const StyledExpansionIconSpan = styled(StyledBaseSpan)`
   cursor: pointer;
 `;
 
-export const TableContainer = styled(TableElement)`
+export const TableContainer = styled(StyledBaseTable)`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => {
     const { colors } = useTheme();
     return `
@@ -36,7 +42,7 @@ export const TableContainer = styled(TableElement)`
   }}
 `;
 
-export const Header = styled(TR)`
+export const Header = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths }: RowProps) => {
     const { colors } = useTheme();
     return `
@@ -52,7 +58,7 @@ export const Header = styled(TR)`
   }}
 `;
 
-export const HeaderCell = styled(TH)`
+export const HeaderCell = styled(StyledBaseTH)`
   ${({ sortable }: { sortable: boolean }) => `
     display: flex;
     flex-flow: row;
@@ -70,7 +76,7 @@ export const HeaderCell = styled(TH)`
   `}
 `;
 
-export const Footer = styled(TR)`
+export const Footer = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths }: RowProps) => {
     const { colors } = useTheme();
     return `
@@ -86,7 +92,7 @@ export const Footer = styled(TR)`
   }}
 `;
 
-export const FooterCell = styled(TH)`
+export const FooterCell = styled(StyledBaseTH)`
   display: flex;
   flex-flow: row;
   cursor: pointer;
@@ -99,7 +105,7 @@ export const FooterCell = styled(TH)`
   }
 `;
 
-export const ResponsiveTitle = styled(Span)`
+export const ResponsiveTitle = styled(StyledBaseSpan)`
   ${({ sortable }: { sortable: boolean }) => {
     const { colors } = useTheme();
     return `
@@ -115,7 +121,7 @@ export const ResponsiveTitle = styled(Span)`
   }}
 `;
 
-export const Row = styled(TR)`
+export const Row = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => {
     const { colors } = useTheme();
     return `
@@ -161,7 +167,7 @@ export const GroupRow = styled(Row)`
   }}
 `;
 
-export const Cell = styled(TD)`
+export const Cell = styled(StyledBaseTD)`
   display: block;
   padding: 1em 0;
   word-break: break-word;

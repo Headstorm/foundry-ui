@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import * as rdd from 'react-device-detect';
+import { TierResult, TierType } from 'detect-gpu';
+
+import { useReducedMotion } from '../utils/a11y';
+import { usePerformanceInfo } from '../utils/performance';
 import fonts from '../enums/fonts';
 import colorsEnum from '../enums/colors';
 import { StyledSubcomponentType } from '../components/commonTypes';
@@ -16,7 +21,26 @@ export const defaultGlobalStyles = `
   }
 `;
 
-export const defaultAnalyticsFunction = (
+// in order to let users add their own colors to their theme provider,
+// added generic string keys, which makes the type ambiguous but gives users access to colorsEnum
+export type FoundryColorsType = Record<keyof typeof colorsEnum | string, string>;
+
+export type AnalyticsFunctionType = (
+  componentType: string,
+  eventType: string,
+  eventArgs: React.ChangeEvent<HTMLInputElement>,
+  dateTime: Date,
+  deviceInfo: Record<string, unknown>,
+  currentURL: string,
+  props?: any,
+) => any;
+
+export type AccessibilityPreferences = {
+  // TODO: Add to this
+  prefersReducedMotion: boolean;
+};
+
+export const defaultAnalyticsFunction: AnalyticsFunctionType = (
   componentType: string,
   eventType: string,
   eventArgs: any,
@@ -35,27 +59,24 @@ export const defaultAnalyticsFunction = (
   analytics: 'analytics' in props ? props.analytics : 'No analytics object provided',
 });
 
-type FoundryColorsType = Record<keyof typeof colorsEnum, string>;
-type AnalyticsFunctionType = (
-  componentType: string,
-  eventType: string,
-  eventArgs: React.ChangeEvent<HTMLInputElement>,
-  dateTime: Date,
-  deviceInfo: Record<string, unknown>,
-  currentURL: string,
-  props?: any,
-) => any;
+export const defaultAccessibilityPreferences: AccessibilityPreferences = {
+  prefersReducedMotion: true,
+};
 
 export type FoundryContextType = {
   globalStyles: string;
   colors: FoundryColorsType;
   analyticsFunction: AnalyticsFunctionType;
-  styleConstants: { [key in string]: number | string };
+  performanceInfo: TierResult;
+  accessibilityPreferences: AccessibilityPreferences;
+  styleConstants: Record<string, number | string>;
 };
 
 const defaultContextValue = {
   globalStyles: defaultGlobalStyles,
   colors: colorsEnum,
+  accessibilityPreferences: defaultAccessibilityPreferences,
+  performanceInfo: { tier: 2, type: 'BENCHMARK' as TierType },
   analyticsFunction: defaultAnalyticsFunction,
   styleConstants: {},
   // TODO Add Foundry's "theme" to items here and pull from the ContextProvider
@@ -69,18 +90,23 @@ export const FoundryProvider = ({
 }: {
   value?: {
     globalStyles?: string;
-    colors?: Partial<Record<keyof typeof colorsEnum, string>>;
+    colors?: FoundryColorsType;
     analyticsFunction?: AnalyticsFunctionType;
-    styleConstants?: {};
+    styleConstants?: Record<string, string | number>;
   };
   children: React.ReactNode;
-}) => {
+}): JSX.Element => {
   const {
     globalStyles = defaultGlobalStyles,
     colors = colorsEnum,
     styleConstants = {},
     analyticsFunction = defaultAnalyticsFunction,
   } = value;
+
+  // causes a rerender
+  const prefersReducedMotion = useReducedMotion();
+  // causes a rerender
+  const performanceInfo = usePerformanceInfo();
 
   // use the default set of styles, unless we've got something to override
   const mergedGlobalStyles =
@@ -101,6 +127,8 @@ export const FoundryProvider = ({
         globalStyles: mergedGlobalStyles,
         colors: mergedColors,
         analyticsFunction,
+        accessibilityPreferences: { prefersReducedMotion },
+        performanceInfo,
         styleConstants,
       }}
     >
@@ -109,12 +137,24 @@ export const FoundryProvider = ({
   );
 };
 
-export function useTheme(): FoundryContextType {
+export const useTheme = (): FoundryContextType => {
   const theme = useContext(FoundryContext);
   return theme;
-}
+};
 
-export const withGlobalStyle = (Component: StyledSubcomponentType) => {
+export const useColors = (): FoundryColorsType => {
+  const { colors } = useContext(FoundryContext);
+  return colors;
+};
+
+export const useAccessibilityPreferences = (): AccessibilityPreferences => {
+  const { accessibilityPreferences } = useContext(FoundryContext);
+  return accessibilityPreferences;
+};
+
+export const withGlobalStyle = (
+  Component: StyledSubcomponentType,
+): React.ForwardRefExoticComponent<any> => {
   const ComponentWithGlobalStyles = styled(Component)`
     ${props => {
       return props.globalStyles;
@@ -127,7 +167,13 @@ export const withGlobalStyle = (Component: StyledSubcomponentType) => {
   });
 };
 
-export const useAnalytics = () => {
+export const useAnalytics = (): ((
+  componentType: string,
+  eventFunction: any,
+  eventType: string,
+  eventArgs: any,
+  props: any,
+) => void) => {
   const context = useContext(FoundryContext);
   return (
     componentType: string,

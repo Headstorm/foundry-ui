@@ -18,8 +18,8 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -44,6 +44,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -277,8 +278,8 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -303,6 +304,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -536,8 +538,8 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -562,6 +564,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -795,8 +798,8 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -821,6 +824,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1054,8 +1058,8 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1080,6 +1084,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1262,8 +1267,8 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1288,6 +1293,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1521,8 +1527,8 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1547,6 +1553,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1606,7 +1613,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   transition: filter .5s,box-shadow .5s;
   contain: layout;
   position: relative;
-  z-index: 1;
+  z-index: 7;
 }
 
 .c3 {
@@ -1629,6 +1636,9 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-bottom: 0px solid transparent;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
   width: 15em;
   padding: .5em 1em;
 }
@@ -1647,6 +1657,39 @@ exports[`Dropdown closes options when clicking outside 2`] = `
 .c5 {
   width: 100%;
   text-align: left;
+}
+
+.c13 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  max-height: 10em;
+  overflow-y: auto;
+  width: 15em;
+  border: 1px solid undefined;
+  z-index: 1000;
+  bottom: 100%;
+  border-bottom: 0px solid transparent;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+
+.c12 {
+  background: white;
+  position: absolute;
+  left: 0px;
+  height: 10em;
+  overflow-y: auto;
+  width: 15em;
+  border: 1px solid #252D34;
+  z-index: 1000;
+  top: 100%;
+  border-top: 0px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+
+.c14 {
+  visibility: hidden;
+  bottom: 100%;
 }
 
 .c4 {
@@ -1685,7 +1728,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
           viewBox="0 0 24 24"
         >
           <path
-            d="M7,10L12,15L17,10H7Z"
+            d="M7,15L12,10L17,15H7Z"
             style="fill: currentColor;"
           />
         </svg>
@@ -1705,6 +1748,22 @@ exports[`Dropdown closes options when clicking outside 2`] = `
         color="#252D34"
       />
     </button>
+    <div
+      class=" c12"
+      color="#252D34"
+      role="listbox"
+    >
+      <div
+        style="width: 100%; height: 100%; position: absolute; top: 0px;"
+      >
+        <div
+          style="box-sizing: border-box; padding-top: 0px; padding-bottom: 0px; margin-top: 0px;"
+        />
+      </div>
+    </div>
+    <div
+      class=" c13 c14"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -1727,8 +1786,8 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -1753,6 +1812,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2075,8 +2135,8 @@ exports[`Dropdown displays all options when focused 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2101,6 +2161,7 @@ exports[`Dropdown displays all options when focused 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2332,8 +2393,8 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2358,6 +2419,7 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2542,8 +2604,8 @@ exports[`Dropdown does not display options on initial render 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2568,6 +2630,7 @@ exports[`Dropdown does not display options on initial render 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2749,8 +2812,8 @@ exports[`Dropdown does not display options on initial render when options is und
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2775,6 +2838,7 @@ exports[`Dropdown does not display options on initial render when options is und
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2956,8 +3020,8 @@ exports[`Dropdown renders a value when given a matching option id through props 
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -2982,6 +3046,7 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3214,8 +3279,8 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3240,6 +3305,7 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3432,8 +3498,8 @@ exports[`Dropdown renders one value when given two values but only one matches a
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3458,6 +3524,7 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3690,8 +3757,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3716,6 +3783,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3956,8 +4024,8 @@ exports[`Dropdown renders two values when given matching option ids through prop
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -3982,6 +4050,7 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4222,8 +4291,8 @@ exports[`Dropdown selects options from values prop 1`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -4248,6 +4317,7 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4488,8 +4558,8 @@ exports[`Dropdown selects options from values prop 2`] = `
   background-size: 100vw 100vh;
   background-attachment: fixed;
   border-radius: 0.25rem;
-  -webkit-animation: gZwmnl 2s linear infinite;
-  animation: gZwmnl 2s linear infinite;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -4514,6 +4584,7 @@ exports[`Dropdown selects options from values prop 2`] = `
 }
 
 .c2 {
+  -webkit-appearance: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

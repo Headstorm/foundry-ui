@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-import { Div } from '../../htmlElements';
+import { StyledBaseDiv } from '../../htmlElements';
 
 /* Keyframes for the loading bar gradient */
 export const movingGradient = keyframes`
@@ -14,7 +14,7 @@ export const animation = css`
 
 /* Styled div that represents the scroll bar
    Note: The border-radius 9999px is used to create a pill shape */
-const Progress = styled(Div)`
+const Progress = styled(StyledBaseDiv)`
   ${() => css`
     background: linear-gradient(
         45deg,
