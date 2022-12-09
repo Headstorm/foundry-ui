@@ -70,7 +70,7 @@ yarn add styled-components react-is @react-spring/web
 
 Get started with a simple hello world
 
-```
+```jsx
 import { Card } from '@headstorm/foundry-react-ui';
 
 function HelloWorld() {
@@ -85,7 +85,7 @@ Output:
 
 In this hello world example, you can see the Card component has preset styling for the Container and Body components that come right out of the box. Foundry components are wrapped in a container element. See the `CardContainer` and `Body` base configurations below. It is recommended that you check out the component's source code to see what styles are included.
 
-```
+```jsx
 // /foundry-react-ui/src/components/Card/Card.tsx
 
 export const CardContainer = styled(StyledBaseDiv)`
@@ -119,7 +119,7 @@ export const Body = styled(StyledBaseDiv)`
 
 ### Override styles
 
-```
+```jsx
 import React from 'react';
 import { Card, colors } from '@headstorm/foundry-react-ui';
 import styled from 'styled-components';
