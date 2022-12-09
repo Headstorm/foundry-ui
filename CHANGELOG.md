@@ -1,3 +1,10 @@
+## [1.20.4](https://github.com/Headstorm/foundry-ui/compare/v1.20.3...v1.20.4) (2022-12-09)
+
+
+### Bug Fixes
+
+* **analyticsfunction:** made all param types optional ([a2195c4](https://github.com/Headstorm/foundry-ui/commit/a2195c434456adb8fd63e4d94161504577bf9b08))
+
 ## [1.20.3](https://github.com/Headstorm/foundry-ui/compare/v1.20.2...v1.20.3) (2022-09-09)
 
 

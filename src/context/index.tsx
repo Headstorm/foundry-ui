@@ -26,12 +26,12 @@ export const defaultGlobalStyles = `
 export type FoundryColorsType = Record<keyof typeof colorsEnum | string, string>;
 
 export type AnalyticsFunctionType = (
-  componentType: string,
-  eventType: string,
-  eventArgs: React.ChangeEvent<HTMLInputElement>,
-  dateTime: Date,
-  deviceInfo: Record<string, unknown>,
-  currentURL: string,
+  componentType?: string,
+  eventType?: string,
+  eventArgs?: React.ChangeEvent<HTMLInputElement>,
+  dateTime?: Date,
+  deviceInfo?: Record<string, unknown>,
+  currentURL?: string,
   props?: any,
 ) => any;
 
@@ -41,12 +41,12 @@ export type AccessibilityPreferences = {
 };
 
 export const defaultAnalyticsFunction: AnalyticsFunctionType = (
-  componentType: string,
-  eventType: string,
-  eventArgs: any,
-  dateTime: Date,
-  deviceInfo: Record<string, unknown>,
-  currentURL: string,
+  componentType?: string,
+  eventType?: string,
+  eventArgs?: any,
+  dateTime?: Date,
+  deviceInfo?: Record<string, unknown>,
+  currentURL?: string,
   props?: any,
 ): Record<string, unknown> => ({
   componentType,
