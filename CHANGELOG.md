@@ -1,3 +1,10 @@
+## [1.20.5](https://github.com/Headstorm/foundry-ui/compare/v1.20.4...v1.20.5) (2022-12-13)
+
+
+### Bug Fixes
+
+* **exports:** add style-related util functions to exports ([6b154f3](https://github.com/Headstorm/foundry-ui/commit/6b154f3ffbc6adf921b5189218bb033084ed1a11))
+
 ## [1.20.4](https://github.com/Headstorm/foundry-ui/compare/v1.20.3...v1.20.4) (2022-12-09)
 
 
