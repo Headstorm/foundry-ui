@@ -18,6 +18,7 @@ import Skeleton from './components/Skeleton';
 import { FoundryProvider, FoundryContext, useTheme, withGlobalStyle } from './context';
 import { useStateWithPrevious, useWindowSizeObserver, useScrollObserver } from './utils/hooks';
 import { clamp } from './utils/math';
+import { getShadowStyle, calculateElevationValues, getDropdownTagStyle } from './utils/styles';
 
 import {
   StyledBaseDiv,
@@ -84,6 +85,9 @@ export {
   clamp,
   getFontColorFromVariant,
   getBackgroundColorFromVariant,
+  getShadowStyle,
+  calculateElevationValues,
+  getDropdownTagStyle,
   disabledStyles,
   useStateWithPrevious,
   useWindowSizeObserver,
