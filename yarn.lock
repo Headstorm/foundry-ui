@@ -1879,6 +1879,7 @@ __metadata:
     "@types/lodash": ^4.14.150
     "@types/lodash.debounce": ^4.0.6
     "@types/node": ^13.11.1
+    "@types/react": ^18.0.26
     "@types/react-dom": ^16.9.6
     "@types/react-portal": ^4.0.4
     "@types/shortid": ^0.0.29
@@ -6152,6 +6153,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: ff15ff5b9d06eb04155dd7fc86c005e6605ca3181edea98c0a0d00c8fe918bdd22c3329dd12bea4b7f33094a8491bc7182f5d407f4852f66323846c2b080e5f9
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.0.26":
+  version: 18.0.26
+  resolution: "@types/react@npm:18.0.26"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: b62f0ea3cdfa68e106391728325057ad36f1bde7ba2dfae029472c47e01e482bc77c6ba4f1dad59f3f04ee81cb597618ff7c30a33c157c0a20462b6dd6aa2d4d
   languageName: node
   linkType: hard
 
