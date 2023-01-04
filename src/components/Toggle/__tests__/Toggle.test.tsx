@@ -19,7 +19,20 @@ describe('Toggle', () => {
 
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
-      const component = <Toggle onToggle={() => {}} inputProps={{ 'aria-label': 'test' }}></Toggle>;
+      const component = (
+        <Toggle
+          onToggle={() => {}}
+          inputProps={{
+            'aria-label': 'test',
+            // forcing this aria-checked attribute, as jest-axe requires it,
+            // but useSwitch from react-aria no longer generates it.
+            // https://github.com/adobe/react-spectrum/pull/3687
+            // https://github.com/adobe/react-spectrum/issues/1264
+            // https://github.com/adobe/react-spectrum/issues/3130
+            'aria-checked': false,
+          }}
+        ></Toggle>
+      );
       const { container } = render(component);
       const results = await axe(container);
       expect(container).toMatchSnapshot();
