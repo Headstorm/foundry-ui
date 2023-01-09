@@ -87,6 +87,7 @@ exports[`Toggle Accessibility Tests Should pass accessibility test with default 
       class=" c3"
       role="switch"
       type="checkbox"
+      value=""
     />
   </label>
 </div>
