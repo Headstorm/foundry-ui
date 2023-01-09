@@ -55,8 +55,8 @@ export const defaultAnalyticsFunction: AnalyticsFunctionType = (
   dateTime,
   deviceInfo,
   currentURL,
-  name: 'name' in props ? props.name : 'No name provided',
-  analytics: 'analytics' in props ? props.analytics : 'No analytics object provided',
+  name: props?.name ?? 'No name provided',
+  analytics: props?.analytics ?? 'No analytics object provided',
 });
 
 export const defaultAccessibilityPreferences: AccessibilityPreferences = {
