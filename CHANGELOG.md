@@ -1,3 +1,10 @@
+## [1.20.6](https://github.com/Headstorm/foundry-ui/compare/v1.20.5...v1.20.6) (2023-01-10)
+
+
+### Bug Fixes
+
+* **analytics:** safely access props, as it can be undefined ([dd5c329](https://github.com/Headstorm/foundry-ui/commit/dd5c32916e1a6d44a734514230e1c7d97e3646aa))
+
 ## [1.20.5](https://github.com/Headstorm/foundry-ui/compare/v1.20.4...v1.20.5) (2022-12-13)
 
 
