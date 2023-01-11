@@ -1,3 +1,10 @@
+## [1.20.7](https://github.com/Headstorm/foundry-ui/compare/v1.20.6...v1.20.7) (2023-01-11)
+
+
+### Bug Fixes
+
+* **dropdown:** fixed the inability for the dropdown to stay open once clicked ([5172bc8](https://github.com/Headstorm/foundry-ui/commit/5172bc8b795e898dc2ac3ff4b28154e4c87093c9)), closes [#421](https://github.com/Headstorm/foundry-ui/issues/421)
+
 ## [1.20.6](https://github.com/Headstorm/foundry-ui/compare/v1.20.5...v1.20.6) (2023-01-10)
 
 
