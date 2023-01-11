@@ -1,4 +1,12 @@
-import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiClose, mdiMenuDown, mdiMenuUp } from '@mdi/js';
@@ -45,6 +53,7 @@ const Container = styled(StyledBaseDiv)`
     `;
   }}
 `;
+
 // TODO - Add constants for width
 export const ValueContainer = styled(Button.Container)`
   ${({ isOpen, isOpenedBelow, isHidden }) => {
@@ -487,11 +496,12 @@ const Dropdown = ({
           const [dropdown, invisibleDrop] = entries;
           // flip the view if the other direction is more visible in viewport
           // and the options container is less than the threshold
+
           if (
             dropdown.intersectionRatio < intersectionThreshold &&
             invisibleDrop.intersectionRatio > dropdown.intersectionRatio
           ) {
-            setIsOpenedBelow(drop => !drop);
+            setIsOpenedBelow((drop: boolean) => !drop);
           }
         }
       }
@@ -506,22 +516,25 @@ const Dropdown = ({
   );
 
   const stringifiedFilteredOptions = JSON.stringify(filteredOptions);
-  useEffect(() => {
+
+  useLayoutEffect(() => {
+    let timer: number;
     if (isOpen) {
       // setTimeout ensures this code renders after the initial render
-      const timer = window.setTimeout(() => {
+      timer = window.setTimeout(() => {
         const optionsContainer = optionsContainerInternalRef.current;
         const hiddenContainer = hiddenOptionsContainerInternalRef.current;
 
         if (optionsContainer) {
-          if (isVirtual) {
+          if (shouldStayInView) {
             const virtuosoContainer = optionsContainer.firstElementChild;
             const virtuosoScroller = virtuosoContainer?.firstElementChild;
+
             if (virtuosoScroller && virtuosoScroller.clientHeight < optionsContainer.clientHeight) {
               setIsOverflowing(false);
             }
-          } else if (optionsContainer.scrollHeight > optionsContainer.clientHeight) {
-            setIsOverflowing(true);
+          } else {
+            setIsOverflowing(optionsContainer.scrollHeight > optionsContainer.clientHeight);
           }
         }
 
@@ -538,12 +551,13 @@ const Dropdown = ({
           intersectObserver.observe(hiddenContainer);
         }
       }, 0);
-      return () => {
-        clearTimeout(timer);
-        intersectObserver.disconnect();
-      };
     }
-  }, [intersectObserver, isOpen, isVirtual, stringifiedFilteredOptions]);
+
+    return () => {
+      clearTimeout(timer);
+      intersectObserver.disconnect();
+    };
+  }, [intersectObserver, shouldStayInView, isOpen, stringifiedFilteredOptions]);
 
   const optionsHash: { [key: string]: OptionProps } = useMemo(() => {
     const hash: { [key: string]: OptionProps } = {};
@@ -564,9 +578,12 @@ const Dropdown = ({
     (e: React.FocusEvent) => {
       e.preventDefault();
       e.persist();
+
+      // when not searchable, blur
+      // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
         window.setTimeout(() => {
-          if (focusWithin) {
+          if (focusWithin && (!searchable || e.target.id === `${name}-search-input`)) {
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -576,7 +593,7 @@ const Dropdown = ({
         }, 0),
       );
     },
-    [handleOnBlur, focusWithin],
+    [handleOnBlur, focusWithin, name, searchable],
   );
 
   const handleFocus = useCallback(
@@ -596,6 +613,7 @@ const Dropdown = ({
         setIsHidden(true);
         setIsOpenedBelow(true);
       }
+
       setIsOpen(true);
 
       if (handleOnFocus) {
@@ -830,7 +848,8 @@ const Dropdown = ({
     }
   };
 
-  const optionsToRender = searchable && searchFiltersOptions ? filteredOptions : options;
+  const optionsToRender: OptionProps[] =
+    searchable && searchFiltersOptions ? filteredOptions : options;
 
   return (
     <StyledContainer
@@ -923,7 +942,7 @@ const Dropdown = ({
                   Scroller: InternalOptionsContainer,
                 } as Components
               }
-              itemContent={(_index, option) => (
+              itemContent={(_index: number, option: OptionProps) => (
                 <StyledOptionItem
                   id={`${name}-option-${option.id}`}
                   key={`${name}-option-${option.id}`}
