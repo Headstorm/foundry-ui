@@ -791,25 +791,24 @@ const Dropdown = ({
 
   const InternalOptionsContainer = useMemo(
     () =>
-      React.forwardRef(
-        (
-          { children }: { children: React.ReactNode },
-          listRef?: React.RefObject<HTMLDivElement>,
-        ) => (
-          <StyledOptionsContainer
-            color={defaultedColor}
-            variant={optionsVariant}
-            isVirtual={isVirtual}
-            role="listbox"
-            ref={mergeRefs([optionsContainerRef, optionsContainerInternalRef, listRef])}
-            isOpenedBelow={isOpenedBelow}
-            isHidden={isHidden}
-            {...optionsContainerProps}
-          >
-            {children}
-          </StyledOptionsContainer>
-        ),
-      ),
+      React.forwardRef(({ children }: { children: React.ReactNode }, listRef) => (
+        <StyledOptionsContainer
+          color={defaultedColor}
+          variant={optionsVariant}
+          isVirtual={isVirtual}
+          role="listbox"
+          ref={mergeRefs([
+            optionsContainerRef,
+            optionsContainerInternalRef,
+            listRef as React.RefObject<HTMLDivElement>,
+          ])}
+          isOpenedBelow={isOpenedBelow}
+          isHidden={isHidden}
+          {...optionsContainerProps}
+        >
+          {children}
+        </StyledOptionsContainer>
+      )),
     [
       defaultedColor,
       isHidden,
