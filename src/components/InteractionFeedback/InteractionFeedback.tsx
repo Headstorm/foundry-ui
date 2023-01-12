@@ -21,7 +21,7 @@ const SVGContainer = styled.svg`
 `;
 
 type Animation = { cx: string; cy: string; id: string };
-type Transition = { r: string } & Animation;
+// type Transition = { r: string } & Animation;
 
 export type InteractionFeedbackProps = {
   StyledContainer?: StyledSubcomponentType;

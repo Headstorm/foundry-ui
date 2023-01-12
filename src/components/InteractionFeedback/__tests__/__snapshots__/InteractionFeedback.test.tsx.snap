@@ -31,7 +31,7 @@ exports[`InteractionFeedback Shows InteractionFeedback with default props 1`] = 
         cy="NaN%"
         fill="#DA4200"
         opacity="0.5"
-        r="0"
+        r="20"
       />
     </svg>
   </div>
