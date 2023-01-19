@@ -1,3 +1,10 @@
+## [1.20.8](https://github.com/Headstorm/foundry-ui/compare/v1.20.7...v1.20.8) (2023-01-19)
+
+
+### Bug Fixes
+
+* **analytics function:** switch nullish coalescing to a ternary to make foundry Node-14 compatible ([bcc8b57](https://github.com/Headstorm/foundry-ui/commit/bcc8b57a1e56fcc5205dcaf928d65d93889c2e97))
+
 ## [1.20.7](https://github.com/Headstorm/foundry-ui/compare/v1.20.6...v1.20.7) (2023-01-11)
 
 
