@@ -7236,10 +7236,10 @@ detect-file@^1.0.0:
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
   integrity sha512-DtCOLG98P007x7wiiOmfI0fi3eIKyWiLTGJ2MDnVi/E04lWGbf+JzrRHMm0rgIIZJGtHpKpbVgLWHrv8xXpc3Q==
 
-detect-gpu@^4.0.27:
-  version "4.0.27"
-  resolved "https://registry.yarnpkg.com/detect-gpu/-/detect-gpu-4.0.27.tgz#e98f8c541c231f12ab3de4a972df27897c436bc8"
-  integrity sha512-rtDUys9uIWHVoI9RoUk21MIJTTZpu1rF8mLRvraDl4V+1+32RJrjs0XudX5HafpFn0qL+l2gEW7WieG8PrqUsw==
+detect-gpu@^4.0.50:
+  version "4.0.50"
+  resolved "https://registry.yarnpkg.com/detect-gpu/-/detect-gpu-4.0.50.tgz#ba9df7e6b8416b1160303811015102bbad283aa0"
+  integrity sha512-T67HE5+ONONN8rPXCBJPupyCg2QT8+l2NUUMuPxAppsMJBDPG/Jg0URLs6GyDzLm2niUE+oncIHSuy3VinoPeQ==
   dependencies:
     webgl-constants "^1.1.1"
 
