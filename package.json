@@ -101,7 +101,7 @@
     "fuse.js": "^6.4.6",
     "lodash.debounce": "^4.0.8",
     "polished": "^4.1.1",
-    "react-aria": "^3.9.0",
+    "react-aria": "^3.22.0",
     "react-device-detect": "^1.17.0",
     "react-portal": "^4.2.2",
     "react-virtuoso": "^1.10.5",
