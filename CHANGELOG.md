@@ -1,3 +1,10 @@
+## [1.20.9](https://github.com/Headstorm/foundry-ui/compare/v1.20.8...v1.20.9) (2023-02-25)
+
+
+### Bug Fixes
+
+* upgrade @react-stately/toggle from 3.3.1 to 3.4.4 ([413e078](https://github.com/Headstorm/foundry-ui/commit/413e078ec6298f493139ffda8888cb954e62ac7f))
+
 ## [1.20.8](https://github.com/Headstorm/foundry-ui/compare/v1.20.7...v1.20.8) (2023-01-19)
 
 
