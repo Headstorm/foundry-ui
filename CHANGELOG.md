@@ -1,3 +1,10 @@
+## [1.20.10](https://github.com/Headstorm/foundry-ui/compare/v1.20.9...v1.20.10) (2023-02-25)
+
+
+### Bug Fixes
+
+* upgrade detect-gpu from 4.0.27 to 4.0.50 ([6312af4](https://github.com/Headstorm/foundry-ui/commit/6312af452c0fae2d7470a64d9ff53ca1eb6830ba))
+
 ## [1.20.9](https://github.com/Headstorm/foundry-ui/compare/v1.20.8...v1.20.9) (2023-02-25)
 
 
