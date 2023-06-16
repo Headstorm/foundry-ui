@@ -8,7 +8,7 @@ import { name, address, company, commerce } from 'faker';
 
 import Table, { ExpansionIconColumnName } from './Table';
 import Checkbox from '../Checkbox/Checkbox';
-import { columnTypes, ExpansionIconProps } from './types';
+import { Columns, ExpansionIconProps } from './types';
 import { CheckboxTypes } from '../../enums/checkboxTypes';
 
 type SampleDataType = {
@@ -179,7 +179,7 @@ export const Default: Story<DefaultProps> = ({
     </ActionCellContainer>
   );
 
-  const sampleColumns: { [index: string]: any } = {
+  const sampleColumns: Columns = {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
@@ -192,6 +192,8 @@ export const Default: Story<DefaultProps> = ({
       name: 'Name',
       width: nameWidth,
       footerContent: 'NameFooter',
+      sortable: true,
+      sortFunction: (name1: string, name2: string) => name1 > name2,
     },
     title: {
       name: 'Title',
@@ -208,7 +210,7 @@ export const Default: Story<DefaultProps> = ({
       width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
-      sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
+      sortFunction: (a: string, b: string) => a.length > b.length,
       footerContent: 'NotesFooter',
     },
     action: {
@@ -220,7 +222,7 @@ export const Default: Story<DefaultProps> = ({
     },
   };
 
-  return <Table columns={sampleColumns} data={rows as columnTypes[]} />;
+  return <Table columns={sampleColumns} data={rows as Columns[]} />;
 };
 Default.args = {
   'Selection width': '2rem',
@@ -340,7 +342,7 @@ export const Groups: Story<GroupsProps> = ({
     </Table.Cell>
   );
 
-  const sampleColumns: { [index: string]: any } = {
+  const sampleColumns: Columns = {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
@@ -353,26 +355,24 @@ export const Groups: Story<GroupsProps> = ({
     name: {
       name: 'Name',
       width: nameWidth,
-      // footerContent: 'NameFooter',
+      sortable: true,
+      sortFunction: (name1: string, name2: string) => name1 > name2,
     },
     title: {
       name: 'Title',
       width: titleWidth,
-      // footerContent: 'TitleFooter',
     },
     address: {
       name: 'Address',
       width: addressWidth,
-      // footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',
       width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
-      sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
+      sortFunction: (a: string, b: string) => a.length > b.length,
       groupCellComponent: EmptyCell,
-      // footerContent: 'NotesFooter',
     },
   };
 
@@ -389,7 +389,8 @@ export const Groups: Story<GroupsProps> = ({
   return (
     <Table
       columns={sampleColumns}
-      data={rows as columnTypes[][]}
+      // TODO change data to type any
+      data={rows as Columns[][]}
       sortGroups={sortGroups}
       groupHeaderPosition={position}
       areGroupsCollapsible={areGroupsCollapsible}

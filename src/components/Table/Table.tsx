@@ -13,8 +13,8 @@ import {
 } from '../../htmlElements';
 import {
   CellOptions,
-  ColumnType,
-  ColumnTypes,
+  Column,
+  Columns,
   InternalExpansionIconProps,
   RowProps,
   TableProps,
@@ -295,7 +295,7 @@ const Table = ({
 
   // this builds the string from the columns
   const columnWidths = Object.values(copiedColumns)
-    .map((col: ColumnTypes[0]) => {
+    .map((col: Columns[0]) => {
       if (col.minTableWidth && width <= col.minTableWidth) {
         return '0px';
       }
@@ -328,7 +328,7 @@ const Table = ({
    *
    * `direction` is true for ascending, false for descending.
    */
-  const compareEntries = (entry1: any, entry2: any, column: ColumnType, isAscending: boolean) => {
+  const compareEntries = (entry1: any, entry2: any, column: Column, isAscending: boolean) => {
     // If this column has a sort custom sort function, use it.
     if (column && Object.prototype.hasOwnProperty.call(column, 'sortFunction')) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -361,7 +361,7 @@ const Table = ({
       );
     } else {
       // Sort the content of each group
-      (data as Array<Array<ColumnTypes>>).forEach(() => {
+      (data as Array<Array<Columns>>).forEach(() => {
         data.sort((row1: any, row2: any) =>
           compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
         );
@@ -369,7 +369,7 @@ const Table = ({
 
       // Sort the groups
       if (sortGroups) {
-        (data as Array<Array<ColumnTypes>>).sort((group1: any, group2: any) =>
+        (data as Array<Array<Columns>>).sort((group1: any, group2: any) =>
           compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),
         );
       }
@@ -402,7 +402,7 @@ const Table = ({
    * @param {any} options.RenderedCell - The component used as the cell
    * @param {string} options.headerColumnKey - The header column key for the cell
    * @param {boolean} options.breakPointHit - If the breakpoint has been hit for width
-   * @param {ColumnTypes} options.row - the data for the row, each cell should be able to the row's data
+   * @param {Columns} options.row - the data for the row, each cell should be able to the row's data
    * @param {number} options.index - The index of the cell in the row
    * @param {number} options.indexModifier - Used only when creating cells in a group. Used to account for group labels
    * @param {any} options.CollapseExpandedIcon - Component to be used for the collapse icon. Only used for collapsible group label cells
@@ -482,8 +482,8 @@ const Table = ({
   const createGroups = () => {
     // Generate groupings - Note that we are making shallow copies of the arrays so that we do not
     // modify the props directly since this is an Array of Arrays.
-    return [...(sortedData as Array<Array<ColumnTypes>>)].map(
-      (group: Array<ColumnTypes>, idx: number) => {
+    return [...(sortedData as Array<Array<Columns>>)].map(
+      (group: Array<Columns>, idx: number) => {
         const groupLabelIndex: number = group.findIndex(grp => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -505,7 +505,7 @@ const Table = ({
         const isCollapsed = !!collapsedGroups[groupLabelDataString + idx];
 
         // Generate the rows for this group
-        const rows = groupCopy.map((row: ColumnTypes, index: number) => {
+        const rows = groupCopy.map((row: Columns, index: number) => {
           const RenderedRow = row.rowComponent || StyledRow;
           if (index === groupLabelIndex) return null;
 
@@ -622,7 +622,7 @@ const Table = ({
 
     return (
       <tbody>
-        {(sortedData as Array<ColumnTypes>).map((row: ColumnTypes, index: number) => {
+        {(sortedData as Array<Columns>).map((row: Columns, index: number) => {
           // map over the rows
           const RenderedRow = row.rowComponent || StyledRow;
           // Rows.map return
