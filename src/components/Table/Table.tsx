@@ -110,12 +110,11 @@ export const ResponsiveHeaderCell = styled(StyledBaseSpan)`
     const { colors } = useTheme();
     return `
       display: block;
-      padding: 1em 0;
       word-break: break-word;
       hyphens: auto;
       color: ${colors.primary};
-      padding: 0.5em;
       user-select: none;
+      padding: 0.5em;
       cursor: pointer;
       margin-right: .5em;
       background-color: rgba(0,0,0,0.05);
@@ -177,6 +176,7 @@ export const Cell = styled(StyledBaseTD)`
   word-break: break-word;
   hyphens: auto;
   width: unset;
+  padding: 0.5em;
 `;
 
 export const SortIcon = styled(Icon)`
@@ -192,7 +192,7 @@ export const SortIcon = styled(Icon)`
 
 const CellContainer = styled(StyledBaseDiv)`
   display: flex;
-  padding: 1em 0;
+  padding: 0.5em 0;
 `;
 
 /** Start of variables */
@@ -743,6 +743,7 @@ Table.Cell = Cell;
  */
 Table.Title = ResponsiveHeaderCell;
 Table.ResponsiveHeaderCell = ResponsiveHeaderCell;
+Table.CellContainer = CellContainer;
 Table.ExpansionIconColumnName = ExpansionIconColumnName;
 
 export default Table;

@@ -193,7 +193,6 @@ export const Default: Story<DefaultProps> = ({
       width: nameWidth,
       footerContent: 'NameFooter',
       sortable: true,
-      sortFunction: (name1: string, name2: string) => name1 > name2,
     },
     title: {
       name: 'Title',
@@ -210,7 +209,8 @@ export const Default: Story<DefaultProps> = ({
       width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
-      sortFunction: (a: string, b: string) => a.length > b.length,
+      sortable: true,
+      sortFunction: (a: string, b: string) => a.length < b.length,
       footerContent: 'NotesFooter',
     },
     action: {
@@ -356,7 +356,7 @@ export const Groups: Story<GroupsProps> = ({
       name: 'Name',
       width: nameWidth,
       sortable: true,
-      sortFunction: (name1: string, name2: string) => name1 > name2,
+      sortFunction: (name1: string, name2: string) => name1 < name2,
     },
     title: {
       name: 'Title',
@@ -371,7 +371,7 @@ export const Groups: Story<GroupsProps> = ({
       width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
-      sortFunction: (a: string, b: string) => a.length > b.length,
+      sortFunction: (a: string, b: string) => a.length < b.length,
       groupCellComponent: EmptyCell,
     },
   };
