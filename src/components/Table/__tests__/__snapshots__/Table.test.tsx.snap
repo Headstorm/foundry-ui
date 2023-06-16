@@ -47,7 +47,7 @@ exports[`Table Shows Table with default props 1`] = `
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0em 2em;
-  row-gap: .5em;
+  row-gap: 0.5em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
   position: relative;
@@ -68,18 +68,17 @@ exports[`Table Shows Table with default props 1`] = `
   height: 100%;
   background-color: rgba(0,0,0,0.2);
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
   pointer-events: none;
 }
 
 .c5:hover:before {
-  opacity: .3;
+  opacity: 0.3;
 }
 
-.c6 {
+.c7 {
   display: block;
-  padding: 1em 0;
   word-break: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
@@ -112,6 +111,14 @@ exports[`Table Shows Table with default props 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em 0;
 }
 
 <div>
@@ -174,59 +181,95 @@ exports[`Table Shows Table with default props 1`] = `
       <tr
         class=" c5"
       >
-        <td
+        <div
           class=" c6"
         >
-          Apple
-        </td>
-        <td
+          <td
+            class=" c7"
+          >
+            Apple
+          </td>
+        </div>
+        <div
           class=" c6"
         >
-          Red
-        </td>
-        <td
+          <td
+            class=" c7"
+          >
+            Red
+          </td>
+        </div>
+        <div
           class=" c6"
         >
-          1
-        </td>
+          <td
+            class=" c7"
+          >
+            1
+          </td>
+        </div>
       </tr>
       <tr
         class=" c5"
       >
-        <td
+        <div
           class=" c6"
         >
-          Kiwi
-        </td>
-        <td
+          <td
+            class=" c7"
+          >
+            Kiwi
+          </td>
+        </div>
+        <div
           class=" c6"
         >
-          Brown
-        </td>
-        <td
+          <td
+            class=" c7"
+          >
+            Brown
+          </td>
+        </div>
+        <div
           class=" c6"
         >
-          2
-        </td>
+          <td
+            class=" c7"
+          >
+            2
+          </td>
+        </div>
       </tr>
       <tr
         class=" c5"
       >
-        <td
+        <div
           class=" c6"
         >
-          Banana
-        </td>
-        <td
+          <td
+            class=" c7"
+          >
+            Banana
+          </td>
+        </div>
+        <div
           class=" c6"
         >
-          Yellow
-        </td>
-        <td
+          <td
+            class=" c7"
+          >
+            Yellow
+          </td>
+        </div>
+        <div
           class=" c6"
         >
-          3
-        </td>
+          <td
+            class=" c7"
+          >
+            3
+          </td>
+        </div>
       </tr>
     </tbody>
     <tfoot />
