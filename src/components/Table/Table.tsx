@@ -116,9 +116,9 @@ export const ResponsiveHeaderCell = styled(StyledBaseSpan)`
       user-select: none;
       padding: 0.5em;
       cursor: pointer;
-      margin-right: .5em;
-      background-color: rgba(0,0,0,0.05);
-      border-radius: .5rem;
+      margin-right: 0.5em;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
       ${sortable ? '' : 'pointer-events: none;'}
     `;
   }}
@@ -184,7 +184,7 @@ export const SortIcon = styled(Icon)`
     margin-left: 1em;
     fill: white;
     width: 1em;
-    transition: transform .2s, opacity .5s;
+    transition: transform 0.2s, opacity 0.5s;
     opacity: ${direction === null ? 0 : 1};
     transform: rotate(${direction ? 0 : 180}deg);
   `}
@@ -361,7 +361,7 @@ const Table = ({
       );
     } else {
       // Sort the content of each group
-      (data as Array<Array<RowEntry>>).forEach((group) => {
+      (data as Array<Array<RowEntry>>).forEach(group => {
         group.sort((row1: any, row2: any) =>
           compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
         );

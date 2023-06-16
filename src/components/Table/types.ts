@@ -12,7 +12,7 @@ export type InternalExpansionIconProps = {
 };
 
 /** Map between column key strings and column properties. */
-export type Columns = Record<string, Column>
+export type Columns = Record<string, Column>;
 
 /** The properties that can be defined for a single column. */
 export interface Column {

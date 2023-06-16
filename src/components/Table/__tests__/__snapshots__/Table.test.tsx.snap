@@ -85,15 +85,16 @@ exports[`Table Shows Table with default props 1`] = `
   -ms-hyphens: auto;
   hyphens: auto;
   width: unset;
+  padding: 0.5em;
 }
 
 .c3 {
   margin-left: 1em;
   fill: white;
   width: 1em;
-  -webkit-transition: -webkit-transform .2s,opacity .5s;
-  -webkit-transition: transform .2s,opacity .5s;
-  transition: transform .2s,opacity .5s;
+  -webkit-transition: -webkit-transform 0.2s,opacity 0.5s;
+  -webkit-transition: transform 0.2s,opacity 0.5s;
+  transition: transform 0.2s,opacity 0.5s;
   opacity: 0;
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -104,9 +105,9 @@ exports[`Table Shows Table with default props 1`] = `
   margin-left: 1em;
   fill: white;
   width: 1em;
-  -webkit-transition: -webkit-transform .2s,opacity .5s;
-  -webkit-transition: transform .2s,opacity .5s;
-  transition: transform .2s,opacity .5s;
+  -webkit-transition: -webkit-transform 0.2s,opacity 0.5s;
+  -webkit-transition: transform 0.2s,opacity 0.5s;
+  transition: transform 0.2s,opacity 0.5s;
   opacity: 1;
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
@@ -118,7 +119,7 @@ exports[`Table Shows Table with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 1em 0;
+  padding: 0.5em 0;
 }
 
 <div>
