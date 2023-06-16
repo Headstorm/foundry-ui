@@ -528,7 +528,7 @@ const Table = ({
                 const breakPointHit =
                   width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
 
-                const options = {
+                const options: CellOptions = {
                   RenderedCell,
                   headerColumnKey,
                   breakPointHit,

@@ -98,7 +98,7 @@ export type RowProps = {
 };
 
 export type CellOptions = {
-  RenderedCell: StyledSubcomponentType;
+  RenderedCell: ComponentBuilder;
   headerColumnKey: string;
   breakPointHit: boolean;
   row: ColumnTypes;
