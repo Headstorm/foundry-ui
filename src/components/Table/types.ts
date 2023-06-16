@@ -11,30 +11,42 @@ export type InternalExpansionIconProps = {
   onClick: MouseEventHandler;
 };
 
-export interface columnTypes {
-  [index: string]: {
-    name?: string;
-    width?: string;
-    minTableWidth?: number;
-    sortable?: boolean;
-    footerContent?: ReactNode;
-    sortFunction?: (item1: any, item2: any) => boolean;
-    isGroupLabel?: boolean;
-    cellComponent?: StyledSubcomponentType;
-    rowComponent?: StyledSubcomponentType;
-    headerCellComponent?: StyledSubcomponentType;
-    groupCellComponent?: StyledSubcomponentType;
-  };
+export interface ColumnTypes {
+  [index: string]: ColumnType;
 }
+
+export interface ColumnType {
+  name?: string;
+  width?: string;
+  minTableWidth?: number;
+  sortable?: boolean;
+  footerContent?: ReactNode;
+  sortFunction?: (item1: any, item2: any) => boolean;
+  isGroupLabel?: boolean;
+  cellComponent?: ComponentBuilder;
+  rowComponent?: ComponentBuilder;
+  headerCellComponent?: ComponentBuilder;
+  groupCellComponent?: ComponentBuilder;
+}
+
+type ComponentBuilder = StyledSubcomponentType | ((props: any) => JSX.Element) | React.FC;
+
+/**
+ * @deprecated Use `ColumnTypes`.
+ */
+export type columnTypes = ColumnTypes;
 
 export type TableProps = {
   areGroupsCollapsible?: boolean;
   columnGap?: string;
-  columns: columnTypes;
-  data?: columnTypes[] | Array<Array<columnTypes>>;
+  columns: ColumnTypes;
+  data?: ColumnTypes[] | Array<Array<ColumnTypes>>;
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
   expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
+  /**
+   * The width of the Table (in px) at which the Table collapses into vertical mode.
+   */
   minWidthBreakpoint?: number;
   sortGroups?: boolean;
 
@@ -43,22 +55,40 @@ export type TableProps = {
   StyledGroupLabelRow?: StyledSubcomponentType;
   StyledHeader?: StyledSubcomponentType;
   StyledHeaderCell?: StyledSubcomponentType;
+  /**
+   * If in responsive mode (width < `minWidthBreakpoint`), the `StyledResponsiveHeaderCell` will appear next to the
+   * `StyledCell`. By default, it displays the `name` of the column. This component is not displayed if not in responsive
+   * mode, or if the column has no `name`.
+   */
+  StyledResponsiveHeaderCell?: StyledSubcomponentType;
   StyledRow?: StyledSubcomponentType;
   StyledFooter?: StyledSubcomponentType;
   StyledFooterCell?: StyledSubcomponentType;
+  /**
+   * If in responsive mode (width < `minWidthBreakpoint`), the `CellContainer` contains the `StyledCell`
+   * and the `StyledResponsiveHeaderCellA `CellContainer` contains the `StyledCell`, as well as the `StyledResponsiveHeaderCell` for each cell
+   * if width is less than `minWidthBreakpoint`. If width is greater than `minWidthBreakpoint`, then the `CellContainer`
+   * only wraps the `StyledCell`.
+   */
+  StyledCellContainer?: StyledSubcomponentType;
 
   cellProps?: SubcomponentPropsType;
   containerProps?: SubcomponentPropsType;
   groupLabelRowProps?: SubcomponentPropsType;
   headerProps?: SubcomponentPropsType;
   headerCellProps?: SubcomponentPropsType;
+  responsiveHeaderCellProps?: SubcomponentPropsType;
   rowProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLTableElement>;
   groupLabelRowRef?: React.RefObject<HTMLElement>;
   headerRef?: React.RefObject<HTMLTableRowElement>;
-  headerCellRef?: React.RefObject<HTMLTableHeaderCellElement>;
+  /**
+   * @deprecated Do not use.
+   */
+  headerCellRef?: React.RefObject<HTMLTableCellElement>;
 };
+
 export type RowProps = {
   columnGap: string;
   columnWidths: string;
@@ -66,11 +96,12 @@ export type RowProps = {
   reachedMinWidth?: boolean;
   isCollapsed?: boolean;
 };
+
 export type CellOptions = {
-  RenderedCell: any;
+  RenderedCell: StyledSubcomponentType;
   headerColumnKey: string;
   breakPointHit: boolean;
-  row: columnTypes;
+  row: ColumnTypes;
   index: number;
   indexModifier?: number;
   CollapseExpandedIcon?: any;
