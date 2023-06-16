@@ -14,8 +14,8 @@ import {
 import {
   CellOptions,
   Column,
-  Columns,
   InternalExpansionIconProps,
+  RowEntry,
   RowProps,
   TableProps,
 } from './types';
@@ -31,7 +31,7 @@ const StyledExpansionIconSpan = styled(StyledBaseSpan)`
 export const TableContainer = styled(StyledBaseTable)`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => {
     const { colors } = useTheme();
-    return `
+    return css`
       width: ${reachedMinWidth ? '100%' : 'auto'};
       background-color: ${colors.background};
       border-collapse: collapse;
@@ -45,7 +45,7 @@ export const TableContainer = styled(StyledBaseTable)`
 export const Header = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths }: RowProps) => {
     const { colors } = useTheme();
-    return `
+    return css`
       display: grid;
       grid-template-columns: ${columnWidths};
       padding: 0em 2em;
@@ -59,7 +59,7 @@ export const Header = styled(StyledBaseTR)`
 `;
 
 export const HeaderCell = styled(StyledBaseTH)`
-  ${({ sortable }: { sortable: boolean }) => `
+  ${({ sortable }: { sortable: boolean }) => css`
     display: flex;
     flex-flow: row;
     cursor: pointer;
@@ -79,7 +79,7 @@ export const HeaderCell = styled(StyledBaseTH)`
 export const Footer = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths }: RowProps) => {
     const { colors } = useTheme();
-    return `
+    return css`
       display: grid;
       grid-template-columns: ${columnWidths};
       padding: 0em 2em;
@@ -108,7 +108,7 @@ export const FooterCell = styled(StyledBaseTH)`
 export const ResponsiveHeaderCell = styled(StyledBaseSpan)`
   ${({ sortable }: { sortable: boolean }) => {
     const { colors } = useTheme();
-    return `
+    return css`
       display: block;
       word-break: break-word;
       hyphens: auto;
@@ -180,7 +180,7 @@ export const Cell = styled(StyledBaseTD)`
 `;
 
 export const SortIcon = styled(Icon)`
-  ${({ direction }: { direction?: boolean | null }) => `
+  ${({ direction }: { direction?: boolean | null }) => css`
     margin-left: 1em;
     fill: white;
     width: 1em;
@@ -295,7 +295,7 @@ const Table = ({
 
   // this builds the string from the columns
   const columnWidths = Object.values(copiedColumns)
-    .map((col: Columns[0]) => {
+    .map((col: Column) => {
       if (col.minTableWidth && width <= col.minTableWidth) {
         return '0px';
       }
@@ -361,15 +361,15 @@ const Table = ({
       );
     } else {
       // Sort the content of each group
-      (data as Array<Array<Columns>>).forEach(() => {
-        data.sort((row1: any, row2: any) =>
+      (data as Array<Array<RowEntry>>).forEach((group) => {
+        group.sort((row1: any, row2: any) =>
           compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
         );
       });
 
       // Sort the groups
       if (sortGroups) {
-        (data as Array<Array<Columns>>).sort((group1: any, group2: any) =>
+        (data as Array<Array<RowEntry>>).sort((group1: Array<RowEntry>, group2: Array<RowEntry>) =>
           compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),
         );
       }
@@ -402,7 +402,7 @@ const Table = ({
    * @param {any} options.RenderedCell - The component used as the cell
    * @param {string} options.headerColumnKey - The header column key for the cell
    * @param {boolean} options.breakPointHit - If the breakpoint has been hit for width
-   * @param {Columns} options.row - the data for the row, each cell should be able to the row's data
+   * @param {RowEntry} options.row - the data for the row, each cell should be able to the row's data
    * @param {number} options.index - The index of the cell in the row
    * @param {number} options.indexModifier - Used only when creating cells in a group. Used to account for group labels
    * @param {any} options.CollapseExpandedIcon - Component to be used for the collapse icon. Only used for collapsible group label cells
@@ -482,8 +482,8 @@ const Table = ({
   const createGroups = () => {
     // Generate groupings - Note that we are making shallow copies of the arrays so that we do not
     // modify the props directly since this is an Array of Arrays.
-    return [...(sortedData as Array<Array<Columns>>)].map(
-      (group: Array<Columns>, idx: number) => {
+    return [...(sortedData as Array<Array<RowEntry>>)].map(
+      (group: Array<RowEntry>, idx: number) => {
         const groupLabelIndex: number = group.findIndex(grp => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -505,7 +505,7 @@ const Table = ({
         const isCollapsed = !!collapsedGroups[groupLabelDataString + idx];
 
         // Generate the rows for this group
-        const rows = groupCopy.map((row: Columns, index: number) => {
+        const rows = groupCopy.map((row: RowEntry, index: number) => {
           const RenderedRow = row.rowComponent || StyledRow;
           if (index === groupLabelIndex) return null;
 
@@ -622,7 +622,7 @@ const Table = ({
 
     return (
       <tbody>
-        {(sortedData as Array<Columns>).map((row: Columns, index: number) => {
+        {(sortedData as Array<RowEntry>).map((row: RowEntry, index: number) => {
           // map over the rows
           const RenderedRow = row.rowComponent || StyledRow;
           // Rows.map return

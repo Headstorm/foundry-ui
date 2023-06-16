@@ -11,10 +11,10 @@ export type InternalExpansionIconProps = {
   onClick: MouseEventHandler;
 };
 
-export interface Columns {
-  [index: string]: Column;
-}
+/** Map between column key strings and column properties. */
+export type Columns = Record<string, Column>
 
+/** The properties that can be defined for a single column. */
 export interface Column {
   name?: string;
   width?: string;
@@ -36,11 +36,14 @@ type ComponentBuilder = StyledSubcomponentType | ((props: any) => JSX.Element) |
  */
 export type columnTypes = Columns;
 
+/** The data for a single row. */
+export type RowEntry = Record<string, any>;
+
 export type TableProps = {
   areGroupsCollapsible?: boolean;
   columnGap?: string;
   columns: Columns;
-  data?: Columns[] | Array<Array<Columns>>;
+  data?: RowEntry[] | Array<Array<RowEntry>>;
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
   expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
@@ -101,7 +104,7 @@ export type CellOptions = {
   RenderedCell: ComponentBuilder;
   headerColumnKey: string;
   breakPointHit: boolean;
-  row: Columns;
+  row: RowEntry;
   index: number;
   indexModifier?: number;
   CollapseExpandedIcon?: any;

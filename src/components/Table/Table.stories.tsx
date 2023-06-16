@@ -8,7 +8,7 @@ import { name, address, company, commerce } from 'faker';
 
 import Table, { ExpansionIconColumnName } from './Table';
 import Checkbox from '../Checkbox/Checkbox';
-import { Columns, ExpansionIconProps } from './types';
+import { Columns, ExpansionIconProps, RowEntry } from './types';
 import { CheckboxTypes } from '../../enums/checkboxTypes';
 
 type SampleDataType = {
@@ -47,7 +47,7 @@ const NoteField = styled.textarea`
 `;
 
 const generateSampleData = (rows: number): SampleDataType[] => {
-  const finalData = [];
+  const finalData: Array<RowEntry> = [];
 
   for (let i = 0; i < rows; i += 1) {
     finalData.push({
@@ -62,9 +62,10 @@ const generateSampleData = (rows: number): SampleDataType[] => {
 };
 
 const generateSampleGroups = (numberOfGroups = 5, groupSize = 5): Array<SampleDataType[]> => {
-  const groupData = [];
+  const groupData: Array<Array<RowEntry>> = [];
   for (let i = 0; i < numberOfGroups; i++) {
     const groupRows = generateSampleData(groupSize);
+    // Add group title row
     groupRows.push({
       title: `${commerce.department()} Department`,
       isGroupLabel: true,
@@ -222,7 +223,7 @@ export const Default: Story<DefaultProps> = ({
     },
   };
 
-  return <Table columns={sampleColumns} data={rows as Columns[]} />;
+  return <Table columns={sampleColumns} data={rows} />;
 };
 Default.args = {
   'Selection width': '2rem',
@@ -389,8 +390,7 @@ export const Groups: Story<GroupsProps> = ({
   return (
     <Table
       columns={sampleColumns}
-      // TODO change data to type any
-      data={rows as Columns[][]}
+      data={rows}
       sortGroups={sortGroups}
       groupHeaderPosition={position}
       areGroupsCollapsible={areGroupsCollapsible}
