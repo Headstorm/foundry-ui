@@ -22,8 +22,6 @@ import {
 import { useAnalytics, useTheme } from '../../context';
 import { mergeRefs } from '../../utils/refs';
 
-type CollapsedState = Record<string, string>;
-
 /** Start of styled components */
 
 const StyledExpansionIconSpan = styled(StyledBaseSpan)`
@@ -199,7 +197,7 @@ const CellContainer = styled(StyledBaseDiv)`
 
 /** Start of variables */
 
-const defaultCollapsed: CollapsedState = {};
+const defaultCollapsed: Record<string, string> = {};
 
 // Default expansion column added if there isn't one
 const collapsedExpandedIconColumn = {
@@ -314,7 +312,7 @@ const Table = ({
 
     // Make a copy of the dictionary-like object. Because this object
     // doesn't have nested objects, a shallow copy is fine
-    const temp: CollapsedState = { ...collapsedGroups };
+    const temp = { ...collapsedGroups };
     if (group) {
       delete temp[key];
     } else {
