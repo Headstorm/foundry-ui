@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
+import React, { Component, FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ExpansionIconProps = {
@@ -32,7 +32,7 @@ export interface Column {
 type ComponentBuilder = StyledSubcomponentType | ((props: any) => JSX.Element) | React.FC;
 
 /**
- * @deprecated Use `ColumnTypes`.
+ * @deprecated Use `Columns`.
  */
 export type columnTypes = Columns;
 
@@ -43,7 +43,7 @@ export type TableProps = {
   areGroupsCollapsible?: boolean;
   columnGap?: string;
   columns: Columns;
-  data?: RowEntry[] | Array<Array<RowEntry>>;
+  data?: Array<RowEntry> | Array<Array<RowEntry>>;
   defaultSort?: [string, boolean]; // key, direction
   groupHeaderPosition?: 'above' | 'below';
   expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
@@ -59,9 +59,8 @@ export type TableProps = {
   StyledHeader?: StyledSubcomponentType;
   StyledHeaderCell?: StyledSubcomponentType;
   /**
-   * If in responsive mode (width < `minWidthBreakpoint`), the `StyledResponsiveHeaderCell` will appear next to the
-   * `StyledCell`. By default, it displays the `name` of the column. This component is not displayed if not in responsive
-   * mode, or if the column has no `name`.
+   * Header cells used when the Table is in condensed view
+   * based on `minWidthBreakpoint`
    */
   StyledResponsiveHeaderCell?: StyledSubcomponentType;
   StyledRow?: StyledSubcomponentType;

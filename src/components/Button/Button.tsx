@@ -19,7 +19,7 @@ import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
-import FeedbackTypes from '../../enums/feedbackTypes';
+import FeedbackTypes from 'src/enums/feedbackTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -37,7 +37,7 @@ export enum ButtonTypes {
 }
 
 export type ButtonProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+  StyledContainer?: StyledSubcomponentType<ButtonContainerProps>;
   // TODO: rename these to StyledIconPrefixContainer - etc
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
@@ -80,8 +80,10 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
 };
 
-export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
-  Skeleton.Container,
+const SkeletonButtonContainer = ({ children, ...props }: ComponentProps<typeof Skeleton.Container>) => <Skeleton.Container as={StyledBaseButton} {...props}>{children}</Skeleton.Container>;
+
+export const ButtonContainer = styled(
+  SkeletonButtonContainer,
 )`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
@@ -214,7 +216,6 @@ const Button = ({
 
   // get everything we expose + anything consumer wants to send to container
   const mergedContainerProps = {
-    as: StyledBaseButton,
     id,
     isLoading,
     onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
