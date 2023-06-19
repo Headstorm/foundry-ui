@@ -38,7 +38,7 @@ export enum ButtonTypes {
 }
 
 export type ButtonProps = {
-  StyledContainer?: StyledSubcomponentType;
+  StyledContainer?: StyledSubcomponentType<any>;
   // TODO: rename these to StyledIconPrefixContainer - etc
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
@@ -89,9 +89,7 @@ const SkeletonButtonContainer = React.forwardRef(
   ),
 );
 
-export const ButtonContainer: StyledSubcomponentType<{ as: string }> = styled(
-  SkeletonButtonContainer,
-)`
+export const ButtonContainer: StyledSubcomponentType = styled(SkeletonButtonContainer)`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
