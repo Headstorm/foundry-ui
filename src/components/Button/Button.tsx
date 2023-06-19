@@ -1,9 +1,10 @@
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ComponentProps, PropsWithChildren, ReactNode, forwardRef } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import { darken } from 'polished';
 
+import FeedbackTypes from '../../enums/feedbackTypes';
 import timings from '../../enums/timings';
 import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
@@ -19,7 +20,6 @@ import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
-import FeedbackTypes from 'src/enums/feedbackTypes';
 
 export type ButtonContainerProps = {
   elevation: number;
@@ -80,11 +80,13 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
 };
 
-const SkeletonButtonContainer = ({ children, ...props }: ComponentProps<typeof Skeleton.Container>) => <Skeleton.Container as={StyledBaseButton} {...props}>{children}</Skeleton.Container>;
+const SkeletonButtonContainer = React.forwardRef((props: PropsWithChildren, ref) => (
+  <Skeleton.Container ref={ref} as={StyledBaseButton} {...props}>
+    {props.children}
+  </Skeleton.Container>
+));
 
-export const ButtonContainer = styled(
-  SkeletonButtonContainer,
-)`
+export const ButtonContainer = styled(SkeletonButtonContainer)`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
@@ -218,6 +220,8 @@ const Button = ({
   const mergedContainerProps = {
     id,
     isLoading,
+    role: 'button',
+    ref: containerRef,
     onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
     onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
     onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
@@ -234,7 +238,7 @@ const Button = ({
   };
 
   return (
-    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
+    <StyledContainer {...mergedContainerProps}>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
