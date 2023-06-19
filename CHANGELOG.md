@@ -1,3 +1,10 @@
+## [1.20.11](https://github.com/Headstorm/foundry-ui/compare/v1.20.10...v1.20.11) (2023-06-19)
+
+
+### Bug Fixes
+
+* **table:** pass in row props, enhance sorting, improve responsiveness customization, improve types ([b4a2f36](https://github.com/Headstorm/foundry-ui/commit/b4a2f36f258e72c5644d41b43eafb800b44fb754)), closes [#433](https://github.com/Headstorm/foundry-ui/issues/433) [#434](https://github.com/Headstorm/foundry-ui/issues/434)
+
 ## [1.20.10](https://github.com/Headstorm/foundry-ui/compare/v1.20.9...v1.20.10) (2023-02-25)
 
 
