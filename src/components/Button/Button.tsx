@@ -1,4 +1,4 @@
-import React, { ComponentProps, PropsWithChildren, ReactNode, forwardRef } from 'react';
+import React, { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
 import styled from 'styled-components';
@@ -80,11 +80,13 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
 };
 
-const SkeletonButtonContainer = React.forwardRef((props: PropsWithChildren, ref) => (
-  <Skeleton.Container ref={ref} as={StyledBaseButton} {...props}>
-    {props.children}
-  </Skeleton.Container>
-));
+const SkeletonButtonContainer = React.forwardRef(
+  (props: PropsWithChildren<SubcomponentPropsType>, ref) => (
+    <Skeleton.Container ref={ref} as={StyledBaseButton} {...props}>
+      {props.children}
+    </Skeleton.Container>
+  ),
+);
 
 export const ButtonContainer = styled(SkeletonButtonContainer)`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {

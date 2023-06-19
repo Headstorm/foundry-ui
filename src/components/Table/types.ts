@@ -1,4 +1,4 @@
-import React, { Component, FunctionComponent, MouseEventHandler, ReactNode } from 'react';
+import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 
 export type ExpansionIconProps = {
@@ -23,13 +23,11 @@ export interface Column {
   footerContent?: ReactNode;
   sortFunction?: (item1: any, item2: any) => boolean;
   isGroupLabel?: boolean;
-  cellComponent?: ComponentBuilder;
-  rowComponent?: ComponentBuilder;
-  headerCellComponent?: ComponentBuilder;
-  groupCellComponent?: ComponentBuilder;
+  cellComponent?: StyledSubcomponentType;
+  rowComponent?: StyledSubcomponentType;
+  headerCellComponent?: StyledSubcomponentType;
+  groupCellComponent?: StyledSubcomponentType;
 }
-
-type ComponentBuilder = StyledSubcomponentType | ((props: any) => JSX.Element) | React.FC;
 
 /**
  * @deprecated Use `Columns`.
@@ -100,7 +98,7 @@ export type RowProps = {
 };
 
 export type CellOptions = {
-  RenderedCell: ComponentBuilder;
+  RenderedCell: StyledSubcomponentType;
   headerColumnKey: string;
   breakPointHit: boolean;
   row: RowEntry;
