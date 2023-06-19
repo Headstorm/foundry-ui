@@ -1,9 +1,10 @@
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 import UnstyledIcon from '@mdi/react';
 import { mdiLoading } from '@mdi/js';
-import styled, { StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import { darken } from 'polished';
 
+import FeedbackTypes from '../../enums/feedbackTypes';
 import timings from '../../enums/timings';
 import { useAnalytics, useTheme } from '../../context';
 import variants from '../../enums/variants';
@@ -19,15 +20,15 @@ import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
-import FeedbackTypes from '../../enums/feedbackTypes';
 
-export type ButtonContainerProps = {
+export type ButtonContainerProps = React.HTMLProps<HTMLButtonElement> & {
   elevation: number;
   color: string;
   variant: variants;
   type: string;
   disabled: boolean;
   feedbackType: FeedbackTypes;
+  isLoading?: boolean;
 };
 
 export enum ButtonTypes {
@@ -37,7 +38,7 @@ export enum ButtonTypes {
 }
 
 export type ButtonProps = {
-  StyledContainer?: string & StyledComponentBase<any, {}, ButtonContainerProps>;
+  StyledContainer?: StyledSubcomponentType<any>;
   // TODO: rename these to StyledIconPrefixContainer - etc
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
@@ -80,9 +81,15 @@ export type ButtonProps = {
   onMouseUp?: (e: React.MouseEvent) => void;
 };
 
-export const ButtonContainer: string & StyledComponentBase<any, {}, ButtonContainerProps> = styled(
-  Skeleton.Container,
-)`
+const SkeletonButtonContainer = React.forwardRef(
+  (props: PropsWithChildren<SubcomponentPropsType>, ref) => (
+    <Skeleton.Container ref={ref} as={StyledBaseButton} {...props}>
+      {props.children}
+    </Skeleton.Container>
+  ),
+);
+
+export const ButtonContainer: StyledSubcomponentType = styled(SkeletonButtonContainer)`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
@@ -213,27 +220,30 @@ const Button = ({
   const handleEventWithAnalytics = useAnalytics();
 
   // get everything we expose + anything consumer wants to send to container
-  const mergedContainerProps = {
-    as: StyledBaseButton,
+  const mergedContainerProps: ButtonContainerProps = {
     id,
     isLoading,
-    onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
-    onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
-    onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
-    onMouseDown: (e: any) =>
-      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
-    onMouseUp: (e: any) =>
-      handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
+    role: 'button',
+    ref: containerRef,
     elevation,
     color: containerColor,
     variant,
     type,
     disabled,
+    feedbackType,
+    onClick: e => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
+    onBlur: e => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
+    onFocus: e => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
+    onMouseDown: e =>
+      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
+    onMouseUp: e => handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
     ...containerProps,
   };
 
   return (
-    <StyledContainer ref={containerRef} role="button" {...mergedContainerProps}>
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error "as" not allowed on StyledSubcomponentType. Passing as prop through containerProps still works.
+    <StyledContainer {...mergedContainerProps}>
       {!isProcessing &&
         iconPrefix &&
         (typeof iconPrefix === 'string' && iconPrefix !== '' ? (
