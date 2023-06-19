@@ -337,7 +337,11 @@ export const Groups: Story<GroupsProps> = ({
 
   const EmptyCell = () => <Table.Cell />;
 
-  const NotesCell = ({ notes }: { notes: string }) => (
+  interface NotesCellProps {
+    notes: string;
+  }
+
+  const NotesCell: React.FC<NotesCellProps> = ({ notes }) => (
     <Table.Cell>
       <NoteField onChange={() => {}} rows={3} value={notes} />
     </Table.Cell>
@@ -357,7 +361,6 @@ export const Groups: Story<GroupsProps> = ({
       name: 'Name',
       width: nameWidth,
       sortable: true,
-      sortFunction: (name1: string, name2: string) => name1 < name2,
     },
     title: {
       name: 'Title',
