@@ -21,13 +21,14 @@ import { getShadowStyle } from '../../utils/styles';
 import InteractionFeedback from '../InteractionFeedback';
 import { InteractionFeedbackProps } from '../InteractionFeedback/InteractionFeedback';
 
-export type ButtonContainerProps = {
+export type ButtonContainerProps = React.HTMLProps<HTMLButtonElement> & {
   elevation: number;
   color: string;
   variant: variants;
   type: string;
   disabled: boolean;
   feedbackType: FeedbackTypes;
+  isLoading?: boolean;
 };
 
 export enum ButtonTypes {
@@ -37,7 +38,7 @@ export enum ButtonTypes {
 }
 
 export type ButtonProps = {
-  StyledContainer?: StyledSubcomponentType<ButtonContainerProps>;
+  StyledContainer?: StyledSubcomponentType;
   // TODO: rename these to StyledIconPrefixContainer - etc
   StyledLeftIconContainer?: StyledSubcomponentType;
   StyledRightIconContainer?: StyledSubcomponentType;
@@ -88,7 +89,7 @@ const SkeletonButtonContainer = React.forwardRef(
   ),
 );
 
-export const ButtonContainer = styled(SkeletonButtonContainer)`
+export const ButtonContainer: StyledSubcomponentType = styled(SkeletonButtonContainer)`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
@@ -219,23 +220,23 @@ const Button = ({
   const handleEventWithAnalytics = useAnalytics();
 
   // get everything we expose + anything consumer wants to send to container
-  const mergedContainerProps = {
+  const mergedContainerProps: ButtonContainerProps = {
     id,
     isLoading,
     role: 'button',
     ref: containerRef,
-    onClick: (e: any) => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
-    onBlur: (e: any) => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
-    onFocus: (e: any) => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
-    onMouseDown: (e: any) =>
-      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
-    onMouseUp: (e: any) =>
-      handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
     elevation,
     color: containerColor,
     variant,
     type,
     disabled,
+    feedbackType,
+    onClick: e => handleEventWithAnalytics('Button', onClick, 'onClick', e, containerProps),
+    onBlur: e => handleEventWithAnalytics('Button', onBlur, 'onBlur', e, containerProps),
+    onFocus: e => handleEventWithAnalytics('Button', onFocus, 'onFocus', e, containerProps),
+    onMouseDown: e =>
+      handleEventWithAnalytics('Button', onMouseDown, 'onMouseDown', e, containerProps),
+    onMouseUp: e => handleEventWithAnalytics('Button', onMouseUp, 'onMouseUp', e, containerProps),
     ...containerProps,
   };
 
