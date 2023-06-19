@@ -243,6 +243,8 @@ const Button = ({
   };
 
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error "as" not allowed on StyledSubcomponentType. Passing as prop through containerProps still works.
     <StyledContainer {...mergedContainerProps}>
       {!isProcessing &&
         iconPrefix &&
