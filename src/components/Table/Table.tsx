@@ -176,7 +176,7 @@ export const Cell = styled(StyledBaseTD)`
   word-break: break-word;
   hyphens: auto;
   width: unset;
-  padding: 0.5em;
+  padding: 0.5em 0;
 `;
 
 export const SortIcon = styled(Icon)`
