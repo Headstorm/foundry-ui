@@ -89,7 +89,9 @@ const SkeletonButtonContainer = React.forwardRef(
   ),
 );
 
-export const ButtonContainer: StyledSubcomponentType = styled(SkeletonButtonContainer)`
+export const ButtonContainer: StyledSubcomponentType<{ as: string }> = styled(
+  SkeletonButtonContainer,
+)`
   ${({ disabled, elevation = 0, color, variant, feedbackType }: ButtonContainerProps) => {
     const { colors } = useTheme();
     const backgroundColor = getBackgroundColorFromVariant(variant, color, colors.transparent);
