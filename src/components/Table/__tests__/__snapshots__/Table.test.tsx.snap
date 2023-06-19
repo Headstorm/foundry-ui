@@ -85,7 +85,7 @@ exports[`Table Shows Table with default props 1`] = `
   -ms-hyphens: auto;
   hyphens: auto;
   width: unset;
-  padding: 0.5em;
+  padding: 0.5em 0;
 }
 
 .c3 {
