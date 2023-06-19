@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import styled, { StyledComponent, StyledComponentBase } from 'styled-components';
+import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import { name, address, company, commerce } from 'faker';
@@ -10,7 +10,6 @@ import Table, { ExpansionIconColumnName } from './Table';
 import Checkbox from '../Checkbox/Checkbox';
 import { Columns, ExpansionIconProps, RowEntry } from './types';
 import { CheckboxTypes } from '../../enums/checkboxTypes';
-import { StyledSubcomponentType } from '../commonTypes';
 
 type SampleDataType = {
   name?: string;
