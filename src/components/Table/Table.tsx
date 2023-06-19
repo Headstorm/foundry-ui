@@ -519,6 +519,7 @@ const Table = ({
               key={`row${JSON.stringify(row) + index}`}
               reachedMinWidth={width < minWidthBreakpoint}
               isCollapsed={areGroupsCollapsible && isCollapsed}
+              {...row}
               {...rowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
@@ -566,6 +567,7 @@ const Table = ({
               key={`row${groupLabelDataString}`}
               reachedMinWidth={width < minWidthBreakpoint}
               ref={groupLabelRowRef}
+              {...groupLabelData}
               {...groupLabelRowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
@@ -635,6 +637,7 @@ const Table = ({
               rowNum={index}
               key={`row${JSON.stringify(row)}`}
               reachedMinWidth={width < minWidthBreakpoint}
+              {...row}
               {...rowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
