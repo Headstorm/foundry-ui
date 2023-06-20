@@ -1,3 +1,10 @@
+## [1.20.12](https://github.com/Headstorm/foundry-ui/compare/v1.20.11...v1.20.12) (2023-06-20)
+
+
+### Bug Fixes
+
+* **table deps:** update use-resize-observer to v9.1.0 ([cb0f7fb](https://github.com/Headstorm/foundry-ui/commit/cb0f7fbff5e583d91d7e527b353b1145748f662b))
+
 ## [1.20.11](https://github.com/Headstorm/foundry-ui/compare/v1.20.10...v1.20.11) (2023-06-19)
 
 
