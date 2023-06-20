@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactComponent, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { mdiArrowDown, mdiChevronDown, mdiChevronRight, mdiChevronUp } from '@mdi/js';
@@ -281,11 +281,11 @@ const Table = ({
   containerRef,
   groupLabelRowRef,
   headerRef,
-}: TableProps): JSX.Element => {
+}: TableProps): ReactComponent => {
   const [sortedData, sortData] = useState(data);
   const [sortMethod, setSortMethod] = useState(defaultSort);
   const [collapsedGroups, setCollapsedGroups] = useState(defaultCollapsed);
-  const { ref, width = Infinity } = useResizeObserver();
+  const { ref, width = Infinity } = useResizeObserver({ box: 'border-box' });
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
