@@ -58,7 +58,7 @@ export type TableProps = {
    * Controls which field is initially sorted.
    * The `[string, boolean]` type for this prop is deprecated. Instead, use `SortState`.
    */
-  defaultSort?: SortState | [string, boolean],
+  defaultSort?: SortState | [string, boolean];
   groupHeaderPosition?: 'above' | 'below';
   expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
   /**

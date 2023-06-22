@@ -96,9 +96,9 @@ exports[`Table Shows Table with default props 1`] = `
   -webkit-transition: transform 0.2s,opacity 0.5s;
   transition: transform 0.2s,opacity 0.5s;
   opacity: 0;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
+  -webkit-transform: rotate( 180deg );
+  -ms-transform: rotate( 180deg );
+  transform: rotate( 180deg );
 }
 
 .c4 {
@@ -109,9 +109,9 @@ exports[`Table Shows Table with default props 1`] = `
   -webkit-transition: transform 0.2s,opacity 0.5s;
   transition: transform 0.2s,opacity 0.5s;
   opacity: 1;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
+  -webkit-transform: rotate( 0deg );
+  -ms-transform: rotate( 0deg );
+  transform: rotate( 0deg );
 }
 
 .c6 {
@@ -137,6 +137,7 @@ exports[`Table Shows Table with default props 1`] = `
           Fruit
           <svg
             class="c3"
+            direction="0"
             role="presentation"
             viewBox="0 0 24 24"
           >
@@ -152,6 +153,7 @@ exports[`Table Shows Table with default props 1`] = `
           Colors
           <svg
             class="c3"
+            direction="0"
             role="presentation"
             viewBox="0 0 24 24"
           >
@@ -167,6 +169,7 @@ exports[`Table Shows Table with default props 1`] = `
           Numbers
           <svg
             class="c4"
+            direction="1"
             role="presentation"
             viewBox="0 0 24 24"
           >
