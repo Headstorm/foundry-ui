@@ -17,6 +17,8 @@ import {
   InternalExpansionIconProps,
   RowEntry,
   RowProps,
+  SortDirection,
+  SortState,
   TableProps,
 } from './types';
 import { useAnalytics, useTheme } from '../../context';
@@ -179,15 +181,28 @@ export const Cell = styled(StyledBaseTD)`
   padding: 0.5em 0;
 `;
 
+/**
+ * Accepts in the `direction` prop.
+ */
 export const SortIcon = styled(Icon)`
-  ${({ direction }: { direction?: boolean | null }) => css`
-    margin-left: 1em;
-    fill: white;
-    width: 1em;
-    transition: transform 0.2s, opacity 0.5s;
-    opacity: ${direction === null ? 0 : 1};
-    transform: rotate(${direction ? 0 : 180}deg);
-  `}
+  ${({ direction }: { direction?: SortDirection | boolean | null }) => {
+    if (typeof direction === 'boolean') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'From FoundryUI Table: Passing `direction` prop to `SortIcon` as a boolean is deprecated. Please pass in an argument of type `SortDirection` instead.',
+      );
+    }
+    return css`
+      margin-left: 1em;
+      fill: white;
+      width: 1em;
+      transition: transform 0.2s, opacity 0.5s;
+      opacity: ${direction === null || direction === SortDirection.noSort ? 0 : 1};
+      transform: rotate(
+        ${direction === true || direction === SortDirection.ascending ? 0 : 180}deg
+      );
+    `;
+  }};
 `;
 
 const CellContainer = styled(StyledBaseDiv)`
@@ -253,7 +268,7 @@ const Table = ({
   columns,
   areGroupsCollapsible = false,
   data = [],
-  defaultSort = ['', false], // key, direction
+  defaultSort = { sortedColumn: undefined, direction: SortDirection.noSort },
   groupHeaderPosition = 'above',
   expansionIconComponent,
   minWidthBreakpoint = 640,
@@ -282,8 +297,27 @@ const Table = ({
   groupLabelRowRef,
   headerRef,
 }: TableProps): JSX.Element => {
-  const [sortedData, sortData] = useState(data);
-  const [sortMethod, setSortMethod] = useState(defaultSort);
+  // Convert deprecated defaultSort argument if provided as [key, bool]
+  if (Array.isArray(defaultSort)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'From FoundryUI Table: Passing `defaultSort` prop as type [string, boolean] is deprecated. Instead, pass an argument of type `SortState`.',
+    );
+    let direction: SortDirection;
+
+    if (defaultSort[0] === '') {
+      direction = SortDirection.noSort;
+    } else {
+      direction = defaultSort[1] ? SortDirection.ascending : SortDirection.descending;
+    }
+    defaultSort = {
+      direction,
+      sortedColumn: defaultSort[0],
+    };
+  }
+
+  const [sortedData, setSortedData] = useState(data);
+  const [sortState, setSortState] = useState<SortState>(defaultSort);
   const [collapsedGroups, setCollapsedGroups] = useState(defaultCollapsed);
   const { ref, width = Infinity } = useResizeObserver({ box: 'border-box' });
 
@@ -328,20 +362,26 @@ const Table = ({
    *
    * `direction` is true for ascending, false for descending.
    */
-  const compareEntries = (entry1: any, entry2: any, column: Column, isAscending: boolean) => {
+  const compareEntries = (
+    entry1: any,
+    entry2: any,
+    column: Column,
+    sortDirection: SortDirection,
+  ) => {
     // If this column has a sort custom sort function, use it.
     if (column && Object.prototype.hasOwnProperty.call(column, 'sortFunction')) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
       const customComparison = column.sortFunction(entry1, entry2);
-      if (isAscending) {
+      if (sortDirection === SortDirection.ascending) {
         return customComparison ? -1 : 1;
       }
       return customComparison ? 1 : -1;
     }
 
     // No sort function, use default comparison operator.
-    const comparison = isAscending ? entry1 < entry2 : entry1 > entry2;
+    const comparison =
+      sortDirection === SortDirection.ascending ? entry1 < entry2 : entry1 > entry2;
     return comparison ? -1 : 1;
   };
 
@@ -352,16 +392,34 @@ const Table = ({
    * @param key
    * @param newDirection
    */
-  const onSort = (key: string, newDirection: boolean) => {
+  const onSort = ({ sortedColumn: key, direction: newDirection }: SortState) => {
+    if (!key) return;
+
+    setSortState({ sortedColumn: key, direction: newDirection });
+    setCollapsedGroups(defaultCollapsed);
+
+    if (newDirection === SortDirection.noSort) {
+      setSortedData(data); // reset data
+      return;
+    }
+
+    // Shallow copy original, unsorted data so that `data` prop remains unmodified
+    const copiedData = [...data];
+
     // If the first element of the data is not an array, then we do not have groups
-    if (!Array.isArray(data[0])) {
+    if (!Array.isArray(copiedData[0])) {
       // No groups, sort all data
-      data.sort((row1: any, row2: any) =>
+      copiedData.sort((row1: any, row2: any) =>
         compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
       );
     } else {
+      // Shallow copy each group
+      for (let groupIndex = 0; groupIndex < copiedData.length; groupIndex++) {
+        copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];
+      }
+
       // Sort the content of each group
-      (data as Array<Array<RowEntry>>).forEach(group => {
+      (copiedData as Array<Array<RowEntry>>).forEach(group => {
         group.sort((row1: any, row2: any) =>
           compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
         );
@@ -369,32 +427,30 @@ const Table = ({
 
       // Sort the groups
       if (sortGroups) {
-        (data as Array<Array<RowEntry>>).sort((group1: Array<RowEntry>, group2: Array<RowEntry>) =>
-          compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),
+        (copiedData as Array<Array<RowEntry>>).sort(
+          (group1: Array<RowEntry>, group2: Array<RowEntry>) =>
+            compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),
         );
       }
     }
 
-    sortData(data);
-    setSortMethod([key, newDirection]);
-    setCollapsedGroups(defaultCollapsed);
+    setSortedData(copiedData);
   };
 
   const handleEventWithAnalytics = useAnalytics();
-  const handleOnSort = (key: string, newDirection: boolean) =>
-    handleEventWithAnalytics(
-      'Table',
-      () => {
-        onSort(key, newDirection);
-      },
-      'onSort',
-      { type: 'onSort', key, newDirection },
-      { containerProps },
-    );
+  const handleOnSort = (sort: SortState) =>
+    handleEventWithAnalytics('Table', () => onSort(sort), 'onSort', sort, { containerProps });
 
   useEffect(() => {
-    handleOnSort(sortMethod[0], sortMethod[1]);
+    handleOnSort(sortState);
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const getNewSortState = (key: string): SortState => ({
+    sortedColumn: key,
+    // If we're changing sort state of an already-sorted column, cycle through direction. Otherwise, start at ascending.
+    direction:
+      sortState.sortedColumn === key ? (sortState.direction + 1) % 3 : SortDirection.ascending,
+  });
 
   /**
    * Creates a cell to render
@@ -432,17 +488,19 @@ const Table = ({
             !groupLabelDataString && (
               <StyledResponsiveHeaderCell
                 onClick={() => {
-                  handleOnSort(
-                    headerColumnKey,
-                    headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
-                  );
+                  handleOnSort(getNewSortState(headerColumnKey));
                 }}
                 sortable={copiedColumns[headerColumnKey].sortable}
+                isSorted={sortState.sortedColumn === headerColumnKey}
                 {...responsiveHeaderCellProps}
               >
                 {copiedColumns[headerColumnKey].name}
                 <SortIcon
-                  direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
+                  direction={
+                    sortState.sortedColumn && sortState.sortedColumn === headerColumnKey
+                      ? sortState.direction
+                      : SortDirection.noSort
+                  }
                   path={mdiArrowDown}
                 />
               </StyledResponsiveHeaderCell>
@@ -654,16 +712,15 @@ const Table = ({
     );
   };
 
-  // hasFooter
-  const hasFooter = Object.values(copiedColumns) // get the values of each column object
+  const hasFooter = Object.values(copiedColumns)
+    // this table has a footer if any of the columns have footerContent
     .some(col => {
-      // if any item here returns true for the below conditional
       return (
-        Object.prototype.hasOwnProperty.call(col, 'footerContent') && // has footerContent attribute
+        Object.prototype.hasOwnProperty.call(col, 'footerContent') &&
         col.footerContent !== null && // isn't null
-        col.footerContent !== undefined && // isn't undefined
+        col.footerContent !== undefined &&
         col.footerContent !== ''
-      ); // isn't empty string
+      );
     });
 
   // Table return
@@ -686,23 +743,24 @@ const Table = ({
                 copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
               const breakpointHit =
                 width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+
               // columns.map return
               return (
                 (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
                   <RenderedHeaderCell
                     key={headerColumnKey}
-                    onClick={() => {
-                      handleOnSort(
-                        headerColumnKey,
-                        headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
-                      );
-                    }}
+                    onClick={() => handleOnSort(getNewSortState(headerColumnKey))}
                     sortable={copiedColumns[headerColumnKey].sortable}
+                    isSorted={sortState.sortedColumn === headerColumnKey}
                     {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}
                     <SortIcon
-                      direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
+                      direction={
+                        sortState.sortedColumn && sortState.sortedColumn === headerColumnKey
+                          ? sortState.direction
+                          : SortDirection.noSort
+                      }
                       path={mdiArrowDown}
                     />
                   </RenderedHeaderCell>
@@ -748,5 +806,6 @@ Table.Title = ResponsiveHeaderCell;
 Table.ResponsiveHeaderCell = ResponsiveHeaderCell;
 Table.CellContainer = CellContainer;
 Table.ExpansionIconColumnName = ExpansionIconColumnName;
+Table.SortDirection = SortDirection;
 
 export default Table;

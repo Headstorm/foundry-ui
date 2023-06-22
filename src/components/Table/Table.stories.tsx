@@ -365,6 +365,7 @@ export const Groups: Story<GroupsProps> = ({
     title: {
       name: 'Title',
       width: titleWidth,
+      sortable: true,
     },
     address: {
       name: 'Address',
@@ -398,6 +399,10 @@ export const Groups: Story<GroupsProps> = ({
       groupHeaderPosition={position}
       areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
+      defaultSort={{
+        sortedColumn: 'name',
+        direction: Table.SortDirection.ascending,
+      }}
     />
   );
 };
@@ -407,7 +412,7 @@ Groups.args = {
   'Expansion Icon width': '1rem',
   groupLabelPosition: 'above',
   useCustomLabel: false,
-  sortGroups: false,
+  sortGroups: true,
   areGroupsCollapsible: false,
 };
 
