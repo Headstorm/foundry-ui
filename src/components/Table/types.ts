@@ -38,15 +38,14 @@ export type columnTypes = Columns;
 export type RowEntry = Record<string, any>;
 
 export interface SortState {
-  /** The key of the header column that is currently being sorted by. */
-  sortedColumn?: string;
+  sortedColumnKey?: string;
   direction: SortDirection;
 }
 
 export enum SortDirection {
-  noSort = 0,
-  ascending = 1,
-  descending = 2,
+  noSort,
+  ascending,
+  descending,
 }
 
 export type TableProps = {
@@ -56,7 +55,7 @@ export type TableProps = {
   data?: Array<RowEntry> | Array<Array<RowEntry>>;
   /**
    * Controls which field is initially sorted.
-   * The `[string, boolean]` type for this prop is deprecated. Instead, use `SortState`.
+   * The `[string, boolean]` type for this prop is deprecated. Instead, use `Table.SortState`.
    */
   defaultSort?: SortState | [string, boolean];
   groupHeaderPosition?: 'above' | 'below';

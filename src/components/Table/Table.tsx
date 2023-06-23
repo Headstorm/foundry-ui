@@ -182,14 +182,14 @@ export const Cell = styled(StyledBaseTD)`
 `;
 
 /**
- * Accepts in the `direction` prop.
+ * Accepts in the `sortDirection` prop of type `SortDirection`
  */
 export const SortIcon = styled(Icon)`
-  ${({ direction }: { direction?: SortDirection | boolean | null }) => {
-    if (typeof direction === 'boolean') {
+  ${({ sortDirection }: { sortDirection?: SortDirection | boolean | null }) => {
+    if (typeof sortDirection === 'boolean') {
       // eslint-disable-next-line no-console
       console.warn(
-        'From FoundryUI Table: Passing `direction` prop to `SortIcon` as a boolean is deprecated. Please pass in an argument of type `SortDirection` instead.',
+        'From FoundryUI Table: Passing a boolean to the `direction` prop on `SortIcon` is deprecated. Use the `Table.SortDirection` enum instead.',
       );
     }
     return css`
@@ -197,9 +197,9 @@ export const SortIcon = styled(Icon)`
       fill: white;
       width: 1em;
       transition: transform 0.2s, opacity 0.5s;
-      opacity: ${direction === null || direction === SortDirection.noSort ? 0 : 1};
+      opacity: ${sortDirection === null || sortDirection === SortDirection.noSort ? 0 : 1};
       transform: rotate(
-        ${direction === true || direction === SortDirection.ascending ? 0 : 180}deg
+        ${sortDirection === true || sortDirection === SortDirection.ascending ? 0 : 180}deg
       );
     `;
   }};
@@ -268,7 +268,7 @@ const Table = ({
   columns,
   areGroupsCollapsible = false,
   data = [],
-  defaultSort = { sortedColumn: undefined, direction: SortDirection.noSort },
+  defaultSort = { sortedColumnKey: undefined, direction: SortDirection.noSort },
   groupHeaderPosition = 'above',
   expansionIconComponent,
   minWidthBreakpoint = 640,
@@ -297,11 +297,11 @@ const Table = ({
   groupLabelRowRef,
   headerRef,
 }: TableProps): JSX.Element => {
-  // Convert deprecated defaultSort argument if provided as [key, bool]
+  // Convert defaultSort argument if provided in the deprecated form [key, bool]
   if (Array.isArray(defaultSort)) {
     // eslint-disable-next-line no-console
     console.warn(
-      'From FoundryUI Table: Passing `defaultSort` prop as type [string, boolean] is deprecated. Instead, pass an argument of type `SortState`.',
+      'From FoundryUI Table: Passing `defaultSort` prop as type [string, boolean] is deprecated. Instead, pass an argument of type `Table.SortState`.',
     );
     let direction: SortDirection;
 
@@ -312,7 +312,7 @@ const Table = ({
     }
     defaultSort = {
       direction,
-      sortedColumn: defaultSort[0],
+      sortedColumnKey: defaultSort[0],
     };
   }
 
@@ -358,9 +358,7 @@ const Table = ({
 
   /**
    * A compare function that returns a comparison integer (1 or -1).
-   * Used to compare the values at one key across two different rows when sorting.
-   *
-   * `direction` is true for ascending, false for descending.
+   * Used to compare the values at one column key across two different rows when sorting.
    */
   const compareEntries = (
     entry1: any,
@@ -392,10 +390,10 @@ const Table = ({
    * @param key
    * @param newDirection
    */
-  const onSort = ({ sortedColumn: key, direction: newDirection }: SortState) => {
+  const onSort = ({ sortedColumnKey: key, direction: newDirection }: SortState) => {
     if (!key) return;
 
-    setSortState({ sortedColumn: key, direction: newDirection });
+    setSortState({ sortedColumnKey: key, direction: newDirection });
     setCollapsedGroups(defaultCollapsed);
 
     if (newDirection === SortDirection.noSort) {
@@ -446,10 +444,10 @@ const Table = ({
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getNewSortState = (key: string): SortState => ({
-    sortedColumn: key,
+    sortedColumnKey: key,
     // If we're changing sort state of an already-sorted column, cycle through direction. Otherwise, start at ascending.
     direction:
-      sortState.sortedColumn === key ? (sortState.direction + 1) % 3 : SortDirection.ascending,
+      sortState.sortedColumnKey === key ? (sortState.direction + 1) % 3 : SortDirection.ascending,
   });
 
   /**
@@ -491,13 +489,13 @@ const Table = ({
                   handleOnSort(getNewSortState(headerColumnKey));
                 }}
                 sortable={copiedColumns[headerColumnKey].sortable}
-                isSorted={sortState.sortedColumn === headerColumnKey}
+                isSorted={sortState.sortedColumnKey === headerColumnKey}
                 {...responsiveHeaderCellProps}
               >
                 {copiedColumns[headerColumnKey].name}
                 <SortIcon
-                  direction={
-                    sortState.sortedColumn && sortState.sortedColumn === headerColumnKey
+                  sortDirection={
+                    sortState.sortedColumnKey && sortState.sortedColumnKey === headerColumnKey
                       ? sortState.direction
                       : SortDirection.noSort
                   }
@@ -751,13 +749,13 @@ const Table = ({
                     key={headerColumnKey}
                     onClick={() => handleOnSort(getNewSortState(headerColumnKey))}
                     sortable={copiedColumns[headerColumnKey].sortable}
-                    isSorted={sortState.sortedColumn === headerColumnKey}
+                    isSorted={sortState.sortedColumnKey === headerColumnKey}
                     {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}
                     <SortIcon
-                      direction={
-                        sortState.sortedColumn && sortState.sortedColumn === headerColumnKey
+                      sortDirection={
+                        sortState.sortedColumnKey && sortState.sortedColumnKey === headerColumnKey
                           ? sortState.direction
                           : SortDirection.noSort
                       }
