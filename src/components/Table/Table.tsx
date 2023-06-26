@@ -181,9 +181,7 @@ export const Cell = styled(StyledBaseTD)`
   padding: 0.5em 0;
 `;
 
-/**
- * Accepts in the `sortDirection` prop of type `SortDirection`
- */
+/** Accepts the `$direction` prop of type `SortDirection` */
 export const SortIcon = styled(Icon)`
   ${({ $direction }: { $direction?: SortDirection | boolean | null }) => {
     if (typeof $direction === 'boolean') {
