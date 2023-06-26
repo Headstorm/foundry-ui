@@ -400,7 +400,7 @@ export const Groups: Story<GroupsProps> = ({
       areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
       defaultSort={{
-        sortedColumn: 'name',
+        sortedColumnKey: 'name',
         direction: Table.SortDirection.ascending,
       }}
     />

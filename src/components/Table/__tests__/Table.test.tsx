@@ -20,13 +20,13 @@ describe('Table', () => {
           numbers: { name: 'Numbers' },
         }}
         defaultSort={{
-          sortedColumn: 'numbers',
+          sortedColumnKey: 'numbers',
           direction: Table.SortDirection.ascending,
         }}
         data={[
-          { fruit: 'Apple', colors: 'Red', numbers: '1' },
           { fruit: 'Kiwi', colors: 'Brown', numbers: '2' },
           { fruit: 'Banana', colors: 'Yellow', numbers: '3' },
+          { fruit: 'Apple', colors: 'Red', numbers: '1' },
         ]}
       />,
     );
