@@ -43,7 +43,7 @@ exports[`Table Shows Table with default props 1`] = `
   background-color: rgba(255,255,255,0.2);
 }
 
-.c4 {
+.c5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0em 2em;
@@ -54,11 +54,11 @@ exports[`Table Shows Table with default props 1`] = `
   background-color: #fff;
 }
 
-.c4:not(:last-child) {
+.c5:not(:last-child) {
   border-bottom: 1px solid rgb(211,214,215);
 }
 
-.c4:before {
+.c5:before {
   content: '';
   z-index: 0;
   position: absolute;
@@ -73,11 +73,11 @@ exports[`Table Shows Table with default props 1`] = `
   pointer-events: none;
 }
 
-.c4:hover:before {
+.c5:hover:before {
   opacity: 0.3;
 }
 
-.c6 {
+.c7 {
   display: block;
   word-break: break-word;
   -webkit-hyphens: auto;
@@ -101,7 +101,20 @@ exports[`Table Shows Table with default props 1`] = `
   transform: rotate( 180deg );
 }
 
-.c5 {
+.c4 {
+  margin-left: 1em;
+  fill: white;
+  width: 1em;
+  -webkit-transition: -webkit-transform 0.2s,opacity 0.5s;
+  -webkit-transition: transform 0.2s,opacity 0.5s;
+  transition: transform 0.2s,opacity 0.5s;
+  opacity: 1;
+  -webkit-transform: rotate( 0deg );
+  -ms-transform: rotate( 0deg );
+  transform: rotate( 0deg );
+}
+
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -125,7 +138,6 @@ exports[`Table Shows Table with default props 1`] = `
           <svg
             class="c3"
             role="presentation"
-            sortDirection="0"
             viewBox="0 0 24 24"
           >
             <path
@@ -141,7 +153,6 @@ exports[`Table Shows Table with default props 1`] = `
           <svg
             class="c3"
             role="presentation"
-            sortDirection="0"
             viewBox="0 0 24 24"
           >
             <path
@@ -155,9 +166,8 @@ exports[`Table Shows Table with default props 1`] = `
         >
           Numbers
           <svg
-            class="c3"
+            class="c4"
             role="presentation"
-            sortDirection="0"
             viewBox="0 0 24 24"
           >
             <path
@@ -170,93 +180,93 @@ exports[`Table Shows Table with default props 1`] = `
     </thead>
     <tbody>
       <tr
-        class=" c4"
+        class=" c5"
       >
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             Apple
           </td>
         </div>
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             Red
           </td>
         </div>
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             1
           </td>
         </div>
       </tr>
       <tr
-        class=" c4"
+        class=" c5"
       >
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             Kiwi
           </td>
         </div>
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             Brown
           </td>
         </div>
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             2
           </td>
         </div>
       </tr>
       <tr
-        class=" c4"
+        class=" c5"
       >
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             Banana
           </td>
         </div>
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             Yellow
           </td>
         </div>
         <div
-          class=" c5"
+          class=" c6"
         >
           <td
-            class=" c6"
+            class=" c7"
           >
             3
           </td>
