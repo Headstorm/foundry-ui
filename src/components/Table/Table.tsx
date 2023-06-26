@@ -185,8 +185,8 @@ export const Cell = styled(StyledBaseTD)`
  * Accepts in the `sortDirection` prop of type `SortDirection`
  */
 export const SortIcon = styled(Icon)`
-  ${({ sortDirection }: { sortDirection?: SortDirection | boolean | null }) => {
-    if (typeof sortDirection === 'boolean') {
+  ${({ $direction }: { $direction?: SortDirection | boolean | null }) => {
+    if (typeof $direction === 'boolean') {
       // eslint-disable-next-line no-console
       console.warn(
         'From FoundryUI Table: Passing a boolean to the `direction` prop on `SortIcon` is deprecated. Use the `Table.SortDirection` enum instead.',
@@ -197,9 +197,9 @@ export const SortIcon = styled(Icon)`
       fill: white;
       width: 1em;
       transition: transform 0.2s, opacity 0.5s;
-      opacity: ${sortDirection === null || sortDirection === SortDirection.noSort ? 0 : 1};
+      opacity: ${$direction === null || $direction === SortDirection.noSort ? 0 : 1};
       transform: rotate(
-        ${sortDirection === true || sortDirection === SortDirection.ascending ? 0 : 180}deg
+        ${$direction === true || $direction === SortDirection.ascending ? 0 : 180}deg
       );
     `;
   }};
@@ -494,7 +494,7 @@ const Table = ({
               >
                 {copiedColumns[headerColumnKey].name}
                 <SortIcon
-                  sortDirection={
+                  $direction={
                     sortState.sortedColumnKey && sortState.sortedColumnKey === headerColumnKey
                       ? sortState.direction
                       : SortDirection.noSort
@@ -754,7 +754,7 @@ const Table = ({
                   >
                     {copiedColumns[headerColumnKey].name}
                     <SortIcon
-                      sortDirection={
+                      $direction={
                         sortState.sortedColumnKey && sortState.sortedColumnKey === headerColumnKey
                           ? sortState.direction
                           : SortDirection.noSort
