@@ -37,12 +37,27 @@ export type columnTypes = Columns;
 /** The data for a single row. */
 export type RowEntry = Record<string, any>;
 
+export interface SortState {
+  sortedColumnKey?: string;
+  direction: SortDirection;
+}
+
+export enum SortDirection {
+  noSort,
+  ascending,
+  descending,
+}
+
 export type TableProps = {
   areGroupsCollapsible?: boolean;
   columnGap?: string;
   columns: Columns;
   data?: Array<RowEntry> | Array<Array<RowEntry>>;
-  defaultSort?: [string, boolean]; // key, direction
+  /**
+   * Controls which field is initially sorted.
+   * The `[string, boolean]` type for this prop is deprecated. Instead, use `Table.SortState`.
+   */
+  defaultSort?: SortState | [string, boolean];
   groupHeaderPosition?: 'above' | 'below';
   expansionIconComponent?: FunctionComponent<InternalExpansionIconProps>;
   /**
