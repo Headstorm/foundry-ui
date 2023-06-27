@@ -399,23 +399,8 @@ const Table = ({
       return;
     }
 
-    let copiedData: RowEntry[] = [];
-
-    // Make shallow copy if references are equal
-    if (sortedData === data) {
-      console.log('Copying data for sorting');
-      copiedData = [...data];
-
-      // Shallow copy each group, if this is grouped data
-      if (copiedData.length > 0 && Array.isArray(copiedData[0])) {
-        for (let groupIndex = 0; groupIndex < copiedData.length; groupIndex++) {
-          copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];
-        }
-      }
-    } else {
-      // re-use existing copy
-      copiedData = sortedData;
-    }
+    // Shallow copy the data to keep `data` prop un-mutated.
+    const copiedData = [...data];
 
     // If the first element of the data is not an array, then we do not have groups
     if (!Array.isArray(copiedData[0])) {
@@ -424,6 +409,11 @@ const Table = ({
         compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
       );
     } else {
+      // Shallow copy each group
+      for (let groupIndex = 0; groupIndex < copiedData.length; groupIndex++) {
+        copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];
+      }
+
       // Sort the content of each group
       (copiedData as Array<Array<RowEntry>>).forEach(group => {
         group.sort((row1: any, row2: any) =>
