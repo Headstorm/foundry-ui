@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/Headstorm/foundry-ui/compare/v1.20.12...v1.21.0) (2023-06-26)
+
+
+### Features
+
+* **table:** improve sorting typing, add third click to unsort, remove mutation of data prop ([416d366](https://github.com/Headstorm/foundry-ui/commit/416d366da99cc5c9e18b579b6d19d80740ffec4a))
+
 ## [1.20.12](https://github.com/Headstorm/foundry-ui/compare/v1.20.11...v1.20.12) (2023-06-20)
 
 
