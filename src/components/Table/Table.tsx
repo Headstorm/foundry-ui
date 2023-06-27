@@ -395,12 +395,27 @@ const Table = ({
     setCollapsedGroups(defaultCollapsed);
 
     if (newDirection === SortDirection.noSort) {
-      setSortedData(data); // reset data
+      setSortedData(data); // reset data to original
       return;
     }
 
-    // Shallow copy original, unsorted data so that `data` prop remains unmodified
-    const copiedData = [...data];
+    let copiedData: RowEntry[] = [];
+
+    // Make shallow copy if references are equal
+    if (sortedData === data) {
+      console.log('Copying data for sorting');
+      copiedData = [...data];
+
+      // Shallow copy each group, if this is grouped data
+      if (copiedData.length > 0 && Array.isArray(copiedData[0])) {
+        for (let groupIndex = 0; groupIndex < copiedData.length; groupIndex++) {
+          copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];
+        }
+      }
+    } else {
+      // re-use existing copy
+      copiedData = sortedData;
+    }
 
     // If the first element of the data is not an array, then we do not have groups
     if (!Array.isArray(copiedData[0])) {
@@ -409,11 +424,6 @@ const Table = ({
         compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
       );
     } else {
-      // Shallow copy each group
-      for (let groupIndex = 0; groupIndex < copiedData.length; groupIndex++) {
-        copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];
-      }
-
       // Sort the content of each group
       (copiedData as Array<Array<RowEntry>>).forEach(group => {
         group.sort((row1: any, row2: any) =>
@@ -487,7 +497,10 @@ const Table = ({
                   handleOnSort(getNewSortState(headerColumnKey));
                 }}
                 sortable={copiedColumns[headerColumnKey].sortable}
-                isSorted={sortState.sortedColumnKey === headerColumnKey}
+                isSorted={
+                  sortState.sortedColumnKey === headerColumnKey &&
+                  sortState.direction !== SortDirection.noSort
+                }
                 {...responsiveHeaderCellProps}
               >
                 {copiedColumns[headerColumnKey].name}
@@ -747,7 +760,10 @@ const Table = ({
                     key={headerColumnKey}
                     onClick={() => handleOnSort(getNewSortState(headerColumnKey))}
                     sortable={copiedColumns[headerColumnKey].sortable}
-                    isSorted={sortState.sortedColumnKey === headerColumnKey}
+                    isSorted={
+                      sortState.sortedColumnKey === headerColumnKey &&
+                      sortState.direction !== SortDirection.noSort
+                    }
                     {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}

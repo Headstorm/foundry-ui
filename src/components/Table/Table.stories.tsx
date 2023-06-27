@@ -26,7 +26,7 @@ const expansionIconOverride = ({ isCollapsed, onClick }: ExpansionIconProps) => 
     checked={!isCollapsed}
     onClick={onClick}
     checkboxType={CheckboxTypes.check}
-    inputProps={{ onChange: () => {} }}
+    inputProps={{ onChange: () => { } }}
   />
 );
 
@@ -134,7 +134,7 @@ export const Default: Story<DefaultProps> = ({
           }
           checked={Boolean(rows.filter(checkRowForSelection).length)}
           onClick={e => selectAll(e)}
-          inputProps={{ onChange: () => {} }}
+          inputProps={{ onChange: () => { } }}
         />
       </Table.HeaderCell>
     );
@@ -155,7 +155,7 @@ export const Default: Story<DefaultProps> = ({
         onClick={() => onSelect(index, selected)}
         checkboxType={CheckboxTypes.check}
         checked={selected}
-        inputProps={{ onChange: () => {} }}
+        inputProps={{ onChange: () => { } }}
       >
         {reachedMinWidth ? 'Select for download' : ''}
       </Checkbox>
@@ -164,7 +164,7 @@ export const Default: Story<DefaultProps> = ({
 
   const NotesCell = ({ notes }: { notes: string }) => (
     <Table.Cell>
-      <NoteField onChange={() => {}} rows={3} value={notes} />
+      <NoteField onChange={() => { }} rows={3} value={notes} />
     </Table.Cell>
   );
 
@@ -303,7 +303,7 @@ export const Groups: Story<GroupsProps> = ({
           checkboxType={allChecked ? CheckboxTypes.check : CheckboxTypes.neutral}
           checked={Boolean(totalSelected)}
           onClick={selectAll}
-          inputProps={{ onChange: () => {} }}
+          inputProps={{ onChange: () => { } }}
         />
       </Table.HeaderCell>
     );
@@ -328,7 +328,7 @@ export const Groups: Story<GroupsProps> = ({
         onClick={() => onSelect(index, groupIndex, selected)}
         checkboxType={CheckboxTypes.check}
         checked={selected}
-        inputProps={{ onChange: () => {} }}
+        inputProps={{ onChange: () => { } }}
       >
         {reachedMinWidth ? 'Select for download' : ''}
       </Checkbox>
@@ -343,7 +343,7 @@ export const Groups: Story<GroupsProps> = ({
 
   const NotesCell: React.FC<NotesCellProps> = ({ notes }) => (
     <Table.Cell>
-      <NoteField onChange={() => {}} rows={3} value={notes} />
+      <NoteField onChange={() => { }} rows={3} value={notes} />
     </Table.Cell>
   );
 
