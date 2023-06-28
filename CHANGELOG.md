@@ -1,3 +1,11 @@
+## [1.21.1](https://github.com/Headstorm/foundry-ui/compare/v1.21.0...v1.21.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **table:** fix isSorted prop to HeaderCell, improve sorting performance ([24a697a](https://github.com/Headstorm/foundry-ui/commit/24a697af95c4040ce8436fec76d1962c59bf23d1))
+* **table:** fixes isSorted prop ([74f09ba](https://github.com/Headstorm/foundry-ui/commit/74f09ba1f1f4baae1f3c01d1661b157826330b35))
+
 # [1.21.0](https://github.com/Headstorm/foundry-ui/compare/v1.20.12...v1.21.0) (2023-06-26)
 
 
