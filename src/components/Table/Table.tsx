@@ -389,33 +389,32 @@ const Table = ({
    * @param newDirection
    */
   const onSort = ({ sortedColumnKey: key, direction: newDirection }: SortState) => {
-    if (!key) return;
-
     setSortState({ sortedColumnKey: key, direction: newDirection });
     setCollapsedGroups(defaultCollapsed);
 
-    if (newDirection === SortDirection.noSort) {
-      setSortedData(data); // reset data
+    // no sort, reset data to passed-in data prop
+    if (key === undefined || newDirection === SortDirection.noSort) {
+      setSortedData(data);
       return;
     }
 
-    // Shallow copy original, unsorted data so that `data` prop remains unmodified
-    const copiedData = [...data];
+    // Shallow copy the data to keep `data` prop un-mutated.
+    const localData = [...data];
 
     // If the first element of the data is not an array, then we do not have groups
-    if (!Array.isArray(copiedData[0])) {
+    if (!Array.isArray(localData[0])) {
       // No groups, sort all data
-      copiedData.sort((row1: any, row2: any) =>
+      localData.sort((row1: any, row2: any) =>
         compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
       );
     } else {
       // Shallow copy each group
-      for (let groupIndex = 0; groupIndex < copiedData.length; groupIndex++) {
-        copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];
+      for (let groupIndex = 0; groupIndex < localData.length; groupIndex++) {
+        localData[groupIndex] = [...(localData[groupIndex] as RowEntry[])];
       }
 
       // Sort the content of each group
-      (copiedData as Array<Array<RowEntry>>).forEach(group => {
+      (localData as Array<Array<RowEntry>>).forEach(group => {
         group.sort((row1: any, row2: any) =>
           compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
         );
@@ -423,14 +422,14 @@ const Table = ({
 
       // Sort the groups
       if (sortGroups) {
-        (copiedData as Array<Array<RowEntry>>).sort(
+        (localData as Array<Array<RowEntry>>).sort(
           (group1: Array<RowEntry>, group2: Array<RowEntry>) =>
             compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),
         );
       }
     }
 
-    setSortedData(copiedData);
+    setSortedData(localData);
   };
 
   const handleEventWithAnalytics = useAnalytics();
@@ -487,7 +486,10 @@ const Table = ({
                   handleOnSort(getNewSortState(headerColumnKey));
                 }}
                 sortable={copiedColumns[headerColumnKey].sortable}
-                isSorted={sortState.sortedColumnKey === headerColumnKey}
+                isSorted={
+                  sortState.sortedColumnKey === headerColumnKey &&
+                  sortState.direction !== SortDirection.noSort
+                }
                 {...responsiveHeaderCellProps}
               >
                 {copiedColumns[headerColumnKey].name}
@@ -747,7 +749,10 @@ const Table = ({
                     key={headerColumnKey}
                     onClick={() => handleOnSort(getNewSortState(headerColumnKey))}
                     sortable={copiedColumns[headerColumnKey].sortable}
-                    isSorted={sortState.sortedColumnKey === headerColumnKey}
+                    isSorted={
+                      sortState.sortedColumnKey === headerColumnKey &&
+                      sortState.direction !== SortDirection.noSort
+                    }
                     {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}
