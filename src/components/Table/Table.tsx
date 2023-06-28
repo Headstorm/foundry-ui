@@ -389,13 +389,12 @@ const Table = ({
    * @param newDirection
    */
   const onSort = ({ sortedColumnKey: key, direction: newDirection }: SortState) => {
-    if (!key) return;
-
     setSortState({ sortedColumnKey: key, direction: newDirection });
     setCollapsedGroups(defaultCollapsed);
 
-    if (newDirection === SortDirection.noSort) {
-      setSortedData(data); // reset data to original
+    // no sort, reset data to passed-in data prop
+    if (key === undefined || newDirection === SortDirection.noSort) {
+      setSortedData(data);
       return;
     }
 
