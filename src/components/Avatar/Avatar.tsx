@@ -55,9 +55,6 @@ export const AvatarText = styled(StyledBaseSpan)`
 export const AvatarImage = styled(StyledBaseDiv)`
   ${({ size, shape }: { size: number; shape: string }) => {
     return `
-      display: flex;
-      justify-content: center;
-      align-items: center;
       object-fit: cover;
       border-radius: ${`${shape}%`};
       overflow: hidden;
