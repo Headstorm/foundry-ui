@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50.86% </span>
+                <span class="strong">50.87% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>88/173</span>
+                <span class='fraction'>87/171</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44% </span>
+                <span class="strong">44.6% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>88/200</span>
+                <span class='fraction'>91/204</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.78% </span>
+                <span class="strong">51.49% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>87/168</span>
+                <span class='fraction'>86/167</span>
             </div>
         
             
@@ -870,7 +870,12 @@
 <a name='L805'></a><a href='#L805'>805</a>
 <a name='L806'></a><a href='#L806'>806</a>
 <a name='L807'></a><a href='#L807'>807</a>
-<a name='L808'></a><a href='#L808'>808</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L808'></a><a href='#L808'>808</a>
+<a name='L809'></a><a href='#L809'>809</a>
+<a name='L810'></a><a href='#L810'>810</a>
+<a name='L811'></a><a href='#L811'>811</a>
+<a name='L812'></a><a href='#L812'>812</a>
+<a name='L813'></a><a href='#L813'>813</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1262,9 +1267,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1392,6 +1396,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1618,6 +1625,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2068,33 +2078,32 @@ const Table = ({
    * @param newDirection
    */
   const onSort = ({ sortedColumnKey: key, direction: newDirection }: SortState) =&gt; {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!key) <span class="cstat-no" title="statement not covered" >return;</span>
-&nbsp;
     setSortState({ sortedColumnKey: key, direction: newDirection });
     setCollapsedGroups(defaultCollapsed);
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (newDirection === SortDirection.noSort) {
-<span class="cstat-no" title="statement not covered" >      setSortedData(data); </span>// reset data
+    // no sort, reset data to passed-in data prop
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (key === undefined || newDirection === SortDirection.noSort) {
+<span class="cstat-no" title="statement not covered" >      setSortedData(data);</span>
 <span class="cstat-no" title="statement not covered" >      return;</span>
     }
 &nbsp;
-    // Shallow copy original, unsorted data so that `data` prop remains unmodified
-    const copiedData = [...data];
+    // Shallow copy the data to keep `data` prop un-mutated.
+    const localData = [...data];
 &nbsp;
     // If the first element of the data is not an array, then we do not have groups
-    if (!Array.isArray(copiedData[0])) {
+    if (!Array.isArray(localData[0])) {
       // No groups, sort all data
-      copiedData.sort((row1: any, row2: any) =&gt;
+      localData.sort((row1: any, row2: any) =&gt;
         compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
       );
     } else <span class="missing-if-branch" title="else path not taken" >E</span>{
       // Shallow copy each group
-<span class="cstat-no" title="statement not covered" >      for (let groupIndex = <span class="cstat-no" title="statement not covered" >0;</span> groupIndex &lt; copiedData.length; groupIndex++) {</span>
-<span class="cstat-no" title="statement not covered" >        copiedData[groupIndex] = [...(copiedData[groupIndex] as RowEntry[])];</span>
+<span class="cstat-no" title="statement not covered" >      for (let groupIndex = <span class="cstat-no" title="statement not covered" >0;</span> groupIndex &lt; localData.length; groupIndex++) {</span>
+<span class="cstat-no" title="statement not covered" >        localData[groupIndex] = [...(localData[groupIndex] as RowEntry[])];</span>
       }
 &nbsp;
       // Sort the content of each group
-<span class="cstat-no" title="statement not covered" >      (copiedData as Array&lt;Array&lt;RowEntry&gt;&gt;).forEach(<span class="fstat-no" title="function not covered" >gr</span>oup =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      (localData as Array&lt;Array&lt;RowEntry&gt;&gt;).forEach(<span class="fstat-no" title="function not covered" >gr</span>oup =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        group.sort(<span class="fstat-no" title="function not covered" >(r</span>ow1: any, row2: any) =&gt;</span>
 <span class="cstat-no" title="statement not covered" >          compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),</span>
         );
@@ -2102,14 +2111,14 @@ const Table = ({
 &nbsp;
       // Sort the groups
 <span class="cstat-no" title="statement not covered" >      if (sortGroups) {</span>
-<span class="cstat-no" title="statement not covered" >        (copiedData as Array&lt;Array&lt;RowEntry&gt;&gt;).sort(</span>
+<span class="cstat-no" title="statement not covered" >        (localData as Array&lt;Array&lt;RowEntry&gt;&gt;).sort(</span>
 <span class="fstat-no" title="function not covered" >          (g</span>roup1: Array&lt;RowEntry&gt;, group2: Array&lt;RowEntry&gt;) =&gt;
 <span class="cstat-no" title="statement not covered" >            compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),</span>
         );
       }
     }
 &nbsp;
-    setSortedData(copiedData);
+    setSortedData(localData);
   };
 &nbsp;
   const handleEventWithAnalytics = useAnalytics();
@@ -2166,7 +2175,10 @@ const Table = ({
 <span class="cstat-no" title="statement not covered" >                  handleOnSort(getNewSortState(headerColumnKey));</span>
                 }}
                 sortable={copiedColumns[headerColumnKey].sortable}
-                isSorted={sortState.sortedColumnKey === headerColumnKey}
+                isSorted={
+                  sortState.sortedColumnKey === headerColumnKey &amp;&amp;
+                  sortState.direction !== SortDirection.noSort
+                }
                 {...responsiveHeaderCellProps}
               &gt;
                 {copiedColumns[headerColumnKey].name}
@@ -2426,7 +2438,10 @@ const Table = ({
                     key={headerColumnKey}
                     onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleOnSort(getNewSortState(headerColumnKey))}</span>
                     sortable={copiedColumns[headerColumnKey].sortable}
-                    isSorted={sortState.sortedColumnKey === headerColumnKey}
+                    isSorted={
+                      sortState.sortedColumnKey === headerColumnKey &amp;&amp;
+                      sortState.direction !== SortDirection.noSort
+                    }
                     {...headerCellProps}
                   &gt;
                     {copiedColumns[headerColumnKey].name}
@@ -2491,7 +2506,7 @@ export default Table;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jun 26 2023 16:01:34 GMT+0000 (Coordinated Universal Time)
+                at Wed Jun 28 2023 16:31:37 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
