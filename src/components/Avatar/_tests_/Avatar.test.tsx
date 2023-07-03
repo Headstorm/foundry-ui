@@ -8,27 +8,17 @@ configure({ testIdAttribute: 'data-test-id' });
 const testId = 'foundry-test';
 
 describe('Avatar', () => {
-    it('matches snapshot', async () => {
-        // const { container, getByTestId } = render(<Avatar />);
-        // await waitFor(() => getByTestId(testId));
-        // expect(container).toMatchSnapshot();
-    })
+  it('matches snapshot', async () => {
+    // const { container, getByTestId } = render(<Avatar />);
+    // await waitFor(() => getByTestId(testId));
+    // expect(container).toMatchSnapshot();
+  });
 
-    it('', async () => {
-        
-    })
+  it('', async () => {});
 
-    it('', () => {
-        
-    })
+  it('', () => {});
 
-    it('', () => {
-        
-    })
+  it('', () => {});
 
-    it('', () => {
-        
-    })
-})
-
-
+  it('', () => {});
+});
