@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 import React, { ReactNode } from 'react';
 import { StyledBaseDiv, StyledBaseSpan } from '../../htmlElements';
@@ -22,13 +21,12 @@ export type AvatarProps = {
   avatarProps?: SubcomponentPropsType;
 
   avatarTextRef?: React.RefObject<HTMLSpanElement>;
-  avatarImageRef?: React.RefObject<HTMLImageElement>
+  avatarImageRef?: React.RefObject<HTMLImageElement>;
   avatarContainerRef?: React.RefObject<HTMLDivElement>;
-
 };
 
 export const AvatarContainer = styled(StyledBaseDiv)`
-  ${({ size, shape }: { size: number, shape: string }) => {
+  ${({ size, shape }: { size: number; shape: string }) => {
     return `
       display: flex;
       border-radius: ${`${shape}%`};
@@ -43,7 +41,7 @@ export const AvatarContainer = styled(StyledBaseDiv)`
 `;
 
 export const AvatarText = styled(StyledBaseSpan)`
-  ${({ size, colors }: { size: string, colors: string }) => {
+  ${({ size, colors }: { size: string; colors: string }) => {
     return `
         display: flex;
         padding: 2rem;
@@ -55,7 +53,7 @@ export const AvatarText = styled(StyledBaseSpan)`
 `;
 
 export const AvatarImage = styled(StyledBaseDiv)`
-${({ size, shape }: { size: number, shape: string }) => {
+  ${({ size, shape }: { size: number; shape: string }) => {
     return `
       display: flex;
       justify-content: center;
@@ -93,40 +91,39 @@ const Avatar = ({
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
   if (isLoading) {
-   return (
+    return (
       <div style={{ borderRadius: `${shape}%`, overflow: 'hidden' }}>
-        <Skeleton
-          isLoading
-          color={colors.grayLight}
-        >
+        <Skeleton isLoading color={colors.grayLight}>
           <div style={{ width: `${size * 3}rem`, height: `${size * 3}rem` }} />
         </Skeleton>
       </div>
-   );
+    );
   }
 
   if (hasImage) {
     return (
       <StyledAvatarImage ref={avatarImageRef} size={size} shape={shape}>
-       <img
-         alt="profile"
-         {...avatarProps}
-         src={imgURL}
-         ref={avatarImageRef}
-       />
+        <img alt="profile" {...avatarProps} src={imgURL} ref={avatarImageRef} />
       </StyledAvatarImage>
     );
   }
 
   return (
     <StyledAvatarContainer ref={avatarContainerRef} size={size} shape={shape}>
-        { !isError ?
-        <StyledAvatarText {...avatarProps} ref={avatarTextRef} size={size} colors={colors.grayLight}>
+      {!isError ? (
+        <StyledAvatarText
+          {...avatarProps}
+          ref={avatarTextRef}
+          size={size}
+          colors={colors.grayLight}
+        >
           {initials}
-        </StyledAvatarText> :
+        </StyledAvatarText>
+      ) : (
         <StyledAvatarText {...avatarProps} ref={avatarTextRef} size={size * 2} colors="#c94545d9">
           !
-        </StyledAvatarText>}
+        </StyledAvatarText>
+      )}
     </StyledAvatarContainer>
   );
 };
