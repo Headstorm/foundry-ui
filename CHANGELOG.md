@@ -1,3 +1,11 @@
+# [1.22.0](https://github.com/Headstorm/foundry-ui/compare/v1.21.1...v1.22.0) (2023-07-05)
+
+
+### Features
+
+* **dropdown.tsx:** added isOpen to StyledArrowIconContainer ([61e52f4](https://github.com/Headstorm/foundry-ui/commit/61e52f4f845f9932a43ace452dfeb0caced34ca6))
+* **dropdown.tsx:** adds acess to isOpen state in StyledArrowIconContainer ([ab8cc0d](https://github.com/Headstorm/foundry-ui/commit/ab8cc0d9af2c453b09c753fdc72bc920ce73f3ff))
+
 ## [1.21.1](https://github.com/Headstorm/foundry-ui/compare/v1.21.0...v1.21.1) (2023-06-28)
 
 
