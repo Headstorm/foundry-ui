@@ -72,18 +72,41 @@ describe('Avatar', () => {
 
   describe('Ref Tests', () => {
     it('avatarContainer.current should exist', async () => {
-      // const ref = React.createRef<HTMLDivElement>();
-      // const { getByTestId } = render(
-      //   <Avatar avatarContainerRef={ref} avatarProps={{ 'data-test-id': testId }} />,
-      // );
-      // await waitFor(() => getByTestId(testId));
-      // expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+      const ref = React.createRef<HTMLDivElement>();
+      render(<Avatar avatarContainerRef={ref} avatarProps={{ 'data-test-id': testId }} />);
+      await waitFor(() => {
+        expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+      });
     });
 
-    it('avatarText.current should exist', async () => {});
+    it('avatarText.current should exist', async () => {
+      const ref = React.createRef<HTMLSpanElement>();
+      const { getByTestId } = render(
+        <Avatar hasImage={false} avatarTextRef={ref} avatarProps={{ 'data-test-id': testId }} />,
+      );
+      await waitFor(() => {
+        expect(ref.current instanceof HTMLSpanElement).toBeTruthy();
+      });
+    });
 
-    it('avatarImage.current should exist', async () => {});
+    it('avatarImage.current should exist', async () => {
+      const ref = React.createRef<HTMLImageElement>();
+      const { getByTestId } = render(
+        <Avatar hasImage avatarImageRef={ref} avatarProps={{ 'data-test-id': testId }} />,
+      );
+      await waitFor(() => {
+        expect(ref.current instanceof HTMLImageElement).toBeTruthy();
+      });
+    });
 
-    it('avatarLoading.current should exist', async () => {});
+    it('avatarLoading.current should exist', async () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const { getByTestId } = render(
+        <Avatar isLoading avatarLoadingRef={ref} avatarProps={{ 'data-test-id': testId }}/>,
+      );
+      await waitFor(() => {
+        expect(ref.current instanceof HTMLDivElement).toBeTruthy();
+      });
+    });
   });
 });

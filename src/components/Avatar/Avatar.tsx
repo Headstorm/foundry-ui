@@ -105,8 +105,8 @@ const Avatar = ({
 
   if (hasImage) {
     return (
-      <StyledAvatarImage ref={avatarImageRef} size={size} shape={shape}>
-        <img alt="profile" src={imgURL} {...avatarProps} />
+      <StyledAvatarImage size={size} shape={shape}>
+        <img alt="profile" ref={avatarImageRef} src={imgURL} {...avatarProps} />
       </StyledAvatarImage>
     );
   }
