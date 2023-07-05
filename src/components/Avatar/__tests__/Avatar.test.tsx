@@ -102,7 +102,7 @@ describe('Avatar', () => {
     it('avatarLoading.current should exist', async () => {
       const ref = React.createRef<HTMLDivElement>();
       const { getByTestId } = render(
-        <Avatar isLoading avatarLoadingRef={ref} avatarProps={{ 'data-test-id': testId }}/>,
+        <Avatar isLoading avatarLoadingRef={ref} avatarProps={{ 'data-test-id': testId }} />,
       );
       await waitFor(() => {
         expect(ref.current instanceof HTMLDivElement).toBeTruthy();

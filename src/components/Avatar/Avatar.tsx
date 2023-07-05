@@ -96,7 +96,7 @@ const Avatar = ({
         ref={avatarLoadingRef}
         style={{ borderRadius: `${shape}%`, overflow: 'hidden' }}
       >
-        <Skeleton {...avatarProps} isLoading color={colors.grayMedium}>
+        <Skeleton {...avatarProps} isLoading color={colors.grayXlight}>
           <div {...avatarProps} style={{ width: `${size * 3}rem`, height: `${size * 3}rem` }} />
         </Skeleton>
       </div>
