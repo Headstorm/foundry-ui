@@ -278,7 +278,7 @@ exports[`Avatar matches snapshot Error State 1`] = `
 exports[`Avatar matches snapshot Loading State 1`] = `
 .c2 {
   opacity: 1;
-  background: linear-gradient( 90deg, rgba(81,87,93,0.75), rgba(81,87,93,0.25), rgba(81,87,93,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(213,213,213,0.75), rgba(213,213,213,0.25), rgba(213,213,213,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -329,7 +329,7 @@ exports[`Avatar matches snapshot Loading State 1`] = `
       />
       <div
         class=" c1 c2"
-        color="#51575D"
+        color="#D5D5D5"
       />
     </div>
   </div>
