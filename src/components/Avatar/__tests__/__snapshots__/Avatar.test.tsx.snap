@@ -2,46 +2,19 @@
 
 exports[`Avatar avatar displays correct image when their is an image 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   border-radius: undefined%;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  width: 192rem;
-  height: 192rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 2rem;
-  color: #51575D;
-  font-size: 64rem;
-  font-weight: 600;
+  overflow: hidden;
+  width: 192em;
+  height: 192em;
+  background-image: url(https://tinyurl.com/49dba3d4);
+  background-size: cover;
 }
 
 <div>
   <div
     class=" c0"
     size="64"
-  >
-    <span
-      class=" c1"
-      size="64"
-    />
-  </div>
+  />
 </div>
 `;
 
@@ -52,10 +25,10 @@ exports[`Avatar avatar displays correct initials when their is no image 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  width: 192rem;
-  height: 192rem;
+  background-color: #D5D5D5;
+  padding: 1em;
+  width: 192em;
+  height: 192em;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -71,9 +44,9 @@ exports[`Avatar avatar displays correct initials when their is no image 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 2rem;
+  padding: 0.66em;
   color: #51575D;
-  font-size: 64rem;
+  font-size: 64em;
   font-weight: 600;
 }
 
@@ -84,6 +57,7 @@ exports[`Avatar avatar displays correct initials when their is no image 1`] = `
   >
     <span
       class=" c1"
+      color="#51575D"
       size="64"
     >
       MI
@@ -99,10 +73,10 @@ exports[`Avatar avatar shape is correct 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-radius: 30%;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  width: 9rem;
-  height: 9rem;
+  background-color: #D5D5D5;
+  padding: 1em;
+  width: 9em;
+  height: 9em;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -118,20 +92,20 @@ exports[`Avatar avatar shape is correct 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 2rem;
+  padding: 0.66em;
   color: #51575D;
-  font-size: 3rem;
+  font-size: 3em;
   font-weight: 600;
 }
 
 <div>
   <div
     class=" c0"
-    shape="30"
     size="3"
   >
     <span
       class=" c1"
+      color="#51575D"
       size="3"
     />
   </div>
@@ -145,10 +119,10 @@ exports[`Avatar avatar size is correct 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  width: 63rem;
-  height: 63rem;
+  background-color: #D5D5D5;
+  padding: 1em;
+  width: 63em;
+  height: 63em;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -164,9 +138,9 @@ exports[`Avatar avatar size is correct 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 2rem;
+  padding: 0.66em;
   color: #51575D;
-  font-size: 21rem;
+  font-size: 21em;
   font-weight: 600;
 }
 
@@ -177,6 +151,7 @@ exports[`Avatar avatar size is correct 1`] = `
   >
     <span
       class=" c1"
+      color="#51575D"
       size="21"
     />
   </div>
@@ -190,10 +165,10 @@ exports[`Avatar matches snapshot 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  width: 9rem;
-  height: 9rem;
+  background-color: #D5D5D5;
+  padding: 1em;
+  width: 9em;
+  height: 9em;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -209,9 +184,9 @@ exports[`Avatar matches snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 2rem;
+  padding: 0.66em;
   color: #51575D;
-  font-size: 3rem;
+  font-size: 3em;
   font-weight: 600;
 }
 
@@ -222,6 +197,7 @@ exports[`Avatar matches snapshot 1`] = `
   >
     <span
       class=" c1"
+      color="#51575D"
       size="3"
     />
   </div>
@@ -235,10 +211,10 @@ exports[`Avatar matches snapshot Error State 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  width: 192rem;
-  height: 192rem;
+  background-color: #D5D5D5;
+  padding: 1em;
+  width: 192em;
+  height: 192em;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -254,9 +230,9 @@ exports[`Avatar matches snapshot Error State 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 2rem;
+  padding: 0.66em;
   color: #c94545d9;
-  font-size: 128rem;
+  font-size: 128em;
   font-weight: 600;
 }
 
@@ -267,6 +243,7 @@ exports[`Avatar matches snapshot Error State 1`] = `
   >
     <span
       class=" c1"
+      color="#c94545d9"
       size="128"
     >
       !
@@ -325,7 +302,7 @@ exports[`Avatar matches snapshot Loading State 1`] = `
       class=" c0"
     >
       <div
-        style="width: 192rem; height: 192rem;"
+        style="width: 192em; height: 192em;"
       />
       <div
         class=" c1 c2"

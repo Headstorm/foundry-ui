@@ -10,10 +10,9 @@ DefaultAvatar.args = {
   imgURL:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHCWDau1lAskHdiokbaocBqIXOCxWcdlAwg9UhusQHaALmDwbfaDxGpjmn7Cv0HWXYxTI&usqp=CAU',
   size: 3,
-  shape: 50,
+  borderRadiusPercent: 50,
   isLoading: false,
   isError: false,
-  hasImage: true,
 };
 
 export default {
@@ -21,6 +20,6 @@ export default {
   component: Avatar,
   decorators: [withFoundryContext],
   argTypes: {
-    shape: { control: { type: 'range', min: 0, max: 50, step: 1 } },
+    borderRadiusPercent: { control: { type: 'range', min: 0, max: 50, step: 1 } },
   },
 } as Meta;

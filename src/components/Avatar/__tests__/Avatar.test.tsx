@@ -30,7 +30,7 @@ describe('Avatar', () => {
 
   it('avatar displays correct initials when their is no image', async () => {
     const { container } = render(
-      <Avatar initials="MI" hasImage={false} size={64} data-testid={testId} />,
+      <Avatar initials="MI" size={64} data-testid={testId} />,
     );
 
     await waitFor(() => {
@@ -55,7 +55,7 @@ describe('Avatar', () => {
   });
 
   it('avatar shape is correct', async () => {
-    const { container } = render(<Avatar shape={30} data-test-id={testId} />);
+    const { container } = render(<Avatar borderRadiusPercent={30} data-test-id={testId} />);
     await waitFor(() => {
       expect(container).toMatchSnapshot();
     });
@@ -73,7 +73,7 @@ describe('Avatar', () => {
   describe('Ref Tests', () => {
     it('avatarContainer.current should exist', async () => {
       const ref = React.createRef<HTMLDivElement>();
-      render(<Avatar avatarContainerRef={ref} avatarProps={{ 'data-test-id': testId }} />);
+      render(<Avatar avatarContainerRef={ref} avatarContainerProps={{ 'data-test-id': testId }} />);
       await waitFor(() => {
         expect(ref.current instanceof HTMLDivElement).toBeTruthy();
       });
@@ -82,30 +82,10 @@ describe('Avatar', () => {
     it('avatarText.current should exist', async () => {
       const ref = React.createRef<HTMLSpanElement>();
       const { getByTestId } = render(
-        <Avatar hasImage={false} avatarTextRef={ref} avatarProps={{ 'data-test-id': testId }} />,
+        <Avatar avatarTextRef={ref} avatarTextProps={{ 'data-test-id': testId }} />,
       );
       await waitFor(() => {
         expect(ref.current instanceof HTMLSpanElement).toBeTruthy();
-      });
-    });
-
-    it('avatarImage.current should exist', async () => {
-      const ref = React.createRef<HTMLImageElement>();
-      const { getByTestId } = render(
-        <Avatar hasImage avatarImageRef={ref} avatarProps={{ 'data-test-id': testId }} />,
-      );
-      await waitFor(() => {
-        expect(ref.current instanceof HTMLImageElement).toBeTruthy();
-      });
-    });
-
-    it('avatarLoading.current should exist', async () => {
-      const ref = React.createRef<HTMLDivElement>();
-      const { getByTestId } = render(
-        <Avatar isLoading avatarLoadingRef={ref} avatarProps={{ 'data-test-id': testId }} />,
-      );
-      await waitFor(() => {
-        expect(ref.current instanceof HTMLDivElement).toBeTruthy();
       });
     });
   });
