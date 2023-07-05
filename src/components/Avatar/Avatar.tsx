@@ -23,6 +23,7 @@ export type AvatarProps = {
   avatarTextRef?: React.RefObject<HTMLSpanElement>;
   avatarImageRef?: React.RefObject<HTMLImageElement>;
   avatarContainerRef?: React.RefObject<HTMLDivElement>;
+  avatarLoadingRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const AvatarContainer = styled(StyledBaseDiv)`
@@ -30,7 +31,7 @@ export const AvatarContainer = styled(StyledBaseDiv)`
     return `
       display: flex;
       border-radius: ${`${shape}%`};
-      background-color: #eaeaea; 
+      background-color: #f3f3f3; 
       padding: 1rem;
       width: ${`${size * 3}rem`};
       height: ${`${size * 3}rem`};
@@ -85,13 +86,14 @@ const Avatar = ({
   avatarContainerRef,
   avatarTextRef,
   avatarImageRef,
+  avatarLoadingRef,
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
   if (isLoading) {
     return (
-      <div style={{ borderRadius: `${shape}%`, overflow: 'hidden' }}>
-        <Skeleton isLoading color={colors.grayLight}>
-          <div style={{ width: `${size * 3}rem`, height: `${size * 3}rem` }} />
+      <div {...avatarProps} ref={avatarLoadingRef} style={{ borderRadius: `${shape}%`, overflow: 'hidden' }}>
+        <Skeleton {...avatarProps} isLoading color={colors.grayMedium}>
+          <div {...avatarProps} style={{ width: `${size * 3}rem`, height: `${size * 3}rem` }} />
         </Skeleton>
       </div>
     );
@@ -100,24 +102,24 @@ const Avatar = ({
   if (hasImage) {
     return (
       <StyledAvatarImage ref={avatarImageRef} size={size} shape={shape}>
-        <img alt="profile" {...avatarProps} src={imgURL} ref={avatarImageRef} />
+        <img alt="profile" src={imgURL} {...avatarProps}/>
       </StyledAvatarImage>
     );
   }
 
   return (
-    <StyledAvatarContainer ref={avatarContainerRef} size={size} shape={shape}>
+    <StyledAvatarContainer ref={avatarContainerRef} size={size} shape={shape} {...avatarProps}>
       {!isError ? (
         <StyledAvatarText
           {...avatarProps}
           ref={avatarTextRef}
           size={size}
-          colors={colors.grayLight}
+          colors={colors.grayMedium}
         >
           {initials}
         </StyledAvatarText>
       ) : (
-        <StyledAvatarText ref={avatarTextRef} size={size * 2} colors="#c94545d9">
+        <StyledAvatarText ref={avatarTextRef} size={size * 2} colors="#c94545d9" {...avatarProps}>
           !
         </StyledAvatarText>
       )}
