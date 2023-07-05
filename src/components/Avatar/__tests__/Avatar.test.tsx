@@ -29,9 +29,7 @@ describe('Avatar', () => {
   });
 
   it('avatar displays correct initials when their is no image', async () => {
-    const { container } = render(
-      <Avatar initials="MI" size={64} data-testid={testId} />,
-    );
+    const { container } = render(<Avatar initials="MI" size={64} data-testid={testId} />);
 
     await waitFor(() => {
       expect(container).toMatchSnapshot();

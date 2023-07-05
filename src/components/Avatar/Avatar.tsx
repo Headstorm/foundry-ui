@@ -9,12 +9,12 @@ export type AvatarContainerProps = {
   size: number;
   borderRadiusPercent: number;
   imgURL?: string;
-}
+};
 
 export type AvatarTextProps = {
   size: number;
   color: string;
-}
+};
 
 export type AvatarProps = {
   initials?: ReactNode;
@@ -90,9 +90,7 @@ const Avatar = ({
   const { colors } = useTheme();
   if (isLoading) {
     return (
-      <div
-        style={{ borderRadius: `${borderRadiusPercent}%`, overflow: 'hidden' }}
-      >
+      <div style={{ borderRadius: `${borderRadiusPercent}%`, overflow: 'hidden' }}>
         <Skeleton isLoading color={colors.grayXlight}>
           <div style={{ width: `${size * 3}em`, height: `${size * 3}em` }} />
         </Skeleton>
@@ -100,26 +98,47 @@ const Avatar = ({
     );
   }
 
- if (isError) {
-  return (
-    <StyledAvatarContainer ref={avatarContainerRef} size={size} borderRadiusPercent={borderRadiusPercent} imgURL="" {...avatarContainerProps}>
-      <StyledAvatarText ref={avatarTextRef} size={size * 2} color="#c94545d9" {...avatarTextProps}>
-        !
-      </StyledAvatarText>
-    </StyledAvatarContainer>
-  );
- }
+  if (isError) {
+    return (
+      <StyledAvatarContainer
+        ref={avatarContainerRef}
+        size={size}
+        borderRadiusPercent={borderRadiusPercent}
+        imgURL=""
+        {...avatarContainerProps}
+      >
+        <StyledAvatarText
+          ref={avatarTextRef}
+          size={size * 2}
+          color="#c94545d9"
+          {...avatarTextProps}
+        >
+          !
+        </StyledAvatarText>
+      </StyledAvatarContainer>
+    );
+  }
 
   return (
-    <StyledAvatarContainer ref={avatarContainerRef} size={size} borderRadiusPercent={borderRadiusPercent} imgURL={imgURL} {...avatarContainerProps}>
-        {!imgURL ? <StyledAvatarText
+    <StyledAvatarContainer
+      ref={avatarContainerRef}
+      size={size}
+      borderRadiusPercent={borderRadiusPercent}
+      imgURL={imgURL}
+      {...avatarContainerProps}
+    >
+      {!imgURL ? (
+        <StyledAvatarText
           {...avatarTextProps}
           ref={avatarTextRef}
           size={size}
           color={colors.grayMedium}
         >
           {initials}
-                   </StyledAvatarText> : ''}
+        </StyledAvatarText>
+      ) : (
+        ''
+      )}
     </StyledAvatarContainer>
   );
 };
