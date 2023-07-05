@@ -783,7 +783,7 @@ const Dropdown = ({
           <Icon path={mdiClose} size="1em" />
         </StyledCloseIconContainer>
       )}
-      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} arrowIconProps={{ isOpen }}>
+      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={{ isOpen }}>
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
     </>
