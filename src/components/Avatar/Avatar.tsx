@@ -91,7 +91,11 @@ const Avatar = ({
   const { colors } = useTheme();
   if (isLoading) {
     return (
-      <div {...avatarProps} ref={avatarLoadingRef} style={{ borderRadius: `${shape}%`, overflow: 'hidden' }}>
+      <div
+        {...avatarProps}
+        ref={avatarLoadingRef}
+        style={{ borderRadius: `${shape}%`, overflow: 'hidden' }}
+      >
         <Skeleton {...avatarProps} isLoading color={colors.grayMedium}>
           <div {...avatarProps} style={{ width: `${size * 3}rem`, height: `${size * 3}rem` }} />
         </Skeleton>
@@ -102,7 +106,7 @@ const Avatar = ({
   if (hasImage) {
     return (
       <StyledAvatarImage ref={avatarImageRef} size={size} shape={shape}>
-        <img alt="profile" src={imgURL} {...avatarProps}/>
+        <img alt="profile" src={imgURL} {...avatarProps} />
       </StyledAvatarImage>
     );
   }
