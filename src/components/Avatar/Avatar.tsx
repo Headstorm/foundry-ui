@@ -26,12 +26,15 @@ export type AvatarProps = {
 
   StyledAvatarContainer?: StyledSubcomponentType;
   StyledAvatarText?: StyledSubcomponentType;
+  StyledLoadingContainer?:StyledSubcomponentType;
 
   avatarContainerProps?: SubcomponentPropsType;
   avatarTextProps?: SubcomponentPropsType;
+  avatarLoadingProps?: SubcomponentPropsType;
 
   avatarContainerRef?: React.RefObject<HTMLDivElement>;
   avatarTextRef?: React.RefObject<HTMLSpanElement>;
+  avatarLoadingRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const AvatarContainer = styled(StyledBaseDiv)`
@@ -73,6 +76,18 @@ export const AvatarText = styled(StyledBaseSpan)`
   }};
 `;
 
+export const LoadingContainer = styled(Skeleton.Container)`
+  ${({ borderRadiusPercent }: AvatarContainerProps) => {
+      return `
+        display: flex;
+        border-radius: ${borderRadiusPercent}%;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      `;
+    }};
+`;
+
 const Avatar = ({
   initials,
   imgURL,
@@ -82,19 +97,35 @@ const Avatar = ({
   isError,
   StyledAvatarContainer = AvatarContainer,
   StyledAvatarText = AvatarText,
+  StyledLoadingContainer = LoadingContainer,
   avatarContainerProps = {},
   avatarTextProps = {},
+  avatarLoadingProps,
   avatarContainerRef,
   avatarTextRef,
+  avatarLoadingRef,
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
   if (isLoading) {
     return (
-      <div style={{ borderRadius: `${borderRadiusPercent}%`, overflow: 'hidden' }}>
-        <Skeleton isLoading color={colors.grayXlight}>
-          <div style={{ width: `${size * 3}em`, height: `${size * 3}em` }} />
-        </Skeleton>
-      </div>
+    <StyledLoadingContainer
+      size={size}
+      borderRadiusPercent={borderRadiusPercent}
+      ref={avatarLoadingRef}
+      {...avatarLoadingProps}
+    >
+      <Skeleton
+        isLoading
+        StyledContainer={StyledLoadingContainer}
+      >
+        <StyledAvatarContainer
+          ref={avatarContainerRef}
+          size={size}
+          borderRadiusPercent={borderRadiusPercent}
+          {...avatarContainerProps}
+        />
+      </Skeleton>
+    </StyledLoadingContainer>
     );
   }
 

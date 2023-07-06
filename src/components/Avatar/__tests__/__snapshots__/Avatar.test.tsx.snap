@@ -253,9 +253,9 @@ exports[`Avatar matches snapshot Error State 1`] = `
 `;
 
 exports[`Avatar matches snapshot Loading State 1`] = `
-.c2 {
+.c5 {
   opacity: 1;
-  background: linear-gradient( 90deg, rgba(213,213,213,0.75), rgba(213,213,213,0.25), rgba(213,213,213,0.75) ) repeat;
+  background: linear-gradient( 90deg, rgba(159,162,165,0.75), rgba(159,162,165,0.25), rgba(159,162,165,0.75) ) repeat;
   color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -277,7 +277,6 @@ exports[`Avatar matches snapshot Loading State 1`] = `
 .c0 {
   display: block;
   position: relative;
-  color: transparent !important;
 }
 
 .c0 > * {
@@ -285,7 +284,18 @@ exports[`Avatar matches snapshot Loading State 1`] = `
   transition: opacity .2s;
 }
 
-.c0 > *:not(.c1) {
+.c2 {
+  display: block;
+  position: relative;
+  color: transparent !important;
+}
+
+.c2 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c2 > *:not(.c4) {
   opacity: 0 !important;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -294,19 +304,58 @@ exports[`Avatar matches snapshot Loading State 1`] = `
   pointer-events: none;
 }
 
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: undefined%;
+  background-color: #D5D5D5;
+  padding: 1em;
+  width: 192em;
+  height: 192em;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: undefined%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+}
+
 <div>
   <div
-    style="border-radius: undefined%; overflow: hidden;"
+    class=" c0 c1"
+    size="64"
   >
     <div
-      class=" c0"
+      class=" c2 c1"
     >
       <div
-        style="width: 192em; height: 192em;"
+        class=" c3"
+        size="64"
       />
       <div
-        class=" c1 c2"
-        color="#D5D5D5"
+        class=" c4 c5"
+        color="#9FA2A5"
       />
     </div>
   </div>
