@@ -26,7 +26,7 @@ export type AvatarProps = {
 
   StyledAvatarContainer?: StyledSubcomponentType;
   StyledAvatarText?: StyledSubcomponentType;
-  StyledLoadingContainer?:StyledSubcomponentType;
+  StyledLoadingContainer?: StyledSubcomponentType;
 
   avatarContainerProps?: SubcomponentPropsType;
   avatarTextProps?: SubcomponentPropsType;
@@ -78,14 +78,14 @@ export const AvatarText = styled(StyledBaseSpan)`
 
 export const LoadingContainer = styled(Skeleton.Container)`
   ${({ borderRadiusPercent }: AvatarContainerProps) => {
-      return `
+    return `
         display: flex;
         border-radius: ${borderRadiusPercent}%;
         justify-content: center;
         align-items: center;
         overflow: hidden;
       `;
-    }};
+  }};
 `;
 
 const Avatar = ({
@@ -108,24 +108,21 @@ const Avatar = ({
   const { colors } = useTheme();
   if (isLoading) {
     return (
-    <StyledLoadingContainer
-      size={size}
-      borderRadiusPercent={borderRadiusPercent}
-      ref={avatarLoadingRef}
-      {...avatarLoadingProps}
-    >
-      <Skeleton
-        isLoading
-        StyledContainer={StyledLoadingContainer}
+      <StyledLoadingContainer
+        size={size}
+        borderRadiusPercent={borderRadiusPercent}
+        ref={avatarLoadingRef}
+        {...avatarLoadingProps}
       >
-        <StyledAvatarContainer
-          ref={avatarContainerRef}
-          size={size}
-          borderRadiusPercent={borderRadiusPercent}
-          {...avatarContainerProps}
-        />
-      </Skeleton>
-    </StyledLoadingContainer>
+        <Skeleton isLoading StyledContainer={StyledLoadingContainer}>
+          <StyledAvatarContainer
+            ref={avatarContainerRef}
+            size={size}
+            borderRadiusPercent={borderRadiusPercent}
+            {...avatarContainerProps}
+          />
+        </Skeleton>
+      </StyledLoadingContainer>
     );
   }
 
