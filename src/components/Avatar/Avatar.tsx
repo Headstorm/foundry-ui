@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { StyledBaseDiv, StyledBaseSpan } from '../../htmlElements';
 import { useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
@@ -106,7 +106,10 @@ const Avatar = ({
   avatarLoadingRef,
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
-  const initials = name?.split(' ').map((n) => n[0]).join('');
+  const initials = name
+    ?.split(' ')
+    .map(n => n[0])
+    .join('');
   if (isLoading) {
     return (
       <StyledLoadingContainer
