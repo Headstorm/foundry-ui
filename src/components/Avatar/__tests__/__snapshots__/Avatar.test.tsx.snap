@@ -60,7 +60,7 @@ exports[`Avatar avatar displays correct initials when their is no image 1`] = `
       color="#51575D"
       size="64"
     >
-      MI
+      SA
     </span>
   </div>
 </div>

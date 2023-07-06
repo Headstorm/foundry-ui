@@ -6,7 +6,7 @@ import Avatar, { AvatarProps } from './Avatar';
 
 export const DefaultAvatar: Story<AvatarProps> = (args: AvatarProps) => <Avatar {...args} />;
 DefaultAvatar.args = {
-  initials: 'AA',
+  name: 'John Smith',
   imgURL:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHCWDau1lAskHdiokbaocBqIXOCxWcdlAwg9UhusQHaALmDwbfaDxGpjmn7Cv0HWXYxTI&usqp=CAU',
   size: 3,

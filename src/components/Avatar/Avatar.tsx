@@ -17,7 +17,7 @@ export type AvatarTextProps = {
 };
 
 export type AvatarProps = {
-  initials?: ReactNode;
+  name?: string;
   imgURL?: string;
   size?: number;
   borderRadiusPercent?: number;
@@ -89,7 +89,7 @@ export const LoadingContainer = styled(Skeleton.Container)`
 `;
 
 const Avatar = ({
-  initials,
+  name,
   imgURL,
   size = 3,
   borderRadiusPercent,
@@ -106,6 +106,7 @@ const Avatar = ({
   avatarLoadingRef,
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
+  const initials = name?.split(' ').map((n) => n[0]).join('');
   if (isLoading) {
     return (
       <StyledLoadingContainer
