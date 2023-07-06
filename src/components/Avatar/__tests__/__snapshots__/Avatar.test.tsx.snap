@@ -231,7 +231,7 @@ exports[`Avatar matches snapshot Error State 1`] = `
   display: -ms-flexbox;
   display: flex;
   padding: 0.66em;
-  color: #c94545d9;
+  color: #d00;
   font-size: 128em;
   font-weight: 600;
 }
@@ -243,7 +243,7 @@ exports[`Avatar matches snapshot Error State 1`] = `
   >
     <span
       class=" c1"
-      color="#c94545d9"
+      color="#d00"
       size="128"
     >
       !

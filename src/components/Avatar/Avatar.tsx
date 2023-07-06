@@ -142,7 +142,7 @@ const Avatar = ({
         <StyledAvatarText
           ref={avatarTextRef}
           size={size * 2}
-          color="#c94545d9"
+          color={colors.destructive}
           {...avatarTextProps}
         >
           !
