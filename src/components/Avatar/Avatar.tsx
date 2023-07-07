@@ -78,11 +78,10 @@ export const AvatarText = styled(StyledBaseSpan)`
 `;
 
 export const AvatarShimmer = styled(Skeleton.Shimmer)`
-${({ borderRadiusPercent }: Pick<AvatarProps, 'borderRadiusPercent'>) =>
-  `
+  ${({ borderRadiusPercent }: Pick<AvatarProps, 'borderRadiusPercent'>) =>
+    `
     border-radius: ${borderRadiusPercent}%;
-  `
-  }
+  `}
 `;
 
 const Avatar = ({
@@ -108,11 +107,7 @@ const Avatar = ({
       isLoading={isLoading}
       color={shimmerColor}
       StyledContainer={StyledAvatarContainer}
-      containerProps={{ size,
-      borderRadiusPercent,
-      imgURL,
-      color,
-      avatarContainerRef }}
+      containerProps={{ size, borderRadiusPercent, imgURL, color, avatarContainerRef }}
       shimmerProps={{ borderRadiusPercent }}
       StyledShimmer={StyledAvatarShimmer}
     >

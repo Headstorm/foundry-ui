@@ -8,6 +8,7 @@ export const DefaultAvatar: Story<AvatarProps> = (args: AvatarProps) => <Avatar 
 DefaultAvatar.args = {
   placeholder: 'AA',
   children: '',
+  size: 3,
   imgURL: 'https://source.unsplash.com/collection/19271953',
   borderRadiusPercent: 50,
   color: colors.grayXlight,
