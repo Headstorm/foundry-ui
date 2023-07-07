@@ -5,6 +5,7 @@ import { useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import Skeleton from '../Skeleton/Skeleton';
 import colors from '../../enums/colors';
+import { readableColor } from 'polished';
 
 export type AvatarContainerProps = {
   size: number;
@@ -103,25 +104,27 @@ const Avatar = ({
   avatarContainerRef,
   avatarTextRef,
 }: AvatarProps): JSX.Element => {
-  if (isLoading) {
-    return (
-      <StyledLoadingContainer
-        size={size}
-        borderRadiusPercent={borderRadiusPercent}
-        ref={avatarLoadingRef}
-        {...avatarLoadingProps}
-      >
-        <Skeleton isLoading StyledContainer={StyledLoadingContainer}>
-          <StyledAvatarContainer
-            ref={avatarContainerRef}
-            size={size}
-            borderRadiusPercent={borderRadiusPercent}
-            {...avatarContainerProps}
-          />
-        </Skeleton>
-      </StyledLoadingContainer>
-    );
-  }
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const fontColor = readableColor(containerColor!, colors.grayMedium, colors.background);
+  // if (isLoading) {
+  //   return (
+  //     <StyledLoadingContainer
+  //       size={size}
+  //       borderRadiusPercent={borderRadiusPercent}
+  //       ref={avatarLoadingRef}
+  //       {...avatarLoadingProps}
+  //     >
+  //       <Skeleton isLoading StyledContainer={StyledLoadingContainer}>
+  //         <StyledAvatarContainer
+  //           ref={avatarContainerRef}
+  //           size={size}
+  //           borderRadiusPercent={borderRadiusPercent}
+  //           {...avatarContainerProps}
+  //         />
+  //       </Skeleton>
+  //     </StyledLoadingContainer>
+  //   );
+  // }
 
   if (isError) {
     return (
@@ -158,7 +161,7 @@ const Avatar = ({
           {...avatarTextProps}
           ref={avatarTextRef}
           size={size}
-          textColor={colors.grayMedium}
+          textColor={fontColor}
         >
           {placeholder}
         </StyledAvatarText>
