@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { withFoundryContext } from '../../../.storybook/decorators';
-
+import colors from '../../enums/colors';
 import Avatar, { AvatarProps } from './Avatar';
 
 export const DefaultAvatar: Story<AvatarProps> = (args: AvatarProps) => <Avatar {...args} />;
 DefaultAvatar.args = {
-  name: 'John Smith',
+  placeholder: 'AA',
   imgURL:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHCWDau1lAskHdiokbaocBqIXOCxWcdlAwg9UhusQHaALmDwbfaDxGpjmn7Cv0HWXYxTI&usqp=CAU',
   size: 3,
   borderRadiusPercent: 50,
+  containerColor: colors.grayXlight,
   isLoading: false,
   isError: false,
 };

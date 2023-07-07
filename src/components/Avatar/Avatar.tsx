@@ -1,25 +1,28 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StyledBaseDiv, StyledBaseSpan } from '../../htmlElements';
 import { useTheme } from '../../context';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import Skeleton from '../Skeleton/Skeleton';
+import colors from '../../enums/colors';
 
 export type AvatarContainerProps = {
   size: number;
   borderRadiusPercent: number;
   imgURL?: string;
+  containerColor: string;
 };
 
 export type AvatarTextProps = {
   size: number;
-  color: string;
+  textColor: string;
 };
 
 export type AvatarProps = {
-  name?: string;
+  placeholder?: ReactNode | string;
   imgURL?: string;
   size?: number;
+  containerColor?: string;
   borderRadiusPercent?: number;
   isLoading?: boolean;
   isError?: boolean;
@@ -30,7 +33,6 @@ export type AvatarProps = {
 
   avatarContainerProps?: SubcomponentPropsType;
   avatarTextProps?: SubcomponentPropsType;
-  avatarLoadingProps?: SubcomponentPropsType;
 
   avatarContainerRef?: React.RefObject<HTMLDivElement>;
   avatarTextRef?: React.RefObject<HTMLSpanElement>;
@@ -38,9 +40,7 @@ export type AvatarProps = {
 };
 
 export const AvatarContainer = styled(StyledBaseDiv)`
-  ${({ size, borderRadiusPercent, imgURL }: AvatarContainerProps) => {
-    const { colors } = useTheme();
-
+  ${({ size, borderRadiusPercent, imgURL, containerColor }: AvatarContainerProps) => {
     if (imgURL) {
       return `
         border-radius: ${borderRadiusPercent}%;
@@ -54,7 +54,7 @@ export const AvatarContainer = styled(StyledBaseDiv)`
     return `
       display: flex;
       border-radius: ${borderRadiusPercent}%;
-      background-color: ${colors.grayXlight};
+      background-color: ${containerColor};
       padding: 1em;
       width: ${size * 3}em;
       height: ${size * 3}em;
@@ -65,51 +65,44 @@ export const AvatarContainer = styled(StyledBaseDiv)`
 `;
 
 export const AvatarText = styled(StyledBaseSpan)`
-  ${({ size, color }: AvatarTextProps) => {
+  ${({ size, textColor }: AvatarTextProps) => {
     return `
       display: flex;
       padding: 0.66em; 
-      color: ${color};
+      color: ${textColor};
       font-size: ${size}em; 
       font-weight: 600;
       `;
   }};
 `;
 
-export const LoadingContainer = styled(Skeleton.Container)`
-  ${({ borderRadiusPercent }: AvatarContainerProps) => {
-    return `
-        display: flex;
-        border-radius: ${borderRadiusPercent}%;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      `;
-  }};
-`;
+// export const LoadingContainer = styled(Skeleton.Container)`
+//   ${({ borderRadiusPercent }: AvatarContainerProps) => {
+//     return `
+//         display: flex;
+//         border-radius: ${borderRadiusPercent}%;
+//         justify-content: center;
+//         align-items: center;
+//         overflow: hidden;
+//       `;
+//   }};
+// `;
 
 const Avatar = ({
-  name,
+  placeholder,
   imgURL,
   size = 3,
   borderRadiusPercent,
+  containerColor,
   isLoading,
   isError,
   StyledAvatarContainer = AvatarContainer,
   StyledAvatarText = AvatarText,
-  StyledLoadingContainer = LoadingContainer,
   avatarContainerProps = {},
   avatarTextProps = {},
-  avatarLoadingProps,
   avatarContainerRef,
   avatarTextRef,
-  avatarLoadingRef,
 }: AvatarProps): JSX.Element => {
-  const { colors } = useTheme();
-  const initials = name
-    ?.split(' ')
-    .map(n => n[0])
-    .join('');
   if (isLoading) {
     return (
       <StyledLoadingContainer
@@ -157,6 +150,7 @@ const Avatar = ({
       size={size}
       borderRadiusPercent={borderRadiusPercent}
       imgURL={imgURL}
+      containerColor={containerColor}
       {...avatarContainerProps}
     >
       {!imgURL ? (
@@ -164,9 +158,9 @@ const Avatar = ({
           {...avatarTextProps}
           ref={avatarTextRef}
           size={size}
-          color={colors.grayMedium}
+          textColor={colors.grayMedium}
         >
-          {initials}
+          {placeholder}
         </StyledAvatarText>
       ) : (
         ''

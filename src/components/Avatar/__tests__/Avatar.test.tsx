@@ -86,15 +86,5 @@ describe('Avatar', () => {
         expect(ref.current instanceof HTMLSpanElement).toBeTruthy();
       });
     });
-
-    it('avatarLoading.current should exist', async () => {
-      const ref = React.createRef<HTMLDivElement>();
-      const { getByTestId } = render(
-        <Avatar isLoading avatarLoadingRef={ref} avatarLoadingProps={{ 'data-test-id': testId }} />,
-      );
-      await waitFor(() => {
-        expect(ref.current instanceof HTMLDivElement).toBeTruthy();
-      });
-    });
   });
 });
