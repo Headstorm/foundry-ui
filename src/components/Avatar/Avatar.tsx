@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import styled from 'styled-components';
 import React, { ReactNode } from 'react';
-import { StyledBaseDiv, StyledBaseSpan } from '../../htmlElements';
-import { useTheme } from '../../context';
+import { darken, lighten, readableColor } from 'polished';
+import { StyledBaseSpan } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import Skeleton from '../Skeleton/Skeleton';
 import colors from '../../enums/colors';
-import { readableColor } from 'polished';
 
 export type AvatarContainerProps = {
   size: number;
   borderRadiusPercent: number;
   imgURL?: string;
-  containerColor: string;
+  color: string;
+  isLoading: boolean;
 };
 
 export type AvatarTextProps = {
@@ -20,29 +21,28 @@ export type AvatarTextProps = {
 };
 
 export type AvatarProps = {
-  placeholder?: ReactNode | string;
+  placeholder?: string | ReactNode;
+  children?: ReactNode;
   imgURL?: string;
   size?: number;
-  containerColor?: string;
+  color?: string;
   borderRadiusPercent?: number;
   isLoading?: boolean;
-  isError?: boolean;
 
   StyledAvatarContainer?: StyledSubcomponentType;
   StyledAvatarText?: StyledSubcomponentType;
-  StyledLoadingContainer?: StyledSubcomponentType;
+  StyledAvatarShimmer?: StyledSubcomponentType;
 
   avatarContainerProps?: SubcomponentPropsType;
   avatarTextProps?: SubcomponentPropsType;
 
   avatarContainerRef?: React.RefObject<HTMLDivElement>;
   avatarTextRef?: React.RefObject<HTMLSpanElement>;
-  avatarLoadingRef?: React.RefObject<HTMLDivElement>;
 };
 
-export const AvatarContainer = styled(StyledBaseDiv)`
-  ${({ size, borderRadiusPercent, imgURL, containerColor }: AvatarContainerProps) => {
-    if (imgURL) {
+export const AvatarContainer = styled(Skeleton.Container)`
+  ${({ size, borderRadiusPercent, imgURL, isLoading, color }: AvatarContainerProps) => {
+    if (imgURL && !isLoading) {
       return `
         border-radius: ${borderRadiusPercent}%;
         overflow: hidden;
@@ -55,10 +55,10 @@ export const AvatarContainer = styled(StyledBaseDiv)`
     return `
       display: flex;
       border-radius: ${borderRadiusPercent}%;
-      background-color: ${containerColor};
       padding: 1em;
       width: ${size * 3}em;
       height: ${size * 3}em;
+      background-color: ${color};
       justify-content: center;
       align-items: center;
     `;
@@ -77,84 +77,44 @@ export const AvatarText = styled(StyledBaseSpan)`
   }};
 `;
 
-// export const LoadingContainer = styled(Skeleton.Container)`
-//   ${({ borderRadiusPercent }: AvatarContainerProps) => {
-//     return `
-//         display: flex;
-//         border-radius: ${borderRadiusPercent}%;
-//         justify-content: center;
-//         align-items: center;
-//         overflow: hidden;
-//       `;
-//   }};
-// `;
+export const AvatarShimmer = styled(Skeleton.Shimmer)`
+${({ borderRadiusPercent }: Pick<AvatarProps, 'borderRadiusPercent'>) =>
+  `
+    border-radius: ${borderRadiusPercent}%;
+  `
+  }
+`;
 
 const Avatar = ({
   placeholder,
+  // eslint-disable-next-line no-unused-vars
+  children,
   imgURL,
   size = 3,
   borderRadiusPercent,
-  containerColor,
+  color = colors.grayXlight,
   isLoading,
-  isError,
   StyledAvatarContainer = AvatarContainer,
   StyledAvatarText = AvatarText,
-  avatarContainerProps = {},
+  StyledAvatarShimmer = AvatarShimmer,
   avatarTextProps = {},
   avatarContainerRef,
   avatarTextRef,
 }: AvatarProps): JSX.Element => {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const fontColor = readableColor(containerColor!, colors.grayMedium, colors.background);
-  // if (isLoading) {
-  //   return (
-  //     <StyledLoadingContainer
-  //       size={size}
-  //       borderRadiusPercent={borderRadiusPercent}
-  //       ref={avatarLoadingRef}
-  //       {...avatarLoadingProps}
-  //     >
-  //       <Skeleton isLoading StyledContainer={StyledLoadingContainer}>
-  //         <StyledAvatarContainer
-  //           ref={avatarContainerRef}
-  //           size={size}
-  //           borderRadiusPercent={borderRadiusPercent}
-  //           {...avatarContainerProps}
-  //         />
-  //       </Skeleton>
-  //     </StyledLoadingContainer>
-  //   );
-  // }
-
-  if (isError) {
-    return (
-      <StyledAvatarContainer
-        ref={avatarContainerRef}
-        size={size}
-        borderRadiusPercent={borderRadiusPercent}
-        imgURL=""
-        {...avatarContainerProps}
-      >
-        <StyledAvatarText
-          ref={avatarTextRef}
-          size={size * 2}
-          color={colors.destructive}
-          {...avatarTextProps}
-        >
-          !
-        </StyledAvatarText>
-      </StyledAvatarContainer>
-    );
-  }
-
+  const fontColor = readableColor(color!, colors.grayMedium, colors.background);
+  const shimmerColor = fontColor === colors.background ? lighten(0.2, color!) : darken(0.2, color!);
   return (
-    <StyledAvatarContainer
-      ref={avatarContainerRef}
-      size={size}
-      borderRadiusPercent={borderRadiusPercent}
-      imgURL={imgURL}
-      containerColor={containerColor}
-      {...avatarContainerProps}
+    <Skeleton
+      isLoading={isLoading}
+      color={shimmerColor}
+      StyledContainer={StyledAvatarContainer}
+      containerProps={{ size,
+      borderRadiusPercent,
+      imgURL,
+      color,
+      avatarContainerRef }}
+      shimmerProps={{ borderRadiusPercent }}
+      StyledShimmer={StyledAvatarShimmer}
     >
       {!imgURL ? (
         <StyledAvatarText
@@ -168,7 +128,7 @@ const Avatar = ({
       ) : (
         ''
       )}
-    </StyledAvatarContainer>
+    </Skeleton>
   );
 };
 

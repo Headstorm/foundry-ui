@@ -7,13 +7,11 @@ import Avatar, { AvatarProps } from './Avatar';
 export const DefaultAvatar: Story<AvatarProps> = (args: AvatarProps) => <Avatar {...args} />;
 DefaultAvatar.args = {
   placeholder: 'AA',
-  imgURL:
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHCWDau1lAskHdiokbaocBqIXOCxWcdlAwg9UhusQHaALmDwbfaDxGpjmn7Cv0HWXYxTI&usqp=CAU',
-  size: 3,
+  children: '',
+  imgURL: 'https://source.unsplash.com/collection/19271953',
   borderRadiusPercent: 50,
-  containerColor: colors.grayXlight,
+  color: colors.grayXlight,
   isLoading: false,
-  isError: false,
 };
 
 export default {

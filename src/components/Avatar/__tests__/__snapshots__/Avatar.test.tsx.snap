@@ -1,7 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar avatar displays correct image when their is an image 1`] = `
+.c2 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 {
   border-radius: undefined%;
   overflow: hidden;
   width: 192em;
@@ -10,25 +41,66 @@ exports[`Avatar avatar displays correct image when their is an image 1`] = `
   background-size: cover;
 }
 
+.c3 {
+  border-radius: undefined%;
+}
+
 <div>
   <div
-    class=" c0"
+    class=" c0 c1"
+    color="#D5D5D5"
     size="64"
-  />
+  >
+    <div
+      class=" c2 c3"
+      color="#a2a2a2"
+    />
+  </div>
 </div>
 `;
 
 exports[`Avatar avatar displays correct initials when their is no image 1`] = `
+.c3 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: undefined;
   padding: 1em;
   width: 192em;
   height: 192em;
+  background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -39,7 +111,7 @@ exports[`Avatar avatar displays correct initials when their is no image 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -50,30 +122,72 @@ exports[`Avatar avatar displays correct initials when their is no image 1`] = `
   font-weight: 600;
 }
 
+.c4 {
+  border-radius: undefined%;
+}
+
 <div>
   <div
-    class=" c0"
+    class=" c0 c1"
+    color="#D5D5D5"
     size="64"
   >
     <span
-      class=" c1"
+      class=" c2"
       size="64"
+    >
+      SA
+    </span>
+    <div
+      class=" c3 c4"
+      color="#a2a2a2"
     />
   </div>
 </div>
 `;
 
 exports[`Avatar avatar shape is correct 1`] = `
+.c3 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 30%;
-  background-color: undefined;
   padding: 1em;
   width: 9em;
   height: 9em;
+  background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -84,7 +198,7 @@ exports[`Avatar avatar shape is correct 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -95,30 +209,70 @@ exports[`Avatar avatar shape is correct 1`] = `
   font-weight: 600;
 }
 
+.c4 {
+  border-radius: 30%;
+}
+
 <div>
   <div
-    class=" c0"
+    class=" c0 c1"
+    color="#D5D5D5"
     size="3"
   >
     <span
-      class=" c1"
+      class=" c2"
       size="3"
+    />
+    <div
+      class=" c3 c4"
+      color="#a2a2a2"
     />
   </div>
 </div>
 `;
 
 exports[`Avatar avatar size is correct 1`] = `
+.c3 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: undefined;
   padding: 1em;
   width: 63em;
   height: 63em;
+  background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -129,7 +283,7 @@ exports[`Avatar avatar size is correct 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -140,30 +294,70 @@ exports[`Avatar avatar size is correct 1`] = `
   font-weight: 600;
 }
 
+.c4 {
+  border-radius: undefined%;
+}
+
 <div>
   <div
-    class=" c0"
+    class=" c0 c1"
+    color="#D5D5D5"
     size="21"
   >
     <span
-      class=" c1"
+      class=" c2"
       size="21"
+    />
+    <div
+      class=" c3 c4"
+      color="#a2a2a2"
     />
   </div>
 </div>
 `;
 
 exports[`Avatar matches snapshot 1`] = `
+.c3 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: undefined;
   padding: 1em;
   width: 9em;
   height: 9em;
+  background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -174,7 +368,7 @@ exports[`Avatar matches snapshot 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -185,30 +379,70 @@ exports[`Avatar matches snapshot 1`] = `
   font-weight: 600;
 }
 
+.c4 {
+  border-radius: undefined%;
+}
+
 <div>
   <div
-    class=" c0"
+    class=" c0 c1"
+    color="#D5D5D5"
     size="3"
   >
     <span
-      class=" c1"
+      class=" c2"
       size="3"
+    />
+    <div
+      class=" c3 c4"
+      color="#a2a2a2"
     />
   </div>
 </div>
 `;
 
 exports[`Avatar matches snapshot Error State 1`] = `
+.c3 {
+  opacity: 0;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
 .c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: undefined%;
-  background-color: undefined;
   padding: 1em;
   width: 192em;
   height: 192em;
+  background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -219,55 +453,7 @@ exports[`Avatar matches snapshot Error State 1`] = `
   align-items: center;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0.66em;
-  color: undefined;
-  font-size: 128em;
-  font-weight: 600;
-}
-
-<div>
-  <div
-    class=" c0"
-    size="64"
-  >
-    <span
-      class=" c1"
-      color="#d00"
-      size="128"
-    >
-      !
-    </span>
-  </div>
-</div>
-`;
-
-exports[`Avatar matches snapshot Loading State 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border-radius: undefined%;
-  background-color: undefined;
-  padding: 1em;
-  width: 192em;
-  height: 192em;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -278,14 +464,118 @@ exports[`Avatar matches snapshot Loading State 1`] = `
   font-weight: 600;
 }
 
+.c4 {
+  border-radius: undefined%;
+}
+
 <div>
   <div
-    class=" c0"
+    class=" c0 c1"
+    color="#D5D5D5"
     size="64"
   >
     <span
-      class=" c1"
+      class=" c2"
       size="64"
+    />
+    <div
+      class=" c3 c4"
+      color="#a2a2a2"
+    />
+  </div>
+</div>
+`;
+
+exports[`Avatar matches snapshot Loading State 1`] = `
+.c4 {
+  opacity: 1;
+  background: linear-gradient( 90deg, rgba(162,162,162,0.75), rgba(162,162,162,0.25), rgba(162,162,162,0.75) ) repeat;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  border-radius: 0.25rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.c0 {
+  display: block;
+  position: relative;
+  color: transparent !important;
+}
+
+.c0 > * {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.c0 > *:not(.c3) {
+  opacity: 0 !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: undefined%;
+  padding: 1em;
+  width: 192em;
+  height: 192em;
+  background-color: #D5D5D5;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.66em;
+  color: #51575D;
+  font-size: 64em;
+  font-weight: 600;
+}
+
+.c5 {
+  border-radius: undefined%;
+}
+
+<div>
+  <div
+    class=" c0 c1"
+    color="#D5D5D5"
+    size="64"
+  >
+    <span
+      class=" c2"
+      size="64"
+    />
+    <div
+      class=" c3 c4 c5"
+      color="#a2a2a2"
     />
   </div>
 </div>

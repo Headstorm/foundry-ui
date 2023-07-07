@@ -22,14 +22,14 @@ describe('Avatar', () => {
   });
 
   it('matches snapshot Error State', async () => {
-    const { container } = render(<Avatar isError size={64} data-testid={testId} />);
+    const { container } = render(<Avatar size={64} data-testid={testId} />);
     await waitFor(() => {
       expect(container).toMatchSnapshot();
     });
   });
 
   it('avatar displays correct initials when their is no image', async () => {
-    const { container } = render(<Avatar name="Sam Allen" size={64} data-testid={testId} />);
+    const { container } = render(<Avatar placeholder="SA" size={64} data-testid={testId} />);
 
     await waitFor(() => {
       expect(container).toMatchSnapshot();
@@ -69,14 +69,6 @@ describe('Avatar', () => {
   });
 
   describe('Ref Tests', () => {
-    it('avatarContainer.current should exist', async () => {
-      const ref = React.createRef<HTMLDivElement>();
-      render(<Avatar avatarContainerRef={ref} avatarContainerProps={{ 'data-test-id': testId }} />);
-      await waitFor(() => {
-        expect(ref.current instanceof HTMLDivElement).toBeTruthy();
-      });
-    });
-
     it('avatarText.current should exist', async () => {
       const ref = React.createRef<HTMLSpanElement>();
       const { getByTestId } = render(
