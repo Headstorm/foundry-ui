@@ -88,7 +88,7 @@ const Avatar = ({
   imgURL,
   size = 10,
   borderRadiusPercent = 50,
-  color,
+  color: initialColor,
   isLoading = false,
   StyledContainer = AvatarContainer,
   StyledText = AvatarText,
@@ -101,7 +101,8 @@ const Avatar = ({
   shimmerRef,
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
-  const fontColor = readableColor(color!, colors.grayMedium, colors.background);
+  const color = initialColor || colors.grayXlight;
+  const fontColor = readableColor(color, colors.grayMedium, colors.background);
   const shimmerColor = fontColor === colors.background ? lighten(0.2, color!) : darken(0.2, color!);
   return (
     <Skeleton
