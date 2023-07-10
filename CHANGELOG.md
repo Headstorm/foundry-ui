@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/Headstorm/foundry-ui/compare/v1.22.0...v1.23.0) (2023-07-10)
+
+
+### Features
+
+* **avatar:** creates Avatar Component ([984e1ec](https://github.com/Headstorm/foundry-ui/commit/984e1ecc4e6e94509a662974a15cb02c94764ced))
+
 # [1.22.0](https://github.com/Headstorm/foundry-ui/compare/v1.21.1...v1.22.0) (2023-07-05)
 
 
