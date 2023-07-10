@@ -127,4 +127,7 @@ const Avatar = ({
   );
 };
 
+Avatar.Container = AvatarContainer;
+Avatar.Text = AvatarText;
+
 export default Avatar;
