@@ -29,16 +29,16 @@ export type AvatarProps = {
   borderRadiusPercent?: number;
   isLoading?: boolean;
 
-  StyledAvatarContainer?: StyledSubcomponentType;
-  StyledAvatarText?: StyledSubcomponentType;
-  StyledAvatarShimmer?: StyledSubcomponentType;
-
-  avatarContainerProps?: SubcomponentPropsType;
-  avatarTextProps?: SubcomponentPropsType;
-
-  avatarContainerRef?: React.RefObject<HTMLDivElement>;
-  avatarTextRef?: React.RefObject<HTMLSpanElement>;
-};
+  StyledContainer?: StyledSubcomponentType;
+  StyledText?: StyledSubcomponentType;
+  StyledShimmer?: StyledSubcomponentType;
+  containerProps?: SubcomponentPropsType;
+  textProps?: SubcomponentPropsType;
+  shimmerProps?: SubcomponentPropsType;
+  containerRef?: React.RefObject<HTMLDivElement>;
+  textRef?: React.RefObject<HTMLSpanElement>;
+  shimmerRef?: React.RefObject<HTMLDivElement>;
+}
 
 export const AvatarContainer = styled(Skeleton.Container)`
   ${({ size, borderRadiusPercent, imgURL, isLoading, color }: AvatarContainerProps) => {
@@ -46,8 +46,8 @@ export const AvatarContainer = styled(Skeleton.Container)`
       return `
         border-radius: ${borderRadiusPercent}%;
         overflow: hidden;
-        width: ${size * 3}em;
-        height: ${size * 3}em;
+        width: ${size}em;
+        height: ${size}em;
         background-image: url(${imgURL});
         background-size: cover;
       `;
@@ -56,8 +56,8 @@ export const AvatarContainer = styled(Skeleton.Container)`
       display: flex;
       border-radius: ${borderRadiusPercent}%;
       padding: 1em;
-      width: ${size * 3}em;
-      height: ${size * 3}em;
+      width: ${size}em;
+      height: ${size}em;
       background-color: ${color};
       justify-content: center;
       align-items: center;
@@ -68,10 +68,8 @@ export const AvatarContainer = styled(Skeleton.Container)`
 export const AvatarText = styled(StyledBaseSpan)`
   ${({ size, textColor }: AvatarTextProps) => {
     return `
-      display: flex;
-      padding: 0.66em; 
       color: ${textColor};
-      font-size: ${size}em; 
+      font-size: ${size / 3}em; 
       font-weight: 600;
       `;
   }};
@@ -86,20 +84,21 @@ export const AvatarShimmer = styled(Skeleton.Shimmer)`
 
 const Avatar = ({
   placeholder,
-  // eslint-disable-next-line no-unused-vars
   children,
   imgURL,
-  size = 3,
+  size = 10,
   borderRadiusPercent = 50,
   color,
   isLoading = false,
-  StyledAvatarContainer = AvatarContainer,
-  StyledAvatarText = AvatarText,
-  StyledAvatarShimmer = AvatarShimmer,
-  avatarTextProps = {},
-  avatarContainerProps = {},
-  avatarContainerRef,
-  avatarTextRef,
+  StyledContainer = AvatarContainer,
+  StyledText = AvatarText,
+  StyledShimmer = AvatarShimmer,
+  textProps = {},
+  containerProps = {},
+  shimmerProps = {},
+  containerRef,
+  textRef,
+  shimmerRef,
 }: AvatarProps): JSX.Element => {
   const { colors } = useTheme();
   const fontColor = readableColor(color!, colors.grayMedium, colors.background);
@@ -108,20 +107,28 @@ const Avatar = ({
     <Skeleton
       isLoading={isLoading}
       color={shimmerColor}
-      StyledContainer={StyledAvatarContainer}
-      containerProps={{ size, borderRadiusPercent, imgURL, color, avatarContainerRef, ...avatarContainerProps }}
-      shimmerProps={{ borderRadiusPercent }}
-      StyledShimmer={StyledAvatarShimmer}
+      StyledContainer={StyledContainer}
+      containerProps={{
+        size,
+        borderRadiusPercent,
+        imgURL,
+        color,
+        ...containerProps,
+        ref: containerRef,
+      }}
+      shimmerProps={{ borderRadiusPercent, ...shimmerProps, ref: shimmerRef }}
+      StyledShimmer={StyledShimmer}
     >
+      {children}
       {!imgURL ? (
-        <StyledAvatarText
-          {...avatarTextProps}
-          ref={avatarTextRef}
+        <StyledText
+          {...textProps}
+          ref={textRef}
           size={size}
           textColor={fontColor}
         >
           {placeholder}
-        </StyledAvatarText>
+        </StyledText>
       ) : (
         ''
       )}
