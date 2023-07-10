@@ -35,8 +35,8 @@ exports[`Avatar avatar displays correct image when their is an image 1`] = `
 .c1 {
   border-radius: 50%;
   overflow: hidden;
-  width: 10em;
-  height: 10em;
+  width: 1.5em;
+  height: 1.5em;
   background-image: url(https://tinyurl.com/49dba3d4);
   background-size: cover;
 }
@@ -49,7 +49,7 @@ exports[`Avatar avatar displays correct image when their is an image 1`] = `
   <div
     class=" c0 c1"
     color="#D5D5D5"
-    size="10"
+    size="1.5"
   >
     <div
       class=" c2 c3"
@@ -98,8 +98,8 @@ exports[`Avatar avatar displays correct initials when there is no image 1`] = `
   display: flex;
   border-radius: 50%;
   padding: 1em;
-  width: 10em;
-  height: 10em;
+  width: 1.5em;
+  height: 1.5em;
   background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -113,7 +113,7 @@ exports[`Avatar avatar displays correct initials when there is no image 1`] = `
 
 .c2 {
   color: #51575D;
-  font-size: 3.3333333333333335em;
+  font-size: 0.5em;
   font-weight: 600;
 }
 
@@ -125,11 +125,11 @@ exports[`Avatar avatar displays correct initials when there is no image 1`] = `
   <div
     class=" c0 c1"
     color="#D5D5D5"
-    size="10"
+    size="1.5"
   >
     <span
       class=" c2"
-      size="10"
+      size="1.5"
     >
       SA
     </span>
@@ -180,8 +180,8 @@ exports[`Avatar avatar shape is correct 1`] = `
   display: flex;
   border-radius: 30%;
   padding: 1em;
-  width: 10em;
-  height: 10em;
+  width: 1.5em;
+  height: 1.5em;
   background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -195,7 +195,7 @@ exports[`Avatar avatar shape is correct 1`] = `
 
 .c2 {
   color: #51575D;
-  font-size: 3.3333333333333335em;
+  font-size: 0.5em;
   font-weight: 600;
 }
 
@@ -207,11 +207,11 @@ exports[`Avatar avatar shape is correct 1`] = `
   <div
     class=" c0 c1"
     color="#D5D5D5"
-    size="10"
+    size="1.5"
   >
     <span
       class=" c2"
-      size="10"
+      size="1.5"
     />
     <div
       class=" c3 c4"
@@ -340,8 +340,8 @@ exports[`Avatar matches snapshot 1`] = `
   display: flex;
   border-radius: 50%;
   padding: 1em;
-  width: 10em;
-  height: 10em;
+  width: 1.5em;
+  height: 1.5em;
   background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -355,7 +355,7 @@ exports[`Avatar matches snapshot 1`] = `
 
 .c2 {
   color: #51575D;
-  font-size: 3.3333333333333335em;
+  font-size: 0.5em;
   font-weight: 600;
 }
 
@@ -367,11 +367,11 @@ exports[`Avatar matches snapshot 1`] = `
   <div
     class=" c0 c1"
     color="#D5D5D5"
-    size="10"
+    size="1.5"
   >
     <span
       class=" c2"
-      size="10"
+      size="1.5"
     />
     <div
       class=" c3 c4"
@@ -430,8 +430,8 @@ exports[`Avatar matches snapshot loading state 1`] = `
   display: flex;
   border-radius: 50%;
   padding: 1em;
-  width: 10em;
-  height: 10em;
+  width: 1.5em;
+  height: 1.5em;
   background-color: #D5D5D5;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -445,7 +445,7 @@ exports[`Avatar matches snapshot loading state 1`] = `
 
 .c2 {
   color: #51575D;
-  font-size: 3.3333333333333335em;
+  font-size: 0.5em;
   font-weight: 600;
 }
 
@@ -457,11 +457,11 @@ exports[`Avatar matches snapshot loading state 1`] = `
   <div
     class=" c0 c1"
     color="#D5D5D5"
-    size="10"
+    size="1.5"
   >
     <span
       class=" c2"
-      size="10"
+      size="1.5"
     />
     <div
       class=" c3 c4 c5"

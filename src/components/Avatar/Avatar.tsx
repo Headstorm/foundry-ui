@@ -86,7 +86,7 @@ const Avatar = ({
   placeholder,
   children,
   imgURL,
-  size = 10,
+  size = 1.5,
   borderRadiusPercent = 50,
   color: initialColor,
   isLoading = false,
