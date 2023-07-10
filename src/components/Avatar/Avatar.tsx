@@ -38,7 +38,7 @@ export type AvatarProps = {
   containerRef?: React.RefObject<HTMLDivElement>;
   textRef?: React.RefObject<HTMLSpanElement>;
   shimmerRef?: React.RefObject<HTMLDivElement>;
-}
+};
 
 export const AvatarContainer = styled(Skeleton.Container)`
   ${({ size, borderRadiusPercent, imgURL, isLoading, color }: AvatarContainerProps) => {
@@ -122,12 +122,7 @@ const Avatar = ({
     >
       {children}
       {!imgURL ? (
-        <StyledText
-          {...textProps}
-          ref={textRef}
-          size={size}
-          textColor={fontColor}
-        >
+        <StyledText {...textProps} ref={textRef} size={size} textColor={fontColor}>
           {placeholder}
         </StyledText>
       ) : (

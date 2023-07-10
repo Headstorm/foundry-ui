@@ -20,17 +20,18 @@ const LabelContainer = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 8px 0 ; 
+  padding: 8px 0;
   text-align: center;
 `;
 
-export const LabelAvatar: Story<AvatarProps & { children: string }> = ({ children, ...args }: AvatarProps) => (
+export const LabelAvatar: Story<AvatarProps & { children: string }> = ({
+  children,
+  ...args
+}: AvatarProps) => (
   <Avatar {...args}>
-    <LabelContainer>
-      {children}
-    </LabelContainer>
+    <LabelContainer>{children}</LabelContainer>
   </Avatar>
 );
 
