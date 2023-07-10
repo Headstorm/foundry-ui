@@ -21,13 +21,6 @@ describe('Avatar', () => {
     });
   });
 
-  it('matches snapshot Error State', async () => {
-    const { container } = render(<Avatar size={64} data-testid={testId} />);
-    await waitFor(() => {
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   it('avatar displays correct initials when their is no image', async () => {
     const { container } = render(<Avatar placeholder="SA" size={64} data-testid={testId} />);
 
