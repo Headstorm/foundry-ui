@@ -5,7 +5,7 @@ import { darken, lighten, readableColor } from 'polished';
 import { StyledBaseSpan } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import Skeleton from '../Skeleton/Skeleton';
-import colors from '../../enums/colors';
+import { useTheme } from '../../context';
 
 export type AvatarContainerProps = {
   size: number;
@@ -80,8 +80,8 @@ export const AvatarText = styled(StyledBaseSpan)`
 export const AvatarShimmer = styled(Skeleton.Shimmer)`
   ${({ borderRadiusPercent }: Pick<AvatarProps, 'borderRadiusPercent'>) =>
     `
-    border-radius: ${borderRadiusPercent}%;
-  `}
+      border-radius: ${borderRadiusPercent}%;
+    `}
 `;
 
 const Avatar = ({
@@ -90,16 +90,18 @@ const Avatar = ({
   children,
   imgURL,
   size = 3,
-  borderRadiusPercent,
-  color = colors.grayXlight,
-  isLoading,
+  borderRadiusPercent = 50,
+  color,
+  isLoading = false,
   StyledAvatarContainer = AvatarContainer,
   StyledAvatarText = AvatarText,
   StyledAvatarShimmer = AvatarShimmer,
   avatarTextProps = {},
+  avatarContainerProps = {},
   avatarContainerRef,
   avatarTextRef,
 }: AvatarProps): JSX.Element => {
+  const { colors } = useTheme();
   const fontColor = readableColor(color!, colors.grayMedium, colors.background);
   const shimmerColor = fontColor === colors.background ? lighten(0.2, color!) : darken(0.2, color!);
   return (
@@ -107,7 +109,7 @@ const Avatar = ({
       isLoading={isLoading}
       color={shimmerColor}
       StyledContainer={StyledAvatarContainer}
-      containerProps={{ size, borderRadiusPercent, imgURL, color, avatarContainerRef }}
+      containerProps={{ size, borderRadiusPercent, imgURL, color, avatarContainerRef, ...avatarContainerProps }}
       shimmerProps={{ borderRadiusPercent }}
       StyledShimmer={StyledAvatarShimmer}
     >
