@@ -9,7 +9,7 @@ export const DefaultAvatar: Story<AvatarProps> = (args: AvatarProps) => <Avatar 
 DefaultAvatar.args = {
   placeholder: 'AA',
   children: '',
-  size: 1.5,
+  size: 10,
   imgURL: 'https://source.unsplash.com/collection/19271953',
   borderRadiusPercent: 50,
   color: colors.grayXlight,
@@ -40,7 +40,7 @@ LabelAvatar.args = {
   children: 'John Smith',
   size: 10,
   imgURL: 'https://source.unsplash.com/collection/19271953',
-  borderRadiusPercent: 0,
+  borderRadiusPercent: 10,
   color: colors.grayXlight,
   isLoading: false,
 };
