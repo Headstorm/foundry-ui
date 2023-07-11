@@ -929,7 +929,6 @@ const Dropdown = ({
             />
           )}
         </StyledValueItem>
-
         {closeIcons}
       </Button>
       {isOpen && (
