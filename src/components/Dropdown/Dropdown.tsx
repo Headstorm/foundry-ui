@@ -224,10 +224,13 @@ const ValueItemTagContainer = styled(Tag.Container)`
   `}
 `;
 
-const StyledSearchContainer = styled(StyledBaseDiv)``;
+const SearchContainer = styled(StyledBaseDiv)`
+  
+`;
 
-const StyledSearchInput = styled(StyledBaseInput)`
+const SearchInput = styled(StyledBaseInput)`
   all: inherit;
+  text-align: left;
 `;
 
 export interface DropdownProps {
@@ -242,6 +245,8 @@ export interface DropdownProps {
   StyledPlaceholder?: StyledSubcomponentType;
   StyledCloseIconContainer?: StyledSubcomponentType;
   StyledArrowIconContainer?: StyledSubcomponentType;
+  StyledSearchInput?: StyledSubcomponentType;
+  StyledSearchContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -253,6 +258,7 @@ export interface DropdownProps {
   placeholderProps?: SubcomponentPropsType;
   closeIconProps?: SubcomponentPropsType;
   arrowIconProps?: SubcomponentPropsType;
+  inputProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
@@ -265,6 +271,8 @@ export interface DropdownProps {
   placeholderRef?: React.RefObject<HTMLElement>;
   closeIconRef?: React.RefObject<HTMLElement>;
   arrowIconRef?: React.RefObject<HTMLElement>;
+  inputContainerRef?: React.RefObject<HTMLElement>;
+  inputRef?: React.RefObject<HTMLElement>;
 
   color?: string;
   elevation?: number;
@@ -314,6 +322,8 @@ const Dropdown = ({
   StyledPlaceholder = PlaceholderContainer,
   StyledCloseIconContainer = CloseIconContainer,
   StyledArrowIconContainer = ArrowIconContainer,
+  StyledSearchContainer = SearchContainer,
+  StyledSearchInput = SearchInput,
 
   containerProps,
   valueContainerProps,
@@ -883,7 +893,7 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        {searchCharacterCount === 0 && (!values || !values.length) && (
+        {(searchCharacterCount === 0 && (!values || !values.length) && !focusWithin )&&  (
           <StyledPlaceholder
             ref={placeholderRef}
             id={`${name}-placeholder`}
@@ -916,7 +926,8 @@ const Dropdown = ({
                 </Tag>
               ) : undefined,
             )}
-          {searchable && (
+        </StyledValueItem>
+        {searchable && focusWithin && (
             <TextInput
               id={`${name}-search-input`}
               aria-label={`${name}-search-input`}
@@ -928,7 +939,6 @@ const Dropdown = ({
               inputRef={searchInputRef}
             />
           )}
-        </StyledValueItem>
         {closeIcons}
       </Button>
       {isOpen && (
