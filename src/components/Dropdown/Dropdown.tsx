@@ -578,12 +578,11 @@ const Dropdown = ({
     (e: React.FocusEvent) => {
       e.preventDefault();
       e.persist();
-
       // when not searchable, blur
       // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
         window.setTimeout(() => {
-          if (focusWithin && (!searchable || e.target.id === `${name}-search-input`)) {
+          if (focusWithin && (!searchable || (e.target.id === `${name}-search-input` || e.target.id.includes(`${name}-option`)))) {
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -850,7 +849,6 @@ const Dropdown = ({
 
   const optionsToRender: OptionProps[] =
     searchable && searchFiltersOptions ? filteredOptions : options;
-
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -913,7 +911,7 @@ const Dropdown = ({
                 </Tag>
               ) : undefined,
             )}
-          {searchable && (
+            {searchable && isOpen && (
             <TextInput
               id={`${name}-search-input`}
               aria-label={`${name}-search-input`}
@@ -926,7 +924,8 @@ const Dropdown = ({
             />
           )}
         </StyledValueItem>
-        {closeIcons}
+        
+          {closeIcons}
       </Button>
       {isOpen && (
         <>
