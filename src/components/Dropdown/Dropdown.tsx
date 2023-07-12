@@ -224,9 +224,7 @@ const ValueItemTagContainer = styled(Tag.Container)`
   `}
 `;
 
-const SearchContainer = styled(StyledBaseDiv)`
-  
-`;
+const SearchContainer = styled(StyledBaseDiv)``;
 
 const SearchInput = styled(StyledBaseInput)`
   all: inherit;
@@ -302,6 +300,7 @@ export interface DropdownProps {
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
 
+  showSelectedValues?: boolean;
   searchable?: boolean;
   searchFiltersOptions?: boolean;
   onSearchChange?: TextInputProps['onChange'];
@@ -335,6 +334,7 @@ const Dropdown = ({
   closeIconProps,
   arrowIconProps,
   valueItemTagProps = {},
+  inputProps,
 
   containerRef,
   optionsContainerRef,
@@ -371,6 +371,7 @@ const Dropdown = ({
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 
+  showSelectedValues = false,
   searchable = false,
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
@@ -595,8 +596,7 @@ const Dropdown = ({
           if (
             focusWithin &&
             (!searchable ||
-              e.target.id === `${name}-search-input` ||
-              e.target.id.includes(`${name}-option`))
+              e.target.id === `${name}-search-input`)
           ) {
             setFocusWithin(false);
             setIsOpen(false);
@@ -673,6 +673,7 @@ const Dropdown = ({
 
   const handleMouseDownOnButton = useCallback(
     (e: React.MouseEvent) => {
+      console.log('mouse down: ',e.target)
       if (isOpen) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore - It's okay if target is null in this case as we want it to close regardless
@@ -874,6 +875,7 @@ const Dropdown = ({
       name={name}
       aria-label={placeholder}
       ref={mergeRefs([containerRef, containerInternalRef])}
+      onMouseDown={handleMouseDownOnButton}
       {...containerProps}
     >
       <Button
@@ -893,7 +895,7 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        {(searchCharacterCount === 0 && (!values || !values.length) && !focusWithin )&&  (
+        {searchCharacterCount === 0 && (!values || !values.length) && !focusWithin && (
           <StyledPlaceholder
             ref={placeholderRef}
             id={`${name}-placeholder`}
@@ -902,43 +904,44 @@ const Dropdown = ({
             {placeholder}
           </StyledPlaceholder>
         )}
+        {(searchable && (focusWithin || isOpen)) ? (
+          <TextInput
+            id={`${name}-search-input`}
+            aria-label={`${name}-search-input`}
+            role="searchbox"
+            onChange={handleSearchChange}
+            debouncedOnChange={handleSearchDebouncedChange}
+            StyledContainer={StyledSearchContainer}
+            StyledInput={StyledSearchInput}
+            inputRef={searchInputRef}
+            {...inputProps}
+          />
+        ) : (
         <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
-          {values
-            .filter(val => val !== undefined && optionsHash[val] !== undefined)
-            .map((val, i, arr) =>
-              optionsHash[val] !== undefined ? (
-                <Tag
-                  StyledContainer={StyledValueItemTagContainer}
-                  variant={valueVariant}
-                  containerRef={valueItemTagRef}
-                  {...valueItemTagProps}
-                  containerProps={{
-                    dropdownVariant: variant,
-                    tagVariant: valueVariant,
-                    dropdownColor: defaultedColor,
-                    transparentColor: colors.transparent,
-                    ...(valueItemTagProps.containerProps || {}),
-                  }}
-                  key={val}
-                >
-                  {optionsHash[val].optionValue}
-                  {valueVariant === variants.text && i !== arr.length - 1 && ','}
-                </Tag>
-              ) : undefined,
-            )}
-        </StyledValueItem>
-        {searchable && focusWithin && (
-            <TextInput
-              id={`${name}-search-input`}
-              aria-label={`${name}-search-input`}
-              role="searchbox"
-              onChange={handleSearchChange}
-              debouncedOnChange={handleSearchDebouncedChange}
-              StyledContainer={StyledSearchContainer}
-              StyledInput={StyledSearchInput}
-              inputRef={searchInputRef}
-            />
-          )}
+        {showSelectedValues ? values
+          .filter(val => val !== undefined && optionsHash[val] !== undefined)
+          .map((val, i, arr) =>
+            optionsHash[val] !== undefined ? (
+              <Tag
+                StyledContainer={StyledValueItemTagContainer}
+                variant={valueVariant}
+                containerRef={valueItemTagRef}
+                {...valueItemTagProps}
+                containerProps={{
+                  dropdownVariant: variant,
+                  tagVariant: valueVariant,
+                  dropdownColor: defaultedColor,
+                  transparentColor: colors.transparent,
+                  ...(valueItemTagProps.containerProps || {}),
+                }}
+                key={val}
+              >
+                {optionsHash[val].optionValue}
+                {valueVariant === variants.text && i !== arr.length - 1 && ','}
+              </Tag>
+            ) : undefined,
+          ) : placeholder}
+        </StyledValueItem>)}
         {closeIcons}
       </Button>
       {isOpen && (

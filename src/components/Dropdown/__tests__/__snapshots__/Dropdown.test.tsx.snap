@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dropdown IntersectionObserver tests Both containers are fully in viewport 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -32,11 +32,11 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -84,7 +84,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -92,7 +92,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -120,9 +120,9 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -139,18 +139,18 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -164,7 +164,7 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -178,14 +178,9 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -205,14 +200,10 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -226,22 +217,22 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -254,14 +245,14 @@ exports[`Dropdown IntersectionObserver tests Both containers are fully in viewpo
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </div>
 `;
 
 exports[`Dropdown IntersectionObserver tests Check if intersection observer is called when dropdown is clicked 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -292,11 +283,11 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -344,7 +335,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -352,7 +343,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -380,9 +371,9 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -399,18 +390,18 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -424,7 +415,7 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -438,14 +429,9 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -465,14 +451,10 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -486,22 +468,22 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -514,14 +496,14 @@ exports[`Dropdown IntersectionObserver tests Check if intersection observer is c
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </div>
 `;
 
 exports[`Dropdown IntersectionObserver tests Hidden options container is in view and options container is not 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -552,11 +534,11 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -604,7 +586,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -612,7 +594,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -640,9 +622,9 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -659,18 +641,18 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -684,7 +666,7 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -698,14 +680,9 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -725,14 +702,10 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -746,22 +719,22 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -774,14 +747,14 @@ exports[`Dropdown IntersectionObserver tests Hidden options container is in view
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </div>
 `;
 
 exports[`Dropdown IntersectionObserver tests Options container is in view and hidden options container is not 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -812,11 +785,11 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -864,7 +837,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -872,7 +845,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -900,9 +873,9 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -919,18 +892,18 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -944,7 +917,7 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -958,14 +931,9 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -985,14 +953,10 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -1006,22 +970,22 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -1034,14 +998,14 @@ exports[`Dropdown IntersectionObserver tests Options container is in view and hi
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </div>
 `;
 
 exports[`Dropdown can focus dropdown and select option 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -1072,11 +1036,11 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1124,7 +1088,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1132,7 +1096,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1160,9 +1124,9 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1176,20 +1140,15 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -1209,14 +1168,10 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -1230,17 +1185,17 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
@@ -1250,7 +1205,7 @@ exports[`Dropdown can focus dropdown and select option 1`] = `
 
 exports[`Dropdown closes options when clicking outside 1`] = `
 <DocumentFragment>
-  .c11 {
+  .c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -1281,11 +1236,11 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1333,7 +1288,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1341,7 +1296,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1369,9 +1324,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1388,18 +1343,18 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1413,7 +1368,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1427,14 +1382,9 @@ exports[`Dropdown closes options when clicking outside 1`] = `
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div
@@ -1453,14 +1403,10 @@ exports[`Dropdown closes options when clicking outside 1`] = `
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -1474,22 +1420,22 @@ exports[`Dropdown closes options when clicking outside 1`] = `
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -1502,7 +1448,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </DocumentFragment>
@@ -1510,7 +1456,7 @@ exports[`Dropdown closes options when clicking outside 1`] = `
 
 exports[`Dropdown closes options when clicking outside 2`] = `
 <DocumentFragment>
-  .c11 {
+  .c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -1541,11 +1487,11 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1593,7 +1539,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1601,7 +1547,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1629,9 +1575,9 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1648,18 +1594,18 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1673,7 +1619,7 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1687,14 +1633,9 @@ exports[`Dropdown closes options when clicking outside 2`] = `
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div
@@ -1713,14 +1654,10 @@ exports[`Dropdown closes options when clicking outside 2`] = `
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -1734,22 +1671,22 @@ exports[`Dropdown closes options when clicking outside 2`] = `
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -1762,14 +1699,14 @@ exports[`Dropdown closes options when clicking outside 2`] = `
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </DocumentFragment>
 `;
 
 exports[`Dropdown deselects option when clicking on them twice when dropdown is multi 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -1800,11 +1737,11 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -1852,7 +1789,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1860,7 +1797,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -1888,9 +1825,9 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1904,18 +1841,18 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1930,7 +1867,7 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   visibility: hidden;
 }
 
-.c15 {
+.c14 {
   background: white;
   position: absolute;
   left: 0px;
@@ -1944,12 +1881,12 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c16 {
+.c15 {
   visibility: hidden;
   bottom: 100%;
 }
 
-.c13 {
+.c12 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1967,18 +1904,18 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   background-color: transparent;
 }
 
-.c13:hover {
+.c12:hover {
   background-color: rgba(0,0,0,0.05);
   cursor: pointer;
   outline: none;
 }
 
-.c13:focus {
+.c12:focus {
   outline: none;
   background-color: rgba(0,0,0,0.1);
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1994,11 +1931,6 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
   color: #000;
   padding-right: 0.2em;
   width: 2em;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -2018,14 +1950,10 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -2039,34 +1967,34 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
       <div
-        class=" c13"
+        class=" c12"
         color="#252D34"
         id="dropdown-option-bulbasaur"
         role="option"
         tabindex="-1"
       >
         <div
-          class=" c14"
+          class=" c13"
           color="#252D34"
         />
         <span
@@ -2076,14 +2004,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         </span>
       </div>
       <div
-        class=" c13"
+        class=" c12"
         color="#252D34"
         id="dropdown-option-charmander"
         role="option"
         tabindex="-1"
       >
         <div
-          class=" c14"
+          class=" c13"
           color="#252D34"
         />
         <span
@@ -2093,14 +2021,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
         </span>
       </div>
       <div
-        class=" c13"
+        class=" c12"
         color="#252D34"
         id="dropdown-option-squirtle"
         role="option"
         tabindex="-1"
       >
         <div
-          class=" c14"
+          class=" c13"
           color="#252D34"
         />
         <span
@@ -2111,14 +2039,14 @@ exports[`Dropdown deselects option when clicking on them twice when dropdown is 
       </div>
     </div>
     <div
-      class=" c15 c16"
+      class=" c14 c15"
     />
   </div>
 </div>
 `;
 
 exports[`Dropdown displays all options when focused 1`] = `
-.c11 {
+.c10 {
   opacity: 0;
   background: linear-gradient( 90deg, rgba(37,45,52,0.75), rgba(37,45,52,0.25), rgba(37,45,52,0.75) ) repeat;
   color: transparent;
@@ -2149,11 +2077,11 @@ exports[`Dropdown displays all options when focused 1`] = `
   transition: opacity .2s;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c9 {
+.c8 {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -2201,7 +2129,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2209,7 +2137,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   top: 0;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25em;
 }
 
@@ -2237,9 +2165,9 @@ exports[`Dropdown displays all options when focused 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2253,18 +2181,18 @@ exports[`Dropdown displays all options when focused 1`] = `
   box-shadow: 0 0 5px 0.150rem #338BAA;
 }
 
-.c6 {
+.c5 {
   height: 1.125em;
   z-index: 1;
   pointer-events: none;
 }
 
-.c5 {
+.c4 {
   width: 100%;
   text-align: left;
 }
 
-.c12 {
+.c11 {
   background: white;
   position: absolute;
   left: 0px;
@@ -2279,7 +2207,7 @@ exports[`Dropdown displays all options when focused 1`] = `
   visibility: hidden;
 }
 
-.c13 {
+.c12 {
   background: white;
   position: absolute;
   left: 0px;
@@ -2293,14 +2221,9 @@ exports[`Dropdown displays all options when focused 1`] = `
   border-radius: 0.25rem 0.25rem 0rem 0rem;
 }
 
-.c14 {
+.c13 {
   visibility: hidden;
   bottom: 100%;
-}
-
-.c4 {
-  position: absolute;
-  opacity: 0.8;
 }
 
 <div>
@@ -2320,14 +2243,10 @@ exports[`Dropdown displays all options when focused 1`] = `
     >
       <div
         class=" c4"
-        id="dropdown-placeholder"
-      />
-      <div
-        class=" c5"
         id="dropdown-value-item"
       />
       <div
-        class=" c6"
+        class=" c5"
       >
         <svg
           role="presentation"
@@ -2341,22 +2260,22 @@ exports[`Dropdown displays all options when focused 1`] = `
         </svg>
       </div>
       <div
-        class="c7 c8"
+        class="c6 c7"
       >
         <svg
-          class="c9 c10"
+          class="c8 c9"
           height="0px"
           viewBox="0 0 0 0"
           width="0px"
         />
       </div>
       <div
-        class=" c11"
+        class=" c10"
         color="#252D34"
       />
     </button>
     <div
-      class=" c12"
+      class=" c11"
       color="#252D34"
       role="listbox"
     >
@@ -2369,7 +2288,7 @@ exports[`Dropdown displays all options when focused 1`] = `
       </div>
     </div>
     <div
-      class=" c13 c14"
+      class=" c12 c13"
     />
   </div>
 </div>
@@ -2495,9 +2414,9 @@ exports[`Dropdown displays placeholder value on initial render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2706,9 +2625,9 @@ exports[`Dropdown does not display options on initial render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2914,9 +2833,9 @@ exports[`Dropdown does not display options on initial render when options is und
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3143,9 +3062,9 @@ exports[`Dropdown renders a value when given a matching option id through props 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3381,9 +3300,9 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3621,9 +3540,9 @@ exports[`Dropdown renders one value when given two values but only one matches a
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -3880,9 +3799,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -4147,9 +4066,9 @@ exports[`Dropdown renders two values when given matching option ids through prop
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -4414,9 +4333,9 @@ exports[`Dropdown selects options from values prop 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -4681,9 +4600,9 @@ exports[`Dropdown selects options from values prop 2`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
