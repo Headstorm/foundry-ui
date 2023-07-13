@@ -301,6 +301,7 @@ describe('Dropdown', () => {
       />,
     );
     act(() => {
+      screen.getByRole('button').focus();
       screen.getByRole('searchbox').focus();
     });
     await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));

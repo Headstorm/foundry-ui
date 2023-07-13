@@ -371,7 +371,7 @@ const Dropdown = ({
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 
-  showSelectedValues = false,
+  showSelectedValues = true,
   searchable = false,
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
@@ -593,11 +593,7 @@ const Dropdown = ({
       // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
         window.setTimeout(() => {
-          if (
-            focusWithin &&
-            (!searchable ||
-              e.target.id === `${name}-search-input`)
-          ) {
+          if (focusWithin && (!searchable || e.target.id === `${name}-search-input`)) {
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -673,7 +669,6 @@ const Dropdown = ({
 
   const handleMouseDownOnButton = useCallback(
     (e: React.MouseEvent) => {
-      console.log('mouse down: ',e.target)
       if (isOpen) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore - It's okay if target is null in this case as we want it to close regardless
@@ -904,7 +899,7 @@ const Dropdown = ({
             {placeholder}
           </StyledPlaceholder>
         )}
-        {(searchable && (focusWithin || isOpen)) ? (
+        {searchable && focusWithin && isOpen ? (
           <TextInput
             id={`${name}-search-input`}
             aria-label={`${name}-search-input`}
@@ -917,31 +912,34 @@ const Dropdown = ({
             {...inputProps}
           />
         ) : (
-        <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
-        {showSelectedValues ? values
-          .filter(val => val !== undefined && optionsHash[val] !== undefined)
-          .map((val, i, arr) =>
-            optionsHash[val] !== undefined ? (
-              <Tag
-                StyledContainer={StyledValueItemTagContainer}
-                variant={valueVariant}
-                containerRef={valueItemTagRef}
-                {...valueItemTagProps}
-                containerProps={{
-                  dropdownVariant: variant,
-                  tagVariant: valueVariant,
-                  dropdownColor: defaultedColor,
-                  transparentColor: colors.transparent,
-                  ...(valueItemTagProps.containerProps || {}),
-                }}
-                key={val}
-              >
-                {optionsHash[val].optionValue}
-                {valueVariant === variants.text && i !== arr.length - 1 && ','}
-              </Tag>
-            ) : undefined,
-          ) : placeholder}
-        </StyledValueItem>)}
+          <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
+            {showSelectedValues
+              ? values
+                  .filter(val => val !== undefined && optionsHash[val] !== undefined)
+                  .map((val, i, arr) =>
+                    optionsHash[val] !== undefined ? (
+                      <Tag
+                        StyledContainer={StyledValueItemTagContainer}
+                        variant={valueVariant}
+                        containerRef={valueItemTagRef}
+                        {...valueItemTagProps}
+                        containerProps={{
+                          dropdownVariant: variant,
+                          tagVariant: valueVariant,
+                          dropdownColor: defaultedColor,
+                          transparentColor: colors.transparent,
+                          ...(valueItemTagProps.containerProps || {}),
+                        }}
+                        key={val}
+                      >
+                        {optionsHash[val].optionValue}
+                        {valueVariant === variants.text && i !== arr.length - 1 && ','}
+                      </Tag>
+                    ) : undefined,
+                  )
+              : placeholder}
+          </StyledValueItem>
+        )}
         {closeIcons}
       </Button>
       {isOpen && (
