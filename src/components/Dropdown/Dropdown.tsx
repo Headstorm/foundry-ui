@@ -418,6 +418,8 @@ const Dropdown = ({
   const isVirtual = virtualizeOptions && isOverflowing;
 
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const mergedSearchInputRef = mergeRefs<HTMLInputElement>([searchInputRef, inputRef]);
+
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
   const stringifiedOptions = JSON.stringify(options);
@@ -804,24 +806,29 @@ const Dropdown = ({
 
   const InternalOptionsContainer = useMemo(
     () =>
-      React.forwardRef(({ children }: { children: React.ReactNode }, listRef) => (
-        <StyledOptionsContainer
-          color={defaultedColor}
-          variant={optionsVariant}
-          isVirtual={isVirtual}
-          role="listbox"
-          ref={mergeRefs([
-            optionsContainerRef,
-            optionsContainerInternalRef,
-            listRef as React.RefObject<HTMLDivElement>,
-          ])}
-          isOpenedBelow={isOpenedBelow}
-          isHidden={isHidden}
-          {...optionsContainerProps}
-        >
-          {children}
-        </StyledOptionsContainer>
-      )),
+      React.forwardRef(
+        (
+          { children }: { children: React.ReactNode },
+          listRef: React.ForwardedRef<HTMLDivElement>,
+        ) => (
+          <StyledOptionsContainer
+            color={defaultedColor}
+            variant={optionsVariant}
+            isVirtual={isVirtual}
+            role="listbox"
+            ref={mergeRefs<HTMLDivElement | HTMLElement>([
+              optionsContainerRef,
+              optionsContainerInternalRef,
+              listRef,
+            ])}
+            isOpenedBelow={isOpenedBelow}
+            isHidden={isHidden}
+            {...optionsContainerProps}
+          >
+            {children}
+          </StyledOptionsContainer>
+        ),
+      ),
     [
       defaultedColor,
       isHidden,
@@ -872,7 +879,7 @@ const Dropdown = ({
       onFocus={handleFocus}
       name={name}
       aria-label={placeholder}
-      ref={mergeRefs([containerRef, containerInternalRef])}
+      ref={mergeRefs<HTMLElement | HTMLDivElement>([containerRef, containerInternalRef])}
       onMouseDown={handleMouseDownOnButton}
       {...containerProps}
     >
@@ -912,7 +919,7 @@ const Dropdown = ({
             debouncedOnChange={handleSearchDebouncedChange}
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
-            inputRef={inputRef ? mergeRefs([inputRef, searchInputRef]) : searchInputRef}
+            inputRef={mergedSearchInputRef}
             autoComplete="off"
             {...searchInputProps}
           />
@@ -1026,7 +1033,10 @@ const Dropdown = ({
           )}
           {shouldStayInView && (
             <StyledHiddenOptionsContainer
-              ref={mergeRefs([hiddenOptionsContainerInternalRef, hiddenOptionsContainerRef])}
+              ref={mergeRefs<HTMLDivElement | HTMLElement>([
+                hiddenOptionsContainerInternalRef,
+                hiddenOptionsContainerRef,
+              ])}
               // HiddenOptionsContainer opens in the opposite direction of OptionsContainer
               isOpenedBelow={!isOpenedBelow}
             />

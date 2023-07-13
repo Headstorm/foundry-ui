@@ -14,11 +14,6 @@ describe('util refs', () => {
     const refFn = new RefCallBack();
     const refObj = React.createRef();
 
-    it('Should return null if param is empty', async () => {
-      const empty = null;
-      expect(mergeRefs([empty])).toBeNull();
-    });
-
     it('Should apply ref object', async () => {
       render(<div ref={mergeRefs([refObj])} />);
       expect(refObj.current).toBeTruthy();

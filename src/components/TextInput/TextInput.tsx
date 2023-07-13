@@ -170,7 +170,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     characterCountProps?: SubcomponentPropsType;
 
     containerRef?: React.RefObject<HTMLDivElement>;
-    inputRef?: React.RefObject<HTMLInputElement> | ((instance: any) => void) | null;
+    inputRef?: React.RefObject<HTMLInputElement>;
     iconContainerRef?: React.RefObject<HTMLDivElement>;
     clearButtonContainerRef?: React.RefObject<HTMLButtonElement>;
     errorContainerRef?: React.RefObject<HTMLDivElement>;
@@ -314,7 +314,7 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        ref={mergeRefs([inputRef as React.RefObject<HTMLInputElement>, internalInputRef])}
+        ref={internalInputRef ? mergeRefs<HTMLInputElement>([inputRef, internalInputRef]) : null}
         {...inputProps}
       />
       {clearable && (
