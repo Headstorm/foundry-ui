@@ -912,7 +912,7 @@ const Dropdown = ({
             debouncedOnChange={handleSearchDebouncedChange}
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
-            inputRef={mergeRefs([inputRef, searchInputRef])}
+            inputRef={inputRef ? mergeRefs([inputRef, searchInputRef]) : searchInputRef}
             autoComplete="off"
             {...searchInputProps}
           />
