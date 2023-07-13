@@ -314,7 +314,7 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        ref={mergeRefs([inputRef, internalInputRef])}
+        ref={mergeRefs([inputRef as React.RefObject<HTMLInputElement>, internalInputRef])}
         {...inputProps}
       />
       {clearable && (
