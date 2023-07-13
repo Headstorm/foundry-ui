@@ -269,7 +269,7 @@ export interface DropdownProps {
   placeholderRef?: React.RefObject<HTMLElement>;
   closeIconRef?: React.RefObject<HTMLElement>;
   arrowIconRef?: React.RefObject<HTMLElement>;
-  inputContainerRef?: React.RefObject<HTMLElement>;
+  searchContainerRef?: React.RefObject<HTMLDivElement>;
   inputRef?: React.RefObject<HTMLElement>;
 
   color?: string;
@@ -347,6 +347,7 @@ const Dropdown = ({
   placeholderRef,
   closeIconRef,
   arrowIconRef,
+  searchContainerRef,
 
   color,
   elevation = 0,
@@ -904,6 +905,7 @@ const Dropdown = ({
         {searchable && focusWithin && isOpen ? (
           <TextInput
             id={`${name}-search-input`}
+            containerRef={searchContainerRef}
             aria-label={`${name}-search-input`}
             role="searchbox"
             onChange={handleSearchChange}
