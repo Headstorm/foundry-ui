@@ -256,7 +256,7 @@ export interface DropdownProps {
   placeholderProps?: SubcomponentPropsType;
   closeIconProps?: SubcomponentPropsType;
   arrowIconProps?: SubcomponentPropsType;
-  inputProps?: SubcomponentPropsType;
+  searchInputProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
@@ -270,7 +270,7 @@ export interface DropdownProps {
   closeIconRef?: React.RefObject<HTMLElement>;
   arrowIconRef?: React.RefObject<HTMLElement>;
   searchContainerRef?: React.RefObject<HTMLDivElement>;
-  inputRef?: React.RefObject<HTMLElement>;
+  inputRef?: React.RefObject<HTMLInputElement>;
 
   color?: string;
   elevation?: number;
@@ -334,7 +334,7 @@ const Dropdown = ({
   closeIconProps,
   arrowIconProps,
   valueItemTagProps = {},
-  inputProps,
+  searchInputProps,
 
   containerRef,
   optionsContainerRef,
@@ -348,6 +348,7 @@ const Dropdown = ({
   closeIconRef,
   arrowIconRef,
   searchContainerRef,
+  inputRef,
 
   color,
   elevation = 0,
@@ -686,7 +687,6 @@ const Dropdown = ({
 
   const keyDownHandler = useCallback(
     ({ key }: { key: string }) => {
-      console.log(key)
       // setTimeout(0) needed when responding to key events to push back call
       // to activeElement to after it is updated in the DOM
       window.setTimeout(() => {
@@ -912,9 +912,9 @@ const Dropdown = ({
             debouncedOnChange={handleSearchDebouncedChange}
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
-            inputRef={searchInputRef}
+            inputRef={mergeRefs([inputRef, searchInputRef])}
             autoComplete="off"
-            {...inputProps}
+            {...searchInputProps}
           />
         ) : (
           <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>

@@ -170,7 +170,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     characterCountProps?: SubcomponentPropsType;
 
     containerRef?: React.RefObject<HTMLDivElement>;
-    inputRef?: React.RefObject<HTMLInputElement>;
+    inputRef?: React.RefObject<HTMLInputElement> | ((instance: any) => void) | null;
     iconContainerRef?: React.RefObject<HTMLDivElement>;
     clearButtonContainerRef?: React.RefObject<HTMLButtonElement>;
     errorContainerRef?: React.RefObject<HTMLDivElement>;
