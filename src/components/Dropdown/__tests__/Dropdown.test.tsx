@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, act, configure, screen } from '@testing-library/react';
+import { render, fireEvent, waitFor, act, configure, screen, getByRole, getByText } from '@testing-library/react';
 import Dropdown from '../Dropdown';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -295,13 +295,19 @@ describe('Dropdown', () => {
     render(
       <Dropdown
         onSelect={mockedSelectHandler}
-        searchable
+        searchable={true}
         options={pokeOptions}
         virtualizeOptions={false}
+        showSelectedValues={false}
+        placeholder='testing'
       />,
     );
     act(() => {
       screen.getByRole('button').focus();
+      fireEvent.click(screen.getByRole('button'))
+    });
+    await waitFor(()=> expect(screen.getByRole('searchbox')).toBeInTheDocument())
+    act(() => {
       screen.getByRole('searchbox').focus();
     });
     await waitFor(() => expect(observe).toHaveBeenCalledTimes(2));

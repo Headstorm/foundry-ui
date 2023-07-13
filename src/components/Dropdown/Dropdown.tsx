@@ -594,6 +594,7 @@ const Dropdown = ({
       setFocusTimeoutId(
         window.setTimeout(() => {
           if (focusWithin && (!searchable || e.target.id === `${name}-search-input`)) {
+            setFilteredOptions(options);
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -603,7 +604,7 @@ const Dropdown = ({
         }, 0),
       );
     },
-    [handleOnBlur, focusWithin, name, searchable],
+    [handleOnBlur, focusWithin, name, searchable, options],
   );
 
   const handleFocus = useCallback(
@@ -684,6 +685,7 @@ const Dropdown = ({
 
   const keyDownHandler = useCallback(
     ({ key }: { key: string }) => {
+      console.log(key)
       // setTimeout(0) needed when responding to key events to push back call
       // to activeElement to after it is updated in the DOM
       window.setTimeout(() => {
@@ -738,7 +740,7 @@ const Dropdown = ({
             } else if (focusedElement.id === `${name}-search-input`) {
               const searchInputContainer = focusedElement.parentElement;
               const valueItemContainer = searchInputContainer?.parentElement;
-              const button = valueItemContainer?.parentElement;
+              const button = valueItemContainer;
               const optionsContainer = button?.nextElementSibling;
               if (isVirtual) {
                 const virtuosoContainer = optionsContainer?.firstElementChild;
@@ -909,6 +911,7 @@ const Dropdown = ({
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
             inputRef={searchInputRef}
+            autoComplete="off"
             {...inputProps}
           />
         ) : (
