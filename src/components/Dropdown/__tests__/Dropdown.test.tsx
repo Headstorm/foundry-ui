@@ -304,7 +304,7 @@ describe('Dropdown', () => {
     render(
       <Dropdown
         onSelect={mockedSelectHandler}
-        searchable={true}
+        searchable
         options={pokeOptions}
         virtualizeOptions={false}
         showSelectedValues={false}

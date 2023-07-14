@@ -257,6 +257,7 @@ export interface DropdownProps {
   closeIconProps?: SubcomponentPropsType;
   arrowIconProps?: SubcomponentPropsType;
   searchInputProps?: SubcomponentPropsType;
+  searchContainerProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
@@ -335,6 +336,7 @@ const Dropdown = ({
   arrowIconProps,
   valueItemTagProps = {},
   searchInputProps,
+  searchContainerProps,
 
   containerRef,
   optionsContainerRef,
@@ -418,7 +420,6 @@ const Dropdown = ({
   const isVirtual = virtualizeOptions && isOverflowing;
 
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const mergedSearchInputRef = mergeRefs<HTMLInputElement>([searchInputRef, inputRef]);
 
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
@@ -919,9 +920,10 @@ const Dropdown = ({
             debouncedOnChange={handleSearchDebouncedChange}
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
-            inputRef={mergedSearchInputRef}
+            inputRef={mergeRefs<HTMLInputElement>([inputRef, searchInputRef])}
             autoComplete="off"
-            {...searchInputProps}
+            inputProps={searchInputProps}
+            containerProps={searchContainerProps}
           />
         ) : (
           <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>

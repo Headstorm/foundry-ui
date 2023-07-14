@@ -15,19 +15,19 @@ describe('util refs', () => {
     const refObj = React.createRef();
 
     it('Should apply ref object', async () => {
-      render(<div ref={mergeRefs([refObj])} />);
+      render(<div ref={mergeRefs<unknown>([refObj])} />);
       expect(refObj.current).toBeTruthy();
       expect(refObj.current instanceof HTMLDivElement).toBeTruthy();
     });
 
     it('Should apply ref callback', async () => {
-      render(<span ref={mergeRefs([refFn.refCB])} />);
-      expect(refFn.ref instanceof HTMLSpanElement).toBeTruthy();
+      render(<span ref={mergeRefs<any |RefCallBack>([refFn.refCB])} />);
+      expect(refFn.ref as any instanceof HTMLSpanElement).toBeTruthy();
     });
 
     it('Should apply multiple refs', async () => {
-      render(<div ref={mergeRefs([refObj, refFn.refCB])} />);
-      expect(refFn.ref instanceof HTMLDivElement).toBeTruthy();
+      render(<div ref={mergeRefs<unknown | RefCallBack>([refObj, refFn.refCB])} />);
+      expect(refFn.ref as any instanceof HTMLDivElement).toBeTruthy();
       expect(refObj.current instanceof HTMLDivElement).toBeTruthy();
       expect(refObj.current).toEqual(refFn.ref);
     });
