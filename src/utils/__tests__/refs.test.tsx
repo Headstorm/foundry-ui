@@ -21,13 +21,13 @@ describe('util refs', () => {
     });
 
     it('Should apply ref callback', async () => {
-      render(<span ref={mergeRefs<any |RefCallBack>([refFn.refCB])} />);
-      expect(refFn.ref as any instanceof HTMLSpanElement).toBeTruthy();
+      render(<span ref={mergeRefs<any | RefCallBack>([refFn.refCB])} />);
+      expect((refFn.ref as any) instanceof HTMLSpanElement).toBeTruthy();
     });
 
     it('Should apply multiple refs', async () => {
       render(<div ref={mergeRefs<unknown | RefCallBack>([refObj, refFn.refCB])} />);
-      expect(refFn.ref as any instanceof HTMLDivElement).toBeTruthy();
+      expect((refFn.ref as any) instanceof HTMLDivElement).toBeTruthy();
       expect(refObj.current instanceof HTMLDivElement).toBeTruthy();
       expect(refObj.current).toEqual(refFn.ref);
     });
