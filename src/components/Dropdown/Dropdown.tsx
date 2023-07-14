@@ -271,7 +271,7 @@ export interface DropdownProps {
   closeIconRef?: React.RefObject<HTMLElement>;
   arrowIconRef?: React.RefObject<HTMLElement>;
   searchContainerRef?: React.RefObject<HTMLDivElement>;
-  inputRef?: React.RefObject<HTMLInputElement>;
+  searchInputRef?: React.RefObject<HTMLInputElement>;
 
   color?: string;
   elevation?: number;
@@ -350,7 +350,7 @@ const Dropdown = ({
   closeIconRef,
   arrowIconRef,
   searchContainerRef,
-  inputRef,
+  searchInputRef,
 
   color,
   elevation = 0,
@@ -419,7 +419,7 @@ const Dropdown = ({
 
   const isVirtual = virtualizeOptions && isOverflowing;
 
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
@@ -617,7 +617,7 @@ const Dropdown = ({
       e.persist();
       window.setTimeout(() => {
         if (document.activeElement?.id === `${name}-dropdown-button`) {
-          searchInputRef?.current?.focus();
+          inputRef?.current?.focus();
         }
       }, 0);
 
@@ -920,7 +920,7 @@ const Dropdown = ({
             debouncedOnChange={handleSearchDebouncedChange}
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
-            inputRef={mergeRefs<HTMLInputElement>([inputRef, searchInputRef])}
+            inputRef={mergeRefs<HTMLInputElement>([searchInputRef, inputRef])}
             autoComplete="off"
             inputProps={searchInputProps}
             containerProps={searchContainerProps}
