@@ -842,7 +842,7 @@ const Dropdown = ({
     ],
   );
   const handleSearchChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setSearchValue(e.target.value);
       handleEventWithAnalytics('Dropdown', onSearchChange, 'onSearchChange', e, { name });
     },
