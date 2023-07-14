@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/Headstorm/foundry-ui/compare/v1.23.0...v1.23.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** fixed inability to blur when searchable and multi and option selected ([921a318](https://github.com/Headstorm/foundry-ui/commit/921a318546b30dbab483ab970c33c467a38d402b)), closes [#448](https://github.com/Headstorm/foundry-ui/issues/448)
+
 # [1.23.0](https://github.com/Headstorm/foundry-ui/compare/v1.22.0...v1.23.0) (2023-07-10)
 
 
