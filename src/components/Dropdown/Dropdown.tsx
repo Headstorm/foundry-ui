@@ -773,7 +773,7 @@ const Dropdown = ({
   }, [keyDownHandler]);
 
   const optionsScrollListenerCallbackRef = useCallback(
-    (node: HTMLElement) => {
+    (node: HTMLElement | null) => {
       if (node && rememberScrollPosition) {
         node.addEventListener('scroll', scrollListener, true);
 
