@@ -12,10 +12,10 @@ describe('util refs', () => {
       };
     }
     const refFn = new RefCallBack();
-    const refObj = React.createRef();
+    const refObj = React.createRef<HTMLDivElement>();
 
     it('Should apply ref object', async () => {
-      render(<div ref={mergeRefs<unknown>([refObj])} />);
+      render(<div ref={mergeRefs<HTMLDivElement>([refObj])} />);
       expect(refObj.current).toBeTruthy();
       expect(refObj.current instanceof HTMLDivElement).toBeTruthy();
     });
