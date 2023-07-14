@@ -221,7 +221,7 @@ const TextInput = ({
   const handleEventWithAnalytics = useAnalytics();
   const theme = useTheme();
 
-  const handleDebouncedOnChange = (e: any) =>
+  const handleDebouncedOnChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     handleEventWithAnalytics(
       'TextInput',
       debouncedOnChange,

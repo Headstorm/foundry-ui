@@ -391,6 +391,8 @@ const Dropdown = ({
   const [focusWithin, setFocusWithin] = useState<boolean>(false);
   const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
 
+  const [searchValue, setSearchValue] = useState<string>();
+
   const scrollPos = useRef<number>(0);
 
   const [isOpenedBelow, setIsOpenedBelow] = useState<boolean>(true);
@@ -599,7 +601,6 @@ const Dropdown = ({
       setFocusTimeoutId(
         window.setTimeout(() => {
           if (focusWithin && (!searchable || e.target.id === `${name}-search-input`)) {
-            setFilteredOptions(options);
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -609,7 +610,7 @@ const Dropdown = ({
         }, 0),
       );
     },
-    [handleOnBlur, focusWithin, name, searchable, options],
+    [handleOnBlur, focusWithin, name, searchable],
   );
 
   const handleFocus = useCallback(
@@ -841,7 +842,10 @@ const Dropdown = ({
     ],
   );
   const handleSearchChange = useCallback(
-    (e: any) => handleEventWithAnalytics('Dropdown', onSearchChange, 'onSearchChange', e, { name }),
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+      handleEventWithAnalytics('Dropdown', onSearchChange, 'onSearchChange', e, { name });
+    },
     [handleEventWithAnalytics, onSearchChange, name],
   );
 
@@ -917,6 +921,7 @@ const Dropdown = ({
             aria-label={`${name}-search-input`}
             role="searchbox"
             onChange={handleSearchChange}
+            value={searchValue}
             debouncedOnChange={handleSearchDebouncedChange}
             StyledContainer={StyledSearchContainer}
             StyledInput={StyledSearchInput}
