@@ -624,12 +624,19 @@ const Dropdown = ({
     (e: React.FocusEvent) => {
       e.preventDefault();
       e.persist();
-      console.log(e.target)
+      console.log(e.target);
       // when not searchable, blur
       // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
         window.setTimeout(() => {
-          if ((focusWithin && (((!searchable && (e.target.id === `${name}-search-input` || e.target.id === `${name}-dropdown-button`))) || ((searchable && multi && e.target.id === `${name}-search-input`)) || ((searchable && !multi && e.target.id === `${name}-search-input`))))) {
+          if (
+            focusWithin &&
+            ((!searchable &&
+              (e.target.id === `${name}-search-input` ||
+                e.target.id === `${name}-dropdown-button`)) ||
+              (searchable && multi && e.target.id === `${name}-search-input`) ||
+              (searchable && !multi && e.target.id === `${name}-search-input`))
+          ) {
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -956,7 +963,8 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        {(((searchCharacterCount === 0 && (!values || !values.length) && !focusWithin)) || (!showSelectedValues && !focusWithin && !multi)) && (
+        {((searchCharacterCount === 0 && (!values || !values.length) && !focusWithin) ||
+          (!showSelectedValues && !focusWithin)) && (
           <StyledPlaceholder
             ref={placeholderRef}
             id={`${name}-placeholder`}
