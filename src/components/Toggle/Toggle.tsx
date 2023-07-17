@@ -180,7 +180,7 @@ const Toggle = ({
     config: { tension: 250, friction: 20 },
   });
 
-  const internalRef = React.useRef<HTMLInputElement>();
+  const internalRef = React.useRef<HTMLInputElement>(null);
   const { inputProps: ariaProps } = useSwitch(
     mergedInputProps,
     state,
@@ -193,7 +193,7 @@ const Toggle = ({
   return (
     <StyledContainer
       color={color || colors.background}
-      ref={mergeRefs([containerRef, measurableContainerRef])}
+      ref={mergeRefs<HTMLLabelElement>([containerRef, measurableContainerRef])}
       variant={variant}
       focusRingColor={colors.tertiary}
       disabled={disabled}
@@ -202,7 +202,7 @@ const Toggle = ({
       <StyledHandle
         color={color || colors.background}
         style={{ transform }}
-        ref={mergeRefs([handleRef, measurableHandleRef])}
+        ref={mergeRefs<HTMLDivElement>([handleRef, measurableHandleRef])}
         checked={checked}
         variant={variant}
         {...handleProps}
@@ -212,7 +212,7 @@ const Toggle = ({
         {...ariaProps}
         checked={checked}
         onClick={handleToggle}
-        ref={mergeRefs([inputRef, internalRef])}
+        ref={mergeRefs<HTMLInputElement>([inputRef, internalRef])}
         {...inputProps}
       />
     </StyledContainer>

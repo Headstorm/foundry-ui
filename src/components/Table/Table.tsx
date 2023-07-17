@@ -724,7 +724,7 @@ const Table = ({
   // Table return
   return (
     <StyledContainer
-      ref={mergeRefs([ref, containerRef])}
+      ref={mergeRefs<HTMLTableElement>([ref, containerRef])}
       reachedMinWidth={width < minWidthBreakpoint}
       {...containerProps}
     >
