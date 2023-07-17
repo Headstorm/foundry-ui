@@ -233,7 +233,12 @@ const SearchInput = styled(StyledBaseInput)`
 `;
 
 const ValuesCountContainer = styled(StyledBaseDiv)`
-  ${({ variant, color, dropdownVariant, transparentColor }: UsefulDropdownState & { dropdownVariant: variants, transparentColor: string }) => {
+  ${({
+    variant,
+    color,
+    dropdownVariant,
+    transparentColor,
+  }: UsefulDropdownState & { dropdownVariant: variants; transparentColor: string }) => {
     return `
     ${getDropdownTagStyle(dropdownVariant, variant, color, transparentColor)}
       padding: 0.125rem;
@@ -813,16 +818,16 @@ const Dropdown = ({
     return (
       <>
         {showValueCount && (
-            <StyledValueCountContainer
-              variant={valueCountVariant}
-              color={defaultedColor}
-              transparentColor={colors.transparent}
-              ref={valueCountRef}
-              dropdownVariant={variant}
-              {...valueCountProps}
-            >
-              {values.length}
-            </StyledValueCountContainer>
+          <StyledValueCountContainer
+            variant={valueCountVariant}
+            color={defaultedColor}
+            transparentColor={colors.transparent}
+            ref={valueCountRef}
+            dropdownVariant={variant}
+            {...valueCountProps}
+          >
+            {values.length}
+          </StyledValueCountContainer>
         )}
         {showCloseIcon && (
           <StyledCloseIconContainer
