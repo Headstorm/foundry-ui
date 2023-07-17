@@ -624,7 +624,6 @@ const Dropdown = ({
     (e: React.FocusEvent) => {
       e.preventDefault();
       e.persist();
-      console.log(e.target);
       // when not searchable, blur
       // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
