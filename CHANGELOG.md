@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/Headstorm/foundry-ui/compare/v1.23.1...v1.24.0) (2023-07-17)
+
+
+### Features
+
+* **drpdwn:** types ([1ddade3](https://github.com/Headstorm/foundry-ui/commit/1ddade3f356ba31b26bc2d87f61d0be02b9e930b)), closes [#450](https://github.com/Headstorm/foundry-ui/issues/450)
+
 ## [1.23.1](https://github.com/Headstorm/foundry-ui/compare/v1.23.0...v1.23.1) (2023-07-11)
 
 
