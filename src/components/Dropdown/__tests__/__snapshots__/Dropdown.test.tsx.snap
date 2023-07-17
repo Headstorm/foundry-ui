@@ -3079,8 +3079,15 @@ exports[`Dropdown renders a value when given a matching option id through props 
 }
 
 .c7 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -3317,8 +3324,15 @@ exports[`Dropdown renders no value when given a value that doesn't match any opt
 }
 
 .c5 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c6 {
@@ -3557,8 +3571,15 @@ exports[`Dropdown renders one value when given two values but only one matches a
 }
 
 .c7 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -3816,8 +3837,15 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c7 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -4083,8 +4111,15 @@ exports[`Dropdown renders two values when given matching option ids through prop
 }
 
 .c7 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -4350,8 +4385,15 @@ exports[`Dropdown selects options from values prop 1`] = `
 }
 
 .c7 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -4617,8 +4659,15 @@ exports[`Dropdown selects options from values prop 2`] = `
 }
 
 .c7 {
-  height: 1.125em;
   z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {

@@ -85,8 +85,9 @@ export const ValueContainer = styled(Button.Container)`
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
 export const CloseIconContainer = styled(StyledBaseDiv)`
-  height: 1.125em;
   z-index: 1;
+  display: flex;
+  align-items: center;
 `;
 
 export const ArrowIconContainer = styled(StyledBaseDiv)`
@@ -231,6 +232,21 @@ const SearchInput = styled(StyledBaseInput)`
   text-align: left;
 `;
 
+const ValuesCountContainer = styled(StyledBaseDiv)`
+  ${({
+    variant,
+    color,
+    dropdownVariant,
+    transparentColor,
+  }: UsefulDropdownState & { dropdownVariant: variants; transparentColor: string }) => {
+    return `
+    ${getDropdownTagStyle(dropdownVariant, variant, color, transparentColor)}
+      padding: 0.125rem;
+      border-radius: 1.5rem;
+    `;
+  }}
+`;
+
 export interface DropdownProps {
   StyledContainer?: StyledSubcomponentType;
   StyledValueContainer?: StyledSubcomponentType;
@@ -245,6 +261,7 @@ export interface DropdownProps {
   StyledArrowIconContainer?: StyledSubcomponentType;
   StyledSearchInput?: StyledSubcomponentType;
   StyledSearchContainer?: StyledSubcomponentType;
+  StyledValueCountContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -258,6 +275,7 @@ export interface DropdownProps {
   arrowIconProps?: SubcomponentPropsType;
   searchInputProps?: SubcomponentPropsType;
   searchContainerProps?: SubcomponentPropsType;
+  valueCountProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
@@ -272,6 +290,7 @@ export interface DropdownProps {
   arrowIconRef?: React.RefObject<HTMLElement>;
   searchContainerRef?: React.RefObject<HTMLDivElement>;
   searchInputRef?: React.RefObject<HTMLInputElement>;
+  valueCountRef?: React.RefObject<HTMLElement>;
 
   color?: string;
   elevation?: number;
@@ -294,6 +313,7 @@ export interface DropdownProps {
   variant?: variants;
   optionsVariant?: variants;
   valueVariant?: variants;
+  valueCountVariant?: variants;
 
   shouldStayInView?: boolean;
   intersectionThreshold?: number;
@@ -301,7 +321,9 @@ export interface DropdownProps {
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
 
+  showValueCount?: boolean;
   showSelectedValues?: boolean;
+  clearable?: boolean;
   searchable?: boolean;
   searchFiltersOptions?: boolean;
   onSearchChange?: TextInputProps['onChange'];
@@ -324,6 +346,7 @@ const Dropdown = ({
   StyledArrowIconContainer = ArrowIconContainer,
   StyledSearchContainer = SearchContainer,
   StyledSearchInput = SearchInput,
+  StyledValueCountContainer = ValuesCountContainer,
 
   containerProps,
   valueContainerProps,
@@ -337,6 +360,7 @@ const Dropdown = ({
   valueItemTagProps = {},
   searchInputProps,
   searchContainerProps,
+  valueCountProps,
 
   containerRef,
   optionsContainerRef,
@@ -351,6 +375,7 @@ const Dropdown = ({
   arrowIconRef,
   searchContainerRef,
   searchInputRef,
+  valueCountRef,
 
   color,
   elevation = 0,
@@ -368,6 +393,7 @@ const Dropdown = ({
   optionsVariant = variants.outline,
   rememberScrollPosition = true,
   valueVariant = variants.text,
+  valueCountVariant = variants.outline,
   values = [],
   shouldStayInView = true,
   intersectionThreshold = 1.0,
@@ -375,7 +401,9 @@ const Dropdown = ({
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 
+  showValueCount = false,
   showSelectedValues = true,
+  clearable = true,
   searchable = false,
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
@@ -786,20 +814,40 @@ const Dropdown = ({
     [rememberScrollPosition],
   );
 
-  const closeIcons = (
+  const valueCountCloseIconHandler = () => {
+    return (
+      <>
+        {showValueCount && (
+          <StyledValueCountContainer
+            variant={valueCountVariant}
+            color={defaultedColor}
+            transparentColor={colors.transparent}
+            ref={valueCountRef}
+            dropdownVariant={variant}
+            {...valueCountProps}
+          >
+            {values.length}
+          </StyledValueCountContainer>
+        )}
+        {clearable && (
+          <StyledCloseIconContainer
+            onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
+            onClick={handleClear}
+            onFocus={(e: React.FocusEvent) => e.stopPropagation()}
+            tabIndex={tabIndex}
+            ref={closeIconRef}
+            {...closeIconProps}
+          >
+            <Icon path={mdiClose} size="1em" />
+          </StyledCloseIconContainer>
+        )}
+      </>
+    );
+  };
+
+  const infoIcons = (
     <>
-      {handleClear && values.length > 0 && (
-        <StyledCloseIconContainer
-          onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
-          onClick={handleClear}
-          onFocus={(e: React.FocusEvent) => e.stopPropagation()}
-          tabIndex={tabIndex}
-          ref={closeIconRef}
-          {...closeIconProps}
-        >
-          <Icon path={mdiClose} size="1em" />
-        </StyledCloseIconContainer>
-      )}
+      {values.length > 0 && valueCountCloseIconHandler()}
       <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={{ isOpen }}>
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
@@ -959,7 +1007,7 @@ const Dropdown = ({
               : placeholder}
           </StyledValueItem>
         )}
-        {closeIcons}
+        {infoIcons}
       </Button>
       {isOpen && (
         <>
