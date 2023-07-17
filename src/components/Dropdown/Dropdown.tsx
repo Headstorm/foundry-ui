@@ -85,8 +85,9 @@ export const ValueContainer = styled(Button.Container)`
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
 export const CloseIconContainer = styled(StyledBaseDiv)`
-  height: 1.125em;
   z-index: 1;
+  display: flex;
+  align-items: center;
 `;
 
 export const ArrowIconContainer = styled(StyledBaseDiv)`
@@ -230,6 +231,17 @@ const StyledSearchInput = styled(StyledBaseInput)`
   all: inherit;
 `;
 
+const ValuesCountContainer = styled(StyledBaseDiv)`
+  ${({ variant, color, dropdownVariant }: UsefulDropdownState & { dropdownVariant: variants }) => {
+    return `
+    ${getDropdownTagStyle(dropdownVariant, variant, color, '')}
+      padding: 0.125rem;
+      border-radius: 1.5rem;
+      
+    `;
+  }}
+`;
+
 export interface DropdownProps {
   StyledContainer?: StyledSubcomponentType;
   StyledValueContainer?: StyledSubcomponentType;
@@ -298,6 +310,15 @@ export interface DropdownProps {
   searchFiltersOptions?: boolean;
   onSearchChange?: TextInputProps['onChange'];
   onDebouncedSearchChange?: TextInputProps['debouncedOnChange'];
+
+  showCloseIcon?: boolean;
+  showValueCount?: boolean;
+
+  StyledValueCountContainer?: StyledSubcomponentType;
+
+  valueCountVariant?: variants;
+  valueCountRef?: React.RefObject<HTMLElement>;
+  valueCountProps?: SubcomponentPropsType;
 }
 
 const defaultCallback = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
@@ -365,6 +386,15 @@ const Dropdown = ({
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
   onDebouncedSearchChange = defaultCallback,
+
+  showCloseIcon = true,
+  showValueCount = true,
+
+  StyledValueCountContainer = ValuesCountContainer,
+
+  valueCountVariant = variants.outline,
+  valueCountRef,
+  valueCountProps,
 }: DropdownProps): JSX.Element | null => {
   const { colors } = useTheme();
   const defaultedColor = color || colors.grayDark;
@@ -773,9 +803,49 @@ const Dropdown = ({
     [rememberScrollPosition],
   );
 
-  const closeIcons = (
-    <>
-      {handleClear && values.length > 0 && (
+  const valueCountCloseIconHandler = () => {
+    if (showValueCount && showCloseIcon) {
+      return (
+        <>
+          <StyledValueCountContainer
+            variant={valueCountVariant}
+            color={defaultedColor}
+            ref={valueCountRef}
+            dropdownVariant={variant}
+            {...valueCountProps}
+          >
+            {values.length}
+          </StyledValueCountContainer>
+          <StyledCloseIconContainer
+            onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
+            onClick={handleClear}
+            onFocus={(e: React.FocusEvent) => e.stopPropagation()}
+            tabIndex={tabIndex}
+            ref={closeIconRef}
+            {...closeIconProps}
+          >
+            <Icon path={mdiClose} size="1em" />
+          </StyledCloseIconContainer>
+        </>
+      );
+    }
+    if (showValueCount && !showCloseIcon) {
+      // we can add the values conatiner styles props refs here.
+      // we also need to rename closeIcons
+      return (
+        <StyledValueCountContainer
+          variant={valueCountVariant}
+          color={defaultedColor}
+          ref={valueCountRef}
+          dropdownVariant={variant}
+          {...valueCountProps}
+        >
+          {values.length}
+        </StyledValueCountContainer>
+      );
+    }
+    if (showCloseIcon && !showValueCount) {
+      return (
         <StyledCloseIconContainer
           onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
           onClick={handleClear}
@@ -786,7 +856,13 @@ const Dropdown = ({
         >
           <Icon path={mdiClose} size="1em" />
         </StyledCloseIconContainer>
-      )}
+      );
+    }
+  };
+
+  const infoIcons = (
+    <>
+      {values.length > 0 && valueCountCloseIconHandler()}
       <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={{ isOpen }}>
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
@@ -929,7 +1005,7 @@ const Dropdown = ({
             />
           )}
         </StyledValueItem>
-        {closeIcons}
+        {infoIcons}
       </Button>
       {isOpen && (
         <>
