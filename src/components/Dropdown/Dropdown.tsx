@@ -321,9 +321,9 @@ export interface DropdownProps {
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
 
-  showCloseIcon?: boolean;
   showValueCount?: boolean;
   showSelectedValues?: boolean;
+  clearable?: boolean;
   searchable?: boolean;
   searchFiltersOptions?: boolean;
   onSearchChange?: TextInputProps['onChange'];
@@ -401,9 +401,9 @@ const Dropdown = ({
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 
-  showCloseIcon = true,
-  showValueCount = true,
+  showValueCount = false,
   showSelectedValues = true,
+  clearable = true,
   searchable = false,
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
@@ -829,7 +829,7 @@ const Dropdown = ({
             {values.length}
           </StyledValueCountContainer>
         )}
-        {showCloseIcon && (
+        {clearable && (
           <StyledCloseIconContainer
             onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
             onClick={handleClear}
