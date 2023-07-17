@@ -446,7 +446,7 @@ export const RangeSlider = ({
       {...containerProps}
     >
       <StyledSlideRail
-        ref={mergeRefs([slideRailRef, ref])}
+        ref={mergeRefs<HTMLDivElement>([slideRailRef, ref])}
         {...slideRailProps}
         onMouseDown={handleSlideRailClickWithAnalytics}
       >

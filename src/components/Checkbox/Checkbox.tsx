@@ -246,7 +246,7 @@ const Checkbox = ({
           data-test-id="hsui-Checkbox-Input"
           onClick={handleClick}
           checked={checked}
-          ref={mergeRefs([inputRef, internalRef])}
+          ref={mergeRefs<HTMLInputElement | undefined>([inputRef, internalRef])}
           {...inputProps}
         />
       </StyledCheckboxContainer>

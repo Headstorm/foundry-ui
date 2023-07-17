@@ -60,9 +60,6 @@ export const Basic: Story<BasicProps> = ({
           return onSelect(selected);
         }}
         options={cities}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        StyledCloseIconContainer={() => <span>{values.length}</span>}
         values={values}
         searchable={searchable}
         searchFiltersOptions={searchFiltersOptions}
