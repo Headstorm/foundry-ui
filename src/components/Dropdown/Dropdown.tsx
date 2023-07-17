@@ -233,12 +233,11 @@ const SearchInput = styled(StyledBaseInput)`
 `;
 
 const ValuesCountContainer = styled(StyledBaseDiv)`
-  ${({ variant, color, dropdownVariant }: UsefulDropdownState & { dropdownVariant: variants }) => {
+  ${({ variant, color, dropdownVariant, transparentColor }: UsefulDropdownState & { dropdownVariant: variants, transparentColor: string }) => {
     return `
-    ${getDropdownTagStyle(dropdownVariant, variant, color, '')}
+    ${getDropdownTagStyle(dropdownVariant, variant, color, transparentColor)}
       padding: 0.125rem;
       border-radius: 1.5rem;
-      
     `;
   }}
 `;
@@ -811,18 +810,21 @@ const Dropdown = ({
   );
 
   const valueCountCloseIconHandler = () => {
-    if (showValueCount && showCloseIcon) {
-      return (
-        <>
-          <StyledValueCountContainer
-            variant={valueCountVariant}
-            color={defaultedColor}
-            ref={valueCountRef}
-            dropdownVariant={variant}
-            {...valueCountProps}
-          >
-            {values.length}
-          </StyledValueCountContainer>
+    return (
+      <>
+        {showValueCount && (
+            <StyledValueCountContainer
+              variant={valueCountVariant}
+              color={defaultedColor}
+              transparentColor={colors.transparent}
+              ref={valueCountRef}
+              dropdownVariant={variant}
+              {...valueCountProps}
+            >
+              {values.length}
+            </StyledValueCountContainer>
+        )}
+        {showCloseIcon && (
           <StyledCloseIconContainer
             onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
             onClick={handleClear}
@@ -833,36 +835,9 @@ const Dropdown = ({
           >
             <Icon path={mdiClose} size="1em" />
           </StyledCloseIconContainer>
-        </>
-      );
-    }
-    if (showValueCount && !showCloseIcon) {
-      return (
-        <StyledValueCountContainer
-          variant={valueCountVariant}
-          color={defaultedColor}
-          ref={valueCountRef}
-          dropdownVariant={variant}
-          {...valueCountProps}
-        >
-          {values.length}
-        </StyledValueCountContainer>
-      );
-    }
-    if (showCloseIcon && !showValueCount) {
-      return (
-        <StyledCloseIconContainer
-          onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
-          onClick={handleClear}
-          onFocus={(e: React.FocusEvent) => e.stopPropagation()}
-          tabIndex={tabIndex}
-          ref={closeIconRef}
-          {...closeIconProps}
-        >
-          <Icon path={mdiClose} size="1em" />
-        </StyledCloseIconContainer>
-      );
-    }
+        )}
+      </>
+    );
   };
 
   const infoIcons = (
