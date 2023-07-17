@@ -103,9 +103,9 @@ export const Default: Story<DefaultProps> = ({
         min={min}
         max={max}
         debounceInterval={debounceInterval}
-        onDrag={(newVal: number) => {
+        onChange={(newVal: number) => {
           setVal(Math.round(newVal));
-          action('onDrag')(newVal);
+          action('onChange')(newVal);
         }}
         axisLock={axisLock}
         values={[
@@ -170,9 +170,9 @@ export const Rating: Story<RatingProps> = ({
         min={min}
         max={max}
         debounceInterval={debounceInterval}
-        onDrag={(newVal: number) => {
+        onChange={newVal => {
           setVal(Math.round(newVal));
-          action('onDrag')(newVal);
+          action('onChange')(newVal);
         }}
         axisLock={axisLock}
         values={[
@@ -195,7 +195,7 @@ Rating.args = {
   springOnRelease: true,
   min: 0,
   max: 5,
-  debounceInterval: 8,
+  debounceInterval: 100,
   axisLock: 'x',
 };
 
@@ -272,9 +272,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           showSelectedRange={false}
           min={0}
           max={360}
-          onDrag={(val: number) => {
+          debounceInterval={100}
+          onChange={(val: number) => {
             setHue(Math.round(val));
-            action('onDrag hue')(val);
+            action('onChange hue')(val);
           }}
           values={[
             {
@@ -299,9 +300,9 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           ))}
           min={0}
           max={100}
-          onDrag={(val: number) => {
+          onChange={(val: number) => {
             setSat(Math.round(val));
-            action('onDrag saturation')(val);
+            action('onChange saturation')(val);
           }}
           showDomainLabels={false}
           showSelectedRange={false}
@@ -330,9 +331,9 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           ))}
           min={0}
           max={100}
-          onDrag={(val: number) => {
+          onChange={(val: number) => {
             setLight(Math.round(val));
-            action('onDrag light')(val);
+            action('onChange light')(val);
           }}
           showDomainLabels={false}
           showSelectedRange={false}

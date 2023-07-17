@@ -64,9 +64,15 @@ export type RangeSliderProps = {
 
   motionBlur?: boolean;
   springOnRelease?: boolean;
+  /** Debounce interval (in ms) before calling `onDebounceChange`. */
   debounceInterval?: number;
   axisLock?: 'x' | 'y' | '';
+  /** @deprecated use onChange or onDebounceChange instead. */
   onDrag?: (val: number) => void;
+  /** Called immediately as value slider's selection, regardless of `debounceInterval`. */
+  onChange?: (val: number) => void;
+  /** Called after `debounceInterval` as slider's selection changes. */
+  onDebounceChange?: (val: number) => void;
   disabled?: boolean;
   min: number;
   max: number;
