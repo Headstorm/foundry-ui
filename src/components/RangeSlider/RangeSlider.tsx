@@ -269,30 +269,31 @@ export const RangeSlider = ({
   const processVal = (val: number | ValueProp): ValueProp =>
     typeof val === 'number' ? { value: val, label: undefined, color: undefined } : val;
 
-  const processedValues: Array<ValueProp> = useMemo(() => values?.map(processVal) ?? [], [values]);
+  const processedValues: Array<ValueProp> = useMemo(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore expression not callable
+    () => values?.map(processVal) ?? [],
+    [values],
+  );
 
   const processedMarkers: Array<ValueProp> = useMemo(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore expression not callable
     () => markers?.map(processVal) ?? [],
     [markers],
   );
 
   const hasHandleLabels = useMemo(
-    () => values?.some(val => Object.prototype.hasOwnProperty.call(val, 'label')),
-    [values],
+    () => processedValues?.some(val => !!val.label),
+    [processedValues],
   );
 
   const selectedRange = [
     Math.min(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       ...processedValues.map(val => val.value),
       showSelectedRange && values && values.length === 1 ? min : Infinity,
     ),
-    Math.max(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      ...processedValues.map(val => val.value),
-    ),
+    Math.max(...processedValues.map(val => val.value)),
   ];
 
   const domain = max - min;
@@ -325,8 +326,7 @@ export const RangeSlider = ({
   // keep track of which handle is being dragged (if any)
   const [draggedHandle, setDraggedHandle] = useState(-1);
   // get the bounding box of the slider
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
   const pixelPositions = processedValues.map(val => {
     return (val.value / domain) * sliderBounds.width;
