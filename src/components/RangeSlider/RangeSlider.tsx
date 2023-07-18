@@ -25,6 +25,7 @@ import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
   ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
+    display: flex;
     position: relative;
     height: 1rem;
     width: 100%;
@@ -72,11 +73,10 @@ export const DragHandle = styled(a.div)`
     const handleColor = color || colors.primary;
     return `
       position: absolute;
-      bottom: -.125rem;
-      left: -.5rem;
-
+      
       width: 1rem;
       height: 1rem;
+      align-self: center;
 
       background-color: ${handleColor};
       color: ${handleColor};
@@ -118,13 +118,11 @@ export const SlideRail = styled.div`
     const { colors } = useTheme();
     return `
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
       width: 100%;
       height: 0.25rem;
 
       overflow: hidden;
+      align-self: center;
 
       border-radius: 0.125rem;
       background-color: ${colors.grayXlight};
@@ -379,7 +377,7 @@ export const RangeSlider = ({
     },
     [slideRailProps, sliderBounds, handleDrag, domain, processedValues],
   );
-  const handleSlideRailClickWithAnalytics = (e: any) =>
+  const handleSlideRailClickWithAnalytics = (e: MouseEvent) =>
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
 
   const bind = useDrag(
