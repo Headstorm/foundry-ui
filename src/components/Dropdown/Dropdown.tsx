@@ -630,11 +630,7 @@ const Dropdown = ({
         window.setTimeout(() => {
           const blurredFromButtom = !searchable && e.target.id === `${name}-dropdown-button`;
           const blurredFromSearch = searchable && e.target.id === `${name}-search-input`;
-          if (
-            focusWithin &&
-            (blurredFromButtom ||
-              blurredFromSearch)
-          ) {
+          if (focusWithin && (blurredFromButtom || blurredFromSearch)) {
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -930,6 +926,8 @@ const Dropdown = ({
 
   const optionsToRender: OptionProps[] =
     searchable && searchFiltersOptions ? filteredOptions : options;
+  const persistPlaceholder = !showSelectedValues && !focusWithin;
+  const blurredEmptyArrEmptySearch = searchCharacterCount === 0 && (!values || !values.length) && !focusWithin;
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -960,8 +958,8 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        {((searchCharacterCount === 0 && (!values || !values.length) && !focusWithin) ||
-          (!showSelectedValues && !focusWithin)) && (
+        {(blurredEmptyArrEmptySearch ||
+          persistPlaceholder) && (
           <StyledPlaceholder
             ref={placeholderRef}
             id={`${name}-placeholder`}
