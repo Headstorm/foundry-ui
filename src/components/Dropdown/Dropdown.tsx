@@ -630,9 +630,7 @@ const Dropdown = ({
         window.setTimeout(() => {
           if (
             focusWithin &&
-            ((!searchable &&
-              (e.target.id === `${name}-search-input` ||
-                e.target.id === `${name}-dropdown-button`)) ||
+            ((!searchable && e.target.id === `${name}-dropdown-button`) ||
               (searchable && e.target.id === `${name}-search-input`))
           ) {
             setFocusWithin(false);
