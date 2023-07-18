@@ -1,6 +1,5 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import styled from 'styled-components';
-import { action } from '@storybook/addon-actions';
 import { Story, Meta } from '@storybook/react';
 import { readableColor, toColorString } from 'polished';
 
@@ -102,11 +101,12 @@ export const Default: Story<DefaultProps> = ({
         min={min}
         max={max}
         onChange={newVal => setVal(Math.round(newVal))}
+        onRelease={newVal => setVal(Math.round(newVal))}
         axisLock={axisLock}
         values={[
           {
             value: val,
-            label: val,
+            label: Math.round(val),
           },
         ]}
         markers={markersArray as RangeSliderProps['markers']}
@@ -162,10 +162,7 @@ export const Rating: Story<RatingProps> = ({
         springOnRelease={springOnRelease}
         min={min}
         max={max}
-        onChange={newVal => {
-          setVal(Math.round(newVal));
-          action('onChange')(newVal);
-        }}
+        onChange={newVal => setVal(Math.round(newVal))}
         axisLock={axisLock}
         values={[
           {
@@ -196,6 +193,7 @@ interface ColorPickerProps {
   saturation: number;
   disabled: boolean;
   showDomainLabels: boolean;
+  debounceInterval: number;
 }
 
 export const ColorPicker: Story<ColorPickerProps> = ({
@@ -204,6 +202,7 @@ export const ColorPicker: Story<ColorPickerProps> = ({
   saturation,
   disabled,
   showDomainLabels,
+  debounceInterval,
 }: ColorPickerProps) => {
   const [hue_, setHue] = useState(hue);
   const [sat, setSat] = useState(saturation);
@@ -263,10 +262,8 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           showSelectedRange={false}
           min={0}
           max={360}
-          onChange={(val: number) => {
-            setHue(Math.round(val));
-            action('onChange hue')(val);
-          }}
+          debounceInterval={debounceInterval}
+          onDebounceChange={val => setHue(Math.round(val))}
           values={[
             {
               value: hue_,
@@ -290,10 +287,8 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           ))}
           min={0}
           max={100}
-          onChange={(val: number) => {
-            setSat(Math.round(val));
-            action('onChange saturation')(val);
-          }}
+          debounceInterval={debounceInterval}
+          onDebounceChange={val => setSat(Math.round(val))}
           showDomainLabels={false}
           showSelectedRange={false}
           values={[
@@ -321,10 +316,8 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           ))}
           min={0}
           max={100}
-          onChange={(val: number) => {
-            setLight(Math.round(val));
-            action('onChange light')(val);
-          }}
+          debounceInterval={debounceInterval}
+          onDebounceChange={val => setLight(Math.round(val))}
           showDomainLabels={false}
           showSelectedRange={false}
           values={[
@@ -345,6 +338,7 @@ ColorPicker.args = {
   lightness: 50,
   disabled: false,
   showDomainLabels: false,
+  debounceInterval: 8,
 };
 
 export default {
@@ -366,6 +360,14 @@ export default {
         type: 'range',
         min: -10,
         max: 10,
+        step: 1,
+      },
+    },
+    debounceInterval: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 100,
         step: 1,
       },
     },

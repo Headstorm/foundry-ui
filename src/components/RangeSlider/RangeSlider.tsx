@@ -235,6 +235,8 @@ export const RangeSlider = ({
   onDrag,
   onChange,
   onDebounceChange,
+  onRelease,
+
   disabled = false,
   min,
   max,
@@ -249,17 +251,19 @@ export const RangeSlider = ({
     );
   }
 
-  // const { colors } = useTheme();
   const { prefersReducedMotion } = useAccessibilityPreferences();
   const initializing = useRef(true);
 
-  const debouncedOnChangeCall = React.useRef(
+  const debouncedOnChange = useRef(
     debounce(newVal => {
-      const debouncedCallback = onDebounceChange ?? onDrag;
-      if (debouncedCallback) {
-        debouncedCallback(newVal);
-      }
+      if (onDrag) onDrag(newVal);
+      if (onDebounceChange) onDebounceChange(newVal);
     }, debounceInterval),
+  ).current;
+
+  const debouncedOnRelease = useRef(
+    // wait an extra ms. onRelease should be called after onChange
+    debounce(newVal => onRelease && onRelease(newVal), debounceInterval + 1),
   ).current;
 
   /** Convert passed-in `number` values into `ValueProps` */
@@ -281,7 +285,7 @@ export const RangeSlider = ({
   );
 
   const hasHandleLabels = useMemo(
-    () => processedValues?.some(val => !!val.label),
+    () => processedValues?.some(val => val.label !== null && val.label !== undefined),
     [processedValues],
   );
 
@@ -302,18 +306,14 @@ export const RangeSlider = ({
       handleEventWithAnalytics(
         'RangeSlider',
         () => {
-          // immediate callback to onChange
-          if (onChange) {
-            onChange(newVal);
-          }
-
-          debouncedOnChangeCall(newVal);
+          if (onChange) onChange(newVal);
+          debouncedOnChange(newVal);
         },
         'onDrag',
         { type: 'onDrag', newVal },
         containerProps,
       ),
-    [handleEventWithAnalytics, onChange, debouncedOnChangeCall, containerProps],
+    [handleEventWithAnalytics, debouncedOnChange, onChange, containerProps],
   );
 
   // set the drag value asynchronously at a lower frequency for better performance
@@ -364,15 +364,27 @@ export const RangeSlider = ({
       });
 
       if (closestVal) {
-        // TODO: use the closest val to find the handle to move and move it
-        handleDrag(clickedValue);
+        if (onDrag) onDrag(clickedValue);
+        if (onChange) onChange(clickedValue);
+        if (onDebounceChange) onDebounceChange(clickedValue);
+        if (onRelease) onRelease(clickedValue);
+
         if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
           e.persist();
           slideRailProps.onMouseDown(e);
         }
       }
     },
-    [slideRailProps, sliderBounds, handleDrag, domain, processedValues],
+    [
+      slideRailProps,
+      sliderBounds,
+      onChange,
+      onDebounceChange,
+      onRelease,
+      onDrag,
+      domain,
+      processedValues,
+    ],
   );
   const handleSlideRailClickWithAnalytics = (e: MouseEvent) =>
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
@@ -454,7 +466,7 @@ export const RangeSlider = ({
             max={max}
             values={processedValues}
             selectedRange={selectedRange}
-            animatedRangeRail={!prefersReducedMotion}
+            animateRangeRail={!prefersReducedMotion}
             ref={selectedRangeRailRef}
             {...selectedRangeRailProps}
           />
@@ -483,6 +495,7 @@ export const RangeSlider = ({
           // eslint-disable-next-line react/no-array-index-key
           key={`handle${i}`}
           ref={dragHandleRef}
+          onMouseUp={() => debouncedOnRelease(value)}
           {...dragHandleProps}
         >
           {showHandleLabels && (

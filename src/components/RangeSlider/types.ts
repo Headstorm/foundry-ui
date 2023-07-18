@@ -67,12 +67,14 @@ export type RangeSliderProps = {
   /** Debounce interval (in ms) before calling `onDebounceChange`. */
   debounceInterval?: number;
   axisLock?: 'x' | 'y' | '';
-  /** @deprecated use onChange or onDebounceChange instead. */
+  /** @deprecated use onChange or onChangeDebounce instead. */
   onDrag?: (val: number) => void;
-  /** Called immediately as value slider's selection, regardless of `debounceInterval`. */
+  /** Called immediately as slider's selection changes. */
   onChange?: (val: number) => void;
-  /** Called after `debounceInterval` as slider's selection changes. */
+  /** Called `debounceInterval` ms after the most recent change of selection. */
   onDebounceChange?: (val: number) => void;
+  /** Called when the slider's drag gesture is released */
+  onRelease?: (val: number) => void;
   disabled?: boolean;
   min: number;
   max: number;
