@@ -246,10 +246,6 @@ export const RangeSlider = ({
     console.warn(
       'From FoundryUI RangerSlider: onDrag callback is deprecated. Instead, use onChange or onDebounceChange.',
     );
-
-    if (!onChange) {
-      onChange = onDrag;
-    }
   }
 
   // const { colors } = useTheme();
