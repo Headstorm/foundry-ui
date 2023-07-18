@@ -77,6 +77,7 @@ export const DragHandle = styled(a.div)`
       width: 1rem;
       height: 1rem;
       align-self: center;
+      left: -.5rem;
 
       background-color: ${handleColor};
       color: ${handleColor};
