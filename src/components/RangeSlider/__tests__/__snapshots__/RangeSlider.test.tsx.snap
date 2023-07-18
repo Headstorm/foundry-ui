@@ -113,6 +113,7 @@ exports[`RangeSlider renders 2`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  left: -.5rem;
   background-color: #DA4200;
   color: #DA4200;
   border: .125rem solid #fff;
