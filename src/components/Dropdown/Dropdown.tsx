@@ -628,10 +628,12 @@ const Dropdown = ({
       // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
         window.setTimeout(() => {
+          const blurredFromButtom = !searchable && e.target.id === `${name}-dropdown-button`;
+          const blurredFromSearch = searchable && e.target.id === `${name}-search-input`;
           if (
             focusWithin &&
-            ((!searchable && e.target.id === `${name}-dropdown-button`) ||
-              (searchable && e.target.id === `${name}-search-input`))
+            (blurredFromButtom ||
+              blurredFromSearch)
           ) {
             setFocusWithin(false);
             setIsOpen(false);
@@ -682,7 +684,6 @@ const Dropdown = ({
     (clickedId: string | number) => {
       if (!multi) {
         setIsOpen(false);
-        // not sure how i feel about this... the focus currently stays after selecting an item when multi is false
         setFocusWithin(false);
         handleOnSelect([clickedId]);
       } else {
