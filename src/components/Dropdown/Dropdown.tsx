@@ -633,7 +633,7 @@ const Dropdown = ({
             ((!searchable &&
               (e.target.id === `${name}-search-input` ||
                 e.target.id === `${name}-dropdown-button`)) ||
-              (searchable && multi && e.target.id === `${name}-search-input`))
+              (searchable && e.target.id === `${name}-search-input`))
           ) {
             setFocusWithin(false);
             setIsOpen(false);
@@ -644,7 +644,7 @@ const Dropdown = ({
         }, 0),
       );
     },
-    [handleOnBlur, focusWithin, name, searchable, multi],
+    [handleOnBlur, focusWithin, name, searchable],
   );
 
   const handleFocus = useCallback(
