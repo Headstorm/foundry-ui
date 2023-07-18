@@ -271,6 +271,8 @@ export const RangeSlider = ({
   // Convert `values` prop from number[] | ValueProp[] into strictly ValueProp[]
   const processedValues: Array<ValueProp> = useMemo(
     () =>
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore This expression is not callable.
       values?.map((val: number | ValueProp) => {
         if (typeof val === 'number') {
           return { value: val, label: undefined, color: undefined };
@@ -285,6 +287,8 @@ export const RangeSlider = ({
 
   // Convert `markers` prop from `number[] | ValueProp[]` into strictly `ValueProp[]`
   const processedMarkers: Array<ValueProp> =
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore This expression is not callable.
     markers?.map((val: number | ValueProp) => {
       if (typeof val === 'number') {
         return { value: val, label: undefined, color: undefined };
