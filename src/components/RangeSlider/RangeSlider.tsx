@@ -256,7 +256,6 @@ export const RangeSlider = ({
 
   // const { colors } = useTheme();
   const { prefersReducedMotion } = useAccessibilityPreferences();
-  const hasHandleLabels = useRef(false);
   const initializing = useRef(true);
 
   const debouncedOnChangeCall = React.useRef(
@@ -268,33 +267,21 @@ export const RangeSlider = ({
     }, debounceInterval),
   ).current;
 
-  // Convert `values` prop from number[] | ValueProp[] into strictly ValueProp[]
-  const processedValues: Array<ValueProp> = useMemo(
-    () =>
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore This expression is not callable.
-      values?.map((val: number | ValueProp) => {
-        if (typeof val === 'number') {
-          return { value: val, label: undefined, color: undefined };
-        }
-        if (Object.prototype.hasOwnProperty.call(val, 'label')) {
-          hasHandleLabels.current = true;
-        }
-        return val;
-      }) ?? [],
-    [values],
+  /** Convert passed-in `number` values into `ValueProps` */
+  const processVal = (val: number | ValueProp): ValueProp =>
+    typeof val === 'number' ? { value: val, label: undefined, color: undefined } : val;
+
+  const processedValues: Array<ValueProp> = useMemo(() => values?.map(processVal) ?? [], [values]);
+
+  const processedMarkers: Array<ValueProp> = useMemo(
+    () => markers?.map(processVal) ?? [],
+    [markers],
   );
 
-  // Convert `markers` prop from `number[] | ValueProp[]` into strictly `ValueProp[]`
-  const processedMarkers: Array<ValueProp> =
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore This expression is not callable.
-    markers?.map((val: number | ValueProp) => {
-      if (typeof val === 'number') {
-        return { value: val, label: undefined, color: undefined };
-      }
-      return val;
-    }) ?? [];
+  const hasHandleLabels = useMemo(
+    () => values?.some(val => Object.prototype.hasOwnProperty.call(val, 'label')),
+    [values],
+  );
 
   const selectedRange = [
     Math.min(
