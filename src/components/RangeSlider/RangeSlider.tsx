@@ -67,7 +67,7 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color }: HandleProps) => {
+  ${({ $beingDragged = false, color }: HandleProps) => {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
@@ -87,7 +87,7 @@ export const DragHandle = styled(a.div)`
 
       filter: url(#blur);
 
-      cursor: ${beingDragged ? 'grabbing' : 'grab'};
+      cursor: ${$beingDragged ? 'grabbing' : 'grab'};
       z-index: 2;
     `;
   }}
@@ -254,7 +254,7 @@ export const RangeSlider = ({
     }
   }
 
-  const { colors } = useTheme();
+  // const { colors } = useTheme();
   const { prefersReducedMotion } = useAccessibilityPreferences();
   const hasHandleLabels = useRef(false);
   const initializing = useRef(true);
@@ -273,21 +273,21 @@ export const RangeSlider = ({
     () =>
       values?.map((val: number | ValueProp) => {
         if (typeof val === 'number') {
-          return { value: val, label: val, color: colors.primary };
+          return { value: val, label: undefined, color: undefined };
         }
         if (Object.prototype.hasOwnProperty.call(val, 'label')) {
           hasHandleLabels.current = true;
         }
         return val;
       }) ?? [],
-    [values, colors],
+    [values],
   );
 
   // Convert `markers` prop from `number[] | ValueProp[]` into strictly `ValueProp[]`
   const processedMarkers: Array<ValueProp> =
     markers?.map((val: number | ValueProp) => {
       if (typeof val === 'number') {
-        return { value: val, label: val, color: colors.primary };
+        return { value: val, label: undefined, color: undefined };
       }
       return val;
     }) ?? [];
@@ -344,7 +344,7 @@ export const RangeSlider = ({
   });
 
   // get the x offset and an animation setter function
-  const [{ x, y }, set] = useSpring(() => ({
+  const [{ x, y }, springRef] = useSpring(() => ({
     to: { x: pixelPositions[0], y: 0 },
     friction: 13,
     tension: 100,
@@ -409,7 +409,7 @@ export const RangeSlider = ({
 
       setDraggedHandle(down ? 0 : -1);
       handleDrag(valueBuffer.current);
-      set({
+      springRef.start({
         x: down ? deltaX : pixelPositions[0],
         y: down ? deltaY : 0,
 
@@ -432,7 +432,7 @@ export const RangeSlider = ({
   );
 
   useEffect(() => {
-    set({
+    springRef.start({
       x: pixelPositions[0],
       y: 0,
 
@@ -445,7 +445,7 @@ export const RangeSlider = ({
         initializing.current = false;
       },
     });
-  }, [pixelPositions, set, springOnRelease, prefersReducedMotion]);
+  }, [pixelPositions, springRef, springOnRelease, prefersReducedMotion]);
 
   return (
     <StyledContainer
@@ -491,7 +491,7 @@ export const RangeSlider = ({
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...bind()}
           draggable={false}
-          beingDragged={i === draggedHandle}
+          $beingDragged={i === draggedHandle}
           style={{ x, y }}
           color={color}
           // eslint-disable-next-line react/no-array-index-key

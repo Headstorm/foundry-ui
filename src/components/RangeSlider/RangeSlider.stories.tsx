@@ -8,7 +8,7 @@ import { withFoundryContext } from '../../../.storybook/decorators';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
-import { RangeSliderProps } from './types';
+import { RangeSliderProps, ValueProp } from './types';
 import Card from '../Card';
 
 const Row = styled.div`
@@ -72,7 +72,6 @@ export const Default: Story<DefaultProps> = ({
   springOnRelease,
   min,
   max,
-  debounceInterval,
   axisLock,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
@@ -82,7 +81,7 @@ export const Default: Story<DefaultProps> = ({
   }, [value]);
 
   const markersSelection = markers;
-  const markersArray = [];
+  const markersArray: Array<number | ValueProp> = [];
   if (markersSelection === 'all values') {
     for (let i = min; i <= max; i++) {
       markersArray.push(markerLabels ? { value: i, label: `${i}` } : i);
@@ -102,11 +101,7 @@ export const Default: Story<DefaultProps> = ({
         springOnRelease={springOnRelease}
         min={min}
         max={max}
-        debounceInterval={debounceInterval}
-        onChange={(newVal: number) => {
-          setVal(Math.round(newVal));
-          action('onChange')(newVal);
-        }}
+        onChange={newVal => setVal(Math.round(newVal))}
         axisLock={axisLock}
         values={[
           {
@@ -131,7 +126,6 @@ Default.args = {
   showSelectedRange: true,
   motionBlur: false,
   springOnRelease: true,
-  debounceInterval: 8,
   axisLock: 'x',
 };
 
@@ -148,7 +142,6 @@ export const Rating: Story<RatingProps> = ({
   springOnRelease,
   min,
   max,
-  debounceInterval,
   axisLock,
 }: RatingProps) => {
   const [val, setVal] = useState(value);
@@ -169,7 +162,6 @@ export const Rating: Story<RatingProps> = ({
         springOnRelease={springOnRelease}
         min={min}
         max={max}
-        debounceInterval={debounceInterval}
         onChange={newVal => {
           setVal(Math.round(newVal));
           action('onChange')(newVal);
@@ -195,7 +187,6 @@ Rating.args = {
   springOnRelease: true,
   min: 0,
   max: 5,
-  debounceInterval: 100,
   axisLock: 'x',
 };
 
@@ -272,7 +263,6 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           showSelectedRange={false}
           min={0}
           max={360}
-          debounceInterval={100}
           onChange={(val: number) => {
             setHue(Math.round(val));
             action('onChange hue')(val);
@@ -376,14 +366,6 @@ export default {
         type: 'range',
         min: -10,
         max: 10,
-        step: 1,
-      },
-    },
-    debounceInterval: {
-      control: {
-        type: 'range',
-        min: 0,
-        max: 100,
         step: 1,
       },
     },

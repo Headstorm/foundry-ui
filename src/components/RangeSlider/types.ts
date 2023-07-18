@@ -16,7 +16,7 @@ export type ContainerProps = {
 };
 
 export type HandleProps = {
-  beingDragged?: boolean;
+  $beingDragged?: boolean;
   color: string;
 };
 

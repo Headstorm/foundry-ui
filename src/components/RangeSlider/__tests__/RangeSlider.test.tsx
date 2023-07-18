@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor, configure } from '@testing-library/react';
-import Icon from '@mdi/react';
-import RangeSlider from '../RangeSlider';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import RangeSlider from '../RangeSlider';
 
 expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
