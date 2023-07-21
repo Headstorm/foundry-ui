@@ -851,7 +851,7 @@ const Dropdown = ({
   const infoIcons = (
     <>
       {values.length > 0 && valueCountCloseIconHandler()}
-      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={isOpen}>
+      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} $isOpen={isOpen}>
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
     </>
@@ -927,7 +927,8 @@ const Dropdown = ({
   const optionsToRender: OptionProps[] =
     searchable && searchFiltersOptions ? filteredOptions : options;
   const persistPlaceholder = !showSelectedValues && !focusWithin;
-  const blurredEmptyArrEmptySearch = searchCharacterCount === 0 && (!values || !values.length) && !focusWithin;
+  const blurredEmptyArrEmptySearch =
+    searchCharacterCount === 0 && (!values || !values.length) && !focusWithin;
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -958,8 +959,7 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        {(blurredEmptyArrEmptySearch ||
-          persistPlaceholder) && (
+        {(blurredEmptyArrEmptySearch || persistPlaceholder) && (
           <StyledPlaceholder
             ref={placeholderRef}
             id={`${name}-placeholder`}
