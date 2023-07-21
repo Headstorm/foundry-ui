@@ -1,3 +1,11 @@
+## [1.25.1](https://github.com/Headstorm/foundry-ui/compare/v1.25.0...v1.25.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** modified isOpen prop on ArrowIconContainer in dropdown ([49af051](https://github.com/Headstorm/foundry-ui/commit/49af051eac907c13f2d4018f958feb38dab79cd6))
+* **dropdown.tsx:** transient instead to make the dom happy ([9492550](https://github.com/Headstorm/foundry-ui/commit/94925505dd04000c80971deb09c36676052317f2))
+
 # [1.25.0](https://github.com/Headstorm/foundry-ui/compare/v1.24.0...v1.25.0) (2023-07-18)
 
 
