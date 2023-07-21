@@ -848,7 +848,7 @@ const Dropdown = ({
   const infoIcons = (
     <>
       {values.length > 0 && valueCountCloseIconHandler()}
-      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={{ isOpen }}>
+      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={isOpen}>
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
     </>
