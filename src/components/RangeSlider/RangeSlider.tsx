@@ -242,7 +242,7 @@ export const RangeSlider = ({
     console.log(newVal); // eslint-disable-line no-console
   },
   disabled = false,
-  readonly: readonly = false,
+  readonly = false,
   min,
   max,
   values,
@@ -307,7 +307,7 @@ export const RangeSlider = ({
 
   const handleDrag = useCallback(
     (newVal: number) => {
-      if (readonly) {return}
+      if (readonly) { return; }
       handleEventWithAnalytics(
         'RangeSlider',
         () => {
