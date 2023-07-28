@@ -73,7 +73,7 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color, readOnly }: HandleProps) => {
+  ${({ beingDragged = false, color, readonly }: HandleProps) => {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
@@ -92,7 +92,7 @@ export const DragHandle = styled(a.div)`
       touch-action: none;
       filter: url(#blur);
       cursor: ${beingDragged ? 'grabbing' : 'grab'};
-      cursor: ${readOnly ? 'default' : ''};
+      cursor: ${readonly ? 'default' : ''};
       z-index: 2;
     `;
   }}
@@ -242,7 +242,7 @@ export const RangeSlider = ({
     console.log(newVal); // eslint-disable-line no-console
   },
   disabled = false,
-  readOnly = false,
+  readonly: readonly = false,
   min,
   max,
   values,
@@ -306,8 +306,9 @@ export const RangeSlider = ({
   const handleEventWithAnalytics = useAnalytics();
 
   const handleDrag = useCallback(
-    (newVal: number) =>
-      !readOnly && handleEventWithAnalytics(
+    (newVal: number) => {
+      if (readonly) {return}
+      handleEventWithAnalytics(
         'RangeSlider',
         () => {
           onDrag(newVal);
@@ -315,8 +316,10 @@ export const RangeSlider = ({
         'onDrag',
         { type: 'onDrag', newVal },
         containerProps,
-      ),
-    [handleEventWithAnalytics, onDrag, containerProps],
+      );
+    },
+
+    [handleEventWithAnalytics, onDrag, containerProps, readonly],
   );
 
   const finalDebounceInterval = prefersReducedMotion ? 0 : debounceInterval;
@@ -382,8 +385,10 @@ export const RangeSlider = ({
     },
     [slideRailProps, sliderBounds, handleDrag, domain, processedValues],
   );
-  const handleSlideRailClickWithAnalytics = (e: any) =>
+  const handleSlideRailClickWithAnalytics = (e: any) => {
+    if (readonly) return;
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
+  };
 
   const bind = useDrag(
     ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
@@ -444,7 +449,7 @@ export const RangeSlider = ({
     <StyledContainer
       data-test-id={['hs-ui-range-slider', testId].join('-')}
       disabled={disabled}
-      readOnly={readOnly}
+      readonly={readonly}
       hasHandleLabels={hasHandleLabels}
       showHandleLabels={showHandleLabels}
       showDomainLabels={showDomainLabels}
@@ -493,7 +498,7 @@ export const RangeSlider = ({
         return (
           <StyledDragHandle
             // eslint-disable-next-line react/jsx-props-no-spreading
-            {...readOnly ? {} : bind()}
+            {...readonly ? {} : bind()}
             draggable={false}
             beingDragged={i === draggedHandle}
             style={{ x, y }}
@@ -502,7 +507,7 @@ export const RangeSlider = ({
             key={`handle${i}`}
             ref={dragHandleRef}
             {...dragHandleProps}
-            readOnly={readOnly}
+            readonly={readonly}
           >
             {showHandleLabels && (
               <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
