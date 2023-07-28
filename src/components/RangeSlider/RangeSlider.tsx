@@ -29,7 +29,6 @@ export const Container = styled.div`
     hasHandleLabels,
     disabled,
     beingDragged = false,
-    isReadOnly,
   }: ContainerProps) => `
     position: relative;
     height: 1rem;
@@ -51,12 +50,7 @@ export const Container = styled.div`
         : ''
     }
 
-    ${
-      isReadOnly
-        ? `
-        pointer-events: none;`
-        : ''
-    }
+    
 
     ${
       showDomainLabels
@@ -79,7 +73,7 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color }: HandleProps) => {
+  ${({ beingDragged = false, color, isReadOnly }: HandleProps) => {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
@@ -96,10 +90,9 @@ export const DragHandle = styled(a.div)`
       border-radius: 50%;
       
       touch-action: none;
-
       filter: url(#blur);
-
       cursor: ${beingDragged ? 'grabbing' : 'grab'};
+      cursor: ${isReadOnly ? 'default' : ''};
       z-index: 2;
     `;
   }}
@@ -314,7 +307,7 @@ export const RangeSlider = ({
 
   const handleDrag = useCallback(
     (newVal: number) =>
-      handleEventWithAnalytics(
+      !isReadOnly && handleEventWithAnalytics(
         'RangeSlider',
         () => {
           onDrag(newVal);
@@ -407,7 +400,6 @@ export const RangeSlider = ({
           blurRef.current.setAttribute('stdDeviation', `${down && active ? blurSize : 0}, 0`);
         });
       }
-
       setDraggedHandle(down ? 0 : -1);
       debouncedDrag();
       set({
@@ -501,7 +493,7 @@ export const RangeSlider = ({
         return (
           <StyledDragHandle
             // eslint-disable-next-line react/jsx-props-no-spreading
-            {...bind()}
+            {...isReadOnly ? {} : bind()}
             draggable={false}
             beingDragged={i === draggedHandle}
             style={{ x, y }}
@@ -510,6 +502,7 @@ export const RangeSlider = ({
             key={`handle${i}`}
             ref={dragHandleRef}
             {...dragHandleProps}
+            isReadOnly={isReadOnly}
           >
             {showHandleLabels && (
               <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>

@@ -19,6 +19,7 @@ export type ContainerProps = {
 export type HandleProps = {
   beingDragged?: boolean;
   color: string;
+  isReadOnly: boolean;
 };
 
 export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean };
