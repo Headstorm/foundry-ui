@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/Headstorm/foundry-ui/compare/v1.25.1...v1.26.0) (2023-07-28)
+
+
+### Features
+
+* **adds readonly prop to rangeslider component:** implemented readonly mode to RangeSlider ([bc8f150](https://github.com/Headstorm/foundry-ui/commit/bc8f1506d2b5f2cd0528f2fbb6aad99460f6cf17))
+
 ## [1.25.1](https://github.com/Headstorm/foundry-ui/compare/v1.25.0...v1.25.1) (2023-07-21)
 
 
