@@ -24,12 +24,7 @@ import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../conte
 import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
-  ${({
-    showDomainLabels,
-    hasHandleLabels,
-    disabled,
-    beingDragged = false,
-  }: ContainerProps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
@@ -307,7 +302,9 @@ export const RangeSlider = ({
 
   const handleDrag = useCallback(
     (newVal: number) => {
-      if (readonly) { return; }
+      if (readonly) {
+        return;
+      }
       handleEventWithAnalytics(
         'RangeSlider',
         () => {
@@ -498,7 +495,7 @@ export const RangeSlider = ({
         return (
           <StyledDragHandle
             // eslint-disable-next-line react/jsx-props-no-spreading
-            {...readonly ? {} : bind()}
+            {...(readonly ? {} : bind())}
             draggable={false}
             beingDragged={i === draggedHandle}
             style={{ x, y }}
