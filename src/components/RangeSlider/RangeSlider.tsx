@@ -101,12 +101,10 @@ export const HandleLabel = styled.div`
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
-
       background-color: ${colors.background};
       border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
-
       pointer-events: none;
       z-index: 2;
     `;
