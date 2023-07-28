@@ -24,7 +24,13 @@ import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../conte
 import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
-  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false, isReadOnly }: ContainerProps) => `
+  ${({
+    showDomainLabels,
+    hasHandleLabels,
+    disabled,
+    beingDragged = false,
+    isReadOnly,
+  }: ContainerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
