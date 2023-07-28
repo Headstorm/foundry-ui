@@ -24,7 +24,7 @@ import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../conte
 import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
-  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
+  ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false, maintainColorWhenDisabled = true}: ContainerProps) => `
     position: relative;
     height: 1rem;
     width: 100%;
@@ -39,8 +39,7 @@ export const Container = styled.div`
 
     ${
       disabled
-        ? `
-      filter: grayscale(1) contrast(.5) brightness(1.2);
+        ? ` ${maintainColorWhenDisabled ? '' : 'filter: grayscale(1) contrast(.5) brightness(1.2);'}
       pointer-events: none;
     `
         : ''
@@ -237,6 +236,7 @@ export const RangeSlider = ({
     console.log(newVal); // eslint-disable-line no-console
   },
   disabled = false,
+  maintainColorWhenDisabled = false,
   min,
   max,
   values,
@@ -439,6 +439,7 @@ export const RangeSlider = ({
     <StyledContainer
       data-test-id={['hs-ui-range-slider', testId].join('-')}
       disabled={disabled}
+      maintainColorWhenDisabled={maintainColorWhenDisabled}
       hasHandleLabels={hasHandleLabels}
       showHandleLabels={showHandleLabels}
       showDomainLabels={showDomainLabels}
