@@ -13,13 +13,13 @@ export type ContainerProps = {
   hasHandleLabels?: boolean;
   disabled: boolean;
   beingDragged: boolean;
-  isReadOnly: boolean;
+  readOnly: boolean;
 };
 
 export type HandleProps = {
   beingDragged?: boolean;
   color: string;
-  isReadOnly: boolean;
+  readOnly: boolean;
 };
 
 export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean };
@@ -70,7 +70,7 @@ export type RangeSliderProps = {
   axisLock?: 'x' | 'y' | '';
   onDrag?: (val: number) => void;
   disabled?: boolean;
-  isReadOnly?: boolean;
+  readOnly?: boolean;
   min: number;
   max: number;
   values?: number[] | ValueProp[];

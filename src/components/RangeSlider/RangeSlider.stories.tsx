@@ -74,7 +74,7 @@ export const Default: Story<DefaultProps> = ({
   max,
   debounceInterval,
   axisLock,
-  isReadOnly,
+  readOnly,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
 
@@ -97,7 +97,7 @@ export const Default: Story<DefaultProps> = ({
     <Row>
       <RangeSlider
         disabled={disabled}
-        isReadOnly={isReadOnly}
+        readOnly={readOnly}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
         motionBlur={motionBlur}
@@ -128,7 +128,7 @@ Default.args = {
   markers: 'none',
   'use marker labels': false,
   disabled: false,
-  isReadOnly: false,
+  readOnly: false,
   showDomainLabels: false,
   showHandleLabels: true,
   showSelectedRange: true,
