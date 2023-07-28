@@ -13,7 +13,7 @@ export type ContainerProps = {
   hasHandleLabels?: boolean;
   disabled: boolean;
   beingDragged: boolean;
-  maintainColorWhenDisabled: boolean;
+  isReadOnly: boolean;
 };
 
 export type HandleProps = {
@@ -69,7 +69,7 @@ export type RangeSliderProps = {
   axisLock?: 'x' | 'y' | '';
   onDrag?: (val: number) => void;
   disabled?: boolean;
-  maintainColorWhenDisabled?: boolean;
+  isReadOnly?: boolean;
   min: number;
   max: number;
   values?: number[] | ValueProp[];
