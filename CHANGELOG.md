@@ -1,3 +1,38 @@
+# [1.26.0](https://github.com/Headstorm/foundry-ui/compare/v1.25.1...v1.26.0) (2023-07-28)
+
+
+### Features
+
+* **adds readonly prop to rangeslider component:** implemented readonly mode to RangeSlider ([bc8f150](https://github.com/Headstorm/foundry-ui/commit/bc8f1506d2b5f2cd0528f2fbb6aad99460f6cf17))
+
+## [1.25.1](https://github.com/Headstorm/foundry-ui/compare/v1.25.0...v1.25.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** modified isOpen prop on ArrowIconContainer in dropdown ([49af051](https://github.com/Headstorm/foundry-ui/commit/49af051eac907c13f2d4018f958feb38dab79cd6))
+* **dropdown.tsx:** transient instead to make the dom happy ([9492550](https://github.com/Headstorm/foundry-ui/commit/94925505dd04000c80971deb09c36676052317f2))
+
+# [1.25.0](https://github.com/Headstorm/foundry-ui/compare/v1.24.0...v1.25.0) (2023-07-18)
+
+
+### Features
+
+* **dropdown.tsx dropdown.stories.tsx:** removed showCloseIcon prop, replaced with clearable ([5b2d0a8](https://github.com/Headstorm/foundry-ui/commit/5b2d0a8f7081007c65ff0efe468fd321bc7e94ee)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** another reduction to blurring logic ([b114578](https://github.com/Headstorm/foundry-ui/commit/b1145787243b0b2ba6334a64b7c029b249a05fca)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** fixing blurring, placeholder persist ([7202f26](https://github.com/Headstorm/foundry-ui/commit/7202f26bd0dd6f7f96d8792efbecb29b6227e47e))
+* **dropdown.tsx:** improved naming to make code more readable ([9f9d925](https://github.com/Headstorm/foundry-ui/commit/9f9d92563cd407d6354f9304466862c5343b4de4)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** left multi in logic, removed and checked functionality of blur ([ca68fc0](https://github.com/Headstorm/foundry-ui/commit/ca68fc0acb546fa4e76add1f4cad02dfdff995c3)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** made logical statement shorter, reverified blur fucntionliaty ([5abcf09](https://github.com/Headstorm/foundry-ui/commit/5abcf09c05c61e5bf2dc83dbeee2bf3ffcd3d05c)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** modified logic for displaying count & close icon, made requested changes ([9214047](https://github.com/Headstorm/foundry-ui/commit/9214047629ea0a5ee565e4a0047e40e40017426d)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** modified placeholder logic again ([a197895](https://github.com/Headstorm/foundry-ui/commit/a197895f564dedcdb86090bfb87b5e58194b879d)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** removed unnecessary logic in blurring ([a99add3](https://github.com/Headstorm/foundry-ui/commit/a99add3fbfef80ba6e0928fb890b14540ab2edde))
+* **dropdown.tsx:** removing a console log ([2e69f32](https://github.com/Headstorm/foundry-ui/commit/2e69f328bb54f801dd17c4c362850e8146b7446b)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** updated snapshots ([d1223b7](https://github.com/Headstorm/foundry-ui/commit/d1223b7b3292a966692a9a7fb5fe0704e6b3db4e)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** updated snapshots ([7fde800](https://github.com/Headstorm/foundry-ui/commit/7fde800f8e5b0df5aec34cfd74810616f8752977)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** variant Support, show count, show close, show both, style-able, prop-able ([36ee394](https://github.com/Headstorm/foundry-ui/commit/36ee3945dffd9b39ab9682f710c79a58dc4b5161)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* snapshots ([74648b1](https://github.com/Headstorm/foundry-ui/commit/74648b1b9a78404a3484c7165cab9ff13a9c1d17))
+
 # [1.24.0](https://github.com/Headstorm/foundry-ui/compare/v1.23.1...v1.24.0) (2023-07-17)
 
 
