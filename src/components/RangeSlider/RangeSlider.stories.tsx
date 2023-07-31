@@ -67,11 +67,11 @@ export const Default: Story<DefaultProps> = ({
   disabled,
   showDomainLabels,
   showSelectedRange,
-  motionBlur,
   springOnRelease,
   min,
   max,
-  axisLock,
+  selectedRangeBehavior,
+  snapToValue,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
 
@@ -90,19 +90,21 @@ export const Default: Story<DefaultProps> = ({
     markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
   }
 
+  console.log('Rebuilding');
+
   return (
     <Row>
       <RangeSlider
         disabled={disabled}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
-        motionBlur={motionBlur}
         springOnRelease={springOnRelease}
         min={min}
         max={max}
         onChange={newVal => setVal(Math.round(newVal))}
         onRelease={newVal => setVal(Math.round(newVal))}
-        axisLock={axisLock}
+        selectedRangeBehavior={selectedRangeBehavior}
+        snapToValue={snapToValue}
         values={[
           {
             value: val,
@@ -124,9 +126,9 @@ Default.args = {
   showDomainLabels: false,
   showHandleLabels: true,
   showSelectedRange: true,
-  motionBlur: false,
   springOnRelease: true,
-  axisLock: 'x',
+  selectedRangeBehavior: 'followHandle',
+  snapToValue: true,
 };
 
 type RatingProps = Omit<RangeSliderProps, 'markers'> & {
@@ -138,11 +140,10 @@ export const Rating: Story<RatingProps> = ({
   disabled,
   showDomainLabels,
   showSelectedRange,
-  motionBlur,
   springOnRelease,
   min,
   max,
-  axisLock,
+  selectedRangeBehavior,
 }: RatingProps) => {
   const [val, setVal] = useState(value);
 
@@ -158,12 +159,11 @@ export const Rating: Story<RatingProps> = ({
         disabled={disabled}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
-        motionBlur={motionBlur}
         springOnRelease={springOnRelease}
         min={min}
         max={max}
         onChange={newVal => setVal(Math.round(newVal))}
-        axisLock={axisLock}
+        selectedRangeBehavior={selectedRangeBehavior}
         values={[
           {
             value: val,
@@ -180,11 +180,10 @@ Rating.args = {
   disabled: false,
   showDomainLabels: false,
   showSelectedRange: false,
-  motionBlur: false,
   springOnRelease: true,
   min: 0,
   max: 5,
-  axisLock: 'x',
+  selectedRangeBehavior: 'followHandle',
 };
 
 interface ColorPickerProps {
@@ -371,12 +370,6 @@ export default {
         step: 1,
       },
     },
-    axisLock: {
-      options: ['x', 'y', ''],
-      control: {
-        type: 'select',
-      },
-    },
     markers: {
       options: ['none', 'all values', 'middle value'],
       control: {
@@ -407,6 +400,10 @@ export default {
         step: 1,
       },
     },
+  },
+  selectedRangeBehavior: {
+    options: ['followValue', 'followHandle'],
+    control: { type: 'radio' },
   },
   decorators: [withFoundryContext],
   parameters: {

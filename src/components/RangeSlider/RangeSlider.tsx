@@ -131,15 +131,20 @@ export const SlideRail = styled.div`
   }}
 `;
 
-export const SelectedRangeRail = styled.div`
-  ${({ min, max, selectedRange, animateRangeRail }: SelectedRangeProps) => {
+export const SelectedRangeRail = styled(a.div)`
+  ${({ min, max, selectedRangeValues, behavior, animateRangeRail }: SelectedRangeProps) => {
     const { colors } = useTheme(); // TODO: don't force the color to be primary
     return `
       position: absolute;
       top: 0%;
       height: 100%;
-      left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
-      right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
+
+      ${
+        behavior === 'followValue' &&
+        `left: ${((selectedRangeValues[0] - min) / (max - min)) * 100}%;
+          right: ${((max - selectedRangeValues[1]) / (max - min)) * 100}%;`
+      }
+
 
       ${
         animateRangeRail
@@ -227,11 +232,9 @@ export const RangeSlider = ({
   showSelectedRange = true,
   showHandleLabels = true,
 
-  motionBlur = false,
   springOnRelease = true,
 
   debounceInterval = 8,
-  axisLock = 'x',
   onDrag,
   onChange,
   onDebounceChange,
@@ -243,6 +246,8 @@ export const RangeSlider = ({
   values,
   markers = [],
   testId,
+  selectedRangeBehavior = 'followHandle',
+  snapToValue = false,
 }: RangeSliderProps): JSX.Element | null => {
   if (onDrag) {
     // eslint-disable-next-line no-console
@@ -289,14 +294,6 @@ export const RangeSlider = ({
     [processedValues],
   );
 
-  const selectedRange = [
-    Math.min(
-      ...processedValues.map(val => val.value),
-      showSelectedRange && values && values.length === 1 ? min : Infinity,
-    ),
-    Math.max(...processedValues.map(val => val.value)),
-  ];
-
   const domain = max - min;
 
   const handleEventWithAnalytics = useAnalytics();
@@ -318,7 +315,6 @@ export const RangeSlider = ({
 
   // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);
-  const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
   const [draggedHandle, setDraggedHandle] = useState(-1);
@@ -330,8 +326,8 @@ export const RangeSlider = ({
   });
 
   // get the x offset and an animation setter function
-  const [{ x, y }, springRef] = useSpring(() => ({
-    to: { x: pixelPositions[0], y: 0 },
+  const [{ dragHandleX }, springRef] = useSpring(() => ({
+    to: { dragHandleX: pixelPositions[0] },
     friction: 13,
     tension: 100,
     immediate: prefersReducedMotion,
@@ -390,33 +386,21 @@ export const RangeSlider = ({
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
 
   const bind = useDrag(
-    ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
+    ({ down, movement: [deltaX] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
       valueBuffer.current = clamp(delta, min, max);
-      if (motionBlur) {
-        requestAnimationFrame(() => {
-          const blurSize = Math.round(Math.abs(vx * 10)) || 0;
-          if (blurRef.current === null) {
-            return;
-          }
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore ts(2531)
-          blurRef.current.setAttribute('stdDeviation', `${down && active ? blurSize : 0}, 0`);
-        });
-      }
 
       setDraggedHandle(down ? 0 : -1);
       handleDrag(valueBuffer.current);
       springRef.start({
-        x: down ? deltaX : pixelPositions[0],
-        y: down ? deltaY : 0,
+        // Should handle follow value or drag gesture?
+        dragHandleX: snapToValue || !down ? pixelPositions[0] : deltaX,
 
-        immediate: prefersReducedMotion || springOnRelease ? down : true,
+        immediate: prefersReducedMotion || !snapToValue || springOnRelease ? down : true,
         config: { friction: 13, tension: 100 },
       });
     },
     {
-      axis: axisLock,
       initial: [pixelPositions[0], 0],
       threshold: 1,
       bounds: {
@@ -429,21 +413,21 @@ export const RangeSlider = ({
     },
   );
 
+  // Snap to initial position on first render.
   useEffect(() => {
-    springRef.start({
-      x: pixelPositions[0],
-      y: 0,
+    console.log('Animating immediately to ', pixelPositions[0]);
 
-      // always snap to position on initial render
-      // then leave snapping up to springOnRelease
-      immediate: prefersReducedMotion || !springOnRelease || initializing.current,
+    springRef.start({
+      dragHandleX: pixelPositions[0],
+
+      immediate: true,
       config: { friction: 13, tension: 100 },
       onRest: () => {
         // wait for the first "set" to finish before turning off immediate mode
         initializing.current = false;
       },
     });
-  }, [pixelPositions, springRef, springOnRelease, prefersReducedMotion]);
+  }, [springRef, springOnRelease, prefersReducedMotion]);
 
   return (
     <StyledContainer
@@ -460,12 +444,25 @@ export const RangeSlider = ({
         {...slideRailProps}
         onMouseDown={handleSlideRailClickWithAnalytics}
       >
-        {showSelectedRange && (
+        {showSelectedRange && values && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
-            selectedRange={selectedRange}
+            selectedValueRange={[
+              // min value
+              values.length === 1 ? min : Math.min(...processedValues.map(e => e.value)),
+              // max value
+              Math.max(...processedValues.map(e => e.value)),
+            ]}
+            behavior={selectedRangeBehavior}
+            style={
+              selectedRangeBehavior === 'followHandle'
+                ? {
+                    width: dragHandleX,
+                  }
+                : undefined
+            }
             animateRangeRail={!prefersReducedMotion}
             ref={selectedRangeRailRef}
             {...selectedRangeRailProps}
@@ -490,7 +487,7 @@ export const RangeSlider = ({
           {...bind()}
           draggable={false}
           $beingDragged={i === draggedHandle}
-          style={{ x, y }}
+          style={{ x: dragHandleX }}
           color={color}
           // eslint-disable-next-line react/no-array-index-key
           key={`handle${i}`}
@@ -505,21 +502,6 @@ export const RangeSlider = ({
           )}
         </StyledDragHandle>
       ))}
-
-      {motionBlur && (
-        <svg
-          style={{ display: 'none' }}
-          viewBox="-200 -100 200 100"
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-        >
-          <defs>
-            <filter id="blur">
-              <feGaussianBlur ref={blurRef} in="SourceGraphic" stdDeviation="0,0" />
-            </filter>
-          </defs>
-        </svg>
-      )}
 
       {processedMarkers.map(({ value, color, label }) => (
         <StyledMarker
