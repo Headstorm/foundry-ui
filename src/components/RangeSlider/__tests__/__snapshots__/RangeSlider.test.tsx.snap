@@ -34,22 +34,13 @@ exports[`RangeSlider renders 1`] = `
 
 .c2 {
   position: absolute;
-  top: 0%;
-  height: 100%;
-  left: Infinity%;
-  right: Infinity%;
-  background-color: #DA4200;
-}
-
-.c3 {
-  position: absolute;
   bottom: 100%;
   left: 0rem;
   color: #51575D;
   font-size: .5rem;
 }
 
-.c4 {
+.c3 {
   position: absolute;
   bottom: 100%;
   right: 0rem;
@@ -64,21 +55,14 @@ exports[`RangeSlider renders 1`] = `
   >
     <div
       class="c1"
-    >
-      <div
-        class="c2"
-        max="10"
-        min="0"
-        values=""
-      />
-    </div>
+    />
     <div
-      class="c3"
+      class="c2"
     >
       0
     </div>
     <div
-      class="c4"
+      class="c3"
     >
       10
     </div>
@@ -124,6 +108,8 @@ exports[`RangeSlider renders 2`] = `
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
+  -webkit-transition: box-shadow;
+  transition: box-shadow;
   z-index: 2;
 }
 
@@ -158,8 +144,6 @@ exports[`RangeSlider renders 2`] = `
   position: absolute;
   top: 0%;
   height: 100%;
-  left: 0%;
-  right: 70%;
   background-color: #DA4200;
 }
 
@@ -216,6 +200,7 @@ exports[`RangeSlider renders 2`] = `
         class="c2"
         max="10"
         min="0"
+        style="width: 0px;"
         values="[object Object]"
       />
     </div>
