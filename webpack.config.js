@@ -1,7 +1,7 @@
 const path = require('path');
 const Visualizer = require('webpack-visualizer-plugin2');
 
-module.exports = {
+module.exports = env => ({
   mode: 'production',
   // webpack will take the files from ./src/index
   entry: './src/index.ts',
@@ -47,8 +47,8 @@ module.exports = {
   },
   plugins: [
     new Visualizer({
-      filename: path.join('..', 'stats', 'statistics.html'),
+      filename: path.join('..', 'webpack-analyzer-stats.html'),
     }),
   ],
   target: 'node',
-};
+});
