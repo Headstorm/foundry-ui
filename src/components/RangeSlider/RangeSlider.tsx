@@ -38,11 +38,12 @@ export const Container = styled.div`
     transition: filter .1s;
 
     ${
-      disabled &&
-      `
+      disabled
+        ? `
         filter: grayscale(1) contrast(.5) brightness(1.2);
         pointer-events: none;
       `
+        : ''
     }
 
     
