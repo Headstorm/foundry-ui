@@ -1,4 +1,5 @@
-import { debounce, throttle } from 'lodash';
+import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useStateWithPrevious = <Type>(
