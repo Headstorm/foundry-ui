@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/Headstorm/foundry-ui/compare/v1.26.0...v1.26.1) (2023-07-31)
+
+
+### Performance Improvements
+
+* reduce bundle size by improving lodash imports ([0a6d140](https://github.com/Headstorm/foundry-ui/commit/0a6d1405fdf5362064386dbc24afddd98e5eb9b3))
+
 # [1.26.0](https://github.com/Headstorm/foundry-ui/compare/v1.25.1...v1.26.0) (2023-07-28)
 
 
