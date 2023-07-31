@@ -46,7 +46,6 @@
     "@types/jest": "^26.0.0",
     "@types/jest-axe": "^3.5.0",
     "@types/lodash": "^4.14.150",
-    "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^13.11.1",
     "@types/react-dom": "^16.9.6",
     "@types/react-portal": "^4.0.4",
@@ -71,7 +70,6 @@
     "jest-coverage-badges": "^1.1.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-styled-components": "^7.0.2",
-    "lodash": "^4.17.15",
     "pre-commit": "^1.2.2",
     "react": "^18.1.0",
     "react-docgen-typescript-loader": "^3.7.2",
@@ -90,8 +88,9 @@
     "ts-loader": "^7.0.4",
     "typescript": "^3.8.3",
     "use-resize-observer": "^9.1.0",
-    "webpack": "5",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^3.3.11",
+    "webpack-visualizer-plugin2": "^1.0.0"
   },
   "dependencies": {
     "@mdi/js": "^5.9.55",
@@ -99,7 +98,7 @@
     "@react-stately/toggle": "^3.4.4",
     "detect-gpu": "^4.0.27",
     "fuse.js": "^6.4.6",
-    "lodash.debounce": "^4.0.8",
+    "lodash": "^4.17.21",
     "polished": "^4.1.1",
     "react-aria": "^3.9.0",
     "react-device-detect": "^1.17.0",

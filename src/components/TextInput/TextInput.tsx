@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import { mdiClose } from '@mdi/js';
 import { darken } from 'polished';
 
