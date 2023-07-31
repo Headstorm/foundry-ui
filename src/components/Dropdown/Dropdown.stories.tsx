@@ -29,7 +29,7 @@ const generateCityList = (amount: number): OptionProps[] => {
   return cityOptions;
 };
 
-type BasicProps = DropdownProps & { clearable: boolean; numCities: number };
+type BasicProps = DropdownProps & { numCities: number };
 
 export const Basic: Story<BasicProps> = ({
   clearable,
@@ -60,11 +60,9 @@ export const Basic: Story<BasicProps> = ({
           return onSelect(selected);
         }}
         options={cities}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        StyledCloseIconContainer={() => <span>{values.length}</span>}
         values={values}
         searchable={searchable}
+        clearable={clearable}
         searchFiltersOptions={searchFiltersOptions}
         onSearchChange={onSearchChange}
         onDebouncedSearchChange={onDebouncedSearchChange}
@@ -77,7 +75,6 @@ Basic.args = {
   elevation: 0,
   multi: true,
   placeholder: 'Choose a city...',
-  clearable: true,
   rememberScrollPosition: true,
   variant: variants.fill,
   optionsVariant: variants.outline,
@@ -132,7 +129,7 @@ const teaOptions = [
   },
 ];
 
-type IconsProps = DropdownProps & { clearable: boolean };
+type IconsProps = DropdownProps;
 
 export const Icons: Story<IconsProps> = ({ onSelect, ...args }: IconsProps) => {
   const [values, setValues] = useState<(string | number)[] | undefined>();
@@ -155,7 +152,6 @@ Icons.args = {
   ...Basic.args,
   multi: false,
   placeholder: 'Choose a rating...',
-  clearable: false,
   color: '#0A7700',
   valueVariant: variants.text,
   elevation: 1,

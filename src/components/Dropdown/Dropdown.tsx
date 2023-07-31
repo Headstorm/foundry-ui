@@ -85,8 +85,9 @@ export const ValueContainer = styled(Button.Container)`
 
 // TODO: Don't use explicit height here - this div is ending up larger than the icon otherwise
 export const CloseIconContainer = styled(StyledBaseDiv)`
-  height: 1.125em;
   z-index: 1;
+  display: flex;
+  align-items: center;
 `;
 
 export const ArrowIconContainer = styled(StyledBaseDiv)`
@@ -224,10 +225,26 @@ const ValueItemTagContainer = styled(Tag.Container)`
   `}
 `;
 
-const StyledSearchContainer = styled(StyledBaseDiv)``;
+const SearchContainer = styled(StyledBaseDiv)``;
 
-const StyledSearchInput = styled(StyledBaseInput)`
+const SearchInput = styled(StyledBaseInput)`
   all: inherit;
+  text-align: left;
+`;
+
+const ValuesCountContainer = styled(StyledBaseDiv)`
+  ${({
+    variant,
+    color,
+    dropdownVariant,
+    transparentColor,
+  }: UsefulDropdownState & { dropdownVariant: variants; transparentColor: string }) => {
+    return `
+    ${getDropdownTagStyle(dropdownVariant, variant, color, transparentColor)}
+      padding: 0.125rem;
+      border-radius: 1.5rem;
+    `;
+  }}
 `;
 
 export interface DropdownProps {
@@ -242,6 +259,9 @@ export interface DropdownProps {
   StyledPlaceholder?: StyledSubcomponentType;
   StyledCloseIconContainer?: StyledSubcomponentType;
   StyledArrowIconContainer?: StyledSubcomponentType;
+  StyledSearchInput?: StyledSubcomponentType;
+  StyledSearchContainer?: StyledSubcomponentType;
+  StyledValueCountContainer?: StyledSubcomponentType;
 
   containerProps?: SubcomponentPropsType;
   valueContainerProps?: SubcomponentPropsType;
@@ -253,6 +273,9 @@ export interface DropdownProps {
   placeholderProps?: SubcomponentPropsType;
   closeIconProps?: SubcomponentPropsType;
   arrowIconProps?: SubcomponentPropsType;
+  searchInputProps?: SubcomponentPropsType;
+  searchContainerProps?: SubcomponentPropsType;
+  valueCountProps?: SubcomponentPropsType;
 
   containerRef?: React.RefObject<HTMLElement>;
   optionsContainerRef?: React.RefObject<HTMLElement>;
@@ -265,6 +288,9 @@ export interface DropdownProps {
   placeholderRef?: React.RefObject<HTMLElement>;
   closeIconRef?: React.RefObject<HTMLElement>;
   arrowIconRef?: React.RefObject<HTMLElement>;
+  searchContainerRef?: React.RefObject<HTMLDivElement>;
+  searchInputRef?: React.RefObject<HTMLInputElement>;
+  valueCountRef?: React.RefObject<HTMLElement>;
 
   color?: string;
   elevation?: number;
@@ -287,6 +313,7 @@ export interface DropdownProps {
   variant?: variants;
   optionsVariant?: variants;
   valueVariant?: variants;
+  valueCountVariant?: variants;
 
   shouldStayInView?: boolean;
   intersectionThreshold?: number;
@@ -294,6 +321,9 @@ export interface DropdownProps {
   intersectionObserverPrecision?: number;
   virtualizeOptions?: boolean;
 
+  showValueCount?: boolean;
+  showSelectedValues?: boolean;
+  clearable?: boolean;
   searchable?: boolean;
   searchFiltersOptions?: boolean;
   onSearchChange?: TextInputProps['onChange'];
@@ -314,6 +344,9 @@ const Dropdown = ({
   StyledPlaceholder = PlaceholderContainer,
   StyledCloseIconContainer = CloseIconContainer,
   StyledArrowIconContainer = ArrowIconContainer,
+  StyledSearchContainer = SearchContainer,
+  StyledSearchInput = SearchInput,
+  StyledValueCountContainer = ValuesCountContainer,
 
   containerProps,
   valueContainerProps,
@@ -325,6 +358,9 @@ const Dropdown = ({
   closeIconProps,
   arrowIconProps,
   valueItemTagProps = {},
+  searchInputProps,
+  searchContainerProps,
+  valueCountProps,
 
   containerRef,
   optionsContainerRef,
@@ -337,6 +373,9 @@ const Dropdown = ({
   placeholderRef,
   closeIconRef,
   arrowIconRef,
+  searchContainerRef,
+  searchInputRef,
+  valueCountRef,
 
   color,
   elevation = 0,
@@ -354,6 +393,7 @@ const Dropdown = ({
   optionsVariant = variants.outline,
   rememberScrollPosition = true,
   valueVariant = variants.text,
+  valueCountVariant = variants.outline,
   values = [],
   shouldStayInView = true,
   intersectionThreshold = 1.0,
@@ -361,6 +401,9 @@ const Dropdown = ({
   intersectionObserverPrecision = 100,
   virtualizeOptions = true,
 
+  showValueCount = false,
+  showSelectedValues = true,
+  clearable = true,
   searchable = false,
   searchFiltersOptions = true,
   onSearchChange = defaultCallback,
@@ -375,6 +418,8 @@ const Dropdown = ({
 
   const [focusWithin, setFocusWithin] = useState<boolean>(false);
   const [focusTimeoutId, setFocusTimeoutId] = useState<number>();
+
+  const [searchValue, setSearchValue] = useState<string>();
 
   const scrollPos = useRef<number>(0);
 
@@ -404,7 +449,8 @@ const Dropdown = ({
 
   const isVirtual = virtualizeOptions && isOverflowing;
 
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const [searchCharacterCount, setSearchCharacterCount] = useState<number>(0);
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[]>([]);
   const stringifiedOptions = JSON.stringify(options);
@@ -582,12 +628,9 @@ const Dropdown = ({
       // when searchable, only blur if the event is from the input
       setFocusTimeoutId(
         window.setTimeout(() => {
-          if (
-            focusWithin &&
-            (!searchable ||
-              e.target.id === `${name}-search-input` ||
-              e.target.id.includes(`${name}-option`))
-          ) {
+          const blurredFromButtom = !searchable && e.target.id === `${name}-dropdown-button`;
+          const blurredFromSearch = searchable && e.target.id === `${name}-search-input`;
+          if (focusWithin && (blurredFromButtom || blurredFromSearch)) {
             setFocusWithin(false);
             setIsOpen(false);
             if (handleOnBlur) {
@@ -605,7 +648,7 @@ const Dropdown = ({
       e.persist();
       window.setTimeout(() => {
         if (document.activeElement?.id === `${name}-dropdown-button`) {
-          searchInputRef?.current?.focus();
+          inputRef?.current?.focus();
         }
       }, 0);
 
@@ -637,6 +680,7 @@ const Dropdown = ({
     (clickedId: string | number) => {
       if (!multi) {
         setIsOpen(false);
+        setFocusWithin(false);
         handleOnSelect([clickedId]);
       } else {
         const previouslySelected = optionsHash[clickedId].isSelected;
@@ -732,7 +776,7 @@ const Dropdown = ({
             } else if (focusedElement.id === `${name}-search-input`) {
               const searchInputContainer = focusedElement.parentElement;
               const valueItemContainer = searchInputContainer?.parentElement;
-              const button = valueItemContainer?.parentElement;
+              const button = valueItemContainer;
               const optionsContainer = button?.nextElementSibling;
               if (isVirtual) {
                 const virtuosoContainer = optionsContainer?.firstElementChild;
@@ -761,7 +805,7 @@ const Dropdown = ({
   }, [keyDownHandler]);
 
   const optionsScrollListenerCallbackRef = useCallback(
-    (node: HTMLElement) => {
+    (node: HTMLElement | null) => {
       if (node && rememberScrollPosition) {
         node.addEventListener('scroll', scrollListener, true);
 
@@ -773,21 +817,41 @@ const Dropdown = ({
     [rememberScrollPosition],
   );
 
-  const closeIcons = (
+  const valueCountCloseIconHandler = () => {
+    return (
+      <>
+        {showValueCount && (
+          <StyledValueCountContainer
+            variant={valueCountVariant}
+            color={defaultedColor}
+            transparentColor={colors.transparent}
+            ref={valueCountRef}
+            dropdownVariant={variant}
+            {...valueCountProps}
+          >
+            {values.length}
+          </StyledValueCountContainer>
+        )}
+        {clearable && (
+          <StyledCloseIconContainer
+            onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
+            onClick={handleClear}
+            onFocus={(e: React.FocusEvent) => e.stopPropagation()}
+            tabIndex={tabIndex}
+            ref={closeIconRef}
+            {...closeIconProps}
+          >
+            <Icon path={mdiClose} size="1em" />
+          </StyledCloseIconContainer>
+        )}
+      </>
+    );
+  };
+
+  const infoIcons = (
     <>
-      {handleClear && values.length > 0 && (
-        <StyledCloseIconContainer
-          onMouseDown={(e: React.FocusEvent) => e.stopPropagation()}
-          onClick={handleClear}
-          onFocus={(e: React.FocusEvent) => e.stopPropagation()}
-          tabIndex={tabIndex}
-          ref={closeIconRef}
-          {...closeIconProps}
-        >
-          <Icon path={mdiClose} size="1em" />
-        </StyledCloseIconContainer>
-      )}
-      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} isOpen={{ isOpen }}>
+      {values.length > 0 && valueCountCloseIconHandler()}
+      <StyledArrowIconContainer ref={arrowIconRef} {...arrowIconProps} $isOpen={isOpen}>
         <Icon path={isOpen ? mdiMenuUp : mdiMenuDown} size="1.25em" />
       </StyledArrowIconContainer>
     </>
@@ -795,24 +859,29 @@ const Dropdown = ({
 
   const InternalOptionsContainer = useMemo(
     () =>
-      React.forwardRef(({ children }: { children: React.ReactNode }, listRef) => (
-        <StyledOptionsContainer
-          color={defaultedColor}
-          variant={optionsVariant}
-          isVirtual={isVirtual}
-          role="listbox"
-          ref={mergeRefs([
-            optionsContainerRef,
-            optionsContainerInternalRef,
-            listRef as React.RefObject<HTMLDivElement>,
-          ])}
-          isOpenedBelow={isOpenedBelow}
-          isHidden={isHidden}
-          {...optionsContainerProps}
-        >
-          {children}
-        </StyledOptionsContainer>
-      )),
+      React.forwardRef(
+        (
+          { children }: { children: React.ReactNode },
+          listRef: React.ForwardedRef<HTMLDivElement>,
+        ) => (
+          <StyledOptionsContainer
+            color={defaultedColor}
+            variant={optionsVariant}
+            isVirtual={isVirtual}
+            role="listbox"
+            ref={mergeRefs<HTMLDivElement | HTMLElement>([
+              optionsContainerRef,
+              optionsContainerInternalRef,
+              listRef,
+            ])}
+            isOpenedBelow={isOpenedBelow}
+            isHidden={isHidden}
+            {...optionsContainerProps}
+          >
+            {children}
+          </StyledOptionsContainer>
+        ),
+      ),
     [
       defaultedColor,
       isHidden,
@@ -824,7 +893,10 @@ const Dropdown = ({
     ],
   );
   const handleSearchChange = useCallback(
-    (e: any) => handleEventWithAnalytics('Dropdown', onSearchChange, 'onSearchChange', e, { name }),
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setSearchValue(e.target.value);
+      handleEventWithAnalytics('Dropdown', onSearchChange, 'onSearchChange', e, { name });
+    },
     [handleEventWithAnalytics, onSearchChange, name],
   );
 
@@ -854,6 +926,9 @@ const Dropdown = ({
 
   const optionsToRender: OptionProps[] =
     searchable && searchFiltersOptions ? filteredOptions : options;
+  const persistPlaceholder = !showSelectedValues && !focusWithin;
+  const blurredEmptyArrEmptySearch =
+    searchCharacterCount === 0 && (!values || !values.length) && !focusWithin;
   return (
     <StyledContainer
       id={`${name}-container`}
@@ -863,7 +938,8 @@ const Dropdown = ({
       onFocus={handleFocus}
       name={name}
       aria-label={placeholder}
-      ref={mergeRefs([containerRef, containerInternalRef])}
+      ref={mergeRefs<HTMLElement | HTMLDivElement>([containerRef, containerInternalRef])}
+      onMouseDown={handleMouseDownOnButton}
       {...containerProps}
     >
       <Button
@@ -883,7 +959,7 @@ const Dropdown = ({
           ...(valueContainerProps ? valueContainerProps.containerProps : {}),
         }}
       >
-        {searchCharacterCount === 0 && (!values || !values.length) && (
+        {(blurredEmptyArrEmptySearch || persistPlaceholder) && (
           <StyledPlaceholder
             ref={placeholderRef}
             id={`${name}-placeholder`}
@@ -892,44 +968,52 @@ const Dropdown = ({
             {placeholder}
           </StyledPlaceholder>
         )}
-        <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
-          {values
-            .filter(val => val !== undefined && optionsHash[val] !== undefined)
-            .map((val, i, arr) =>
-              optionsHash[val] !== undefined ? (
-                <Tag
-                  StyledContainer={StyledValueItemTagContainer}
-                  variant={valueVariant}
-                  containerRef={valueItemTagRef}
-                  {...valueItemTagProps}
-                  containerProps={{
-                    dropdownVariant: variant,
-                    tagVariant: valueVariant,
-                    dropdownColor: defaultedColor,
-                    transparentColor: colors.transparent,
-                    ...(valueItemTagProps.containerProps || {}),
-                  }}
-                  key={val}
-                >
-                  {optionsHash[val].optionValue}
-                  {valueVariant === variants.text && i !== arr.length - 1 && ','}
-                </Tag>
-              ) : undefined,
-            )}
-          {searchable && (
-            <TextInput
-              id={`${name}-search-input`}
-              aria-label={`${name}-search-input`}
-              role="searchbox"
-              onChange={handleSearchChange}
-              debouncedOnChange={handleSearchDebouncedChange}
-              StyledContainer={StyledSearchContainer}
-              StyledInput={StyledSearchInput}
-              inputRef={searchInputRef}
-            />
-          )}
-        </StyledValueItem>
-        {closeIcons}
+        {searchable && focusWithin && isOpen ? (
+          <TextInput
+            id={`${name}-search-input`}
+            containerRef={searchContainerRef}
+            aria-label={`${name}-search-input`}
+            role="searchbox"
+            onChange={handleSearchChange}
+            value={searchValue}
+            debouncedOnChange={handleSearchDebouncedChange}
+            StyledContainer={StyledSearchContainer}
+            StyledInput={StyledSearchInput}
+            inputRef={mergeRefs<HTMLInputElement>([searchInputRef, inputRef])}
+            autoComplete="off"
+            inputProps={searchInputProps}
+            containerProps={searchContainerProps}
+          />
+        ) : (
+          <StyledValueItem id={`${name}-value-item`} ref={valueItemRef} {...valueItemProps}>
+            {showSelectedValues
+              ? values
+                  .filter(val => val !== undefined && optionsHash[val] !== undefined)
+                  .map((val, i, arr) =>
+                    optionsHash[val] !== undefined ? (
+                      <Tag
+                        StyledContainer={StyledValueItemTagContainer}
+                        variant={valueVariant}
+                        containerRef={valueItemTagRef}
+                        {...valueItemTagProps}
+                        containerProps={{
+                          dropdownVariant: variant,
+                          tagVariant: valueVariant,
+                          dropdownColor: defaultedColor,
+                          transparentColor: colors.transparent,
+                          ...(valueItemTagProps.containerProps || {}),
+                        }}
+                        key={val}
+                      >
+                        {optionsHash[val].optionValue}
+                        {valueVariant === variants.text && i !== arr.length - 1 && ','}
+                      </Tag>
+                    ) : undefined,
+                  )
+              : undefined}
+          </StyledValueItem>
+        )}
+        {infoIcons}
       </Button>
       {isOpen && (
         <>
@@ -1010,7 +1094,10 @@ const Dropdown = ({
           )}
           {shouldStayInView && (
             <StyledHiddenOptionsContainer
-              ref={mergeRefs([hiddenOptionsContainerInternalRef, hiddenOptionsContainerRef])}
+              ref={mergeRefs<HTMLDivElement | HTMLElement>([
+                hiddenOptionsContainerInternalRef,
+                hiddenOptionsContainerRef,
+              ])}
               // HiddenOptionsContainer opens in the opposite direction of OptionsContainer
               isOpenedBelow={!isOpenedBelow}
             />

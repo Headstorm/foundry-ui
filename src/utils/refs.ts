@@ -1,24 +1,26 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/prefer-default-export */
 import React from 'react';
 /**
  * Merges multiple references
  * @param {Array} refs - Array of reference object or reference functions
  * @return {RefCallback} To apply each ref whether it is a ref object or ref callback
  */
-export type MergeRefs = Array<React.MutableRefObject<any> | React.RefCallback<any> | undefined>;
+export type MergeRefs<T> = Array<
+  | React.RefObject<T>
+  | React.MutableRefObject<T>
+  | React.ForwardedRef<T>
+  | React.RefCallback<T>
+  | undefined
+  | null
+>;
 
-export const mergeRefs = (refs: MergeRefs): null | React.RefCallback<any> => {
-  if (!(refs instanceof Array)) return null;
+export const mergeRefs = <T>(refs: MergeRefs<T>): ((inst: T) => void) => {
   const filteredRefs = refs.filter(Boolean);
-  if (!filteredRefs.length) return null;
-  return inst => {
+  return (inst: T) => {
     filteredRefs.forEach(ref => {
       if (typeof ref === 'function') {
         ref(inst);
       } else if (ref) {
-        // eslint-disable-next-line no-param-reassign
-        ref.current = inst;
+        (<React.MutableRefObject<T>>ref).current = inst;
       }
     });
   };
