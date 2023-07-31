@@ -71,6 +71,7 @@ export const Default: Story<DefaultProps> = ({
   min,
   max,
   dragHandleBehavior,
+  readonly,
   debounceInterval,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
@@ -94,6 +95,7 @@ export const Default: Story<DefaultProps> = ({
     <Row>
       <RangeSlider
         disabled={disabled}
+        readonly={readonly}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
         springOnRelease={springOnRelease}
@@ -115,6 +117,7 @@ Default.args = {
   markers: 'none',
   'use marker labels': false,
   disabled: false,
+  readonly: false,
   showDomainLabels: false,
   showHandleLabels: true,
   showSelectedRange: true,

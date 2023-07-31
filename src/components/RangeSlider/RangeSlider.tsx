@@ -38,13 +38,14 @@ export const Container = styled.div`
     transition: filter .1s;
 
     ${
-      disabled
-        ? `
-      filter: grayscale(1) contrast(.5) brightness(1.2);
-      pointer-events: none;
-    `
-        : ''
+      disabled &&
+      `
+        filter: grayscale(1) contrast(.5) brightness(1.2);
+        pointer-events: none;
+      `
     }
+
+    
 
     ${
       showDomainLabels
@@ -67,7 +68,7 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ $beingDragged = false, color }: HandleProps) => {
+  ${({ $beingDragged = false, color, readonly }: HandleProps) => {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
@@ -84,12 +85,9 @@ export const DragHandle = styled(a.div)`
       border-radius: 50%;
       
       touch-action: none;
-
       filter: url(#blur);
-
       cursor: ${$beingDragged ? 'grabbing' : 'grab'};
-      transition: box-shadow;
-        
+      cursor: ${readonly ? 'default' : ''};
       z-index: 2;
     `;
   }}
@@ -103,12 +101,10 @@ export const HandleLabel = styled.div`
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%) rotate(${clamp(velocity, -45, 45)}deg);
-
       background-color: ${colors.background};
       border-radius: 4px;
       font-weight: bold;
       white-space: nowrap;
-
       pointer-events: none;
       z-index: 2;
     `;
@@ -227,6 +223,7 @@ export const RangeSlider = ({
   onRelease,
 
   disabled = false,
+  readonly = false,
   min,
   max,
   values,
@@ -286,7 +283,9 @@ export const RangeSlider = ({
   const handleEventWithAnalytics = useAnalytics();
 
   const handleDrag = useCallback(
-    (newVal: number) =>
+    (newVal: number) => {
+      if (readonly) return;
+
       handleEventWithAnalytics(
         'RangeSlider',
         () => {
@@ -296,8 +295,10 @@ export const RangeSlider = ({
         'onDrag',
         { type: 'onDrag', newVal },
         containerProps,
-      ),
-    [handleEventWithAnalytics, debouncedOnChange, onChange, containerProps],
+      );
+    },
+
+    [readonly, handleEventWithAnalytics, containerProps, onChange, debouncedOnChange],
   );
 
   // set the drag value asynchronously at a lower frequency for better performance
@@ -370,14 +371,15 @@ export const RangeSlider = ({
       processedValues,
     ],
   );
-  const handleSlideRailClickWithAnalytics = (e: MouseEvent) =>
+  const handleSlideRailClickWithAnalytics = (e: any) => {
+    if (readonly) return;
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
+  };
 
   const bind = useDrag(
     ({ down, movement: [deltaX] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
       valueBuffer.current = clamp(delta, min, max);
-
       setDraggedHandle(down ? 0 : -1);
       handleDrag(valueBuffer.current);
 
@@ -421,12 +423,13 @@ export const RangeSlider = ({
         },
       });
     }
-  }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion]);
+  }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion, sliderBounds]);
 
   return (
     <StyledContainer
       data-test-id={['hs-ui-range-slider', testId].join('-')}
       disabled={disabled}
+      readonly={readonly}
       hasHandleLabels={hasHandleLabels}
       showHandleLabels={showHandleLabels}
       showDomainLabels={showDomainLabels}
@@ -434,7 +437,7 @@ export const RangeSlider = ({
       {...containerProps}
     >
       <StyledSlideRail
-        ref={mergeRefs([slideRailRef, ref])}
+        ref={mergeRefs<HTMLDivElement>([slideRailRef, ref])}
         {...slideRailProps}
         onMouseDown={handleSlideRailClickWithAnalytics}
       >
@@ -475,6 +478,7 @@ export const RangeSlider = ({
           key={`handle${i}`}
           ref={dragHandleRef}
           onMouseUp={() => debouncedOnRelease(value)}
+          readonly={readonly}
           {...dragHandleProps}
         >
           {showHandleLabels && (
