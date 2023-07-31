@@ -80,8 +80,11 @@ export type RangeSliderProps = {
   values: number[] | ValueProp[];
   testId?: string;
   markers?: number[] | ValueProp[];
-  selectedRangeBehavior?: 'followHandle' | 'followValue';
-  snapToValue?: boolean;
+  /**
+   * If true, the drag handle will snap to the passed-in `value`.
+   * If false, the drag handle will directly follow the mouse on drag.
+   */
+  dragHandleBehavior?: 'snapToValue' | 'followMouse';
 
   /** @deprecated use onChange or onChangeDebounce instead. */
   onDrag?: (val: number) => void;

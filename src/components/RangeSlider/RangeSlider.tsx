@@ -17,7 +17,6 @@ import {
   HandleProps,
   HandleLabelProps,
   RangeSliderProps,
-  SelectedRangeProps,
   DomainLabelProps,
 } from './types';
 import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../context';
@@ -89,6 +88,8 @@ export const DragHandle = styled(a.div)`
       filter: url(#blur);
 
       cursor: ${$beingDragged ? 'grabbing' : 'grab'};
+      transition: box-shadow;
+        
       z-index: 2;
     `;
   }}
@@ -132,27 +133,12 @@ export const SlideRail = styled.div`
 `;
 
 export const SelectedRangeRail = styled(a.div)`
-  ${({ min, max, selectedRangeValues, behavior, animateRangeRail }: SelectedRangeProps) => {
+  ${() => {
     const { colors } = useTheme(); // TODO: don't force the color to be primary
     return `
       position: absolute;
       top: 0%;
       height: 100%;
-
-      ${
-        behavior === 'followValue' &&
-        `left: ${((selectedRangeValues[0] - min) / (max - min)) * 100}%;
-          right: ${((max - selectedRangeValues[1]) / (max - min)) * 100}%;`
-      }
-
-
-      ${
-        animateRangeRail
-          ? `
-      transition: left .3s, right .3s;
-      `
-          : ''
-      }
 
       background-color: ${colors.primary};
     `;
@@ -246,8 +232,7 @@ export const RangeSlider = ({
   values,
   markers = [],
   testId,
-  selectedRangeBehavior = 'followHandle',
-  snapToValue = false,
+  dragHandleBehavior = 'followMouse',
 }: RangeSliderProps): JSX.Element | null => {
   if (onDrag) {
     // eslint-disable-next-line no-console
@@ -256,8 +241,10 @@ export const RangeSlider = ({
     );
   }
 
+  const snapToValue = dragHandleBehavior === 'snapToValue';
+
   const { prefersReducedMotion } = useAccessibilityPreferences();
-  const initializing = useRef(true);
+  const isInitializing = useRef(true);
 
   const debouncedOnChange = useRef(
     debounce(newVal => {
@@ -321,13 +308,14 @@ export const RangeSlider = ({
   // get the bounding box of the slider
 
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
+
   const pixelPositions = processedValues.map(val => {
     return (val.value / domain) * sliderBounds.width;
   });
 
   // get the x offset and an animation setter function
   const [{ dragHandleX }, springRef] = useSpring(() => ({
-    to: { dragHandleX: pixelPositions[0] },
+    to: { dragHandleX: 0 },
     friction: 13,
     tension: 100,
     immediate: prefersReducedMotion,
@@ -392,16 +380,21 @@ export const RangeSlider = ({
 
       setDraggedHandle(down ? 0 : -1);
       handleDrag(valueBuffer.current);
+
+      let animate = true;
+      if (prefersReducedMotion) animate = false;
+      if (!snapToValue) animate = springOnRelease ? !down : false;
+
       springRef.start({
         // Should handle follow value or drag gesture?
-        dragHandleX: snapToValue || !down ? pixelPositions[0] : deltaX,
+        dragHandleX: snapToValue || !down ? (pixelPositions ?? [0])[0] : deltaX,
 
-        immediate: prefersReducedMotion || !snapToValue || springOnRelease ? down : true,
+        immediate: !animate,
         config: { friction: 13, tension: 100 },
       });
     },
     {
-      initial: [pixelPositions[0], 0],
+      initial: [(pixelPositions ?? [0])[0], 0],
       threshold: 1,
       bounds: {
         left: 0,
@@ -413,21 +406,22 @@ export const RangeSlider = ({
     },
   );
 
-  // Snap to initial position on first render.
+  // Snap to value on initial load and when pixelPositions changes (on click)
   useEffect(() => {
-    console.log('Animating immediately to ', pixelPositions[0]);
+    if (draggedHandle >= 0) return;
 
-    springRef.start({
-      dragHandleX: pixelPositions[0],
+    if (sliderBounds.x) {
+      springRef.start({
+        dragHandleX: pixelPositions[0],
 
-      immediate: true,
-      config: { friction: 13, tension: 100 },
-      onRest: () => {
-        // wait for the first "set" to finish before turning off immediate mode
-        initializing.current = false;
-      },
-    });
-  }, [springRef, springOnRelease, prefersReducedMotion]);
+        immediate: prefersReducedMotion || isInitializing.current,
+        config: { friction: 13, tension: 100 },
+        onResolve: () => {
+          if (isInitializing) isInitializing.current = false;
+        },
+      });
+    }
+  }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion]);
 
   return (
     <StyledContainer
@@ -449,21 +443,9 @@ export const RangeSlider = ({
             min={min}
             max={max}
             values={processedValues}
-            selectedValueRange={[
-              // min value
-              values.length === 1 ? min : Math.min(...processedValues.map(e => e.value)),
-              // max value
-              Math.max(...processedValues.map(e => e.value)),
-            ]}
-            behavior={selectedRangeBehavior}
-            style={
-              selectedRangeBehavior === 'followHandle'
-                ? {
-                    width: dragHandleX,
-                  }
-                : undefined
-            }
-            animateRangeRail={!prefersReducedMotion}
+            style={{
+              width: dragHandleX,
+            }}
             ref={selectedRangeRailRef}
             {...selectedRangeRailProps}
           />

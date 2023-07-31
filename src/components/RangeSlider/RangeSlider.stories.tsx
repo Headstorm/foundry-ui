@@ -70,8 +70,8 @@ export const Default: Story<DefaultProps> = ({
   springOnRelease,
   min,
   max,
-  selectedRangeBehavior,
-  snapToValue,
+  dragHandleBehavior,
+  debounceInterval,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
 
@@ -90,8 +90,6 @@ export const Default: Story<DefaultProps> = ({
     markersArray.push(markerLabels ? { value: midpoint, label: `${midpoint}` } : midpoint);
   }
 
-  console.log('Rebuilding');
-
   return (
     <Row>
       <RangeSlider
@@ -101,16 +99,10 @@ export const Default: Story<DefaultProps> = ({
         springOnRelease={springOnRelease}
         min={min}
         max={max}
-        onChange={newVal => setVal(Math.round(newVal))}
-        onRelease={newVal => setVal(Math.round(newVal))}
-        selectedRangeBehavior={selectedRangeBehavior}
-        snapToValue={snapToValue}
-        values={[
-          {
-            value: val,
-            label: Math.round(val),
-          },
-        ]}
+        debounceInterval={debounceInterval}
+        onDebounceChange={newVal => setVal(Math.round(newVal))}
+        dragHandleBehavior={dragHandleBehavior}
+        values={[{ value: val, label: val }]}
         markers={markersArray as RangeSliderProps['markers']}
       />
     </Row>
@@ -127,8 +119,8 @@ Default.args = {
   showHandleLabels: true,
   showSelectedRange: true,
   springOnRelease: true,
-  selectedRangeBehavior: 'followHandle',
-  snapToValue: true,
+  dragHandleBehavior: 'snapToValue',
+  debounceInterval: 10,
 };
 
 type RatingProps = Omit<RangeSliderProps, 'markers'> & {
@@ -143,13 +135,8 @@ export const Rating: Story<RatingProps> = ({
   springOnRelease,
   min,
   max,
-  selectedRangeBehavior,
 }: RatingProps) => {
   const [val, setVal] = useState(value);
-
-  useEffect(() => {
-    setVal(value);
-  }, [value]);
 
   return (
     <Row>
@@ -163,7 +150,6 @@ export const Rating: Story<RatingProps> = ({
         min={min}
         max={max}
         onChange={newVal => setVal(Math.round(newVal))}
-        selectedRangeBehavior={selectedRangeBehavior}
         values={[
           {
             value: val,
@@ -183,7 +169,6 @@ Rating.args = {
   springOnRelease: true,
   min: 0,
   max: 5,
-  selectedRangeBehavior: 'followHandle',
 };
 
 interface ColorPickerProps {
@@ -337,7 +322,7 @@ ColorPicker.args = {
   lightness: 50,
   disabled: false,
   showDomainLabels: false,
-  debounceInterval: 8,
+  debounceInterval: 10,
 };
 
 export default {
@@ -400,10 +385,12 @@ export default {
         step: 1,
       },
     },
-  },
-  selectedRangeBehavior: {
-    options: ['followValue', 'followHandle'],
-    control: { type: 'radio' },
+    dragHandleBehavior: {
+      control: {
+        type: 'radio',
+      },
+      options: ['followMouse', 'snapToValue'],
+    },
   },
   decorators: [withFoundryContext],
   parameters: {
