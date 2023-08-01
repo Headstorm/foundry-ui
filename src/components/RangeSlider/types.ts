@@ -19,7 +19,7 @@ export type ContainerProps = {
 export type HandleProps = {
   $beingDragged?: boolean;
   color: string;
-  readonly: boolean;
+  $readonly: boolean;
 };
 
 export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean };
@@ -84,7 +84,7 @@ export type RangeSliderProps = {
   testId?: string;
   markers?: number[] | ValueProp[];
   /**
-   * Whether the drag handle should follow the passed-in valule, or the mouse.
+   * Whether the drag handle should follow the passed-in value, or the mouse.
    */
   dragHandleAttachment?: 'value' | 'mouse';
 
