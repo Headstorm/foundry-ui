@@ -239,8 +239,6 @@ export const RangeSlider = ({
     );
   }
 
-  const snapToValue = dragHandleAttachment === 'value';
-
   const { prefersReducedMotion } = useAccessibilityPreferences();
   const isInitializing = useRef(true);
 
@@ -430,13 +428,13 @@ export const RangeSlider = ({
 
   // For snap to value, listen to changes in value and always animate to value
   useEffect(() => {
-    if (snapToValue) {
+    if (dragHandleAttachment === 'value') {
       springRef.start({
         dragHandleX: pixelPositions[0],
         immediate: prefersReducedMotion,
       });
     }
-  }, [snapToValue, springRef, pixelPositions, prefersReducedMotion, sliderBounds]);
+  }, [dragHandleAttachment, springRef, pixelPositions, prefersReducedMotion, sliderBounds]);
 
   // Dispose of debounce timers
   useEffect(() => {
