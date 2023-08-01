@@ -17,7 +17,6 @@ import {
   HandleProps,
   HandleLabelProps,
   RangeSliderProps,
-  SelectedRangeProps,
   DomainLabelProps,
 } from './types';
 import { useAccessibilityPreferences, useAnalytics, useTheme } from '../../context';
@@ -25,6 +24,7 @@ import { StyledBaseDiv } from '../../htmlElements';
 
 export const Container = styled.div`
   ${({ showDomainLabels, hasHandleLabels, disabled, beingDragged = false }: ContainerProps) => `
+    display: flex;
     position: relative;
     height: 1rem;
     width: 100%;
@@ -41,7 +41,8 @@ export const Container = styled.div`
       disabled
         ? `
         filter: grayscale(1) contrast(.5) brightness(1.2);
-        pointer-events: none;`
+        pointer-events: none;
+      `
         : ''
     }
 
@@ -68,16 +69,16 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ beingDragged = false, color, readonly }: HandleProps) => {
+  ${({ $beingDragged = false, color, readonly }: HandleProps) => {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
       position: absolute;
-      bottom: -.125rem;
-      left: -.5rem;
-
+      
       width: 1rem;
       height: 1rem;
+      align-self: center;
+      left: -.5rem;
 
       background-color: ${handleColor};
       color: ${handleColor};
@@ -86,7 +87,7 @@ export const DragHandle = styled(a.div)`
       
       touch-action: none;
       filter: url(#blur);
-      cursor: ${beingDragged ? 'grabbing' : 'grab'};
+      cursor: ${$beingDragged ? 'grabbing' : 'grab'};
       cursor: ${readonly ? 'default' : ''};
       z-index: 2;
     `;
@@ -116,13 +117,11 @@ export const SlideRail = styled.div`
     const { colors } = useTheme();
     return `
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
       width: 100%;
       height: 0.25rem;
 
       overflow: hidden;
+      align-self: center;
 
       border-radius: 0.125rem;
       background-color: ${colors.grayXlight};
@@ -130,23 +129,13 @@ export const SlideRail = styled.div`
   }}
 `;
 
-export const SelectedRangeRail = styled.div`
-  ${({ min, max, selectedRange, animateRangeRail }: SelectedRangeProps) => {
+export const SelectedRangeRail = styled(a.div)`
+  ${() => {
     const { colors } = useTheme(); // TODO: don't force the color to be primary
     return `
       position: absolute;
       top: 0%;
       height: 100%;
-      left: ${((selectedRange[0] - min) / (max - min)) * 100}%;
-      right: ${((max - selectedRange[1]) / (max - min)) * 100}%;
-
-      ${
-        animateRangeRail
-          ? `
-      transition: left .3s, right .3s;
-      `
-          : ''
-      }
 
       background-color: ${colors.primary};
     `;
@@ -226,14 +215,14 @@ export const RangeSlider = ({
   showSelectedRange = true,
   showHandleLabels = true,
 
-  motionBlur = false,
   springOnRelease = true,
 
   debounceInterval = 8,
-  axisLock = 'x',
-  onDrag = (newVal: number) => {
-    console.log(newVal); // eslint-disable-line no-console
-  },
+  onDrag,
+  onChange,
+  onDebounceChange,
+  onRelease,
+
   disabled = false,
   readonly = false,
   min,
@@ -241,58 +230,54 @@ export const RangeSlider = ({
   values,
   markers = [],
   testId,
+  dragHandleAttachment = 'mouse',
 }: RangeSliderProps): JSX.Element | null => {
-  const { colors } = useTheme();
-  const { prefersReducedMotion } = useAccessibilityPreferences();
-  const hasHandleLabels = useRef(false);
-  const initializing = useRef(true);
+  if (onDrag) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'From FoundryUI RangerSlider: onDrag callback is deprecated. Instead, use onChange or onDebounceChange.',
+    );
+  }
 
-  const processedValues = useMemo(
-    () =>
-      values
-        ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore This expression is not callable.
-          values.map((val: number | ValueProp) => {
-            if (typeof val === 'number') {
-              return { value: val, label: null };
-            }
-            if (Object.prototype.hasOwnProperty.call(val, 'label')) {
-              hasHandleLabels.current = true;
-            }
-            return val;
-          })
-        : [],
+  const snapToValue = dragHandleAttachment === 'value';
+
+  const { prefersReducedMotion } = useAccessibilityPreferences();
+  const isInitializing = useRef(true);
+
+  const debouncedOnChange = useRef(
+    debounce(newVal => {
+      if (onDrag) onDrag(newVal);
+      if (onDebounceChange) onDebounceChange(newVal);
+    }, debounceInterval),
+  ).current;
+
+  const debouncedOnRelease = useRef(
+    // wait an extra ms. onRelease should be called after onChange
+    debounce(newVal => onRelease && onRelease(newVal), debounceInterval + 1),
+  ).current;
+
+  /** Convert passed-in `number` values into `ValueProps` */
+  const processVal = (val: number | ValueProp): ValueProp =>
+    typeof val === 'number' ? { value: val, label: undefined, color: undefined } : val;
+
+  const processedValues: Array<ValueProp> = useMemo(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore expression not callable
+    () => values?.map(processVal) ?? [],
     [values],
   );
 
-  const processedMarkers = markers
-    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore This expression is not callable.
-      markers.map((val: number | ValueProp) => {
-        if (typeof val === 'number') {
-          return { value: val, label: null };
-        }
-        return val;
-      })
-    : [];
+  const processedMarkers: Array<ValueProp> = useMemo(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore expression not callable
+    () => markers?.map(processVal) ?? [],
+    [markers],
+  );
 
-  const selectedRange = [
-    Math.min(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      ...processedValues.map((val: number | ValueProp) =>
-        typeof val === 'number' ? val : val.value,
-      ),
-      showSelectedRange && values && values.length === 1 ? min : Infinity,
-    ),
-    Math.max(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      ...processedValues.map((val: number | ValueProp) =>
-        typeof val === 'number' ? val : val.value,
-      ),
-    ),
-  ];
+  const hasHandleLabels = useMemo(
+    () => processedValues?.some(val => val.label !== null && val.label !== undefined),
+    [processedValues],
+  );
 
   const domain = max - min;
 
@@ -300,13 +285,13 @@ export const RangeSlider = ({
 
   const handleDrag = useCallback(
     (newVal: number) => {
-      if (readonly) {
-        return;
-      }
+      if (readonly) return;
+
       handleEventWithAnalytics(
         'RangeSlider',
         () => {
-          onDrag(newVal);
+          if (onChange) onChange(newVal);
+          debouncedOnChange(newVal);
         },
         'onDrag',
         { type: 'onDrag', newVal },
@@ -314,30 +299,25 @@ export const RangeSlider = ({
       );
     },
 
-    [handleEventWithAnalytics, onDrag, containerProps, readonly],
+    [readonly, handleEventWithAnalytics, containerProps, onChange, debouncedOnChange],
   );
-
-  const finalDebounceInterval = prefersReducedMotion ? 0 : debounceInterval;
 
   // set the drag value asynchronously at a lower frequency for better performance
   const valueBuffer = useRef(0);
-  const debouncedDrag = debounce(() => handleDrag(valueBuffer.current), finalDebounceInterval);
-  const blurRef = useRef(null);
 
   // keep track of which handle is being dragged (if any)
   const [draggedHandle, setDraggedHandle] = useState(-1);
   // get the bounding box of the slider
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
-  const pixelPositions = processedValues.map((val: number | ValueProp) => {
-    const finalVal = typeof val === 'number' ? val : val.value;
-    return (finalVal / domain) * sliderBounds.width;
+
+  const pixelPositions = processedValues.map(val => {
+    return (val.value / domain) * sliderBounds.width;
   });
 
   // get the x offset and an animation setter function
-  const [{ x, y }, set] = useSpring(() => ({
-    to: { x: pixelPositions[0], y: 0 },
+  const [{ dragHandleX }, springRef] = useSpring(() => ({
+    to: { dragHandleX: 0 },
     friction: 13,
     tension: 100,
     immediate: prefersReducedMotion,
@@ -356,7 +336,7 @@ export const RangeSlider = ({
       let smallestDifference: number;
 
       // Find the closest handle
-      processedValues.forEach((val: number | ValueProp) => {
+      processedValues.forEach(val => {
         const finalVal = typeof val === 'number' ? val : val.value;
         // Get the absolute value of the difference
         const difference = Math.abs(clickedValue - finalVal);
@@ -370,15 +350,27 @@ export const RangeSlider = ({
       });
 
       if (closestVal) {
-        // TODO: use the closest val to find the handle to move and move it
-        handleDrag(clickedValue);
+        if (onDrag) onDrag(clickedValue);
+        if (onChange) onChange(clickedValue);
+        if (onDebounceChange) onDebounceChange(clickedValue);
+        if (onRelease) onRelease(clickedValue);
+
         if (slideRailProps.onMouseDown && typeof slideRailProps.onMouseDown === 'function') {
           e.persist();
           slideRailProps.onMouseDown(e);
         }
       }
     },
-    [slideRailProps, sliderBounds, handleDrag, domain, processedValues],
+    [
+      slideRailProps,
+      sliderBounds,
+      onChange,
+      onDebounceChange,
+      onRelease,
+      onDrag,
+      domain,
+      processedValues,
+    ],
   );
   const handleSlideRailClickWithAnalytics = (e: any) => {
     if (readonly) return;
@@ -386,33 +378,26 @@ export const RangeSlider = ({
   };
 
   const bind = useDrag(
-    ({ active, down, movement: [deltaX, deltaY], vxvy: [vx] }) => {
+    ({ down, movement: [deltaX] }) => {
       const delta = (deltaX / sliderBounds.width) * domain;
       valueBuffer.current = clamp(delta, min, max);
-      if (motionBlur) {
-        requestAnimationFrame(() => {
-          const blurSize = Math.round(Math.abs(vx * 10)) || 0;
-          if (blurRef.current === null) {
-            return;
-          }
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore ts(2531)
-          blurRef.current.setAttribute('stdDeviation', `${down && active ? blurSize : 0}, 0`);
-        });
-      }
       setDraggedHandle(down ? 0 : -1);
-      debouncedDrag();
-      set({
-        x: down ? deltaX : pixelPositions[0],
-        y: down ? deltaY : 0,
+      handleDrag(valueBuffer.current);
 
-        immediate: prefersReducedMotion || springOnRelease ? down : true,
+      let animate = true;
+      if (prefersReducedMotion) animate = false;
+      if (!snapToValue) animate = springOnRelease ? !down : false;
+
+      springRef.start({
+        // Should handle follow value or drag gesture?
+        dragHandleX: snapToValue || !down ? (pixelPositions ?? [0])[0] : deltaX,
+
+        immediate: !animate,
         config: { friction: 13, tension: 100 },
       });
     },
     {
-      axis: axisLock,
-      initial: [pixelPositions[0], 0],
+      initial: [(pixelPositions ?? [0])[0], 0],
       threshold: 1,
       bounds: {
         left: 0,
@@ -424,21 +409,22 @@ export const RangeSlider = ({
     },
   );
 
+  // Snap to value on initial load and when pixelPositions changes (on click)
   useEffect(() => {
-    set({
-      x: pixelPositions[0],
-      y: 0,
+    if (draggedHandle >= 0) return;
 
-      // always snap to position on initial render
-      // then leave snapping up to springOnRelease
-      immediate: prefersReducedMotion || !springOnRelease || initializing.current,
-      config: { friction: 13, tension: 100 },
-      onRest: () => {
-        // wait for the first "set" to finish before turning off immediate mode
-        initializing.current = false;
-      },
-    });
-  }, [pixelPositions, set, springOnRelease, prefersReducedMotion]);
+    if (sliderBounds.x) {
+      springRef.start({
+        dragHandleX: pixelPositions[0],
+
+        immediate: prefersReducedMotion || isInitializing.current,
+        config: { friction: 13, tension: 100 },
+        onResolve: () => {
+          if (isInitializing) isInitializing.current = false;
+        },
+      });
+    }
+  }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion, sliderBounds]);
 
   return (
     <StyledContainer
@@ -456,13 +442,14 @@ export const RangeSlider = ({
         {...slideRailProps}
         onMouseDown={handleSlideRailClickWithAnalytics}
       >
-        {showSelectedRange && (
+        {showSelectedRange && values && (
           <StyledSelectedRangeRail
             min={min}
             max={max}
             values={processedValues}
-            selectedRange={selectedRange}
-            animatedRangeRail={!prefersReducedMotion}
+            style={{
+              width: dragHandleX,
+            }}
             ref={selectedRangeRailRef}
             {...selectedRangeRailProps}
           />
@@ -480,79 +467,42 @@ export const RangeSlider = ({
         </>
       )}
 
-      {processedValues.map((val: number | ValueProp, i: number) => {
-        const { value, color, label } =
-          typeof val === 'number'
-            ? {
-                value: val,
-                color: colors.primary,
-                label: val,
-              }
-            : val;
-
-        return (
-          <StyledDragHandle
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...(readonly ? {} : bind())}
-            draggable={false}
-            beingDragged={i === draggedHandle}
-            style={{ x, y }}
-            color={color}
-            // eslint-disable-next-line react/no-array-index-key
-            key={`handle${i}`}
-            ref={dragHandleRef}
-            {...dragHandleProps}
-            readonly={readonly}
-          >
-            {showHandleLabels && (
-              <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
-                {label}
-              </StyledHandleLabel>
-            )}
-          </StyledDragHandle>
-        );
-      })}
-
-      {motionBlur && (
-        <svg
-          style={{ display: 'none' }}
-          viewBox="-200 -100 200 100"
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
+      {processedValues.map(({ value, color, label }, i) => (
+        <StyledDragHandle
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...bind()}
+          draggable={false}
+          $beingDragged={i === draggedHandle}
+          style={{ x: dragHandleX }}
+          color={color}
+          // eslint-disable-next-line react/no-array-index-key
+          key={`handle${i}`}
+          ref={dragHandleRef}
+          onMouseUp={() => debouncedOnRelease(value)}
+          readonly={readonly}
+          {...dragHandleProps}
         >
-          <defs>
-            <filter id="blur">
-              <feGaussianBlur ref={blurRef} in="SourceGraphic" stdDeviation="0,0" />
-            </filter>
-          </defs>
-        </svg>
-      )}
-
-      {processedMarkers.map((val: number | ValueProp) => {
-        const { value, color, label } =
-          typeof val === 'number'
-            ? {
-                value: val,
-                color: colors.primary,
-                label: val,
-              }
-            : val;
-        const position = (value / domain) * sliderBounds.width;
-
-        return (
-          <StyledMarker
-            key={`marker-${value}`}
-            id={`marker-${value}`}
-            sliderPosition={position}
-            ref={markerRef}
-            {...markerProps}
-          >
-            <StyledMarkerLabel color={color} ref={markerLabelRef} {...markerLabelProps}>
+          {showHandleLabels && (
+            <StyledHandleLabel value={value} ref={handleLabelRef} {...handleLabelProps}>
               {label}
-            </StyledMarkerLabel>
-          </StyledMarker>
-        );
-      })}
+            </StyledHandleLabel>
+          )}
+        </StyledDragHandle>
+      ))}
+
+      {processedMarkers.map(({ value, color, label }) => (
+        <StyledMarker
+          key={`marker-${value}`}
+          id={`marker-${value}`}
+          sliderPosition={(value / domain) * sliderBounds.width}
+          ref={markerRef}
+          {...markerProps}
+        >
+          <StyledMarkerLabel color={color} ref={markerLabelRef} {...markerLabelProps}>
+            {label}
+          </StyledMarkerLabel>
+        </StyledMarker>
+      ))}
     </StyledContainer>
   );
 };

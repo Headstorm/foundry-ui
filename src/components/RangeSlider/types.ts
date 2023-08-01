@@ -17,7 +17,7 @@ export type ContainerProps = {
 };
 
 export type HandleProps = {
-  beingDragged?: boolean;
+  $beingDragged?: boolean;
   color: string;
   readonly: boolean;
 };
@@ -27,7 +27,8 @@ export type HandleLabelProps = { velocity?: number; showHandleLabels?: boolean }
 export type SelectedRangeProps = {
   min: number;
   max: number;
-  selectedRange: number[];
+  selectedRangeValues: number[];
+  behavior: 'followHandle' | 'followValue';
   animateRangeRail: boolean;
 };
 
@@ -64,16 +65,33 @@ export type RangeSliderProps = {
   showSelectedRange?: boolean;
   showHandleLabels?: boolean;
 
-  motionBlur?: boolean;
   springOnRelease?: boolean;
+  /** Debounce interval (in ms) before calling `onDebounceChange`. */
   debounceInterval?: number;
-  axisLock?: 'x' | 'y' | '';
-  onDrag?: (val: number) => void;
+
+  /** Called immediately as slider's selection changes. */
+  onChange?: (val: number) => void;
+  /** Called `debounceInterval` ms after the most recent change of selection. */
+  onDebounceChange?: (val: number) => void;
+  /** Called when the slider's drag gesture is released */
+  onRelease?: (val: number) => void;
+
   disabled?: boolean;
   readonly?: boolean;
   min: number;
   max: number;
-  values?: number[] | ValueProp[];
+  values: number[] | ValueProp[];
   testId?: string;
   markers?: number[] | ValueProp[];
+  /**
+   * Whether the drag handle should follow the passed-in valule, or the mouse.
+   */
+  dragHandleAttachment?: 'value' | 'mouse';
+
+  /** @deprecated use onChange or onChangeDebounce instead. */
+  onDrag?: (val: number) => void;
+  /** @deprecated do not use. */
+  motionBlur?: boolean;
+  /** @deprecated do not use. */
+  axisLock?: 'x' | 'y' | '';
 };

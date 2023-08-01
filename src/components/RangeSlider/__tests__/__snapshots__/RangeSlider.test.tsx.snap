@@ -2,6 +2,10 @@
 
 exports[`RangeSlider renders 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   height: 1rem;
   width: 100%;
@@ -14,19 +18,52 @@ exports[`RangeSlider renders 1`] = `
   transition: filter .1s;
   top: -.5rem;
   margin-top: 1rem;
-  top: -.75rem;
-  margin-top: 1.5rem;
+}
+
+.c5 {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  left: -.5rem;
+  background-color: #DA4200;
+  color: #DA4200;
+  border: .125rem solid #fff;
+  border-radius: 50%;
+  touch-action: none;
+  -webkit-filter: url(#blur);
+  filter: url(#blur);
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  z-index: 2;
+}
+
+.c6 {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(0deg);
+  -ms-transform: translateX(-50%) rotate(0deg);
+  transform: translateX(-50%) rotate(0deg);
+  background-color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .c1 {
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 100%;
   height: 0.25rem;
   overflow: hidden;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   border-radius: 0.125rem;
   background-color: #D5D5D5;
 }
@@ -35,8 +72,6 @@ exports[`RangeSlider renders 1`] = `
   position: absolute;
   top: 0%;
   height: 100%;
-  left: Infinity%;
-  right: Infinity%;
   background-color: #DA4200;
 }
 
@@ -68,7 +103,8 @@ exports[`RangeSlider renders 1`] = `
         class="c2"
         max="10"
         min="0"
-        values=""
+        style="width: 0px;"
+        values="[object Object]"
       />
     </div>
     <div
@@ -81,12 +117,26 @@ exports[`RangeSlider renders 1`] = `
     >
       10
     </div>
+    <div
+      class="c5"
+      draggable="false"
+      style="transform: none;"
+    >
+      <div
+        class="c6"
+        value="0"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`RangeSlider renders 2`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   height: 1rem;
   width: 100%;
@@ -99,16 +149,16 @@ exports[`RangeSlider renders 2`] = `
   transition: filter .1s;
   top: -.5rem;
   margin-top: 1rem;
-  top: -.75rem;
-  margin-top: 1.5rem;
 }
 
 .c5 {
   position: absolute;
-  bottom: -.125rem;
-  left: -.5rem;
   width: 1rem;
   height: 1rem;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  left: -.5rem;
   background-color: #DA4200;
   color: #DA4200;
   border: .125rem solid #fff;
@@ -139,13 +189,12 @@ exports[`RangeSlider renders 2`] = `
 
 .c1 {
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 100%;
   height: 0.25rem;
   overflow: hidden;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   border-radius: 0.125rem;
   background-color: #D5D5D5;
 }
@@ -154,8 +203,6 @@ exports[`RangeSlider renders 2`] = `
   position: absolute;
   top: 0%;
   height: 100%;
-  left: 0%;
-  right: 70%;
   background-color: #DA4200;
 }
 
@@ -212,6 +259,7 @@ exports[`RangeSlider renders 2`] = `
         class="c2"
         max="10"
         min="0"
+        style="width: 0px;"
         values="[object Object]"
       />
     </div>
