@@ -69,12 +69,12 @@ export const Default: Story<DefaultProps> = ({
   disabled,
   showDomainLabels,
   showSelectedRange,
-  springOnRelease,
   min,
   max,
   dragHandleAttachment,
   readonly,
   debounceInterval,
+  animated,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
 
@@ -100,12 +100,12 @@ export const Default: Story<DefaultProps> = ({
         readonly={readonly}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
-        springOnRelease={springOnRelease}
+        animated={animated}
         min={min}
         max={max}
         debounceInterval={debounceInterval}
-        onDebounceChange={newVal => {
-          action('onDebounceChange')(newVal);
+        onChange={newVal => {
+          action('onChange')(newVal);
           setVal(Math.round(newVal));
         }}
         dragHandleAttachment={dragHandleAttachment}
@@ -126,9 +126,9 @@ Default.args = {
   showDomainLabels: false,
   showHandleLabels: true,
   showSelectedRange: true,
-  springOnRelease: true,
   dragHandleAttachment: 'value',
   debounceInterval: 10,
+  animated: true,
 };
 
 type RatingProps = Omit<RangeSliderProps, 'markers'> & {
@@ -140,7 +140,6 @@ export const Rating: Story<RatingProps> = ({
   disabled,
   showDomainLabels,
   showSelectedRange,
-  springOnRelease,
   min,
   max,
 }: RatingProps) => {
@@ -154,7 +153,6 @@ export const Rating: Story<RatingProps> = ({
         disabled={disabled}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
-        springOnRelease={springOnRelease}
         min={min}
         max={max}
         onChange={newVal => {
@@ -177,7 +175,6 @@ Rating.args = {
   disabled: false,
   showDomainLabels: false,
   showSelectedRange: false,
-  springOnRelease: true,
   min: 0,
   max: 5,
 };
