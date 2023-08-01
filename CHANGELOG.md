@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/Headstorm/foundry-ui/compare/v1.26.1...v1.27.0) (2023-08-01)
+
+
+### Features
+
+* **rangeslider:** add onChange and onDebounceChange callbacks to slider, and dragHandleBehavior ([7c9e8a7](https://github.com/Headstorm/foundry-ui/commit/7c9e8a73cf0d1f90696d02cae4c9e00bba8103e3))
+
 ## [1.26.1](https://github.com/Headstorm/foundry-ui/compare/v1.26.0...v1.26.1) (2023-07-31)
 
 
