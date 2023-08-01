@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/Headstorm/foundry-ui/compare/v1.27.0...v1.27.1) (2023-08-01)
+
+
+### Bug Fixes
+
+* **rangeslider:** fix readonly mode with new range slider interactions ([f239150](https://github.com/Headstorm/foundry-ui/commit/f23915089414ba352bdfca1a7fbf778a113f153f))
+
 # [1.27.0](https://github.com/Headstorm/foundry-ui/compare/v1.26.1...v1.27.0) (2023-08-01)
 
 
