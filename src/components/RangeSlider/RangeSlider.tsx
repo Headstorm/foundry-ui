@@ -311,9 +311,13 @@ export const RangeSlider = ({
 
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
 
-  const pixelPositions = processedValues.map(val => {
-    return (val.value / domain) * sliderBounds.width;
-  });
+  const pixelPositions = useMemo(
+    () =>
+      processedValues.map(val => {
+        return (val.value / domain) * sliderBounds.width;
+      }),
+    [processedValues, sliderBounds, domain],
+  );
 
   // get the x offset and an animation setter function
   const [{ dragHandleX }, springRef] = useSpring(() => ({
@@ -378,25 +382,29 @@ export const RangeSlider = ({
   };
 
   const bind = useDrag(
-    ({ down, movement: [deltaX] }) => {
+    ({ down: isDragging, movement: [deltaX] }) => {
       if (readonly) return;
 
       const delta = (deltaX / sliderBounds.width) * domain;
       valueBuffer.current = clamp(delta, min, max);
-      setDraggedHandle(down ? 0 : -1);
+      setDraggedHandle(isDragging ? 0 : -1);
       handleDrag(valueBuffer.current);
 
-      let animate = true;
-      if (prefersReducedMotion) animate = false;
-      if (!snapToValue) animate = springOnRelease ? !down : false;
-
-      springRef.start({
-        // Should handle follow value or drag gesture?
-        dragHandleX: snapToValue || !down ? (pixelPositions ?? [0])[0] : deltaX,
-
-        immediate: !animate,
-        config: { friction: 13, tension: 100 },
-      });
+      if (dragHandleAttachment === 'mouse') {
+        if (isDragging) {
+          // constantly follow mouse during drag
+          springRef.start({
+            dragHandleX: deltaX,
+            immediate: true,
+          });
+        } else {
+          // after drag release, spring to value
+          springRef.start({
+            dragHandleX: pixelPositions[0],
+            immediate: !springOnRelease,
+          });
+        }
+      }
     },
     {
       initial: [(pixelPositions ?? [0])[0], 0],
@@ -411,23 +419,32 @@ export const RangeSlider = ({
     },
   );
 
-  // Snap to value on initial load and when pixelPositions changes (on click)
+  // Once sliderBounds are read, set initial position
   useEffect(() => {
-    if (draggedHandle >= 0) return;
-
-    if (sliderBounds.x) {
+    if (isInitializing.current && sliderBounds.width) {
       springRef.start({
         dragHandleX: pixelPositions[0],
-
-        immediate: prefersReducedMotion || isInitializing.current,
-        config: { friction: 13, tension: 100 },
+        immediate: true,
         onResolve: () => {
-          if (isInitializing) isInitializing.current = false;
+          isInitializing.current = false;
         },
       });
     }
-  }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion, sliderBounds]);
+  }, [springRef, sliderBounds, isInitializing, pixelPositions]);
 
+  // For snap to value, listen to changes in value and always animate to value
+  useEffect(() => {
+    if (snapToValue) {
+      springRef.start({
+        dragHandleX: pixelPositions[0],
+
+        immediate: prefersReducedMotion,
+        config: { friction: 13, tension: 100 },
+      });
+    }
+  }, [snapToValue, springRef, pixelPositions, prefersReducedMotion, sliderBounds]);
+
+  // Dispose of debounce timers
   useEffect(() => {
     return () => {
       debouncedOnChange.cancel();

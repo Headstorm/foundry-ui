@@ -104,8 +104,8 @@ export const Default: Story<DefaultProps> = ({
         min={min}
         max={max}
         debounceInterval={debounceInterval}
-        onDebounceChange={newVal => {
-          action('onDebounceChange')(newVal);
+        onChange={newVal => {
+          action('onChange')(newVal);
           setVal(Math.round(newVal));
         }}
         dragHandleAttachment={dragHandleAttachment}
