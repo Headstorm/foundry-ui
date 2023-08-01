@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/Headstorm/foundry-ui/compare/v1.27.1...v1.27.2) (2023-08-01)
+
+
+### Bug Fixes
+
+* **rangeslider:** fix mouse/value attachment logic with debounce interval ([388938b](https://github.com/Headstorm/foundry-ui/commit/388938b09991a653237c22fce32762d73b8c9e02))
+
 ## [1.27.1](https://github.com/Headstorm/foundry-ui/compare/v1.27.0...v1.27.1) (2023-08-01)
 
 
