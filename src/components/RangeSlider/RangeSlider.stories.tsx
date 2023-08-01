@@ -70,7 +70,7 @@ export const Default: Story<DefaultProps> = ({
   springOnRelease,
   min,
   max,
-  dragHandleBehavior,
+  dragHandleAttachment,
   readonly,
   debounceInterval,
 }: DefaultProps) => {
@@ -103,7 +103,7 @@ export const Default: Story<DefaultProps> = ({
         max={max}
         debounceInterval={debounceInterval}
         onDebounceChange={newVal => setVal(Math.round(newVal))}
-        dragHandleBehavior={dragHandleBehavior}
+        dragHandleAttachment={dragHandleAttachment}
         values={[{ value: val, label: val }]}
         markers={markersArray as RangeSliderProps['markers']}
       />
@@ -122,7 +122,7 @@ Default.args = {
   showHandleLabels: true,
   showSelectedRange: true,
   springOnRelease: true,
-  dragHandleBehavior: 'snapToValue',
+  dragHandleAttachment: 'value',
   debounceInterval: 10,
 };
 
@@ -388,11 +388,11 @@ export default {
         step: 1,
       },
     },
-    dragHandleBehavior: {
+    dragHandleAttachment: {
       control: {
         type: 'radio',
       },
-      options: ['followMouse', 'snapToValue'],
+      options: ['mouse', 'value'],
     },
   },
   decorators: [withFoundryContext],
