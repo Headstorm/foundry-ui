@@ -215,7 +215,8 @@ export const RangeSlider = ({
   showSelectedRange = true,
   showHandleLabels = true,
 
-  springOnRelease = true,
+  springOnRelease,
+  animated = true,
 
   debounceInterval = 8,
   onDrag,
@@ -236,6 +237,13 @@ export const RangeSlider = ({
     // eslint-disable-next-line no-console
     console.warn(
       'From FoundryUI RangerSlider: onDrag callback is deprecated. Instead, use onChange or onDebounceChange.',
+    );
+  }
+  if (springOnRelease !== undefined) {
+    animated = springOnRelease;
+    // eslint-disable-next-line no-console
+    console.warn(
+      'From FoundryUI RangeSlider: springOnRelease is deprecated. Instead, use animated.',
     );
   }
 
@@ -318,7 +326,6 @@ export const RangeSlider = ({
     to: { dragHandleX: 0 },
     friction: 13,
     tension: 100,
-    immediate: prefersReducedMotion,
   }));
 
   const handleSlideRailClick = useCallback(
@@ -370,6 +377,7 @@ export const RangeSlider = ({
       processedValues,
     ],
   );
+
   const handleSlideRailClickWithAnalytics = (e: any) => {
     if (readonly) return;
     handleEventWithAnalytics('RangeSlider', handleSlideRailClick, 'onClick', e, containerProps);
@@ -395,7 +403,7 @@ export const RangeSlider = ({
           // after drag release, spring to value
           springRef.start({
             dragHandleX: pixelPositions[0],
-            immediate: !springOnRelease,
+            immediate: prefersReducedMotion || !animated,
           });
         }
       }
@@ -426,15 +434,23 @@ export const RangeSlider = ({
     }
   }, [springRef, sliderBounds, isInitializing, pixelPositions]);
 
-  // For snap to value, listen to changes in value and always animate to value
+  // For snap to value, listen to changes in value and always animate to value. Also listens to clicks
   useEffect(() => {
-    if (dragHandleAttachment === 'value') {
+    if (dragHandleAttachment === 'value' || draggedHandle === -1) {
       springRef.start({
         dragHandleX: pixelPositions[0],
-        immediate: prefersReducedMotion,
+        immediate: prefersReducedMotion || !animated,
       });
     }
-  }, [dragHandleAttachment, springRef, pixelPositions, prefersReducedMotion, sliderBounds]);
+  }, [
+    dragHandleAttachment,
+    springRef,
+    pixelPositions,
+    prefersReducedMotion,
+    sliderBounds,
+    animated,
+    draggedHandle,
+  ]);
 
   // Dispose of debounce timers
   useEffect(() => {

@@ -64,8 +64,8 @@ export type RangeSliderProps = {
   showDomainLabels?: boolean;
   showSelectedRange?: boolean;
   showHandleLabels?: boolean;
+  animated?: boolean;
 
-  springOnRelease?: boolean;
   /** Debounce interval (in ms) before calling `onDebounceChange`. */
   debounceInterval?: number;
 
@@ -88,6 +88,8 @@ export type RangeSliderProps = {
    */
   dragHandleAttachment?: 'value' | 'mouse';
 
+  /** @deprecated use `animated` instead. */
+  springOnRelease?: boolean;
   /** @deprecated use onChange or onChangeDebounce instead. */
   onDrag?: (val: number) => void;
   /** @deprecated do not use. */
