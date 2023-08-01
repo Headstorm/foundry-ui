@@ -437,9 +437,7 @@ export const RangeSlider = ({
     if (snapToValue) {
       springRef.start({
         dragHandleX: pixelPositions[0],
-
         immediate: prefersReducedMotion,
-        config: { friction: 13, tension: 100 },
       });
     }
   }, [snapToValue, springRef, pixelPositions, prefersReducedMotion, sliderBounds]);
