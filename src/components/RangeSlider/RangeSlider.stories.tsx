@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { Story, Meta } from '@storybook/react';
 import { readableColor, toColorString } from 'polished';
 
+import { action } from '@storybook/addon-actions';
 import { withFoundryContext } from '../../../.storybook/decorators';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
 import { RangeSliderProps, ValueProp } from './types';
+
 import Card from '../Card';
 
 const Row = styled.div`
@@ -102,7 +104,10 @@ export const Default: Story<DefaultProps> = ({
         min={min}
         max={max}
         debounceInterval={debounceInterval}
-        onDebounceChange={newVal => setVal(Math.round(newVal))}
+        onDebounceChange={newVal => {
+          action('onDebounceChange')(newVal);
+          setVal(Math.round(newVal));
+        }}
         dragHandleAttachment={dragHandleAttachment}
         values={[{ value: val, label: val }]}
         markers={markersArray as RangeSliderProps['markers']}
@@ -152,7 +157,10 @@ export const Rating: Story<RatingProps> = ({
         springOnRelease={springOnRelease}
         min={min}
         max={max}
-        onChange={newVal => setVal(Math.round(newVal))}
+        onChange={newVal => {
+          action('onChange')(newVal);
+          setVal(Math.round(newVal));
+        }}
         values={[
           {
             value: val,
@@ -250,7 +258,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           min={0}
           max={360}
           debounceInterval={debounceInterval}
-          onDebounceChange={val => setHue(Math.round(val))}
+          onDebounceChange={val => {
+            action('onDebounceChange hue')(val);
+            setHue(Math.round(val));
+          }}
           values={[
             {
               value: hue_,
@@ -275,7 +286,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           min={0}
           max={100}
           debounceInterval={debounceInterval}
-          onDebounceChange={val => setSat(Math.round(val))}
+          onDebounceChange={val => {
+            action('onDebounceChange saturation')(val);
+            setSat(Math.round(val));
+          }}
           showDomainLabels={false}
           showSelectedRange={false}
           values={[
@@ -304,7 +318,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           min={0}
           max={100}
           debounceInterval={debounceInterval}
-          onDebounceChange={val => setLight(Math.round(val))}
+          onDebounceChange={val => {
+            action('onDebounceChange lightness')(val);
+            setLight(Math.round(val));
+          }}
           showDomainLabels={false}
           showSelectedRange={false}
           values={[

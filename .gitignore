@@ -28,7 +28,7 @@ dist/
 packages/.DS_Store
 
 .DS_Store
-docs/
+docs/yarn 
 
 coverage
 

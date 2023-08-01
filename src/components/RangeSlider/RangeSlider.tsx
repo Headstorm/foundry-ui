@@ -69,7 +69,7 @@ export const Container = styled.div`
 `;
 
 export const DragHandle = styled(a.div)`
-  ${({ $beingDragged = false, color, readonly }: HandleProps) => {
+  ${({ $beingDragged = false, color, $readonly }: HandleProps) => {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
@@ -88,7 +88,7 @@ export const DragHandle = styled(a.div)`
       touch-action: none;
       filter: url(#blur);
       cursor: ${$beingDragged ? 'grabbing' : 'grab'};
-      cursor: ${readonly ? 'default' : ''};
+      cursor: ${$readonly ? 'default' : ''};
       z-index: 2;
     `;
   }}
@@ -379,6 +379,8 @@ export const RangeSlider = ({
 
   const bind = useDrag(
     ({ down, movement: [deltaX] }) => {
+      if (readonly) return;
+
       const delta = (deltaX / sliderBounds.width) * domain;
       valueBuffer.current = clamp(delta, min, max);
       setDraggedHandle(down ? 0 : -1);
@@ -425,6 +427,13 @@ export const RangeSlider = ({
       });
     }
   }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion, sliderBounds]);
+
+  useEffect(() => {
+    return () => {
+      debouncedOnChange.cancel();
+      debouncedOnRelease.cancel();
+    };
+  }, [debouncedOnChange, debouncedOnRelease]);
 
   return (
     <StyledContainer
@@ -479,7 +488,7 @@ export const RangeSlider = ({
           key={`handle${i}`}
           ref={dragHandleRef}
           onMouseUp={() => debouncedOnRelease(value)}
-          readonly={readonly}
+          $readonly={readonly}
           {...dragHandleProps}
         >
           {showHandleLabels && (
