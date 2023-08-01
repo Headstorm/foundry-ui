@@ -311,13 +311,9 @@ export const RangeSlider = ({
 
   const [ref, sliderBounds] = useMeasure({ polyfill: ResizeObserver });
 
-  const pixelPositions = useMemo(
-    () =>
-      processedValues.map(val => {
-        return (val.value / domain) * sliderBounds.width;
-      }),
-    [processedValues, sliderBounds, domain],
-  );
+  const pixelPositions = processedValues.map(val => {
+    return (val.value / domain) * sliderBounds.width;
+  });
 
   // get the x offset and an animation setter function
   const [{ dragHandleX }, springRef] = useSpring(() => ({
