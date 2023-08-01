@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.91% </span>
+                <span class="strong">55.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/122</span>
+                <span class='fraction'>71/128</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.16% </span>
+                <span class="strong">43.44% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>53/120</span>
+                <span class='fraction'>53/122</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.51% </span>
+                <span class="strong">67.74% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>19/29</span>
+                <span class='fraction'>21/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.74% </span>
+                <span class="strong">61.6% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>65/107</span>
+                <span class='fraction'>69/112</span>
             </div>
         
             
@@ -582,7 +582,16 @@
 <a name='L517'></a><a href='#L517'>517</a>
 <a name='L518'></a><a href='#L518'>518</a>
 <a name='L519'></a><a href='#L519'>519</a>
-<a name='L520'></a><a href='#L520'>520</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L520'></a><a href='#L520'>520</a>
+<a name='L521'></a><a href='#L521'>521</a>
+<a name='L522'></a><a href='#L522'>522</a>
+<a name='L523'></a><a href='#L523'>523</a>
+<a name='L524'></a><a href='#L524'>524</a>
+<a name='L525'></a><a href='#L525'>525</a>
+<a name='L526'></a><a href='#L526'>526</a>
+<a name='L527'></a><a href='#L527'>527</a>
+<a name='L528'></a><a href='#L528'>528</a>
+<a name='L529'></a><a href='#L529'>529</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -964,6 +973,8 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1007,6 +1018,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1172,7 +1190,7 @@ export const Container = styled.div`
 `;
 &nbsp;
 export const DragHandle = styled(a.div)`
-  ${({ $beingDragged = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> color, readonly }: HandleProps) =&gt; {
+  ${({ $beingDragged = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span> color, $readonly }: HandleProps) =&gt; {
     const { colors } = useTheme();
     const handleColor = color || colors.primary;
     return `
@@ -1191,7 +1209,7 @@ export const DragHandle = styled(a.div)`
       touch-action: none;
       filter: url(#blur);
       cursor: ${$beingDragged ? <span class="branch-0 cbranch-no" title="branch not covered" >'grabbing' </span>: 'grab'};
-      cursor: ${readonly ? <span class="branch-0 cbranch-no" title="branch not covered" >'default' </span>: ''};
+      cursor: ${$readonly ? <span class="branch-0 cbranch-no" title="branch not covered" >'default' </span>: ''};
       z-index: 2;
     `;
   }}
@@ -1482,6 +1500,8 @@ export const RangeSlider = ({
 &nbsp;
   const bind = useDrag(
 <span class="fstat-no" title="function not covered" >    ({</span> down, movement: [deltaX] }) =&gt; {
+<span class="cstat-no" title="statement not covered" >      if (readonly) <span class="cstat-no" title="statement not covered" >return;</span></span>
+&nbsp;
       const delta = <span class="cstat-no" title="statement not covered" >(deltaX / sliderBounds.width) * domain;</span>
 <span class="cstat-no" title="statement not covered" >      valueBuffer.current = clamp(delta, min, max);</span>
 <span class="cstat-no" title="statement not covered" >      setDraggedHandle(down ? 0 : -1);</span>
@@ -1528,6 +1548,13 @@ export const RangeSlider = ({
       });
     }
   }, [springRef, pixelPositions, draggedHandle, prefersReducedMotion, sliderBounds]);
+&nbsp;
+  useEffect(() =&gt; {
+    return () =&gt; {
+      debouncedOnChange.cancel();
+      debouncedOnRelease.cancel();
+    };
+  }, [debouncedOnChange, debouncedOnRelease]);
 &nbsp;
   return (
     &lt;StyledContainer
@@ -1582,7 +1609,7 @@ export const RangeSlider = ({
           key={`handle${i}`}
           ref={dragHandleRef}
           onMouseUp={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >debouncedOnRelease(value)}</span>
-          readonly={readonly}
+          $readonly={readonly}
           {...dragHandleProps}
         &gt;
           {showHandleLabels &amp;&amp; (
@@ -1627,7 +1654,7 @@ export default RangeSlider;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-01T16:56:40.467Z
+                at 2023-08-01T17:15:57.636Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
