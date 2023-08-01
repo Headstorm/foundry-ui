@@ -230,7 +230,7 @@ export const RangeSlider = ({
   values,
   markers = [],
   testId,
-  dragHandleBehavior = 'followMouse',
+  dragHandleAttachment = 'mouse',
 }: RangeSliderProps): JSX.Element | null => {
   if (onDrag) {
     // eslint-disable-next-line no-console
@@ -239,7 +239,7 @@ export const RangeSlider = ({
     );
   }
 
-  const snapToValue = dragHandleBehavior === 'snapToValue';
+  const snapToValue = dragHandleAttachment === 'value';
 
   const { prefersReducedMotion } = useAccessibilityPreferences();
   const isInitializing = useRef(true);
