@@ -220,7 +220,7 @@ const Spotlight = ({
   `;
   const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
 
-  /* Setup animations */
+  /* Setup animation */
 
   const [
     {
