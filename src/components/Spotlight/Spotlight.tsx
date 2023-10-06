@@ -116,14 +116,18 @@ const Spotlight = ({
 
   const internalAnnotationRef: RefObject<HTMLElement> = useRef();
 
-  // Scroll to new position if need-be
+  /* Scroll to new position if need-be */
+
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
 
   useEffect(() => {
     if (targetElement) {
-      const newSpotlightTop = targetElement?.getBoundingClientRect().top ?? 0;
+      const newTargetTop = targetElement?.getBoundingClientRect().top ?? 0;
       const annotationHeight = internalAnnotationRef?.current?.getBoundingClientRect().height;
-      const offset = newSpotlightTop - annotationHeight;
+      // TODO: This assumes the annotation is above the target
+      // when custom above/under alignment is implemented, this logic should change
+      // (if the annotation is below the target, this should be an addition, not subtraction)
+      const offset = newTargetTop - annotationHeight;
 
       window.scrollBy({
         top: offset,
@@ -143,7 +147,7 @@ const Spotlight = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isScrolling]);
 
-  // Build spotlight shape
+  /* Build spotlight shape */
 
   const rect: DOMRect = useMemo<
     Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>
@@ -215,6 +219,8 @@ const Spotlight = ({
     L ${rect.x} ${rect.y + rect.height / 2}
   `;
   const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
+
+  /* Setup animations */
 
   const [
     {
@@ -333,6 +339,8 @@ const Spotlight = ({
     gpuTier,
     prefersReducedMotion,
   ]);
+
+  /* Click */
 
   const handleClick = (evt: MouseEvent) => {
     // TODO: Rename to onClickOutside?
