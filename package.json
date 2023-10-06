@@ -103,8 +103,7 @@
     "react-aria": "^3.9.0",
     "react-device-detect": "^1.17.0",
     "react-portal": "^4.2.2",
-    "react-virtuoso": "^1.10.5",
-    "src": "^1.1.2"
+    "react-virtuoso": "^1.10.5"
   },
   "peerDependencies": {
     "@react-spring/web": "^9.2.4",
@@ -220,5 +219,9 @@
       "last 1 safari version"
     ]
   },
-  "gitHead": "1310c14f2882b9431200c5968097d8df9e92878e"
+  "gitHead": "1310c14f2882b9431200c5968097d8df9e92878e",
+  "volta": {
+    "node": "18.18.0",
+    "yarn": "3.6.3"
+  }
 }

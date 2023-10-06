@@ -11,6 +11,10 @@ const Header = styled(Card.NoPaddingHeader)`
   display: flex;
   justify-content: flex-end;
 `;
+const Container = styled(Card.Container)`
+  max-width: 35rem;
+  margin-top: 10rem;
+`;
 
 const Annotation = styled(Spotlight.Annotation)`
   display: flex;
@@ -57,6 +61,7 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
     <>
       <Card
         StyledHeader={Header}
+        StyledContainer={Container}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore - our ref types don't like getting a set state dispatch function
         containerRef={setCardRef}
@@ -84,7 +89,24 @@ export const AnimatedSpotlight: Story = (args: Partial<SpotlightProps>) => {
           </Button>
         }
       >
-        There are a few items in this card we can talk about!
+        <p>There are a few items in this card we can talk about!</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ultricies mi eget mauris pharetra et ultrices neque
+          ornare aenean. Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra.
+          Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Mauris a diam maecenas
+          sed enim ut sem viverra aliquet. Ultrices in iaculis nunc sed augue lacus viverra. Sodales
+          neque sodales ut etiam. Pulvinar neque laoreet suspendisse interdum consectetur libero id
+          faucibus nisl. Ut placerat orci nulla pellentesque dignissim enim sit amet venenatis.
+          Vivamus arcu felis bibendum ut tristique. Netus et malesuada fames ac turpis egestas.
+          Porttitor rhoncus dolor purus non enim. Proin nibh nisl condimentum id. Aliquam ultrices
+          sagittis orci a scelerisque purus semper. Faucibus purus in massa tempor nec feugiat. Et
+          netus et malesuada fames. Cras pulvinar mattis nunc sed blandit libero. Nisi lacus sed
+          viverra tellus in. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Id
+          porta nibh venenatis cras sed felis eget velit. Eros in cursus turpis massa tincidunt dui
+          ut ornare. Proin fermentum leo vel orci porta non. Quisque non tellus orci ac auctor
+          augue.
+        </p>
       </Card>
       {tourStarted && (
         <Spotlight {...args} StyledAnnotation={Annotation} targetElement={stepOptions[currStep]}>
