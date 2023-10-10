@@ -2,10 +2,10 @@ import React, { RefObject } from 'react';
 import styled from 'styled-components';
 import Icon from '@mdi/react';
 import { mdiCheck, mdiCheckboxBlank, mdiClose, mdiMinus } from '@mdi/js';
-
 import { darken } from 'polished';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from '@react-stately/toggle';
+
 import { StyledBaseDiv, StyledBaseInput, StyledBaseLabel } from '../../htmlElements';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useAnalytics, useTheme } from '../../context';
