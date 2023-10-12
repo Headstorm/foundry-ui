@@ -114,7 +114,7 @@ const Spotlight = ({
     accessibilityPreferences: { prefersReducedMotion },
   } = useTheme();
 
-  const internalAnnotationRef: RefObject<HTMLElement> = useRef();
+  const internalAnnotationRef: RefObject<HTMLElement> = useRef(null);
 
   /* Scroll to new position if need-be */
 
@@ -127,7 +127,7 @@ const Spotlight = ({
       // TODO: This assumes the annotation is above the target
       // when custom above/under alignment is implemented, this logic should change
       // (if the annotation is below the target, this should be an addition, not subtraction)
-      const offset = newTargetTop - annotationHeight;
+      const offset = annotationHeight ? newTargetTop - annotationHeight : newTargetTop;
 
       window.scrollBy({
         top: offset,
@@ -149,7 +149,7 @@ const Spotlight = ({
 
   /* Build spotlight shape */
 
-  const rect: DOMRect = useMemo<
+  const rect = useMemo<
     Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>
   >(() => {
     const defaultVal = {
