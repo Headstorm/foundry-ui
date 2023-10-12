@@ -149,9 +149,7 @@ const Spotlight = ({
 
   /* Build spotlight shape */
 
-  const rect = useMemo<
-    Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>
-  >(() => {
+  const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
       x: windowWidth / 2,
       y: windowHeight / 2,
