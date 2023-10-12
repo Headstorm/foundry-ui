@@ -1,8 +1,17 @@
-import React, { useEffect, useMemo } from 'react';
+import React, {
+  MouseEvent,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
+import { mergeRefs } from '../../utils/refs';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
 import { useTheme, useAnalytics } from '../../context';
@@ -48,20 +57,20 @@ export enum SpotlightShapes {
 export type SpotlightProps = {
   StyledContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
-  containerRef?: React.RefObject<HTMLElement>;
+  containerRef?: RefObject<HTMLElement>;
 
   StyledAnnotation?: StyledSubcomponentType;
   annotationProps?: SubcomponentPropsType;
-  annotationRef?: React.RefObject<HTMLElement>;
+  annotationRef?: RefObject<HTMLElement>;
 
-  children?: React.ReactNode;
-  targetElement?: HTMLElement;
+  children?: ReactNode;
+  targetElement?: HTMLElement | Element;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   shape?: SpotlightShapes;
   cornerRadius?: number;
   padding?: number;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
   animateTargetChanges?: boolean;
   // onAnimationEnd?: ControllerProps['onRest'];
   onAnimationEnd?: () => void;
@@ -104,6 +113,41 @@ const Spotlight = ({
     performanceInfo: { tier: gpuTier },
     accessibilityPreferences: { prefersReducedMotion },
   } = useTheme();
+
+  const internalAnnotationRef: RefObject<HTMLElement> = useRef(null);
+
+  /* Scroll to new position if need-be */
+
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+
+  useEffect(() => {
+    if (targetElement) {
+      const newTargetTop = targetElement?.getBoundingClientRect().top ?? 0;
+      const annotationHeight = internalAnnotationRef?.current?.getBoundingClientRect().height;
+      // TODO: This assumes the annotation is above the target
+      // when custom above/under alignment is implemented, this logic should change
+      // (if the annotation is below the target, this should be an addition, not subtraction)
+      const offset = annotationHeight ? newTargetTop - annotationHeight : newTargetTop;
+
+      window.scrollBy({
+        top: offset,
+        left: 0,
+        behavior: !animateTargetChanges || prefersReducedMotion ? 'auto' : 'smooth',
+      });
+
+      setIsAutoScrolling(true);
+    }
+  }, [animateTargetChanges, internalAnnotationRef, prefersReducedMotion, targetElement]);
+
+  useEffect(() => {
+    // check if auto scroll has completed
+    if (isScrolling === false && isAutoScrolling === true) {
+      setIsAutoScrolling(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScrolling]);
+
+  /* Build spotlight shape */
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -174,6 +218,8 @@ const Spotlight = ({
   `;
   const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
 
+  /* Setup animation */
+
   const [
     {
       containerFilter,
@@ -218,10 +264,14 @@ const Spotlight = ({
     leftBlurHeight: rect.height + 2,
 
     rightBlurY: rect.y,
-    rightBlurWidth: windowWidth - rect.right,
+    rightBlurWidth: windowWidth - rect.right - padding - 4,
     rightBlurHeight: rect.height + 2,
+    immediate:
+      !animateTargetChanges ||
+      prefersReducedMotion ||
+      (isScrolling && !isAutoScrolling) ||
+      isResizing,
     config: {
-      immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
       round: gpuTier < 2 ? 1 : undefined,
       ...animationSpringConfig,
     },
@@ -237,10 +287,10 @@ const Spotlight = ({
       lightPath: finalRectangularPath,
       circularLightPath: circularPath,
 
-      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
+      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`, // TODO: change second translate to make different attach positions
 
       topBlurWidth: windowWidth,
-      topBlurHeight: rect.y - 1,
+      topBlurHeight: Math.max(rect.y - 1, 0),
 
       bottomBlurY: rect.bottom,
       bottomBlurWidth: windowWidth,
@@ -251,10 +301,15 @@ const Spotlight = ({
       leftBlurHeight: rect.height + 2,
 
       rightBlurY: rect.y,
-      rightBlurWidth: windowWidth - rect.right,
+      rightBlurWidth: windowWidth - rect.right - padding - 4,
       rightBlurHeight: rect.height + 2,
 
       onRest: onAnimationEnd,
+      immediate:
+        !animateTargetChanges ||
+        prefersReducedMotion ||
+        (isScrolling && !isAutoScrolling) ||
+        isResizing,
     }));
   }, [
     targetElement,
@@ -266,6 +321,8 @@ const Spotlight = ({
     windowWidth,
     windowHeight,
     isScrolling,
+    scrollY,
+    isAutoScrolling,
     isResizing,
     spring,
     finalRectangularPath,
@@ -278,9 +335,13 @@ const Spotlight = ({
     animateTargetChanges,
     onAnimationEnd,
     gpuTier,
+    prefersReducedMotion,
   ]);
 
-  const handleClick = (evt: React.MouseEvent) => {
+  /* Click */
+
+  const handleClick = (evt: MouseEvent) => {
+    // TODO: Rename to onClickOutside?
     handleEventWithAnalytics('Spotlight', onClick, 'onClick', evt, containerProps);
   };
 
@@ -348,7 +409,7 @@ const Spotlight = ({
       </svg>
       <StyledAnnotation
         style={{ transform: annotationTransform }}
-        ref={annotationRef}
+        ref={mergeRefs<HTMLElement>([annotationRef, internalAnnotationRef])}
         {...annotationProps}
       >
         {children}
