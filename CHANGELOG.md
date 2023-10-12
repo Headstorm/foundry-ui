@@ -1,3 +1,10 @@
+## [1.27.3](https://github.com/Headstorm/foundry-ui/compare/v1.27.2...v1.27.3) (2023-10-12)
+
+
+### Bug Fixes
+
+* **spotlight:** spotlight now scrolls to new targets if they are scrolled out of view ([8d7776a](https://github.com/Headstorm/foundry-ui/commit/8d7776a2c3d7aeac02f0440ae6086255ecaf0486)), closes [#476](https://github.com/Headstorm/foundry-ui/issues/476)
+
 ## [1.27.2](https://github.com/Headstorm/foundry-ui/compare/v1.27.1...v1.27.2) (2023-08-01)
 
 
