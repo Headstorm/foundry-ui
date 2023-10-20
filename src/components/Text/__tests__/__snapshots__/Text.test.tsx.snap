@@ -409,7 +409,7 @@ exports[`Text matches snapshot with isProcessing 1`] = `
         viewBox="0 0 24 24"
       >
         <style>
-          @keyframes spin { to { transform: rotate(360deg) } }
+          @keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
         </style>
         <g
           style="animation: spin linear 1s infinite; transform-origin: center;"

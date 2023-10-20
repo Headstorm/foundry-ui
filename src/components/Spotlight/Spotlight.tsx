@@ -54,6 +54,21 @@ export enum SpotlightShapes {
   'roundedBox' = 'rounded box',
 }
 
+// Recursively crawl the dom to find the nearest scrolling parent of the target element
+const findNearestScrollingParent = (el: HTMLElement | Element): HTMLElement | Element | null => {
+  const parent = el.parentElement;
+
+  if (parent && parent?.scrollHeight > parent?.clientHeight) {
+    return parent;
+  }
+
+  if (el.parentElement) {
+    return findNearestScrollingParent(el?.parentElement);
+  }
+
+  return null;
+};
+
 export type SpotlightProps = {
   StyledContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
@@ -65,6 +80,7 @@ export type SpotlightProps = {
 
   children?: ReactNode;
   targetElement?: HTMLElement | Element;
+  scrollingParentElement?: HTMLElement | Element;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   shape?: SpotlightShapes;
@@ -90,6 +106,7 @@ const Spotlight = ({
 
   children,
   targetElement,
+  scrollingParentElement, // this will get automatically picked if not defined
   backgroundBlur = '0.25rem',
   backgroundDarkness = 0.3,
   shape = SpotlightShapes.circular,
@@ -103,12 +120,20 @@ const Spotlight = ({
   scrollUpdateInterval = 0,
 }: SpotlightProps): JSX.Element | null => {
   const handleEventWithAnalytics = useAnalytics();
+  const scrollTarget = useRef(scrollingParentElement || null);
+
   const {
     width: windowWidth,
     height: windowHeight,
     isResizing,
-  } = useWindowSizeObserver(resizeUpdateInterval);
-  const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
+  } = useWindowSizeObserver(resizeUpdateInterval, 50);
+
+  const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval, 50, {
+    target: scrollTarget.current || undefined,
+  });
+
+  console.log(scrollTarget.current);
+
   const {
     performanceInfo: { tier: gpuTier },
     accessibilityPreferences: { prefersReducedMotion },
@@ -121,6 +146,15 @@ const Spotlight = ({
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
 
   useEffect(() => {
+    if (targetElement && !scrollTarget.current) {
+      scrollTarget.current = findNearestScrollingParent(targetElement);
+      if (scrollTarget.current?.tagName !== 'html') {
+        scrollTarget.current = null;
+      }
+    }
+  }, [targetElement]);
+
+  useEffect(() => {
     if (targetElement) {
       const newTargetTop = targetElement?.getBoundingClientRect().top ?? 0;
       const annotationHeight = internalAnnotationRef?.current?.getBoundingClientRect().height;
@@ -129,15 +163,33 @@ const Spotlight = ({
       // (if the annotation is below the target, this should be an addition, not subtraction)
       const offset = annotationHeight ? newTargetTop - annotationHeight : newTargetTop;
 
-      window.scrollBy({
-        top: offset,
-        left: 0,
-        behavior: !animateTargetChanges || prefersReducedMotion ? 'auto' : 'smooth',
-      });
+      if (scrollTarget.current) {
+        // TODO:
+        // compare offset with the scrollTarget scrollHeight,
+        // if it's larger, subtract them and scroll the window next
+
+        scrollTarget.current.scrollTo({
+          top: offset,
+          left: 0,
+          behavior: !animateTargetChanges || prefersReducedMotion ? 'auto' : 'smooth',
+        });
+      } else {
+        window.scrollBy({
+          top: offset,
+          left: 0,
+          behavior: !animateTargetChanges || prefersReducedMotion ? 'auto' : 'smooth',
+        });
+      }
 
       setIsAutoScrolling(true);
     }
-  }, [animateTargetChanges, internalAnnotationRef, prefersReducedMotion, targetElement]);
+  }, [
+    animateTargetChanges,
+    internalAnnotationRef,
+    prefersReducedMotion,
+    scrollTarget,
+    targetElement,
+  ]);
 
   useEffect(() => {
     // check if auto scroll has completed
