@@ -58,14 +58,15 @@ export enum SpotlightShapes {
 const findNearestScrollingParent = (el: HTMLElement | Element): HTMLElement | Element | null => {
   const parent = el.parentElement;
 
-  if (parent && parent?.scrollHeight > parent?.clientHeight) {
-    return parent;
+  if (parent && parent.tagName !== 'html') {
+    if (parent?.scrollHeight > parent?.clientHeight) {
+      // found it!
+      return parent;
+    }
+    return findNearestScrollingParent(parent);
   }
 
-  if (el.parentElement) {
-    return findNearestScrollingParent(el?.parentElement);
-  }
-
+  // passing it back down
   return null;
 };
 
@@ -132,8 +133,6 @@ const Spotlight = ({
     target: scrollTarget.current || undefined,
   });
 
-  console.log(scrollTarget.current);
-
   const {
     performanceInfo: { tier: gpuTier },
     accessibilityPreferences: { prefersReducedMotion },
@@ -148,9 +147,6 @@ const Spotlight = ({
   useEffect(() => {
     if (targetElement && !scrollTarget.current) {
       scrollTarget.current = findNearestScrollingParent(targetElement);
-      if (scrollTarget.current?.tagName !== 'html') {
-        scrollTarget.current = null;
-      }
     }
   }, [targetElement]);
 
