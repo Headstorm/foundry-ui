@@ -174,7 +174,7 @@ export const CustomScrollWindow: Story = (args: Partial<SpotlightProps>) => {
       subtitle: 'targetElement is null for this part of the tour, so nothing is highlighted!',
     },
     { title: 'This is a kebab menu.', subtitle: '' },
-    { title: 'This is the whole card', subtitle: '' },
+    { title: 'This is the whole card.', subtitle: '' },
     { title: 'Press this button to restart the tour!', subtitle: '(you already knew that though)' },
   ];
 
