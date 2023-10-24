@@ -58,7 +58,7 @@ export enum SpotlightShapes {
 const findNearestScrollingParent = (el: HTMLElement | Element): HTMLElement | Element | null => {
   const parent = el.parentElement;
 
-  if (parent && parent.tagName !== 'html') {
+  if (parent && parent.tagName !== 'HTML') {
     if (parent?.scrollHeight > parent?.clientHeight) {
       // found it!
       return parent;
@@ -149,6 +149,8 @@ const Spotlight = ({
       scrollTarget.current = findNearestScrollingParent(targetElement);
     }
   }, [targetElement]);
+
+  console.log(scrollTarget.current);
 
   useEffect(() => {
     if (targetElement) {
