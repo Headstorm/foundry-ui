@@ -150,18 +150,18 @@ const Spotlight = ({
     }
   }, [targetElement]);
 
-
   useEffect(() => {
     if (targetElement) {
       const newTargetTop = targetElement?.getBoundingClientRect().top ?? 0;
       const annotationHeight = internalAnnotationRef?.current?.getBoundingClientRect().height;
-      // TODO: This assumes the annotation is above the target
+      // TODO: https://github.com/Headstorm/foundry-ui/issues/315
+      // This assumes the annotation is above the target
       // when custom above/under alignment is implemented, this logic should change
       // (if the annotation is below the target, this should be an addition, not subtraction)
       const offset = annotationHeight ? newTargetTop - annotationHeight : newTargetTop;
 
       if (scrollTarget.current) {
-        // TODO:
+        // TODO: https://github.com/Headstorm/foundry-ui/issues/483
         // compare offset with the scrollTarget scrollHeight,
         // if it's larger, subtract them and scroll the window next
 
@@ -336,7 +336,7 @@ const Spotlight = ({
       lightPath: finalRectangularPath,
       circularLightPath: circularPath,
 
-      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`, // TODO: change second translate to make different attach positions
+      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`, // TODO: change second translate to make different attach positions https://github.com/Headstorm/foundry-ui/issues/315
 
       topBlurWidth: windowWidth,
       topBlurHeight: Math.max(rect.y - 1, 0),
