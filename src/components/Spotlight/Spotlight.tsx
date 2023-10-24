@@ -387,7 +387,7 @@ const Spotlight = ({
     prefersReducedMotion,
   ]);
 
-  /* Click */
+  /* onClick */
 
   const handleClick = (evt: MouseEvent) => {
     // TODO: Rename to onClickOutside?
