@@ -150,7 +150,6 @@ const Spotlight = ({
     }
   }, [targetElement]);
 
-  console.log(scrollTarget.current);
 
   useEffect(() => {
     if (targetElement) {
