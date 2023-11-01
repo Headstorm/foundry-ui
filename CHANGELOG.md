@@ -1,3 +1,11 @@
+## [1.27.4](https://github.com/Headstorm/foundry-ui/compare/v1.27.3...v1.27.4) (2023-10-24)
+
+
+### Bug Fixes
+
+* **spotlight, usescrollobserver:** automatically scroll nearest scrollable element ([74385aa](https://github.com/Headstorm/foundry-ui/commit/74385aa54d3ea7c461f83abceb398cc94a141f32)), closes [#481](https://github.com/Headstorm/foundry-ui/issues/481)
+* **spotlight, usescrollobserver:** automatically scroll nearest scrollable element ([#484](https://github.com/Headstorm/foundry-ui/issues/484)) ([7469d87](https://github.com/Headstorm/foundry-ui/commit/7469d87de78de05901fcb9f7e5654f37daa17509)), closes [#481](https://github.com/Headstorm/foundry-ui/issues/481)
+
 ## [1.27.3](https://github.com/Headstorm/foundry-ui/compare/v1.27.2...v1.27.3) (2023-10-12)
 
 
