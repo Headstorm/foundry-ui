@@ -229,7 +229,7 @@ const Modal = forwardRef<ModalApi, ModalProps>(
 
     const escFunction = useCallback(
       (event: KeyboardEvent) => {
-        if (event.code === 'Escape') {
+        if (event.code === 'Escape' && onClickOutside) {
           animateClose(handleEsc, event);
         }
       },
