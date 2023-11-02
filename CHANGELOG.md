@@ -1,3 +1,10 @@
+## [1.27.5](https://github.com/Headstorm/foundry-ui/compare/v1.27.4...v1.27.5) (2023-11-02)
+
+
+### Bug Fixes
+
+* **modal onclickoutside:** modal onClickOutside=false fails on Esc key press ([e442c88](https://github.com/Headstorm/foundry-ui/commit/e442c881db0a2fcb3bec3a60527eb8e3b8936978))
+
 ## [1.27.4](https://github.com/Headstorm/foundry-ui/compare/v1.27.3...v1.27.4) (2023-10-24)
 
 
