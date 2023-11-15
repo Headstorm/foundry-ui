@@ -376,6 +376,14 @@ const Table = ({
     }
 
     // No sort function, use default comparison operator.
+    if (typeof entry1 === 'string' && typeof entry2 === 'string') {
+      const comparison =
+        sortDirection === SortDirection.ascending
+          ? entry1.toLocaleLowerCase() < entry2.toLocaleLowerCase()
+          : entry1.toLocaleLowerCase() > entry2.toLocaleLowerCase();
+      return comparison ? -1 : 1;
+    }
+
     const comparison =
       sortDirection === SortDirection.ascending ? entry1 < entry2 : entry1 > entry2;
     return comparison ? -1 : 1;
