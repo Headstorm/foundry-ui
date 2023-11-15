@@ -1,3 +1,167 @@
+## [1.27.5](https://github.com/Headstorm/foundry-ui/compare/v1.27.4...v1.27.5) (2023-11-02)
+
+
+### Bug Fixes
+
+* **modal onclickoutside:** modal onClickOutside=false fails on Esc key press ([e442c88](https://github.com/Headstorm/foundry-ui/commit/e442c881db0a2fcb3bec3a60527eb8e3b8936978))
+
+## [1.27.4](https://github.com/Headstorm/foundry-ui/compare/v1.27.3...v1.27.4) (2023-10-24)
+
+
+### Bug Fixes
+
+* **spotlight, usescrollobserver:** automatically scroll nearest scrollable element ([74385aa](https://github.com/Headstorm/foundry-ui/commit/74385aa54d3ea7c461f83abceb398cc94a141f32)), closes [#481](https://github.com/Headstorm/foundry-ui/issues/481)
+* **spotlight, usescrollobserver:** automatically scroll nearest scrollable element ([#484](https://github.com/Headstorm/foundry-ui/issues/484)) ([7469d87](https://github.com/Headstorm/foundry-ui/commit/7469d87de78de05901fcb9f7e5654f37daa17509)), closes [#481](https://github.com/Headstorm/foundry-ui/issues/481)
+
+## [1.27.3](https://github.com/Headstorm/foundry-ui/compare/v1.27.2...v1.27.3) (2023-10-12)
+
+
+### Bug Fixes
+
+* **spotlight:** spotlight now scrolls to new targets if they are scrolled out of view ([8d7776a](https://github.com/Headstorm/foundry-ui/commit/8d7776a2c3d7aeac02f0440ae6086255ecaf0486)), closes [#476](https://github.com/Headstorm/foundry-ui/issues/476)
+
+## [1.27.2](https://github.com/Headstorm/foundry-ui/compare/v1.27.1...v1.27.2) (2023-08-01)
+
+
+### Bug Fixes
+
+* **rangeslider:** fix mouse/value attachment logic with debounce interval ([388938b](https://github.com/Headstorm/foundry-ui/commit/388938b09991a653237c22fce32762d73b8c9e02))
+
+## [1.27.1](https://github.com/Headstorm/foundry-ui/compare/v1.27.0...v1.27.1) (2023-08-01)
+
+
+### Bug Fixes
+
+* **rangeslider:** fix readonly mode with new range slider interactions ([f239150](https://github.com/Headstorm/foundry-ui/commit/f23915089414ba352bdfca1a7fbf778a113f153f))
+
+# [1.27.0](https://github.com/Headstorm/foundry-ui/compare/v1.26.1...v1.27.0) (2023-08-01)
+
+
+### Features
+
+* **rangeslider:** add onChange and onDebounceChange callbacks to slider, and dragHandleBehavior ([7c9e8a7](https://github.com/Headstorm/foundry-ui/commit/7c9e8a73cf0d1f90696d02cae4c9e00bba8103e3))
+
+## [1.26.1](https://github.com/Headstorm/foundry-ui/compare/v1.26.0...v1.26.1) (2023-07-31)
+
+
+### Performance Improvements
+
+* reduce bundle size by improving lodash imports ([0a6d140](https://github.com/Headstorm/foundry-ui/commit/0a6d1405fdf5362064386dbc24afddd98e5eb9b3))
+
+# [1.26.0](https://github.com/Headstorm/foundry-ui/compare/v1.25.1...v1.26.0) (2023-07-28)
+
+
+### Features
+
+* **adds readonly prop to rangeslider component:** implemented readonly mode to RangeSlider ([bc8f150](https://github.com/Headstorm/foundry-ui/commit/bc8f1506d2b5f2cd0528f2fbb6aad99460f6cf17))
+
+## [1.25.1](https://github.com/Headstorm/foundry-ui/compare/v1.25.0...v1.25.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** modified isOpen prop on ArrowIconContainer in dropdown ([49af051](https://github.com/Headstorm/foundry-ui/commit/49af051eac907c13f2d4018f958feb38dab79cd6))
+* **dropdown.tsx:** transient instead to make the dom happy ([9492550](https://github.com/Headstorm/foundry-ui/commit/94925505dd04000c80971deb09c36676052317f2))
+
+# [1.25.0](https://github.com/Headstorm/foundry-ui/compare/v1.24.0...v1.25.0) (2023-07-18)
+
+
+### Features
+
+* **dropdown.tsx dropdown.stories.tsx:** removed showCloseIcon prop, replaced with clearable ([5b2d0a8](https://github.com/Headstorm/foundry-ui/commit/5b2d0a8f7081007c65ff0efe468fd321bc7e94ee)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** another reduction to blurring logic ([b114578](https://github.com/Headstorm/foundry-ui/commit/b1145787243b0b2ba6334a64b7c029b249a05fca)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** fixing blurring, placeholder persist ([7202f26](https://github.com/Headstorm/foundry-ui/commit/7202f26bd0dd6f7f96d8792efbecb29b6227e47e))
+* **dropdown.tsx:** improved naming to make code more readable ([9f9d925](https://github.com/Headstorm/foundry-ui/commit/9f9d92563cd407d6354f9304466862c5343b4de4)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** left multi in logic, removed and checked functionality of blur ([ca68fc0](https://github.com/Headstorm/foundry-ui/commit/ca68fc0acb546fa4e76add1f4cad02dfdff995c3)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** made logical statement shorter, reverified blur fucntionliaty ([5abcf09](https://github.com/Headstorm/foundry-ui/commit/5abcf09c05c61e5bf2dc83dbeee2bf3ffcd3d05c)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** modified logic for displaying count & close icon, made requested changes ([9214047](https://github.com/Headstorm/foundry-ui/commit/9214047629ea0a5ee565e4a0047e40e40017426d)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** modified placeholder logic again ([a197895](https://github.com/Headstorm/foundry-ui/commit/a197895f564dedcdb86090bfb87b5e58194b879d)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** removed unnecessary logic in blurring ([a99add3](https://github.com/Headstorm/foundry-ui/commit/a99add3fbfef80ba6e0928fb890b14540ab2edde))
+* **dropdown.tsx:** removing a console log ([2e69f32](https://github.com/Headstorm/foundry-ui/commit/2e69f328bb54f801dd17c4c362850e8146b7446b)), closes [#449](https://github.com/Headstorm/foundry-ui/issues/449)
+* **dropdown.tsx:** updated snapshots ([d1223b7](https://github.com/Headstorm/foundry-ui/commit/d1223b7b3292a966692a9a7fb5fe0704e6b3db4e)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** updated snapshots ([7fde800](https://github.com/Headstorm/foundry-ui/commit/7fde800f8e5b0df5aec34cfd74810616f8752977)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* **dropdown.tsx:** variant Support, show count, show close, show both, style-able, prop-able ([36ee394](https://github.com/Headstorm/foundry-ui/commit/36ee3945dffd9b39ab9682f710c79a58dc4b5161)), closes [#451](https://github.com/Headstorm/foundry-ui/issues/451)
+* snapshots ([74648b1](https://github.com/Headstorm/foundry-ui/commit/74648b1b9a78404a3484c7165cab9ff13a9c1d17))
+
+# [1.24.0](https://github.com/Headstorm/foundry-ui/compare/v1.23.1...v1.24.0) (2023-07-17)
+
+
+### Features
+
+* **drpdwn:** types ([1ddade3](https://github.com/Headstorm/foundry-ui/commit/1ddade3f356ba31b26bc2d87f61d0be02b9e930b)), closes [#450](https://github.com/Headstorm/foundry-ui/issues/450)
+
+## [1.23.1](https://github.com/Headstorm/foundry-ui/compare/v1.23.0...v1.23.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* **dropdown.tsx:** fixed inability to blur when searchable and multi and option selected ([921a318](https://github.com/Headstorm/foundry-ui/commit/921a318546b30dbab483ab970c33c467a38d402b)), closes [#448](https://github.com/Headstorm/foundry-ui/issues/448)
+
+# [1.23.0](https://github.com/Headstorm/foundry-ui/compare/v1.22.0...v1.23.0) (2023-07-10)
+
+
+### Features
+
+* **avatar:** creates Avatar Component ([984e1ec](https://github.com/Headstorm/foundry-ui/commit/984e1ecc4e6e94509a662974a15cb02c94764ced))
+
+# [1.22.0](https://github.com/Headstorm/foundry-ui/compare/v1.21.1...v1.22.0) (2023-07-05)
+
+
+### Features
+
+* **dropdown.tsx:** added isOpen to StyledArrowIconContainer ([61e52f4](https://github.com/Headstorm/foundry-ui/commit/61e52f4f845f9932a43ace452dfeb0caced34ca6))
+* **dropdown.tsx:** adds acess to isOpen state in StyledArrowIconContainer ([ab8cc0d](https://github.com/Headstorm/foundry-ui/commit/ab8cc0d9af2c453b09c753fdc72bc920ce73f3ff))
+
+## [1.21.1](https://github.com/Headstorm/foundry-ui/compare/v1.21.0...v1.21.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **table:** fix isSorted prop to HeaderCell, improve sorting performance ([24a697a](https://github.com/Headstorm/foundry-ui/commit/24a697af95c4040ce8436fec76d1962c59bf23d1))
+* **table:** fixes isSorted prop ([74f09ba](https://github.com/Headstorm/foundry-ui/commit/74f09ba1f1f4baae1f3c01d1661b157826330b35))
+
+# [1.21.0](https://github.com/Headstorm/foundry-ui/compare/v1.20.12...v1.21.0) (2023-06-26)
+
+
+### Features
+
+* **table:** improve sorting typing, add third click to unsort, remove mutation of data prop ([416d366](https://github.com/Headstorm/foundry-ui/commit/416d366da99cc5c9e18b579b6d19d80740ffec4a))
+
+## [1.20.12](https://github.com/Headstorm/foundry-ui/compare/v1.20.11...v1.20.12) (2023-06-20)
+
+
+### Bug Fixes
+
+* **table deps:** update use-resize-observer to v9.1.0 ([cb0f7fb](https://github.com/Headstorm/foundry-ui/commit/cb0f7fbff5e583d91d7e527b353b1145748f662b))
+
+## [1.20.11](https://github.com/Headstorm/foundry-ui/compare/v1.20.10...v1.20.11) (2023-06-19)
+
+
+### Bug Fixes
+
+* **table:** pass in row props, enhance sorting, improve responsiveness customization, improve types ([b4a2f36](https://github.com/Headstorm/foundry-ui/commit/b4a2f36f258e72c5644d41b43eafb800b44fb754)), closes [#433](https://github.com/Headstorm/foundry-ui/issues/433) [#434](https://github.com/Headstorm/foundry-ui/issues/434)
+
+## [1.20.10](https://github.com/Headstorm/foundry-ui/compare/v1.20.9...v1.20.10) (2023-02-25)
+
+
+### Bug Fixes
+
+* upgrade detect-gpu from 4.0.27 to 4.0.50 ([6312af4](https://github.com/Headstorm/foundry-ui/commit/6312af452c0fae2d7470a64d9ff53ca1eb6830ba))
+
+## [1.20.9](https://github.com/Headstorm/foundry-ui/compare/v1.20.8...v1.20.9) (2023-02-25)
+
+
+### Bug Fixes
+
+* upgrade @react-stately/toggle from 3.3.1 to 3.4.4 ([413e078](https://github.com/Headstorm/foundry-ui/commit/413e078ec6298f493139ffda8888cb954e62ac7f))
+
+## [1.20.8](https://github.com/Headstorm/foundry-ui/compare/v1.20.7...v1.20.8) (2023-01-19)
+
+
+### Bug Fixes
+
+* **analytics function:** switch nullish coalescing to a ternary to make foundry Node-14 compatible ([bcc8b57](https://github.com/Headstorm/foundry-ui/commit/bcc8b57a1e56fcc5205dcaf928d65d93889c2e97))
+
 ## [1.20.7](https://github.com/Headstorm/foundry-ui/compare/v1.20.6...v1.20.7) (2023-01-11)
 
 

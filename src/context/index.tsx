@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import * as rdd from 'react-device-detect';
+import { deviceDetect } from 'react-device-detect';
 import { TierResult, TierType } from 'detect-gpu';
 
 import { useReducedMotion } from '../utils/a11y';
@@ -55,8 +55,8 @@ export const defaultAnalyticsFunction: AnalyticsFunctionType = (
   dateTime,
   deviceInfo,
   currentURL,
-  name: props?.name ?? 'No name provided',
-  analytics: props?.analytics ?? 'No analytics object provided',
+  name: props?.name ? props.name : 'No name provided',
+  analytics: props?.analytics ? props.analytics : 'No analytics object provided',
 });
 
 export const defaultAccessibilityPreferences: AccessibilityPreferences = {
@@ -186,7 +186,7 @@ export const useAnalytics = (): ((
       eventFunction(eventArgs);
     }
     const dateTime = new Date();
-    const deviceInfo: Record<string, unknown> = rdd.deviceDetect();
+    const deviceInfo: Record<string, unknown> = deviceDetect();
     deviceInfo.innerHeight =
       typeof window !== 'undefined'
         ? window.innerHeight

@@ -143,12 +143,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // TODO: Some part of the create-react-app dependency set doesn't like
-  //   the latest version of jest/react-testing-library
-  //  See https://stackoverflow.com/questions/61036156/react-typescript-testing-typeerror-mutationobserver-is-not-a-constructor
-  //   for entrypoint into the conversation/band-aid fix. We should be able to use
-  //   the native jsdom environment once this issue is resolved.
-  testEnvironment: 'jest-environment-jsdom-sixteen',
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -174,7 +169,9 @@ module.exports = {
   // testRunner: 'jasmine2',
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  // testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    url: 'http://localhost:9009',
+  },
 
   // Setting this value to 'fake' allows the use of fake timers for functions such as 'setTimeout'
   // timers: 'real',

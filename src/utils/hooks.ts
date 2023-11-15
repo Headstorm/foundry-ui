@@ -1,4 +1,5 @@
-import { debounce, throttle } from 'lodash';
+import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useStateWithPrevious = <Type>(
@@ -21,10 +22,14 @@ export const useStateWithPrevious = <Type>(
   return [currentValue, previous.current, setCurrent];
 };
 
-// TODO: Generalize observer to observe any attribute of any element on when an event happens, with previous values, "onComplete" callback func, and an "isComplete" flag
+export type SizeObserverOptions = {
+  target?: HTMLElement | Element;
+};
+
 export const useWindowSizeObserver = (
   reportInterval = 0, // only cause rerenders in the component using the hook every X milliseconds
   resizeEndReportDelay = 50, // wait this long after the last resize event to update curr/prev values
+  options?: SizeObserverOptions,
 ): {
   width: number;
   height: number;
@@ -36,27 +41,45 @@ export const useWindowSizeObserver = (
   const [height, previousHeight, setHeight] = useStateWithPrevious(window.innerHeight);
   const [isResizing, setIsResizing] = useState(false);
 
+  const { target } = options || { target: undefined };
+
+  const recalculateBounds = useCallback(
+    (targetForCalculation?: SizeObserverOptions['target']) => {
+      if (targetForCalculation) {
+        setWidth(targetForCalculation.clientWidth);
+        setHeight(targetForCalculation.clientHeight);
+      } else {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+      }
+    },
+    [setHeight, setWidth],
+  );
+
   // if the resizing events stop for more than 100ms, set the previous widths/heights to the current
   // because this is based on async timing of debounce,
   // // the current/previous values will be delivered on the next render of the component using this hook.
-  const debouncedEndResize = debounce(
-    () => {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
-      setIsResizing(false);
-    },
-    resizeEndReportDelay,
-    { leading: false, trailing: true },
+  const debouncedEndResize = useCallback(
+    () =>
+      debounce(
+        () => {
+          recalculateBounds(target);
+          setIsResizing(false);
+        },
+        resizeEndReportDelay,
+        { leading: false, trailing: true },
+      ),
+    [recalculateBounds, resizeEndReportDelay, target],
   );
 
   const updateWindowBounds = useCallback(() => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
+    recalculateBounds(target);
+
     if (!isResizing) {
       setIsResizing(true);
     }
     debouncedEndResize();
-  }, [debouncedEndResize, isResizing, setHeight, setWidth]);
+  }, [debouncedEndResize, isResizing, recalculateBounds, target]);
 
   const throttledResizeHandler = throttle(updateWindowBounds, reportInterval);
 
@@ -71,9 +94,14 @@ export const useWindowSizeObserver = (
   return { width, height, previousWidth, previousHeight, isResizing };
 };
 
+export type ScrollObserverOptions = {
+  target?: HTMLElement | Element;
+};
+
 export const useScrollObserver = (
   reportInterval = 0, // only cause rerenders in the component using the hook every X milliseconds
   scrollEndReportDelay = 50, // wait this long after the last resize event to update curr/prev values
+  options?: ScrollObserverOptions,
 ): {
   scrollX: number;
   scrollY: number;
@@ -90,8 +118,13 @@ export const useScrollObserver = (
   // // the current/previous values will be delivered on the next render of the component using this hook.
   const debouncedEndScroll = debounce(
     () => {
-      setScrollX(window.scrollX);
-      setScrollY(window.scrollY);
+      if (options?.target) {
+        setScrollX(options?.target.scrollLeft);
+        setScrollY(options?.target.scrollTop);
+      } else {
+        setScrollX(window.scrollX);
+        setScrollY(window.scrollY);
+      }
       setIsScrolling(false);
     },
     scrollEndReportDelay,
@@ -99,23 +132,30 @@ export const useScrollObserver = (
   );
 
   const updateWindowBounds = useCallback(() => {
-    setScrollX(window.scrollX);
-    setScrollY(window.scrollY);
+    if (options?.target) {
+      setScrollX(options?.target.scrollLeft);
+      setScrollY(options?.target.scrollTop);
+    } else {
+      setScrollX(window.scrollX);
+      setScrollY(window.scrollY);
+    }
+
     if (!isScrolling) {
       setIsScrolling(true);
     }
     debouncedEndScroll();
-  }, [debouncedEndScroll, isScrolling, setScrollY, setScrollX]);
+  }, [options?.target, isScrolling, debouncedEndScroll, setScrollX, setScrollY]);
 
   const throttledScrollHandler = throttle(updateWindowBounds, reportInterval);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttledScrollHandler);
+    const finalTarget = options?.target ?? window;
+    finalTarget.addEventListener('scroll', throttledScrollHandler);
 
     return () => {
-      window.removeEventListener('scroll', throttledScrollHandler);
+      finalTarget.removeEventListener('scroll', throttledScrollHandler);
     };
-  }, [throttledScrollHandler]);
+  }, [throttledScrollHandler, options?.target]);
 
   return { scrollX, scrollY, previousScrollX, previousScrollY, isScrolling };
 };

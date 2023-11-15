@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor, configure } from '@testing-library/react';
-import Icon from '@mdi/react';
-import RangeSlider from '../RangeSlider';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import RangeSlider from '../RangeSlider';
 
 expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
@@ -11,7 +10,9 @@ const testId = 'hs-ui-range-slider-unit-test';
 
 describe('RangeSlider', () => {
   it('renders', async () => {
-    const { container, getByTestId } = render(<RangeSlider min={0} max={10} testId="unit-test" />);
+    const { container, getByTestId } = render(
+      <RangeSlider min={0} max={10} testId="unit-test" values={[0]} />,
+    );
 
     await waitFor(() => getByTestId(testId));
 
@@ -38,7 +39,7 @@ describe('RangeSlider', () => {
 
   describe('Accessibility Tests', () => {
     it('Should pass accessibility test with default props', async () => {
-      const component = <RangeSlider min={0} max={10} testId={testId} />;
+      const component = <RangeSlider min={0} max={10} testId={testId} values={[1]} />;
       const { container } = render(component);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -48,7 +49,7 @@ describe('RangeSlider', () => {
     it('containerRef.current should exist', async () => {
       const ref = React.createRef<HTMLDivElement>();
       const { getByTestId } = render(
-        <RangeSlider min={0} max={10} containerRef={ref} testId="unit-test" />,
+        <RangeSlider min={0} max={10} containerRef={ref} testId="unit-test" values={[1]} />,
       );
       await waitFor(() => getByTestId(testId));
       expect(ref.current instanceof HTMLDivElement).toBeTruthy();

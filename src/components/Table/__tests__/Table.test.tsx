@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { fireEvent, render, waitFor, configure } from '@testing-library/react';
-import Table from '../Table';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import Table from '../Table';
 
 expect.extend(toHaveNoViolations);
 configure({ testIdAttribute: 'data-test-id' });
@@ -19,11 +19,14 @@ describe('Table', () => {
           colors: { name: 'Colors' },
           numbers: { name: 'Numbers' },
         }}
-        defaultSort={['numbers', true]}
+        defaultSort={{
+          sortedColumnKey: 'numbers',
+          direction: Table.SortDirection.ascending,
+        }}
         data={[
-          { fruit: 'Apple', colors: 'Red', numbers: '1' },
           { fruit: 'Kiwi', colors: 'Brown', numbers: '2' },
           { fruit: 'Banana', colors: 'Yellow', numbers: '3' },
+          { fruit: 'Apple', colors: 'Red', numbers: '1' },
         ]}
       />,
     );

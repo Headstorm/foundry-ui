@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
 import { mdiArrowDown, mdiChevronDown, mdiChevronRight, mdiChevronUp } from '@mdi/js';
 import Icon from '@mdi/react';
 import {
+  StyledBaseDiv,
   StyledBaseSpan,
   StyledBaseTable,
   StyledBaseTD,
@@ -12,15 +13,16 @@ import {
 } from '../../htmlElements';
 import {
   CellOptions,
-  columnTypes,
+  Column,
   InternalExpansionIconProps,
+  RowEntry,
   RowProps,
+  SortDirection,
+  SortState,
   TableProps,
 } from './types';
 import { useAnalytics, useTheme } from '../../context';
 import { mergeRefs } from '../../utils/refs';
-
-type collapsedState = Record<string, string>;
 
 /** Start of styled components */
 
@@ -31,7 +33,7 @@ const StyledExpansionIconSpan = styled(StyledBaseSpan)`
 export const TableContainer = styled(StyledBaseTable)`
   ${({ reachedMinWidth }: { reachedMinWidth?: boolean }) => {
     const { colors } = useTheme();
-    return `
+    return css`
       width: ${reachedMinWidth ? '100%' : 'auto'};
       background-color: ${colors.background};
       border-collapse: collapse;
@@ -45,7 +47,7 @@ export const TableContainer = styled(StyledBaseTable)`
 export const Header = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths }: RowProps) => {
     const { colors } = useTheme();
-    return `
+    return css`
       display: grid;
       grid-template-columns: ${columnWidths};
       padding: 0em 2em;
@@ -59,7 +61,7 @@ export const Header = styled(StyledBaseTR)`
 `;
 
 export const HeaderCell = styled(StyledBaseTH)`
-  ${({ sortable }: { sortable: boolean }) => `
+  ${({ sortable }: { sortable: boolean }) => css`
     display: flex;
     flex-flow: row;
     cursor: pointer;
@@ -79,7 +81,7 @@ export const HeaderCell = styled(StyledBaseTH)`
 export const Footer = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths }: RowProps) => {
     const { colors } = useTheme();
-    return `
+    return css`
       display: grid;
       grid-template-columns: ${columnWidths};
       padding: 0em 2em;
@@ -105,17 +107,20 @@ export const FooterCell = styled(StyledBaseTH)`
   }
 `;
 
-export const ResponsiveTitle = styled(StyledBaseSpan)`
+export const ResponsiveHeaderCell = styled(StyledBaseSpan)`
   ${({ sortable }: { sortable: boolean }) => {
     const { colors } = useTheme();
-    return `
+    return css`
+      display: block;
+      word-break: break-word;
+      hyphens: auto;
       color: ${colors.primary};
-      padding: 0.5em;
       user-select: none;
+      padding: 0.5em;
       cursor: pointer;
-      margin-right: .5em;
-      background-color: rgba(0,0,0,0.05);
-      border-radius: .5rem;
+      margin-right: 0.5em;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
       ${sortable ? '' : 'pointer-events: none;'}
     `;
   }}
@@ -124,11 +129,11 @@ export const ResponsiveTitle = styled(StyledBaseSpan)`
 export const Row = styled(StyledBaseTR)`
   ${({ columnGap, columnWidths, reachedMinWidth, isCollapsed = false }: RowProps) => {
     const { colors } = useTheme();
-    return `
+    return css`
       display: grid;
       grid-template-columns: ${reachedMinWidth ? '100%' : columnWidths};
       padding: ${reachedMinWidth ? '1em' : '0em'} 2em;
-      row-gap: .5em;
+      row-gap: 0.5em;
       column-gap: ${columnGap};
       position: relative;
       background-color: ${colors.background};
@@ -142,17 +147,18 @@ export const Row = styled(StyledBaseTR)`
         content: '';
         z-index: 0;
         position: absolute;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.2);
+        background-color: rgba(0, 0, 0, 0.2);
         opacity: 0;
-        transition: opacity .3s;
+        transition: opacity 0.3s;
 
         pointer-events: none;
       }
       &:hover:before {
-        opacity: .3;
+        opacity: 0.3;
       }
     `;
   }}
@@ -169,26 +175,42 @@ export const GroupRow = styled(Row)`
 
 export const Cell = styled(StyledBaseTD)`
   display: block;
-  padding: 1em 0;
   word-break: break-word;
   hyphens: auto;
   width: unset;
+  padding: 0.5em 0;
 `;
 
+/** Accepts the `$direction` prop of type `SortDirection` */
 export const SortIcon = styled(Icon)`
-  ${({ direction }: { direction?: boolean | null }) => `
-    margin-left: 1em;
-    fill: white;
-    width: 1em;
-    transition: transform .2s, opacity .5s;
-    opacity: ${direction === null ? 0 : 1};
-    transform: rotate(${direction ? 0 : 180}deg);
-  `}
+  ${({ $direction }: { $direction?: SortDirection | boolean | null }) => {
+    if (typeof $direction === 'boolean') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'From FoundryUI Table: Passing a boolean to the `direction` prop on `SortIcon` is deprecated. Use the `Table.SortDirection` enum instead.',
+      );
+    }
+    return css`
+      margin-left: 1em;
+      fill: white;
+      width: 1em;
+      transition: transform 0.2s, opacity 0.5s;
+      opacity: ${$direction === null || $direction === SortDirection.noSort ? 0 : 1};
+      transform: rotate(
+        ${$direction === true || $direction === SortDirection.ascending ? 0 : 180}deg
+      );
+    `;
+  }};
+`;
+
+const CellContainer = styled(StyledBaseDiv)`
+  display: flex;
+  padding: 0.5em 0;
 `;
 
 /** Start of variables */
 
-const defaultCollapsed: collapsedState = {};
+const defaultCollapsed: Record<string, string> = {};
 
 // Default expansion column added if there isn't one
 const collapsedExpandedIconColumn = {
@@ -244,7 +266,7 @@ const Table = ({
   columns,
   areGroupsCollapsible = false,
   data = [],
-  defaultSort = ['', false], // key, direction
+  defaultSort = { sortedColumnKey: undefined, direction: SortDirection.noSort },
   groupHeaderPosition = 'above',
   expansionIconComponent,
   minWidthBreakpoint = 640,
@@ -255,25 +277,47 @@ const Table = ({
   StyledGroupLabelRow = GroupRow,
   StyledHeader = Header,
   StyledHeaderCell = HeaderCell,
+  StyledResponsiveHeaderCell = ResponsiveHeaderCell,
   StyledRow = Row,
   StyledFooter = Footer,
   StyledFooterCell = FooterCell,
+  StyledCellContainer = CellContainer,
+
   cellProps = {},
   containerProps = {},
   groupLabelRowProps = {},
   headerProps = {},
   headerCellProps = {},
+  responsiveHeaderCellProps = {},
   rowProps = {},
 
   containerRef,
   groupLabelRowRef,
   headerRef,
-  headerCellRef,
-}: TableProps) => {
-  const [sortedData, sortData] = useState(data);
-  const [sortMethod, setSortMethod] = useState(defaultSort);
+}: TableProps): JSX.Element => {
+  // Convert defaultSort argument if provided in the deprecated form [key, bool]
+  if (Array.isArray(defaultSort)) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'From FoundryUI Table: Passing `defaultSort` prop as type [string, boolean] is deprecated. Instead, pass an argument of type `Table.SortState`.',
+    );
+    let direction: SortDirection;
+
+    if (defaultSort[0] === '') {
+      direction = SortDirection.noSort;
+    } else {
+      direction = defaultSort[1] ? SortDirection.ascending : SortDirection.descending;
+    }
+    defaultSort = {
+      direction,
+      sortedColumnKey: defaultSort[0],
+    };
+  }
+
+  const [sortedData, setSortedData] = useState(data);
+  const [sortState, setSortState] = useState<SortState>(defaultSort);
   const [collapsedGroups, setCollapsedGroups] = useState(defaultCollapsed);
-  const { ref, width = Infinity } = useResizeObserver();
+  const { ref, width = Infinity } = useResizeObserver({ box: 'border-box' });
 
   const usingGroups: boolean = data && data.length > 0 && Array.isArray(data[0]);
   const copiedColumns = { ...columns }; // Shallow copy so not to manipulate props
@@ -283,7 +327,7 @@ const Table = ({
 
   // this builds the string from the columns
   const columnWidths = Object.values(copiedColumns)
-    .map((col: columnTypes[0]) => {
+    .map((col: Column) => {
       if (col.minTableWidth && width <= col.minTableWidth) {
         return '0px';
       }
@@ -300,7 +344,7 @@ const Table = ({
 
     // Make a copy of the dictionary-like object. Because this object
     // doesn't have nested objects, a shallow copy is fine
-    const temp: collapsedState = { ...collapsedGroups };
+    const temp = { ...collapsedGroups };
     if (group) {
       delete temp[key];
     } else {
@@ -311,83 +355,105 @@ const Table = ({
   };
 
   /**
+   * A compare function that returns a comparison integer (1 or -1).
+   * Used to compare the values at one column key across two different rows when sorting.
+   */
+  const compareEntries = (
+    entry1: any,
+    entry2: any,
+    column: Column,
+    sortDirection: SortDirection,
+  ) => {
+    // If this column has a sort custom sort function, use it.
+    if (column && Object.prototype.hasOwnProperty.call(column, 'sortFunction')) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
+      const customComparison = column.sortFunction(entry1, entry2);
+      if (sortDirection === SortDirection.ascending) {
+        return customComparison ? -1 : 1;
+      }
+      return customComparison ? 1 : -1;
+    }
+
+    // No sort function, use default comparison operator.
+    if (typeof entry1 === 'string' && typeof entry2 === 'string') {
+      const comparison =
+        sortDirection === SortDirection.ascending
+          ? entry1.toLocaleLowerCase() < entry2.toLocaleLowerCase()
+          : entry1.toLocaleLowerCase() > entry2.toLocaleLowerCase();
+      return comparison ? -1 : 1;
+    }
+
+    const comparison =
+      sortDirection === SortDirection.ascending ? entry1 < entry2 : entry1 > entry2;
+    return comparison ? -1 : 1;
+  };
+
+  /**
    * Sorts the data in the table. If the table is using groups, group contents are sorted.
    * If the group order is chosen to be sorted as well, the group contents are sorted, followed
    * by the sorting of the groups based on the first element in the group
    * @param key
    * @param newDirection
    */
-  const onSort = (key: string, newDirection: boolean) => {
+  const onSort = ({ sortedColumnKey: key, direction: newDirection }: SortState) => {
+    setSortState({ sortedColumnKey: key, direction: newDirection });
+    setCollapsedGroups(defaultCollapsed);
+
+    // no sort, reset data to passed-in data prop
+    if (key === undefined || newDirection === SortDirection.noSort) {
+      setSortedData(data);
+      return;
+    }
+
+    // Shallow copy the data to keep `data` prop un-mutated.
+    const localData = [...data];
+
     // If the first element of the data is not an array, then we do not have groups
-    if (!Array.isArray(data[0])) {
-      data.sort((a: any, b: any) => {
-        if (
-          copiedColumns[key] &&
-          Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
-        ) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
-          return copiedColumns[key].sortFunction(a[key], b[key]) ? -1 : 1;
-        }
-        const comparison = newDirection ? a[key] < b[key] : a[key] > b[key];
-        return comparison ? -1 : 1;
-      });
+    if (!Array.isArray(localData[0])) {
+      // No groups, sort all data
+      localData.sort((row1: any, row2: any) =>
+        compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
+      );
     } else {
-      // Cast data to the appropariate type and iterate over each group, sorting their content
-      (data as Array<Array<columnTypes>>).forEach(group => {
-        group.sort((a: any, b: any) => {
-          if (
-            copiedColumns[key] &&
-            Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
-          ) {
-            if (a.isGroupLabel || b.isGroupLabel) return 0;
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
-            return copiedColumns[key].sortFunction(a[key], b[key]) ? -1 : 1;
-          }
-          const comparison = newDirection ? a[key] < b[key] : a[key] > b[key];
-          return comparison ? -1 : 1;
-        });
+      // Shallow copy each group
+      for (let groupIndex = 0; groupIndex < localData.length; groupIndex++) {
+        localData[groupIndex] = [...(localData[groupIndex] as RowEntry[])];
+      }
+
+      // Sort the content of each group
+      (localData as Array<Array<RowEntry>>).forEach(group => {
+        group.sort((row1: any, row2: any) =>
+          compareEntries(row1[key], row2[key], copiedColumns[key], newDirection),
+        );
       });
 
-      // Sort the groups only if sortGroups is supplied as true
+      // Sort the groups
       if (sortGroups) {
-        (data as Array<Array<columnTypes>>).sort((a: any, b: any) => {
-          if (
-            copiedColumns[key] &&
-            Object.prototype.hasOwnProperty.call(copiedColumns[key], 'sortFunction')
-          ) {
-            if (a.isGroupLabel || b.isGroupLabel) return 0;
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore Cannot invoke an object which is possibly 'undefined'.ts(2722)
-            return copiedColumns[key].sortFunction(a[0][key], b[0][key]) ? -1 : 1;
-          }
-          const comparison = newDirection ? a[0][key] < b[0][key] : a[0][key] > b[0][key];
-          return comparison ? -1 : 1;
-        });
+        (localData as Array<Array<RowEntry>>).sort(
+          (group1: Array<RowEntry>, group2: Array<RowEntry>) =>
+            compareEntries(group1[0][key], group2[0][key], copiedColumns[key], newDirection),
+        );
       }
     }
 
-    sortData(data);
-    setSortMethod([key, newDirection]);
-    setCollapsedGroups(defaultCollapsed);
+    setSortedData(localData);
   };
 
   const handleEventWithAnalytics = useAnalytics();
-  const handleOnSort = (key: string, newDirection: boolean) =>
-    handleEventWithAnalytics(
-      'Table',
-      () => {
-        onSort(key, newDirection);
-      },
-      'onSort',
-      { type: 'onSort', key, newDirection },
-      { containerProps },
-    );
+  const handleOnSort = (sort: SortState) =>
+    handleEventWithAnalytics('Table', () => onSort(sort), 'onSort', sort, { containerProps });
 
   useEffect(() => {
-    handleOnSort(sortMethod[0], sortMethod[1]);
+    handleOnSort(sortState);
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const getNewSortState = (key: string): SortState => ({
+    sortedColumnKey: key,
+    // If we're changing sort state of an already-sorted column, cycle through direction. Otherwise, start at ascending.
+    direction:
+      sortState.sortedColumnKey === key ? (sortState.direction + 1) % 3 : SortDirection.ascending,
+  });
 
   /**
    * Creates a cell to render
@@ -395,7 +461,7 @@ const Table = ({
    * @param {any} options.RenderedCell - The component used as the cell
    * @param {string} options.headerColumnKey - The header column key for the cell
    * @param {boolean} options.breakPointHit - If the breakpoint has been hit for width
-   * @param {columnTypes} options.row - the data for the row, each cell should be able to the row's data
+   * @param {RowEntry} options.row - the data for the row, each cell should be able to the row's data
    * @param {number} options.index - The index of the cell in the row
    * @param {number} options.indexModifier - Used only when creating cells in a group. Used to account for group labels
    * @param {any} options.CollapseExpandedIcon - Component to be used for the collapse icon. Only used for collapsible group label cells
@@ -419,46 +485,57 @@ const Table = ({
   }: CellOptions): JSX.Element | false => {
     return (
       (!copiedColumns[headerColumnKey].minTableWidth || breakPointHit) && (
-        <RenderedCell
-          // all cells should have full access to all the data in the row
-          {...row}
-          index={index}
-          groupIndex={groupIndex}
-          reachedMinWidth={width < minWidthBreakpoint}
-          key={`${headerColumnKey}${index + indexModifier}`}
-          {...cellPropsInput}
-        >
-          {width < minWidthBreakpoint && (
-            <ResponsiveTitle
-              onClick={() => {
-                handleOnSort(
-                  headerColumnKey,
-                  headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
-                );
-              }}
-              sortable={copiedColumns[headerColumnKey].sortable}
-            >
-              {copiedColumns[headerColumnKey].name}
-              <SortIcon
-                direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
-                path={mdiArrowDown}
+        <StyledCellContainer>
+          {columns[headerColumnKey].name !== '' &&
+            width < minWidthBreakpoint &&
+            !groupLabelDataString && (
+              <StyledResponsiveHeaderCell
+                onClick={() => {
+                  handleOnSort(getNewSortState(headerColumnKey));
+                }}
+                sortable={copiedColumns[headerColumnKey].sortable}
+                isSorted={
+                  sortState.sortedColumnKey === headerColumnKey &&
+                  sortState.direction !== SortDirection.noSort
+                }
+                {...responsiveHeaderCellProps}
+              >
+                {copiedColumns[headerColumnKey].name}
+                <SortIcon
+                  $direction={
+                    sortState.sortedColumnKey && sortState.sortedColumnKey === headerColumnKey
+                      ? sortState.direction
+                      : SortDirection.noSort
+                  }
+                  path={mdiArrowDown}
+                />
+              </StyledResponsiveHeaderCell>
+            )}
+
+          <RenderedCell
+            // all cells should have full access to all the data in the row
+            {...row}
+            index={index}
+            groupIndex={groupIndex}
+            reachedMinWidth={width < minWidthBreakpoint}
+            key={`${headerColumnKey}${index + indexModifier}`}
+            {...cellPropsInput}
+          >
+            {row && row[headerColumnKey]}
+            {CollapseExpandedIcon &&
+            usingGroups &&
+            areGroupsCollapsible &&
+            headerColumnKey === ExpansionIconColumnName ? (
+              <CollapseExpandedIcon
+                isCollapsed={isCollapsed}
+                groupHeaderPosition={groupHeaderPosition}
+                onClick={() => {
+                  toggleGroupCollapse((groupLabelDataString || JSON.stringify(row)) + groupIndex);
+                }}
               />
-            </ResponsiveTitle>
-          )}
-          {row && row[headerColumnKey]}
-          {CollapseExpandedIcon &&
-          usingGroups &&
-          areGroupsCollapsible &&
-          headerColumnKey === ExpansionIconColumnName ? (
-            <CollapseExpandedIcon
-              isCollapsed={isCollapsed}
-              groupHeaderPosition={groupHeaderPosition}
-              onClick={() => {
-                toggleGroupCollapse((groupLabelDataString || JSON.stringify(row)) + groupIndex);
-              }}
-            />
-          ) : null}
-        </RenderedCell>
+            ) : null}
+          </RenderedCell>
+        </StyledCellContainer>
       )
     );
   };
@@ -469,9 +546,11 @@ const Table = ({
   const createGroups = () => {
     // Generate groupings - Note that we are making shallow copies of the arrays so that we do not
     // modify the props directly since this is an Array of Arrays.
-    return [...(sortedData as Array<Array<columnTypes>>)].map(
-      (group: Array<columnTypes>, idx: number) => {
+    return [...(sortedData as Array<Array<RowEntry>>)].map(
+      (group: Array<RowEntry>, idx: number) => {
         const groupLabelIndex: number = group.findIndex(grp => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           return grp.isGroupLabel === true;
         });
 
@@ -490,9 +569,10 @@ const Table = ({
         const isCollapsed = !!collapsedGroups[groupLabelDataString + idx];
 
         // Generate the rows for this group
-        const rows = groupCopy.map((row: columnTypes, index: number) => {
+        const rows = groupCopy.map((row: RowEntry, index: number) => {
           const RenderedRow = row.rowComponent || StyledRow;
           if (index === groupLabelIndex) return null;
+
           return (
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore - TS2604: JSX element type does not have any construct or call signatures
@@ -503,6 +583,7 @@ const Table = ({
               key={`row${JSON.stringify(row) + index}`}
               reachedMinWidth={width < minWidthBreakpoint}
               isCollapsed={areGroupsCollapsible && isCollapsed}
+              {...row}
               {...rowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
@@ -510,7 +591,7 @@ const Table = ({
                 const breakPointHit =
                   width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
 
-                const options = {
+                const options: CellOptions = {
                   RenderedCell,
                   headerColumnKey,
                   breakPointHit,
@@ -550,6 +631,7 @@ const Table = ({
               key={`row${groupLabelDataString}`}
               reachedMinWidth={width < minWidthBreakpoint}
               ref={groupLabelRowRef}
+              {...groupLabelData}
               {...groupLabelRowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
@@ -606,7 +688,7 @@ const Table = ({
 
     return (
       <tbody>
-        {(sortedData as Array<columnTypes>).map((row: columnTypes, index: number) => {
+        {(sortedData as Array<RowEntry>).map((row: RowEntry, index: number) => {
           // map over the rows
           const RenderedRow = row.rowComponent || StyledRow;
           // Rows.map return
@@ -619,6 +701,8 @@ const Table = ({
               rowNum={index}
               key={`row${JSON.stringify(row)}`}
               reachedMinWidth={width < minWidthBreakpoint}
+              {...row}
+              {...rowProps}
             >
               {Object.keys(copiedColumns).map(headerColumnKey => {
                 const RenderedCell = copiedColumns[headerColumnKey].cellComponent || StyledCell;
@@ -634,22 +718,21 @@ const Table = ({
     );
   };
 
-  // hasFooter
-  const hasFooter = Object.values(copiedColumns) // get the values of each column object
+  const hasFooter = Object.values(copiedColumns)
+    // this table has a footer if any of the columns have footerContent
     .some(col => {
-      // if any item here returns true for the below conditional
       return (
-        Object.prototype.hasOwnProperty.call(col, 'footerContent') && // has footerContent attribute
+        Object.prototype.hasOwnProperty.call(col, 'footerContent') &&
         col.footerContent !== null && // isn't null
-        col.footerContent !== undefined && // isn't undefined
+        col.footerContent !== undefined &&
         col.footerContent !== ''
-      ); // isn't empty string
+      );
     });
 
   // Table return
   return (
     <StyledContainer
-      ref={mergeRefs([ref, containerRef])}
+      ref={mergeRefs<HTMLTableElement>([ref, containerRef])}
       reachedMinWidth={width < minWidthBreakpoint}
       {...containerProps}
     >
@@ -666,24 +749,27 @@ const Table = ({
                 copiedColumns[headerColumnKey].headerCellComponent || StyledHeaderCell;
               const breakpointHit =
                 width > (copiedColumns[headerColumnKey].minTableWidth || Infinity);
+
               // columns.map return
               return (
                 (!copiedColumns[headerColumnKey].minTableWidth || breakpointHit) && (
                   <RenderedHeaderCell
                     key={headerColumnKey}
-                    onClick={() => {
-                      handleOnSort(
-                        headerColumnKey,
-                        headerColumnKey === sortMethod[0] ? !sortMethod[1] : true,
-                      );
-                    }}
+                    onClick={() => handleOnSort(getNewSortState(headerColumnKey))}
                     sortable={copiedColumns[headerColumnKey].sortable}
-                    ref={headerCellRef}
+                    isSorted={
+                      sortState.sortedColumnKey === headerColumnKey &&
+                      sortState.direction !== SortDirection.noSort
+                    }
                     {...headerCellProps}
                   >
                     {copiedColumns[headerColumnKey].name}
                     <SortIcon
-                      direction={sortMethod[0] === headerColumnKey ? sortMethod[1] : null}
+                      $direction={
+                        sortState.sortedColumnKey && sortState.sortedColumnKey === headerColumnKey
+                          ? sortState.direction
+                          : SortDirection.noSort
+                      }
                       path={mdiArrowDown}
                     />
                   </RenderedHeaderCell>
@@ -722,7 +808,13 @@ Table.HeaderCell = HeaderCell;
 Table.Row = Row;
 Table.GroupRow = GroupRow;
 Table.Cell = Cell;
-Table.Title = ResponsiveTitle;
+/**
+ * @deprecated use Table.ResponsiveTitle
+ */
+Table.Title = ResponsiveHeaderCell;
+Table.ResponsiveHeaderCell = ResponsiveHeaderCell;
+Table.CellContainer = CellContainer;
 Table.ExpansionIconColumnName = ExpansionIconColumnName;
+Table.SortDirection = SortDirection;
 
 export default Table;

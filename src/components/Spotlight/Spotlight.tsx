@@ -1,8 +1,17 @@
-import React, { useEffect, useMemo } from 'react';
+import React, {
+  MouseEvent,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from '@react-spring/web';
 import { Portal } from 'react-portal';
 
+import { mergeRefs } from '../../utils/refs';
 import { SubcomponentPropsType, StyledSubcomponentType } from '../commonTypes';
 import { useScrollObserver, useWindowSizeObserver } from '../../utils/hooks';
 import { useTheme, useAnalytics } from '../../context';
@@ -45,23 +54,40 @@ export enum SpotlightShapes {
   'roundedBox' = 'rounded box',
 }
 
+// Recursively crawl the dom to find the nearest scrolling parent of the target element
+const findNearestScrollingParent = (el: HTMLElement | Element): HTMLElement | Element | null => {
+  const parent = el.parentElement;
+
+  if (parent && parent.tagName !== 'HTML') {
+    if (parent?.scrollHeight > parent?.clientHeight) {
+      // found it!
+      return parent;
+    }
+    return findNearestScrollingParent(parent);
+  }
+
+  // passing it back down
+  return null;
+};
+
 export type SpotlightProps = {
   StyledContainer?: StyledSubcomponentType;
   containerProps?: SubcomponentPropsType;
-  containerRef?: React.RefObject<HTMLElement>;
+  containerRef?: RefObject<HTMLElement>;
 
   StyledAnnotation?: StyledSubcomponentType;
   annotationProps?: SubcomponentPropsType;
-  annotationRef?: React.RefObject<HTMLElement>;
+  annotationRef?: RefObject<HTMLElement>;
 
-  children?: React.ReactNode;
-  targetElement?: HTMLElement;
+  children?: ReactNode;
+  targetElement?: HTMLElement | Element;
+  scrollingParentElement?: HTMLElement | Element;
   backgroundBlur?: string;
   backgroundDarkness?: number;
   shape?: SpotlightShapes;
   cornerRadius?: number;
   padding?: number;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
   animateTargetChanges?: boolean;
   // onAnimationEnd?: ControllerProps['onRest'];
   onAnimationEnd?: () => void;
@@ -81,6 +107,7 @@ const Spotlight = ({
 
   children,
   targetElement,
+  scrollingParentElement, // this will get automatically picked if not defined
   backgroundBlur = '0.25rem',
   backgroundDarkness = 0.3,
   shape = SpotlightShapes.circular,
@@ -94,16 +121,82 @@ const Spotlight = ({
   scrollUpdateInterval = 0,
 }: SpotlightProps): JSX.Element | null => {
   const handleEventWithAnalytics = useAnalytics();
+  const scrollTarget = useRef(scrollingParentElement || null);
+
   const {
     width: windowWidth,
     height: windowHeight,
     isResizing,
-  } = useWindowSizeObserver(resizeUpdateInterval);
-  const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval);
+  } = useWindowSizeObserver(resizeUpdateInterval, 50);
+
+  const { scrollY, isScrolling } = useScrollObserver(scrollUpdateInterval, 50, {
+    target: scrollTarget.current || undefined,
+  });
+
   const {
     performanceInfo: { tier: gpuTier },
     accessibilityPreferences: { prefersReducedMotion },
   } = useTheme();
+
+  const internalAnnotationRef: RefObject<HTMLElement> = useRef(null);
+
+  /* Scroll to new position if need-be */
+
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+
+  useEffect(() => {
+    if (targetElement && !scrollTarget.current) {
+      scrollTarget.current = findNearestScrollingParent(targetElement);
+    }
+  }, [targetElement]);
+
+  useEffect(() => {
+    if (targetElement) {
+      const newTargetTop = targetElement?.getBoundingClientRect().top ?? 0;
+      const annotationHeight = internalAnnotationRef?.current?.getBoundingClientRect().height;
+      // TODO: https://github.com/Headstorm/foundry-ui/issues/315
+      // This assumes the annotation is above the target
+      // when custom above/under alignment is implemented, this logic should change
+      // (if the annotation is below the target, this should be an addition, not subtraction)
+      const offset = annotationHeight ? newTargetTop - annotationHeight : newTargetTop;
+
+      if (scrollTarget.current) {
+        // TODO: https://github.com/Headstorm/foundry-ui/issues/483
+        // compare offset with the scrollTarget scrollHeight,
+        // if it's larger, subtract them and scroll the window next
+
+        scrollTarget.current.scrollTo({
+          top: offset,
+          left: 0,
+          behavior: !animateTargetChanges || prefersReducedMotion ? 'auto' : 'smooth',
+        });
+      } else {
+        window.scrollBy({
+          top: offset,
+          left: 0,
+          behavior: !animateTargetChanges || prefersReducedMotion ? 'auto' : 'smooth',
+        });
+      }
+
+      setIsAutoScrolling(true);
+    }
+  }, [
+    animateTargetChanges,
+    internalAnnotationRef,
+    prefersReducedMotion,
+    scrollTarget,
+    targetElement,
+  ]);
+
+  useEffect(() => {
+    // check if auto scroll has completed
+    if (isScrolling === false && isAutoScrolling === true) {
+      setIsAutoScrolling(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScrolling]);
+
+  /* Build spotlight shape */
 
   const rect = useMemo<Pick<DOMRect, 'x' | 'y' | 'width' | 'height' | 'bottom' | 'right'>>(() => {
     const defaultVal = {
@@ -174,6 +267,8 @@ const Spotlight = ({
   `;
   const finalRectangularPath = `${outerRectPath} ${innerShapePath}`;
 
+  /* Setup animation */
+
   const [
     {
       containerFilter,
@@ -218,10 +313,14 @@ const Spotlight = ({
     leftBlurHeight: rect.height + 2,
 
     rightBlurY: rect.y,
-    rightBlurWidth: windowWidth - rect.right,
+    rightBlurWidth: windowWidth - rect.right - padding - 4,
     rightBlurHeight: rect.height + 2,
+    immediate:
+      !animateTargetChanges ||
+      prefersReducedMotion ||
+      (isScrolling && !isAutoScrolling) ||
+      isResizing,
     config: {
-      immediate: !animateTargetChanges || prefersReducedMotion || isScrolling || isResizing,
       round: gpuTier < 2 ? 1 : undefined,
       ...animationSpringConfig,
     },
@@ -237,10 +336,10 @@ const Spotlight = ({
       lightPath: finalRectangularPath,
       circularLightPath: circularPath,
 
-      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`,
+      annotationTransform: `translate(${rect.x}px, ${rect.y}px) translate(0%, -100%)`, // TODO: change second translate to make different attach positions https://github.com/Headstorm/foundry-ui/issues/315
 
       topBlurWidth: windowWidth,
-      topBlurHeight: rect.y - 1,
+      topBlurHeight: Math.max(rect.y - 1, 0),
 
       bottomBlurY: rect.bottom,
       bottomBlurWidth: windowWidth,
@@ -251,10 +350,15 @@ const Spotlight = ({
       leftBlurHeight: rect.height + 2,
 
       rightBlurY: rect.y,
-      rightBlurWidth: windowWidth - rect.right,
+      rightBlurWidth: windowWidth - rect.right - padding - 4,
       rightBlurHeight: rect.height + 2,
 
       onRest: onAnimationEnd,
+      immediate:
+        !animateTargetChanges ||
+        prefersReducedMotion ||
+        (isScrolling && !isAutoScrolling) ||
+        isResizing,
     }));
   }, [
     targetElement,
@@ -266,6 +370,8 @@ const Spotlight = ({
     windowWidth,
     windowHeight,
     isScrolling,
+    scrollY,
+    isAutoScrolling,
     isResizing,
     spring,
     finalRectangularPath,
@@ -278,9 +384,13 @@ const Spotlight = ({
     animateTargetChanges,
     onAnimationEnd,
     gpuTier,
+    prefersReducedMotion,
   ]);
 
-  const handleClick = (evt: React.MouseEvent) => {
+  /* onClick */
+
+  const handleClick = (evt: MouseEvent) => {
+    // TODO: Rename to onClickOutside?
     handleEventWithAnalytics('Spotlight', onClick, 'onClick', evt, containerProps);
   };
 
@@ -348,7 +458,7 @@ const Spotlight = ({
       </svg>
       <StyledAnnotation
         style={{ transform: annotationTransform }}
-        ref={annotationRef}
+        ref={mergeRefs<HTMLElement>([annotationRef, internalAnnotationRef])}
         {...annotationProps}
       >
         {children}

@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import styled, { css } from 'styled-components';
 import Icon from '@mdi/react';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import { mdiClose } from '@mdi/js';
 import { darken } from 'polished';
 
@@ -170,7 +170,7 @@ export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
     characterCountProps?: SubcomponentPropsType;
 
     containerRef?: React.RefObject<HTMLDivElement>;
-    inputRef?: React.RefObject<HTMLInputElement>;
+    inputRef?: React.RefObject<HTMLInputElement> | ((inst: HTMLInputElement) => void);
     iconContainerRef?: React.RefObject<HTMLDivElement>;
     clearButtonContainerRef?: React.RefObject<HTMLButtonElement>;
     errorContainerRef?: React.RefObject<HTMLDivElement>;
@@ -221,7 +221,7 @@ const TextInput = ({
   const handleEventWithAnalytics = useAnalytics();
   const theme = useTheme();
 
-  const handleDebouncedOnChange = (e: any) =>
+  const handleDebouncedOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     handleEventWithAnalytics(
       'TextInput',
       debouncedOnChange,
@@ -314,7 +314,7 @@ const TextInput = ({
           debouncedChange(e);
         }}
         multiLineIsResizable={multiLineIsResizable}
-        ref={mergeRefs([inputRef, internalInputRef])}
+        ref={internalInputRef ? mergeRefs<HTMLInputElement>([inputRef, internalInputRef]) : null}
         {...inputProps}
       />
       {clearable && (

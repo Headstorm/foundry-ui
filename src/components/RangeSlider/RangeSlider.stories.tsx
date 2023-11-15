@@ -1,14 +1,15 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import styled from 'styled-components';
-import { action } from '@storybook/addon-actions';
 import { Story, Meta } from '@storybook/react';
 import { readableColor, toColorString } from 'polished';
 
+import { action } from '@storybook/addon-actions';
 import { withFoundryContext } from '../../../.storybook/decorators';
 import fonts from '../../enums/fonts';
 import colors from '../../enums/colors';
 import RangeSlider, { SlideRail } from './RangeSlider';
-import { RangeSliderProps } from './types';
+import { RangeSliderProps, ValueProp } from './types';
+
 import Card from '../Card';
 
 const Row = styled.div`
@@ -68,12 +69,12 @@ export const Default: Story<DefaultProps> = ({
   disabled,
   showDomainLabels,
   showSelectedRange,
-  motionBlur,
-  springOnRelease,
   min,
   max,
+  dragHandleAttachment,
+  readonly,
   debounceInterval,
-  axisLock,
+  animated,
 }: DefaultProps) => {
   const [val, setVal] = useState(value);
 
@@ -82,7 +83,7 @@ export const Default: Story<DefaultProps> = ({
   }, [value]);
 
   const markersSelection = markers;
-  const markersArray = [];
+  const markersArray: Array<number | ValueProp> = [];
   if (markersSelection === 'all values') {
     for (let i = min; i <= max; i++) {
       markersArray.push(markerLabels ? { value: i, label: `${i}` } : i);
@@ -96,24 +97,19 @@ export const Default: Story<DefaultProps> = ({
     <Row>
       <RangeSlider
         disabled={disabled}
+        readonly={readonly}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
-        motionBlur={motionBlur}
-        springOnRelease={springOnRelease}
+        animated={animated}
         min={min}
         max={max}
         debounceInterval={debounceInterval}
-        onDrag={(newVal: number) => {
+        onChange={newVal => {
+          action('onChange')(newVal);
           setVal(Math.round(newVal));
-          action('onDrag')(newVal);
         }}
-        axisLock={axisLock}
-        values={[
-          {
-            value: val,
-            label: val,
-          },
-        ]}
+        dragHandleAttachment={dragHandleAttachment}
+        values={[{ value: val, label: val }]}
         markers={markersArray as RangeSliderProps['markers']}
       />
     </Row>
@@ -126,13 +122,13 @@ Default.args = {
   markers: 'none',
   'use marker labels': false,
   disabled: false,
+  readonly: false,
   showDomainLabels: false,
   showHandleLabels: true,
   showSelectedRange: true,
-  motionBlur: false,
-  springOnRelease: true,
-  debounceInterval: 8,
-  axisLock: 'x',
+  dragHandleAttachment: 'value',
+  debounceInterval: 10,
+  animated: true,
 };
 
 type RatingProps = Omit<RangeSliderProps, 'markers'> & {
@@ -144,18 +140,10 @@ export const Rating: Story<RatingProps> = ({
   disabled,
   showDomainLabels,
   showSelectedRange,
-  motionBlur,
-  springOnRelease,
   min,
   max,
-  debounceInterval,
-  axisLock,
 }: RatingProps) => {
   const [val, setVal] = useState(value);
-
-  useEffect(() => {
-    setVal(value);
-  }, [value]);
 
   return (
     <Row>
@@ -165,16 +153,12 @@ export const Rating: Story<RatingProps> = ({
         disabled={disabled}
         showDomainLabels={showDomainLabels}
         showSelectedRange={showSelectedRange}
-        motionBlur={motionBlur}
-        springOnRelease={springOnRelease}
         min={min}
         max={max}
-        debounceInterval={debounceInterval}
-        onDrag={(newVal: number) => {
+        onChange={newVal => {
+          action('onChange')(newVal);
           setVal(Math.round(newVal));
-          action('onDrag')(newVal);
         }}
-        axisLock={axisLock}
         values={[
           {
             value: val,
@@ -191,12 +175,8 @@ Rating.args = {
   disabled: false,
   showDomainLabels: false,
   showSelectedRange: false,
-  motionBlur: false,
-  springOnRelease: true,
   min: 0,
   max: 5,
-  debounceInterval: 8,
-  axisLock: 'x',
 };
 
 interface ColorPickerProps {
@@ -205,6 +185,7 @@ interface ColorPickerProps {
   saturation: number;
   disabled: boolean;
   showDomainLabels: boolean;
+  debounceInterval: number;
 }
 
 export const ColorPicker: Story<ColorPickerProps> = ({
@@ -213,6 +194,7 @@ export const ColorPicker: Story<ColorPickerProps> = ({
   saturation,
   disabled,
   showDomainLabels,
+  debounceInterval,
 }: ColorPickerProps) => {
   const [hue_, setHue] = useState(hue);
   const [sat, setSat] = useState(saturation);
@@ -272,9 +254,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           showSelectedRange={false}
           min={0}
           max={360}
-          onDrag={(val: number) => {
+          debounceInterval={debounceInterval}
+          onDebounceChange={val => {
+            action('onDebounceChange hue')(val);
             setHue(Math.round(val));
-            action('onDrag hue')(val);
           }}
           values={[
             {
@@ -299,9 +282,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           ))}
           min={0}
           max={100}
-          onDrag={(val: number) => {
+          debounceInterval={debounceInterval}
+          onDebounceChange={val => {
+            action('onDebounceChange saturation')(val);
             setSat(Math.round(val));
-            action('onDrag saturation')(val);
           }}
           showDomainLabels={false}
           showSelectedRange={false}
@@ -330,9 +314,10 @@ export const ColorPicker: Story<ColorPickerProps> = ({
           ))}
           min={0}
           max={100}
-          onDrag={(val: number) => {
+          debounceInterval={debounceInterval}
+          onDebounceChange={val => {
+            action('onDebounceChange lightness')(val);
             setLight(Math.round(val));
-            action('onDrag light')(val);
           }}
           showDomainLabels={false}
           showSelectedRange={false}
@@ -354,6 +339,7 @@ ColorPicker.args = {
   lightness: 50,
   disabled: false,
   showDomainLabels: false,
+  debounceInterval: 10,
 };
 
 export default {
@@ -386,12 +372,6 @@ export default {
         step: 1,
       },
     },
-    axisLock: {
-      options: ['x', 'y', ''],
-      control: {
-        type: 'select',
-      },
-    },
     markers: {
       options: ['none', 'all values', 'middle value'],
       control: {
@@ -421,6 +401,12 @@ export default {
         max: 100,
         step: 1,
       },
+    },
+    dragHandleAttachment: {
+      control: {
+        type: 'radio',
+      },
+      options: ['mouse', 'value'],
     },
   },
   decorators: [withFoundryContext],

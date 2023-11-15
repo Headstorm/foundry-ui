@@ -72,7 +72,7 @@ const InteractionFeedback = ({
   // interpolationFunctions = defaultInterpolationFunctions,
   transitionProps = { ...defaultTransitionProps },
 }: InteractionFeedbackProps): JSX.Element => {
-  const internalRef = useRef<HTMLDivElement>();
+  const internalRef = useRef<HTMLDivElement>(null);
   const { ref, width = 0, height = 0 } = useResizeObserver<HTMLDivElement>();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
@@ -144,7 +144,7 @@ const InteractionFeedback = ({
 
   return (
     <StyledContainer
-      ref={mergeRefs([ref, internalRef, containerRef])}
+      ref={mergeRefs<HTMLDivElement>([ref, internalRef, containerRef])}
       onMouseDown={handleMouseDown}
       {...containerProps}
     >

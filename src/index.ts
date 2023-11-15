@@ -15,6 +15,7 @@ import TextInput from './components/TextInput';
 import Toggle from './components/Toggle';
 import Progress from './components/Progress';
 import Skeleton from './components/Skeleton';
+import Avatar from './components/Avatar';
 import { FoundryProvider, FoundryContext, useTheme, withGlobalStyle } from './context';
 import { useStateWithPrevious, useWindowSizeObserver, useScrollObserver } from './utils/hooks';
 import { clamp } from './utils/math';
@@ -62,6 +63,7 @@ export {
   StyledBaseTextArea,
   withGlobalStyle,
   // Components
+  Avatar,
   Button,
   Card,
   Checkbox,

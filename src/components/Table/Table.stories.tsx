@@ -8,7 +8,7 @@ import { name, address, company, commerce } from 'faker';
 
 import Table, { ExpansionIconColumnName } from './Table';
 import Checkbox from '../Checkbox/Checkbox';
-import { columnTypes, ExpansionIconProps } from './types';
+import { Columns, ExpansionIconProps, RowEntry } from './types';
 import { CheckboxTypes } from '../../enums/checkboxTypes';
 
 type SampleDataType = {
@@ -47,7 +47,7 @@ const NoteField = styled.textarea`
 `;
 
 const generateSampleData = (rows: number): SampleDataType[] => {
-  const finalData = [];
+  const finalData: Array<RowEntry> = [];
 
   for (let i = 0; i < rows; i += 1) {
     finalData.push({
@@ -62,9 +62,10 @@ const generateSampleData = (rows: number): SampleDataType[] => {
 };
 
 const generateSampleGroups = (numberOfGroups = 5, groupSize = 5): Array<SampleDataType[]> => {
-  const groupData = [];
+  const groupData: Array<Array<RowEntry>> = [];
   for (let i = 0; i < numberOfGroups; i++) {
     const groupRows = generateSampleData(groupSize);
+    // Add group title row
     groupRows.push({
       title: `${commerce.department()} Department`,
       isGroupLabel: true,
@@ -179,7 +180,7 @@ export const Default: Story<DefaultProps> = ({
     </ActionCellContainer>
   );
 
-  const sampleColumns: { [index: string]: any } = {
+  const sampleColumns: Columns = {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
@@ -192,6 +193,7 @@ export const Default: Story<DefaultProps> = ({
       name: 'Name',
       width: nameWidth,
       footerContent: 'NameFooter',
+      sortable: true,
     },
     title: {
       name: 'Title',
@@ -208,7 +210,8 @@ export const Default: Story<DefaultProps> = ({
       width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
-      sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
+      sortable: true,
+      sortFunction: (a: string, b: string) => a.length < b.length,
       footerContent: 'NotesFooter',
     },
     action: {
@@ -220,7 +223,7 @@ export const Default: Story<DefaultProps> = ({
     },
   };
 
-  return <Table columns={sampleColumns} data={rows as columnTypes[]} />;
+  return <Table columns={sampleColumns} data={rows} />;
 };
 Default.args = {
   'Selection width': '2rem',
@@ -334,13 +337,17 @@ export const Groups: Story<GroupsProps> = ({
 
   const EmptyCell = () => <Table.Cell />;
 
-  const NotesCell = ({ notes }: { notes: string }) => (
+  interface NotesCellProps {
+    notes: string;
+  }
+
+  const NotesCell: React.FC<NotesCellProps> = ({ notes }) => (
     <Table.Cell>
       <NoteField onChange={() => {}} rows={3} value={notes} />
     </Table.Cell>
   );
 
-  const sampleColumns: { [index: string]: any } = {
+  const sampleColumns: Columns = {
     selection: {
       name: '',
       headerCellComponent: SelectAllCell,
@@ -353,26 +360,24 @@ export const Groups: Story<GroupsProps> = ({
     name: {
       name: 'Name',
       width: nameWidth,
-      // footerContent: 'NameFooter',
+      sortable: true,
     },
     title: {
       name: 'Title',
       width: titleWidth,
-      // footerContent: 'TitleFooter',
+      sortable: true,
     },
     address: {
       name: 'Address',
       width: addressWidth,
-      // footerContent: 'AddressFooter',
     },
     notes: {
       name: 'Notes',
       width: notesWidth,
       cellComponent: NotesCell,
       minTableWidth: 800,
-      sortFunction: (a: string, b: string) => (a.length > b.length ? -1 : 1),
+      sortFunction: (a: string, b: string) => a.length < b.length,
       groupCellComponent: EmptyCell,
-      // footerContent: 'NotesFooter',
     },
   };
 
@@ -389,11 +394,15 @@ export const Groups: Story<GroupsProps> = ({
   return (
     <Table
       columns={sampleColumns}
-      data={rows as columnTypes[][]}
+      data={rows}
       sortGroups={sortGroups}
       groupHeaderPosition={position}
       areGroupsCollapsible={areGroupsCollapsible}
       expansionIconComponent={useCustomLabel ? expansionIconOverride : undefined}
+      defaultSort={{
+        sortedColumnKey: 'name',
+        direction: Table.SortDirection.ascending,
+      }}
     />
   );
 };
@@ -403,7 +412,7 @@ Groups.args = {
   'Expansion Icon width': '1rem',
   groupLabelPosition: 'above',
   useCustomLabel: false,
-  sortGroups: false,
+  sortGroups: true,
   areGroupsCollapsible: false,
 };
 
