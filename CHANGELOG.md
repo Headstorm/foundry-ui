@@ -1,3 +1,11 @@
+## [1.27.6](https://github.com/Headstorm/foundry-ui/compare/v1.27.5...v1.27.6) (2023-11-15)
+
+
+### Bug Fixes
+
+* **table:** default table sorting now correctly ignores capitalized letters in sort ([de312b9](https://github.com/Headstorm/foundry-ui/commit/de312b9f82e3b4463d950c463c36552dc32bdde1)), closes [#479](https://github.com/Headstorm/foundry-ui/issues/479)
+* **table:** default table sorting now correctly ignores capitalized letters in sort ([#489](https://github.com/Headstorm/foundry-ui/issues/489)) ([1069d90](https://github.com/Headstorm/foundry-ui/commit/1069d90960b37bb0dea949b50dc67f9f2a61b695)), closes [#479](https://github.com/Headstorm/foundry-ui/issues/479)
+
 ## [1.27.5](https://github.com/Headstorm/foundry-ui/compare/v1.27.4...v1.27.5) (2023-11-02)
 
 
