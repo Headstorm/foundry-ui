@@ -25,6 +25,18 @@ BasicButton.args = {
   color: colors.primaryDark,
   disabled: false,
   feedbackType: FeedbackTypes.ripple,
+  // interactionFeedbackProps: {
+  //   transitionProps: {
+  //     from: {
+  //       opacity: 0.5,
+  //       r: 0,
+  //     },
+  //     enter: {
+  //       opacity: 0,
+  //       r: 100,
+  //     },
+  //   },
+  // },
   isLoading: false,
   elevation: 1,
   isProcessing: false,

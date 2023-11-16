@@ -1,4 +1,4 @@
-import { animated, useTransition } from '@react-spring/web';
+import { animated, useSprings } from '@react-spring/web';
 import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer/polyfilled';
@@ -21,7 +21,8 @@ const SVGContainer = styled.svg`
 `;
 
 type Animation = { cx: string; cy: string; id: string };
-type Transition = { r: string } & Animation;
+// type Transition = { r: string } & Animation;
+
 export type InteractionFeedbackProps = {
   StyledContainer?: StyledSubcomponentType;
   StyledSVGContainer?: StyledSubcomponentType;
@@ -30,23 +31,23 @@ export type InteractionFeedbackProps = {
 
   children?: React.ReactNode;
   color?: string;
-  interpolationFunctions?: Record<string, (val: any) => any>;
+  // interpolationFunctions?: Record<string, (val: any) => any>;
   // TODO add proper type from react-spring
-  transitionProps?: any;
+  transitionProps?: Record<string, Record<string, any>>;
   containerRef?: React.RefObject<HTMLDivElement>;
   SVGContainerRef?: React.RefObject<SVGElement>;
 };
 
-const defaultInterpolationFunctions = {
-  r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val)).toFixed(1)}`),
-  opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
-};
+// const defaultInterpolationFunctions = {
+//   r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val)).toFixed(1)}`),
+//   opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
+// };
 const defaultTransitionProps = {
   from: {
-    r: 0,
+    r: 20,
     opacity: 0.5,
   },
-  enter: {
+  to: {
     r: 100,
     opacity: 0,
   },
@@ -55,7 +56,7 @@ const defaultTransitionProps = {
     tension: 1000,
     friction: 20,
     round: 1,
-    clamp: false,
+    clamp: true,
   },
 };
 const InteractionFeedback = ({
@@ -68,26 +69,41 @@ const InteractionFeedback = ({
   color = colors.primary,
 
   children,
-  interpolationFunctions = defaultInterpolationFunctions,
+  // interpolationFunctions = defaultInterpolationFunctions,
   transitionProps = { ...defaultTransitionProps },
 }: InteractionFeedbackProps): JSX.Element => {
   const internalRef = useRef<HTMLDivElement>(null);
   const { ref, width = 0, height = 0 } = useResizeObserver<HTMLDivElement>();
   const [animations, setAnimations] = useState<Array<Animation>>([]);
 
-  const transitions = useTransition(animations, {
-    keys: (item: Animation) => item.id,
-    onRest: (item: Transition) => setAnimations(a => a.filter(ani => ani.id === item.id)),
-    ...transitionProps,
-  });
-  const fragment = transitions((style, item) => {
-    const circleProps = Object.entries(style).reduce((acc, [key, val]) => {
-      return {
-        ...acc,
-        [key]: interpolationFunctions[key] ? interpolationFunctions[key](val) : val,
-      };
-    }, {});
-    return <animated.circle cx={item.cx} cy={item.cy} fill={color} {...circleProps} />;
+  const [springs, springApi] = useSprings(
+    animations.length,
+    i => ({
+      onStart: () => {
+        console.log('started');
+      },
+      onChange: () => {
+        console.log('m');
+      },
+      onRest: (result, spring, item) => {
+        setAnimations(a => a.filter(ani => ani.id === animations[i].id));
+        console.log(result, spring, item);
+      },
+      ...transitionProps,
+    }),
+    [],
+  );
+
+  const fragment = springs.map((style, ind) => {
+    return (
+      <animated.circle
+        key={animations[ind].id}
+        cx={animations[ind].cx}
+        cy={animations[ind].cy}
+        fill={color}
+        {...style}
+      />
+    );
   });
 
   const mouseDownHandler = useCallback(
@@ -99,10 +115,21 @@ const InteractionFeedback = ({
         const percentX = (100 * (clientX - boundingRect.left)) / boundingRect.width;
         const percentY = (100 * (clientY - boundingRect.top)) / boundingRect.height;
 
-        setAnimations(a => [...a, { cx: `${percentX}%`, cy: `${percentY}%`, id: randomId(18) }]);
+        const newAnimation = {
+          cx: `${percentX}%`,
+          cy: `${percentY}%`,
+          id: `${randomId(18)}`,
+        };
+        setAnimations(a => [...a, newAnimation]);
+
+        springApi.start(i => {
+          if (i === animations.length) {
+            return transitionProps;
+          }
+        });
       }
     },
-    [internalRef],
+    [transitionProps, springApi, animations],
   );
 
   const handleEventWithAnalytics = useAnalytics();
@@ -138,6 +165,6 @@ const InteractionFeedback = ({
 InteractionFeedback.Container = Container;
 InteractionFeedback.SVGContainer = SVGContainer;
 InteractionFeedback.defaultTransitionProps = defaultTransitionProps;
-InteractionFeedback.defaultInterpolationFunctions = defaultInterpolationFunctions;
+// InteractionFeedback.defaultInterpolationFunctions = defaultInterpolationFunctions;
 
 export default InteractionFeedback;

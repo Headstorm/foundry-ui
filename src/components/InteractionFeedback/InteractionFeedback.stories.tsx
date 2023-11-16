@@ -54,14 +54,14 @@ export const Splash: Story<SplashProps> = ({
       clamp,
     },
   };
-  const interpolationFunctions = {
-    r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val)).toFixed(1)}`),
-    opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
-  };
+  // const interpolationFunctions = {
+  //   r: (r: any) => r.to((val: string) => `${Math.abs(parseFloat(val)).toFixed(1)}`),
+  //   opacity: (opacity: any) => opacity.to((val: number) => val.toFixed(2)),
+  // };
   return (
     <InteractionFeedback
       color={color}
-      interpolationFunctions={interpolationFunctions}
+      // interpolationFunctions={interpolationFunctions}
       transitionProps={transitionProps}
     >
       <InteractionInnerContainer onClick={action('button-click')}>
