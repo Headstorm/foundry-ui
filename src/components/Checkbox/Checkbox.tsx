@@ -159,6 +159,7 @@ export interface CheckboxProps {
   boxRef?: React.RefObject<HTMLDivElement>;
   labelRef?: React.RefObject<HTMLLabelElement>;
   inputRef?: React.RefObject<HTMLInputElement>;
+  color?: string;
 }
 
 const iconPaths = {
@@ -200,6 +201,7 @@ const Checkbox = ({
   boxRef,
   labelRef,
   inputRef,
+  color,
 }: CheckboxProps): JSX.Element => {
   const iconPath = iconPaths[checkboxType];
   const IconComponent = StyledIcon || iconComponents[checkboxType];
@@ -236,6 +238,7 @@ const Checkbox = ({
               data-test-id="hsui-Checkbox-Icon"
               path={iconPath}
               variant={variant}
+              color={color}
               {...iconProps}
             />
           ) : null}
